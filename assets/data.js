@@ -8,9 +8,13 @@
 window.SITE = {
   name: 'DigiSER BD',
   tagline: 'Job • Service • Growth',
-  whatsapp: '8801XXXXXXXXX',        // <-- apnar WhatsApp number (country code shoho, + chara). Example: 8801712345678
-  phone: '+880 1XXX-XXXXXX',        // <-- apnar phone
-  email: 'info@digiserbd.com',      // <-- apnar email
+  whatsapp: '8801719333614',        // WhatsApp button ei number e jabe (country code shoho, + chara)
+  phone: '+880 1719-333614',
+  email: 'info@digiserbd.com',      // <-- apnar asol email diye bodlan
+  team: [
+    {name: 'Helal', role: 'Founder', phone: '+880 1719-333614', wa: '8801719333614'},
+    {name: 'SNK', role: 'Co-founder', phone: '+880 1705-633700', wa: '8801705633700'}
+  ],
   address: 'Dhaka, Bangladesh'
 };
 
