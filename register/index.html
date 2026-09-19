@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | DigiSER BD</title>
+<meta name="description" content="Register on DigiSER BD.">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-page="register" data-root="../">
+<div id="hdr-slot"></div>
+<main>
+
+<section class="ph"><div class="wrap"><h1>Register</h1><p>Join as a job seeker, employee, business or service provider.</p></div></section>
+<section class="sec" style="padding-top:8px"><div class="wrap">
+  <form class="form" id="rform">
+    <div class="note">Online accounts are coming soon. Send your details now and we will contact you when your account is ready.</div>
+    <div class="field"><label for="name">Full name</label><input id="name" required></div>
+    <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" required></div>
+    <div class="field"><label for="email">Email (optional)</label><input id="email" type="email"></div>
+    <div class="field"><label for="type">I am a</label><select id="type"><option>Job seeker</option><option>Employee / Freelancer</option><option>Business</option><option>Service provider</option></select></div>
+    <button class="btn pri" type="submit">Send details</button>
+    <div class="ok-msg" id="ok">Thank you! We will contact you soon.</div>
+  </form>
+</div></section>
+
+</main>
+<div id="ftr-slot"></div>
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
