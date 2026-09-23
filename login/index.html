@@ -3,17 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | DigiSER BD</title>
-<meta name="description" content="Login to DigiSER BD.">
+<title>লগইন | DigiSER BD</title>
+<meta name="description" content="আপনার DigiSER BD প্রোফাইল দেখুন বা আপডেট করুন।">
 <meta name="theme-color" content="#0087c4">
 <link rel="canonical" href="https://digiserbd.com/login/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="Login | DigiSER BD">
-<meta property="og:description" content="Login to DigiSER BD.">
-<meta property="og:url" content="https://digiserbd.com/login/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
-<meta name="twitter:card" content="summary">
 <link rel="icon" href="../favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +16,30 @@
 <body data-page="login" data-root="../">
 <div id="hdr-slot"></div>
 <main>
-<section class="ph"><div class="wrap"><h1>Login</h1><p>Your DigiSER BD account.</p></div></section>
+<section class="ph"><div class="wrap"><h1>লগইন</h1><p>আপনার DigiSER BD প্রোফাইল।</p></div></section>
 <section class="sec" style="padding-top:8px"><div class="wrap">
-  <div class="form">
-    <div class="note">Online login is coming soon. Until then, register your details or chat with us on WhatsApp.</div>
-    <a class="btn pri" href="../register/">Register</a>
-    <a class="btn wa" data-wa href="#">Chat on WhatsApp</a>
-  </div>
+
+  <form class="form" id="lookupForm" style="max-width:480px">
+    <div class="note">শুধু এই ডিভাইস/ব্রাউজার থেকে রেজিস্টার করা প্রোফাইল দেখা যাবে। আপনি যে মোবাইল নম্বর দিয়ে রেজিস্টার করেছিলেন সেটি দিন।</div>
+    <div class="field"><label for="lphone">মোবাইল নম্বর</label><input id="lphone" type="tel" required></div>
+    <button class="btn pri" type="submit">লগইন</button>
+    <div class="ok-msg" id="lerr" style="background:#fdeceb;color:var(--danger)">এই নম্বরে কোনো প্রোফাইল পাওয়া যায়নি। <a href="../register/">এখানে রেজিস্টার করুন</a>।</div>
+  </form>
+
+  <form class="form" id="editForm" style="max-width:480px;display:none;margin-top:20px">
+    <h2 style="font-size:20px;margin-bottom:14px">প্রোফাইল আপডেট করুন</h2>
+    <div class="field"><label for="e_name">নাম</label><input id="e_name"></div>
+    <div class="field"><label for="e_phone">মোবাইল নম্বর</label><input id="e_phone" type="tel"></div>
+    <div class="field"><label for="e_emergency">জরুরী যোগাযোগ নম্বর</label><input id="e_emergency" type="tel"></div>
+    <div class="field"><label for="e_email">ই-মেইল</label><input id="e_email" type="email"></div>
+    <div class="field"><label for="e_address">বর্তমান ঠিকানা</label><input id="e_address"></div>
+    <div class="field"><label for="e_status">আমি কি এখন কাজের জন্য উপলব্ধ?</label>
+      <select id="e_status"><option value="Available">হ্যাঁ, উপলব্ধ</option><option value="Busy">না, ব্যস্ত আছি</option></select>
+    </div>
+    <button class="btn pri" type="submit">সেভ করুন</button>
+    <div class="ok-msg" id="eok">সেভ হয়েছে।</div>
+  </form>
+
 </div></section>
 </main>
 <div id="ftr-slot"></div>

@@ -116,10 +116,10 @@
   }
   function empCard(e) {
     var st = e.status === 'Available' ? '<span class="pill g">' + esc(e.status) + '</span>' : '<span class="pill o">' + esc(e.status) + '</span>';
-    return '<div class="emp"><div class="av" style="background:' + colorFor(e.name) + '">' + esc((e.name || '?').trim().charAt(0).toUpperCase()) + '</div>' +
+    return '<div class="emp" data-emp="' + esc(e.id) + '"><div class="av" style="background:' + colorFor(e.name) + '">' + esc((e.name || '?').trim().charAt(0).toUpperCase()) + '</div>' +
       '<h3>' + esc(e.name) + '</h3><div class="rl">' + esc(e.role) + '</div>' +
       '<div class="rt"><b>★ ' + esc(e.rating) + '</b> (' + esc(e.reviews) + ') ' + st + '</div>' +
-      '<a class="btn sm" href="' + url('contact/') + '?subject=' + encodeURIComponent('Hire: ' + e.name + ' (' + e.role + ')') + '">Contact</a></div>';
+      '<a class="btn sm" href="' + url('contact/') + '?subject=' + encodeURIComponent('Hire: ' + e.name + ' (' + e.role + ')') + '" onclick="event.stopPropagation()">Contact</a></div>';
   }
   function bizRow(b) {
     return '<div class="row"><div class="ic">🏪</div><div class="mid"><h3>' + esc(b.name) + '</h3><div class="sub">' + esc(b.category) + ' · 📍 ' + esc(b.location) + '</div></div>' +
@@ -220,18 +220,95 @@
     };
   }
 
+  function val(id) { var el = $('#' + id); return el ? el.value.trim() : ''; }
+  function chk(id) { var el = $('#' + id); return el && el.checked; }
+
   function register() {
     $('#rform').onsubmit = function (e) {
       e.preventDefault();
-      var name = $('#name').value.trim(), phone = $('#phone').value.trim(), email = $('#email').value.trim(), type = $('#type').value;
-      if (!name || !phone) return;
+      var name = val('name'), phone = val('phone');
+      if (!name || !phone || !chk('declare')) return;
+      var jtypeEl = document.querySelector('input[name="jtype"]:checked');
+      var profile = {
+        id: 'u' + Date.now(), status: 'Available', updated: new Date().toISOString().slice(0, 10),
+        personal: { name: name, father: val('father'), mother: val('mother'), dob: val('dob'), nid: val('nid'),
+          phone: phone, emergency: val('emergency'), email: val('email'), address: val('address'), permanent: val('permanent') },
+        education: {
+          ssc: { inst: val('edu_ssc_inst'), sub: val('edu_ssc_sub'), res: val('edu_ssc_res'), year: val('edu_ssc_year') },
+          hsc: { inst: val('edu_hsc_inst'), sub: val('edu_hsc_sub'), res: val('edu_hsc_res'), year: val('edu_hsc_year') },
+          grad: { inst: val('edu_grad_inst'), sub: val('edu_grad_sub'), res: val('edu_grad_res'), year: val('edu_grad_year') },
+          other: { inst: val('edu_other_inst'), sub: val('edu_other_sub'), res: val('edu_other_res'), year: val('edu_other_year') }
+        },
+        experience: { inst: val('exp_inst'), role: val('exp_role'), period: val('exp_period'), duty: val('exp_duty'), salary: val('exp_salary') },
+        skills: { computer: chk('sk_computer'), word: chk('sk_word'), excel: chk('sk_excel'), internet: chk('sk_internet'), design: chk('sk_design'), social: chk('sk_social') },
+        language: { bn: { rw: val('lang_bn_rw'), sp: val('lang_bn_sp') }, en: { rw: val('lang_en_rw'), sp: val('lang_en_sp') }, other: val('lang_other') },
+        wanted: { role: val('want_role'), salary: val('want_salary'), type: jtypeEl ? jtypeEl.value : '', location: val('want_loc') },
+        reference: { name: val('ref_name'), role: val('ref_role'), inst: val('ref_inst'), phone: val('ref_phone') },
+        attachments: { photo: chk('att_photo'), nid: chk('att_nid'), cert: chk('att_cert'), exp: chk('att_exp'), other: val('att_other') }
+      };
       DB = getDB();
-      DB.users.unshift({ id: 'u' + Date.now(), name: name, phone: phone, email: email, type: type, status: 'Pending' });
+      DB.users = DB.users.filter(function (u) { return u.personal.phone !== phone; });
+      DB.users.unshift(profile);
       saveDB(DB);
       $('#ok').classList.add('show');
-      $('#rform').reset();
-      toWhatsApp('Hello DigiSER BD, I want to register.\nName: ' + name + '\nPhone: ' + phone + (email ? '\nEmail: ' + email : '') + '\nType: ' + type);
+
+      var lines = [
+        'নতুন আবেদন - DigiSER BD',
+        'নাম: ' + name, 'মোবাইল: ' + phone,
+        val('email') ? 'ই-মেইল: ' + val('email') : '', val('address') ? 'ঠিকানা: ' + val('address') : '',
+        val('want_role') ? 'আবেদনকৃত পদ: ' + val('want_role') : '', val('want_salary') ? 'প্রত্যাশিত বেতন: ' + val('want_salary') : '',
+        jtypeEl ? 'কাজের ধরন: ' + jtypeEl.value : '', val('want_loc') ? 'কাজের স্থান পছন্দ: ' + val('want_loc') : '',
+        val('exp_inst') ? 'অভিজ্ঞতা: ' + val('exp_role') + ' - ' + val('exp_inst') + ' (' + val('exp_period') + ')' : '',
+        val('edu_grad_inst') ? 'স্নাতক: ' + val('edu_grad_sub') + ', ' + val('edu_grad_inst') + ' (' + val('edu_grad_year') + ')' : ''
+      ].filter(Boolean);
+      toWhatsApp(lines.join('\n'));
     };
+  }
+
+  function login() {
+    var found = null;
+    $('#lookupForm').onsubmit = function (e) {
+      e.preventDefault();
+      var phone = val('lphone');
+      DB = getDB();
+      found = DB.users.filter(function (u) { return u.personal && u.personal.phone === phone; })[0];
+      if (!found) { $('#lerr').classList.add('show'); $('#editForm').style.display = 'none'; return; }
+      $('#lerr').classList.remove('show');
+      $('#e_name').value = found.personal.name || '';
+      $('#e_phone').value = found.personal.phone || '';
+      $('#e_emergency').value = found.personal.emergency || '';
+      $('#e_email').value = found.personal.email || '';
+      $('#e_address').value = found.personal.address || '';
+      $('#e_status').value = found.status || 'Available';
+      $('#editForm').style.display = 'block';
+    };
+    $('#editForm').onsubmit = function (e) {
+      e.preventDefault();
+      if (!found) return;
+      found.personal.name = val('e_name'); found.personal.phone = val('e_phone');
+      found.personal.emergency = val('e_emergency'); found.personal.email = val('e_email');
+      found.personal.address = val('e_address'); found.status = $('#e_status').value;
+      found.updated = new Date().toISOString().slice(0, 10);
+      saveDB(DB);
+      $('#eok').classList.add('show');
+    };
+  }
+
+  function empModal(e) {
+    var st = e.status === 'Available' ? 'উপলব্ধ আছে' : (e.status || '');
+    var m = document.createElement('div');
+    m.className = 'modal open';
+    m.innerHTML = '<div class="mbox"><button class="x" aria-label="Close">&times;</button>' +
+      '<div class="av" style="background:' + colorFor(e.name) + '">' + esc((e.name || '?').charAt(0).toUpperCase()) + '</div>' +
+      '<h3>' + esc(e.name) + '</h3><div class="rl">' + esc(e.role) + '</div>' +
+      '<p>★ ' + esc(e.rating) + ' (' + esc(e.reviews) + ' reviews)</p>' +
+      '<p>অবস্থা: <b>' + esc(st) + '</b></p>' +
+      (e.phone ? '<p>ফোন: ' + esc(e.phone) + '</p>' : '') +
+      '<div class="acts"><a class="btn pri sm" href="' + url('contact/') + '?subject=' + encodeURIComponent('Hire: ' + e.name + ' (' + e.role + ')') + '">Contact</a></div></div>';
+    document.body.appendChild(m);
+    var close = function () { m.remove(); };
+    m.querySelector('.x').onclick = close;
+    m.onclick = function (ev) { if (ev.target === m) close(); };
   }
 
   function bizForm() {
@@ -252,6 +329,13 @@
   renderFooter();
   document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waLink(''); a.target = '_blank'; a.rel = 'noopener'; });
 
+  document.addEventListener('click', function (ev) {
+    var card = ev.target.closest('[data-emp]');
+    if (!card) return;
+    var emp = employees().filter(function (x) { return x.id === card.dataset.emp; })[0];
+    if (emp) empModal(emp);
+  });
+
   if (PAGE === 'home') home();
   if (PAGE === 'jobs') listPage(jobs, jobRow, 'No jobs match your search.', {filterKey: 'type'});
   if (PAGE === 'services') listPage(services, svcCard, 'No services match your search.', {grid: true});
@@ -260,5 +344,6 @@
   if (PAGE === 'blog') blog();
   if (PAGE === 'contact') contact();
   if (PAGE === 'register') register();
+  if (PAGE === 'login') login();
   translateAll();
 })();

@@ -3,17 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register | DigiSER BD</title>
-<meta name="description" content="Register on DigiSER BD as a job seeker, employee, business or service provider.">
+<title>রেজিস্ট্রেশন / আবেদন ফরম | DigiSER BD</title>
+<meta name="description" content="DigiSER BD-তে চাকরিপ্রার্থী, কর্মী, ব্যবসা বা সার্ভিস প্রদানকারী হিসেবে রেজিস্টার করুন।">
 <meta name="theme-color" content="#0087c4">
 <link rel="canonical" href="https://digiserbd.com/register/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="Register | DigiSER BD">
-<meta property="og:description" content="Register on DigiSER BD as a job seeker, employee, business or service provider.">
-<meta property="og:url" content="https://digiserbd.com/register/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
-<meta name="twitter:card" content="summary">
 <link rel="icon" href="../favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,17 +16,95 @@
 <body data-page="register" data-root="../">
 <div id="hdr-slot"></div>
 <main>
-<section class="ph"><div class="wrap"><h1>Register</h1><p>Join as a job seeker, employee, business or service provider.</p></div></section>
+<section class="ph"><div class="wrap"><h1>রেজিস্ট্রেশন / আবেদন ফরম</h1><p>চাকরিপ্রার্থী হিসেবে আপনার তথ্য দিন। এই তথ্যের ভিত্তিতে আমরা আপনাকে উপযুক্ত চাকরির সাথে যুক্ত করব।</p></div></section>
 <section class="sec" style="padding-top:8px"><div class="wrap">
-  <form class="form" id="rform">
-    <div class="note">Online accounts are coming soon. Send your details on WhatsApp and we will contact you when your account is ready.</div>
-    <div class="field"><label for="name">Full name</label><input id="name" required></div>
-    <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" required></div>
-    <div class="field"><label for="email">Email (optional)</label><input id="email" type="email"></div>
-    <div class="field"><label for="type">I am a</label><select id="type"><option value="Job seeker">Job seeker</option><option value="Employee / Freelancer">Employee / Freelancer</option><option value="Business">Business</option><option value="Service provider">Service provider</option></select></div>
-    <button class="btn wa" type="submit">Send via WhatsApp</button>
-    <div class="ok-msg" id="ok">Thank you! Your details are ready on WhatsApp. Press send there.</div>
-  </form>
+<form class="form" id="rform" style="max-width:640px">
+  <div class="note">নিচের সব তথ্য যতটা সম্ভব সঠিকভাবে পূরণ করুন। জমা দেওয়ার পর তথ্য হোয়াটসঅ্যাপে DigiSER BD-এর কাছে পৌঁছে যাবে, এবং আপনার এই ডিভাইসেও সেভ থাকবে যাতে পরে লগইন করে দেখতে/বদলাতে পারেন।</div>
+
+  <div class="section-h">১. ব্যক্তিগত তথ্য</div>
+  <div class="field"><label for="name">নাম *</label><input id="name" required></div>
+  <div class="field"><label for="father">পিতার নাম</label><input id="father"></div>
+  <div class="field"><label for="mother">মাতার নাম</label><input id="mother"></div>
+  <div class="field"><label for="dob">জন্ম তারিখ</label><input id="dob" type="date"></div>
+  <div class="field"><label for="nid">NID / জন্মনিবন্ধন নং</label><input id="nid"></div>
+  <div class="field"><label for="phone">মোবাইল নম্বর *</label><input id="phone" type="tel" required></div>
+  <div class="field"><label for="emergency">জরুরী যোগাযোগ নম্বর</label><input id="emergency" type="tel"></div>
+  <div class="field"><label for="email">ই-মেইল</label><input id="email" type="email"></div>
+  <div class="field"><label for="address">বর্তমান ঠিকানা</label><input id="address"></div>
+  <div class="field"><label for="permanent">স্থায়ী ঠিকানা</label><input id="permanent"></div>
+
+  <div class="section-h">২. শিক্ষাগত যোগ্যতা</div>
+  <div class="mini-grid"><div class="lbl">SSC/সমমান — প্রতিষ্ঠান, বিভাগ/বিষয়, ফলাফল, পাসের সাল</div>
+    <input id="edu_ssc_inst" placeholder="প্রতিষ্ঠান"><input id="edu_ssc_sub" placeholder="বিভাগ/বিষয়"><input id="edu_ssc_res" placeholder="ফলাফল"><input id="edu_ssc_year" placeholder="সাল"></div>
+  <div class="mini-grid"><div class="lbl">HSC/সমমান</div>
+    <input id="edu_hsc_inst" placeholder="প্রতিষ্ঠান"><input id="edu_hsc_sub" placeholder="বিভাগ/বিষয়"><input id="edu_hsc_res" placeholder="ফলাফল"><input id="edu_hsc_year" placeholder="সাল"></div>
+  <div class="mini-grid"><div class="lbl">স্নাতক</div>
+    <input id="edu_grad_inst" placeholder="প্রতিষ্ঠান"><input id="edu_grad_sub" placeholder="বিভাগ/বিষয়"><input id="edu_grad_res" placeholder="ফলাফল"><input id="edu_grad_year" placeholder="সাল"></div>
+  <div class="mini-grid"><div class="lbl">অন্যান্য</div>
+    <input id="edu_other_inst" placeholder="প্রতিষ্ঠান"><input id="edu_other_sub" placeholder="বিভাগ/বিষয়"><input id="edu_other_res" placeholder="ফলাফল"><input id="edu_other_year" placeholder="সাল"></div>
+
+  <div class="section-h">৩. চাকরির অভিজ্ঞতা</div>
+  <div class="field"><label for="exp_inst">প্রতিষ্ঠানের নাম</label><input id="exp_inst"></div>
+  <div class="field"><label for="exp_role">পদবী</label><input id="exp_role"></div>
+  <div class="field"><label for="exp_period">কাজের সময়কাল</label><input id="exp_period" placeholder="যেমনঃ জানু ২০২৩ - বর্তমান"></div>
+  <div class="field"><label for="exp_duty">দায়িত্ব</label><textarea id="exp_duty" rows="2"></textarea></div>
+  <div class="field"><label for="exp_salary">পূর্বের বেতন</label><input id="exp_salary"></div>
+
+  <div class="section-h">৪. দক্ষতা</div>
+  <div class="chk-wrap">
+    <label class="chk-row"><input type="checkbox" id="sk_computer">কম্পিউটার পরিচালনা</label>
+    <label class="chk-row"><input type="checkbox" id="sk_word">MS Word</label>
+    <label class="chk-row"><input type="checkbox" id="sk_excel">MS Excel</label>
+    <label class="chk-row"><input type="checkbox" id="sk_internet">ইন্টারনেট ও ই-মেইল</label>
+    <label class="chk-row"><input type="checkbox" id="sk_design">গ্রাফিক ডিজাইন</label>
+    <label class="chk-row"><input type="checkbox" id="sk_social">সোশ্যাল মিডিয়া পরিচালনা</label>
+  </div>
+
+  <div class="section-h">৫. ভাষাগত দক্ষতা</div>
+  <div class="mini-grid"><div class="lbl">বাংলা — পড়া/লেখা, বলা</div>
+    <select id="lang_bn_rw"><option value="">পড়া/লেখা</option><option>ভালো</option><option>মোটামুটি</option><option>দুর্বল</option></select>
+    <select id="lang_bn_sp"><option value="">বলা</option><option>ভালো</option><option>মোটামুটি</option><option>দুর্বল</option></select>
+  </div>
+  <div class="mini-grid"><div class="lbl">ইংরেজি — পড়া/লেখা, বলা</div>
+    <select id="lang_en_rw"><option value="">পড়া/লেখা</option><option>ভালো</option><option>মোটামুটি</option><option>দুর্বল</option></select>
+    <select id="lang_en_sp"><option value="">বলা</option><option>ভালো</option><option>মোটামুটি</option><option>দুর্বল</option></select>
+  </div>
+  <div class="field"><label for="lang_other">অন্যান্য ভাষা</label><input id="lang_other"></div>
+
+  <div class="section-h">৬. প্রত্যাশিত চাকরি</div>
+  <div class="field"><label for="want_role">আবেদনকৃত পদ</label><input id="want_role"></div>
+  <div class="field"><label for="want_salary">প্রত্যাশিত বেতন</label><input id="want_salary"></div>
+  <div class="field"><label>কাজের ধরন</label>
+    <div class="radio-inline">
+      <label><input type="radio" name="jtype" value="ফুল-টাইম">ফুল-টাইম</label>
+      <label><input type="radio" name="jtype" value="পার্ট-টাইম">পার্ট-টাইম</label>
+      <label><input type="radio" name="jtype" value="অন্যান্য">অন্যান্য</label>
+    </div>
+  </div>
+  <div class="field"><label for="want_loc">কাজের স্থান পছন্দ</label><input id="want_loc"></div>
+
+  <div class="section-h">৭. রেফারেন্স</div>
+  <div class="field"><label for="ref_name">নাম</label><input id="ref_name"></div>
+  <div class="field"><label for="ref_role">পদবী</label><input id="ref_role"></div>
+  <div class="field"><label for="ref_inst">প্রতিষ্ঠান</label><input id="ref_inst"></div>
+  <div class="field"><label for="ref_phone">মোবাইল</label><input id="ref_phone" type="tel"></div>
+
+  <div class="section-h">৮. প্রয়োজনীয় সংযুক্তি (জমাদানের সময় সাথে আনুন)</div>
+  <div class="chk-wrap">
+    <label class="chk-row"><input type="checkbox" id="att_photo">ছবি</label>
+    <label class="chk-row"><input type="checkbox" id="att_nid">NID/জন্মনিবন্ধনের কপি</label>
+    <label class="chk-row"><input type="checkbox" id="att_cert">শিক্ষাগত সনদের কপি</label>
+    <label class="chk-row"><input type="checkbox" id="att_exp">অভিজ্ঞতার সনদ</label>
+  </div>
+  <div class="field"><label for="att_other">অন্যান্য</label><input id="att_other"></div>
+
+  <div class="section-h">ঘোষণা</div>
+  <label class="chk-row" style="align-items:flex-start"><input type="checkbox" id="declare" required style="margin-top:3px">
+    আমি ঘোষণা করছি যে, উপরে প্রদান করা সকল তথ্য আমার জ্ঞান ও বিশ্বাস অনুযায়ী সঠিক ও সত্য।</label>
+
+  <button class="btn wa" type="submit" style="width:100%;margin-top:16px">হোয়াটসঅ্যাপে জমা দিন</button>
+  <div class="ok-msg" id="ok">ধন্যবাদ! আপনার তথ্য এই ডিভাইসে সেভ হয়েছে এবং হোয়াটসঅ্যাপে পাঠানোর জন্য প্রস্তুত। সেখানে সেন্ড চাপুন। পরে <a href="../login/">এখান থেকে লগইন করে</a> তথ্য আপডেট করতে পারবেন।</div>
+</form>
 </div></section>
 </main>
 <div id="ftr-slot"></div>

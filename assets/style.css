@@ -138,6 +138,29 @@ button,input,select,textarea{font:inherit;color:inherit}
 .info b{color:var(--ink)}
 .note{background:#fff7e0;border:1px solid #f0d98a;border-radius:10px;padding:12px 16px;font-size:14px;margin-bottom:16px}
 
+/* CV form helpers */
+.section-h{font-size:17px;color:var(--navy);margin:22px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+.section-h:first-child{margin-top:0;padding-top:0;border-top:0}
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.mini-grid .lbl{grid-column:1/-1;font-size:13px;font-weight:600;color:var(--muted);margin-top:2px}
+.mini-grid input{border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+.chk-row{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:14px}
+.chk-row input{width:16px;height:16px;flex:none}
+.chk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;margin-bottom:6px}
+.radio-inline{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.radio-inline label{display:flex;align-items:center;gap:6px;font-size:14px}
+
+/* modal (employee detail / login lookup) */
+.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;padding:16px;z-index:40}
+.modal.open{display:grid}
+.mbox{background:#fff;border-radius:14px;width:100%;max-width:420px;padding:24px;position:relative}
+.mbox .x{position:absolute;top:12px;right:14px;background:none;border:0;font-size:20px;color:var(--muted);cursor:pointer}
+.mbox h3{font-size:19px;margin-bottom:4px}
+.mbox .rl{color:var(--muted);margin-bottom:10px}
+.mbox p{margin:6px 0;font-size:14px}
+.mbox .acts{display:flex;gap:8px;margin-top:16px}
+.emp{cursor:pointer}
+
 /* footer */
 .ftr{background:var(--navy);color:#b7c9d6;padding:44px 0 20px}
 .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
