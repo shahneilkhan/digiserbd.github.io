@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,130 +6,375 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contact | DigiSER BD</title>
-<meta name="description" content="Contact DigiSER BD for jobs, hiring and digital services.">
+
+<meta
+  name="description"
+  content="Contact DigiSER BD for jobs, hiring and digital services."
+>
+
 <meta name="theme-color" content="#0087c4">
 
-<link rel="canonical" href="https://digiserbd.com/contact/">
+<link
+  rel="canonical"
+  href="https://digiserbd.com/contact/"
+>
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DigiSER BD">
 <meta property="og:title" content="Contact | DigiSER BD">
-<meta property="og:description" content="Contact DigiSER BD for jobs, hiring and digital services.">
-<meta property="og:url" content="https://digiserbd.com/contact/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
+<meta
+  property="og:description"
+  content="Contact DigiSER BD for jobs, hiring and digital services."
+>
+<meta
+  property="og:url"
+  content="https://digiserbd.com/contact/"
+>
+<meta
+  property="og:image"
+  content="https://digiserbd.com/logo.png"
+>
 
+<!-- Twitter -->
 <meta name="twitter:card" content="summary">
 
+<!-- Favicon -->
 <link rel="icon" href="../favicon.png" type="image/png">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
 
+<!-- Main CSS -->
 <link rel="stylesheet" href="../assets/style.css">
+
+<style>
+/* =========================================================
+   DEVELOPER CONNECT
+   ========================================================= */
+
+.developer-connect {
+  padding-top: 8px;
+  padding-bottom: 40px;
+}
+
+.developer-connect .wrap {
+  width: 100%;
+}
+
+.developer-btn {
+  width: 100%;
+  min-height: 68px;
+  padding: 0 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  box-sizing: border-box;
+
+  border-radius: 16px;
+
+  background: var(--brand);
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.developer-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+  box-shadow: 0 12px 30px rgba(0, 135, 196, 0.20);
+}
+
+.developer-btn:active {
+  transform: translateY(0);
+}
+
+.developer-btn-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.developer-icon {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  font-size: 17px;
+}
+
+.developer-arrow {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .developer-connect {
+    padding-top: 4px;
+    padding-bottom: 28px;
+  }
+
+  .developer-btn {
+    min-height: 62px;
+    padding: 0 18px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+  }
+
+  .developer-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .developer-arrow {
+    font-size: 23px;
+  }
+}
+</style>
+
 </head>
 
 <body data-page="contact" data-root="../">
 
+<!-- Header -->
 <div id="hdr-slot"></div>
 
 <main>
 
-<section class="ph">
-  <div class="wrap">
-    <h1>Contact us</h1>
-    <p>Questions, hiring or services? We reply quickly on WhatsApp.</p>
-  </div>
-</section>
+  <!-- =====================================================
+       PAGE HEADER
+       ====================================================== -->
 
-<section class="sec" style="padding-top:8px">
-  <div class="wrap two">
+  <section class="ph">
+    <div class="wrap">
 
-    <!-- Contact Form -->
-    <form class="form" id="cform">
-
-      <div class="field">
-        <label for="name">Your name</label>
-        <input id="name" type="text" required>
-      </div>
-
-      <div class="field">
-        <label for="contact">Phone or email</label>
-        <input id="contact" type="text" required>
-      </div>
-
-      <div class="field">
-        <label for="msg">Message</label>
-        <textarea id="msg" rows="5" required></textarea>
-      </div>
-
-      <button class="btn wa" type="submit">
-        Send via WhatsApp
-      </button>
-
-      <div class="ok-msg" id="ok">
-        Thank you! Your message is ready on WhatsApp. Press send there.
-      </div>
-
-    </form>
-
-    <!-- Contact Information -->
-    <div class="info">
-
-      <h2 style="font-size:26px;margin-bottom:10px">
-        Other ways to reach us
-      </h2>
+      <h1>Contact us</h1>
 
       <p>
-        <b>WhatsApp:</b>
-        <a data-wa href="#" style="color:var(--brand);font-weight:600">
-          Chat now
-        </a>
+        Questions, hiring or services?
+        We reply quickly on WhatsApp.
       </p>
 
-      <p>
-        <b>Email:</b>
-        <a href="mailto:info@digiserbd.com">
-          info@digiserbd.com
-        </a>
-      </p>
+    </div>
+  </section>
 
-      <p>
-        <b>Location:</b>
-        <span>Dhaka, Bangladesh</span>
-      </p>
 
-      <!-- Developer Connect -->
-      <div style="margin-top:28px">
+  <!-- =====================================================
+       CONTACT SECTION
+       ====================================================== -->
 
-        <a
-          href="https://www.snkbp.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn"
-          style="
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            gap:8px;
-          "
+  <section class="sec" style="padding-top:8px">
+
+    <div class="wrap two">
+
+      <!-- Contact Form -->
+      <form class="form" id="cform">
+
+        <div class="field">
+
+          <label for="name">
+            Your name
+          </label>
+
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="contact">
+            Phone or email
+          </label>
+
+          <input
+            id="contact"
+            name="contact"
+            type="text"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="msg">
+            Message
+          </label>
+
+          <textarea
+            id="msg"
+            name="message"
+            rows="5"
+            required
+          ></textarea>
+
+        </div>
+
+
+        <button
+          class="btn wa"
+          type="submit"
         >
-          Connect with Developer
-          <span aria-hidden="true">↗</span>
-        </a>
+          Send via WhatsApp
+        </button>
+
+
+        <div
+          class="ok-msg"
+          id="ok"
+          role="status"
+        >
+          Thank you! Your message is ready on WhatsApp.
+          Press send there.
+        </div>
+
+      </form>
+
+
+      <!-- =================================================
+           CONTACT INFORMATION
+           ================================================== -->
+
+      <div class="info">
+
+        <h2 style="font-size:26px;margin-bottom:10px">
+          Other ways to reach us
+        </h2>
+
+
+        <p>
+          <b>WhatsApp:</b>
+
+          <a
+            data-wa
+            href="#"
+            style="
+              color:var(--brand);
+              font-weight:600;
+            "
+          >
+            Chat now
+          </a>
+        </p>
+
+
+        <p>
+          <b>Email:</b>
+
+          <a
+            href="mailto:info@digiserbd.com"
+            style="
+              color:var(--brand);
+              font-weight:600;
+            "
+          >
+            info@digiserbd.com
+          </a>
+        </p>
+
+
+        <p>
+          <b>Location:</b>
+
+          <span>
+            Dhaka, Bangladesh
+          </span>
+        </p>
 
       </div>
 
     </div>
 
-  </div>
-</section>
+  </section>
+
+
+  <!-- =====================================================
+       DEVELOPER CONNECT
+       FOOTER-ER THIK UPOR
+       ====================================================== -->
+
+  <section class="sec developer-connect">
+
+    <div class="wrap">
+
+      <a
+        href="https://www.snkbp.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="developer-btn"
+        aria-label="Connect with Developer"
+      >
+
+        <span class="developer-btn-text">
+
+          <span class="developer-icon">
+            ↗
+          </span>
+
+          <span>
+            Connect with Developer
+          </span>
+
+        </span>
+
+        <span class="developer-arrow">
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
 
 </main>
 
+
+<!-- Footer -->
 <div id="ftr-slot"></div>
 
+
+<!-- Scripts -->
 <script src="../assets/data.js"></script>
 <script src="../assets/i18n.js"></script>
 <script src="../assets/app.js"></script>
