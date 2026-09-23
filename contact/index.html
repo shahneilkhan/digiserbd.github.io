@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,6 @@
   href="https://digiserbd.com/contact/"
 >
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DigiSER BD">
 <meta property="og:title" content="Contact | DigiSER BD">
@@ -35,13 +35,10 @@
   content="https://digiserbd.com/logo.png"
 >
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary">
 
-<!-- Favicon -->
 <link rel="icon" href="../favicon.png" type="image/png">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -50,12 +47,12 @@
   rel="stylesheet"
 >
 
-<!-- Main CSS -->
 <link rel="stylesheet" href="../assets/style.css">
 
 <style>
+
 /* =========================================================
-   DEVELOPER CONNECT
+   DEVELOPER CONNECT BUTTON
    ========================================================= */
 
 .developer-connect {
@@ -63,26 +60,24 @@
   padding-bottom: 40px;
 }
 
-.developer-connect .wrap {
-  width: 100%;
-}
-
 .developer-btn {
   width: 100%;
   min-height: 68px;
+
   padding: 0 26px;
+
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
 
-  box-sizing: border-box;
+  gap: 20px;
 
   border-radius: 16px;
 
   background: var(--brand);
-  color: #ffffff;
+  color: #fff;
 
   text-decoration: none;
 
@@ -91,15 +86,17 @@
   font-weight: 700;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
 }
 
 .developer-btn:hover {
   transform: translateY(-2px);
-  opacity: 0.96;
-  box-shadow: 0 12px 30px rgba(0, 135, 196, 0.20);
+  opacity: .96;
+
+  box-shadow:
+    0 12px 30px rgba(0, 135, 196, .20);
 }
 
 .developer-btn:active {
@@ -122,7 +119,7 @@
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255,255,255,.14);
 
   font-size: 17px;
 }
@@ -130,10 +127,15 @@
 .developer-arrow {
   font-size: 26px;
   line-height: 1;
+
   flex-shrink: 0;
 }
 
-/* Mobile */
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 600px) {
 
   .developer-connect {
@@ -143,6 +145,7 @@
 
   .developer-btn {
     min-height: 62px;
+
     padding: 0 18px;
 
     border-radius: 14px;
@@ -153,29 +156,40 @@
   .developer-icon {
     width: 30px;
     height: 30px;
+
     font-size: 15px;
   }
 
   .developer-arrow {
     font-size: 23px;
   }
+
 }
+
 </style>
 
 </head>
 
+
 <body data-page="contact" data-root="../">
 
-<!-- Header -->
+
+<!-- =====================================================
+     HEADER
+     ====================================================== -->
+
 <div id="hdr-slot"></div>
+
 
 <main>
 
-  <!-- =====================================================
+
+  <!-- ===================================================
        PAGE HEADER
-       ====================================================== -->
+       ==================================================== -->
 
   <section class="ph">
+
     <div class="wrap">
 
       <h1>Contact us</h1>
@@ -186,19 +200,30 @@
       </p>
 
     </div>
+
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        CONTACT SECTION
-       ====================================================== -->
+       ==================================================== -->
 
-  <section class="sec" style="padding-top:8px">
+  <section
+    class="sec"
+    style="padding-top:8px"
+  >
 
     <div class="wrap two">
 
-      <!-- Contact Form -->
-      <form class="form" id="cform">
+
+      <!-- ===============================
+           CONTACT FORM
+           ================================ -->
+
+      <form
+        class="form"
+        id="cform"
+      >
 
         <div class="field">
 
@@ -227,7 +252,6 @@
             id="contact"
             name="contact"
             type="text"
-            autocomplete="email"
             required
           >
 
@@ -270,18 +294,25 @@
       </form>
 
 
-      <!-- =================================================
+
+      <!-- ===============================
            CONTACT INFORMATION
-           ================================================== -->
+           ================================ -->
 
       <div class="info">
 
-        <h2 style="font-size:26px;margin-bottom:10px">
+        <h2
+          style="
+            font-size:26px;
+            margin-bottom:10px;
+          "
+        >
           Other ways to reach us
         </h2>
 
 
         <p>
+
           <b>WhatsApp:</b>
 
           <a
@@ -294,10 +325,12 @@
           >
             Chat now
           </a>
+
         </p>
 
 
         <p>
+
           <b>Email:</b>
 
           <a
@@ -309,15 +342,18 @@
           >
             info@digiserbd.com
           </a>
+
         </p>
 
 
         <p>
+
           <b>Location:</b>
 
           <span>
-            Dhaka, Bangladesh
+            Moulvibazar, Bangladesh
           </span>
+
         </p>
 
       </div>
@@ -327,10 +363,11 @@
   </section>
 
 
-  <!-- =====================================================
+
+  <!-- ===================================================
        DEVELOPER CONNECT
        FOOTER-ER THIK UPOR
-       ====================================================== -->
+       ==================================================== -->
 
   <section class="sec developer-connect">
 
@@ -356,6 +393,7 @@
 
         </span>
 
+
         <span class="developer-arrow">
           →
         </span>
@@ -366,14 +404,21 @@
 
   </section>
 
+
 </main>
 
 
-<!-- Footer -->
+<!-- =====================================================
+     FOOTER
+     ====================================================== -->
+
 <div id="ftr-slot"></div>
 
 
-<!-- Scripts -->
+<!-- =====================================================
+     SCRIPTS
+     ====================================================== -->
+
 <script src="../assets/data.js"></script>
 <script src="../assets/i18n.js"></script>
 <script src="../assets/app.js"></script>
