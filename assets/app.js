@@ -13,15 +13,45 @@
   var url = function (p) { return (ROOT + p) || './'; };
   var params = new URLSearchParams(location.search);
 
-  /* ---------- data views (Hidden items never show) ---------- */
+  /* ---------- language (English default, Bangla switch) ---------- */
+  var LANG = 'en';
+  try { LANG = localStorage.getItem('digiserbd_lang') || 'en'; } catch (e) {}
+  var BNX = window.BN || {};
+  var T = function (s) { return (LANG === 'bn' && BNX[s]) ? BNX[s] : s; };
+
+  function translateAll() {
+    if (LANG !== 'bn') return;
+    document.documentElement.lang = 'bn';
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var n, list = [];
+    while ((n = w.nextNode())) list.push(n);
+    list.forEach(function (node) {
+      var p = node.parentNode && node.parentNode.nodeName;
+      if (p === 'SCRIPT' || p === 'STYLE') return;
+      var k = node.nodeValue.trim();
+      if (k && BNX[k]) node.nodeValue = node.nodeValue.replace(k, BNX[k]);
+    });
+    document.querySelectorAll('[placeholder]').forEach(function (el) {
+      var k = el.getAttribute('placeholder'); if (BNX[k]) el.setAttribute('placeholder', BNX[k]);
+    });
+    document.querySelectorAll('.lang-en').forEach(function (e) { e.hidden = true; });
+    document.querySelectorAll('.lang-bn').forEach(function (e) { e.hidden = false; });
+  }
+
+  /* ---------- data views (Hidden/Draft items never show) ---------- */
   var jobs = function () { return DB.jobs.filter(function (x) { return x.status !== 'Hidden'; }); };
   var services = function () { return DB.services.filter(function (x) { return x.status !== 'Hidden'; }); };
   var employees = function () { return DB.employees.filter(function (x) { return x.status !== 'Hidden'; }); };
   var businesses = function () { return DB.businesses.filter(function (x) { return x.status === 'Active'; }); };
+  var posts = function () {
+    return DB.blog.filter(function (x) { return x.status === 'Published'; })
+      .sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+  };
 
   /* ---------- header / footer ---------- */
   var NAV = [['home','','Home'],['jobs','jobs/','Jobs'],['services','services/','Services'],
-             ['employees','employees/','Employees'],['businesses','businesses/','Businesses'],['contact','contact/','Contact']];
+             ['employees','employees/','Employees'],['businesses','businesses/','Businesses'],
+             ['blog','blog/','Blog'],['contact','contact/','Contact']];
 
   function brandHTML() {
     return '<a class="brand" href="' + url('') + '"><img src="' + url('logo.png') + '" alt="DigiSER BD logo" width="40" height="40">' +
@@ -34,12 +64,17 @@
       h += '<a href="' + url(n[1]) + '"' + (n[0] === PAGE ? ' class="on" aria-current="page"' : '') + '>' + n[2] + '</a>';
     });
     h += '</nav><div class="acts"><a class="btn sm" href="' + url('login/') + '">Login</a>' +
-         '<a class="btn sm pri" href="' + url('register/') + '">Register</a></div>' +
+         '<a class="btn sm pri" href="' + url('register/') + '">Register</a>' +
+         '<button class="btn sm lang" id="lang" type="button" aria-label="Language">' + (LANG === 'bn' ? 'EN' : 'বাংলা') + '</button></div>' +
          '<button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button></div></header>';
     $('#hdr-slot').outerHTML = h;
     $('#burger').onclick = function () {
       var hd = $('#hdr'); var o = hd.classList.toggle('open');
       this.setAttribute('aria-expanded', o);
+    };
+    $('#lang').onclick = function () {
+      try { localStorage.setItem('digiserbd_lang', LANG === 'bn' ? 'en' : 'bn'); } catch (e) {}
+      location.reload();
     };
   }
 
@@ -51,10 +86,12 @@
     var f = '<footer class="ftr"><div class="wrap"><div class="fg"><div>' + brandHTML() +
       '<p style="margin-top:12px;max-width:340px">Connecting people, supporting local businesses and creating digital opportunities across Bangladesh.</p></div>' +
       '<div><h4>Quick Links</h4>';
-    NAV.forEach(function (n) { f += '<a href="' + url(n[1]) + '">' + n[2] + '</a>'; });
-    f += '</div><div><h4>Contact</h4><a href="' + waLink('') + '" target="_blank" rel="noopener">WhatsApp</a>' +
-         '<a href="mailto:' + esc(SITE.email) + '">' + esc(SITE.email) + '</a><a href="' + url('contact/') + '">Contact form</a></div></div>' +
-         '<div class="copy">© ' + new Date().getFullYear() + ' DigiSER BD. All rights reserved.</div></div></footer>';
+    NAV.forEach(function (n) { if (n[0] !== 'contact') f += '<a href="' + url(n[1]) + '">' + n[2] + '</a>'; });
+    f += '</div><div><h4>Company</h4><a href="' + url('about/') + '">About us</a><a href="' + url('privacy/') + '">Privacy Policy</a>' +
+         '<a href="' + url('terms/') + '">Terms of Use</a><a href="' + url('contact/') + '">Contact</a></div>' +
+         '<div><h4>Reach us</h4><a href="' + waLink('') + '" target="_blank" rel="noopener">WhatsApp</a>' +
+         '<a href="mailto:' + esc(SITE.email) + '">' + esc(SITE.email) + '</a></div></div>' +
+         '<div class="copy">© ' + new Date().getFullYear() + ' DigiSER BD. ' + T('All rights reserved.') + '</div></div></footer>';
     $('#ftr-slot').outerHTML = f;
   }
 
@@ -78,7 +115,7 @@
       '<div class="pr">' + esc(s.price) + '</div><a class="btn sm" href="' + url('contact/') + '?subject=' + encodeURIComponent('Service: ' + s.title) + '">Get this service</a></div>';
   }
   function empCard(e) {
-    var st = e.status === 'Available' ? '<span class="pill g">Available</span>' : '<span class="pill o">' + esc(e.status) + '</span>';
+    var st = e.status === 'Available' ? '<span class="pill g">' + esc(e.status) + '</span>' : '<span class="pill o">' + esc(e.status) + '</span>';
     return '<div class="emp"><div class="av" style="background:' + colorFor(e.name) + '">' + esc((e.name || '?').trim().charAt(0).toUpperCase()) + '</div>' +
       '<h3>' + esc(e.name) + '</h3><div class="rl">' + esc(e.role) + '</div>' +
       '<div class="rt"><b>★ ' + esc(e.rating) + '</b> (' + esc(e.reviews) + ') ' + st + '</div>' +
@@ -88,6 +125,11 @@
     return '<div class="row"><div class="ic">🏪</div><div class="mid"><h3>' + esc(b.name) + '</h3><div class="sub">' + esc(b.category) + ' · 📍 ' + esc(b.location) + '</div></div>' +
       '<div class="side"><a class="btn sm" href="' + url('contact/') + '?subject=' + encodeURIComponent('Business: ' + b.name) + '">Contact</a></div></div>';
   }
+  function postRow(p) {
+    return '<div class="row"><div class="ic">📝</div><div class="mid"><h3><a href="' + url('blog/') + '?p=' + encodeURIComponent(p.id) + '">' + esc(p.title) + '</a></h3>' +
+      '<div class="sub">' + esc(p.category) + ' · ' + esc(p.date) + '</div><p class="sum">' + esc(p.summary) + '</p></div>' +
+      '<div class="side"><a class="btn sm" href="' + url('blog/') + '?p=' + encodeURIComponent(p.id) + '">Read more</a></div></div>';
+  }
   function rows(list, fn, emptyText) {
     return list.length ? '<div class="rows">' + list.map(fn).join('') + '</div>' : '<div class="empty">' + emptyText + '</div>';
   }
@@ -96,12 +138,13 @@
   }
   function put(id, html) { var el = $('#' + id); if (el) el.innerHTML = html; }
 
-  /* ---------- messages (saved for admin + sent via WhatsApp) ---------- */
+  /* ---------- sending: WhatsApp is the real channel for now ---------- */
   function saveMessage(name, contact, message) {
     DB = getDB();
     DB.messages.unshift({ id: 'm' + Date.now(), name: name, contact: contact, message: message, status: 'New' });
     saveDB(DB);
   }
+  function toWhatsApp(text) { window.open(waLink(text), '_blank', 'noopener'); }
 
   /* ---------- pages ---------- */
   function home() {
@@ -119,7 +162,7 @@
       b.onclick = function () {
         tab = b.dataset.t;
         tabs.forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
-        $('#q').placeholder = 'Search ' + tab + '...';
+        $('#q').placeholder = T('Search ' + tab + '...');
       };
     });
     $('#searchForm').onsubmit = function (e) {
@@ -141,11 +184,26 @@
         return true;
       });
       put('list', (opts && opts.grid ? cards : rows)(list, fn, emptyText));
-      var c = $('#count'); if (c) c.textContent = list.length + ' found';
+      var c = $('#count'); if (c) c.textContent = LANG === 'bn' ? list.length + 'টি পাওয়া গেছে' : list.length + ' found';
+      translateAll();
     }
     if (q) q.oninput = draw;
     if (sel) sel.onchange = draw;
     draw();
+  }
+
+  function blog() {
+    var id = params.get('p');
+    var post = id ? posts().filter(function (x) { return x.id === id; })[0] : null;
+    if (post) {
+      document.title = post.title + ' | DigiSER BD';
+      var paras = String(post.content).split(/\n\s*\n/).map(function (t) { return '<p>' + esc(t).replace(/\n/g, '<br>') + '</p>'; }).join('');
+      put('list', '<article class="prose"><p><a class="more" href="' + url('blog/') + '">← Back to blog</a></p><h1>' + esc(post.title) + '</h1>' +
+        '<p class="meta">' + esc(post.category) + ' · ' + esc(post.author) + ' · ' + esc(post.date) + '</p>' + paras + '</article>');
+      var hd = $('#blogHead'); if (hd) hd.hidden = true;
+    } else {
+      put('list', rows(posts(), postRow, 'No posts yet.'));
+    }
   }
 
   function contact() {
@@ -156,10 +214,9 @@
       var name = $('#name').value.trim(), contactVal = $('#contact').value.trim(), msg = $('#msg').value.trim();
       if (!name || !contactVal || !msg) return;
       saveMessage(name, contactVal, msg);
-      var text = 'Hello DigiSER BD,\nName: ' + name + '\nContact: ' + contactVal + '\n\n' + msg;
       $('#ok').classList.add('show');
       $('#cform').reset();
-      window.open(waLink(text), '_blank', 'noopener');
+      toWhatsApp('Hello DigiSER BD,\nName: ' + name + '\nContact: ' + contactVal + '\n\n' + msg);
     };
   }
 
@@ -168,9 +225,12 @@
       e.preventDefault();
       var name = $('#name').value.trim(), phone = $('#phone').value.trim(), email = $('#email').value.trim(), type = $('#type').value;
       if (!name || !phone) return;
-      saveMessage(name, phone + (email ? ' / ' + email : ''), 'Registration request: ' + type);
+      DB = getDB();
+      DB.users.unshift({ id: 'u' + Date.now(), name: name, phone: phone, email: email, type: type, status: 'Pending' });
+      saveDB(DB);
       $('#ok').classList.add('show');
       $('#rform').reset();
+      toWhatsApp('Hello DigiSER BD, I want to register.\nName: ' + name + '\nPhone: ' + phone + (email ? '\nEmail: ' + email : '') + '\nType: ' + type);
     };
   }
 
@@ -183,20 +243,22 @@
       saveMessage(name, phone, 'List my business. Category: ' + (cat || '-'));
       $('#bok').classList.add('show');
       f.reset();
+      toWhatsApp('Hello DigiSER BD, I want to list my business.\nBusiness: ' + name + '\nPhone: ' + phone + '\nCategory: ' + (cat || '-'));
     };
   }
 
   /* ---------- boot ---------- */
   renderHeader();
   renderFooter();
-  var wa = document.querySelectorAll('[data-wa]');
-  wa.forEach(function (a) { a.href = waLink(''); a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waLink(''); a.target = '_blank'; a.rel = 'noopener'; });
 
   if (PAGE === 'home') home();
   if (PAGE === 'jobs') listPage(jobs, jobRow, 'No jobs match your search.', {filterKey: 'type'});
-  if (PAGE === 'services') { $('#list').innerHTML = ''; listPage(services, svcCard, 'No services match your search.', {grid: true}); }
+  if (PAGE === 'services') listPage(services, svcCard, 'No services match your search.', {grid: true});
   if (PAGE === 'employees') listPage(employees, empCard, 'No employees match your search.', {grid: true});
   if (PAGE === 'businesses') { listPage(businesses, bizRow, 'No businesses listed yet. Be the first, list yours below.'); bizForm(); }
+  if (PAGE === 'blog') blog();
   if (PAGE === 'contact') contact();
   if (PAGE === 'register') register();
+  translateAll();
 })();

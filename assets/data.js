@@ -46,6 +46,11 @@ window.SITE = {
       {id:'e6',name:'Shamim Hossain',role:'Video Editor',rating:'4.7',reviews:'14',phone:'',status:'Available'}
     ],
     businesses: [],
+    blog: [
+      {id:'b1',title:'How to make a CV that gets noticed',category:'Career tips',author:'DigiSER BD',date:'2026-09-19',summary:'Simple steps to write a clear, one-page CV for jobs in Bangladesh.',content:'Keep your CV to one page and put your most important skills at the top.\n\nWrite your name, phone number and email clearly. Use a professional email address.\n\nList your work experience with the newest job first. For each job write what you did, in one or two short lines.\n\nAdd only the skills that match the job you are applying for, such as design tools, Excel, or communication.\n\nCheck spelling before you send it, and save the file as a PDF.',status:'Published'},
+      {id:'b2',title:'Hiring your first employee: a simple checklist',category:'For businesses',author:'DigiSER BD',date:'2026-09-19',summary:'What local business owners should decide before they hire.',content:'Decide the exact work the person will do and how many hours a week you need.\n\nSet a fair salary range and write it in the job post. Clear pay attracts better applicants.\n\nAsk for a short trial task instead of only asking questions in an interview.\n\nAgree on the start date, working hours and payment date before the first day.\n\nPost your job on DigiSER BD and we will help you reach skilled people near you.',status:'Published'}
+    ],
+    users: [],
     messages: []
   };
 
