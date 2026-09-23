@@ -1,58 +1,808 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>About Us | DigiSER BD</title>
-<meta name="description" content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh.">
-<meta name="theme-color" content="#0087c4">
-<link rel="canonical" href="https://digiserbd.com/about/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="About Us | DigiSER BD">
-<meta property="og:description" content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh.">
-<meta property="og:url" content="https://digiserbd.com/about/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="../favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+
+<meta
+  name="description"
+  content="Learn about DigiSER BD, a platform connecting job seekers, skilled employees, local businesses and digital services in Bangladesh."
+>
+
+<meta
+  name="theme-color"
+  content="#0087c4"
+>
+
+<link
+  rel="canonical"
+  href="https://digiserbd.com/about/"
+>
+
+
+<!-- =====================================================
+     OPEN GRAPH
+     ====================================================== -->
+
+<meta
+  property="og:type"
+  content="website"
+>
+
+<meta
+  property="og:site_name"
+  content="DigiSER BD"
+>
+
+<meta
+  property="og:title"
+  content="About Us | DigiSER BD"
+>
+
+<meta
+  property="og:description"
+  content="Learn about DigiSER BD, a platform connecting job seekers, skilled employees, local businesses and digital services in Bangladesh."
+>
+
+<meta
+  property="og:url"
+  content="https://digiserbd.com/about/"
+>
+
+<meta
+  property="og:image"
+  content="https://digiserbd.com/logo.png"
+>
+
+
+<!-- =====================================================
+     TWITTER
+     ====================================================== -->
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+>
+
+<meta
+  name="twitter:title"
+  content="About Us | DigiSER BD"
+>
+
+<meta
+  name="twitter:description"
+  content="Learn about DigiSER BD and how we connect people, businesses and digital services."
+>
+
+<meta
+  name="twitter:image"
+  content="https://digiserbd.com/logo.png"
+>
+
+
+<!-- Favicon -->
+
+<link
+  rel="icon"
+  href="../favicon.png"
+  type="image/png"
+>
+
+
+<!-- Fonts -->
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
+
+
+<!-- Main CSS -->
+
+<link
+  rel="stylesheet"
+  href="../assets/style.css"
+>
+
+
+<style>
+
+/* =====================================================
+   ABOUT HERO
+   ====================================================== */
+
+.about-hero {
+  text-align: center;
+}
+
+.about-hero .wrap {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   ABOUT CONTENT
+   ====================================================== */
+
+.about-content {
+  padding-top: 10px;
+}
+
+.about-prose {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.about-prose p {
+  line-height: 1.85;
+}
+
+.about-prose h2 {
+  margin-top: 38px;
+  margin-bottom: 14px;
+}
+
+.about-prose ul {
+  padding-left: 22px;
+}
+
+.about-prose li {
+  margin-bottom: 13px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   WHAT WE DO CARDS
+   ====================================================== */
+
+.about-services {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 26px;
+}
+
+.about-service {
+  padding: 24px;
+
+  border: 1px solid rgba(128,128,128,.15);
+
+  border-radius: 18px;
+
+  background: rgba(128,128,128,.035);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.about-service:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.06);
+}
+
+.about-service-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  border-radius: 12px;
+
+  background: rgba(0,135,196,.10);
+
+  color: var(--brand);
+
+  font-size: 20px;
+}
+
+.about-service h3 {
+  margin: 0 0 8px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 19px;
+}
+
+.about-service p {
+  margin: 0;
+
+  line-height: 1.7;
+
+  opacity: .78;
+}
+
+
+/* =====================================================
+   CTA
+   ====================================================== */
+
+.about-cta {
+  margin-top: 40px;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  background: rgba(0,135,196,.06);
+
+  border: 1px solid rgba(0,135,196,.12);
+
+  text-align: center;
+}
+
+.about-cta h2 {
+  margin: 0 0 8px;
+}
+
+.about-cta p {
+  margin: 0 auto 20px;
+
+  max-width: 600px;
+
+  opacity: .78;
+}
+
+
+/* =====================================================
+   DEVELOPER CONNECT
+   ====================================================== */
+
+.about-developer {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.about-developer-btn {
+
+  width: 100%;
+
+  min-height: 66px;
+
+  padding: 0 24px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-radius: 16px;
+
+  background: var(--brand);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease,
+    box-shadow .2s ease;
+}
+
+.about-developer-btn:hover {
+
+  transform: translateY(-2px);
+
+  opacity: .96;
+
+  box-shadow:
+    0 12px 30px rgba(0,135,196,.20);
+}
+
+.about-developer-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.about-developer-icon {
+
+  width: 34px;
+
+  height: 34px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.14);
+}
+
+.about-developer-arrow {
+
+  font-size: 24px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 700px) {
+
+  .about-services {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .about-service {
+
+    padding: 20px;
+
+  }
+
+  .about-cta {
+
+    padding: 24px 18px;
+
+  }
+
+  .about-developer {
+
+    padding-top: 12px;
+
+    padding-bottom: 28px;
+
+  }
+
+  .about-developer-btn {
+
+    min-height: 62px;
+
+    padding: 0 18px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+  }
+
+  .about-developer-icon {
+
+    width: 30px;
+
+    height: 30px;
+
+  }
+
+}
+
+</style>
+
 </head>
-<body data-page="about" data-root="../">
+
+
+<body
+  data-page="about"
+  data-root="../"
+>
+
+
+<!-- =====================================================
+     HEADER
+     ====================================================== -->
+
 <div id="hdr-slot"></div>
+
+
 <main>
-<section class="ph"><div class="wrap"><h1>About us</h1><p>Job, Service and Growth for Bangladesh.</p></div></section><section class="sec" style="padding-top:8px"><div class="wrap"><div class="prose lang-en">
-<p>DigiSER BD is a platform that connects job seekers, skilled employees, local businesses and digital service providers in Bangladesh.</p>
-<p>We started with a simple idea: good people and good businesses should find each other easily. Many local businesses struggle to find reliable staff, and many skilled people struggle to find honest work. We want to fix both.</p>
-<h2>What we do</h2>
-<ul>
-<li><b>Jobs:</b> we list openings from local businesses.</li>
-<li><b>Employees:</b> we help businesses find skilled people.</li>
-<li><b>Digital services:</b> graphic design, social media management, website maintenance, digital marketing and data entry.</li>
-<li><b>Local support:</b> manpower supply, land supported service, printing, delivery and event support.</li>
-</ul>
-<h2>Our team</h2>
-<ul><li><b>Helal</b>, Founder</li><li><b>SNK</b>, Co-founder</li></ul>
-<p><a class="btn pri" href="../contact/">Contact us</a></p></div>
-<div class="prose lang-bn" hidden>
-<p>DigiSER BD হলো এমন একটি প্ল্যাটফর্ম যা বাংলাদেশের চাকরিপ্রার্থী, দক্ষ কর্মী, স্থানীয় ব্যবসা এবং ডিজিটাল সার্ভিস প্রদানকারীদের এক জায়গায় যুক্ত করে।</p>
-<p>আমাদের ভাবনা সহজ: ভালো মানুষ আর ভালো ব্যবসা যেন সহজে একে অপরকে খুঁজে পায়। অনেক স্থানীয় ব্যবসা বিশ্বস্ত কর্মী খুঁজে পায় না, আবার অনেক দক্ষ মানুষ সৎ কাজ খুঁজে পায় না। আমরা দুটোরই সমাধান করতে চাই।</p>
-<h2>আমরা কী করি</h2>
-<ul>
-<li><b>চাকরি:</b> স্থানীয় ব্যবসার খালি পদ প্রকাশ করি।</li>
-<li><b>কর্মী:</b> ব্যবসাকে দক্ষ মানুষ খুঁজে পেতে সাহায্য করি।</li>
-<li><b>ডিজিটাল সার্ভিস:</b> গ্রাফিক ডিজাইন, সোশ্যাল মিডিয়া ম্যানেজমেন্ট, ওয়েবসাইট মেইনটেনেন্স, ডিজিটাল মার্কেটিং ও ডাটা এন্ট্রি।</li>
-<li><b>স্থানীয় সহায়তা:</b> জনবল সরবরাহ, ভূমি সহায়তা সেবা, প্রিন্টিং, ডেলিভারি ও ইভেন্ট সাপোর্ট।</li>
-</ul>
-<h2>আমাদের টিম</h2>
-<ul><li><b>Helal</b>, প্রতিষ্ঠাতা</li><li><b>SNK</b>, সহ-প্রতিষ্ঠাতা</li></ul>
-<p><a class="btn pri" href="../contact/">যোগাযোগ করুন</a></p></div></div></section>
+
+
+  <!-- ===================================================
+       HERO
+       ==================================================== -->
+
+  <section class="ph about-hero">
+
+    <div class="wrap">
+
+      <h1>
+        About us
+      </h1>
+
+      <p>
+        Job, Service and Growth for Bangladesh.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       ABOUT CONTENT
+       ==================================================== -->
+
+  <section class="sec about-content">
+
+    <div class="wrap">
+
+      <!-- English -->
+
+      <div class="prose lang-en about-prose">
+
+        <p>
+          DigiSER BD is a platform that connects job seekers,
+          skilled employees, local businesses and digital
+          service providers in Bangladesh.
+        </p>
+
+
+        <p>
+          We started with a simple idea: good people and good
+          businesses should find each other easily. Many local
+          businesses struggle to find reliable staff, while
+          many skilled people struggle to find honest work.
+          DigiSER BD aims to make that connection easier,
+          clearer and more accessible.
+        </p>
+
+
+        <h2>
+          What we do
+        </h2>
+
+
+        <div class="about-services">
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ✓
+            </div>
+
+            <h3>
+              Jobs
+            </h3>
+
+            <p>
+              We help connect job seekers with opportunities
+              from local businesses.
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ★
+            </div>
+
+            <h3>
+              Skilled Employees
+            </h3>
+
+            <p>
+              We help businesses discover skilled and suitable
+              people for their workforce needs.
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ◆
+            </div>
+
+            <h3>
+              Digital Services
+            </h3>
+
+            <p>
+              Graphic design, social media management, website
+              maintenance, digital marketing and data entry.
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              +
+            </div>
+
+            <h3>
+              Local Support
+            </h3>
+
+            <p>
+              Manpower supply, land-supported services,
+              printing, delivery and event support.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- CTA -->
+
+        <div class="about-cta">
+
+          <h2>
+            Let's work together
+          </h2>
+
+          <p>
+            Whether you are looking for an opportunity,
+            skilled people or digital support, get in touch
+            with DigiSER BD.
+          </p>
+
+          <a
+            class="btn pri"
+            href="../contact/"
+          >
+            Contact us
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           BANGLA
+           ================================================== -->
+
+      <div
+        class="prose lang-bn about-prose"
+        hidden
+      >
+
+        <p>
+          DigiSER BD হলো এমন একটি প্ল্যাটফর্ম যা বাংলাদেশের
+          চাকরিপ্রার্থী, দক্ষ কর্মী, স্থানীয় ব্যবসা এবং
+          ডিজিটাল সার্ভিস প্রদানকারীদের একসাথে যুক্ত করে।
+        </p>
+
+
+        <p>
+          আমাদের ভাবনা সহজ: ভালো মানুষ এবং ভালো ব্যবসা যেন
+          সহজে একে অপরকে খুঁজে পায়। অনেক স্থানীয় ব্যবসা
+          বিশ্বস্ত কর্মী খুঁজে পেতে সমস্যায় পড়ে, আবার অনেক
+          দক্ষ মানুষ সৎ কাজের সুযোগ খুঁজে পায় না। DigiSER BD
+          এই সংযোগকে আরও সহজ, পরিষ্কার ও সহজলভ্য করতে কাজ করে।
+        </p>
+
+
+        <h2>
+          আমরা কী করি
+        </h2>
+
+
+        <div class="about-services">
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ✓
+            </div>
+
+            <h3>
+              চাকরি
+            </h3>
+
+            <p>
+              স্থানীয় ব্যবসার চাকরির সুযোগের সাথে
+              চাকরিপ্রার্থীদের সংযুক্ত করতে সাহায্য করি।
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ★
+            </div>
+
+            <h3>
+              দক্ষ কর্মী
+            </h3>
+
+            <p>
+              ব্যবসাগুলোকে তাদের প্রয়োজন অনুযায়ী দক্ষ ও
+              উপযুক্ত কর্মী খুঁজে পেতে সাহায্য করি।
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              ◆
+            </div>
+
+            <h3>
+              ডিজিটাল সার্ভিস
+            </h3>
+
+            <p>
+              গ্রাফিক ডিজাইন, সোশ্যাল মিডিয়া ম্যানেজমেন্ট,
+              ওয়েবসাইট মেইনটেনেন্স, ডিজিটাল মার্কেটিং ও
+              ডাটা এন্ট্রি।
+            </p>
+
+          </div>
+
+
+          <div class="about-service">
+
+            <div class="about-service-icon">
+              +
+            </div>
+
+            <h3>
+              স্থানীয় সহায়তা
+            </h3>
+
+            <p>
+              জনবল সরবরাহ, ভূমি সহায়তা সেবা, প্রিন্টিং,
+              ডেলিভারি ও ইভেন্ট সাপোর্ট।
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- Bangla CTA -->
+
+        <div class="about-cta">
+
+          <h2>
+            একসাথে কাজ করি
+          </h2>
+
+          <p>
+            আপনি যদি চাকরি খুঁজছেন, দক্ষ কর্মী প্রয়োজন হয়
+            অথবা ডিজিটাল সাপোর্ট চান—DigiSER BD-এর সাথে
+            যোগাযোগ করুন।
+          </p>
+
+          <a
+            class="btn pri"
+            href="../contact/"
+          >
+            যোগাযোগ করুন
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       DEVELOPER CONNECT
+       ==================================================== -->
+
+  <section
+    class="sec about-developer"
+  >
+
+    <div class="wrap">
+
+      <a
+        href="https://www.snkbp.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="about-developer-btn"
+        aria-label="Connect with Developer"
+      >
+
+        <span class="about-developer-left">
+
+          <span class="about-developer-icon">
+            ↗
+          </span>
+
+          <span>
+            Connect with Developer
+          </span>
+
+        </span>
+
+
+        <span class="about-developer-arrow">
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
 </main>
+
+
+<!-- =====================================================
+     FOOTER
+     ====================================================== -->
+
 <div id="ftr-slot"></div>
+
+
+<!-- =====================================================
+     SCRIPTS
+     ====================================================== -->
+
 <script src="../assets/data.js"></script>
+
 <script src="../assets/i18n.js"></script>
+
 <script src="../assets/app.js"></script>
+
+
 </body>
+
 </html>
+```
