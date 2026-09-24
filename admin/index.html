@@ -200,6 +200,19 @@ const SECTIONS = {
       {k:'status', l:'Status', opts:['New','Done']}
     ],
     cols: ['name','contact','message','status']
+  },
+  blog: {
+    label: 'Blog', single: 'Post',
+    fields: [
+      {k:'title', l:'Title', req:1},
+      {k:'category', l:'Category', def:'Career tips'},
+      {k:'author', l:'Author', def:'DigiSER BD'},
+      {k:'date', l:'Date (YYYY-MM-DD)'},
+      {k:'summary', l:'Short summary', area:1},
+      {k:'content', l:'Full content (blank lines = new paragraph)', area:1},
+      {k:'status', l:'Status', opts:['Published','Draft']}
+    ],
+    cols: ['title','category','date','status']
   }
 };
 
@@ -229,7 +242,12 @@ const SEED = {
     {name:'Shamim Hossain',role:'Video Editor',rating:'4.7',reviews:'14',phone:'',status:'Available'}
   ],
   businesses: [],
-  messages: []
+  messages: [],
+  blog: [
+    {title:'How to make a CV that gets noticed',category:'Career tips',author:'DigiSER BD',date:'2026-09-19',summary:'Simple steps to write a clear, one-page CV for jobs in Bangladesh.',content:'Keep your CV to one page and put your most important skills at the top.\n\nWrite your name, phone number and email clearly. Use a professional email address.\n\nList your work experience with the newest job first. For each job write what you did, in one or two short lines.\n\nAdd only the skills that match the job you are applying for, such as design tools, Excel, or communication.\n\nCheck spelling before you send it, and save the file as a PDF.',status:'Published'},
+    {title:'Hiring your first employee: a simple checklist',category:'For businesses',author:'DigiSER BD',date:'2026-09-19',summary:'What local business owners should decide before they hire.',content:'Decide the exact work the person will do and how many hours a week you need.\n\nSet a fair salary range and write it in the job post. Clear pay attracts better applicants.\n\nAsk for a short trial task instead of only asking questions in an interview.\n\nAgree on the start date, working hours and payment date before the first day.\n\nPost your job on DigiSER BD and we will help you reach skilled people near you.',status:'Published'}
+  ],
+  users: []
 };
 
 /* ============ 3) STATE ============ */
@@ -238,6 +256,12 @@ if (!db) {
   db = {};
   for (const s in SEED) db[s] = SEED[s].map((r, i) => ({id: s[0] + Date.now() + i, ...r}));
   store.save(db);
+} else {
+  let changed = false;
+  for (const s in SEED) {
+    if (!Array.isArray(db[s])) { db[s] = SEED[s].map((r, i) => ({id: s[0] + Date.now() + i, ...r})); changed = true; }
+  }
+  if (changed) store.save(db);
 }
 let current = 'dashboard';
 let query = '';
@@ -251,17 +275,18 @@ function persist(){ store.save(db); }
 /* ============ 5) RENDER ============ */
 function renderNav(){
   let h = `<button data-go="dashboard" class="${current==='dashboard'?'on':''}">📊 Dashboard</button>`;
-  const icons = {jobs:'💼',services:'🛠',employees:'👥',businesses:'🏪',messages:'💬'};
+  const icons = {jobs:'💼',services:'🛠',employees:'👥',businesses:'🏪',messages:'💬',blog:'📝'};
   for (const s in SECTIONS){
     h += `<button data-go="${s}" class="${current===s?'on':''}">${icons[s]} ${SECTIONS[s].label}<span class="cnt">${db[s].length}</span></button>`;
   }
+  h += `<button data-go="applicants" class="${current==='applicants'?'on':''}">📋 Applicants<span class="cnt">${db.users.length}</span></button>`;
   $('nav').innerHTML = h;
 }
 
 function render(){
   renderNav();
-  $('title').textContent = current==='dashboard' ? 'Dashboard' : SECTIONS[current].label;
-  $('view').innerHTML = current==='dashboard' ? dashboard() : listView(current);
+  $('title').textContent = current==='dashboard' ? 'Dashboard' : (current==='applicants' ? 'Applicants' : SECTIONS[current].label);
+  $('view').innerHTML = current==='dashboard' ? dashboard() : (current==='applicants' ? applicantsView() : listView(current));
   $('side').classList.remove('open');
 }
 
@@ -270,6 +295,7 @@ function dashboard(){
   for (const s in SECTIONS){
     h += `<button class="stat" data-go="${s}"><div class="num">${db[s].length}</div><span>${SECTIONS[s].label}</span></button>`;
   }
+  h += `<button class="stat" data-go="applicants"><div class="num">${db.users.length}</div><span>Applicants</span></button>`;
   const newMsg = db.messages.filter(m=>m.status==='New').length;
   h += `</div><div class="panel"><div class="bar"><b>নতুন মেসেজ: ${newMsg}</b></div><div class="empty">${newMsg? 'Messages মেনুতে গিয়ে দেখুন।' : 'কোনো নতুন মেসেজ নেই।'}</div></div>`;
   return h;
@@ -292,12 +318,60 @@ function listView(s){
   rows.forEach(r => {
     h += `<tr>`;
     cfg.cols.forEach(c => {
-      if (c==='status'){ const off = ['Hidden','Busy'].includes(r[c]); h += `<td><span class="pill ${off?'off':''}">${esc(r[c])}</span></td>`; }
+      if (c==='status'){ const off = ['Hidden','Busy','Draft'].includes(r[c]); h += `<td><span class="pill ${off?'off':''}">${esc(r[c])}</span></td>`; }
       else h += `<td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">${esc(r[c])}</td>`;
     });
     h += `<td style="text-align:right"><button class="btn sm" data-edit="${r.id}">Edit</button> <button class="btn sm del" data-del="${r.id}">Delete</button></td></tr>`;
   });
   return h + `</tbody></table></div></div>`;
+}
+
+/* ============ 5b) APPLICANTS (from /register/ CV form) ============ */
+function applicantsView(){
+  const q = query.toLowerCase();
+  const rows = db.users.filter(u => !q || JSON.stringify(u).toLowerCase().includes(q));
+  let h = `<div class="panel"><div class="bar">
+    <input type="search" id="search" placeholder="Search applicants..." value="${esc(query)}" aria-label="Search">
+    </div>`;
+  if (!rows.length){
+    h += `<div class="empty">এখনো কেউ /register/ পেজ থেকে আবেদন করেনি।</div></div>`;
+    return h;
+  }
+  h += `<div class="tablewrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Applied for</th><th>Status</th><th>Updated</th><th></th></tr></thead><tbody>`;
+  rows.forEach(u => {
+    const p = u.personal || {};
+    const off = u.status !== 'Available';
+    h += `<tr><td>${esc(p.name)}</td><td>${esc(p.phone)}</td><td>${esc((u.wanted||{}).role || '-')}</td>
+      <td><span class="pill ${off?'off':''}">${esc(u.status||'')}</span></td><td>${esc(u.updated||'')}</td>
+      <td style="text-align:right"><button class="btn sm" data-view="${esc(u.id)}">View</button> <button class="btn sm del" data-delapp="${esc(u.id)}">Delete</button></td></tr>`;
+  });
+  return h + `</tbody></table></div></div>`;
+}
+
+function openApplicant(id){
+  const u = db.users.find(x=>x.id===id); if(!u) return;
+  const p = u.personal||{}, ed = u.education||{}, ex = u.experience||{}, sk = u.skills||{}, lg = u.language||{}, wa = u.wanted||{}, rf = u.reference||{}, at = u.attachments||{};
+  const row = (l,v) => v ? `<div class="field"><label>${l}</label><div>${esc(v)}</div></div>` : '';
+  const edu = (l,e) => (e && (e.inst||e.sub||e.res||e.year)) ? `<div class="field"><label>${l}</label><div>${esc(e.inst||'-')} · ${esc(e.sub||'-')} · ${esc(e.res||'-')} · ${esc(e.year||'-')}</div></div>` : '';
+  const skList = Object.entries({computer:'কম্পিউটার পরিচালনা',word:'MS Word',excel:'MS Excel',internet:'ইন্টারনেট ও ই-মেইল',design:'গ্রাফিক ডিজাইন',social:'সোশ্যাল মিডিয়া'}).filter(([k])=>sk[k]).map(([,l])=>l).join(', ');
+  let h = `<h2>${esc(p.name||'Applicant')}</h2>`;
+  h += `<div class="field"><label>Status</label><select id="appStatus"><option ${u.status==='Available'?'selected':''}>Available</option><option ${u.status==='Busy'?'selected':''}>Busy</option></select></div>`;
+  h += row('মোবাইল', p.phone) + row('জরুরী নম্বর', p.emergency) + row('ই-মেইল', p.email) + row('বর্তমান ঠিকানা', p.address) + row('স্থায়ী ঠিকানা', p.permanent);
+  h += edu('SSC/সমমান', ed.ssc) + edu('HSC/সমমান', ed.hsc) + edu('স্নাতক', ed.grad) + edu('অন্যান্য শিক্ষা', ed.other);
+  h += row('অভিজ্ঞতা', [ex.role, ex.inst, ex.period].filter(Boolean).join(' · '));
+  h += row('দায়িত্ব ছিল', ex.duty) + row('পূর্বের বেতন', ex.salary);
+  h += row('দক্ষতা', skList);
+  h += row('ভাষা (বাংলা)', [lg.bn&&lg.bn.rw, lg.bn&&lg.bn.sp].filter(Boolean).join(' / '));
+  h += row('ভাষা (ইংরেজি)', [lg.en&&lg.en.rw, lg.en&&lg.en.sp].filter(Boolean).join(' / '));
+  h += row('আবেদনকৃত পদ', wa.role) + row('প্রত্যাশিত বেতন', wa.salary) + row('কাজের ধরন', wa.type) + row('কাজের স্থান পছন্দ', wa.location);
+  h += row('রেফারেন্স', [rf.name, rf.role, rf.inst, rf.phone].filter(Boolean).join(' · '));
+  h += row('অন্যান্য সংযুক্তি', at.other);
+  h += `<div class="acts"><button class="btn" data-close>Close</button><button class="btn pri" id="appSave">Save status</button></div>`;
+  $('box').innerHTML = h;
+  $('modal').classList.add('open');
+  $('appSave').onclick = () => {
+    u.status = $('#appStatus').value; persist(); closeModal(); render(); toast('Saved');
+  };
 }
 
 /* ============ 6) FORM MODAL ============ */
@@ -332,11 +406,18 @@ function closeModal(){ $('modal').classList.remove('open'); }
 
 /* ============ 7) EVENTS ============ */
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-add],[data-edit],[data-del],[data-close]');
+  const t = e.target.closest('[data-go],[data-add],[data-edit],[data-del],[data-close],[data-view],[data-delapp]');
   if (!t) { if (e.target === $('modal')) closeModal(); return; }
   if (t.dataset.go){ current = t.dataset.go; query=''; render(); }
   else if (t.dataset.add) openForm(t.dataset.add);
   else if (t.dataset.edit) openForm(current, t.dataset.edit);
+  else if (t.dataset.view) openApplicant(t.dataset.view);
+  else if (t.dataset.delapp){
+    if (confirm('এই আবেদনকারীকে মুছে ফেলবেন?')){
+      db.users = db.users.filter(u=>u.id!==t.dataset.delapp);
+      persist(); render(); toast('Deleted');
+    }
+  }
   else if (t.dataset.del){
     if (confirm('এটি মুছে ফেলবেন? আর ফেরত আনা যাবে না।')){
       db[current] = db[current].filter(r=>r.id!==t.dataset.del);
@@ -348,7 +429,7 @@ document.addEventListener('click', e => {
 document.addEventListener('input', e => {
   if (e.target.id==='search'){
     query = e.target.value; const pos = e.target.selectionStart;
-    $('view').innerHTML = listView(current);
+    $('view').innerHTML = current==='applicants' ? applicantsView() : listView(current);
     const el = $('search'); el.focus(); el.setSelectionRange(pos,pos);
   }
 });
