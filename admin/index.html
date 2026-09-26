@@ -5,31 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DigiSER BD · Admin Dashboard</title>
+
+<meta name="description" content="DigiSER BD Admin Dashboard">
 <meta name="theme-color" content="#0087c4">
 
-<!-- Browser Favicon -->
+<!-- FAVICON -->
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="shortcut icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/favicon.svg">
 
-<!-- Fonts -->
+<!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
-  --bg:#f4f6f8;
-  --card:#ffffff;
-  --text:#17202a;
-  --muted:#667085;
-  --line:#e5e7eb;
   --primary:#0087c4;
-  --primary-dark:#006c9d;
+  --primary-dark:#006b9d;
+
+  --dark:#10202b;
+  --dark-2:#162d3a;
+
+  --text:#17202a;
+  --muted:#687580;
+
+  --line:#e1e7eb;
+  --bg:#f4f7f9;
+  --white:#ffffff;
+
+  --success:#14834a;
   --danger:#c0392b;
-  --success:#14804a;
-  --sidebar:#101820;
+
+  --soft:#eef8fc;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -48,7 +67,8 @@ body{
 
 button,
 input,
-select{
+select,
+textarea{
   font:inherit;
 }
 
@@ -56,80 +76,114 @@ button{
   cursor:pointer;
 }
 
-/* =========================
-   LOGIN
-========================= */
+.hidden{
+  display:none!important;
+}
 
-.login{
-  position:fixed;
-  inset:0;
-  background:#101820;
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-screen{
+  min-height:100vh;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
-  z-index:1000;
-}
 
-.login.hidden{
-  display:none;
+  padding:25px;
+
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(0,135,196,.16),
+      transparent 35%
+    ),
+    var(--bg);
 }
 
 .login-box{
   width:100%;
-  max-width:390px;
-  background:#fff;
-  border-radius:20px;
-  padding:32px;
-  box-shadow:0 25px 70px rgba(0,0,0,.25);
-}
+  max-width:420px;
 
-.login-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:22px;
+  padding:36px;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:22px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.08);
 }
 
 .login-logo{
-  width:48px;
-  height:48px;
+  text-align:center;
+}
+
+.login-logo img{
+  width:64px;
+  height:64px;
+
   object-fit:contain;
+
   border-radius:12px;
 }
 
 .login-box h1{
-  margin:0;
+  margin:15px 0 5px;
+
+  text-align:center;
+
   font-family:"Space Grotesk",sans-serif;
-  font-size:25px;
 }
 
 .login-box p{
-  margin:5px 0 25px;
+  margin:0 0 25px;
+
+  text-align:center;
+
   color:var(--muted);
+
+  font-size:13px;
 }
 
-.login-box input{
+.login-input{
   width:100%;
+
   padding:13px 14px;
+
   border:1px solid var(--line);
+
   border-radius:10px;
+
   outline:none;
-  margin-bottom:12px;
 }
 
-.login-box input:focus{
+.login-input:focus{
   border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(0,135,196,.10);
+
+  box-shadow:
+    0 0 0 3px rgba(0,135,196,.1);
 }
 
 .login-btn{
   width:100%;
-  border:0;
+
+  margin-top:12px;
+
   padding:13px;
+
+  border:0;
+
   border-radius:10px;
+
   background:var(--primary);
+
   color:#fff;
+
   font-weight:700;
 }
 
@@ -138,18 +192,25 @@ button{
 }
 
 .login-error{
+  min-height:18px;
+
+  margin-top:10px;
+
+  text-align:center;
+
   color:var(--danger);
-  font-size:13px;
-  margin-top:12px;
-  display:none;
+
+  font-size:12px;
 }
 
-/* =========================
-   APP
-========================= */
+
+/* =========================================================
+   APPLICATION
+========================================================= */
 
 .app{
   display:none;
+
   min-height:100vh;
 }
 
@@ -157,139 +218,195 @@ button{
   display:flex;
 }
 
-/* =========================
+
+/* =========================================================
    SIDEBAR
-========================= */
+========================================================= */
 
 .sidebar{
-  width:245px;
-  background:var(--sidebar);
-  color:#fff;
-  min-height:100vh;
   position:fixed;
-  left:0;
+
   top:0;
+  left:0;
   bottom:0;
-  padding:25px 15px;
+
+  width:245px;
+
   z-index:50;
+
+  padding:22px 15px;
+
+  background:var(--dark);
+
+  color:#fff;
 }
 
-.logo{
+.admin-brand{
   display:flex;
+
   align-items:center;
+
   gap:10px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:22px;
-  font-weight:700;
-  padding:0 12px 25px;
+
+  padding:4px 8px 23px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.1);
 }
 
-.logo img{
-  width:34px;
-  height:34px;
+.admin-brand img{
+  width:40px;
+  height:40px;
+
   object-fit:contain;
-  border-radius:8px;
+
+  border-radius:10px;
 }
 
-.logo span{
-  color:#4bb5e6;
+.admin-brand strong{
+  display:block;
+
+  font-family:"Space Grotesk",sans-serif;
+}
+
+.admin-brand small{
+  display:block;
+
+  margin-top:2px;
+
+  color:#91aab7;
+
+  font-size:9px;
+
+  letter-spacing:.08em;
 }
 
 .nav{
+  margin-top:20px;
+}
+
+.nav-btn{
+  width:100%;
+
   display:flex;
-  flex-direction:column;
-  gap:5px;
-}
 
-.nav button{
+  align-items:center;
+
+  gap:10px;
+
+  padding:11px 12px;
+
+  margin-bottom:3px;
+
   border:0;
-  background:transparent;
-  color:#c7d0d9;
-  text-align:left;
-  padding:12px 13px;
+
   border-radius:9px;
-  transition:.2s;
+
+  background:transparent;
+
+  color:#b8c6cd;
+
+  text-align:left;
 }
 
-.nav button:hover,
-.nav button.active{
-  background:rgba(255,255,255,.09);
+.nav-btn:hover,
+.nav-btn.active{
+  background:
+    rgba(255,255,255,.09);
+
   color:#fff;
 }
 
-.logout{
+.logout-btn{
   position:absolute;
+
   left:15px;
   right:15px;
   bottom:20px;
-  border:1px solid rgba(255,255,255,.12);
-  background:transparent;
-  color:#fff;
-  padding:11px;
+
+  padding:10px;
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
   border-radius:9px;
+
+  background:transparent;
+
+  color:#fff;
 }
 
-.logout:hover{
-  background:rgba(255,255,255,.06);
-}
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 .main{
-  margin-left:245px;
   width:calc(100% - 245px);
+
+  margin-left:245px;
+
+  min-height:100vh;
 }
 
-.top{
-  height:75px;
-  background:#fff;
-  border-bottom:1px solid var(--line);
+.topbar{
+  min-height:72px;
+
+  padding:0 25px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
-  padding:0 30px;
+
+  background:#fff;
+
+  border-bottom:1px solid var(--line);
 }
 
-.top h1{
+.topbar h1{
   margin:0;
+
   font-family:"Space Grotesk",sans-serif;
-  font-size:22px;
+
+  font-size:21px;
 }
 
-.admin-name{
+.topbar p{
+  margin:3px 0 0;
+
   color:var(--muted);
+
+  font-size:12px;
 }
 
 .content{
-  padding:30px;
+  padding:25px;
 }
 
-.view{
-  display:none;
-}
 
-.view.active{
-  display:block;
-}
-
-/* =========================
+/* =========================================================
    STATS
-========================= */
+========================================================= */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
-  margin-bottom:25px;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:15px;
 }
 
 .stat{
+  padding:19px;
+
   background:#fff;
+
   border:1px solid var(--line);
+
   border-radius:15px;
-  padding:20px;
 }
 
 .stat small{
@@ -298,101 +415,123 @@ button{
 
 .stat strong{
   display:block;
-  margin-top:8px;
+
+  margin-top:5px;
+
   font-family:"Space Grotesk",sans-serif;
+
   font-size:29px;
 }
 
-/* =========================
+
+/* =========================================================
    PANEL
-========================= */
+========================================================= */
 
 .panel{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:16px;
+  margin-top:20px;
+
   overflow:hidden;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:16px;
 }
 
 .panel-head{
-  padding:20px;
-  border-bottom:1px solid var(--line);
+  padding:18px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:15px;
+
+  border-bottom:1px solid var(--line);
 }
 
 .panel-head h2{
   margin:0;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:18px;
-}
 
-.panel-subtitle{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:4px;
+  font-family:"Space Grotesk",sans-serif;
+
+  font-size:17px;
 }
 
 .table-wrap{
-  overflow-x:auto;
+  overflow:auto;
 }
 
 table{
   width:100%;
+
   border-collapse:collapse;
 }
 
 th,
 td{
-  padding:14px 16px;
-  border-bottom:1px solid #edf0f2;
+  padding:13px 15px;
+
+  border-bottom:1px solid var(--line);
+
   text-align:left;
+
   white-space:nowrap;
+
+  font-size:12px;
 }
 
 th{
-  color:var(--muted);
-  font-size:13px;
-}
+  background:#f8fafb;
 
-td{
-  font-size:14px;
+  color:var(--muted);
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
+  display:inline-block;
+
   padding:5px 9px;
+
   border-radius:20px;
-  background:#eef6fa;
+
+  background:var(--soft);
+
   color:var(--primary-dark);
-  font-size:12px;
+
+  font-size:10px;
+
   font-weight:700;
 }
 
 .actions{
   display:flex;
-  gap:6px;
+
+  gap:5px;
 }
 
 .btn{
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--text);
   padding:7px 10px;
-  border-radius:7px;
-  font-size:12px;
-}
 
-.btn:hover{
-  border-color:#c5ccd4;
+  border:1px solid var(--line);
+
+  border-radius:7px;
+
+  background:#fff;
+
+  font-size:11px;
+
+  font-weight:700;
 }
 
 .btn.primary{
   background:var(--primary);
+
   border-color:var(--primary);
+
   color:#fff;
 }
 
@@ -405,24 +544,35 @@ td{
 }
 
 .empty{
+  padding:45px;
+
   text-align:center;
+
   color:var(--muted);
-  padding:40px;
 }
 
-/* =========================
+
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
 .modal{
   position:fixed;
+
   inset:0;
-  background:rgba(15,23,42,.60);
+
+  z-index:100;
+
   display:none;
+
   align-items:center;
+
   justify-content:center;
+
   padding:20px;
-  z-index:200;
+
+  background:
+    rgba(8,18,23,.68);
 }
 
 .modal.show{
@@ -430,65 +580,84 @@ td{
 }
 
 .modal-box{
-  background:#fff;
   width:100%;
-  max-width:950px;
+
+  max-width:980px;
+
   max-height:92vh;
+
   overflow:auto;
+
+  background:#fff;
+
   border-radius:18px;
 }
 
 .modal-head{
   position:sticky;
+
   top:0;
-  background:#fff;
-  z-index:2;
-  padding:18px 20px;
-  border-bottom:1px solid var(--line);
+
+  z-index:10;
+
+  padding:17px 20px;
+
   display:flex;
-  justify-content:space-between;
+
   align-items:center;
-  gap:15px;
+
+  justify-content:space-between;
+
+  background:#fff;
+
+  border-bottom:1px solid var(--line);
 }
 
 .modal-head h2{
   margin:0;
-  font-family:"Space Grotesk",sans-serif;
-}
 
-.modal-head-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
+  font-family:"Space Grotesk",sans-serif;
+
+  font-size:17px;
 }
 
 .close{
+  width:32px;
+  height:32px;
+
   border:0;
-  background:#f2f4f7;
-  width:34px;
-  height:34px;
+
   border-radius:50%;
-  font-size:20px;
+
+  background:#f0f3f5;
+
+  font-size:18px;
 }
 
 .modal-body{
-  padding:22px;
+  padding:20px;
 }
 
-/* =========================
+
+/* =========================================================
    APPLICANT DETAILS
-========================= */
+========================================================= */
 
 .detail-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:14px;
 }
 
 .detail{
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:14px;
+  padding:13px;
+
+  background:#f7f9fa;
+
+  border-radius:10px;
 }
 
 .detail.full{
@@ -497,138 +666,290 @@ td{
 
 .detail small{
   display:block;
+
+  margin-bottom:4px;
+
   color:var(--muted);
-  margin-bottom:5px;
+
+  font-size:11px;
 }
 
-.detail strong{
-  font-weight:600;
+.detail p{
+  margin:0;
+
   white-space:pre-line;
+
+  font-size:13px;
 }
 
-.modal-actions{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
+.detail select{
+  width:100%;
 
-.status-select{
-  padding:8px 10px;
+  padding:9px;
+
   border:1px solid var(--line);
+
   border-radius:8px;
+
   background:#fff;
 }
 
-/* =========================
-   CV
-========================= */
 
-.cv-container{
-  background:#eef1f4;
-  padding:25px;
+/* =========================================================
+   PREMIUM CV
+========================================================= */
+
+.cv-actions{
+  position:sticky;
+
+  top:0;
+
+  z-index:20;
+
+  padding:13px 16px;
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:8px;
+
+  background:#fff;
+
+  border-bottom:1px solid var(--line);
+}
+
+.cv-view{
+  padding:20px;
+
+  background:#e8edf0;
 }
 
 .cv-paper{
-  background:#fff;
-  max-width:760px;
+  max-width:850px;
+
+  min-height:1100px;
+
   margin:auto;
-  padding:45px;
-  min-height:950px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+  overflow:hidden;
+
+  background:#fff;
+
+  box-shadow:
+    0 12px 45px rgba(0,0,0,.12);
+}
+
+
+/* ---------- CV HEADER ---------- */
+
+.cv-top{
+  padding:38px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10202b 0%,
+      #006f9f 100%
+    );
+
+  color:#fff;
+}
+
+.cv-photo{
+  width:125px;
+  height:125px;
+
+  flex:none;
+
+  overflow:hidden;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    3px solid rgba(255,255,255,.45);
+
+  border-radius:20px;
+
+  background:
+    rgba(255,255,255,.12);
+
+  color:#dceaf0;
+
+  font-family:"Space Grotesk",sans-serif;
+
+  font-size:11px;
+}
+
+.cv-photo img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
 }
 
 .cv-name{
   font-family:"Space Grotesk",sans-serif;
-  font-size:31px;
+
+  font-size:34px;
+
   font-weight:700;
+
+  line-height:1.1;
 }
 
 .cv-role{
-  color:var(--primary);
+  margin-top:7px;
+
+  color:#aee6fa;
+
+  font-size:14px;
+
   font-weight:700;
-  margin-top:4px;
 }
 
 .cv-contact{
-  color:#667085;
-  font-size:13px;
   margin-top:10px;
-}
 
-.cv-line{
-  height:1px;
-  background:#e5e7eb;
-  margin:25px 0;
-}
+  color:#dceaf0;
 
-.cv-title{
-  font-family:"Space Grotesk",sans-serif;
-  text-transform:uppercase;
   font-size:12px;
-  letter-spacing:.08em;
-  font-weight:700;
-  margin:22px 0 8px;
-}
 
-.cv-text{
-  white-space:pre-line;
-  color:#4b5563;
   line-height:1.7;
-  font-size:14px;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-.mobile-menu{
-  display:none;
-  border:0;
-  background:#f2f4f7;
-  width:38px;
-  height:38px;
-  border-radius:8px;
-  font-size:20px;
+/* ---------- CV BODY ---------- */
+
+.cv-body{
+  display:grid;
+
+  grid-template-columns:220px 1fr;
 }
 
-@media(max-width:900px){
+.cv-side{
+  padding:30px 22px;
 
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.2s;
+  background:#f3f8fa;
+
+  border-right:1px solid var(--line);
+}
+
+.cv-main{
+  padding:30px;
+}
+
+
+/* ---------- CV SECTION ---------- */
+
+.cv-section{
+  margin-bottom:26px;
+}
+
+.cv-section:last-child{
+  margin-bottom:0;
+}
+
+.cv-section h3{
+  margin:0 0 9px;
+
+  color:var(--primary-dark);
+
+  font-family:"Space Grotesk",sans-serif;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  letter-spacing:.09em;
+
+  text-transform:uppercase;
+}
+
+.cv-section p{
+  margin:0;
+
+  color:#4c5961;
+
+  font-size:12px;
+
+  line-height:1.8;
+
+  white-space:pre-line;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .stats{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
   }
 
-  .sidebar.open{
-    transform:translateX(0);
+}
+
+@media(max-width:750px){
+
+  .sidebar{
+    width:66px;
+
+    padding:15px 8px;
+  }
+
+  .admin-brand{
+    justify-content:center;
+  }
+
+  .admin-brand div{
+    display:none;
+  }
+
+  .nav-btn{
+    justify-content:center;
+
+    font-size:0;
+  }
+
+  .nav-btn:first-letter{
+    font-size:16px;
+  }
+
+  .logout-btn{
+    font-size:0;
+  }
+
+  .logout-btn:first-letter{
+    font-size:16px;
   }
 
   .main{
-    margin-left:0;
-    width:100%;
-  }
+    width:calc(100% - 66px);
 
-  .mobile-menu{
-    display:block;
-  }
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
+    margin-left:66px;
   }
 
   .content{
-    padding:18px;
-  }
-}
-
-@media(max-width:600px){
-
-  .stats{
-    grid-template-columns:1fr;
+    padding:15px;
   }
 
-  .top{
-    padding:0 16px;
+  .topbar{
+    padding:0 15px;
   }
 
   .detail-grid{
@@ -639,473 +960,440 @@ td{
     grid-column:auto;
   }
 
-  .cv-paper{
-    padding:25px;
+  .cv-body{
+    grid-template-columns:1fr;
   }
 
-  .cv-container{
-    padding:10px;
+  .cv-side{
+    border-right:0;
+
+    border-bottom:1px solid var(--line);
+  }
+
+}
+
+@media(max-width:520px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .cv-top{
+    padding:25px;
+
+    gap:17px;
+  }
+
+  .cv-photo{
+    width:90px;
+    height:90px;
   }
 
   .cv-name{
     font-size:25px;
   }
 
-  .modal{
-    padding:8px;
+  .cv-main{
+    padding:23px;
   }
 
-  .modal-box{
-    border-radius:12px;
+  .cv-side{
+    padding:23px;
   }
+
 }
 
-/* =========================
-   PRINT CV
-========================= */
+
+/* =========================================================
+   PRINT
+========================================================= */
 
 @media print{
 
-  body{
-    background:#fff;
-  }
-
   body *{
-    visibility:hidden !important;
+    visibility:hidden!important;
   }
 
   #cvModal,
   #cvModal *{
-    visibility:visible !important;
+    visibility:visible!important;
   }
 
   #cvModal{
     position:absolute;
+
     inset:0;
-    display:block !important;
-    background:#fff;
-  }
 
-  #cvModal .modal-head{
-    display:none !important;
-  }
-
-  #cvModal .modal-box{
-    max-width:none;
-    max-height:none;
-    box-shadow:none;
-    border-radius:0;
-    overflow:visible;
-  }
-
-  #cvModal .cv-container{
     padding:0;
+
     background:#fff;
   }
 
-  #cvModal .cv-paper{
-    max-width:none;
-    box-shadow:none;
-    min-height:0;
+  .modal-box{
+    max-height:none;
+
+    border-radius:0;
   }
+
+  .cv-actions,
+  .modal-head{
+    display:none!important;
+  }
+
+  .cv-view{
+    padding:0;
+
+    background:#fff;
+  }
+
+  .cv-paper{
+    max-width:none;
+
+    min-height:0;
+
+    box-shadow:none;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
 
-<div class="login" id="loginScreen">
+<!-- =======================================================
+     LOGIN
+======================================================== -->
+
+<section
+  class="login-screen"
+  id="loginScreen"
+>
 
   <div class="login-box">
 
-    <div class="login-brand">
+    <div class="login-logo">
 
       <img
-        class="login-logo"
         src="../assets/favicon.svg"
         alt="DigiSER BD"
       >
 
-      <div>
-        <h1>DigiSER BD</h1>
-      </div>
-
     </div>
 
-    <p>Admin Dashboard</p>
+    <h1>
+      Admin Dashboard
+    </h1>
+
+    <p>
+      DigiSER BD Management System
+    </p>
 
     <input
+      class="login-input"
+      id="password"
       type="password"
-      id="adminPassword"
       placeholder="Admin password"
-      autocomplete="current-password"
     >
 
-    <button class="login-btn" id="loginBtn">
+    <button
+      class="login-btn"
+      id="loginBtn"
+    >
       Login
     </button>
 
-    <div class="login-error" id="loginError">
-      Incorrect password.
+    <div
+      class="login-error"
+      id="loginError"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     APP
+======================================================== -->
+
+<div
+  class="app"
+  id="app"
+>
+
+
+<!-- =======================================================
+     SIDEBAR
+======================================================== -->
+
+<aside class="sidebar">
+
+  <div class="admin-brand">
+
+    <img
+      src="../assets/favicon.svg"
+      alt="DigiSER BD"
+    >
+
+    <div>
+
+      <strong>
+        DigiSER BD
+      </strong>
+
+      <small>
+        ADMIN PANEL
+      </small>
+
     </div>
+
+  </div>
+
+
+  <nav class="nav">
+
+    <button class="nav-btn active">
+      📊 <span>Dashboard</span>
+    </button>
+
+    <button class="nav-btn">
+      💼 <span>Jobs</span>
+    </button>
+
+    <button class="nav-btn">
+      🛠️ <span>Services</span>
+    </button>
+
+    <button class="nav-btn">
+      👥 <span>Employees</span>
+    </button>
+
+    <button class="nav-btn">
+      🏢 <span>Businesses</span>
+    </button>
+
+    <button class="nav-btn">
+      💬 <span>Messages</span>
+    </button>
+
+    <button class="nav-btn">
+      📝 <span>Blog</span>
+    </button>
+
+    <button class="nav-btn">
+      📄 <span>Applicants</span>
+    </button>
+
+  </nav>
+
+
+  <button
+    class="logout-btn"
+    id="logoutBtn"
+  >
+    ↪ <span>Logout</span>
+  </button>
+
+</aside>
+
+
+<!-- =======================================================
+     MAIN
+======================================================== -->
+
+<main class="main">
+
+
+<header class="topbar">
+
+  <div>
+
+    <h1>
+      Dashboard
+    </h1>
+
+    <p>
+      DigiSER BD Administration
+    </p>
+
+  </div>
+
+</header>
+
+
+<div class="content">
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<div class="stats">
+
+  <div class="stat">
+
+    <small>
+      Total Applicants
+    </small>
+
+    <strong id="totalApplicants">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <small>
+      New Applicants
+    </small>
+
+    <strong id="newApplicants">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <small>
+      Businesses
+    </small>
+
+    <strong id="businessCount">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    <small>
+      Messages
+    </small>
+
+    <strong id="messageCount">
+      0
+    </strong>
 
   </div>
 
 </div>
 
 
-<!-- =========================
-     ADMIN APP
-========================= -->
+<!-- =====================================================
+     APPLICANTS
+===================================================== -->
 
-<div class="app" id="adminApp">
+<section class="panel">
 
-  <!-- SIDEBAR -->
+  <div class="panel-head">
 
-  <aside class="sidebar" id="sidebar">
+    <h2>
+      Applicants
+    </h2>
 
-    <div class="logo">
-
-      <img
-        src="../assets/favicon.svg"
-        alt="DigiSER BD"
-      >
-
-      <div>
-        DigiSER <span>BD</span>
-      </div>
-
-    </div>
-
-    <nav class="nav">
-
-      <button class="active" data-view="dashboard">
-        Dashboard
-      </button>
-
-      <button data-view="jobs">
-        Jobs
-      </button>
-
-      <button data-view="services">
-        Services
-      </button>
-
-      <button data-view="employees">
-        Employees
-      </button>
-
-      <button data-view="businesses">
-        Businesses
-      </button>
-
-      <button data-view="messages">
-        Messages
-      </button>
-
-      <button data-view="blog">
-        Blog
-      </button>
-
-      <button data-view="applicants">
-        Applicants
-      </button>
-
-    </nav>
-
-    <button class="logout" id="logoutBtn">
-      Logout
+    <button
+      class="btn primary"
+      id="refreshBtn"
+    >
+      Refresh
     </button>
 
-  </aside>
+  </div>
 
 
-  <!-- MAIN -->
+  <div class="table-wrap">
 
-  <main class="main">
+    <table>
 
-    <header class="top">
+      <thead>
 
-      <div style="display:flex;align-items:center;gap:12px">
+        <tr>
 
-        <button class="mobile-menu" id="mobileMenu">
-          ☰
-        </button>
+          <th>
+            Applicant
+          </th>
 
-        <h1 id="pageTitle">
-          Dashboard
-        </h1>
+          <th>
+            Phone
+          </th>
 
-      </div>
+          <th>
+            Desired Role
+          </th>
 
-      <div class="admin-name">
-        Admin
-      </div>
+          <th>
+            Status
+          </th>
 
-    </header>
+          <th>
+            Date
+          </th>
 
+          <th>
+            Actions
+          </th>
 
-    <div class="content">
+        </tr>
 
-      <!-- DASHBOARD -->
+      </thead>
 
-      <section class="view active" id="view-dashboard">
 
-        <div class="stats">
+      <tbody
+        id="applicantTable"
+      ></tbody>
 
-          <div class="stat">
-            <small>Applicants</small>
-            <strong id="statApplicants">0</strong>
-          </div>
+    </table>
 
-          <div class="stat">
-            <small>New Applicants</small>
-            <strong id="statNew">0</strong>
-          </div>
+  </div>
 
-          <div class="stat">
-            <small>Businesses</small>
-            <strong id="statBusinesses">0</strong>
-          </div>
+</section>
 
-          <div class="stat">
-            <small>Messages</small>
-            <strong id="statMessages">0</strong>
-          </div>
 
-        </div>
+</div>
 
-        <div class="panel">
-
-          <div class="panel-head">
-
-            <div>
-
-              <h2>Admin Dashboard</h2>
-
-              <div class="panel-subtitle">
-                Manage DigiSER BD applications and content.
-              </div>
-
-            </div>
-
-          </div>
-
-          <div style="padding:25px;color:#667085">
-
-            Applicants submit their information through the
-            Register page. Their CV is generated from the
-            applicant record and can be viewed from the
-            Applicants section.
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- JOBS -->
-
-      <section class="view" id="view-jobs">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Jobs</h2>
-          </div>
-
-          <div class="empty">
-            Job management area.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- SERVICES -->
-
-      <section class="view" id="view-services">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Services</h2>
-          </div>
-
-          <div class="empty">
-            Service management area.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- EMPLOYEES -->
-
-      <section class="view" id="view-employees">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Employees</h2>
-          </div>
-
-          <div class="empty">
-            Employee management area.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- BUSINESSES -->
-
-      <section class="view" id="view-businesses">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Businesses</h2>
-          </div>
-
-          <div class="empty">
-            Business management area.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- MESSAGES -->
-
-      <section class="view" id="view-messages">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Messages</h2>
-          </div>
-
-          <div class="empty">
-            Contact messages will appear here.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- BLOG -->
-
-      <section class="view" id="view-blog">
-
-        <div class="panel">
-
-          <div class="panel-head">
-            <h2>Blog</h2>
-          </div>
-
-          <div class="empty">
-            Blog management area.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- APPLICANTS -->
-
-      <section class="view" id="view-applicants">
-
-        <div class="panel">
-
-          <div class="panel-head">
-
-            <div>
-
-              <h2>Applicants</h2>
-
-              <div class="panel-subtitle">
-                Submitted applications and CVs
-              </div>
-
-            </div>
-
-            <button class="btn" id="refreshApplicants">
-              Refresh
-            </button>
-
-          </div>
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>Name</th>
-                  <th>Phone</th>
-                  <th>Applied For</th>
-                  <th>Status</th>
-                  <th>Updated</th>
-                  <th>Actions</th>
-                </tr>
-
-              </thead>
-
-              <tbody id="applicantTable"></tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </div>
-
-  </main>
+</main>
 
 </div>
 
 
-<!-- =========================
+<!-- =======================================================
      APPLICANT DETAIL MODAL
-========================= -->
+======================================================== -->
 
-<div class="modal" id="applicantModal">
+<div
+  class="modal"
+  id="detailModal"
+>
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2>Applicant Details</h2>
+      <h2>
+        Applicant Details
+      </h2>
 
       <button
         class="close"
-        data-close="applicantModal"
-        aria-label="Close"
+        data-close="detailModal"
       >
         ×
       </button>
 
     </div>
 
+
     <div
       class="modal-body"
-      id="applicantDetails"
+      id="detailBody"
     ></div>
 
   </div>
@@ -1113,44 +1401,42 @@ td{
 </div>
 
 
-<!-- =========================
-     CV MODAL
-========================= -->
+<!-- =======================================================
+     PREMIUM CV MODAL
+======================================================== -->
 
-<div class="modal" id="cvModal">
+<div
+  class="modal"
+  id="cvModal"
+>
 
   <div class="modal-box">
 
-    <div class="modal-head">
 
-      <h2>Applicant CV</h2>
+    <div class="cv-actions">
 
-      <div class="modal-head-actions">
+      <button
+        class="btn primary"
+        id="printCV"
+      >
+        Print / Save PDF
+      </button>
 
-        <button
-          class="btn primary"
-          id="printCV"
-        >
-          Print / Save PDF
-        </button>
-
-        <button
-          class="close"
-          data-close="cvModal"
-          aria-label="Close"
-        >
-          ×
-        </button>
-
-      </div>
+      <button
+        class="btn"
+        data-close="cvModal"
+      >
+        Close
+      </button>
 
     </div>
 
-    <div class="cv-container">
+
+    <div class="cv-view">
 
       <div
         class="cv-paper"
-        id="adminCV"
+        id="cvPaper"
       ></div>
 
     </div>
@@ -1161,63 +1447,152 @@ td{
 
 
 <script>
+
 "use strict";
 
-/* =========================
+
+/* =========================================================
    CONFIG
-========================= */
+========================================================= */
 
-const STORAGE_KEY = "digiserbd_admin_v1";
+const STORAGE_KEY =
+  "digiserbd_admin_v1";
 
-const ADMIN_PASSWORD = "digiser2026";
+const ADMIN_PASSWORD =
+  "digiser2026";
 
 
-/* =========================
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginScreen =
+  document.getElementById(
+    "loginScreen"
+  );
+
+const app =
+  document.getElementById(
+    "app"
+  );
+
+const password =
+  document.getElementById(
+    "password"
+  );
+
+const loginBtn =
+  document.getElementById(
+    "loginBtn"
+  );
+
+const loginError =
+  document.getElementById(
+    "loginError"
+  );
+
+const table =
+  document.getElementById(
+    "applicantTable"
+  );
+
+const detailModal =
+  document.getElementById(
+    "detailModal"
+  );
+
+const cvModal =
+  document.getElementById(
+    "cvModal"
+  );
+
+const detailBody =
+  document.getElementById(
+    "detailBody"
+  );
+
+const cvPaper =
+  document.getElementById(
+    "cvPaper"
+  );
+
+
+/* =========================================================
    DATABASE
-========================= */
+========================================================= */
 
 function getDB(){
 
   try{
 
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
 
     if(!raw){
 
       return {
+
         users:[],
+
         jobs:[],
+
         services:[],
+
         employees:[],
+
         businesses:[],
+
         messages:[],
+
         blog:[]
+
       };
 
     }
 
-    const db = JSON.parse(raw);
+
+    const db =
+      JSON.parse(raw);
+
 
     db.users ||= [];
+
     db.jobs ||= [];
+
     db.services ||= [];
+
     db.employees ||= [];
+
     db.businesses ||= [];
+
     db.messages ||= [];
+
     db.blog ||= [];
 
+
     return db;
+
 
   }catch(error){
 
     return {
+
       users:[],
+
       jobs:[],
+
       services:[],
+
       employees:[],
+
       businesses:[],
+
       messages:[],
+
       blog:[]
+
     };
 
   }
@@ -1235,222 +1610,184 @@ function saveDB(db){
 }
 
 
-/* =========================
-   HELPERS
-========================= */
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
-function escapeHTML(text){
+function esc(value){
 
-  return String(text || "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  return String(value || "")
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-function formatDate(date){
-
-  if(!date){
-    return "—";
-  }
-
-  try{
-
-    return new Date(date).toLocaleString();
-
-  }catch{
-
-    return "—";
-
-  }
-
-}
-
-
-/* =========================
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
 function login(){
 
-  const password =
-    document.getElementById("adminPassword").value;
-
-  if(password === ADMIN_PASSWORD){
+  if(
+    password.value ===
+    ADMIN_PASSWORD
+  ){
 
     sessionStorage.setItem(
       "digiserbd_admin_login",
       "1"
     );
 
-    document
-      .getElementById("loginScreen")
-      .classList.add("hidden");
 
-    document
-      .getElementById("adminApp")
-      .classList.add("show");
+    loginScreen.style.display =
+      "none";
 
-    document
-      .getElementById("loginError")
-      .style.display = "none";
 
-    renderApplicants();
-    updateStats();
+    app.classList.add(
+      "show"
+    );
+
+
+    render();
 
   }else{
 
-    document
-      .getElementById("loginError")
-      .style.display = "block";
+    loginError.textContent =
+      "Incorrect admin password.";
 
   }
 
 }
 
 
-document
-  .getElementById("loginBtn")
-  .addEventListener("click",login);
+loginBtn.addEventListener(
+  "click",
+  login
+);
 
 
-document
-  .getElementById("adminPassword")
-  .addEventListener("keydown",event=>{
+password.addEventListener(
+  "keydown",
+  function(event){
 
     if(event.key === "Enter"){
+
       login();
+
     }
 
-  });
+  }
+);
 
 
-/* =========================
+/* =========================================================
    LOGOUT
-========================= */
+========================================================= */
 
 document
-  .getElementById("logoutBtn")
-  .addEventListener("click",()=>{
+  .getElementById(
+    "logoutBtn"
+  )
+  .addEventListener(
+    "click",
+    function(){
 
-    sessionStorage.removeItem(
-      "digiserbd_admin_login"
-    );
+      sessionStorage.removeItem(
+        "digiserbd_admin_login"
+      );
 
-    location.reload();
+      location.reload();
 
-  });
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-const navButtons =
-  document.querySelectorAll(".nav button");
-
-
-navButtons.forEach(button=>{
-
-  button.addEventListener("click",()=>{
-
-    const view = button.dataset.view;
-
-    navButtons.forEach(btn=>{
-      btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    document
-      .querySelectorAll(".view")
-      .forEach(section=>{
-        section.classList.remove("active");
-      });
-
-    const target =
-      document.getElementById("view-" + view);
-
-    if(target){
-      target.classList.add("active");
     }
-
-    document.getElementById("pageTitle").textContent =
-      button.textContent.trim();
-
-    document
-      .getElementById("sidebar")
-      .classList.remove("open");
-
-  });
-
-});
+  );
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* =========================================================
+   RENDER DASHBOARD
+========================================================= */
 
-document
-  .getElementById("mobileMenu")
-  .addEventListener("click",()=>{
+function render(){
 
-    document
-      .getElementById("sidebar")
-      .classList.toggle("open");
+  const db =
+    getDB();
 
-  });
+  const users =
+    db.users || [];
 
 
-/* =========================
-   STATS
-========================= */
+  document.getElementById(
+    "totalApplicants"
+  ).textContent =
+    users.length;
 
-function updateStats(){
 
-  const db = getDB();
-
-  document.getElementById("statApplicants").textContent =
-    db.users.length;
-
-  document.getElementById("statNew").textContent =
-    db.users.filter(
-      user => user.status === "new"
+  document.getElementById(
+    "newApplicants"
+  ).textContent =
+    users.filter(
+      user =>
+        user.status === "new"
     ).length;
 
-  document.getElementById("statBusinesses").textContent =
-    db.businesses.length;
 
-  document.getElementById("statMessages").textContent =
-    db.messages.length;
+  document.getElementById(
+    "businessCount"
+  ).textContent =
+    (
+      db.businesses || []
+    ).length;
 
-}
+
+  document.getElementById(
+    "messageCount"
+  ).textContent =
+    (
+      db.messages || []
+    ).length;
 
 
-/* =========================
-   APPLICANTS TABLE
-========================= */
+  if(!users.length){
 
-function renderApplicants(){
+    table.innerHTML = `
 
-  const tbody =
-    document.getElementById("applicantTable");
-
-  const db = getDB();
-
-  tbody.innerHTML = "";
-
-  if(!db.users.length){
-
-    tbody.innerHTML = `
       <tr>
-        <td colspan="6" class="empty">
-          No applicants yet.
+
+        <td colspan="6">
+
+          <div class="empty">
+
+            No applicants yet.
+
+          </div>
+
         </td>
+
       </tr>
+
     `;
 
     return;
@@ -1458,162 +1795,210 @@ function renderApplicants(){
   }
 
 
-  db.users.forEach(user=>{
+  table.innerHTML =
 
-    const p = user.personal || {};
-    const w = user.wanted || {};
+    users
 
-    const tr = document.createElement("tr");
+      .slice()
 
-    tr.innerHTML = `
+      .reverse()
 
-      <td>
-        <strong>
-          ${escapeHTML(
-            p.name ||
+      .map(
+
+        user => {
+
+          const name =
+            user.personal?.name ||
             user.name ||
-            "Unknown"
-          )}
-        </strong>
-      </td>
+            "Unknown";
 
-      <td>
-        ${escapeHTML(
-          p.mobile || "—"
-        )}
-      </td>
 
-      <td>
-        ${escapeHTML(
-          w.role || "—"
-        )}
-      </td>
+          const phone =
+            user.personal?.mobile ||
+            "—";
 
-      <td>
-        <span class="badge">
-          ${escapeHTML(
-            user.status || "new"
-          )}
-        </span>
-      </td>
 
-      <td>
-        ${escapeHTML(
-          formatDate(user.updated)
-        )}
-      </td>
+          const role =
+            user.wanted?.role ||
+            "—";
 
-      <td>
 
-        <div class="actions">
+          const status =
+            user.status ||
+            "new";
 
-          <button
-            class="btn"
-            onclick="viewApplicant('${user.id}')"
-          >
-            View
-          </button>
 
-          <button
-            class="btn primary"
-            onclick="viewCV('${user.id}')"
-          >
-            CV
-          </button>
+          const date =
+            user.created
 
-          <button
-            class="btn danger"
-            onclick="deleteApplicant('${user.id}')"
-          >
-            Delete
-          </button>
+              ? new Date(
+                  user.created
+                ).toLocaleDateString()
 
-        </div>
+              : "—";
 
-      </td>
 
-    `;
+          return `
 
-    tbody.appendChild(tr);
+            <tr>
 
-  });
+              <td>
+
+                <strong>
+                  ${esc(name)}
+                </strong>
+
+              </td>
+
+
+              <td>
+                ${esc(phone)}
+              </td>
+
+
+              <td>
+                ${esc(role)}
+              </td>
+
+
+              <td>
+
+                <span class="badge">
+                  ${esc(status)}
+                </span>
+
+              </td>
+
+
+              <td>
+                ${date}
+              </td>
+
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="btn primary"
+                    onclick="viewApplicant('${esc(user.id)}')"
+                  >
+                    View
+                  </button>
+
+
+                  <button
+                    class="btn"
+                    onclick="viewCV('${esc(user.id)}')"
+                  >
+                    CV
+                  </button>
+
+
+                  <button
+                    class="btn danger"
+                    onclick="deleteApplicant('${esc(user.id)}')"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+
+      )
+
+      .join("");
 
 }
 
 
-/* =========================
-   APPLICANT DETAILS
-========================= */
+/* =========================================================
+   VIEW APPLICANT
+========================================================= */
 
-function viewApplicant(id){
+window.viewApplicant =
+function(id){
 
-  const db = getDB();
+  const db =
+    getDB();
+
 
   const user =
     db.users.find(
-      item => item.id === id
+      item =>
+        item.id === id
     );
+
 
   if(!user){
     return;
   }
 
-  const p = user.personal || {};
-  const ed = user.education || {};
-  const ex = user.experience || {};
-  const sk = user.skills || {};
-  const lg = user.language || {};
-  const w = user.wanted || {};
-  const r = user.reference || {};
 
-
-  document.getElementById(
-    "applicantDetails"
-  ).innerHTML = `
+  detailBody.innerHTML = `
 
     <div class="detail-grid">
 
+
       <div class="detail">
 
-        <small>Application ID</small>
+        <small>
+          Application ID
+        </small>
 
-        <strong>
-          ${escapeHTML(user.id)}
-        </strong>
+        <p>
+          ${esc(user.id)}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Status</small>
+        <small>
+          Status
+        </small>
 
         <select
-          class="status-select"
-          id="appStatus"
+          id="statusSelect"
         >
 
-          ${[
-            "new",
-            "reviewing",
-            "shortlisted",
-            "interview",
-            "selected",
-            "rejected"
-          ].map(status=>`
+          ${
+            [
+              "new",
+              "reviewing",
+              "shortlisted",
+              "interview",
+              "selected",
+              "rejected"
+            ]
 
-            <option
-              value="${status}"
-              ${
-                user.status === status
-                  ? "selected"
-                  : ""
-              }
-            >
-              ${status}
-            </option>
+            .map(
+              status => `
 
-          `).join("")}
+                <option
+                  value="${status}"
+                  ${
+                    user.status === status
+                      ? "selected"
+                      : ""
+                  }
+                >
+                  ${status}
+                </option>
+
+              `
+            )
+
+            .join("")
+          }
 
         </select>
 
@@ -1622,770 +2007,1046 @@ function viewApplicant(id){
 
       <div class="detail">
 
-        <small>Name</small>
+        <small>
+          Name
+        </small>
 
-        <strong>
-          ${escapeHTML(p.name)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>Mobile</small>
-
-        <strong>
-          ${escapeHTML(p.mobile)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.name ||
+            user.name
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Email</small>
+        <small>
+          Mobile
+        </small>
 
-        <strong>
-          ${escapeHTML(p.email)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.mobile
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Emergency Contact</small>
+        <small>
+          Email
+        </small>
 
-        <strong>
-          ${escapeHTML(p.emergency)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.email
+          )}
+        </p>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>
+          Emergency Contact
+        </small>
+
+        <p>
+          ${esc(
+            user.personal?.emergency
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail full">
 
-        <small>Current Address</small>
+        <small>
+          Current Address
+        </small>
 
-        <strong>
-          ${escapeHTML(p.currentAddress)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>Permanent Address</small>
-
-        <strong>
-          ${escapeHTML(p.permanentAddress)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.currentAddress
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail full">
 
-        <small>Professional Profile</small>
+        <small>
+          Permanent Address
+        </small>
 
-        <strong>
-          ${escapeHTML(p.profile)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>SSC</small>
-
-        <strong>
-          ${escapeHTML(ed.ssc)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>HSC</small>
-
-        <strong>
-          ${escapeHTML(ed.hsc)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.permanentAddress
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail full">
 
-        <small>Graduate</small>
+        <small>
+          Professional Profile
+        </small>
 
-        <strong>
-          ${escapeHTML(ed.graduate)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>Other Education</small>
-
-        <strong>
-          ${escapeHTML(ed.other)}
-        </strong>
+        <p>
+          ${esc(
+            user.personal?.profile
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail full">
 
-        <small>Experience</small>
+        <small>
+          Education
+        </small>
 
-        <strong>
-          ${escapeHTML(ex.experience)}
-        </strong>
+        <p>
+          ${esc(
+
+            [
+
+              user.education?.ssc,
+
+              user.education?.hsc,
+
+              user.education?.graduate,
+
+              user.education?.other
+
+            ]
+
+            .filter(Boolean)
+
+            .join("\\n")
+
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail full">
 
-        <small>Key Duties</small>
+        <small>
+          Experience
+        </small>
 
-        <strong>
-          ${escapeHTML(ex.duty)}
-        </strong>
+        <p>
+          ${esc(
 
-      </div>
+            [
 
+              user.experience?.experience,
 
-      <div class="detail">
+              user.experience?.duty,
 
-        <small>Previous Salary</small>
+              user.experience?.previousSalary
 
-        <strong>
-          ${escapeHTML(ex.previousSalary)}
-        </strong>
+            ]
 
-      </div>
+            .filter(Boolean)
 
+            .join("\\n")
 
-      <div class="detail">
-
-        <small>Skills</small>
-
-        <strong>
-          ${escapeHTML(sk.skills)}
-        </strong>
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Languages</small>
+        <small>
+          Skills
+        </small>
 
-        <strong>
-          ${escapeHTML(lg.language)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>Wanted Role</small>
-
-        <strong>
-          ${escapeHTML(w.role)}
-        </strong>
+        <p>
+          ${esc(
+            user.skills?.skills
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Expected Salary</small>
+        <small>
+          Languages
+        </small>
 
-        <strong>
-          ${escapeHTML(w.salary)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>Employment Type</small>
-
-        <strong>
-          ${escapeHTML(w.type)}
-        </strong>
+        <p>
+          ${esc(
+            user.language?.language
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Preferred Location</small>
+        <small>
+          Desired Role
+        </small>
 
-        <strong>
-          ${escapeHTML(w.location)}
-        </strong>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>Reference Name</small>
-
-        <strong>
-          ${escapeHTML(r.name)}
-        </strong>
+        <p>
+          ${esc(
+            user.wanted?.role
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Reference Contact</small>
+        <small>
+          Expected Salary
+        </small>
 
-        <strong>
-          ${escapeHTML(r.contact)}
-        </strong>
+        <p>
+          ${esc(
+            user.wanted?.salary
+          )}
+        </p>
 
       </div>
 
 
       <div class="detail">
 
-        <small>Reference Relation</small>
+        <small>
+          Employment Type
+        </small>
 
-        <strong>
-          ${escapeHTML(r.relation)}
-        </strong>
+        <p>
+          ${esc(
+            user.wanted?.type
+          )}
+        </p>
 
       </div>
 
-    </div>
+
+      <div class="detail">
+
+        <small>
+          Preferred Location
+        </small>
+
+        <p>
+          ${esc(
+            user.wanted?.location
+          )}
+        </p>
+
+      </div>
 
 
-    <div class="modal-actions">
+      <div class="detail full">
 
-      <button
-        class="btn primary"
-        onclick="viewCV('${user.id}')"
-      >
-        View CV
-      </button>
+        <small>
+          Reference
+        </small>
+
+        <p>
+          ${esc(
+
+            [
+
+              user.reference?.name,
+
+              user.reference?.contact,
+
+              user.reference?.relation
+
+            ]
+
+            .filter(Boolean)
+
+            .join(" · ")
+
+          )}
+        </p>
+
+      </div>
 
 
-      <button
-        class="btn"
-        id="saveApplicantStatus"
-      >
-        Save Status
-      </button>
+      <div class="detail full">
+
+        <button
+          class="btn primary"
+          onclick="viewCV('${esc(user.id)}')"
+        >
+          👁 View Premium CV
+        </button>
 
 
-      <button
-        class="btn"
-        data-close="applicantModal"
-      >
-        Close
-      </button>
+        <button
+          class="btn"
+          onclick="saveStatus('${esc(user.id)}')"
+        >
+          Save Status
+        </button>
+
+      </div>
+
 
     </div>
 
   `;
 
 
-  document
-    .getElementById("saveApplicantStatus")
-    .addEventListener("click",()=>{
+  detailModal.classList.add(
+    "show"
+  );
 
-      const currentDB = getDB();
-
-      const applicant =
-        currentDB.users.find(
-          item => item.id === id
-        );
-
-      if(!applicant){
-        return;
-      }
-
-      applicant.status =
-        document.getElementById(
-          "appStatus"
-        ).value;
-
-      applicant.updated =
-        new Date().toISOString();
-
-      saveDB(currentDB);
-
-      renderApplicants();
-      updateStats();
-
-      alert("Applicant status updated.");
-
-    });
+};
 
 
-  document
-    .querySelectorAll(
-      '#applicantDetails [data-close="applicantModal"]'
-    )
-    .forEach(button=>{
+/* =========================================================
+   SAVE STATUS
+========================================================= */
 
-      button.addEventListener(
-        "click",
-        ()=>{
-          closeModal("applicantModal");
-        }
-      );
+window.saveStatus =
+function(id){
 
-    });
+  const db =
+    getDB();
 
-
-  openModal("applicantModal");
-
-}
-
-
-/* =========================
-   VIEW CV
-========================= */
-
-function viewCV(id){
-
-  const db = getDB();
 
   const user =
     db.users.find(
-      item => item.id === id
+      item =>
+        item.id === id
     );
+
 
   if(!user){
     return;
   }
 
-  const p = user.personal || {};
-  const ed = user.education || {};
-  const ex = user.experience || {};
-  const sk = user.skills || {};
-  const lg = user.language || {};
-  const w = user.wanted || {};
-  const r = user.reference || {};
 
+  const select =
+    document.getElementById(
+      "statusSelect"
+    );
 
-  const education = [
 
-    ed.ssc
-      ? "SSC: " + ed.ssc
-      : "",
+  user.status =
+    select.value;
 
-    ed.hsc
-      ? "HSC: " + ed.hsc
-      : "",
 
-    ed.graduate
-      ? "Graduate: " + ed.graduate
-      : "",
+  user.updated =
+    new Date().toISOString();
 
-    ed.other || ""
 
-  ]
-  .filter(Boolean)
-  .join("\n");
+  saveDB(db);
 
 
-  const experience = [
+  detailModal.classList.remove(
+    "show"
+  );
 
-    ex.experience || "",
 
-    ex.duty
-      ? "Duties: " + ex.duty
-      : "",
+  render();
 
-    ex.previousSalary
-      ? "Previous Salary: " +
-        ex.previousSalary
-      : ""
+};
 
-  ]
-  .filter(Boolean)
-  .join("\n");
 
-
-  const preference = [
-
-    w.role
-      ? "Role: " + w.role
-      : "",
-
-    w.salary
-      ? "Expected Salary: " +
-        w.salary
-      : "",
-
-    w.type
-      ? "Type: " + w.type
-      : "",
-
-    w.location
-      ? "Location: " +
-        w.location
-      : ""
-
-  ]
-  .filter(Boolean)
-  .join("\n");
-
-
-  document.getElementById(
-    "adminCV"
-  ).innerHTML = `
-
-    <div class="cv-name">
-      ${escapeHTML(
-        p.name ||
-        user.name
-      )}
-    </div>
-
-
-    <div class="cv-role">
-      ${escapeHTML(
-        w.role ||
-        "Professional"
-      )}
-    </div>
-
-
-    <div class="cv-contact">
-
-      ${escapeHTML(
-        p.mobile || ""
-      )}
-
-      ${
-        p.email
-          ? " · " +
-            escapeHTML(p.email)
-          : ""
-      }
-
-    </div>
-
-
-    <div class="cv-line"></div>
-
-
-    ${
-      p.profile
-        ? `
-
-          <div class="cv-title">
-            Professional Profile
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              p.profile
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      education
-        ? `
-
-          <div class="cv-title">
-            Education
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              education
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      experience
-        ? `
-
-          <div class="cv-title">
-            Experience
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              experience
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      sk.skills
-        ? `
-
-          <div class="cv-title">
-            Skills
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              sk.skills
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      lg.language
-        ? `
-
-          <div class="cv-title">
-            Languages
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              lg.language
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      preference
-        ? `
-
-          <div class="cv-title">
-            Job Preference
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              preference
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    ${
-      (
-        r.name ||
-        r.contact ||
-        r.relation
-      )
-        ? `
-
-          <div class="cv-title">
-            Reference
-          </div>
-
-          <div class="cv-text">
-            ${escapeHTML(
-              [
-                r.name,
-                r.contact,
-                r.relation
-              ]
-              .filter(Boolean)
-              .join(" · ")
-            )}
-          </div>
-
-        `
-        : ""
-    }
-
-
-    <div class="cv-title">
-      Application ID
-    </div>
-
-    <div class="cv-text">
-      ${escapeHTML(
-        user.id
-      )}
-    </div>
-
-  `;
-
-
-  openModal("cvModal");
-
-}
-
-
-/* =========================
+/* =========================================================
    DELETE APPLICANT
-========================= */
+========================================================= */
 
-function deleteApplicant(id){
+window.deleteApplicant =
+function(id){
 
-  const db = getDB();
-
-  const user =
-    db.users.find(
-      item => item.id === id
+  const confirmDelete =
+    confirm(
+      "Delete this applicant permanently?"
     );
 
-  if(!user){
+
+  if(!confirmDelete){
     return;
   }
 
-  const name =
-    user.personal?.name ||
-    user.name ||
-    "this applicant";
 
-
-  if(
-    !confirm(
-      `Delete application from ${name}?`
-    )
-  ){
-    return;
-  }
+  const db =
+    getDB();
 
 
   db.users =
     db.users.filter(
-      item => item.id !== id
+      user =>
+        user.id !== id
     );
+
 
   saveDB(db);
 
-  renderApplicants();
-  updateStats();
 
-}
+  render();
 
-
-/* =========================
-   MODALS
-========================= */
-
-function openModal(id){
-
-  document
-    .getElementById(id)
-    .classList.add("show");
-
-}
+};
 
 
-function closeModal(id){
+/* =========================================================
+   PREMIUM CV
+   SAME STRUCTURE AS REGISTER V2
+========================================================= */
 
-  document
-    .getElementById(id)
-    .classList.remove("show");
+function buildPremiumCV(user){
 
-}
-
-
-document
-  .querySelectorAll("[data-close]")
-  .forEach(button=>{
-
-    button.addEventListener(
-      "click",
-      ()=>{
-        closeModal(
-          button.dataset.close
-        );
-      }
-    );
-
-  });
+  const personal =
+    user.personal || {};
 
 
-document
-  .querySelectorAll(".modal")
-  .forEach(modal=>{
+  const education =
+    user.education || {};
 
-    modal.addEventListener(
-      "click",
-      event=>{
 
-        if(event.target === modal){
+  const experience =
+    user.experience || {};
 
-          modal.classList.remove("show");
 
+  const skills =
+    user.skills || {};
+
+
+  const language =
+    user.language || {};
+
+
+  const wanted =
+    user.wanted || {};
+
+
+  const reference =
+    user.reference || {};
+
+
+  /*
+    PHOTO SUPPORT
+
+    New Register:
+      personal.photo
+
+    Older possible versions:
+      personal.profilePhoto
+      photo
+  */
+
+  const photo =
+    personal.photo ||
+    personal.profilePhoto ||
+    user.photo ||
+    "";
+
+
+  const educationText = [
+
+    education.ssc
+      ? "SSC: " +
+        education.ssc
+      : "",
+
+    education.hsc
+      ? "HSC: " +
+        education.hsc
+      : "",
+
+    education.graduate
+      ? education.graduate
+      : "",
+
+    education.other
+      ? education.other
+      : ""
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  const experienceText = [
+
+    experience.experience
+      ? experience.experience
+      : "",
+
+    experience.duty
+      ? "Duties: " +
+        experience.duty
+      : "",
+
+    experience.previousSalary
+      ? "Previous Salary: " +
+        experience.previousSalary
+      : ""
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  const preferenceText = [
+
+    wanted.type
+      ? "Type: " +
+        wanted.type
+      : "",
+
+    wanted.location
+      ? "Location: " +
+        wanted.location
+      : "",
+
+    wanted.salary
+      ? "Expected Salary: " +
+        wanted.salary
+      : ""
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  const referenceText = [
+
+    reference.name,
+
+    reference.contact,
+
+    reference.relation
+
+  ]
+
+  .filter(Boolean)
+
+  .join(" · ");
+
+
+  return `
+
+    <!-- CV HEADER -->
+
+    <div class="cv-top">
+
+
+      <div class="cv-photo">
+
+        ${
+          photo
+
+          ?
+
+          `
+          <img
+            src="${photo}"
+            alt="Profile Photo"
+          >
+          `
+
+          :
+
+          `
+          PHOTO
+          `
         }
 
-      }
+      </div>
+
+
+      <div>
+
+        <div class="cv-name">
+
+          ${esc(
+            personal.name ||
+            user.name ||
+            "Applicant"
+          )}
+
+        </div>
+
+
+        <div class="cv-role">
+
+          ${esc(
+            wanted.role ||
+            "Professional"
+          )}
+
+        </div>
+
+
+        <div class="cv-contact">
+
+          ${esc(
+            personal.mobile || ""
+          )}
+
+          ${
+            personal.email
+
+            ?
+
+            " · " +
+            esc(
+              personal.email
+            )
+
+            :
+
+            ""
+          }
+
+
+          ${
+            personal.currentAddress
+
+            ?
+
+            "<br>" +
+            esc(
+              personal.currentAddress
+            )
+
+            :
+
+            ""
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CV BODY -->
+
+    <div class="cv-body">
+
+
+      <!-- LEFT SIDE -->
+
+      <aside class="cv-side">
+
+
+        ${
+          skills.skills
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Skills
+            </h3>
+
+            <p>
+              ${esc(
+                skills.skills
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          language.language
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Languages
+            </h3>
+
+            <p>
+              ${esc(
+                language.language
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          preferenceText
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Preference
+            </h3>
+
+            <p>
+              ${esc(
+                preferenceText
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          referenceText
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Reference
+            </h3>
+
+            <p>
+              ${esc(
+                referenceText
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+      </aside>
+
+
+      <!-- RIGHT SIDE -->
+
+      <main class="cv-main">
+
+
+        ${
+          personal.profile
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Profile
+            </h3>
+
+            <p>
+              ${esc(
+                personal.profile
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          experienceText
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Experience
+            </h3>
+
+            <p>
+              ${esc(
+                experienceText
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          educationText
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Education
+            </h3>
+
+            <p>
+              ${esc(
+                educationText
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+        ${
+          personal.permanentAddress
+
+          ?
+
+          `
+
+          <div class="cv-section">
+
+            <h3>
+              Address
+            </h3>
+
+            <p>
+              ${esc(
+                personal.permanentAddress
+              )}
+            </p>
+
+          </div>
+
+          `
+
+          :
+
+          ""
+        }
+
+
+      </main>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   VIEW CV
+========================================================= */
+
+window.viewCV =
+function(id){
+
+  const db =
+    getDB();
+
+
+  const user =
+    db.users.find(
+      item =>
+        item.id === id
     );
 
-  });
+
+  if(!user){
+    return;
+  }
 
 
-/* =========================
-   PRINT CV
-========================= */
+  cvPaper.innerHTML =
+    buildPremiumCV(
+      user
+    );
+
+
+  cvModal.classList.add(
+    "show"
+  );
+
+};
+
+
+/* =========================================================
+   PRINT / SAVE PDF
+========================================================= */
 
 document
-  .getElementById("printCV")
+  .getElementById(
+    "printCV"
+  )
   .addEventListener(
     "click",
-    ()=>{
+    function(){
+
       window.print();
+
     }
   );
 
 
-/* =========================
-   REFRESH
-========================= */
+/* =========================================================
+   CLOSE MODALS
+========================================================= */
 
 document
-  .getElementById("refreshApplicants")
-  .addEventListener(
-    "click",
-    ()=>{
+  .querySelectorAll(
+    "[data-close]"
+  )
+  .forEach(
+    button => {
 
-      renderApplicants();
-      updateStats();
+      button.addEventListener(
+        "click",
+        function(){
+
+          const id =
+            button.dataset.close;
+
+
+          document
+            .getElementById(id)
+            .classList.remove(
+              "show"
+            );
+
+        }
+      );
 
     }
   );
 
 
-/* =========================
-   AUTO LOGIN
-========================= */
+/* =========================================================
+   OUTSIDE CLICK
+========================================================= */
+
+window.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target ===
+      detailModal
+    ){
+
+      detailModal.classList.remove(
+        "show"
+      );
+
+    }
+
+
+    if(
+      event.target ===
+      cvModal
+    ){
+
+      cvModal.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+document
+  .getElementById(
+    "refreshBtn"
+  )
+  .addEventListener(
+    "click",
+    render
+  );
+
+
+/* =========================================================
+   SESSION
+========================================================= */
 
 if(
   sessionStorage.getItem(
@@ -2393,18 +3054,17 @@ if(
   ) === "1"
 ){
 
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
+  loginScreen.style.display =
+    "none";
 
-  document
-    .getElementById("adminApp")
-    .classList.add("show");
+  app.classList.add(
+    "show"
+  );
 
-  renderApplicants();
-  updateStats();
+  render();
 
 }
+
 </script>
 
 </body>
