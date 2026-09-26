@@ -1,1055 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="contact-section">
+  <div class="wrap">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="contact-box">
 
-  <title>Contact Us | DigiSER BD</title>
+      <div class="contact-content">
 
-  <meta
-    name="description"
-    content="Contact DigiSER BD for questions, hiring, digital services and business solutions."
-  >
+        <div class="contact-heading">
+          <span>CONTACT DIGISER BD</span>
 
-  <meta
-    name="theme-color"
-    content="#0087c4"
-  >
+          <h1>Send us a message</h1>
 
-  <link
-    rel="canonical"
-    href="https://digiserbd.com/contact/"
-  >
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="DigiSER BD">
-  <meta property="og:title" content="Contact Us | DigiSER BD">
-  <meta
-    property="og:description"
-    content="Questions, hiring or services? Contact DigiSER BD."
-  >
-  <meta
-    property="og:url"
-    content="https://digiserbd.com/contact/"
-  >
-  <meta
-    property="og:image"
-    content="https://digiserbd.com/logo.png"
-  >
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-
-  <!-- Favicon -->
-  <link
-    rel="icon"
-    href="../favicon.png"
-    type="image/png"
-  >
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Main CSS -->
-  <link
-    rel="stylesheet"
-    href="../assets/style.css"
-  >
-
-  <style>
-
-    /* =========================================
-       CONTACT PAGE
-    ========================================= */
-
-    .contact-page {
-      position: relative;
-      overflow: hidden;
-    }
-
-
-    /* =========================================
-       PAGE HERO
-    ========================================= */
-
-    .contact-hero {
-      padding: 72px 0 42px;
-    }
-
-    .contact-hero h1 {
-      margin: 0 0 12px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(38px, 6vw, 64px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .contact-hero p {
-      max-width: 680px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-
-    /* =========================================
-       CONTACT GRID
-    ========================================= */
-
-    .contact-main {
-      padding-top: 24px;
-      padding-bottom: 80px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
-      gap: 32px;
-      align-items: start;
-    }
-
-
-    /* =========================================
-       FORM CARD
-    ========================================= */
-
-    .contact-card {
-      padding: 30px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, .06);
-    }
-
-    .contact-card-title {
-      margin: 0 0 8px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -.025em;
-    }
-
-    .contact-card-description {
-      margin: 0 0 26px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-
-    /* =========================================
-       FORM
-    ========================================= */
-
-    .contact-form {
-      display: grid;
-      gap: 18px;
-    }
-
-    .contact-field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .contact-field label {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .contact-field input,
-    .contact-field textarea {
-      width: 100%;
-      box-sizing: border-box;
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-
-      background: var(--bg);
-      color: var(--text);
-
-      padding: 14px 16px;
-
-      font: inherit;
-
-      outline: none;
-
-      transition:
-        border-color .2s ease,
-        box-shadow .2s ease,
-        transform .2s ease;
-    }
-
-    .contact-field input {
-      min-height: 50px;
-    }
-
-    .contact-field textarea {
-      min-height: 145px;
-      resize: vertical;
-    }
-
-    .contact-field input:focus,
-    .contact-field textarea:focus {
-      border-color: var(--primary);
-
-      box-shadow:
-        0 0 0 4px rgba(0, 135, 196, .10);
-    }
-
-    .contact-field input::placeholder,
-    .contact-field textarea::placeholder {
-      color: var(--muted);
-      opacity: .7;
-    }
-
-
-    /* =========================================
-       SEND BUTTON
-    ========================================= */
-
-    .contact-submit {
-      width: 100%;
-      min-height: 58px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-
-      margin-top: 4px;
-
-      border: 0;
-      border-radius: 15px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #0087c4 0%,
-          #006b9c 100%
-        );
-
-      color: #fff;
-
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 12px 28px rgba(0, 135, 196, .20);
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        opacity .25s ease;
-    }
-
-    .contact-submit:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 17px 34px rgba(0, 135, 196, .28);
-    }
-
-    .contact-submit:active {
-      transform: translateY(0);
-    }
-
-    .contact-submit:disabled {
-      opacity: .65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .contact-submit-arrow {
-      font-size: 20px;
-      transition: transform .25s ease;
-    }
-
-    .contact-submit:hover .contact-submit-arrow {
-      transform: translateX(5px);
-    }
-
-
-    /* =========================================
-       SUCCESS MESSAGE
-    ========================================= */
-
-    .contact-success {
-      display: none;
-
-      margin-top: 18px;
-      padding: 18px 20px;
-
-      border-radius: 16px;
-
-      border: 1px solid rgba(0, 135, 196, .20);
-
-      background:
-        rgba(0, 135, 196, .07);
-
-      line-height: 1.7;
-    }
-
-    .contact-success strong {
-      color: var(--primary);
-    }
-
-
-    /* =========================================
-       RIGHT SIDE
-    ========================================= */
-
-    .contact-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .contact-side-title {
-      margin: 0 0 4px;
-
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -.025em;
-    }
-
-
-    /* =========================================
-       CONTACT ITEMS
-    ========================================= */
-
-    .contact-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-item {
-      position: relative;
-
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-
-      padding: 19px 20px;
-
-      border: 1px solid var(--border);
-      border-radius: 18px;
-
-      background: var(--card);
-
-      transition:
-        transform .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease;
-    }
-
-    .contact-item:hover {
-      transform: translateY(-2px);
-
-      border-color: var(--primary);
-
-      box-shadow:
-        0 14px 32px rgba(0, 0, 0, .06);
-    }
-
-    .contact-item strong {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .contact-item span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .contact-item a {
-      width: fit-content;
-
-      margin-top: 3px;
-
-      color: var(--primary);
-
-      font-weight: 700;
-      text-decoration: none;
-
-      transition: opacity .2s ease;
-    }
-
-    .contact-item a:hover {
-      opacity: .75;
-    }
-
-
-    /* =========================================
-       ULTRA PREMIUM DEVELOPER CONNECT
-    ========================================= */
-
-    .developer-connect {
-      position: relative;
-      isolation: isolate;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      width: 100%;
-      min-height: 94px;
-
-      box-sizing: border-box;
-
-      padding: 20px 22px;
-
-      border-radius: 22px;
-
-      overflow: hidden;
-
-      text-decoration: none;
-
-      color: #fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          #06141c 0%,
-          #06394f 45%,
-          #0087c4 100%
-        );
-
-      border: 1px solid rgba(255,255,255,.16);
-
-      box-shadow:
-        0 20px 50px rgba(0, 72, 105, .24),
-        inset 0 1px 0 rgba(255,255,255,.14);
-
-      transition:
-        transform .3s cubic-bezier(.2,.8,.2,1),
-        box-shadow .3s ease;
-    }
-
-
-    /* Glow */
-
-    .developer-connect::before {
-      content: "";
-
-      position: absolute;
-
-      width: 210px;
-      height: 210px;
-
-      top: -125px;
-      right: -55px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,.13);
-
-      filter: blur(8px);
-
-      z-index: -1;
-
-      transition:
-        transform .5s ease,
-        opacity .3s ease;
-    }
-
-
-    /* Shine */
-
-    .developer-connect::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          120deg,
-          transparent 20%,
-          rgba(255,255,255,.10) 45%,
-          transparent 65%
-        );
-
-      transform: translateX(-120%);
-
-      transition:
-        transform .75s ease;
-
-      pointer-events: none;
-    }
-
-
-    .developer-connect:hover {
-      transform: translateY(-4px);
-
-      box-shadow:
-        0 28px 65px rgba(0, 105, 150, .34),
-        inset 0 1px 0 rgba(255,255,255,.18);
-    }
-
-    .developer-connect:hover::before {
-      transform: scale(1.4);
-      opacity: .8;
-    }
-
-    .developer-connect:hover::after {
-      transform: translateX(120%);
-    }
-
-
-    /* Developer Text */
-
-    .developer-connect-content {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-
-      min-width: 0;
-    }
-
-    .developer-label {
-      font-size: 12px;
-      line-height: 1.3;
-
-      letter-spacing: .05em;
-
-      opacity: .72;
-    }
-
-    .developer-title {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 21px;
-      line-height: 1.2;
-
-      font-weight: 700;
-
-      letter-spacing: -.025em;
-    }
-
-
-    /* Developer Arrow */
-
-    .developer-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 46px;
-      height: 46px;
-
-      flex: 0 0 46px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,.12);
-
-      border:
-        1px solid rgba(255,255,255,.18);
-
-      font-size: 21px;
-
-      transition:
-        transform .3s ease,
-        background .3s ease;
-    }
-
-    .developer-connect:hover .developer-arrow {
-      transform: translate(3px,-3px);
-
-      background:
-        rgba(255,255,255,.20);
-    }
-
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media (max-width: 820px) {
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-hero {
-        padding-top: 48px;
-      }
-
-    }
-
-
-    @media (max-width: 600px) {
-
-      .contact-main {
-        padding-bottom: 55px;
-      }
-
-      .contact-card {
-        padding: 22px;
-        border-radius: 20px;
-      }
-
-      .contact-card-title,
-      .contact-side-title {
-        font-size: 24px;
-      }
-
-      .developer-connect {
-        min-height: 84px;
-        padding: 18px;
-        border-radius: 19px;
-      }
-
-      .developer-title {
-        font-size: 18px;
-      }
-
-      .developer-label {
-        font-size: 10px;
-      }
-
-      .developer-arrow {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-
-<body
-  data-page="contact"
-  data-root="../"
-  class="contact-page"
->
-
-
-  <!-- Header -->
-  <div id="hdr-slot"></div>
-
-
-  <main>
-
-
-    <!-- =========================================
-         HERO
-    ========================================== -->
-
-    <section class="contact-hero">
-      <div class="wrap">
-
-        <h1>Contact us</h1>
-
-        <p>
-          Questions, hiring or services?
-          Send us a message and our team will get back to you shortly.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- =========================================
-         CONTACT CONTENT
-    ========================================== -->
-
-    <section class="contact-main">
-
-      <div class="wrap">
-
-        <div class="contact-grid">
-
-
-          <!-- =====================================
-               CONTACT FORM
-          ====================================== -->
-
-          <div class="contact-card">
-
-            <h2 class="contact-card-title">
-              Send us a message
-            </h2>
-
-            <p class="contact-card-description">
-              আপনার প্রশ্ন, hiring request বা service inquiry
-              আমাদের কাছে পাঠান।
-            </p>
-
-
-            <form
-              class="contact-form"
-              id="contactForm"
-            >
-
-
-              <!-- Name -->
-
-              <div class="contact-field">
-
-                <label for="contactName">
-                  Your name *
-                </label>
-
-                <input
-                  id="contactName"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  placeholder="Enter your name"
-                  required
-                >
-
-              </div>
-
-
-              <!-- Phone / Email -->
-
-              <div class="contact-field">
-
-                <label for="contactContact">
-                  Phone or email *
-                </label>
-
-                <input
-                  id="contactContact"
-                  name="contact"
-                  type="text"
-                  autocomplete="email"
-                  placeholder="Phone number or email"
-                  required
-                >
-
-              </div>
-
-
-              <!-- Message -->
-
-              <div class="contact-field">
-
-                <label for="contactMessage">
-                  Message *
-                </label>
-
-                <textarea
-                  id="contactMessage"
-                  name="message"
-                  rows="6"
-                  placeholder="How can we help you?"
-                  required
-                ></textarea>
-
-              </div>
-
-
-              <!-- Submit -->
-
-              <button
-                class="contact-submit"
-                type="submit"
-                id="contactSubmitBtn"
-              >
-
-                <span>
-                  Send Message
-                </span>
-
-                <span class="contact-submit-arrow">
-                  →
-                </span>
-
-              </button>
-
-
-              <!-- Success -->
-
-              <div
-                class="contact-success"
-                id="contactSuccess"
-              >
-
-                <strong>
-                  ✓ Message submitted successfully
-                </strong>
-
-                <br><br>
-
-                আপনার মেসেজটি Admin Dashboard-এ
-                পাঠানো হয়েছে।
-
-                <br>
-
-                আমাদের টিম শীঘ্রই আপনার সাথে যোগাযোগ করবে।
-
-              </div>
-
-
-            </form>
-
-          </div>
-
-
-          <!-- =====================================
-               CONTACT INFORMATION
-          ====================================== -->
-
-          <div class="contact-side">
-
-
-            <div>
-
-              <h2 class="contact-side-title">
-                Other ways to reach us
-              </h2>
-
-            </div>
-
-
-            <div class="contact-list">
-
-
-              <!-- WhatsApp -->
-
-              <div class="contact-item">
-
-                <strong>
-                  WhatsApp
-                </strong>
-
-                <span>
-                  Chat directly with our team
-                </span>
-
-                <a
-                  href="https://wa.me/8801719333614"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Chat now →
-                </a>
-
-              </div>
-
-
-              <!-- Helal -->
-
-              <div class="contact-item">
-
-                <strong>
-                  Helal
-                </strong>
-
-                <span>
-                  Founder
-                </span>
-
-                <a href="tel:+8801719333614">
-                  +880 1719-333614
-                </a>
-
-              </div>
-
-
-              <!-- SNK -->
-
-              <div class="contact-item">
-
-                <strong>
-                  SNK
-                </strong>
-
-                <span>
-                  Co-founder
-                </span>
-
-                <a href="tel:+8801705633700">
-                  +880 1705-633700
-                </a>
-
-              </div>
-
-
-              <!-- Email -->
-
-              <div class="contact-item">
-
-                <strong>
-                  Email
-                </strong>
-
-                <span>
-                  Send us an email
-                </span>
-
-                <a href="mailto:info@digiserbd.com">
-                  info@digiserbd.com
-                </a>
-
-              </div>
-
-
-              <!-- Location -->
-
-              <div class="contact-item">
-
-                <strong>
-                  Location
-                </strong>
-
-                <span>
-                  Dhaka, Bangladesh
-                </span>
-
-              </div>
-
-
-            </div>
-
-
-            <!-- =================================
-                 DEVELOPER CONNECT
-            ================================== -->
-
-            <a
-              href="https://snkbp.com"
-              class="developer-connect"
-              target="_blank"
-              rel="noopener"
-              aria-label="Developer Connect — SNKBP"
-            >
-
-              <span class="developer-connect-content">
-
-                <span class="developer-label">
-                  Need a website or digital solution?
-                </span>
-
-                <span class="developer-title">
-                  Developer Connect
-                </span>
-
-              </span>
-
-
-              <span
-                class="developer-arrow"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-
-            </a>
-
-
-          </div>
-
+          <p>
+            Questions, hiring or services?
+            Send us a message and our team will get back to you shortly.
+          </p>
         </div>
 
+
+        <form id="contactForm" class="contact-form">
+
+          <div class="field">
+            <label for="contactName">Your name *</label>
+
+            <input
+              id="contactName"
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="contactContact">Phone or email *</label>
+
+            <input
+              id="contactContact"
+              name="contact"
+              type="text"
+              placeholder="Phone number or email"
+              required
+            >
+          </div>
+
+
+          <div class="field">
+            <label for="contactMessage">Message *</label>
+
+            <textarea
+              id="contactMessage"
+              name="message"
+              rows="6"
+              placeholder="How can we help you?"
+              required
+            ></textarea>
+          </div>
+
+
+          <button
+            type="submit"
+            class="contact-submit"
+            id="contactSubmitBtn"
+          >
+            <span>Send Message</span>
+            <span>→</span>
+          </button>
+
+
+          <div
+            id="contactSuccess"
+            class="contact-success"
+          >
+            <strong>✓ Message submitted successfully</strong>
+
+            <br><br>
+
+            আপনার মেসেজটি Admin Dashboard-এ
+            পাঠানো হয়েছে।
+          </div>
+
+        </form>
+
       </div>
 
-    </section>
 
-  </main>
+      <!-- Developer Connect -->
 
+      <a
+        href="https://snkbp.com/"
+        target="_blank"
+        rel="noopener"
+        class="developer-connect"
+      >
 
-  <!-- Footer -->
-  <div id="ftr-slot"></div>
+        <div>
+          <small>
+            NEED A WEBSITE OR DIGITAL SOLUTION?
+          </small>
 
+          <strong>
+            Developer Connect
+          </strong>
+        </div>
 
-  <!-- Existing Site Scripts -->
-  <script src="../assets/data.js"></script>
-  <script src="../assets/i18n.js"></script>
-  <script src="../assets/app.js"></script>
+        <span class="developer-arrow">
+          ↗
+        </span>
 
+      </a>
 
-  <!--
-    TEMPORARY CONTACT FORM UI
+    </div>
 
-    Firebase connect করার আগে এই অংশ শুধু UI success state দেখাবে।
-    পরে এখানে Firestore submission যুক্ত করা হবে।
-  -->
-
-  <script>
-
-    const contactForm =
-      document.getElementById("contactForm");
-
-    const contactSuccess =
-      document.getElementById("contactSuccess");
-
-    const contactSubmitBtn =
-      document.getElementById("contactSubmitBtn");
-
-
-    if (contactForm) {
-
-      contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-          event.preventDefault();
-
-
-          /*
-            Firebase connect করার আগে
-            temporary UI behaviour.
-          */
-
-          contactSubmitBtn.disabled = true;
-
-          contactSubmitBtn.querySelector("span").textContent =
-            "Submitting...";
-
-
-          setTimeout(function () {
-
-            contactForm.reset();
-
-            contactSuccess.style.display =
-              "block";
-
-            contactSubmitBtn.disabled =
-              false;
-
-            contactSubmitBtn.querySelector("span").textContent =
-              "Send Message";
-
-            contactSuccess.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest"
-            });
-
-          }, 500);
-
-        }
-      );
-
-    }
-
-  </script>
-
-
-</body>
-</html>
+  </div>
+</section>
