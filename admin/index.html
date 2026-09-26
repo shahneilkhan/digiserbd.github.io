@@ -1,509 +1,2018 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,nofollow">
-<title>DigiSER BD Admin</title>
-<link rel="icon" href="../favicon.png" type="image/png">
+
+<title>Apply for a Job | DigiSER BD</title>
+
+<meta
+  name="description"
+  content="Submit your job application and create a professional CV with DigiSER BD."
+>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
 <style>
 :root{
-  --ink:#15251f; --muted:#5f716a; --line:#dbe3df; --bg:#f3f6f4; --card:#ffffff;
-  --brand:#0087c4; --brand-d:#00679a; --accent:#e8a317; --danger:#c0392b; --ok:#1e8e5a;
-  --side:#0b2233; --side-t:#b7c9d6;
+  --primary:#0087c4;
+  --primary-dark:#006d9f;
+  --accent:#00a7d8;
+
+  --bg:#f5f8fb;
+  --card:#ffffff;
+  --text:#10202d;
+  --muted:#667784;
+  --border:#dfe7ed;
+
+  --success:#16834b;
+  --danger:#d33b3b;
+
+  --shadow:0 16px 45px rgba(16,32,45,.08);
+  --radius:20px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5}
-h1,h2,h3,.num{font-family:'Space Grotesk','Hind Siliguri',sans-serif}
-button{font:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
-.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-.app[hidden]{display:none}
-.side{background:var(--side);color:var(--side-t);padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto}
-.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:18px;padding:4px 8px 22px;font-family:'Space Grotesk',sans-serif}
-.logo img{width:36px;height:36px;border-radius:8px;background:#fff}
-.login .brand{display:flex;justify-content:center;margin-bottom:10px}
-.login .brand img{width:64px;height:64px;border-radius:12px}
-.nav button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;background:none;color:inherit;border-radius:8px;text-align:left;margin-bottom:2px}
-.nav button:hover{background:#163349;color:#fff}
-.nav button.on{background:var(--brand);color:#fff}
-.nav .cnt{margin-left:auto;font-size:12px;background:#ffffff1f;border-radius:99px;padding:0 8px}
-.side small{display:block;margin:20px 8px 0;font-size:12px;opacity:.7}
-
-.main{padding:26px 30px;min-width:0}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.top h1{font-size:24px}
-.menu-btn{display:none;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px}
-
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:22px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;cursor:pointer;text-align:left}
-.stat:hover{border-color:var(--brand)}
-.stat .num{font-size:34px;font-weight:700;color:var(--brand);line-height:1.1}
-.stat span{color:var(--muted)}
-
-.panel{background:var(--card);border:1px solid var(--line);border-radius:12px}
-.bar{display:flex;gap:10px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line);align-items:center}
-.bar input[type=search]{flex:1;min-width:180px}
-input,select,textarea{font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;width:100%;color:var(--ink)}
-.btn{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:8px;font-weight:500}
-.btn:hover{border-color:var(--brand)}
-.btn.pri{background:var(--brand);border-color:var(--brand);color:#fff}
-.btn.pri:hover{background:var(--brand-d)}
-.btn.sm{padding:4px 10px;font-size:13px}
-.btn.del{color:var(--danger)}
-.tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse}
-th,td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-size:13px;color:var(--muted);font-weight:600;background:#f8faf9}
-tr:last-child td{border-bottom:0}
-.pill{display:inline-block;padding:1px 10px;border-radius:99px;font-size:12px;background:#dcf0fa;color:var(--brand-d)}
-.pill.off{background:#f1e4e2;color:var(--danger)}
-.empty{padding:40px 20px;text-align:center;color:var(--muted)}
-
-.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;padding:16px;z-index:20}
-.modal.open{display:grid}
-.box{background:#fff;border-radius:14px;width:100%;max-width:520px;max-height:92vh;overflow:auto;padding:22px}
-.box h2{font-size:20px;margin-bottom:14px}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:3px}
-.acts{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
-.toast.show{opacity:1}
-.note{background:#fff7e0;border:1px solid #f0d98a;border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:14px}
-
-.login{position:fixed;inset:0;background:var(--side);display:none;place-items:center;padding:16px;z-index:50}
-.login.show{display:grid}
-.login form{background:#fff;border-radius:14px;padding:28px;width:100%;max-width:360px}
-.login h2{font-size:22px;margin-bottom:4px}
-.login p{color:var(--muted);margin-bottom:16px;font-size:14px}
-.login .err{color:var(--danger);font-size:13px;min-height:20px;margin-top:6px}
-@media(max-width:820px){
-  .app{grid-template-columns:1fr}
-  .side{position:fixed;left:0;top:0;width:250px;z-index:15;transform:translateX(-100%);transition:transform .2s}
-  .side.open{transform:none}
-  .menu-btn{display:block}
-  .main{padding:18px 14px}
+*{
+  box-sizing:border-box;
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Hind Siliguri",sans-serif;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+
+.topbar-inner{
+  width:min(1180px,calc(100% - 32px));
+  margin:auto;
+
+  min-height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+  font-weight:700;
+  letter-spacing:-.4px;
+}
+
+.brand span{
+  color:var(--primary);
+}
+
+.back-link{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:600;
+}
+
+.back-link:hover{
+  color:var(--primary);
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+  width:min(1180px,calc(100% - 32px));
+  margin:45px auto 80px;
+}
+
+.page-header{
+  margin-bottom:30px;
+}
+
+.eyebrow{
+  color:var(--primary);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.page-header h1{
+  margin:8px 0 8px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(30px,4vw,48px);
+  line-height:1.05;
+  letter-spacing:-1.5px;
+}
+
+.page-header p{
+  max-width:700px;
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 420px;
+  gap:25px;
+  align-items:start;
+}
+
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.form-panel{
+  padding:28px;
+}
+
+.preview-panel{
+  padding:20px;
+  position:sticky;
+  top:90px;
+}
+
+.section{
+  padding-bottom:30px;
+  margin-bottom:30px;
+  border-bottom:1px solid var(--border);
+}
+
+.section:last-child{
+  padding-bottom:0;
+  margin-bottom:0;
+  border-bottom:0;
+}
+
+.section-title{
+  margin:0 0 18px;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:18px;
+  font-weight:700;
+}
+
+.section-title small{
+  display:block;
+  margin-top:3px;
+
+  color:var(--muted);
+  font-family:"Hind Siliguri",sans-serif;
+  font-size:13px;
+  font-weight:400;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{
+  grid-column:1 / -1;
+}
+
+label{
+  font-size:14px;
+  font-weight:600;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:11px;
+
+  background:#fff;
+  color:var(--text);
+
+  padding:12px 13px;
+  outline:none;
+
+  transition:border-color .15s,box-shadow .15s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(0,135,196,.10);
+}
+
+textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#9aa8b2;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.btn{
+  border:0;
+  border-radius:11px;
+  padding:12px 18px;
+
+  cursor:pointer;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:14px;
+  font-weight:700;
+
+  transition:.15s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:var(--primary-dark);
+}
+
+.btn-secondary{
+  background:#edf4f8;
+  color:var(--text);
+}
+
+.btn-secondary:hover{
+  background:#e2edf3;
+}
+
+/* =========================
+   PREVIEW HEADER
+========================= */
+
+.preview-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+
+  margin-bottom:14px;
+}
+
+.preview-title h2{
+  margin:0;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:18px;
+}
+
+.preview-title span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* =========================
+   CV
+========================= */
+
+.cv-paper{
+  background:#fff;
+  border:1px solid #dce4e9;
+
+  min-height:595px;
+
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+.cv-top{
+  padding:25px 24px 20px;
+
+  background:#0d2634;
+  color:#fff;
+}
+
+.cv-name{
+  margin:0;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
+  font-weight:700;
+  line-height:1.1;
+}
+
+.cv-role{
+  margin-top:6px;
+
+  color:#8edcff;
+  font-size:14px;
+  font-weight:600;
+}
+
+.cv-contact{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+
+  margin-top:15px;
+
+  color:#d4e1e8;
+  font-size:10px;
+}
+
+.cv-body{
+  display:grid;
+  grid-template-columns:1fr 105px;
+  gap:20px;
+
+  padding:22px 24px;
+}
+
+.cv-main{
+  min-width:0;
+}
+
+.cv-side{
+  border-left:1px solid #e1e8ec;
+  padding-left:14px;
+}
+
+.cv-section{
+  margin-bottom:18px;
+}
+
+.cv-section:last-child{
+  margin-bottom:0;
+}
+
+.cv-section h3{
+  margin:0 0 7px;
+
+  color:var(--primary);
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:11px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+.cv-section p{
+  margin:0;
+
+  color:#44545e;
+
+  font-size:10px;
+  line-height:1.55;
+  white-space:pre-line;
+}
+
+.cv-item{
+  margin-bottom:11px;
+}
+
+.cv-item:last-child{
+  margin-bottom:0;
+}
+
+.cv-item strong{
+  display:block;
+
+  color:#182d39;
+
+  font-size:10px;
+}
+
+.cv-item span{
+  display:block;
+
+  margin-top:2px;
+
+  color:#70808a;
+
+  font-size:9px;
+}
+
+.cv-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+
+.cv-skill{
+  padding:3px 6px;
+
+  border-radius:5px;
+
+  background:#edf6fa;
+  color:#176889;
+
+  font-size:8px;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.message{
+  display:none;
+
+  margin-top:18px;
+  padding:13px 15px;
+
+  border-radius:11px;
+
+  background:#e9f8f0;
+  border:1px solid #bde8cf;
+  color:var(--success);
+
+  font-size:14px;
+}
+
+.message.show{
+  display:block;
+}
+
+.note{
+  margin-top:14px;
+
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  text-align:center;
+
+  color:var(--muted);
+  font-size:13px;
+}
+
+.footer strong{
+  color:var(--text);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .preview-panel{
+    position:static;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .topbar-inner,
+  .page{
+    width:min(100% - 22px,1180px);
+  }
+
+  .page{
+    margin-top:30px;
+  }
+
+  .form-panel{
+    padding:19px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .preview-panel{
+    padding:12px;
+  }
+
+  .cv-paper{
+    transform-origin:top left;
+  }
+
+  .cv-body{
+    grid-template-columns:1fr;
+  }
+
+  .cv-side{
+    border-left:0;
+    border-top:1px solid #e1e8ec;
+    padding-left:0;
+    padding-top:14px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+  body{
+    background:#fff;
+  }
+
+  .topbar,
+  .page-header,
+  .form-panel,
+  .preview-title,
+  .footer{
+    display:none !important;
+  }
+
+  .page{
+    width:100%;
+    margin:0;
+  }
+
+  .layout{
+    display:block;
+  }
+
+  .preview-panel{
+    padding:0;
+    border:0;
+    box-shadow:none;
+  }
+
+  .cv-paper{
+    border:0;
+    box-shadow:none;
+    min-height:0;
+  }
+
+  @page{
+    size:A4;
+    margin:0;
+  }
+}
 </style>
 </head>
-<body>
-<div class="login" id="login">
-  <form id="loginForm" autocomplete="off">
-    <div class="brand"><img src="../logo.png" alt="DigiSER BD logo"></div>
-    <h2 style="text-align:center">DigiSER Admin</h2>
-    <p style="text-align:center">Admin password দিয়ে ঢুকুন।</p>
-    <div class="field"><label for="pw">Password</label><input type="password" id="pw" autocomplete="off"></div>
-    <div class="err" id="loginErr"></div>
-    <button class="btn pri" type="submit" style="width:100%;margin-top:6px">Login</button>
-  </form>
-</div>
-<div class="app" id="app" hidden>
-  <aside class="side" id="side">
-    <div class="logo"><img src="../logo.png" alt="DigiSER BD logo"> DigiSER Admin</div>
-    <nav class="nav" id="nav"></nav>
-    <small>ডেটা এখন এই ব্রাউজারে সেভ হচ্ছে। Firebase যুক্ত করলে সবার জন্য লাইভ হবে।</small>
-  </aside>
-  <main class="main">
-    <div class="top">
-      <div style="display:flex;gap:10px;align-items:center">
-        <button class="menu-btn" id="menuBtn" aria-label="Menu">☰ Menu</button>
-        <h1 id="title">Dashboard</h1>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn" id="exportBtn">Export backup</button>
-        <button class="btn" id="importBtn">Import backup</button>
-        <input type="file" id="importFile" accept="application/json" hidden>
-        <button class="btn" id="logoutBtn">Logout</button>
-      </div>
-    </div>
-    <div id="view"></div>
-  </main>
-</div>
 
-<div class="modal" id="modal"><div class="box" id="box"></div></div>
-<div class="toast" id="toast"></div>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+
+    <a href="../" class="brand">
+      DigiSER <span>BD</span>
+    </a>
+
+    <a href="../" class="back-link">
+      ← Back to website
+    </a>
+
+  </div>
+</header>
+
+
+<main class="page">
+
+  <div class="page-header">
+
+    <div class="eyebrow">
+      Career Application
+    </div>
+
+    <h1>Create your professional CV</h1>
+
+    <p>
+      Complete your information, preview your CV and submit your application
+      to DigiSER BD. You can also save the CV as PDF for your own use.
+    </p>
+
+  </div>
+
+
+  <div class="layout">
+
+    <!-- =========================
+         FORM
+    ========================== -->
+
+    <section class="panel form-panel">
+
+      <form id="applicationForm">
+
+        <!-- PERSONAL -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Personal Information
+            <small>Basic information about the applicant.</small>
+          </h2>
+
+          <div class="grid">
+
+            <div class="field">
+              <label for="name">Full Name *</label>
+
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your full name"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="mobile">Mobile Number *</label>
+
+              <input
+                id="mobile"
+                name="mobile"
+                type="tel"
+                placeholder="+880 1XXXXXXXXX"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address</label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+              >
+            </div>
+
+            <div class="field">
+              <label for="emergency">Emergency Contact</label>
+
+              <input
+                id="emergency"
+                name="emergency"
+                type="text"
+                placeholder="Name and phone number"
+              >
+            </div>
+
+            <div class="field full">
+              <label for="currentAddress">
+                Current Address
+              </label>
+
+              <textarea
+                id="currentAddress"
+                name="currentAddress"
+                placeholder="Your current address"
+              ></textarea>
+            </div>
+
+            <div class="field full">
+              <label for="permanentAddress">
+                Permanent Address
+              </label>
+
+              <textarea
+                id="permanentAddress"
+                name="permanentAddress"
+                placeholder="Your permanent address"
+              ></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Professional Profile
+            <small>Short introduction for your CV.</small>
+          </h2>
+
+          <div class="field">
+
+            <label for="profile">
+              Profile / Career Objective
+            </label>
+
+            <textarea
+              id="profile"
+              name="profile"
+              rows="5"
+              placeholder="Write a short professional introduction..."
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <!-- EDUCATION -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Education
+          </h2>
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label for="ssc">
+                SSC / Equivalent
+              </label>
+
+              <input
+                id="ssc"
+                type="text"
+                placeholder="School, group, year, result"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="hsc">
+                HSC / Equivalent
+              </label>
+
+              <input
+                id="hsc"
+                type="text"
+                placeholder="College, group, year, result"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="graduate">
+                Graduation
+              </label>
+
+              <input
+                id="graduate"
+                type="text"
+                placeholder="Degree, institution, year"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="otherEducation">
+                Other Education
+              </label>
+
+              <input
+                id="otherEducation"
+                type="text"
+                placeholder="Course, certification etc."
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- EXPERIENCE -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Experience
+          </h2>
+
+          <div class="grid">
+
+            <div class="field full">
+
+              <label for="experience">
+                Work Experience
+              </label>
+
+              <textarea
+                id="experience"
+                rows="5"
+                placeholder="Company, position, responsibilities and duration..."
+              ></textarea>
+
+            </div>
+
+            <div class="field">
+
+              <label for="duty">
+                Main Duties
+              </label>
+
+              <textarea
+                id="duty"
+                placeholder="Describe your main responsibilities..."
+              ></textarea>
+
+            </div>
+
+            <div class="field">
+
+              <label for="previousSalary">
+                Previous Salary
+              </label>
+
+              <input
+                id="previousSalary"
+                type="text"
+                placeholder="e.g. 25,000 BDT"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- SKILLS -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Skills & Languages
+          </h2>
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label for="skills">
+                Skills
+              </label>
+
+              <textarea
+                id="skills"
+                placeholder="Web development, communication, MS Office..."
+              ></textarea>
+
+            </div>
+
+            <div class="field">
+
+              <label for="languages">
+                Languages
+              </label>
+
+              <textarea
+                id="languages"
+                placeholder="Bangla - Native&#10;English - Good"
+              ></textarea>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- WANTED -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Job Preference
+          </h2>
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label for="wantedRole">
+                Desired Role
+              </label>
+
+              <input
+                id="wantedRole"
+                type="text"
+                placeholder="e.g. Software Engineer"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="wantedSalary">
+                Expected Salary
+              </label>
+
+              <input
+                id="wantedSalary"
+                type="text"
+                placeholder="e.g. 40,000 BDT"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="wantedType">
+                Job Type
+              </label>
+
+              <select id="wantedType">
+
+                <option value="">
+                  Select job type
+                </option>
+
+                <option value="Full-time">
+                  Full-time
+                </option>
+
+                <option value="Part-time">
+                  Part-time
+                </option>
+
+                <option value="Remote">
+                  Remote
+                </option>
+
+                <option value="Contract">
+                  Contract
+                </option>
+
+                <option value="Internship">
+                  Internship
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="field">
+
+              <label for="wantedLocation">
+                Preferred Location
+              </label>
+
+              <input
+                id="wantedLocation"
+                type="text"
+                placeholder="Dhaka / Remote / Anywhere"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- REFERENCE -->
+
+        <div class="section">
+
+          <h2 class="section-title">
+            Reference
+          </h2>
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label for="referenceName">
+                Reference Name
+              </label>
+
+              <input
+                id="referenceName"
+                type="text"
+                placeholder="Full name"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="referenceContact">
+                Reference Contact
+              </label>
+
+              <input
+                id="referenceContact"
+                type="text"
+                placeholder="Phone / Email"
+              >
+
+            </div>
+
+            <div class="field full">
+
+              <label for="referenceRelation">
+                Relationship / Position
+              </label>
+
+              <input
+                id="referenceRelation"
+                type="text"
+                placeholder="e.g. Former Manager"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACTION -->
+
+        <div class="actions">
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="previewBtn"
+          >
+            Update Preview
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit Application
+          </button>
+
+        </div>
+
+        <div
+          class="message"
+          id="successMessage"
+        ></div>
+
+        <p class="note">
+          Your CV is created for application purposes. DigiSER BD does not
+          automatically send your CV to any company. You can download the CV
+          and submit it yourself.
+        </p>
+
+      </form>
+
+    </section>
+
+
+    <!-- =========================
+         CV PREVIEW
+    ========================== -->
+
+    <aside class="panel preview-panel">
+
+      <div class="preview-title">
+
+        <h2>CV Preview</h2>
+
+        <span>A4 format</span>
+
+      </div>
+
+
+      <div class="cv-paper" id="cvPreview">
+
+        <div class="cv-top">
+
+          <h1 class="cv-name" id="cvName">
+            Your Name
+          </h1>
+
+          <div class="cv-role" id="cvRole">
+            Professional Applicant
+          </div>
+
+          <div class="cv-contact">
+
+            <span id="cvMobile">
+              Phone
+            </span>
+
+            <span id="cvEmail">
+              Email
+            </span>
+
+            <span id="cvLocation">
+              Location
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="cv-body">
+
+          <div class="cv-main">
+
+            <div class="cv-section">
+
+              <h3>Profile</h3>
+
+              <p id="cvProfile">
+                Your professional profile will appear here.
+              </p>
+
+            </div>
+
+
+            <div class="cv-section">
+
+              <h3>Experience</h3>
+
+              <div
+                class="cv-item"
+                id="cvExperience"
+              >
+                <strong>
+                  Professional Experience
+                </strong>
+
+                <span>
+                  Details will appear here.
+                </span>
+              </div>
+
+            </div>
+
+
+            <div class="cv-section">
+
+              <h3>Education</h3>
+
+              <div
+                class="cv-item"
+                id="cvEducation"
+              >
+                <strong>
+                  Education
+                </strong>
+
+                <span>
+                  Details will appear here.
+                </span>
+              </div>
+
+            </div>
+
+
+            <div class="cv-section">
+
+              <h3>Job Preference</h3>
+
+              <p id="cvWanted">
+                Desired role and job preferences will appear here.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="cv-side">
+
+            <div class="cv-section">
+
+              <h3>Skills</h3>
+
+              <div
+                class="cv-skills"
+                id="cvSkills"
+              >
+                <span class="cv-skill">
+                  Skills
+                </span>
+              </div>
+
+            </div>
+
+
+            <div class="cv-section">
+
+              <h3>Languages</h3>
+
+              <p id="cvLanguages">
+                Languages
+              </p>
+
+            </div>
+
+
+            <div class="cv-section">
+
+              <h3>Reference</h3>
+
+              <p id="cvReference">
+                Reference
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="downloadBtn"
+        >
+          Download / Save PDF
+        </button>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<footer class="footer">
+
+  <p>
+    © <span id="year"></span>
+    <strong>DigiSER BD</strong>.
+    Career Application System.
+  </p>
+
+</footer>
+
 
 <script>
-/* ============ 1) DATA LAYER ============
-   এখন localStorage ব্যবহার করছে। পরে Firebase যুক্ত করার সময়
-   শুধু এই store অবজেক্টের ভেতরের কোড বদলাতে হবে, বাকি পুরো panel একই থাকবে। */
-const store = {
-  key: 'digiserbd_admin_v1',
-  load() {
-    try { const d = JSON.parse(localStorage.getItem(this.key)); if (d) return d; } catch (e) {}
-    return null;
-  },
-  save(data) {
-    try { localStorage.setItem(this.key, JSON.stringify(data)); } catch (e) { toast('Save failed: browser storage blocked'); }
-  }
-};
 
-/* ============ 2) SECTIONS CONFIG ============ */
-const SECTIONS = {
-  jobs: {
-    label: 'Jobs', single: 'Job',
-    fields: [
-      {k:'title', l:'Job title', req:1},
-      {k:'company', l:'Company', req:1},
-      {k:'type', l:'Type', opts:['Full Time','Part Time','Contract','Internship']},
-      {k:'location', l:'Location', def:'Dhaka, Bangladesh'},
-      {k:'salary', l:'Salary (e.g. ৳15,000 – ৳25,000)'},
-      {k:'status', l:'Status', opts:['Active','Hidden']}
-    ],
-    cols: ['title','company','type','salary','status']
-  },
-  services: {
-    label: 'Services', single: 'Service',
-    fields: [
-      {k:'icon', l:'Icon (emoji)', def:'🛠'},
-      {k:'title', l:'Service name', req:1},
-      {k:'desc', l:'Short description', area:1},
-      {k:'price', l:'Price text (e.g. From ৳500 / Contact Us)'},
-      {k:'status', l:'Status', opts:['Active','Hidden']}
-    ],
-    cols: ['icon','title','price','status']
-  },
-  employees: {
-    label: 'Employees', single: 'Employee',
-    fields: [
-      {k:'name', l:'Name', req:1},
-      {k:'role', l:'Role / Skill', req:1},
-      {k:'rating', l:'Rating (0-5)', def:'4.5'},
-      {k:'reviews', l:'Review count', def:'0'},
-      {k:'phone', l:'Phone'},
-      {k:'status', l:'Status', opts:['Available','Busy','Hidden']}
-    ],
-    cols: ['name','role','rating','phone','status']
-  },
-  businesses: {
-    label: 'Businesses', single: 'Business',
-    fields: [
-      {k:'name', l:'Business name', req:1},
-      {k:'category', l:'Category'},
-      {k:'location', l:'Location', def:'Dhaka, Bangladesh'},
-      {k:'phone', l:'Phone'},
-      {k:'status', l:'Status', opts:['Active','Pending','Hidden']}
-    ],
-    cols: ['name','category','location','phone','status']
-  },
-  messages: {
-    label: 'Messages', single: 'Message',
-    fields: [
-      {k:'name', l:'Name', req:1},
-      {k:'contact', l:'Phone / Email'},
-      {k:'message', l:'Message', area:1},
-      {k:'status', l:'Status', opts:['New','Done']}
-    ],
-    cols: ['name','contact','message','status']
-  },
-  blog: {
-    label: 'Blog', single: 'Post',
-    fields: [
-      {k:'title', l:'Title', req:1},
-      {k:'category', l:'Category', def:'Career tips'},
-      {k:'author', l:'Author', def:'DigiSER BD'},
-      {k:'date', l:'Date (YYYY-MM-DD)'},
-      {k:'summary', l:'Short summary', area:1},
-      {k:'content', l:'Full content (blank lines = new paragraph)', area:1},
-      {k:'status', l:'Status', opts:['Published','Draft']}
-    ],
-    cols: ['title','category','date','status']
-  }
-};
+/* =========================================================
+   DIGISER BD
+   APPLICANT + CV SYSTEM
+   LocalStorage UI version
+========================================================= */
 
-const SEED = {
-  jobs: [
-    {title:'Graphic Designer',company:'Creative Studio BD',type:'Full Time',location:'Dhaka, Bangladesh',salary:'৳15,000 – ৳25,000',status:'Active'},
-    {title:'Social Media Manager',company:'Digital Growth Ltd.',type:'Part Time',location:'Dhaka, Bangladesh',salary:'৳10,000 – ৳18,000',status:'Active'},
-    {title:'Web Developer',company:'Tech Solution BD',type:'Full Time',location:'Dhaka, Bangladesh',salary:'৳20,000 – ৳40,000',status:'Active'},
-    {title:'Office Assistant',company:'Sunrise Trading',type:'Contract',location:'Dhaka, Bangladesh',salary:'৳8,000 – ৳12,000',status:'Active'}
-  ],
-  services: [
-    {icon:'🎨',title:'Graphic Design',desc:'Logo, Banner, Social Media Post, Print Design and more.',price:'From ৳500',status:'Active'},
-    {icon:'📱',title:'Social Media Management',desc:'Facebook, Instagram, YouTube, TikTok marketing and management.',price:'From ৳1,000',status:'Active'},
-    {icon:'💻',title:'Website Maintenance',desc:'Website update, backup, security and content support.',price:'From ৳1,000',status:'Active'},
-    {icon:'👨‍💼',title:'Employee Supplier',desc:'Skilled and unskilled manpower for your local business.',price:'Contact Us',status:'Active'},
-    {icon:'🏠',title:'Land Supported Service',desc:'Land purchase, rent, document support and consultation.',price:'Contact Us',status:'Active'},
-    {icon:'📈',title:'Digital Marketing',desc:'SEO, advertising, content and business lead generation.',price:'From ৳1,000',status:'Active'},
-    {icon:'📝',title:'Data Entry & Admin Support',desc:'Data entry, Excel, PDF, virtual assistant support.',price:'From ৳500',status:'Active'},
-    {icon:'🔧',title:'Other Local Services',desc:'Printing, delivery, event support and other local services.',price:'From ৳300',status:'Active'}
-  ],
-  employees: [
-    {name:'Md. Rahman',role:'Graphic Designer',rating:'4.8',reviews:'24',phone:'',status:'Available'},
-    {name:'Ayesha Akter',role:'Social Media Manager',rating:'4.7',reviews:'18',phone:'',status:'Available'},
-    {name:'Tariq Hasan',role:'Web Developer',rating:'4.9',reviews:'32',phone:'',status:'Available'},
-    {name:'Nusrat Jahan',role:'Content Writer',rating:'4.6',reviews:'21',phone:'',status:'Available'},
-    {name:'Rasel Ahmed',role:'Data Entry Operator',rating:'4.5',reviews:'16',phone:'',status:'Available'},
-    {name:'Shamim Hossain',role:'Video Editor',rating:'4.7',reviews:'14',phone:'',status:'Available'}
-  ],
-  businesses: [],
-  messages: [],
-  blog: [
-    {title:'How to make a CV that gets noticed',category:'Career tips',author:'DigiSER BD',date:'2026-09-19',summary:'Simple steps to write a clear, one-page CV for jobs in Bangladesh.',content:'Keep your CV to one page and put your most important skills at the top.\n\nWrite your name, phone number and email clearly. Use a professional email address.\n\nList your work experience with the newest job first. For each job write what you did, in one or two short lines.\n\nAdd only the skills that match the job you are applying for, such as design tools, Excel, or communication.\n\nCheck spelling before you send it, and save the file as a PDF.',status:'Published'},
-    {title:'Hiring your first employee: a simple checklist',category:'For businesses',author:'DigiSER BD',date:'2026-09-19',summary:'What local business owners should decide before they hire.',content:'Decide the exact work the person will do and how many hours a week you need.\n\nSet a fair salary range and write it in the job post. Clear pay attracts better applicants.\n\nAsk for a short trial task instead of only asking questions in an interview.\n\nAgree on the start date, working hours and payment date before the first day.\n\nPost your job on DigiSER BD and we will help you reach skilled people near you.',status:'Published'}
-  ],
-  users: []
-};
+const STORAGE_KEY = "digiserbd_admin_v1";
 
-/* ============ 3) STATE ============ */
-let db = store.load();
-if (!db) {
-  db = {};
-  for (const s in SEED) db[s] = SEED[s].map((r, i) => ({id: s[0] + Date.now() + i, ...r}));
-  store.save(db);
-} else {
-  let changed = false;
-  for (const s in SEED) {
-    if (!Array.isArray(db[s])) { db[s] = SEED[s].map((r, i) => ({id: s[0] + Date.now() + i, ...r})); changed = true; }
-  }
-  if (changed) store.save(db);
-}
-let current = 'dashboard';
-let query = '';
 
-/* ============ 4) HELPERS ============ */
-const $ = id => document.getElementById(id);
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000); }
-function persist(){ store.save(db); }
+/* ---------------------------------------------------------
+   Helpers
+--------------------------------------------------------- */
 
-/* ============ 5) RENDER ============ */
-function renderNav(){
-  let h = `<button data-go="dashboard" class="${current==='dashboard'?'on':''}">📊 Dashboard</button>`;
-  const icons = {jobs:'💼',services:'🛠',employees:'👥',businesses:'🏪',messages:'💬',blog:'📝'};
-  for (const s in SECTIONS){
-    h += `<button data-go="${s}" class="${current===s?'on':''}">${icons[s]} ${SECTIONS[s].label}<span class="cnt">${db[s].length}</span></button>`;
-  }
-  h += `<button data-go="applicants" class="${current==='applicants'?'on':''}">📋 Applicants<span class="cnt">${db.users.length}</span></button>`;
-  $('nav').innerHTML = h;
+function $(id){
+  return document.getElementById(id);
 }
 
-function render(){
-  renderNav();
-  $('title').textContent = current==='dashboard' ? 'Dashboard' : (current==='applicants' ? 'Applicants' : SECTIONS[current].label);
-  $('view').innerHTML = current==='dashboard' ? dashboard() : (current==='applicants' ? applicantsView() : listView(current));
-  $('side').classList.remove('open');
+
+function value(id){
+
+  const el = $(id);
+
+  return el ? el.value.trim() : "";
+
 }
 
-function dashboard(){
-  let h = `<div class="note"><b>শুরু করার ধাপ:</b> বাম পাশের মেনু থেকে Jobs, Services, Employees বা Businesses খুলে Add / Edit / Delete করুন। এখনকার ডেটা শুধু আপনার ব্রাউজারে থাকছে, তাই মাঝে মাঝে <b>Export backup</b> নিয়ে রাখুন।</div><div class="stats">`;
-  for (const s in SECTIONS){
-    h += `<button class="stat" data-go="${s}"><div class="num">${db[s].length}</div><span>${SECTIONS[s].label}</span></button>`;
-  }
-  h += `<button class="stat" data-go="applicants"><div class="num">${db.users.length}</div><span>Applicants</span></button>`;
-  const newMsg = db.messages.filter(m=>m.status==='New').length;
-  h += `</div><div class="panel"><div class="bar"><b>নতুন মেসেজ: ${newMsg}</b></div><div class="empty">${newMsg? 'Messages মেনুতে গিয়ে দেখুন।' : 'কোনো নতুন মেসেজ নেই।'}</div></div>`;
-  const recent = db.users.slice(0, 5);
-  h += `<div class="panel" style="margin-top:14px"><div class="bar"><b>সাম্প্রতিক আবেদনকারী (Applicants)</b><button class="btn sm" data-go="applicants" style="margin-left:auto">সব দেখুন</button></div>`;
-  if (!recent.length){
-    h += `<div class="empty">এখনো কেউ /register/ পেজ থেকে আবেদন করেনি।</div></div>`;
-  } else {
-    h += `<div class="tablewrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Applied for</th><th>Status</th><th></th></tr></thead><tbody>`;
-    recent.forEach(u => {
-      const p = u.personal || {}; const off = u.status !== 'Available';
-      h += `<tr><td>${esc(p.name)}</td><td>${esc(p.phone)}</td><td>${esc((u.wanted||{}).role || '-')}</td>
-        <td><span class="pill ${off?'off':''}">${esc(u.status||'')}</span></td>
-        <td style="text-align:right"><button class="btn sm" data-view="${esc(u.id)}">View</button></td></tr>`;
-    });
-    h += `</tbody></table></div></div>`;
-  }
-  return h;
+
+function escapeHTML(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
 }
 
-function listView(s){
-  const cfg = SECTIONS[s];
-  const q = query.toLowerCase();
-  const rows = db[s].filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
-  let h = `<div class="panel"><div class="bar">
-    <input type="search" id="search" placeholder="Search ${cfg.label.toLowerCase()}..." value="${esc(query)}" aria-label="Search">
-    <button class="btn pri" data-add="${s}">+ Add ${cfg.single}</button></div>`;
-  if (!rows.length){
-    h += `<div class="empty">${db[s].length? 'কিছু পাওয়া যায়নি।' : 'এখনো কিছু নেই। উপরের বাটনে চাপ দিয়ে প্রথমটি যোগ করুন।'}</div></div>`;
-    return h;
-  }
-  h += `<div class="tablewrap"><table><thead><tr>`;
-  cfg.cols.forEach(c => { const f = cfg.fields.find(x=>x.k===c); h += `<th>${esc(f.l.replace(/ \(.*\)/,''))}</th>`; });
-  h += `<th></th></tr></thead><tbody>`;
-  rows.forEach(r => {
-    h += `<tr>`;
-    cfg.cols.forEach(c => {
-      if (c==='status'){ const off = ['Hidden','Busy','Draft'].includes(r[c]); h += `<td><span class="pill ${off?'off':''}">${esc(r[c])}</span></td>`; }
-      else h += `<td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">${esc(r[c])}</td>`;
-    });
-    h += `<td style="text-align:right"><button class="btn sm" data-edit="${r.id}">Edit</button> <button class="btn sm del" data-del="${r.id}">Delete</button></td></tr>`;
-  });
-  return h + `</tbody></table></div></div>`;
+
+function generateId(){
+
+  const year = new Date().getFullYear();
+
+  const random = Math.floor(
+    100000 + Math.random() * 900000
+  );
+
+  return `DGBD-${year}-${random}`;
+
 }
 
-/* ============ 5b) APPLICANTS (from /register/ CV form) ============ */
-function applicantsView(){
-  const q = query.toLowerCase();
-  const rows = db.users.filter(u => !q || JSON.stringify(u).toLowerCase().includes(q));
-  let h = `<div class="panel"><div class="bar">
-    <input type="search" id="search" placeholder="Search applicants..." value="${esc(query)}" aria-label="Search">
-    </div>`;
-  if (!rows.length){
-    h += `<div class="empty">এখনো কেউ /register/ পেজ থেকে আবেদন করেনি।</div></div>`;
-    return h;
-  }
-  h += `<div class="tablewrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Applied for</th><th>Status</th><th>Updated</th><th></th></tr></thead><tbody>`;
-  rows.forEach(u => {
-    const p = u.personal || {};
-    const off = u.status !== 'Available';
-    h += `<tr><td>${esc(p.name)}</td><td>${esc(p.phone)}</td><td>${esc((u.wanted||{}).role || '-')}</td>
-      <td><span class="pill ${off?'off':''}">${esc(u.status||'')}</span></td><td>${esc(u.updated||'')}</td>
-      <td style="text-align:right"><button class="btn sm" data-view="${esc(u.id)}">View</button> <button class="btn sm del" data-delapp="${esc(u.id)}">Delete</button></td></tr>`;
-  });
-  return h + `</tbody></table></div></div>`;
-}
 
-function openApplicant(id){
-  const u = db.users.find(x=>x.id===id); if(!u) return;
-  const p = u.personal||{}, ed = u.education||{}, ex = u.experience||{}, sk = u.skills||{}, lg = u.language||{}, wa = u.wanted||{}, rf = u.reference||{}, at = u.attachments||{};
-  const row = (l,v) => v ? `<div class="field"><label>${l}</label><div>${esc(v)}</div></div>` : '';
-  const edu = (l,e) => (e && (e.inst||e.sub||e.res||e.year)) ? `<div class="field"><label>${l}</label><div>${esc(e.inst||'-')} · ${esc(e.sub||'-')} · ${esc(e.res||'-')} · ${esc(e.year||'-')}</div></div>` : '';
-  const skList = Object.entries({computer:'কম্পিউটার পরিচালনা',word:'MS Word',excel:'MS Excel',internet:'ইন্টারনেট ও ই-মেইল',design:'গ্রাফিক ডিজাইন',social:'সোশ্যাল মিডিয়া'}).filter(([k])=>sk[k]).map(([,l])=>l).join(', ');
-  let h = `<h2>${esc(p.name||'Applicant')}</h2>`;
-  h += `<div class="field"><label>Status</label><select id="appStatus"><option ${u.status==='Available'?'selected':''}>Available</option><option ${u.status==='Busy'?'selected':''}>Busy</option></select></div>`;
-  h += row('মোবাইল', p.phone) + row('জরুরী নম্বর', p.emergency) + row('ই-মেইল', p.email) + row('বর্তমান ঠিকানা', p.address) + row('স্থায়ী ঠিকানা', p.permanent);
-  h += edu('SSC/সমমান', ed.ssc) + edu('HSC/সমমান', ed.hsc) + edu('স্নাতক', ed.grad) + edu('অন্যান্য শিক্ষা', ed.other);
-  h += row('অভিজ্ঞতা', [ex.role, ex.inst, ex.period].filter(Boolean).join(' · '));
-  h += row('দায়িত্ব ছিল', ex.duty) + row('পূর্বের বেতন', ex.salary);
-  h += row('দক্ষতা', skList);
-  h += row('ভাষা (বাংলা)', [lg.bn&&lg.bn.rw, lg.bn&&lg.bn.sp].filter(Boolean).join(' / '));
-  h += row('ভাষা (ইংরেজি)', [lg.en&&lg.en.rw, lg.en&&lg.en.sp].filter(Boolean).join(' / '));
-  h += row('আবেদনকৃত পদ', wa.role) + row('প্রত্যাশিত বেতন', wa.salary) + row('কাজের ধরন', wa.type) + row('কাজের স্থান পছন্দ', wa.location);
-  h += row('রেফারেন্স', [rf.name, rf.role, rf.inst, rf.phone].filter(Boolean).join(' · '));
-  h += row('অন্যান্য সংযুক্তি', at.other);
-  h += `<div class="acts"><button class="btn" data-close>Close</button><button class="btn pri" id="appSave">Save status</button></div>`;
-  $('box').innerHTML = h;
-  $('modal').classList.add('open');
-  $('appSave').onclick = () => {
-    u.status = $('#appStatus').value; persist(); closeModal(); render(); toast('Saved');
+/* ---------------------------------------------------------
+   Admin DB
+--------------------------------------------------------- */
+
+function getDatabase(){
+
+  try{
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if(raw){
+
+      const db = JSON.parse(raw);
+
+      if(!Array.isArray(db.users)){
+        db.users = [];
+      }
+
+      return db;
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Could not read DigiSER BD database:",
+      error
+    );
+
+  }
+
+  return {
+
+    users:[],
+    jobs:[],
+    services:[],
+    employees:[],
+    businesses:[],
+    messages:[],
+    blog:[]
+
   };
+
 }
 
-/* ============ 6) FORM MODAL ============ */
-function openForm(s, id){
-  const cfg = SECTIONS[s];
-  const rec = id ? db[s].find(r=>r.id===id) : {};
-  let h = `<h2>${id?'Edit':'Add'} ${cfg.single}</h2><div>`;
-  cfg.fields.forEach(f => {
-    const v = rec[f.k] ?? f.def ?? (f.opts ? f.opts[0] : '');
-    h += `<div class="field"><label for="f_${f.k}">${esc(f.l)}${f.req?' *':''}</label>`;
-    if (f.opts) h += `<select id="f_${f.k}">${f.opts.map(o=>`<option ${o===v?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
-    else if (f.area) h += `<textarea id="f_${f.k}" rows="3">${esc(v)}</textarea>`;
-    else h += `<input id="f_${f.k}" value="${esc(v)}">`;
-    h += `</div>`;
-  });
-  h += `</div><div class="acts"><button class="btn" data-close>Cancel</button><button class="btn pri" id="saveBtn">Save</button></div>`;
-  $('box').innerHTML = h;
-  $('modal').classList.add('open');
-  $('saveBtn').onclick = () => {
-    const data = {};
-    for (const f of cfg.fields){
-      data[f.k] = $('f_'+f.k).value.trim();
-      if (f.req && !data[f.k]){ toast(f.l.replace(/ \(.*\)/,'') + ' দিন'); $('f_'+f.k).focus(); return; }
+
+function saveDatabase(db){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(db)
+  );
+
+}
+
+
+/* ---------------------------------------------------------
+   Collect Applicant Data
+--------------------------------------------------------- */
+
+function collectApplicant(){
+
+  const fullName = value("name");
+
+  const applicant = {
+
+    id:generateId(),
+
+    name:fullName,
+
+    personal:{
+
+      name:fullName,
+
+      mobile:value("mobile"),
+
+      emergency:value("emergency"),
+
+      email:value("email"),
+
+      currentAddress:value("currentAddress"),
+
+      permanentAddress:value("permanentAddress")
+
+    },
+
+    education:{
+
+      ssc:value("ssc"),
+
+      hsc:value("hsc"),
+
+      graduate:value("graduate"),
+
+      other:value("otherEducation")
+
+    },
+
+    experience:{
+
+      experience:value("experience"),
+
+      duty:value("duty"),
+
+      previousSalary:value("previousSalary")
+
+    },
+
+    skills:{
+
+      skills:value("skills")
+
+    },
+
+    language:{
+
+      language:value("languages")
+
+    },
+
+    wanted:{
+
+      role:value("wantedRole"),
+
+      salary:value("wantedSalary"),
+
+      type:value("wantedType"),
+
+      location:value("wantedLocation")
+
+    },
+
+    reference:{
+
+      name:value("referenceName"),
+
+      contact:value("referenceContact"),
+
+      relation:value("referenceRelation")
+
+    },
+
+    attachments:{
+
+      cvGenerated:true,
+
+      cvVersion:"1.0"
+
+    },
+
+    status:"new",
+
+    updated:new Date().toISOString(),
+
+    source:"register",
+
+    cv:{
+
+      generated:true,
+
+      generatedAt:new Date().toISOString()
+
     }
-    if (id) Object.assign(rec, data);
-    else db[s].unshift({id: s[0] + Date.now(), ...data});
-    persist(); closeModal(); render(); toast('Saved');
+
   };
-  setTimeout(()=>$('box').querySelector('input,select,textarea')?.focus(), 30);
-}
-function closeModal(){ $('modal').classList.remove('open'); }
 
-/* ============ 7) EVENTS ============ */
-document.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-add],[data-edit],[data-del],[data-close],[data-view],[data-delapp]');
-  if (!t) { if (e.target === $('modal')) closeModal(); return; }
-  if (t.dataset.go){ current = t.dataset.go; query=''; render(); }
-  else if (t.dataset.add) openForm(t.dataset.add);
-  else if (t.dataset.edit) openForm(current, t.dataset.edit);
-  else if (t.dataset.view) openApplicant(t.dataset.view);
-  else if (t.dataset.delapp){
-    if (confirm('এই আবেদনকারীকে মুছে ফেলবেন?')){
-      db.users = db.users.filter(u=>u.id!==t.dataset.delapp);
-      persist(); render(); toast('Deleted');
-    }
+  return applicant;
+
+}
+
+
+/* ---------------------------------------------------------
+   CV Preview
+--------------------------------------------------------- */
+
+function updateCV(){
+
+  const name =
+    value("name") ||
+    "Your Name";
+
+  const role =
+    value("wantedRole") ||
+    "Professional Applicant";
+
+
+  $("cvName").textContent =
+    name;
+
+  $("cvRole").textContent =
+    role;
+
+
+  $("cvMobile").textContent =
+    value("mobile") ||
+    "Phone";
+
+  $("cvEmail").textContent =
+    value("email") ||
+    "Email";
+
+  $("cvLocation").textContent =
+    value("wantedLocation") ||
+    "Bangladesh";
+
+
+  $("cvProfile").textContent =
+    value("profile") ||
+    "Your professional profile will appear here.";
+
+
+  /* EXPERIENCE */
+
+  const experience =
+    value("experience");
+
+  const duty =
+    value("duty");
+
+  const previousSalary =
+    value("previousSalary");
+
+  let experienceHTML = "";
+
+  if(
+    experience ||
+    duty ||
+    previousSalary
+  ){
+
+    experienceHTML = `
+
+      <strong>
+        Professional Experience
+      </strong>
+
+      ${
+        experience
+          ? `<span>${escapeHTML(experience)}</span>`
+          : ""
+      }
+
+      ${
+        duty
+          ? `<span>${escapeHTML(duty)}</span>`
+          : ""
+      }
+
+      ${
+        previousSalary
+          ? `<span>Previous Salary: ${escapeHTML(previousSalary)}</span>`
+          : ""
+      }
+
+    `;
+
+  }else{
+
+    experienceHTML = `
+
+      <strong>
+        Professional Experience
+      </strong>
+
+      <span>
+        Details will appear here.
+      </span>
+
+    `;
+
   }
-  else if (t.dataset.del){
-    if (confirm('এটি মুছে ফেলবেন? আর ফেরত আনা যাবে না।')){
-      db[current] = db[current].filter(r=>r.id!==t.dataset.del);
-      persist(); render(); toast('Deleted');
-    }
-  }
-  else if (t.hasAttribute('data-close')) closeModal();
+
+  $("cvExperience").innerHTML =
+    experienceHTML;
+
+
+  /* EDUCATION */
+
+  const education = [
+
+    value("ssc")
+      ? `SSC / Equivalent — ${value("ssc")}`
+      : "",
+
+    value("hsc")
+      ? `HSC / Equivalent — ${value("hsc")}`
+      : "",
+
+    value("graduate")
+      ? `Graduation — ${value("graduate")}`
+      : "",
+
+    value("otherEducation")
+      ? `Other — ${value("otherEducation")}`
+      : ""
+
+  ].filter(Boolean);
+
+
+  $("cvEducation").innerHTML =
+
+    education.length
+
+      ? education
+          .map(item =>
+            `<div class="cv-item">
+              <strong>
+                ${escapeHTML(item)}
+              </strong>
+            </div>`
+          )
+          .join("")
+
+      : `
+
+        <strong>
+          Education
+        </strong>
+
+        <span>
+          Details will appear here.
+        </span>
+
+      `;
+
+
+  /* JOB */
+
+  const wanted = [
+
+    value("wantedRole")
+      ? `Role: ${value("wantedRole")}`
+      : "",
+
+    value("wantedSalary")
+      ? `Expected Salary: ${value("wantedSalary")}`
+      : "",
+
+    value("wantedType")
+      ? `Type: ${value("wantedType")}`
+      : "",
+
+    value("wantedLocation")
+      ? `Location: ${value("wantedLocation")}`
+      : ""
+
+  ].filter(Boolean);
+
+
+  $("cvWanted").textContent =
+
+    wanted.length
+
+      ? wanted.join("\n")
+
+      : "Desired role and job preferences will appear here.";
+
+
+  /* SKILLS */
+
+  const skills = value("skills")
+    .split(/[,;\n]+/)
+    .map(item => item.trim())
+    .filter(Boolean);
+
+
+  $("cvSkills").innerHTML =
+
+    skills.length
+
+      ? skills
+          .map(skill =>
+            `<span class="cv-skill">
+              ${escapeHTML(skill)}
+            </span>`
+          )
+          .join("")
+
+      : `<span class="cv-skill">
+          Skills
+        </span>`;
+
+
+  /* LANGUAGES */
+
+  $("cvLanguages").textContent =
+
+    value("languages") ||
+
+    "Languages";
+
+
+  /* REFERENCE */
+
+  const reference = [
+
+    value("referenceName"),
+
+    value("referenceContact"),
+
+    value("referenceRelation")
+
+  ].filter(Boolean);
+
+
+  $("cvReference").textContent =
+
+    reference.length
+
+      ? reference.join(" • ")
+
+      : "Reference";
+
+}
+
+
+/* ---------------------------------------------------------
+   Live Preview
+--------------------------------------------------------- */
+
+const fields =
+  document.querySelectorAll(
+    "#applicationForm input, #applicationForm textarea, #applicationForm select"
+  );
+
+
+fields.forEach(field => {
+
+  field.addEventListener(
+    "input",
+    updateCV
+  );
+
+  field.addEventListener(
+    "change",
+    updateCV
+  );
+
 });
-document.addEventListener('input', e => {
-  if (e.target.id==='search'){
-    query = e.target.value; const pos = e.target.selectionStart;
-    $('view').innerHTML = current==='applicants' ? applicantsView() : listView(current);
-    const el = $('search'); el.focus(); el.setSelectionRange(pos,pos);
-  }
-});
-document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
-$('menuBtn').onclick = () => $('side').classList.toggle('open');
 
-$('exportBtn').onclick = () => {
-  const blob = new Blob([JSON.stringify(db,null,2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'digiserbd-backup-' + new Date().toISOString().slice(0,10) + '.json';
-  a.click(); URL.revokeObjectURL(a.href);
-};
-$('importBtn').onclick = () => $('importFile').click();
-$('importFile').onchange = e => {
-  const file = e.target.files[0]; if (!file) return;
-  const r = new FileReader();
-  r.onload = () => {
-    try {
-      const d = JSON.parse(r.result);
-      for (const s in SECTIONS) if (!Array.isArray(d[s])) throw 0;
-      if (!confirm('বর্তমান ডেটা বদলে backup-এর ডেটা বসানো হবে। চালিয়ে যাবেন?')) return;
-      db = d; persist(); render(); toast('Imported');
-    } catch { toast('ভুল backup ফাইল'); }
-  };
-  r.readAsText(file); e.target.value = '';
-};
 
-/* ============ 8) DEMO LOGIN ============
-   সাময়িক demo password. এটা আসল সুরক্ষা নয়, কারণ কোড সবাই দেখতে পারে।
-   Firebase Login যোগ করলে এটা বদলে আসল লগইন হবে। */
-const DEMO_PASSWORD = 'digiser2026';
-function showApp(){
-  $('login').classList.remove('show');
-  $('app').hidden = false;
-  render();
-}
-function showLogin(){
-  $('app').hidden = true;
-  $('login').classList.add('show');
-  $('pw').value = ''; $('loginErr').textContent = '';
-  setTimeout(()=>$('pw').focus(), 30);
-}
-$('loginForm').onsubmit = e => {
-  e.preventDefault();
-  if ($('pw').value === DEMO_PASSWORD){
-    try { sessionStorage.setItem('digiser_admin_ok','1'); } catch(_) {}
-    showApp();
-  } else {
-    $('loginErr').textContent = 'Password ভুল হয়েছে। আবার চেষ্টা করুন।';
-    $('pw').select();
+$("previewBtn").addEventListener(
+  "click",
+  () => {
+
+    updateCV();
+
+    $("cvPreview").scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
   }
-};
-$('logoutBtn').onclick = () => {
-  try { sessionStorage.removeItem('digiser_admin_ok'); } catch(_) {}
-  showLogin();
-};
-let authed = false;
-try { authed = sessionStorage.getItem('digiser_admin_ok') === '1'; } catch(_) {}
-authed ? showApp() : showLogin();
+);
+
+
+/* ---------------------------------------------------------
+   Submit Application
+--------------------------------------------------------- */
+
+$("applicationForm").addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+    const applicant =
+      collectApplicant();
+
+
+    if(
+      !applicant.name ||
+      !applicant.personal.mobile
+    ){
+
+      alert(
+        "Please enter your full name and mobile number."
+      );
+
+      return;
+
+    }
+
+
+    const db =
+      getDatabase();
+
+
+    /*
+      Prevent accidental duplicate submission
+      during the same browser session.
+    */
+
+    const duplicate =
+      db.users.some(
+        user =>
+
+          user.personal &&
+          user.personal.mobile ===
+          applicant.personal.mobile &&
+
+          user.name ===
+          applicant.name
+      );
+
+
+    if(duplicate){
+
+      alert(
+        "An application with this name and mobile number already exists."
+      );
+
+      return;
+
+    }
+
+
+    db.users.unshift(
+      applicant
+    );
+
+
+    saveDatabase(db);
+
+
+    $("successMessage").innerHTML = `
+
+      <strong>
+        ✓ Application submitted successfully
+      </strong>
+
+      <br><br>
+
+      Your Application ID is:
+
+      <strong>
+        ${escapeHTML(applicant.id)}
+      </strong>
+
+      <br><br>
+
+      Your application is now available in the
+      Admin Dashboard under Applicants.
+
+    `;
+
+
+    $("successMessage")
+      .classList
+      .add("show");
+
+
+    /*
+      Store last application for future use.
+    */
+
+    localStorage.setItem(
+      "digiser_last_application",
+      JSON.stringify(applicant)
+    );
+
+    localStorage.setItem(
+      "digiser_application_id",
+      applicant.id
+    );
+
+
+    updateCV();
+
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+/* ---------------------------------------------------------
+   Download / Save PDF
+--------------------------------------------------------- */
+
+$("downloadBtn").addEventListener(
+  "click",
+  function(){
+
+    updateCV();
+
+    /*
+      Browser-native PDF flow.
+      User can select:
+      Print → Save as PDF
+    */
+
+    window.print();
+
+  }
+);
+
+
+/* ---------------------------------------------------------
+   Year
+--------------------------------------------------------- */
+
+$("year").textContent =
+  new Date().getFullYear();
+
+
+/* ---------------------------------------------------------
+   Initial Preview
+--------------------------------------------------------- */
+
+updateCV();
+
 </script>
+
 </body>
 </html>
