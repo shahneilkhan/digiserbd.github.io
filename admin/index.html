@@ -1,1 +1,3639 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DigiSER BD · Admin Dashboard</title>
+
+<meta name="description" content="DigiSER BD administration dashboard">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+:root{
+  --primary:#0087c4;
+  --primary-dark:#006d9f;
+  --bg:#f4f7f9;
+  --card:#fff;
+  --text:#172833;
+  --muted:#71808a;
+  --border:#dce5ea;
+  --danger:#d33b3b;
+  --success:#16834b;
+  --shadow:0 12px 35px rgba(18,35,45,.07);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Hind Siliguri",sans-serif;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0,135,196,.16),
+      transparent 35%
+    ),
+    #07151d;
+}
+
+.login-box{
+  width:min(410px,100%);
+
+  padding:32px;
+
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+
+.login-brand{
+  margin-bottom:28px;
+}
+
+.login-brand strong{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:25px;
+}
+
+.login-brand span{
+  color:var(--primary);
+}
+
+.login-brand p{
+  margin:7px 0 0;
+  color:var(--muted);
+}
+
+.login-box label{
+  display:block;
+  margin-bottom:7px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.login-box input{
+  width:100%;
+  padding:13px;
+
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  outline:none;
+}
+
+.login-box input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(0,135,196,.1);
+}
+
+.login-btn{
+  width:100%;
+  margin-top:15px;
+
+  padding:13px;
+
+  border:0;
+  border-radius:10px;
+
+  background:var(--primary);
+  color:#fff;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-weight:700;
+}
+
+.login-error{
+  display:none;
+  margin-top:12px;
+  color:var(--danger);
+  font-size:13px;
+}
+
+.login-error.show{
+  display:block;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  display:none;
+  min-height:100vh;
+}
+
+.app.active{
+  display:flex;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  z-index:100;
+
+  width:245px;
+
+  background:#09202b;
+  color:#fff;
+
+  padding:22px 15px;
+
+  overflow-y:auto;
+}
+
+.brand{
+  padding:4px 10px 25px;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+  font-weight:700;
+}
+
+.brand span{
+  color:#42c6f1;
+}
+
+.nav-title{
+  padding:15px 10px 7px;
+
+  color:#78909c;
+
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.nav button{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin:3px 0;
+  padding:11px 12px;
+
+  border:0;
+  border-radius:9px;
+
+  background:transparent;
+  color:#c9d7dd;
+
+  text-align:left;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:rgba(255,255,255,.09);
+  color:#fff;
+}
+
+.sidebar-bottom{
+  margin-top:25px;
+  padding-top:20px;
+
+  border-top:1px solid rgba(255,255,255,.09);
+}
+
+.logout{
+  width:100%;
+  padding:10px;
+
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:9px;
+
+  background:transparent;
+  color:#fff;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+  width:calc(100% - 245px);
+  margin-left:245px;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  min-height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:12px 25px;
+
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--border);
+
+  backdrop-filter:blur(10px);
+}
+
+.topbar h1{
+  margin:0;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+}
+
+.menu-btn{
+  display:none;
+
+  border:0;
+  background:none;
+
+  font-size:24px;
+}
+
+.content{
+  padding:25px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+
+  margin-bottom:25px;
+}
+
+.stat{
+  padding:20px;
+
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+
+  box-shadow:var(--shadow);
+}
+
+.stat small{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.stat strong{
+  display:block;
+  margin-top:5px;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:29px;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+}
+
+.panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+
+  padding:18px 20px;
+
+  border-bottom:1px solid var(--border);
+}
+
+.panel-head h2{
+  margin:0;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:18px;
+}
+
+.panel-body{
+  padding:20px;
+}
+
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:13px 14px;
+
+  border-bottom:1px solid #edf1f3;
+
+  text-align:left;
+  white-space:nowrap;
+
+  font-size:13px;
+}
+
+th{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  padding:8px 12px;
+
+  border:1px solid var(--border);
+  border-radius:8px;
+
+  background:#fff;
+  color:var(--text);
+
+  font-size:12px;
+  font-weight:600;
+}
+
+.btn:hover{
+  border-color:#b9cbd4;
+}
+
+.btn.pri{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:#fff;
+}
+
+.btn.del{
+  color:var(--danger);
+}
+
+.btn.sm{
+  padding:6px 9px;
+}
+
+.acts{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+  display:inline-flex;
+  align-items:center;
+
+  padding:4px 8px;
+
+  border-radius:999px;
+
+  background:#eef3f5;
+  color:#52636c;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+.status.new,
+.status.pending{
+  background:#fff5d8;
+  color:#8b6500;
+}
+
+.status.approved,
+.status.active{
+  background:#e6f7ed;
+  color:#167044;
+}
+
+.status.rejected,
+.status.closed{
+  background:#fdeaea;
+  color:#b12f2f;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(3,16,23,.65);
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-box{
+  width:min(900px,100%);
+  max-height:92vh;
+
+  background:#fff;
+  border-radius:18px;
+
+  box-shadow:0 30px 90px rgba(0,0,0,.3);
+
+  overflow:hidden;
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:17px 20px;
+
+  border-bottom:1px solid var(--border);
+}
+
+.modal-head h3{
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+}
+
+.modal-close{
+  width:34px;
+  height:34px;
+
+  border:0;
+  border-radius:8px;
+
+  background:#edf2f4;
+  font-size:20px;
+}
+
+.modal-body{
+  max-height:calc(92vh - 125px);
+  overflow-y:auto;
+
+  padding:20px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.detail{
+  padding:13px;
+
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  background:#fafcfd;
+}
+
+.detail.full{
+  grid-column:1/-1;
+}
+
+.detail small{
+  display:block;
+
+  margin-bottom:3px;
+
+  color:var(--muted);
+  font-size:11px;
+}
+
+.detail strong{
+  font-size:14px;
+  white-space:pre-line;
+}
+
+.modal-foot{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+
+  padding:14px 20px;
+
+  border-top:1px solid var(--border);
+}
+
+/* =========================
+   CV
+========================= */
+
+.cv-wrap{
+  background:#edf1f3;
+  padding:20px;
+}
+
+.cv-paper{
+  width:210mm;
+  min-height:297mm;
+  max-width:100%;
+
+  margin:auto;
+
+  background:#fff;
+
+  box-shadow:0 12px 40px rgba(0,0,0,.13);
+
+  overflow:hidden;
+}
+
+.cv-head{
+  padding:32px;
+
+  background:#0d2634;
+  color:#fff;
+}
+
+.cv-head h1{
+  margin:0;
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:31px;
+}
+
+.cv-role{
+  margin-top:5px;
+  color:#8edcff;
+  font-weight:600;
+}
+
+.cv-contact{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+
+  margin-top:14px;
+
+  color:#d4e1e8;
+  font-size:12px;
+}
+
+.cv-content{
+  display:grid;
+  grid-template-columns:1fr 190px;
+  gap:25px;
+
+  padding:28px 32px;
+}
+
+.cv-section{
+  margin-bottom:22px;
+}
+
+.cv-section h4{
+  margin:0 0 9px;
+
+  color:var(--primary);
+
+  font-family:"Space Grotesk",sans-serif;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+}
+
+.cv-section p{
+  margin:0;
+
+  color:#43545e;
+
+  font-size:12px;
+  line-height:1.6;
+  white-space:pre-line;
+}
+
+.cv-item{
+  margin-bottom:12px;
+}
+
+.cv-item strong{
+  display:block;
+  font-size:12px;
+}
+
+.cv-item span{
+  display:block;
+  margin-top:2px;
+  color:#73828a;
+  font-size:11px;
+}
+
+.cv-side{
+  border-left:1px solid #e1e8ec;
+  padding-left:18px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+  padding:45px 20px;
+
+  color:var(--muted);
+
+  text-align:center;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:5000;
+
+  display:none;
+
+  padding:12px 16px;
+
+  background:#102b38;
+  color:#fff;
+
+  border-radius:10px;
+
+  box-shadow:0 12px 35px rgba(0,0,0,.2);
+
+  font-size:13px;
+}
+
+.toast.show{
+  display:block;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:800px){
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:transform .2s ease;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    width:100%;
+    margin-left:0;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .topbar{
+    padding:12px 15px;
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .detail.full{
+    grid-column:auto;
+  }
+
+  .cv-paper{
+    width:100%;
+  }
+
+  .cv-content{
+    grid-template-columns:1fr;
+  }
+
+  .cv-side{
+    border-left:0;
+    border-top:1px solid #e1e8ec;
+    padding:18px 0 0;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .login-box{
+    padding:24px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div class="login-screen" id="loginScreen">
+
+  <div class="login-box">
+
+    <div class="login-brand">
+
+      <strong>
+        DigiSER <span>BD</span>
+      </strong>
+
+      <p>
+        Admin Dashboard
+      </p>
+
+    </div>
+
+    <form id="loginForm">
+
+      <label for="adminPassword">
+        Password
+      </label>
+
+      <input
+        id="adminPassword"
+        type="password"
+        placeholder="Enter admin password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button
+        class="login-btn"
+        type="submit"
+      >
+        Login
+      </button>
+
+      <div
+        class="login-error"
+        id="loginError"
+      >
+        Incorrect password.
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div class="app" id="app">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      DigiSER <span>BD</span>
+    </div>
+
+    <div class="nav-title">
+      Management
+    </div>
+
+    <nav class="nav">
+
+      <button
+        class="active"
+        data-section="dashboard"
+      >
+        📊 Dashboard
+      </button>
+
+      <button data-section="jobs">
+        💼 Jobs
+      </button>
+
+      <button data-section="services">
+        🛠 Services
+      </button>
+
+      <button data-section="employees">
+        👥 Employees
+      </button>
+
+      <button data-section="businesses">
+        🏢 Businesses
+      </button>
+
+      <button data-section="messages">
+        💬 Messages
+      </button>
+
+      <button data-section="blog">
+        📝 Blog
+      </button>
+
+      <button data-section="applicants">
+        📄 Applicants
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <button
+        class="logout"
+        id="logoutBtn"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div style="display:flex;align-items:center;gap:12px">
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+        >
+          ☰
+        </button>
+
+        <h1 id="pageTitle">
+          Dashboard
+        </h1>
+
+      </div>
+
+      <span
+        style="color:var(--muted);font-size:13px"
+      >
+        Admin
+      </span>
+
+    </header>
+
+
+    <div class="content">
+
+      <!-- =====================
+           DASHBOARD
+      ====================== -->
+
+      <section
+        class="section-view"
+        id="section-dashboard"
+      >
+
+        <div class="stats">
+
+          <div class="stat">
+            <small>Jobs</small>
+            <strong id="statJobs">0</strong>
+          </div>
+
+          <div class="stat">
+            <small>Services</small>
+            <strong id="statServices">0</strong>
+          </div>
+
+          <div class="stat">
+            <small>Businesses</small>
+            <strong id="statBusinesses">0</strong>
+          </div>
+
+          <div class="stat">
+            <small>Applicants</small>
+            <strong id="statApplicants">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              Recent Applicants
+            </h2>
+
+            <button
+              class="btn pri"
+              data-section="applicants"
+            >
+              View Applicants
+            </button>
+
+          </div>
+
+          <div
+            class="panel-body"
+            id="recentApplicants"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           JOBS
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-jobs"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Jobs</h2>
+
+            <button
+              class="btn pri"
+              onclick="addSimpleItem('jobs')"
+            >
+              + Add Job
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="jobsTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           SERVICES
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-services"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Services</h2>
+
+            <button
+              class="btn pri"
+              onclick="addSimpleItem('services')"
+            >
+              + Add Service
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="servicesTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           EMPLOYEES
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-employees"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Employees</h2>
+
+            <button
+              class="btn pri"
+              onclick="addSimpleItem('employees')"
+            >
+              + Add Employee
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="employeesTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           BUSINESSES
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-businesses"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Businesses</h2>
+
+            <button
+              class="btn pri"
+              onclick="addSimpleItem('businesses')"
+            >
+              + Add Business
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="businessesTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           MESSAGES
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-messages"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Messages</h2>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="messagesTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           BLOG
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-blog"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>Blog</h2>
+
+            <button
+              class="btn pri"
+              onclick="addSimpleItem('blog')"
+            >
+              + Add Post
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="blogTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           APPLICANTS
+      ====================== -->
+
+      <section
+        class="section-view hidden"
+        id="section-applicants"
+      >
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <h2>
+              Applicants
+            </h2>
+
+            <button
+              class="btn"
+              onclick="refreshApplicants()"
+            >
+              Refresh
+            </button>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="applicantsTable"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================================
+     APPLICANT MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="applicantModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3>
+        Applicant Details
+      </h3>
+
+      <button
+        class="modal-close"
+        data-close="applicantModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      class="modal-body"
+      id="applicantBody"
+    ></div>
+
+    <div class="modal-foot">
+
+      <button
+        class="btn"
+        data-close="applicantModal"
+      >
+        Close
+      </button>
+
+      <button
+        class="btn"
+        id="applicantCVBtn"
+      >
+        View CV
+      </button>
+
+      <button
+        class="btn pri"
+        id="appSave"
+      >
+        Save Status
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     CV MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="cvModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h3>
+        Applicant CV
+      </h3>
+
+      <button
+        class="modal-close"
+        data-close="cvModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      class="modal-body"
+      style="padding:0"
+    >
+
+      <div
+        class="cv-wrap"
+        id="cvContainer"
+      ></div>
+
+    </div>
+
+    <div class="modal-foot">
+
+      <button
+        class="btn"
+        data-close="cvModal"
+      >
+        Close
+      </button>
+
+      <button
+        class="btn pri"
+        id="cvPrintBtn"
+      >
+        Download / Print PDF
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<script>
+
+/* =========================================================
+   DIGISER BD ADMIN
+========================================================= */
+
+const STORAGE_KEY =
+  "digiserbd_admin_v1";
+
+const ADMIN_PASSWORD =
+  "digiser2026";
+
+let db = loadDB();
+
+let currentApplicantId = null;
+
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+function loadDB(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(STORAGE_KEY);
+
+    if(raw){
+
+      const data =
+        JSON.parse(raw);
+
+      return {
+
+        users:Array.isArray(data.users)
+          ? data.users
+          : [],
+
+        jobs:Array.isArray(data.jobs)
+          ? data.jobs
+          : [],
+
+        services:Array.isArray(data.services)
+          ? data.services
+          : [],
+
+        employees:Array.isArray(data.employees)
+          ? data.employees
+          : [],
+
+        businesses:Array.isArray(data.businesses)
+          ? data.businesses
+          : [],
+
+        messages:Array.isArray(data.messages)
+          ? data.messages
+          : [],
+
+        blog:Array.isArray(data.blog)
+          ? data.blog
+          : []
+
+      };
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+  return {
+
+    users:[],
+    jobs:[],
+    services:[],
+    employees:[],
+    businesses:[],
+    messages:[],
+    blog:[]
+
+  };
+
+}
+
+
+function saveDB(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(db)
+  );
+
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function esc(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function text(value){
+
+  return String(value || "").trim();
+
+}
+
+
+function toast(message){
+
+  const el =
+    document.getElementById("toast");
+
+  el.textContent =
+    message;
+
+  el.classList.add("show");
+
+  setTimeout(
+    () => el.classList.remove("show"),
+    2200
+  );
+
+}
+
+
+function formatDate(value){
+
+  if(!value){
+    return "—";
+  }
+
+  const date =
+    new Date(value);
+
+  if(Number.isNaN(date.getTime())){
+    return "—";
+  }
+
+  return date.toLocaleDateString(
+    "en-GB",
+    {
+      day:"2-digit",
+      month:"short",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+document
+  .getElementById("loginForm")
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+      const password =
+        document.getElementById(
+          "adminPassword"
+        ).value;
+
+      if(password === ADMIN_PASSWORD){
+
+        sessionStorage.setItem(
+          "digiser_admin_logged",
+          "1"
+        );
+
+        showApp();
+
+      }else{
+
+        document
+          .getElementById("loginError")
+          .classList
+          .add("show");
+
+      }
+
+    }
+  );
+
+
+function showApp(){
+
+  document
+    .getElementById("loginScreen")
+    .style.display = "none";
+
+  document
+    .getElementById("app")
+    .classList
+    .add("active");
+
+  refreshAll();
+
+}
+
+
+if(
+  sessionStorage.getItem(
+    "digiser_admin_logged"
+  ) === "1"
+){
+
+  showApp();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener(
+    "click",
+    function(){
+
+      sessionStorage.removeItem(
+        "digiser_admin_logged"
+      );
+
+      location.reload();
+
+    }
+  );
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const navButtons =
+  document.querySelectorAll(
+    "[data-section]"
+  );
+
+
+navButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    function(){
+
+      const section =
+        this.dataset.section;
+
+      showSection(section);
+
+      document
+        .getElementById("sidebar")
+        .classList
+        .remove("open");
+
+    }
+  );
+
+});
+
+
+function showSection(section){
+
+  document
+    .querySelectorAll(".section-view")
+    .forEach(el =>
+      el.classList.add("hidden")
+    );
+
+
+  const target =
+    document.getElementById(
+      "section-" + section
+    );
+
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+
+  document
+    .querySelectorAll(
+      ".nav button[data-section]"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.section === section
+      );
+
+    });
+
+
+  const titles = {
+
+    dashboard:"Dashboard",
+    jobs:"Jobs",
+    services:"Services",
+    employees:"Employees",
+    businesses:"Businesses",
+    messages:"Messages",
+    blog:"Blog",
+    applicants:"Applicants"
+
+  };
+
+
+  document.getElementById(
+    "pageTitle"
+  ).textContent =
+    titles[section] || "Dashboard";
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+  .getElementById("menuBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+    }
+  );
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function refreshStats(){
+
+  document.getElementById(
+    "statJobs"
+  ).textContent =
+    db.jobs.length;
+
+  document.getElementById(
+    "statServices"
+  ).textContent =
+    db.services.length;
+
+  document.getElementById(
+    "statBusinesses"
+  ).textContent =
+    db.businesses.length;
+
+  document.getElementById(
+    "statApplicants"
+  ).textContent =
+    db.users.length;
+
+}
+
+
+/* =========================================================
+   RECENT APPLICANTS
+========================================================= */
+
+function renderRecentApplicants(){
+
+  const box =
+    document.getElementById(
+      "recentApplicants"
+    );
+
+
+  const users =
+    db.users.slice(0,5);
+
+
+  if(!users.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        No applicants yet.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Applied for</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${users.map(u => {
+
+            const wanted =
+              u.wanted || {};
+
+            const personal =
+              u.personal || {};
+
+            return `
+
+              <tr>
+
+                <td>
+                  <strong>
+                    ${esc(
+                      u.name ||
+                      personal.name ||
+                      "Unnamed"
+                    )}
+                  </strong>
+                </td>
+
+                <td>
+                  ${esc(
+                    personal.mobile ||
+                    "—"
+                  )}
+                </td>
+
+                <td>
+                  ${esc(
+                    wanted.role ||
+                    "General Application"
+                  )}
+                </td>
+
+                <td>
+                  ${statusBadge(
+                    u.status
+                  )}
+                </td>
+
+                <td>
+                  <button
+                    class="btn sm"
+                    data-view="${esc(u.id)}"
+                  >
+                    View
+                  </button>
+                </td>
+
+              </tr>
+
+            `;
+
+          }).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function statusBadge(status){
+
+  const s =
+    String(status || "new")
+      .toLowerCase();
+
+  return `
+
+    <span class="status ${esc(s)}">
+      ${esc(
+        status || "new"
+      )}
+    </span>
+
+  `;
+
+}
+
+
+/* =========================================================
+   APPLICANTS
+========================================================= */
+
+function refreshApplicants(){
+
+  const box =
+    document.getElementById(
+      "applicantsTable"
+    );
+
+
+  if(!db.users.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        No applications found.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Applied for</th>
+          <th>Status</th>
+          <th>Updated</th>
+          <th>Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        ${db.users.map(u => {
+
+          const personal =
+            u.personal || {};
+
+          const wanted =
+            u.wanted || {};
+
+          return `
+
+            <tr>
+
+              <td>
+
+                <strong>
+                  ${esc(
+                    u.name ||
+                    personal.name ||
+                    "Unnamed"
+                  )}
+                </strong>
+
+                <br>
+
+                <small style="color:var(--muted)">
+                  ${esc(u.id || "")}
+                </small>
+
+              </td>
+
+              <td>
+                ${esc(
+                  personal.mobile ||
+                  "—"
+                )}
+              </td>
+
+              <td>
+                ${esc(
+                  wanted.role ||
+                  "General Application"
+                )}
+              </td>
+
+              <td>
+                ${statusBadge(
+                  u.status
+                )}
+              </td>
+
+              <td>
+                ${formatDate(
+                  u.updated
+                )}
+              </td>
+
+              <td>
+
+                <div class="acts">
+
+                  <button
+                    class="btn sm"
+                    data-view="${esc(u.id)}"
+                  >
+                    View
+                  </button>
+
+                  <button
+                    class="btn sm"
+                    data-cv="${esc(u.id)}"
+                  >
+                    CV
+                  </button>
+
+                  <button
+                    class="btn sm del"
+                    data-delapp="${esc(u.id)}"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }).join("")}
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================================================
+   APPLICANT EVENTS
+========================================================= */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const view =
+      event.target.closest(
+        "[data-view]"
+      );
+
+    if(view){
+
+      openApplicant(
+        view.dataset.view
+      );
+
+      return;
+
+    }
+
+
+    const cv =
+      event.target.closest(
+        "[data-cv]"
+      );
+
+    if(cv){
+
+      openCV(
+        cv.dataset.cv
+      );
+
+      return;
+
+    }
+
+
+    const del =
+      event.target.closest(
+        "[data-delapp]"
+      );
+
+    if(del){
+
+      deleteApplicant(
+        del.dataset.delapp
+      );
+
+      return;
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   OPEN APPLICANT
+========================================================= */
+
+function openApplicant(id){
+
+  const u =
+    db.users.find(
+      item => item.id === id
+    );
+
+  if(!u){
+    return;
+  }
+
+
+  currentApplicantId =
+    id;
+
+
+  const p =
+    u.personal || {};
+
+  const ed =
+    u.education || {};
+
+  const ex =
+    u.experience || {};
+
+  const sk =
+    u.skills || {};
+
+  const lg =
+    u.language || {};
+
+  const wa =
+    u.wanted || {};
+
+  const rf =
+    u.reference || {};
+
+  const at =
+    u.attachments || {};
+
+
+  document.getElementById(
+    "applicantBody"
+  ).innerHTML = `
+
+    <div style="margin-bottom:18px">
+
+      <label
+        style="
+          display:block;
+          margin-bottom:7px;
+          font-size:13px;
+          font-weight:700;
+        "
+      >
+        Application Status
+      </label>
+
+      <select
+        id="appStatus"
+        style="
+          width:100%;
+          padding:11px;
+          border:1px solid var(--border);
+          border-radius:9px;
+        "
+      >
+
+        <option
+          value="new"
+          ${u.status === "new" ? "selected" : ""}
+        >
+          New
+        </option>
+
+        <option
+          value="reviewing"
+          ${u.status === "reviewing" ? "selected" : ""}
+        >
+          Reviewing
+        </option>
+
+        <option
+          value="approved"
+          ${u.status === "approved" ? "selected" : ""}
+        >
+          Approved
+        </option>
+
+        <option
+          value="rejected"
+          ${u.status === "rejected" ? "selected" : ""}
+        >
+          Rejected
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="detail-grid">
+
+      ${detail(
+        "Application ID",
+        u.id
+      )}
+
+      ${detail(
+        "Full Name",
+        u.name || p.name
+      )}
+
+      ${detail(
+        "Mobile",
+        p.mobile
+      )}
+
+      ${detail(
+        "Email",
+        p.email
+      )}
+
+      ${detail(
+        "Emergency Contact",
+        p.emergency
+      )}
+
+      ${detail(
+        "Current Address",
+        p.currentAddress,
+        true
+      )}
+
+      ${detail(
+        "Permanent Address",
+        p.permanentAddress,
+        true
+      )}
+
+      ${detail(
+        "SSC / Equivalent",
+        ed.ssc
+      )}
+
+      ${detail(
+        "HSC / Equivalent",
+        ed.hsc
+      )}
+
+      ${detail(
+        "Graduation",
+        ed.graduate
+      )}
+
+      ${detail(
+        "Other Education",
+        ed.other
+      )}
+
+      ${detail(
+        "Experience",
+        ex.experience,
+        true
+      )}
+
+      ${detail(
+        "Main Duties",
+        ex.duty,
+        true
+      )}
+
+      ${detail(
+        "Previous Salary",
+        ex.previousSalary
+      )}
+
+      ${detail(
+        "Skills",
+        sk.skills,
+        true
+      )}
+
+      ${detail(
+        "Languages",
+        lg.language,
+        true
+      )}
+
+      ${detail(
+        "Desired Role",
+        wa.role
+      )}
+
+      ${detail(
+        "Expected Salary",
+        wa.salary
+      )}
+
+      ${detail(
+        "Job Type",
+        wa.type
+      )}
+
+      ${detail(
+        "Preferred Location",
+        wa.location
+      )}
+
+      ${detail(
+        "Reference Name",
+        rf.name
+      )}
+
+      ${detail(
+        "Reference Contact",
+        rf.contact
+      )}
+
+      ${detail(
+        "Reference Relation",
+        rf.relation
+      )}
+
+      ${detail(
+        "CV",
+        at.cvGenerated
+          ? "Generated"
+          : "Not generated"
+      )}
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById(
+      "applicantCVBtn"
+    )
+    .onclick = () => {
+
+      closeModal(
+        "applicantModal"
+      );
+
+      openCV(id);
+
+    };
+
+
+  document
+    .getElementById(
+      "appSave"
+    )
+    .onclick = () => {
+
+      const applicant =
+        db.users.find(
+          item => item.id === currentApplicantId
+        );
+
+      if(!applicant){
+        return;
+      }
+
+      applicant.status =
+        document.getElementById(
+          "appStatus"
+        ).value;
+
+      applicant.updated =
+        new Date().toISOString();
+
+      saveDB();
+
+      refreshAll();
+
+      closeModal(
+        "applicantModal"
+      );
+
+      toast(
+        "Applicant status saved."
+      );
+
+    };
+
+
+  openModal(
+    "applicantModal"
+  );
+
+}
+
+
+/* =========================================================
+   DETAIL
+========================================================= */
+
+function detail(
+  label,
+  value,
+  full=false
+){
+
+  return `
+
+    <div class="detail ${full ? "full" : ""}">
+
+      <small>
+        ${esc(label)}
+      </small>
+
+      <strong>
+        ${esc(
+          value || "—"
+        )}
+      </strong>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   DELETE APPLICANT
+========================================================= */
+
+function deleteApplicant(id){
+
+  const applicant =
+    db.users.find(
+      item => item.id === id
+    );
+
+  if(!applicant){
+    return;
+  }
+
+
+  const name =
+    applicant.name ||
+    applicant.personal?.name ||
+    "this applicant";
+
+
+  if(
+    !confirm(
+      `Delete application from ${name}?`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  db.users =
+    db.users.filter(
+      item => item.id !== id
+    );
+
+
+  saveDB();
+
+  refreshAll();
+
+  toast(
+    "Application deleted."
+  );
+
+}
+
+
+/* =========================================================
+   CV
+========================================================= */
+
+function openCV(id){
+
+  const u =
+    db.users.find(
+      item => item.id === id
+    );
+
+  if(!u){
+    return;
+  }
+
+
+  currentApplicantId =
+    id;
+
+
+  const p =
+    u.personal || {};
+
+  const ed =
+    u.education || {};
+
+  const ex =
+    u.experience || {};
+
+  const sk =
+    u.skills || {};
+
+  const lg =
+    u.language || {};
+
+  const wa =
+    u.wanted || {};
+
+  const rf =
+    u.reference || {};
+
+
+  const name =
+    u.name ||
+    p.name ||
+    "Applicant";
+
+
+  const role =
+    wa.role ||
+    "Professional Applicant";
+
+
+  const skills =
+    String(
+      sk.skills || ""
+    )
+    .split(/[,;\n]+/)
+    .map(x => x.trim())
+    .filter(Boolean);
+
+
+  const education = [
+
+    ed.ssc
+      ? `<div class="cv-item">
+          <strong>SSC / Equivalent</strong>
+          <span>${esc(ed.ssc)}</span>
+        </div>`
+      : "",
+
+    ed.hsc
+      ? `<div class="cv-item">
+          <strong>HSC / Equivalent</strong>
+          <span>${esc(ed.hsc)}</span>
+        </div>`
+      : "",
+
+    ed.graduate
+      ? `<div class="cv-item">
+          <strong>Graduation</strong>
+          <span>${esc(ed.graduate)}</span>
+        </div>`
+      : "",
+
+    ed.other
+      ? `<div class="cv-item">
+          <strong>Other Education</strong>
+          <span>${esc(ed.other)}</span>
+        </div>`
+      : ""
+
+  ].filter(Boolean);
+
+
+  document.getElementById(
+    "cvContainer"
+  ).innerHTML = `
+
+    <div class="cv-paper">
+
+      <div class="cv-head">
+
+        <h1>
+          ${esc(name)}
+        </h1>
+
+        <div class="cv-role">
+          ${esc(role)}
+        </div>
+
+        <div class="cv-contact">
+
+          ${
+            p.mobile
+              ? `<span>${esc(p.mobile)}</span>`
+              : ""
+          }
+
+          ${
+            p.email
+              ? `<span>${esc(p.email)}</span>`
+              : ""
+          }
+
+          ${
+            wa.location
+              ? `<span>${esc(wa.location)}</span>`
+              : ""
+          }
+
+        </div>
+
+      </div>
+
+
+      <div class="cv-content">
+
+        <div>
+
+          ${
+            p.profile
+              ? `
+                <div class="cv-section">
+
+                  <h4>
+                    Profile
+                  </h4>
+
+                  <p>
+                    ${esc(p.profile)}
+                  </p>
+
+                </div>
+              `
+              : ""
+          }
+
+
+          ${
+            ex.experience || ex.duty
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Experience
+                  </h4>
+
+                  ${
+                    ex.experience
+                      ? `
+                        <div class="cv-item">
+
+                          <strong>
+                            Professional Experience
+                          </strong>
+
+                          <span>
+                            ${esc(ex.experience)}
+                          </span>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+                  ${
+                    ex.duty
+                      ? `
+                        <div class="cv-item">
+
+                          <strong>
+                            Main Duties
+                          </strong>
+
+                          <span>
+                            ${esc(ex.duty)}
+                          </span>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+                  ${
+                    ex.previousSalary
+                      ? `
+                        <div class="cv-item">
+
+                          <strong>
+                            Previous Salary
+                          </strong>
+
+                          <span>
+                            ${esc(ex.previousSalary)}
+                          </span>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+          ${
+            education.length
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Education
+                  </h4>
+
+                  ${education.join("")}
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+          ${
+            wa.role ||
+            wa.salary ||
+            wa.type ||
+            wa.location
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Career Preference
+                  </h4>
+
+                  <p>
+
+                    ${
+                      wa.role
+                        ? `Desired Role: ${esc(wa.role)}\n`
+                        : ""
+                    }
+
+                    ${
+                      wa.salary
+                        ? `Expected Salary: ${esc(wa.salary)}\n`
+                        : ""
+                    }
+
+                    ${
+                      wa.type
+                        ? `Job Type: ${esc(wa.type)}\n`
+                        : ""
+                    }
+
+                    ${
+                      wa.location
+                        ? `Preferred Location: ${esc(wa.location)}`
+                        : ""
+                    }
+
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+        </div>
+
+
+        <aside class="cv-side">
+
+          ${
+            skills.length
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Skills
+                  </h4>
+
+                  <p>
+                    ${skills
+                      .map(
+                        skill =>
+                          `• ${esc(skill)}`
+                      )
+                      .join("\n")}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+          ${
+            lg.language
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Languages
+                  </h4>
+
+                  <p>
+                    ${esc(lg.language)}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+          ${
+            p.currentAddress
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Address
+                  </h4>
+
+                  <p>
+                    ${esc(p.currentAddress)}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+          ${
+            rf.name ||
+            rf.contact ||
+            rf.relation
+              ? `
+
+                <div class="cv-section">
+
+                  <h4>
+                    Reference
+                  </h4>
+
+                  <p>
+
+                    ${
+                      rf.name
+                        ? `${esc(rf.name)}\n`
+                        : ""
+                    }
+
+                    ${
+                      rf.relation
+                        ? `${esc(rf.relation)}\n`
+                        : ""
+                    }
+
+                    ${
+                      rf.contact
+                        ? `${esc(rf.contact)}`
+                        : ""
+                    }
+
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+        </aside>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById(
+      "cvPrintBtn"
+    )
+    .onclick = () => {
+
+      printCV(id);
+
+    };
+
+
+  openModal(
+    "cvModal"
+  );
+
+}
+
+
+/* =========================================================
+   PRINT / SAVE PDF
+========================================================= */
+
+function printCV(id){
+
+  const u =
+    db.users.find(
+      item => item.id === id
+    );
+
+  if(!u){
+    return;
+  }
+
+
+  const cv =
+    document.getElementById(
+      "cvContainer"
+    ).innerHTML;
+
+
+  const printWindow =
+    window.open(
+      "",
+      "_blank",
+      "width=900,height=1100"
+    );
+
+
+  if(!printWindow){
+
+    alert(
+      "Please allow pop-ups to download the CV."
+    );
+
+    return;
+
+  }
+
+
+  printWindow.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>
+        CV - ${esc(
+          u.name ||
+          u.personal?.name ||
+          "Applicant"
+        )}
+      </title>
+
+      <style>
+
+        *{
+          box-sizing:border-box;
+        }
+
+        body{
+          margin:0;
+          background:#fff;
+          color:#172833;
+          font-family:Arial,sans-serif;
+        }
+
+        .cv-paper{
+          width:210mm;
+          min-height:297mm;
+          margin:0 auto;
+          background:#fff;
+        }
+
+        .cv-head{
+          padding:32px;
+          background:#0d2634;
+          color:#fff;
+        }
+
+        .cv-head h1{
+          margin:0;
+          font-size:31px;
+        }
+
+        .cv-role{
+          margin-top:5px;
+          color:#8edcff;
+          font-weight:600;
+        }
+
+        .cv-contact{
+          display:flex;
+          flex-wrap:wrap;
+          gap:8px 18px;
+          margin-top:14px;
+          color:#d4e1e8;
+          font-size:12px;
+        }
+
+        .cv-content{
+          display:grid;
+          grid-template-columns:1fr 190px;
+          gap:25px;
+          padding:28px 32px;
+        }
+
+        .cv-section{
+          margin-bottom:22px;
+        }
+
+        .cv-section h4{
+          margin:0 0 9px;
+          color:#0087c4;
+          font-size:12px;
+          text-transform:uppercase;
+          letter-spacing:.7px;
+        }
+
+        .cv-section p{
+          margin:0;
+          color:#43545e;
+          font-size:12px;
+          line-height:1.6;
+          white-space:pre-line;
+        }
+
+        .cv-item{
+          margin-bottom:12px;
+        }
+
+        .cv-item strong{
+          display:block;
+          font-size:12px;
+        }
+
+        .cv-item span{
+          display:block;
+          margin-top:2px;
+          color:#73828a;
+          font-size:11px;
+        }
+
+        .cv-side{
+          border-left:1px solid #e1e8ec;
+          padding-left:18px;
+        }
+
+        @page{
+          size:A4;
+          margin:0;
+        }
+
+        @media print{
+
+          body{
+            print-color-adjust:exact;
+            -webkit-print-color-adjust:exact;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      ${cv}
+
+      <script>
+
+        window.onload = function(){
+
+          setTimeout(
+            function(){
+              window.print();
+            },
+            400
+          );
+
+        };
+
+      <\/script>
+
+    </body>
+
+    </html>
+
+  `);
+
+
+  printWindow.document.close();
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openModal(id){
+
+  document
+    .getElementById(id)
+    .classList
+    .add("open");
+
+}
+
+
+function closeModal(id){
+
+  document
+    .getElementById(id)
+    .classList
+    .remove("open");
+
+}
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const close =
+      event.target.closest(
+        "[data-close]"
+      );
+
+    if(close){
+
+      closeModal(
+        close.dataset.close
+      );
+
+    }
+
+  }
+);
+
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal => {
+
+    modal.addEventListener(
+      "click",
+      function(event){
+
+        if(event.target === modal){
+
+          modal.classList.remove(
+            "open"
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   SIMPLE CRUD TABLES
+========================================================= */
+
+function renderSimpleTable(
+  type,
+  elementId,
+  label
+){
+
+  const box =
+    document.getElementById(
+      elementId
+    );
+
+
+  const items =
+    db[type] || [];
+
+
+  if(!items.length){
+
+    box.innerHTML = `
+
+      <div class="empty">
+        No ${esc(label.toLowerCase())} found.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Name / Title</th>
+          <th>Created</th>
+          <th>Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        ${items.map((item,index) => `
+
+          <tr>
+
+            <td>
+              <strong>
+                ${esc(
+                  item.title ||
+                  item.name ||
+                  "Untitled"
+                )}
+              </strong>
+            </td>
+
+            <td>
+              ${formatDate(
+                item.created ||
+                item.updated
+              )}
+            </td>
+
+            <td>
+
+              <button
+                class="btn sm del"
+                onclick="deleteSimpleItem('${type}',${index})"
+              >
+                Delete
+              </button>
+
+            </td>
+
+          </tr>
+
+        `).join("")}
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+function addSimpleItem(type){
+
+  const label = {
+
+    jobs:"Job title",
+    services:"Service name",
+    employees:"Employee name",
+    businesses:"Business name",
+    blog:"Post title"
+
+  }[type] || "Name";
+
+
+  const value =
+    prompt(
+      `Enter ${label}:`
+    );
+
+
+  if(!value){
+    return;
+  }
+
+
+  db[type].unshift({
+
+    id:
+      Date.now().toString(),
+
+    name:
+      value.trim(),
+
+    title:
+      value.trim(),
+
+    created:
+      new Date().toISOString()
+
+  });
+
+
+  saveDB();
+
+  refreshAll();
+
+  toast(
+    `${label} added.`
+  );
+
+}
+
+
+function deleteSimpleItem(
+  type,
+  index
+){
+
+  if(
+    !confirm(
+      "Delete this item?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  db[type].splice(
+    index,
+    1
+  );
+
+  saveDB();
+
+  refreshAll();
+
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+function renderMessages(){
+
+  const box =
+    document.getElementById(
+      "messagesTable"
+    );
+
+
+  if(!db.messages.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        No messages found.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        ${db.messages.map(m => `
+
+          <tr>
+
+            <td>
+              ${esc(
+                m.name || "—"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                m.contact ||
+                m.email ||
+                "—"
+              )}
+            </td>
+
+            <td>
+              ${esc(
+                m.message || "—"
+              )}
+            </td>
+
+            <td>
+              ${formatDate(
+                m.created ||
+                m.updated
+              )}
+            </td>
+
+          </tr>
+
+        `).join("")}
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================================================
+   REFRESH ALL
+========================================================= */
+
+function refreshAll(){
+
+  db =
+    loadDB();
+
+  refreshStats();
+
+  renderRecentApplicants();
+
+  refreshApplicants();
+
+  renderMessages();
+
+
+  renderSimpleTable(
+    "jobs",
+    "jobsTable",
+    "Jobs"
+  );
+
+  renderSimpleTable(
+    "services",
+    "servicesTable",
+    "Services"
+  );
+
+  renderSimpleTable(
+    "employees",
+    "employeesTable",
+    "Employees"
+  );
+
+  renderSimpleTable(
+    "businesses",
+    "businessesTable",
+    "Businesses"
+  );
+
+  renderSimpleTable(
+    "blog",
+    "blogTable",
+    "Blog posts"
+  );
+
+}
+
+
+/* =========================================================
+   BACKUP / RESTORE
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    /*
+      Ctrl + Shift + E
+      Export admin database
+    */
+
+    if(
+      event.ctrlKey &&
+      event.shiftKey &&
+      event.key.toLowerCase() === "e"
+    ){
+
+      event.preventDefault();
+
+      exportDB();
+
+    }
+
+  }
+);
+
+
+function exportDB(){
+
+  const data =
+    JSON.stringify(
+      db,
+      null,
+      2
+    );
+
+
+  const blob =
+    new Blob(
+      [data],
+      {
+        type:"application/json"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const a =
+    document.createElement("a");
+
+  a.href =
+    url;
+
+  a.download =
+    `digiserbd-admin-backup-${Date.now()}.json`;
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================================================
+   GLOBAL EXPORT
+========================================================= */
+
+window.exportDB =
+  exportDB;
+
+window.refreshApplicants =
+  refreshApplicants;
+
+window.addSimpleItem =
+  addSimpleItem;
+
+window.deleteSimpleItem =
+  deleteSimpleItem;
+
+</script>
+
+</body>
+</html>
