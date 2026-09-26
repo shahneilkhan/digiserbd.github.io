@@ -1,47 +1,863 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Local Businesses | DigiSER BD</title>
-<meta name="description" content="List your local business or find local businesses in Bangladesh.">
-<meta name="theme-color" content="#0087c4">
-<link rel="canonical" href="https://digiserbd.com/businesses/">
+
+<meta
+  name="description"
+  content="Find local businesses in Bangladesh or submit your business for listing on DigiSER BD."
+>
+
+<meta
+  name="theme-color"
+  content="#0087c4"
+>
+
+<link
+  rel="canonical"
+  href="https://digiserbd.com/businesses/"
+>
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DigiSER BD">
 <meta property="og:title" content="Local Businesses | DigiSER BD">
-<meta property="og:description" content="List your local business or find local businesses in Bangladesh.">
-<meta property="og:url" content="https://digiserbd.com/businesses/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
+<meta
+  property="og:description"
+  content="Find local businesses in Bangladesh or submit your business for listing on DigiSER BD."
+>
+<meta
+  property="og:url"
+  content="https://digiserbd.com/businesses/"
+>
+<meta
+  property="og:image"
+  content="https://digiserbd.com/logo.png"
+>
+
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="../favicon.png" type="image/png">
+
+<link
+  rel="icon"
+  href="../favicon.png"
+  type="image/png"
+>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
+
+<link
+  rel="stylesheet"
+  href="../assets/style.css"
+>
+
+
+<style>
+
+/* =========================================
+   BUSINESS PAGE
+========================================= */
+
+.business-hero{
+  padding-bottom:28px;
+}
+
+.business-intro{
+  max-width:720px;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.business-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.business-search{
+  flex:1;
+}
+
+.business-search input{
+  width:100%;
+  box-sizing:border-box;
+}
+
+.business-count{
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+
+/* =========================================
+   BUSINESS LIST
+========================================= */
+
+#list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.business-card{
+  padding:20px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  background:var(--card,#fff);
+  transition:.2s ease;
+}
+
+.business-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,.07);
+}
+
+.business-card h3{
+  margin:0 0 6px;
+}
+
+.business-category{
+  color:#0087c4;
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.business-phone{
+  color:var(--muted);
+  font-size:14px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.business-empty{
+  padding:35px 20px;
+  text-align:center;
+  border:1px dashed rgba(0,0,0,.15);
+  border-radius:16px;
+  color:var(--muted);
+}
+
+
+/* =========================================
+   SUBMISSION AREA
+========================================= */
+
+.business-submit{
+  padding-top:55px;
+  padding-bottom:55px;
+}
+
+.business-submit-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:40px;
+  align-items:start;
+}
+
+.business-submit-info h2{
+  margin-top:0;
+  font-size:32px;
+}
+
+.business-submit-info p{
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.business-benefits{
+  margin-top:22px;
+  display:grid;
+  gap:10px;
+}
+
+.business-benefit{
+  padding:12px 14px;
+  border-radius:10px;
+  background:rgba(0,135,196,.06);
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.business-form-card{
+  padding:24px;
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.08);
+  background:var(--card,#fff);
+}
+
+.business-form-card .field{
+  margin-bottom:17px;
+}
+
+.business-form-card label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:600;
+}
+
+.business-form-card input,
+.business-form-card textarea,
+.business-form-card select{
+  width:100%;
+  box-sizing:border-box;
+}
+
+.business-submit-btn{
+  width:100%;
+  margin-top:8px;
+  cursor:pointer;
+  border:0;
+}
+
+.business-submit-btn:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
+
+/* =========================================
+   SUCCESS
+========================================= */
+
+.business-success{
+  display:none;
+  margin-top:18px;
+  padding:18px;
+  border-radius:14px;
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  color:#065f46;
+  line-height:1.8;
+}
+
+.business-success.show{
+  display:block;
+}
+
+.business-id{
+  display:inline-block;
+  margin-top:7px;
+  padding:7px 11px;
+  background:#fff;
+  border:1px dashed #10b981;
+  border-radius:8px;
+  font-weight:700;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.business-error{
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  color:#991b1b;
+}
+
+.business-error.show{
+  display:block;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+  #list{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .business-submit-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .business-toolbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .business-count{
+    text-align:left;
+  }
+
+  #list{
+    grid-template-columns:1fr;
+  }
+
+  .business-submit-info h2{
+    font-size:27px;
+  }
+
+}
+
+</style>
+
 </head>
-<body data-page="businesses" data-root="../">
+
+
+<body
+  data-page="businesses"
+  data-root="../"
+>
+
+
 <div id="hdr-slot"></div>
+
+
 <main>
-<section class="ph"><div class="wrap"><h1>Local businesses</h1><p>Support local. Find businesses or list your own.</p></div></section>
-<section class="sec" style="padding-top:8px"><div class="wrap">
-<div class="filters"><input id="q" type="search" placeholder="Search businesses..." aria-label="Search businesses..."><span id="count" style="align-self:center;color:var(--muted)"></span></div>
-  <div id="list"></div>
-</div></section>
-<section class="sec alt"><div class="wrap two">
-  <div class="info"><h2 style="font-size:28px;margin-bottom:8px">List your business</h2><p>Tell us about your business and we will contact you to get it listed.</p></div>
-  <form class="form" id="bform">
-    <div class="field"><label for="bname">Business name</label><input id="bname" required></div>
-    <div class="field"><label for="bcat">Category</label><input id="bcat" placeholder="e.g. Restaurant, Shop, Agency"></div>
-    <div class="field"><label for="bphone">Phone</label><input id="bphone" type="tel" required></div>
-    <button class="btn wa" type="submit">Send via WhatsApp</button>
-    <div class="ok-msg" id="bok">Thank you! Your details are ready on WhatsApp. Press send there.</div>
-  </form>
-</div></section>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="ph business-hero">
+
+<div class="wrap">
+
+<h1>Local Businesses</h1>
+
+<p class="business-intro">
+  Find trusted local businesses in Bangladesh or submit your own business
+  for review and listing on DigiSER BD.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     BUSINESS DIRECTORY
+===================================== -->
+
+<section
+  class="sec"
+  style="padding-top:8px"
+>
+
+<div class="wrap">
+
+
+<div class="business-toolbar">
+
+<div class="business-search">
+
+<input
+  id="q"
+  type="search"
+  placeholder="Search businesses..."
+  aria-label="Search businesses..."
+>
+
+</div>
+
+
+<span
+  id="count"
+  class="business-count"
+>
+</span>
+
+</div>
+
+
+<div id="list"></div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     SUBMIT BUSINESS
+===================================== -->
+
+<section class="sec alt business-submit">
+
+<div class="wrap">
+
+
+<div class="business-submit-grid">
+
+
+<!-- INFO -->
+
+<div class="business-submit-info">
+
+<h2>
+  List Your Business
+</h2>
+
+<p>
+  আপনার ব্যবসার তথ্য DigiSER BD-তে জমা দিন।
+  Admin আপনার তথ্য পর্যালোচনা করার পর অনুমোদন করলে
+  আপনার business directory-তে প্রকাশ করা হবে।
+</p>
+
+
+<div class="business-benefits">
+
+<div class="business-benefit">
+  ✓ Admin review করার পর listing প্রকাশ
+</div>
+
+<div class="business-benefit">
+  ✓ Business information update করার সুযোগ
+</div>
+
+<div class="business-benefit">
+  ✓ DigiSER BD local business directory
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- FORM -->
+
+<div class="business-form-card">
+
+<form
+  class="form"
+  id="bform"
+>
+
+
+<div class="field">
+
+<label for="bname">
+  Business name *
+</label>
+
+<input
+  id="bname"
+  name="businessName"
+  required
+  placeholder="e.g. ABC Restaurant"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="bcat">
+  Category *
+</label>
+
+<input
+  id="bcat"
+  name="category"
+  required
+  placeholder="e.g. Restaurant, Shop, Agency"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="bphone">
+  Phone *
+</label>
+
+<input
+  id="bphone"
+  name="phone"
+  type="tel"
+  required
+  placeholder="01XXXXXXXXX"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="bemail">
+  Email
+</label>
+
+<input
+  id="bemail"
+  name="email"
+  type="email"
+  placeholder="business@example.com"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="baddress">
+  Address
+</label>
+
+<input
+  id="baddress"
+  name="address"
+  placeholder="Business address"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="bdescription">
+  Business description
+</label>
+
+<textarea
+  id="bdescription"
+  name="description"
+  rows="4"
+  placeholder="Tell us briefly about your business..."
+></textarea>
+
+</div>
+
+
+
+<div class="field">
+
+<label for="bwebsite">
+  Website / Facebook
+</label>
+
+<input
+  id="bwebsite"
+  name="website"
+  type="url"
+  placeholder="https://..."
+>
+
+</div>
+
+
+
+<button
+  class="btn business-submit-btn"
+  type="submit"
+  id="businessSubmitBtn"
+>
+  Submit Business
+</button>
+
+
+<div
+  class="business-error"
+  id="businessError"
+></div>
+
+
+<div
+  class="business-success"
+  id="businessSuccess"
+>
+
+<strong>
+  ✓ Business submission received
+</strong>
+
+<br>
+
+আপনার Business Application ID:
+
+<br>
+
+<span
+  class="business-id"
+  id="businessApplicationId"
+></span>
+
+<br><br>
+
+আপনার business information এখন
+DigiSER BD-এর review system-এ সংরক্ষিত হয়েছে।
+Admin review করার পর approved হলে listing-এ প্রকাশ করা হবে।
+
+</div>
+
+
+</form>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
 </main>
+
+
 <div id="ftr-slot"></div>
+
+
 <script src="../assets/data.js"></script>
+
 <script src="../assets/i18n.js"></script>
+
 <script src="../assets/app.js"></script>
+
+
+<script>
+
+(function(){
+
+"use strict";
+
+
+const form =
+  document.getElementById("bform");
+
+const submitBtn =
+  document.getElementById("businessSubmitBtn");
+
+const success =
+  document.getElementById("businessSuccess");
+
+const error =
+  document.getElementById("businessError");
+
+const applicationId =
+  document.getElementById("businessApplicationId");
+
+
+function generateBusinessId(){
+
+  const year =
+    new Date().getFullYear();
+
+  const random =
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    );
+
+  return "BUS-" + year + "-" + random;
+
+}
+
+
+function getValue(id){
+
+  const el =
+    document.getElementById(id);
+
+  return el
+    ? el.value.trim()
+    : "";
+
+}
+
+
+form.addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+
+    success.classList.remove("show");
+    error.classList.remove("show");
+
+
+    if(!form.checkValidity()){
+
+      form.reportValidity();
+
+      return;
+
+    }
+
+
+    submitBtn.disabled = true;
+
+    submitBtn.textContent =
+      "Submitting...";
+
+
+    try{
+
+      const business = {
+
+        id: generateBusinessId(),
+
+        type: "business_application",
+
+        status: "pending",
+
+        createdAt:
+          new Date().toISOString(),
+
+        updatedAt:
+          new Date().toISOString(),
+
+
+        businessName:
+          getValue("bname"),
+
+        category:
+          getValue("bcat"),
+
+        phone:
+          getValue("bphone"),
+
+        email:
+          getValue("bemail"),
+
+        address:
+          getValue("baddress"),
+
+        description:
+          getValue("bdescription"),
+
+        website:
+          getValue("bwebsite")
+
+      };
+
+
+      /*
+       * Temporary UI testing storage.
+       *
+       * Later this will be replaced
+       * with Firebase Firestore.
+       */
+
+      const storageKey =
+        "digiser_business_applications";
+
+
+      const applications =
+        JSON.parse(
+          localStorage.getItem(
+            storageKey
+          ) || "[]"
+        );
+
+
+      applications.push(
+        business
+      );
+
+
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify(
+          applications
+        )
+      );
+
+
+      applicationId.textContent =
+        business.id;
+
+
+      success.classList.add(
+        "show"
+      );
+
+
+      submitBtn.textContent =
+        "Submitted";
+
+
+      success.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+
+    }catch(err){
+
+      console.error(err);
+
+
+      error.textContent =
+        "দুঃখিত, তথ্য সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।";
+
+
+      error.classList.add(
+        "show"
+      );
+
+
+      submitBtn.disabled = false;
+
+      submitBtn.textContent =
+        "Submit Business";
+
+    }
+
+  }
+
+);
+
+
+})();
+
+</script>
+
+
 </body>
+
 </html>
+```
