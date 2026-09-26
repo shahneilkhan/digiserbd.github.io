@@ -298,6 +298,20 @@ function dashboard(){
   h += `<button class="stat" data-go="applicants"><div class="num">${db.users.length}</div><span>Applicants</span></button>`;
   const newMsg = db.messages.filter(m=>m.status==='New').length;
   h += `</div><div class="panel"><div class="bar"><b>নতুন মেসেজ: ${newMsg}</b></div><div class="empty">${newMsg? 'Messages মেনুতে গিয়ে দেখুন।' : 'কোনো নতুন মেসেজ নেই।'}</div></div>`;
+  const recent = db.users.slice(0, 5);
+  h += `<div class="panel" style="margin-top:14px"><div class="bar"><b>সাম্প্রতিক আবেদনকারী (Applicants)</b><button class="btn sm" data-go="applicants" style="margin-left:auto">সব দেখুন</button></div>`;
+  if (!recent.length){
+    h += `<div class="empty">এখনো কেউ /register/ পেজ থেকে আবেদন করেনি।</div></div>`;
+  } else {
+    h += `<div class="tablewrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Applied for</th><th>Status</th><th></th></tr></thead><tbody>`;
+    recent.forEach(u => {
+      const p = u.personal || {}; const off = u.status !== 'Available';
+      h += `<tr><td>${esc(p.name)}</td><td>${esc(p.phone)}</td><td>${esc((u.wanted||{}).role || '-')}</td>
+        <td><span class="pill ${off?'off':''}">${esc(u.status||'')}</span></td>
+        <td style="text-align:right"><button class="btn sm" data-view="${esc(u.id)}">View</button></td></tr>`;
+    });
+    h += `</tbody></table></div></div>`;
+  }
   return h;
 }
 
