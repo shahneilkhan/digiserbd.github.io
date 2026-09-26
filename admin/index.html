@@ -5,42 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DigiSER BD · Admin Dashboard</title>
+<meta name="theme-color" content="#0087c4">
 
-<meta name="description" content="DigiSER BD administration dashboard">
+<!-- Browser Favicon -->
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#17202a;
+  --muted:#667085;
+  --line:#e5e7eb;
   --primary:#0087c4;
-  --primary-dark:#006d9f;
-  --bg:#f4f7f9;
-  --card:#fff;
-  --text:#172833;
-  --muted:#71808a;
-  --border:#dce5ea;
-  --danger:#d33b3b;
-  --success:#16834b;
-  --shadow:0 12px 35px rgba(18,35,45,.07);
+  --primary-dark:#006c9d;
+  --danger:#c0392b;
+  --success:#14804a;
+  --sidebar:#101820;
 }
 
 *{
   box-sizing:border-box;
 }
 
-html,
-body{
-  margin:0;
-  min-height:100%;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
+  margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:"Hind Siliguri",sans-serif;
@@ -48,7 +48,6 @@ body{
 
 button,
 input,
-textarea,
 select{
   font:inherit;
 }
@@ -57,111 +56,92 @@ button{
   cursor:pointer;
 }
 
-.hidden{
-  display:none!important;
-}
-
 /* =========================
    LOGIN
 ========================= */
 
-.login-screen{
+.login{
   position:fixed;
   inset:0;
-  z-index:9999;
-
+  background:#101820;
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:20px;
+  z-index:1000;
+}
 
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(0,135,196,.16),
-      transparent 35%
-    ),
-    #07151d;
+.login.hidden{
+  display:none;
 }
 
 .login-box{
-  width:min(410px,100%);
-
-  padding:32px;
-
+  width:100%;
+  max-width:390px;
   background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-
+  border-radius:20px;
+  padding:32px;
   box-shadow:0 25px 70px rgba(0,0,0,.25);
 }
 
 .login-brand{
-  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
 }
 
-.login-brand strong{
+.login-logo{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.login-box h1{
+  margin:0;
   font-family:"Space Grotesk",sans-serif;
   font-size:25px;
 }
 
-.login-brand span{
-  color:var(--primary);
-}
-
-.login-brand p{
-  margin:7px 0 0;
+.login-box p{
+  margin:5px 0 25px;
   color:var(--muted);
-}
-
-.login-box label{
-  display:block;
-  margin-bottom:7px;
-  font-size:14px;
-  font-weight:600;
 }
 
 .login-box input{
   width:100%;
-  padding:13px;
-
-  border:1px solid var(--border);
+  padding:13px 14px;
+  border:1px solid var(--line);
   border-radius:10px;
-
   outline:none;
+  margin-bottom:12px;
 }
 
 .login-box input:focus{
   border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(0,135,196,.1);
+  box-shadow:0 0 0 3px rgba(0,135,196,.10);
 }
 
 .login-btn{
   width:100%;
-  margin-top:15px;
-
-  padding:13px;
-
   border:0;
+  padding:13px;
   border-radius:10px;
-
   background:var(--primary);
   color:#fff;
-
-  font-family:"Space Grotesk",sans-serif;
   font-weight:700;
 }
 
-.login-error{
-  display:none;
-  margin-top:12px;
-  color:var(--danger);
-  font-size:13px;
+.login-btn:hover{
+  background:var(--primary-dark);
 }
 
-.login-error.show{
-  display:block;
+.login-error{
+  color:var(--danger);
+  font-size:13px;
+  margin-top:12px;
+  display:none;
 }
 
 /* =========================
@@ -173,7 +153,7 @@ button{
   min-height:100vh;
 }
 
-.app.active{
+.app.show{
   display:flex;
 }
 
@@ -182,60 +162,53 @@ button{
 ========================= */
 
 .sidebar{
-  position:fixed;
-  inset:0 auto 0 0;
-  z-index:100;
-
   width:245px;
-
-  background:#09202b;
+  background:var(--sidebar);
   color:#fff;
-
-  padding:22px 15px;
-
-  overflow-y:auto;
+  min-height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  padding:25px 15px;
+  z-index:50;
 }
 
-.brand{
-  padding:4px 10px 25px;
-
-  font-family:"Space Grotesk",sans-serif;
-  font-size:21px;
-  font-weight:700;
-}
-
-.brand span{
-  color:#42c6f1;
-}
-
-.nav-title{
-  padding:15px 10px 7px;
-
-  color:#78909c;
-
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.nav button{
-  width:100%;
-
+.logo{
   display:flex;
   align-items:center;
   gap:10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:22px;
+  font-weight:700;
+  padding:0 12px 25px;
+}
 
-  margin:3px 0;
-  padding:11px 12px;
+.logo img{
+  width:34px;
+  height:34px;
+  object-fit:contain;
+  border-radius:8px;
+}
 
+.logo span{
+  color:#4bb5e6;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.nav button{
   border:0;
-  border-radius:9px;
-
   background:transparent;
-  color:#c9d7dd;
-
+  color:#c7d0d9;
   text-align:left;
+  padding:12px 13px;
+  border-radius:9px;
+  transition:.2s;
 }
 
 .nav button:hover,
@@ -244,22 +217,20 @@ button{
   color:#fff;
 }
 
-.sidebar-bottom{
-  margin-top:25px;
-  padding-top:20px;
-
-  border-top:1px solid rgba(255,255,255,.09);
-}
-
 .logout{
-  width:100%;
-  padding:10px;
-
+  position:absolute;
+  left:15px;
+  right:15px;
+  bottom:20px;
   border:1px solid rgba(255,255,255,.12);
-  border-radius:9px;
-
   background:transparent;
   color:#fff;
+  padding:11px;
+  border-radius:9px;
+}
+
+.logout:hover{
+  background:rgba(255,255,255,.06);
 }
 
 /* =========================
@@ -267,47 +238,40 @@ button{
 ========================= */
 
 .main{
-  width:calc(100% - 245px);
   margin-left:245px;
+  width:calc(100% - 245px);
 }
 
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-
-  min-height:70px;
-
+.top{
+  height:75px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  padding:12px 25px;
-
-  background:rgba(255,255,255,.94);
-  border-bottom:1px solid var(--border);
-
-  backdrop-filter:blur(10px);
+  padding:0 30px;
 }
 
-.topbar h1{
+.top h1{
   margin:0;
-
   font-family:"Space Grotesk",sans-serif;
-  font-size:21px;
+  font-size:22px;
 }
 
-.menu-btn{
-  display:none;
-
-  border:0;
-  background:none;
-
-  font-size:24px;
+.admin-name{
+  color:var(--muted);
 }
 
 .content{
-  padding:25px;
+  padding:30px;
+}
+
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
 }
 
 /* =========================
@@ -317,71 +281,61 @@ button{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
-
+  gap:17px;
   margin-bottom:25px;
 }
 
 .stat{
-  padding:20px;
-
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:15px;
-
-  box-shadow:var(--shadow);
+  padding:20px;
 }
 
 .stat small{
   color:var(--muted);
-  font-size:13px;
 }
 
 .stat strong{
   display:block;
-  margin-top:5px;
-
+  margin-top:8px;
   font-family:"Space Grotesk",sans-serif;
   font-size:29px;
 }
 
 /* =========================
-   PANELS
+   PANEL
 ========================= */
 
 .panel{
   background:#fff;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:16px;
-  box-shadow:var(--shadow);
-
   overflow:hidden;
 }
 
 .panel-head{
+  padding:20px;
+  border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:15px;
-
-  padding:18px 20px;
-
-  border-bottom:1px solid var(--border);
 }
 
 .panel-head h2{
   margin:0;
-
   font-family:"Space Grotesk",sans-serif;
   font-size:18px;
 }
 
-.panel-body{
-  padding:20px;
+.panel-subtitle{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
 }
 
 .table-wrap{
-  width:100%;
   overflow-x:auto;
 }
 
@@ -392,102 +346,68 @@ table{
 
 th,
 td{
-  padding:13px 14px;
-
-  border-bottom:1px solid #edf1f3;
-
+  padding:14px 16px;
+  border-bottom:1px solid #edf0f2;
   text-align:left;
   white-space:nowrap;
-
-  font-size:13px;
 }
 
 th{
   color:var(--muted);
+  font-size:13px;
+}
+
+td{
+  font-size:14px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#eef6fa;
+  color:var(--primary-dark);
   font-size:12px;
   font-weight:700;
 }
 
-tr:last-child td{
-  border-bottom:0;
+.actions{
+  display:flex;
+  gap:6px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
 .btn{
-  padding:8px 12px;
-
-  border:1px solid var(--border);
-  border-radius:8px;
-
+  border:1px solid var(--line);
   background:#fff;
   color:var(--text);
-
+  padding:7px 10px;
+  border-radius:7px;
   font-size:12px;
-  font-weight:600;
 }
 
 .btn:hover{
-  border-color:#b9cbd4;
+  border-color:#c5ccd4;
 }
 
-.btn.pri{
+.btn.primary{
   background:var(--primary);
   border-color:var(--primary);
   color:#fff;
 }
 
-.btn.del{
+.btn.primary:hover{
+  background:var(--primary-dark);
+}
+
+.btn.danger{
   color:var(--danger);
 }
 
-.btn.sm{
-  padding:6px 9px;
-}
-
-.acts{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-}
-
-/* =========================
-   STATUS
-========================= */
-
-.status{
-  display:inline-flex;
-  align-items:center;
-
-  padding:4px 8px;
-
-  border-radius:999px;
-
-  background:#eef3f5;
-  color:#52636c;
-
-  font-size:11px;
-  font-weight:700;
-}
-
-.status.new,
-.status.pending{
-  background:#fff5d8;
-  color:#8b6500;
-}
-
-.status.approved,
-.status.active{
-  background:#e6f7ed;
-  color:#167044;
-}
-
-.status.rejected,
-.status.closed{
-  background:#fdeaea;
-  color:#b12f2f;
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:40px;
 }
 
 /* =========================
@@ -497,79 +417,78 @@ tr:last-child td{
 .modal{
   position:fixed;
   inset:0;
-  z-index:1000;
-
+  background:rgba(15,23,42,.60);
   display:none;
   align-items:center;
   justify-content:center;
-
   padding:20px;
-
-  background:rgba(3,16,23,.65);
+  z-index:200;
 }
 
-.modal.open{
+.modal.show{
   display:flex;
 }
 
 .modal-box{
-  width:min(900px,100%);
-  max-height:92vh;
-
   background:#fff;
+  width:100%;
+  max-width:950px;
+  max-height:92vh;
+  overflow:auto;
   border-radius:18px;
-
-  box-shadow:0 30px 90px rgba(0,0,0,.3);
-
-  overflow:hidden;
 }
 
 .modal-head{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:2;
+  padding:18px 20px;
+  border-bottom:1px solid var(--line);
   display:flex;
-  align-items:center;
   justify-content:space-between;
-
-  padding:17px 20px;
-
-  border-bottom:1px solid var(--border);
+  align-items:center;
+  gap:15px;
 }
 
-.modal-head h3{
+.modal-head h2{
   margin:0;
   font-family:"Space Grotesk",sans-serif;
 }
 
-.modal-close{
+.modal-head-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.close{
+  border:0;
+  background:#f2f4f7;
   width:34px;
   height:34px;
-
-  border:0;
-  border-radius:8px;
-
-  background:#edf2f4;
+  border-radius:50%;
   font-size:20px;
 }
 
 .modal-body{
-  max-height:calc(92vh - 125px);
-  overflow-y:auto;
-
-  padding:20px;
+  padding:22px;
 }
+
+/* =========================
+   APPLICANT DETAILS
+========================= */
 
 .detail-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:15px;
 }
 
 .detail{
-  padding:13px;
-
-  border:1px solid var(--border);
-  border-radius:10px;
-
-  background:#fafcfd;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:14px;
 }
 
 .detail.full{
@@ -578,193 +497,106 @@ tr:last-child td{
 
 .detail small{
   display:block;
-
-  margin-bottom:3px;
-
   color:var(--muted);
-  font-size:11px;
+  margin-bottom:5px;
 }
 
 .detail strong{
-  font-size:14px;
+  font-weight:600;
   white-space:pre-line;
 }
 
-.modal-foot{
+.modal-actions{
   display:flex;
-  justify-content:flex-end;
-  gap:8px;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
 
-  padding:14px 20px;
-
-  border-top:1px solid var(--border);
+.status-select{
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
 }
 
 /* =========================
    CV
 ========================= */
 
-.cv-wrap{
-  background:#edf1f3;
-  padding:20px;
+.cv-container{
+  background:#eef1f4;
+  padding:25px;
 }
 
 .cv-paper{
-  width:210mm;
-  min-height:297mm;
-  max-width:100%;
-
-  margin:auto;
-
   background:#fff;
-
-  box-shadow:0 12px 40px rgba(0,0,0,.13);
-
-  overflow:hidden;
+  max-width:760px;
+  margin:auto;
+  padding:45px;
+  min-height:950px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
-.cv-head{
-  padding:32px;
-
-  background:#0d2634;
-  color:#fff;
-}
-
-.cv-head h1{
-  margin:0;
-
+.cv-name{
   font-family:"Space Grotesk",sans-serif;
   font-size:31px;
+  font-weight:700;
 }
 
 .cv-role{
-  margin-top:5px;
-  color:#8edcff;
-  font-weight:600;
+  color:var(--primary);
+  font-weight:700;
+  margin-top:4px;
 }
 
 .cv-contact{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px 18px;
-
-  margin-top:14px;
-
-  color:#d4e1e8;
-  font-size:12px;
-}
-
-.cv-content{
-  display:grid;
-  grid-template-columns:1fr 190px;
-  gap:25px;
-
-  padding:28px 32px;
-}
-
-.cv-section{
-  margin-bottom:22px;
-}
-
-.cv-section h4{
-  margin:0 0 9px;
-
-  color:var(--primary);
-
-  font-family:"Space Grotesk",sans-serif;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.7px;
-}
-
-.cv-section p{
-  margin:0;
-
-  color:#43545e;
-
-  font-size:12px;
-  line-height:1.6;
-  white-space:pre-line;
-}
-
-.cv-item{
-  margin-bottom:12px;
-}
-
-.cv-item strong{
-  display:block;
-  font-size:12px;
-}
-
-.cv-item span{
-  display:block;
-  margin-top:2px;
-  color:#73828a;
-  font-size:11px;
-}
-
-.cv-side{
-  border-left:1px solid #e1e8ec;
-  padding-left:18px;
-}
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-  padding:45px 20px;
-
-  color:var(--muted);
-
-  text-align:center;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:5000;
-
-  display:none;
-
-  padding:12px 16px;
-
-  background:#102b38;
-  color:#fff;
-
-  border-radius:10px;
-
-  box-shadow:0 12px 35px rgba(0,0,0,.2);
-
+  color:#667085;
   font-size:13px;
+  margin-top:10px;
 }
 
-.toast.show{
-  display:block;
+.cv-line{
+  height:1px;
+  background:#e5e7eb;
+  margin:25px 0;
+}
+
+.cv-title{
+  font-family:"Space Grotesk",sans-serif;
+  text-transform:uppercase;
+  font-size:12px;
+  letter-spacing:.08em;
+  font-weight:700;
+  margin:22px 0 8px;
+}
+
+.cv-text{
+  white-space:pre-line;
+  color:#4b5563;
+  line-height:1.7;
+  font-size:14px;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media(max-width:1050px){
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
+.mobile-menu{
+  display:none;
+  border:0;
+  background:#f2f4f7;
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  font-size:20px;
 }
 
-@media(max-width:800px){
+@media(max-width:900px){
 
   .sidebar{
     transform:translateX(-100%);
-    transition:transform .2s ease;
+    transition:.2s;
   }
 
   .sidebar.open{
@@ -772,20 +604,31 @@ tr:last-child td{
   }
 
   .main{
-    width:100%;
     margin-left:0;
+    width:100%;
   }
 
-  .menu-btn{
+  .mobile-menu{
     display:block;
   }
 
-  .content{
-    padding:15px;
+  .stats{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .topbar{
-    padding:12px 15px;
+  .content{
+    padding:18px;
+  }
+}
+
+@media(max-width:600px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .top{
+    padding:0 16px;
   }
 
   .detail-grid{
@@ -797,159 +640,186 @@ tr:last-child td{
   }
 
   .cv-paper{
-    width:100%;
+    padding:25px;
   }
 
-  .cv-content{
-    grid-template-columns:1fr;
+  .cv-container{
+    padding:10px;
   }
 
-  .cv-side{
-    border-left:0;
-    border-top:1px solid #e1e8ec;
-    padding:18px 0 0;
+  .cv-name{
+    font-size:25px;
   }
 
+  .modal{
+    padding:8px;
+  }
+
+  .modal-box{
+    border-radius:12px;
+  }
 }
 
-@media(max-width:500px){
+/* =========================
+   PRINT CV
+========================= */
 
-  .stats{
-    grid-template-columns:1fr;
+@media print{
+
+  body{
+    background:#fff;
   }
 
-  .login-box{
-    padding:24px;
+  body *{
+    visibility:hidden !important;
   }
 
+  #cvModal,
+  #cvModal *{
+    visibility:visible !important;
+  }
+
+  #cvModal{
+    position:absolute;
+    inset:0;
+    display:block !important;
+    background:#fff;
+  }
+
+  #cvModal .modal-head{
+    display:none !important;
+  }
+
+  #cvModal .modal-box{
+    max-width:none;
+    max-height:none;
+    box-shadow:none;
+    border-radius:0;
+    overflow:visible;
+  }
+
+  #cvModal .cv-container{
+    padding:0;
+    background:#fff;
+  }
+
+  #cvModal .cv-paper{
+    max-width:none;
+    box-shadow:none;
+    min-height:0;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
+<!-- =========================
      LOGIN
-===================================================== -->
+========================= -->
 
-<div class="login-screen" id="loginScreen">
+<div class="login" id="loginScreen">
 
   <div class="login-box">
 
     <div class="login-brand">
 
-      <strong>
-        DigiSER <span>BD</span>
-      </strong>
+      <img
+        class="login-logo"
+        src="../assets/favicon.svg"
+        alt="DigiSER BD"
+      >
 
-      <p>
-        Admin Dashboard
-      </p>
+      <div>
+        <h1>DigiSER BD</h1>
+      </div>
 
     </div>
 
-    <form id="loginForm">
+    <p>Admin Dashboard</p>
 
-      <label for="adminPassword">
-        Password
-      </label>
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Admin password"
+      autocomplete="current-password"
+    >
 
-      <input
-        id="adminPassword"
-        type="password"
-        placeholder="Enter admin password"
-        autocomplete="current-password"
-        required
-      >
+    <button class="login-btn" id="loginBtn">
+      Login
+    </button>
 
-      <button
-        class="login-btn"
-        type="submit"
-      >
-        Login
-      </button>
-
-      <div
-        class="login-error"
-        id="loginError"
-      >
-        Incorrect password.
-      </div>
-
-    </form>
+    <div class="login-error" id="loginError">
+      Incorrect password.
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     APP
-===================================================== -->
+<!-- =========================
+     ADMIN APP
+========================= -->
 
-<div class="app" id="app">
+<div class="app" id="adminApp">
 
   <!-- SIDEBAR -->
 
   <aside class="sidebar" id="sidebar">
 
-    <div class="brand">
-      DigiSER <span>BD</span>
-    </div>
+    <div class="logo">
 
-    <div class="nav-title">
-      Management
+      <img
+        src="../assets/favicon.svg"
+        alt="DigiSER BD"
+      >
+
+      <div>
+        DigiSER <span>BD</span>
+      </div>
+
     </div>
 
     <nav class="nav">
 
-      <button
-        class="active"
-        data-section="dashboard"
-      >
-        📊 Dashboard
+      <button class="active" data-view="dashboard">
+        Dashboard
       </button>
 
-      <button data-section="jobs">
-        💼 Jobs
+      <button data-view="jobs">
+        Jobs
       </button>
 
-      <button data-section="services">
-        🛠 Services
+      <button data-view="services">
+        Services
       </button>
 
-      <button data-section="employees">
-        👥 Employees
+      <button data-view="employees">
+        Employees
       </button>
 
-      <button data-section="businesses">
-        🏢 Businesses
+      <button data-view="businesses">
+        Businesses
       </button>
 
-      <button data-section="messages">
-        💬 Messages
+      <button data-view="messages">
+        Messages
       </button>
 
-      <button data-section="blog">
-        📝 Blog
+      <button data-view="blog">
+        Blog
       </button>
 
-      <button data-section="applicants">
-        📄 Applicants
+      <button data-view="applicants">
+        Applicants
       </button>
 
     </nav>
 
-    <div class="sidebar-bottom">
-
-      <button
-        class="logout"
-        id="logoutBtn"
-      >
-        Logout
-      </button>
-
-    </div>
+    <button class="logout" id="logoutBtn">
+      Logout
+    </button>
 
   </aside>
 
@@ -958,14 +828,11 @@ tr:last-child td{
 
   <main class="main">
 
-    <header class="topbar">
+    <header class="top">
 
       <div style="display:flex;align-items:center;gap:12px">
 
-        <button
-          class="menu-btn"
-          id="menuBtn"
-        >
+        <button class="mobile-menu" id="mobileMenu">
           ☰
         </button>
 
@@ -975,36 +842,29 @@ tr:last-child td{
 
       </div>
 
-      <span
-        style="color:var(--muted);font-size:13px"
-      >
+      <div class="admin-name">
         Admin
-      </span>
+      </div>
 
     </header>
 
 
     <div class="content">
 
-      <!-- =====================
-           DASHBOARD
-      ====================== -->
+      <!-- DASHBOARD -->
 
-      <section
-        class="section-view"
-        id="section-dashboard"
-      >
+      <section class="view active" id="view-dashboard">
 
         <div class="stats">
 
           <div class="stat">
-            <small>Jobs</small>
-            <strong id="statJobs">0</strong>
+            <small>Applicants</small>
+            <strong id="statApplicants">0</strong>
           </div>
 
           <div class="stat">
-            <small>Services</small>
-            <strong id="statServices">0</strong>
+            <small>New Applicants</small>
+            <strong id="statNew">0</strong>
           </div>
 
           <div class="stat">
@@ -1013,267 +873,202 @@ tr:last-child td{
           </div>
 
           <div class="stat">
-            <small>Applicants</small>
-            <strong id="statApplicants">0</strong>
+            <small>Messages</small>
+            <strong id="statMessages">0</strong>
           </div>
 
         </div>
-
 
         <div class="panel">
 
           <div class="panel-head">
 
-            <h2>
-              Recent Applicants
-            </h2>
+            <div>
 
-            <button
-              class="btn pri"
-              data-section="applicants"
-            >
-              View Applicants
-            </button>
+              <h2>Admin Dashboard</h2>
+
+              <div class="panel-subtitle">
+                Manage DigiSER BD applications and content.
+              </div>
+
+            </div>
 
           </div>
 
-          <div
-            class="panel-body"
-            id="recentApplicants"
-          ></div>
+          <div style="padding:25px;color:#667085">
+
+            Applicants submit their information through the
+            Register page. Their CV is generated from the
+            applicant record and can be viewed from the
+            Applicants section.
+
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           JOBS
-      ====================== -->
+      <!-- JOBS -->
 
-      <section
-        class="section-view hidden"
-        id="section-jobs"
-      >
+      <section class="view" id="view-jobs">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Jobs</h2>
-
-            <button
-              class="btn pri"
-              onclick="addSimpleItem('jobs')"
-            >
-              + Add Job
-            </button>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="jobsTable"
-          ></div>
+          <div class="empty">
+            Job management area.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           SERVICES
-      ====================== -->
+      <!-- SERVICES -->
 
-      <section
-        class="section-view hidden"
-        id="section-services"
-      >
+      <section class="view" id="view-services">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Services</h2>
-
-            <button
-              class="btn pri"
-              onclick="addSimpleItem('services')"
-            >
-              + Add Service
-            </button>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="servicesTable"
-          ></div>
+          <div class="empty">
+            Service management area.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           EMPLOYEES
-      ====================== -->
+      <!-- EMPLOYEES -->
 
-      <section
-        class="section-view hidden"
-        id="section-employees"
-      >
+      <section class="view" id="view-employees">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Employees</h2>
-
-            <button
-              class="btn pri"
-              onclick="addSimpleItem('employees')"
-            >
-              + Add Employee
-            </button>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="employeesTable"
-          ></div>
+          <div class="empty">
+            Employee management area.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           BUSINESSES
-      ====================== -->
+      <!-- BUSINESSES -->
 
-      <section
-        class="section-view hidden"
-        id="section-businesses"
-      >
+      <section class="view" id="view-businesses">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Businesses</h2>
-
-            <button
-              class="btn pri"
-              onclick="addSimpleItem('businesses')"
-            >
-              + Add Business
-            </button>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="businessesTable"
-          ></div>
+          <div class="empty">
+            Business management area.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           MESSAGES
-      ====================== -->
+      <!-- MESSAGES -->
 
-      <section
-        class="section-view hidden"
-        id="section-messages"
-      >
+      <section class="view" id="view-messages">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Messages</h2>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="messagesTable"
-          ></div>
+          <div class="empty">
+            Contact messages will appear here.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           BLOG
-      ====================== -->
+      <!-- BLOG -->
 
-      <section
-        class="section-view hidden"
-        id="section-blog"
-      >
+      <section class="view" id="view-blog">
 
         <div class="panel">
 
           <div class="panel-head">
-
             <h2>Blog</h2>
-
-            <button
-              class="btn pri"
-              onclick="addSimpleItem('blog')"
-            >
-              + Add Post
-            </button>
-
           </div>
 
-          <div
-            class="table-wrap"
-            id="blogTable"
-          ></div>
+          <div class="empty">
+            Blog management area.
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =====================
-           APPLICANTS
-      ====================== -->
+      <!-- APPLICANTS -->
 
-      <section
-        class="section-view hidden"
-        id="section-applicants"
-      >
+      <section class="view" id="view-applicants">
 
         <div class="panel">
 
           <div class="panel-head">
 
-            <h2>
-              Applicants
-            </h2>
+            <div>
 
-            <button
-              class="btn"
-              onclick="refreshApplicants()"
-            >
+              <h2>Applicants</h2>
+
+              <div class="panel-subtitle">
+                Submitted applications and CVs
+              </div>
+
+            </div>
+
+            <button class="btn" id="refreshApplicants">
               Refresh
             </button>
 
           </div>
 
-          <div
-            class="table-wrap"
-            id="applicantsTable"
-          ></div>
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Applied For</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                  <th>Actions</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="applicantTable"></tbody>
+
+            </table>
+
+          </div>
 
         </div>
 
@@ -1286,26 +1081,22 @@ tr:last-child td{
 </div>
 
 
-<!-- =====================================================
-     APPLICANT MODAL
-===================================================== -->
+<!-- =========================
+     APPLICANT DETAIL MODAL
+========================= -->
 
-<div
-  class="modal"
-  id="applicantModal"
->
+<div class="modal" id="applicantModal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h3>
-        Applicant Details
-      </h3>
+      <h2>Applicant Details</h2>
 
       <button
-        class="modal-close"
+        class="close"
         data-close="applicantModal"
+        aria-label="Close"
       >
         ×
       </button>
@@ -1314,199 +1105,127 @@ tr:last-child td{
 
     <div
       class="modal-body"
-      id="applicantBody"
+      id="applicantDetails"
     ></div>
-
-    <div class="modal-foot">
-
-      <button
-        class="btn"
-        data-close="applicantModal"
-      >
-        Close
-      </button>
-
-      <button
-        class="btn"
-        id="applicantCVBtn"
-      >
-        View CV
-      </button>
-
-      <button
-        class="btn pri"
-        id="appSave"
-      >
-        Save Status
-      </button>
-
-    </div>
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      CV MODAL
-===================================================== -->
+========================= -->
 
-<div
-  class="modal"
-  id="cvModal"
->
+<div class="modal" id="cvModal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h3>
-        Applicant CV
-      </h3>
+      <h2>Applicant CV</h2>
 
-      <button
-        class="modal-close"
-        data-close="cvModal"
-      >
-        ×
-      </button>
+      <div class="modal-head-actions">
+
+        <button
+          class="btn primary"
+          id="printCV"
+        >
+          Print / Save PDF
+        </button>
+
+        <button
+          class="close"
+          data-close="cvModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
 
     </div>
 
-    <div
-      class="modal-body"
-      style="padding:0"
-    >
+    <div class="cv-container">
 
       <div
-        class="cv-wrap"
-        id="cvContainer"
+        class="cv-paper"
+        id="adminCV"
       ></div>
 
     </div>
 
-    <div class="modal-foot">
-
-      <button
-        class="btn"
-        data-close="cvModal"
-      >
-        Close
-      </button>
-
-      <button
-        class="btn pri"
-        id="cvPrintBtn"
-      >
-        Download / Print PDF
-      </button>
-
-    </div>
-
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
-
 <script>
+"use strict";
 
-/* =========================================================
-   DIGISER BD ADMIN
-========================================================= */
+/* =========================
+   CONFIG
+========================= */
 
-const STORAGE_KEY =
-  "digiserbd_admin_v1";
+const STORAGE_KEY = "digiserbd_admin_v1";
 
-const ADMIN_PASSWORD =
-  "digiser2026";
-
-let db = loadDB();
-
-let currentApplicantId = null;
+const ADMIN_PASSWORD = "digiser2026";
 
 
-/* =========================================================
+/* =========================
    DATABASE
-========================================================= */
+========================= */
 
-function loadDB(){
+function getDB(){
 
   try{
 
-    const raw =
-      localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);
 
-    if(raw){
-
-      const data =
-        JSON.parse(raw);
+    if(!raw){
 
       return {
-
-        users:Array.isArray(data.users)
-          ? data.users
-          : [],
-
-        jobs:Array.isArray(data.jobs)
-          ? data.jobs
-          : [],
-
-        services:Array.isArray(data.services)
-          ? data.services
-          : [],
-
-        employees:Array.isArray(data.employees)
-          ? data.employees
-          : [],
-
-        businesses:Array.isArray(data.businesses)
-          ? data.businesses
-          : [],
-
-        messages:Array.isArray(data.messages)
-          ? data.messages
-          : [],
-
-        blog:Array.isArray(data.blog)
-          ? data.blog
-          : []
-
+        users:[],
+        jobs:[],
+        services:[],
+        employees:[],
+        businesses:[],
+        messages:[],
+        blog:[]
       };
 
     }
 
+    const db = JSON.parse(raw);
+
+    db.users ||= [];
+    db.jobs ||= [];
+    db.services ||= [];
+    db.employees ||= [];
+    db.businesses ||= [];
+    db.messages ||= [];
+    db.blog ||= [];
+
+    return db;
+
   }catch(error){
 
-    console.error(error);
+    return {
+      users:[],
+      jobs:[],
+      services:[],
+      employees:[],
+      businesses:[],
+      messages:[],
+      blog:[]
+    };
 
   }
-
-  return {
-
-    users:[],
-    jobs:[],
-    services:[],
-    employees:[],
-    businesses:[],
-    messages:[],
-    blog:[]
-
-  };
 
 }
 
 
-function saveDB(){
+function saveDB(db){
 
   localStorage.setItem(
     STORAGE_KEY,
@@ -1516,451 +1235,222 @@ function saveDB(){
 }
 
 
-/* =========================================================
+/* =========================
    HELPERS
-========================================================= */
+========================= */
 
-function esc(value){
+function escapeHTML(text){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function text(value){
-
-  return String(value || "").trim();
+  return String(text || "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-function toast(message){
+function formatDate(date){
 
-  const el =
-    document.getElementById("toast");
-
-  el.textContent =
-    message;
-
-  el.classList.add("show");
-
-  setTimeout(
-    () => el.classList.remove("show"),
-    2200
-  );
-
-}
-
-
-function formatDate(value){
-
-  if(!value){
+  if(!date){
     return "—";
   }
 
-  const date =
-    new Date(value);
+  try{
 
-  if(Number.isNaN(date.getTime())){
+    return new Date(date).toLocaleString();
+
+  }catch{
+
     return "—";
-  }
 
-  return date.toLocaleDateString(
-    "en-GB",
-    {
-      day:"2-digit",
-      month:"short",
-      year:"numeric"
-    }
-  );
+  }
 
 }
 
 
-/* =========================================================
+/* =========================
    LOGIN
-========================================================= */
+========================= */
+
+function login(){
+
+  const password =
+    document.getElementById("adminPassword").value;
+
+  if(password === ADMIN_PASSWORD){
+
+    sessionStorage.setItem(
+      "digiserbd_admin_login",
+      "1"
+    );
+
+    document
+      .getElementById("loginScreen")
+      .classList.add("hidden");
+
+    document
+      .getElementById("adminApp")
+      .classList.add("show");
+
+    document
+      .getElementById("loginError")
+      .style.display = "none";
+
+    renderApplicants();
+    updateStats();
+
+  }else{
+
+    document
+      .getElementById("loginError")
+      .style.display = "block";
+
+  }
+
+}
+
 
 document
-  .getElementById("loginForm")
-  .addEventListener(
-    "submit",
-    function(event){
+  .getElementById("loginBtn")
+  .addEventListener("click",login);
 
-      event.preventDefault();
 
-      const password =
-        document.getElementById(
-          "adminPassword"
-        ).value;
+document
+  .getElementById("adminPassword")
+  .addEventListener("keydown",event=>{
 
-      if(password === ADMIN_PASSWORD){
-
-        sessionStorage.setItem(
-          "digiser_admin_logged",
-          "1"
-        );
-
-        showApp();
-
-      }else{
-
-        document
-          .getElementById("loginError")
-          .classList
-          .add("show");
-
-      }
-
+    if(event.key === "Enter"){
+      login();
     }
-  );
+
+  });
 
 
-function showApp(){
-
-  document
-    .getElementById("loginScreen")
-    .style.display = "none";
-
-  document
-    .getElementById("app")
-    .classList
-    .add("active");
-
-  refreshAll();
-
-}
-
-
-if(
-  sessionStorage.getItem(
-    "digiser_admin_logged"
-  ) === "1"
-){
-
-  showApp();
-
-}
-
-
-/* =========================================================
+/* =========================
    LOGOUT
-========================================================= */
+========================= */
 
 document
   .getElementById("logoutBtn")
-  .addEventListener(
-    "click",
-    function(){
+  .addEventListener("click",()=>{
 
-      sessionStorage.removeItem(
-        "digiser_admin_logged"
-      );
+    sessionStorage.removeItem(
+      "digiserbd_admin_login"
+    );
 
-      location.reload();
+    location.reload();
 
-    }
-  );
+  });
 
 
-/* =========================================================
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
 const navButtons =
-  document.querySelectorAll(
-    "[data-section]"
-  );
+  document.querySelectorAll(".nav button");
 
 
-navButtons.forEach(button => {
+navButtons.forEach(button=>{
 
-  button.addEventListener(
-    "click",
-    function(){
+  button.addEventListener("click",()=>{
 
-      const section =
-        this.dataset.section;
+    const view = button.dataset.view;
 
-      showSection(section);
+    navButtons.forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
-      document
-        .getElementById("sidebar")
-        .classList
-        .remove("open");
+    button.classList.add("active");
 
+    document
+      .querySelectorAll(".view")
+      .forEach(section=>{
+        section.classList.remove("active");
+      });
+
+    const target =
+      document.getElementById("view-" + view);
+
+    if(target){
+      target.classList.add("active");
     }
-  );
+
+    document.getElementById("pageTitle").textContent =
+      button.textContent.trim();
+
+    document
+      .getElementById("sidebar")
+      .classList.remove("open");
+
+  });
 
 });
 
 
-function showSection(section){
-
-  document
-    .querySelectorAll(".section-view")
-    .forEach(el =>
-      el.classList.add("hidden")
-    );
-
-
-  const target =
-    document.getElementById(
-      "section-" + section
-    );
-
-  if(target){
-    target.classList.remove("hidden");
-  }
-
-
-  document
-    .querySelectorAll(
-      ".nav button[data-section]"
-    )
-    .forEach(button => {
-
-      button.classList.toggle(
-        "active",
-        button.dataset.section === section
-      );
-
-    });
-
-
-  const titles = {
-
-    dashboard:"Dashboard",
-    jobs:"Jobs",
-    services:"Services",
-    employees:"Employees",
-    businesses:"Businesses",
-    messages:"Messages",
-    blog:"Blog",
-    applicants:"Applicants"
-
-  };
-
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent =
-    titles[section] || "Dashboard";
-
-}
-
-
-/* =========================================================
+/* =========================
    MOBILE MENU
-========================================================= */
+========================= */
 
 document
-  .getElementById("menuBtn")
-  .addEventListener(
-    "click",
-    () => {
+  .getElementById("mobileMenu")
+  .addEventListener("click",()=>{
 
-      document
-        .getElementById("sidebar")
-        .classList
-        .toggle("open");
+    document
+      .getElementById("sidebar")
+      .classList.toggle("open");
 
-    }
-  );
+  });
 
 
-/* =========================================================
+/* =========================
    STATS
-========================================================= */
+========================= */
 
-function refreshStats(){
+function updateStats(){
 
-  document.getElementById(
-    "statJobs"
-  ).textContent =
-    db.jobs.length;
+  const db = getDB();
 
-  document.getElementById(
-    "statServices"
-  ).textContent =
-    db.services.length;
-
-  document.getElementById(
-    "statBusinesses"
-  ).textContent =
-    db.businesses.length;
-
-  document.getElementById(
-    "statApplicants"
-  ).textContent =
+  document.getElementById("statApplicants").textContent =
     db.users.length;
 
-}
+  document.getElementById("statNew").textContent =
+    db.users.filter(
+      user => user.status === "new"
+    ).length;
 
+  document.getElementById("statBusinesses").textContent =
+    db.businesses.length;
 
-/* =========================================================
-   RECENT APPLICANTS
-========================================================= */
-
-function renderRecentApplicants(){
-
-  const box =
-    document.getElementById(
-      "recentApplicants"
-    );
-
-
-  const users =
-    db.users.slice(0,5);
-
-
-  if(!users.length){
-
-    box.innerHTML = `
-      <div class="empty">
-        No applicants yet.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML = `
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Applied for</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${users.map(u => {
-
-            const wanted =
-              u.wanted || {};
-
-            const personal =
-              u.personal || {};
-
-            return `
-
-              <tr>
-
-                <td>
-                  <strong>
-                    ${esc(
-                      u.name ||
-                      personal.name ||
-                      "Unnamed"
-                    )}
-                  </strong>
-                </td>
-
-                <td>
-                  ${esc(
-                    personal.mobile ||
-                    "—"
-                  )}
-                </td>
-
-                <td>
-                  ${esc(
-                    wanted.role ||
-                    "General Application"
-                  )}
-                </td>
-
-                <td>
-                  ${statusBadge(
-                    u.status
-                  )}
-                </td>
-
-                <td>
-                  <button
-                    class="btn sm"
-                    data-view="${esc(u.id)}"
-                  >
-                    View
-                  </button>
-                </td>
-
-              </tr>
-
-            `;
-
-          }).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
+  document.getElementById("statMessages").textContent =
+    db.messages.length;
 
 }
 
 
-/* =========================================================
-   STATUS
-========================================================= */
+/* =========================
+   APPLICANTS TABLE
+========================= */
 
-function statusBadge(status){
+function renderApplicants(){
 
-  const s =
-    String(status || "new")
-      .toLowerCase();
+  const tbody =
+    document.getElementById("applicantTable");
 
-  return `
+  const db = getDB();
 
-    <span class="status ${esc(s)}">
-      ${esc(
-        status || "new"
-      )}
-    </span>
-
-  `;
-
-}
-
-
-/* =========================================================
-   APPLICANTS
-========================================================= */
-
-function refreshApplicants(){
-
-  const box =
-    document.getElementById(
-      "applicantsTable"
-    );
-
+  tbody.innerHTML = "";
 
   if(!db.users.length){
 
-    box.innerHTML = `
-      <div class="empty">
-        No applications found.
-      </div>
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" class="empty">
+          No applicants yet.
+        </td>
+      </tr>
     `;
 
     return;
@@ -1968,420 +1458,447 @@ function refreshApplicants(){
   }
 
 
-  box.innerHTML = `
+  db.users.forEach(user=>{
 
-    <table>
+    const p = user.personal || {};
+    const w = user.wanted || {};
 
-      <thead>
+    const tr = document.createElement("tr");
 
-        <tr>
+    tr.innerHTML = `
 
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Applied for</th>
-          <th>Status</th>
-          <th>Updated</th>
-          <th>Actions</th>
+      <td>
+        <strong>
+          ${escapeHTML(
+            p.name ||
+            user.name ||
+            "Unknown"
+          )}
+        </strong>
+      </td>
 
-        </tr>
+      <td>
+        ${escapeHTML(
+          p.mobile || "—"
+        )}
+      </td>
 
-      </thead>
+      <td>
+        ${escapeHTML(
+          w.role || "—"
+        )}
+      </td>
 
-      <tbody>
+      <td>
+        <span class="badge">
+          ${escapeHTML(
+            user.status || "new"
+          )}
+        </span>
+      </td>
 
-        ${db.users.map(u => {
+      <td>
+        ${escapeHTML(
+          formatDate(user.updated)
+        )}
+      </td>
 
-          const personal =
-            u.personal || {};
+      <td>
 
-          const wanted =
-            u.wanted || {};
+        <div class="actions">
 
-          return `
+          <button
+            class="btn"
+            onclick="viewApplicant('${user.id}')"
+          >
+            View
+          </button>
 
-            <tr>
+          <button
+            class="btn primary"
+            onclick="viewCV('${user.id}')"
+          >
+            CV
+          </button>
 
-              <td>
+          <button
+            class="btn danger"
+            onclick="deleteApplicant('${user.id}')"
+          >
+            Delete
+          </button>
 
-                <strong>
-                  ${esc(
-                    u.name ||
-                    personal.name ||
-                    "Unnamed"
-                  )}
-                </strong>
+        </div>
 
-                <br>
+      </td>
 
-                <small style="color:var(--muted)">
-                  ${esc(u.id || "")}
-                </small>
+    `;
 
-              </td>
+    tbody.appendChild(tr);
 
-              <td>
-                ${esc(
-                  personal.mobile ||
-                  "—"
-                )}
-              </td>
-
-              <td>
-                ${esc(
-                  wanted.role ||
-                  "General Application"
-                )}
-              </td>
-
-              <td>
-                ${statusBadge(
-                  u.status
-                )}
-              </td>
-
-              <td>
-                ${formatDate(
-                  u.updated
-                )}
-              </td>
-
-              <td>
-
-                <div class="acts">
-
-                  <button
-                    class="btn sm"
-                    data-view="${esc(u.id)}"
-                  >
-                    View
-                  </button>
-
-                  <button
-                    class="btn sm"
-                    data-cv="${esc(u.id)}"
-                  >
-                    CV
-                  </button>
-
-                  <button
-                    class="btn sm del"
-                    data-delapp="${esc(u.id)}"
-                  >
-                    Delete
-                  </button>
-
-                </div>
-
-              </td>
-
-            </tr>
-
-          `;
-
-        }).join("")}
-
-      </tbody>
-
-    </table>
-
-  `;
+  });
 
 }
 
 
-/* =========================================================
-   APPLICANT EVENTS
-========================================================= */
+/* =========================
+   APPLICANT DETAILS
+========================= */
 
-document.addEventListener(
-  "click",
-  function(event){
+function viewApplicant(id){
 
-    const view =
-      event.target.closest(
-        "[data-view]"
-      );
+  const db = getDB();
 
-    if(view){
-
-      openApplicant(
-        view.dataset.view
-      );
-
-      return;
-
-    }
-
-
-    const cv =
-      event.target.closest(
-        "[data-cv]"
-      );
-
-    if(cv){
-
-      openCV(
-        cv.dataset.cv
-      );
-
-      return;
-
-    }
-
-
-    const del =
-      event.target.closest(
-        "[data-delapp]"
-      );
-
-    if(del){
-
-      deleteApplicant(
-        del.dataset.delapp
-      );
-
-      return;
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   OPEN APPLICANT
-========================================================= */
-
-function openApplicant(id){
-
-  const u =
+  const user =
     db.users.find(
       item => item.id === id
     );
 
-  if(!u){
+  if(!user){
     return;
   }
 
-
-  currentApplicantId =
-    id;
-
-
-  const p =
-    u.personal || {};
-
-  const ed =
-    u.education || {};
-
-  const ex =
-    u.experience || {};
-
-  const sk =
-    u.skills || {};
-
-  const lg =
-    u.language || {};
-
-  const wa =
-    u.wanted || {};
-
-  const rf =
-    u.reference || {};
-
-  const at =
-    u.attachments || {};
+  const p = user.personal || {};
+  const ed = user.education || {};
+  const ex = user.experience || {};
+  const sk = user.skills || {};
+  const lg = user.language || {};
+  const w = user.wanted || {};
+  const r = user.reference || {};
 
 
   document.getElementById(
-    "applicantBody"
+    "applicantDetails"
   ).innerHTML = `
 
-    <div style="margin-bottom:18px">
+    <div class="detail-grid">
 
-      <label
-        style="
-          display:block;
-          margin-bottom:7px;
-          font-size:13px;
-          font-weight:700;
-        "
-      >
-        Application Status
-      </label>
+      <div class="detail">
 
-      <select
-        id="appStatus"
-        style="
-          width:100%;
-          padding:11px;
-          border:1px solid var(--border);
-          border-radius:9px;
-        "
-      >
+        <small>Application ID</small>
 
-        <option
-          value="new"
-          ${u.status === "new" ? "selected" : ""}
+        <strong>
+          ${escapeHTML(user.id)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Status</small>
+
+        <select
+          class="status-select"
+          id="appStatus"
         >
-          New
-        </option>
 
-        <option
-          value="reviewing"
-          ${u.status === "reviewing" ? "selected" : ""}
-        >
-          Reviewing
-        </option>
+          ${[
+            "new",
+            "reviewing",
+            "shortlisted",
+            "interview",
+            "selected",
+            "rejected"
+          ].map(status=>`
 
-        <option
-          value="approved"
-          ${u.status === "approved" ? "selected" : ""}
-        >
-          Approved
-        </option>
+            <option
+              value="${status}"
+              ${
+                user.status === status
+                  ? "selected"
+                  : ""
+              }
+            >
+              ${status}
+            </option>
 
-        <option
-          value="rejected"
-          ${u.status === "rejected" ? "selected" : ""}
-        >
-          Rejected
-        </option>
+          `).join("")}
 
-      </select>
+        </select>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Name</small>
+
+        <strong>
+          ${escapeHTML(p.name)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Mobile</small>
+
+        <strong>
+          ${escapeHTML(p.mobile)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Email</small>
+
+        <strong>
+          ${escapeHTML(p.email)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Emergency Contact</small>
+
+        <strong>
+          ${escapeHTML(p.emergency)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Current Address</small>
+
+        <strong>
+          ${escapeHTML(p.currentAddress)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Permanent Address</small>
+
+        <strong>
+          ${escapeHTML(p.permanentAddress)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Professional Profile</small>
+
+        <strong>
+          ${escapeHTML(p.profile)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>SSC</small>
+
+        <strong>
+          ${escapeHTML(ed.ssc)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>HSC</small>
+
+        <strong>
+          ${escapeHTML(ed.hsc)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Graduate</small>
+
+        <strong>
+          ${escapeHTML(ed.graduate)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Other Education</small>
+
+        <strong>
+          ${escapeHTML(ed.other)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Experience</small>
+
+        <strong>
+          ${escapeHTML(ex.experience)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail full">
+
+        <small>Key Duties</small>
+
+        <strong>
+          ${escapeHTML(ex.duty)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Previous Salary</small>
+
+        <strong>
+          ${escapeHTML(ex.previousSalary)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Skills</small>
+
+        <strong>
+          ${escapeHTML(sk.skills)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Languages</small>
+
+        <strong>
+          ${escapeHTML(lg.language)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Wanted Role</small>
+
+        <strong>
+          ${escapeHTML(w.role)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Expected Salary</small>
+
+        <strong>
+          ${escapeHTML(w.salary)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Employment Type</small>
+
+        <strong>
+          ${escapeHTML(w.type)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Preferred Location</small>
+
+        <strong>
+          ${escapeHTML(w.location)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Reference Name</small>
+
+        <strong>
+          ${escapeHTML(r.name)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Reference Contact</small>
+
+        <strong>
+          ${escapeHTML(r.contact)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail">
+
+        <small>Reference Relation</small>
+
+        <strong>
+          ${escapeHTML(r.relation)}
+        </strong>
+
+      </div>
 
     </div>
 
 
-    <div class="detail-grid">
+    <div class="modal-actions">
 
-      ${detail(
-        "Application ID",
-        u.id
-      )}
+      <button
+        class="btn primary"
+        onclick="viewCV('${user.id}')"
+      >
+        View CV
+      </button>
 
-      ${detail(
-        "Full Name",
-        u.name || p.name
-      )}
 
-      ${detail(
-        "Mobile",
-        p.mobile
-      )}
+      <button
+        class="btn"
+        id="saveApplicantStatus"
+      >
+        Save Status
+      </button>
 
-      ${detail(
-        "Email",
-        p.email
-      )}
 
-      ${detail(
-        "Emergency Contact",
-        p.emergency
-      )}
-
-      ${detail(
-        "Current Address",
-        p.currentAddress,
-        true
-      )}
-
-      ${detail(
-        "Permanent Address",
-        p.permanentAddress,
-        true
-      )}
-
-      ${detail(
-        "SSC / Equivalent",
-        ed.ssc
-      )}
-
-      ${detail(
-        "HSC / Equivalent",
-        ed.hsc
-      )}
-
-      ${detail(
-        "Graduation",
-        ed.graduate
-      )}
-
-      ${detail(
-        "Other Education",
-        ed.other
-      )}
-
-      ${detail(
-        "Experience",
-        ex.experience,
-        true
-      )}
-
-      ${detail(
-        "Main Duties",
-        ex.duty,
-        true
-      )}
-
-      ${detail(
-        "Previous Salary",
-        ex.previousSalary
-      )}
-
-      ${detail(
-        "Skills",
-        sk.skills,
-        true
-      )}
-
-      ${detail(
-        "Languages",
-        lg.language,
-        true
-      )}
-
-      ${detail(
-        "Desired Role",
-        wa.role
-      )}
-
-      ${detail(
-        "Expected Salary",
-        wa.salary
-      )}
-
-      ${detail(
-        "Job Type",
-        wa.type
-      )}
-
-      ${detail(
-        "Preferred Location",
-        wa.location
-      )}
-
-      ${detail(
-        "Reference Name",
-        rf.name
-      )}
-
-      ${detail(
-        "Reference Contact",
-        rf.contact
-      )}
-
-      ${detail(
-        "Reference Relation",
-        rf.relation
-      )}
-
-      ${detail(
-        "CV",
-        at.cvGenerated
-          ? "Generated"
-          : "Not generated"
-      )}
+      <button
+        class="btn"
+        data-close="applicantModal"
+      >
+        Close
+      </button>
 
     </div>
 
@@ -2389,29 +1906,14 @@ function openApplicant(id){
 
 
   document
-    .getElementById(
-      "applicantCVBtn"
-    )
-    .onclick = () => {
+    .getElementById("saveApplicantStatus")
+    .addEventListener("click",()=>{
 
-      closeModal(
-        "applicantModal"
-      );
-
-      openCV(id);
-
-    };
-
-
-  document
-    .getElementById(
-      "appSave"
-    )
-    .onclick = () => {
+      const currentDB = getDB();
 
       const applicant =
-        db.users.find(
-          item => item.id === currentApplicantId
+        currentDB.users.find(
+          item => item.id === id
         );
 
       if(!applicant){
@@ -2426,78 +1928,347 @@ function openApplicant(id){
       applicant.updated =
         new Date().toISOString();
 
-      saveDB();
+      saveDB(currentDB);
 
-      refreshAll();
+      renderApplicants();
+      updateStats();
 
-      closeModal(
-        "applicantModal"
+      alert("Applicant status updated.");
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '#applicantDetails [data-close="applicantModal"]'
+    )
+    .forEach(button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+          closeModal("applicantModal");
+        }
       );
 
-      toast(
-        "Applicant status saved."
-      );
-
-    };
+    });
 
 
-  openModal(
-    "applicantModal"
-  );
+  openModal("applicantModal");
 
 }
 
 
-/* =========================================================
-   DETAIL
-========================================================= */
+/* =========================
+   VIEW CV
+========================= */
 
-function detail(
-  label,
-  value,
-  full=false
-){
+function viewCV(id){
 
-  return `
+  const db = getDB();
 
-    <div class="detail ${full ? "full" : ""}">
-
-      <small>
-        ${esc(label)}
-      </small>
-
-      <strong>
-        ${esc(
-          value || "—"
-        )}
-      </strong>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   DELETE APPLICANT
-========================================================= */
-
-function deleteApplicant(id){
-
-  const applicant =
+  const user =
     db.users.find(
       item => item.id === id
     );
 
-  if(!applicant){
+  if(!user){
     return;
   }
 
+  const p = user.personal || {};
+  const ed = user.education || {};
+  const ex = user.experience || {};
+  const sk = user.skills || {};
+  const lg = user.language || {};
+  const w = user.wanted || {};
+  const r = user.reference || {};
+
+
+  const education = [
+
+    ed.ssc
+      ? "SSC: " + ed.ssc
+      : "",
+
+    ed.hsc
+      ? "HSC: " + ed.hsc
+      : "",
+
+    ed.graduate
+      ? "Graduate: " + ed.graduate
+      : "",
+
+    ed.other || ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
+
+  const experience = [
+
+    ex.experience || "",
+
+    ex.duty
+      ? "Duties: " + ex.duty
+      : "",
+
+    ex.previousSalary
+      ? "Previous Salary: " +
+        ex.previousSalary
+      : ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
+
+  const preference = [
+
+    w.role
+      ? "Role: " + w.role
+      : "",
+
+    w.salary
+      ? "Expected Salary: " +
+        w.salary
+      : "",
+
+    w.type
+      ? "Type: " + w.type
+      : "",
+
+    w.location
+      ? "Location: " +
+        w.location
+      : ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
+
+  document.getElementById(
+    "adminCV"
+  ).innerHTML = `
+
+    <div class="cv-name">
+      ${escapeHTML(
+        p.name ||
+        user.name
+      )}
+    </div>
+
+
+    <div class="cv-role">
+      ${escapeHTML(
+        w.role ||
+        "Professional"
+      )}
+    </div>
+
+
+    <div class="cv-contact">
+
+      ${escapeHTML(
+        p.mobile || ""
+      )}
+
+      ${
+        p.email
+          ? " · " +
+            escapeHTML(p.email)
+          : ""
+      }
+
+    </div>
+
+
+    <div class="cv-line"></div>
+
+
+    ${
+      p.profile
+        ? `
+
+          <div class="cv-title">
+            Professional Profile
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              p.profile
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      education
+        ? `
+
+          <div class="cv-title">
+            Education
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              education
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      experience
+        ? `
+
+          <div class="cv-title">
+            Experience
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              experience
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      sk.skills
+        ? `
+
+          <div class="cv-title">
+            Skills
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              sk.skills
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      lg.language
+        ? `
+
+          <div class="cv-title">
+            Languages
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              lg.language
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      preference
+        ? `
+
+          <div class="cv-title">
+            Job Preference
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              preference
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      (
+        r.name ||
+        r.contact ||
+        r.relation
+      )
+        ? `
+
+          <div class="cv-title">
+            Reference
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              [
+                r.name,
+                r.contact,
+                r.relation
+              ]
+              .filter(Boolean)
+              .join(" · ")
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    <div class="cv-title">
+      Application ID
+    </div>
+
+    <div class="cv-text">
+      ${escapeHTML(
+        user.id
+      )}
+    </div>
+
+  `;
+
+
+  openModal("cvModal");
+
+}
+
+
+/* =========================
+   DELETE APPLICANT
+========================= */
+
+function deleteApplicant(id){
+
+  const db = getDB();
+
+  const user =
+    db.users.find(
+      item => item.id === id
+    );
+
+  if(!user){
+    return;
+  }
 
   const name =
-    applicant.name ||
-    applicant.personal?.name ||
+    user.personal?.name ||
+    user.name ||
     "this applicant";
 
 
@@ -2506,9 +2277,7 @@ function deleteApplicant(id){
       `Delete application from ${name}?`
     )
   ){
-
     return;
-
   }
 
 
@@ -2517,664 +2286,23 @@ function deleteApplicant(id){
       item => item.id !== id
     );
 
+  saveDB(db);
 
-  saveDB();
-
-  refreshAll();
-
-  toast(
-    "Application deleted."
-  );
+  renderApplicants();
+  updateStats();
 
 }
 
 
-/* =========================================================
-   CV
-========================================================= */
-
-function openCV(id){
-
-  const u =
-    db.users.find(
-      item => item.id === id
-    );
-
-  if(!u){
-    return;
-  }
-
-
-  currentApplicantId =
-    id;
-
-
-  const p =
-    u.personal || {};
-
-  const ed =
-    u.education || {};
-
-  const ex =
-    u.experience || {};
-
-  const sk =
-    u.skills || {};
-
-  const lg =
-    u.language || {};
-
-  const wa =
-    u.wanted || {};
-
-  const rf =
-    u.reference || {};
-
-
-  const name =
-    u.name ||
-    p.name ||
-    "Applicant";
-
-
-  const role =
-    wa.role ||
-    "Professional Applicant";
-
-
-  const skills =
-    String(
-      sk.skills || ""
-    )
-    .split(/[,;\n]+/)
-    .map(x => x.trim())
-    .filter(Boolean);
-
-
-  const education = [
-
-    ed.ssc
-      ? `<div class="cv-item">
-          <strong>SSC / Equivalent</strong>
-          <span>${esc(ed.ssc)}</span>
-        </div>`
-      : "",
-
-    ed.hsc
-      ? `<div class="cv-item">
-          <strong>HSC / Equivalent</strong>
-          <span>${esc(ed.hsc)}</span>
-        </div>`
-      : "",
-
-    ed.graduate
-      ? `<div class="cv-item">
-          <strong>Graduation</strong>
-          <span>${esc(ed.graduate)}</span>
-        </div>`
-      : "",
-
-    ed.other
-      ? `<div class="cv-item">
-          <strong>Other Education</strong>
-          <span>${esc(ed.other)}</span>
-        </div>`
-      : ""
-
-  ].filter(Boolean);
-
-
-  document.getElementById(
-    "cvContainer"
-  ).innerHTML = `
-
-    <div class="cv-paper">
-
-      <div class="cv-head">
-
-        <h1>
-          ${esc(name)}
-        </h1>
-
-        <div class="cv-role">
-          ${esc(role)}
-        </div>
-
-        <div class="cv-contact">
-
-          ${
-            p.mobile
-              ? `<span>${esc(p.mobile)}</span>`
-              : ""
-          }
-
-          ${
-            p.email
-              ? `<span>${esc(p.email)}</span>`
-              : ""
-          }
-
-          ${
-            wa.location
-              ? `<span>${esc(wa.location)}</span>`
-              : ""
-          }
-
-        </div>
-
-      </div>
-
-
-      <div class="cv-content">
-
-        <div>
-
-          ${
-            p.profile
-              ? `
-                <div class="cv-section">
-
-                  <h4>
-                    Profile
-                  </h4>
-
-                  <p>
-                    ${esc(p.profile)}
-                  </p>
-
-                </div>
-              `
-              : ""
-          }
-
-
-          ${
-            ex.experience || ex.duty
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Experience
-                  </h4>
-
-                  ${
-                    ex.experience
-                      ? `
-                        <div class="cv-item">
-
-                          <strong>
-                            Professional Experience
-                          </strong>
-
-                          <span>
-                            ${esc(ex.experience)}
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-                  ${
-                    ex.duty
-                      ? `
-                        <div class="cv-item">
-
-                          <strong>
-                            Main Duties
-                          </strong>
-
-                          <span>
-                            ${esc(ex.duty)}
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-                  ${
-                    ex.previousSalary
-                      ? `
-                        <div class="cv-item">
-
-                          <strong>
-                            Previous Salary
-                          </strong>
-
-                          <span>
-                            ${esc(ex.previousSalary)}
-                          </span>
-
-                        </div>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          ${
-            education.length
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Education
-                  </h4>
-
-                  ${education.join("")}
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          ${
-            wa.role ||
-            wa.salary ||
-            wa.type ||
-            wa.location
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Career Preference
-                  </h4>
-
-                  <p>
-
-                    ${
-                      wa.role
-                        ? `Desired Role: ${esc(wa.role)}\n`
-                        : ""
-                    }
-
-                    ${
-                      wa.salary
-                        ? `Expected Salary: ${esc(wa.salary)}\n`
-                        : ""
-                    }
-
-                    ${
-                      wa.type
-                        ? `Job Type: ${esc(wa.type)}\n`
-                        : ""
-                    }
-
-                    ${
-                      wa.location
-                        ? `Preferred Location: ${esc(wa.location)}`
-                        : ""
-                    }
-
-                  </p>
-
-                </div>
-
-              `
-              : ""
-          }
-
-        </div>
-
-
-        <aside class="cv-side">
-
-          ${
-            skills.length
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Skills
-                  </h4>
-
-                  <p>
-                    ${skills
-                      .map(
-                        skill =>
-                          `• ${esc(skill)}`
-                      )
-                      .join("\n")}
-                  </p>
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          ${
-            lg.language
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Languages
-                  </h4>
-
-                  <p>
-                    ${esc(lg.language)}
-                  </p>
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          ${
-            p.currentAddress
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Address
-                  </h4>
-
-                  <p>
-                    ${esc(p.currentAddress)}
-                  </p>
-
-                </div>
-
-              `
-              : ""
-          }
-
-
-          ${
-            rf.name ||
-            rf.contact ||
-            rf.relation
-              ? `
-
-                <div class="cv-section">
-
-                  <h4>
-                    Reference
-                  </h4>
-
-                  <p>
-
-                    ${
-                      rf.name
-                        ? `${esc(rf.name)}\n`
-                        : ""
-                    }
-
-                    ${
-                      rf.relation
-                        ? `${esc(rf.relation)}\n`
-                        : ""
-                    }
-
-                    ${
-                      rf.contact
-                        ? `${esc(rf.contact)}`
-                        : ""
-                    }
-
-                  </p>
-
-                </div>
-
-              `
-              : ""
-          }
-
-        </aside>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  document
-    .getElementById(
-      "cvPrintBtn"
-    )
-    .onclick = () => {
-
-      printCV(id);
-
-    };
-
-
-  openModal(
-    "cvModal"
-  );
-
-}
-
-
-/* =========================================================
-   PRINT / SAVE PDF
-========================================================= */
-
-function printCV(id){
-
-  const u =
-    db.users.find(
-      item => item.id === id
-    );
-
-  if(!u){
-    return;
-  }
-
-
-  const cv =
-    document.getElementById(
-      "cvContainer"
-    ).innerHTML;
-
-
-  const printWindow =
-    window.open(
-      "",
-      "_blank",
-      "width=900,height=1100"
-    );
-
-
-  if(!printWindow){
-
-    alert(
-      "Please allow pop-ups to download the CV."
-    );
-
-    return;
-
-  }
-
-
-  printWindow.document.write(`
-
-    <!DOCTYPE html>
-
-    <html>
-
-    <head>
-
-      <title>
-        CV - ${esc(
-          u.name ||
-          u.personal?.name ||
-          "Applicant"
-        )}
-      </title>
-
-      <style>
-
-        *{
-          box-sizing:border-box;
-        }
-
-        body{
-          margin:0;
-          background:#fff;
-          color:#172833;
-          font-family:Arial,sans-serif;
-        }
-
-        .cv-paper{
-          width:210mm;
-          min-height:297mm;
-          margin:0 auto;
-          background:#fff;
-        }
-
-        .cv-head{
-          padding:32px;
-          background:#0d2634;
-          color:#fff;
-        }
-
-        .cv-head h1{
-          margin:0;
-          font-size:31px;
-        }
-
-        .cv-role{
-          margin-top:5px;
-          color:#8edcff;
-          font-weight:600;
-        }
-
-        .cv-contact{
-          display:flex;
-          flex-wrap:wrap;
-          gap:8px 18px;
-          margin-top:14px;
-          color:#d4e1e8;
-          font-size:12px;
-        }
-
-        .cv-content{
-          display:grid;
-          grid-template-columns:1fr 190px;
-          gap:25px;
-          padding:28px 32px;
-        }
-
-        .cv-section{
-          margin-bottom:22px;
-        }
-
-        .cv-section h4{
-          margin:0 0 9px;
-          color:#0087c4;
-          font-size:12px;
-          text-transform:uppercase;
-          letter-spacing:.7px;
-        }
-
-        .cv-section p{
-          margin:0;
-          color:#43545e;
-          font-size:12px;
-          line-height:1.6;
-          white-space:pre-line;
-        }
-
-        .cv-item{
-          margin-bottom:12px;
-        }
-
-        .cv-item strong{
-          display:block;
-          font-size:12px;
-        }
-
-        .cv-item span{
-          display:block;
-          margin-top:2px;
-          color:#73828a;
-          font-size:11px;
-        }
-
-        .cv-side{
-          border-left:1px solid #e1e8ec;
-          padding-left:18px;
-        }
-
-        @page{
-          size:A4;
-          margin:0;
-        }
-
-        @media print{
-
-          body{
-            print-color-adjust:exact;
-            -webkit-print-color-adjust:exact;
-          }
-
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      ${cv}
-
-      <script>
-
-        window.onload = function(){
-
-          setTimeout(
-            function(){
-              window.print();
-            },
-            400
-          );
-
-        };
-
-      <\/script>
-
-    </body>
-
-    </html>
-
-  `);
-
-
-  printWindow.document.close();
-
-}
-
-
-/* =========================================================
+/* =========================
    MODALS
-========================================================= */
+========================= */
 
 function openModal(id){
 
   document
     .getElementById(id)
-    .classList
-    .add("open");
+    .classList.add("show");
 
 }
 
@@ -3183,46 +2311,38 @@ function closeModal(id){
 
   document
     .getElementById(id)
-    .classList
-    .remove("open");
+    .classList.remove("show");
 
 }
 
 
-document.addEventListener(
-  "click",
-  function(event){
+document
+  .querySelectorAll("[data-close]")
+  .forEach(button=>{
 
-    const close =
-      event.target.closest(
-        "[data-close]"
-      );
+    button.addEventListener(
+      "click",
+      ()=>{
+        closeModal(
+          button.dataset.close
+        );
+      }
+    );
 
-    if(close){
-
-      closeModal(
-        close.dataset.close
-      );
-
-    }
-
-  }
-);
+  });
 
 
 document
   .querySelectorAll(".modal")
-  .forEach(modal => {
+  .forEach(modal=>{
 
     modal.addEventListener(
       "click",
-      function(event){
+      event=>{
 
         if(event.target === modal){
 
-          modal.classList.remove(
-            "open"
-          );
+          modal.classList.remove("show");
 
         }
 
@@ -3232,407 +2352,59 @@ document
   });
 
 
-/* =========================================================
-   SIMPLE CRUD TABLES
-========================================================= */
+/* =========================
+   PRINT CV
+========================= */
 
-function renderSimpleTable(
-  type,
-  elementId,
-  label
-){
-
-  const box =
-    document.getElementById(
-      elementId
-    );
-
-
-  const items =
-    db[type] || [];
-
-
-  if(!items.length){
-
-    box.innerHTML = `
-
-      <div class="empty">
-        No ${esc(label.toLowerCase())} found.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML = `
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>Name / Title</th>
-          <th>Created</th>
-          <th>Actions</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${items.map((item,index) => `
-
-          <tr>
-
-            <td>
-              <strong>
-                ${esc(
-                  item.title ||
-                  item.name ||
-                  "Untitled"
-                )}
-              </strong>
-            </td>
-
-            <td>
-              ${formatDate(
-                item.created ||
-                item.updated
-              )}
-            </td>
-
-            <td>
-
-              <button
-                class="btn sm del"
-                onclick="deleteSimpleItem('${type}',${index})"
-              >
-                Delete
-              </button>
-
-            </td>
-
-          </tr>
-
-        `).join("")}
-
-      </tbody>
-
-    </table>
-
-  `;
-
-}
-
-
-function addSimpleItem(type){
-
-  const label = {
-
-    jobs:"Job title",
-    services:"Service name",
-    employees:"Employee name",
-    businesses:"Business name",
-    blog:"Post title"
-
-  }[type] || "Name";
-
-
-  const value =
-    prompt(
-      `Enter ${label}:`
-    );
-
-
-  if(!value){
-    return;
-  }
-
-
-  db[type].unshift({
-
-    id:
-      Date.now().toString(),
-
-    name:
-      value.trim(),
-
-    title:
-      value.trim(),
-
-    created:
-      new Date().toISOString()
-
-  });
-
-
-  saveDB();
-
-  refreshAll();
-
-  toast(
-    `${label} added.`
+document
+  .getElementById("printCV")
+  .addEventListener(
+    "click",
+    ()=>{
+      window.print();
+    }
   );
 
-}
 
+/* =========================
+   REFRESH
+========================= */
 
-function deleteSimpleItem(
-  type,
-  index
-){
+document
+  .getElementById("refreshApplicants")
+  .addEventListener(
+    "click",
+    ()=>{
 
-  if(
-    !confirm(
-      "Delete this item?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  db[type].splice(
-    index,
-    1
-  );
-
-  saveDB();
-
-  refreshAll();
-
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
-
-function renderMessages(){
-
-  const box =
-    document.getElementById(
-      "messagesTable"
-    );
-
-
-  if(!db.messages.length){
-
-    box.innerHTML = `
-      <div class="empty">
-        No messages found.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML = `
-
-    <table>
-
-      <thead>
-
-        <tr>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Message</th>
-          <th>Date</th>
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${db.messages.map(m => `
-
-          <tr>
-
-            <td>
-              ${esc(
-                m.name || "—"
-              )}
-            </td>
-
-            <td>
-              ${esc(
-                m.contact ||
-                m.email ||
-                "—"
-              )}
-            </td>
-
-            <td>
-              ${esc(
-                m.message || "—"
-              )}
-            </td>
-
-            <td>
-              ${formatDate(
-                m.created ||
-                m.updated
-              )}
-            </td>
-
-          </tr>
-
-        `).join("")}
-
-      </tbody>
-
-    </table>
-
-  `;
-
-}
-
-
-/* =========================================================
-   REFRESH ALL
-========================================================= */
-
-function refreshAll(){
-
-  db =
-    loadDB();
-
-  refreshStats();
-
-  renderRecentApplicants();
-
-  refreshApplicants();
-
-  renderMessages();
-
-
-  renderSimpleTable(
-    "jobs",
-    "jobsTable",
-    "Jobs"
-  );
-
-  renderSimpleTable(
-    "services",
-    "servicesTable",
-    "Services"
-  );
-
-  renderSimpleTable(
-    "employees",
-    "employeesTable",
-    "Employees"
-  );
-
-  renderSimpleTable(
-    "businesses",
-    "businessesTable",
-    "Businesses"
-  );
-
-  renderSimpleTable(
-    "blog",
-    "blogTable",
-    "Blog posts"
-  );
-
-}
-
-
-/* =========================================================
-   BACKUP / RESTORE
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    /*
-      Ctrl + Shift + E
-      Export admin database
-    */
-
-    if(
-      event.ctrlKey &&
-      event.shiftKey &&
-      event.key.toLowerCase() === "e"
-    ){
-
-      event.preventDefault();
-
-      exportDB();
+      renderApplicants();
+      updateStats();
 
     }
-
-  }
-);
+  );
 
 
-function exportDB(){
+/* =========================
+   AUTO LOGIN
+========================= */
 
-  const data =
-    JSON.stringify(
-      db,
-      null,
-      2
-    );
+if(
+  sessionStorage.getItem(
+    "digiserbd_admin_login"
+  ) === "1"
+){
 
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
 
-  const blob =
-    new Blob(
-      [data],
-      {
-        type:"application/json"
-      }
-    );
+  document
+    .getElementById("adminApp")
+    .classList.add("show");
 
-
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const a =
-    document.createElement("a");
-
-  a.href =
-    url;
-
-  a.download =
-    `digiserbd-admin-backup-${Date.now()}.json`;
-
-  a.click();
-
-  URL.revokeObjectURL(url);
+  renderApplicants();
+  updateStats();
 
 }
-
-
-/* =========================================================
-   GLOBAL EXPORT
-========================================================= */
-
-window.exportDB =
-  exportDB;
-
-window.refreshApplicants =
-  refreshApplicants;
-
-window.addSimpleItem =
-  addSimpleItem;
-
-window.deleteSimpleItem =
-  deleteSimpleItem;
-
 </script>
 
 </body>
