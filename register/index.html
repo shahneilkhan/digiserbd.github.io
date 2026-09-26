@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DigiSER BD · Apply</title>
+<title>DigiSER BD · Register</title>
 
+<meta name="description" content="Register with DigiSER BD and create your professional applicant profile.">
+<meta name="theme-color" content="#0087c4">
+
+<!-- Browser Favicon -->
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-  --bg:#f5f7fa;
+  --bg:#f4f6f8;
   --card:#ffffff;
   --text:#17202a;
   --muted:#667085;
-  --line:#e5e7eb;
+  --line:#e1e6ea;
   --primary:#0087c4;
   --primary-dark:#006c9d;
-  --success:#138a55;
+  --success:#14804a;
   --danger:#c0392b;
-  --shadow:0 15px 45px rgba(15,23,42,.08);
+  --soft:#eef6fa;
+  --dark:#101820;
 }
 
 *{
@@ -50,18 +61,29 @@ button{
   cursor:pointer;
 }
 
-.topbar{
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  padding:18px 24px;
-  position:sticky;
-  top:0;
-  z-index:20;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-.topbar-inner{
+/* =========================
+   HEADER
+========================= */
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner{
   max-width:1180px;
   margin:auto;
+  min-height:72px;
+  padding:0 22px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -69,95 +91,161 @@ button{
 }
 
 .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-family:"Space Grotesk",sans-serif;
-  font-weight:700;
   font-size:21px;
+  font-weight:700;
+}
+
+.brand img{
+  width:38px;
+  height:38px;
+  object-fit:contain;
+  border-radius:9px;
 }
 
 .brand span{
   color:var(--primary);
 }
 
-.back{
-  text-decoration:none;
-  color:var(--text);
+.back-link{
+  color:var(--muted);
+  font-size:14px;
   font-weight:600;
 }
 
-.page{
-  max-width:1180px;
-  margin:0 auto;
-  padding:45px 20px 70px;
+.back-link:hover{
+  color:var(--primary);
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  margin-bottom:30px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0,135,196,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f4f6f8 100%
+    );
+  padding:70px 20px 45px;
 }
 
-.hero small{
-  color:var(--primary);
-  font-family:"Space Grotesk",sans-serif;
+.hero-inner{
+  max-width:920px;
+  margin:auto;
+  text-align:center;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 12px;
+  background:var(--soft);
+  color:var(--primary-dark);
+  border:1px solid #d7edf6;
+  border-radius:30px;
+  font-size:12px;
   font-weight:700;
-  letter-spacing:.08em;
+  letter-spacing:.04em;
+  text-transform:uppercase;
 }
 
 .hero h1{
-  margin:8px 0;
+  margin:18px 0 10px;
   font-family:"Space Grotesk",sans-serif;
-  font-size:42px;
-  line-height:1.1;
+  font-size:clamp(32px,5vw,54px);
+  line-height:1.05;
 }
 
 .hero p{
+  max-width:650px;
+  margin:0 auto;
   color:var(--muted);
-  max-width:700px;
-  font-size:17px;
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.page{
+  max-width:1180px;
+  margin:auto;
+  padding:20px 20px 70px;
 }
 
 .layout{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 390px;
-  gap:28px;
+  grid-template-columns:minmax(0,1.4fr) minmax(300px,.8fr);
+  gap:22px;
   align-items:start;
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:26px;
+  border-radius:18px;
+  overflow:hidden;
 }
 
-.section-title{
-  margin:0 0 20px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:20px;
-}
-
-.form-section{
-  padding:24px 0;
+.card-head{
+  padding:22px;
   border-bottom:1px solid var(--line);
 }
 
-.form-section:first-child{
-  padding-top:0;
+.card-head h2{
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:19px;
 }
 
-.form-section:last-child{
-  border-bottom:0;
+.card-head p{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.card-body{
+  padding:22px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.section-title{
+  margin:28px 0 15px;
+  padding-bottom:9px;
+  border-bottom:1px solid var(--line);
+  font-family:"Space Grotesk",sans-serif;
+  font-size:15px;
+}
+
+.section-title:first-child{
+  margin-top:0;
 }
 
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:17px;
+  gap:15px;
 }
 
 .field{
   display:flex;
   flex-direction:column;
-  gap:7px;
+  gap:6px;
 }
 
 .field.full{
@@ -165,20 +253,26 @@ button{
 }
 
 .field label{
-  font-weight:600;
+  font-size:13px;
+  font-weight:700;
 }
 
 .field input,
 .field textarea,
 .field select{
   width:100%;
-  border:1px solid #d9dee5;
-  border-radius:11px;
-  padding:12px 13px;
-  outline:none;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px 12px;
   background:#fff;
   color:var(--text);
+  outline:none;
   transition:.2s;
+}
+
+.field textarea{
+  resize:vertical;
+  min-height:100px;
 }
 
 .field input:focus,
@@ -188,79 +282,85 @@ button{
   box-shadow:0 0 0 3px rgba(0,135,196,.10);
 }
 
-.field textarea{
-  resize:vertical;
-  min-height:110px;
+.field small{
+  color:var(--muted);
+  font-size:11px;
 }
 
+/* =========================
+   SUBMIT
+========================= */
+
 .submit-area{
-  margin-top:25px;
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
 }
 
 .submit-btn{
   width:100%;
   border:0;
+  border-radius:11px;
+  padding:14px 18px;
   background:var(--primary);
   color:#fff;
-  padding:15px 20px;
-  border-radius:12px;
   font-weight:700;
-  font-size:16px;
+  font-size:15px;
+  transition:.2s;
 }
 
 .submit-btn:hover{
   background:var(--primary-dark);
 }
 
-.note{
-  margin-top:12px;
+.submit-btn:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
+.form-note{
+  margin:10px 0 0;
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
   text-align:center;
 }
 
-.success{
-  display:none;
-  margin-top:18px;
-  background:#ecfdf3;
-  color:#087443;
-  border:1px solid #b7ebcd;
-  border-radius:12px;
-  padding:15px;
-}
+/* =========================
+   CV PREVIEW
+========================= */
 
-.success.show{
-  display:block;
-}
-
-.cv-card{
+.preview-card{
   position:sticky;
-  top:90px;
+  top:94px;
 }
 
-.cv-label{
+.preview-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:16px;
+  gap:10px;
 }
 
-.cv-label strong{
-  font-family:"Space Grotesk",sans-serif;
-}
-
-.live{
-  font-size:12px;
+.preview-status{
+  display:none;
+  padding:5px 9px;
+  background:#eaf7f0;
   color:var(--success);
+  border-radius:20px;
+  font-size:11px;
   font-weight:700;
 }
 
-.cv{
+.cv-wrap{
+  background:#eef1f4;
+  padding:14px;
+}
+
+.cv-paper{
   background:#fff;
-  border:1px solid #dfe3e8;
-  min-height:550px;
+  min-height:800px;
   padding:30px;
-  box-shadow:0 8px 25px rgba(0,0,0,.05);
+  box-shadow:0 5px 22px rgba(0,0,0,.07);
 }
 
 .cv-name{
@@ -271,85 +371,186 @@ button{
 
 .cv-role{
   color:var(--primary);
+  font-weight:700;
   margin-top:3px;
-  font-weight:600;
 }
 
 .cv-contact{
-  margin-top:10px;
-  color:#667085;
-  font-size:12px;
-  line-height:1.7;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:8px;
+  line-height:1.6;
 }
 
 .cv-line{
   height:1px;
-  background:#e5e7eb;
+  background:var(--line);
   margin:20px 0;
 }
 
-.cv-heading{
+.cv-title{
   font-family:"Space Grotesk",sans-serif;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.08em;
   text-transform:uppercase;
-  margin:18px 0 8px;
+  letter-spacing:.08em;
+  font-size:10px;
+  font-weight:700;
+  margin:19px 0 6px;
 }
 
 .cv-text{
   white-space:pre-line;
   color:#4b5563;
-  font-size:13px;
+  font-size:12px;
   line-height:1.65;
 }
 
-.empty{
-  color:#98a2b3;
+.cv-empty{
+  text-align:center;
+  padding:80px 15px;
+  color:var(--muted);
   font-size:13px;
 }
 
-.application-result{
+/* =========================
+   SUCCESS
+========================= */
+
+.success-screen{
   display:none;
-  margin-top:18px;
-  padding:16px;
-  border-radius:12px;
-  background:#f0f9ff;
-  border:1px solid #bae6fd;
+  min-height:65vh;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
 }
 
-.application-result.show{
-  display:block;
+.success-screen.show{
+  display:flex;
+}
+
+.success-box{
+  max-width:650px;
+  width:100%;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:42px 30px;
+  text-align:center;
+  box-shadow:0 15px 50px rgba(0,0,0,.07);
+}
+
+.success-icon{
+  width:68px;
+  height:68px;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#eaf7f0;
+  color:var(--success);
+  font-size:32px;
+  font-weight:700;
+}
+
+.success-box h2{
+  margin:0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:28px;
+}
+
+.success-box p{
+  color:var(--muted);
+  line-height:1.7;
 }
 
 .application-id{
+  display:inline-block;
+  margin:10px 0 20px;
+  padding:10px 14px;
+  background:var(--soft);
+  color:var(--primary-dark);
+  border-radius:9px;
   font-family:"Space Grotesk",sans-serif;
   font-weight:700;
-  color:var(--primary);
+  letter-spacing:.04em;
 }
 
+.success-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.success-btn{
+  border:1px solid var(--line);
+  background:#fff;
+  padding:11px 15px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.success-btn.primary{
+  border-color:var(--primary);
+  background:var(--primary);
+  color:#fff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer{
+  border-top:1px solid var(--line);
+  background:#fff;
+  padding:25px 20px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:900px){
+
   .layout{
     grid-template-columns:1fr;
   }
 
-  .cv-card{
+  .preview-card{
     position:static;
   }
+
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
+
+  .header-inner{
+    min-height:64px;
+    padding:0 15px;
+  }
+
+  .brand{
+    font-size:18px;
+  }
+
+  .brand img{
+    width:34px;
+    height:34px;
+  }
+
+  .back-link{
+    font-size:12px;
+  }
+
+  .hero{
+    padding:48px 17px 35px;
+  }
+
   .page{
-    padding:30px 14px 50px;
-  }
-
-  .hero h1{
-    font-size:32px;
-  }
-
-  .card{
-    padding:19px;
-    border-radius:15px;
+    padding:15px 12px 50px;
   }
 
   .form-grid{
@@ -360,12 +561,31 @@ button{
     grid-column:auto;
   }
 
-  .cv{
-    padding:20px;
+  .card-body,
+  .card-head{
+    padding:17px;
   }
+
+  .cv-paper{
+    padding:22px;
+  }
+
+  .success-box{
+    padding:35px 20px;
+  }
+
 }
 
+/* =========================
+   PRINT
+========================= */
+
 @media print{
+
+  body{
+    background:#fff;
+  }
+
   body *{
     visibility:hidden !important;
   }
@@ -380,277 +600,601 @@ button{
     left:0;
     top:0;
     width:100%;
-    border:0;
-    box-shadow:none;
   }
+
+  .cv-wrap{
+    background:#fff;
+    padding:0;
+  }
+
+  .cv-paper{
+    box-shadow:none;
+    min-height:0;
+    max-width:none;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">DigiSER <span>BD</span></div>
-    <a class="back" href="../">← Back</a>
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a class="brand" href="../">
+
+      <img
+        src="../assets/favicon.svg"
+        alt="DigiSER BD"
+      >
+
+      <div>
+        DigiSER <span>BD</span>
+      </div>
+
+    </a>
+
+    <a
+      class="back-link"
+      href="../"
+    >
+      ← Back to DigiSER BD
+    </a>
+
   </div>
+
 </header>
 
-<main class="page">
 
-  <div class="hero">
-    <small>CAREER APPLICATION</small>
-    <h1>Create your professional CV</h1>
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <span class="hero-badge">
+      DigiSER BD · Registration
+    </span>
+
+    <h1>
+      Create Your Professional Profile
+    </h1>
+
     <p>
-      Complete your information and submit your application.
-      Your CV will be available inside the DigiSER BD Admin Dashboard.
+      Complete your information carefully.
+      Your application will be securely added to the
+      DigiSER BD applicant system for admin review.
     </p>
+
   </div>
+
+</section>
+
+
+<!-- =========================
+     REGISTER AREA
+========================= -->
+
+<main class="page" id="registerPage">
 
   <div class="layout">
 
+    <!-- =====================
+         FORM
+    ====================== -->
+
     <section class="card">
 
-      <form id="applicationForm">
+      <div class="card-head">
 
-        <div class="form-section">
-          <h2 class="section-title">Personal Information</h2>
+        <h2>Applicant Registration</h2>
+
+        <p>
+          Please provide accurate and complete information.
+        </p>
+
+      </div>
+
+
+      <div class="card-body">
+
+        <form id="registerForm" autocomplete="on">
+
+          <!-- PERSONAL -->
+
+          <h3 class="section-title">
+            01 · Personal Information
+          </h3>
 
           <div class="form-grid">
 
             <div class="field">
-              <label>Full Name *</label>
-              <input id="name" required placeholder="Your full name">
+              <label for="name">
+                Full Name *
+              </label>
+
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your full name"
+                required
+              >
             </div>
+
 
             <div class="field">
-              <label>Mobile *</label>
-              <input id="mobile" required placeholder="01XXXXXXXXX">
+              <label for="mobile">
+                Mobile Number *
+              </label>
+
+              <input
+                id="mobile"
+                name="mobile"
+                type="tel"
+                placeholder="+880 1XXXXXXXXX"
+                required
+              >
             </div>
+
 
             <div class="field">
-              <label>Email</label>
-              <input id="email" type="email" placeholder="you@example.com">
+              <label for="email">
+                Email Address
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+              >
             </div>
+
 
             <div class="field">
-              <label>Emergency Contact</label>
-              <input id="emergency" placeholder="Emergency contact">
+              <label for="emergency">
+                Emergency Contact
+              </label>
+
+              <input
+                id="emergency"
+                name="emergency"
+                type="text"
+                placeholder="Name / phone number"
+              >
             </div>
 
-            <div class="field full">
-              <label>Current Address</label>
-              <textarea id="currentAddress" placeholder="Current address"></textarea>
-            </div>
 
             <div class="field full">
-              <label>Permanent Address</label>
-              <textarea id="permanentAddress" placeholder="Permanent address"></textarea>
+              <label for="currentAddress">
+                Current Address
+              </label>
+
+              <textarea
+                id="currentAddress"
+                name="currentAddress"
+                placeholder="Your current address"
+              ></textarea>
             </div>
 
+
             <div class="field full">
-              <label>Professional Profile</label>
-              <textarea id="profile" placeholder="Write a short professional profile"></textarea>
+              <label for="permanentAddress">
+                Permanent Address
+              </label>
+
+              <textarea
+                id="permanentAddress"
+                name="permanentAddress"
+                placeholder="Your permanent address"
+              ></textarea>
             </div>
 
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Education</h2>
+
+          <!-- PROFILE -->
+
+          <h3 class="section-title">
+            02 · Professional Profile
+          </h3>
 
           <div class="form-grid">
 
-            <div class="field">
-              <label>SSC / Equivalent</label>
-              <input id="ssc" placeholder="Institution / result / year">
-            </div>
-
-            <div class="field">
-              <label>HSC / Equivalent</label>
-              <input id="hsc" placeholder="Institution / result / year">
-            </div>
-
             <div class="field full">
-              <label>Graduate / University</label>
-              <input id="graduate" placeholder="University / degree / year">
-            </div>
 
-            <div class="field full">
-              <label>Other Education</label>
-              <textarea id="otherEducation" placeholder="Other education or certification"></textarea>
+              <label for="profile">
+                Professional Profile
+              </label>
+
+              <textarea
+                id="profile"
+                name="profile"
+                rows="5"
+                placeholder="Write a short professional summary about yourself..."
+              ></textarea>
+
             </div>
 
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Experience</h2>
+
+          <!-- EDUCATION -->
+
+          <h3 class="section-title">
+            03 · Education
+          </h3>
 
           <div class="form-grid">
 
-            <div class="field full">
-              <label>Experience</label>
-              <textarea id="experience" placeholder="Company, position, duration, responsibilities"></textarea>
+            <div class="field">
+              <label for="ssc">
+                SSC / Equivalent
+              </label>
+
+              <input
+                id="ssc"
+                name="ssc"
+                type="text"
+                placeholder="Institution, group, year, result"
+              >
             </div>
 
-            <div class="field full">
-              <label>Key Duties</label>
-              <textarea id="duty" placeholder="Main responsibilities"></textarea>
-            </div>
 
             <div class="field">
-              <label>Previous Salary</label>
-              <input id="previousSalary" placeholder="e.g. 25000 BDT">
+              <label for="hsc">
+                HSC / Equivalent
+              </label>
+
+              <input
+                id="hsc"
+                name="hsc"
+                type="text"
+                placeholder="Institution, group, year, result"
+              >
+            </div>
+
+
+            <div class="field full">
+              <label for="graduate">
+                Graduate / Higher Education
+              </label>
+
+              <textarea
+                id="graduate"
+                name="graduate"
+                placeholder="Degree, institution, subject, year"
+              ></textarea>
+            </div>
+
+
+            <div class="field full">
+              <label for="other">
+                Other Education / Training
+              </label>
+
+              <textarea
+                id="other"
+                name="other"
+                placeholder="Courses, certifications, training, etc."
+              ></textarea>
             </div>
 
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Skills & Languages</h2>
+
+          <!-- EXPERIENCE -->
+
+          <h3 class="section-title">
+            04 · Experience
+          </h3>
 
           <div class="form-grid">
 
             <div class="field full">
-              <label>Skills</label>
-              <textarea id="skills" placeholder="Example: MS Office, Communication, Web Design"></textarea>
+              <label for="experience">
+                Work Experience
+              </label>
+
+              <textarea
+                id="experience"
+                name="experience"
+                rows="5"
+                placeholder="Company, position, duration and experience"
+              ></textarea>
             </div>
 
+
             <div class="field full">
-              <label>Languages</label>
-              <input id="language" placeholder="Bangla, English, Arabic">
+              <label for="duty">
+                Key Duties / Responsibilities
+              </label>
+
+              <textarea
+                id="duty"
+                name="duty"
+                placeholder="Describe your main responsibilities..."
+              ></textarea>
+            </div>
+
+
+            <div class="field">
+              <label for="previousSalary">
+                Previous Salary
+              </label>
+
+              <input
+                id="previousSalary"
+                name="previousSalary"
+                type="text"
+                placeholder="Optional"
+              >
             </div>
 
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Job Preference</h2>
+
+          <!-- SKILLS -->
+
+          <h3 class="section-title">
+            05 · Skills & Languages
+          </h3>
+
+          <div class="form-grid">
+
+            <div class="field full">
+              <label for="skills">
+                Skills
+              </label>
+
+              <textarea
+                id="skills"
+                name="skills"
+                placeholder="Example: MS Office, Web Design, Communication, Marketing..."
+              ></textarea>
+            </div>
+
+
+            <div class="field full">
+              <label for="language">
+                Languages
+              </label>
+
+              <input
+                id="language"
+                name="language"
+                type="text"
+                placeholder="Example: Bangla, English, Hindi"
+              >
+            </div>
+
+          </div>
+
+
+          <!-- JOB PREFERENCE -->
+
+          <h3 class="section-title">
+            06 · Job Preference
+          </h3>
 
           <div class="form-grid">
 
             <div class="field">
-              <label>Wanted Role</label>
-              <input id="role" placeholder="Desired position">
+              <label for="role">
+                Desired Role
+              </label>
+
+              <input
+                id="role"
+                name="role"
+                type="text"
+                placeholder="Example: Software Engineer"
+              >
             </div>
 
-            <div class="field">
-              <label>Expected Salary</label>
-              <input id="salary" placeholder="Expected salary">
-            </div>
 
             <div class="field">
-              <label>Employment Type</label>
-              <select id="type">
-                <option value="">Select type</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-                <option>Contract</option>
-                <option>Internship</option>
-                <option>Remote</option>
+              <label for="salary">
+                Expected Salary
+              </label>
+
+              <input
+                id="salary"
+                name="salary"
+                type="text"
+                placeholder="Example: 30,000 BDT"
+              >
+            </div>
+
+
+            <div class="field">
+
+              <label for="type">
+                Employment Type
+              </label>
+
+              <select
+                id="type"
+                name="type"
+              >
+
+                <option value="">
+                  Select type
+                </option>
+
+                <option value="Full-time">
+                  Full-time
+                </option>
+
+                <option value="Part-time">
+                  Part-time
+                </option>
+
+                <option value="Contract">
+                  Contract
+                </option>
+
+                <option value="Internship">
+                  Internship
+                </option>
+
+                <option value="Remote">
+                  Remote
+                </option>
+
               </select>
+
             </div>
 
+
             <div class="field">
-              <label>Preferred Location</label>
-              <input id="location" placeholder="Dhaka / Remote / Any">
+              <label for="location">
+                Preferred Location
+              </label>
+
+              <input
+                id="location"
+                name="location"
+                type="text"
+                placeholder="Example: Dhaka / Remote"
+              >
             </div>
 
           </div>
-        </div>
 
-        <div class="form-section">
-          <h2 class="section-title">Reference</h2>
+
+          <!-- REFERENCE -->
+
+          <h3 class="section-title">
+            07 · Reference
+          </h3>
 
           <div class="form-grid">
 
             <div class="field">
-              <label>Name</label>
-              <input id="referenceName">
+              <label for="referenceName">
+                Reference Name
+              </label>
+
+              <input
+                id="referenceName"
+                name="referenceName"
+                type="text"
+                placeholder="Reference person's name"
+              >
             </div>
+
 
             <div class="field">
-              <label>Contact</label>
-              <input id="referenceContact">
+              <label for="referenceContact">
+                Reference Contact
+              </label>
+
+              <input
+                id="referenceContact"
+                name="referenceContact"
+                type="text"
+                placeholder="Phone / email"
+              >
             </div>
 
-            <div class="field">
-              <label>Relation</label>
-              <input id="referenceRelation">
+
+            <div class="field full">
+              <label for="referenceRelation">
+                Relationship
+              </label>
+
+              <input
+                id="referenceRelation"
+                name="referenceRelation"
+                type="text"
+                placeholder="Example: Former Manager"
+              >
             </div>
 
           </div>
-        </div>
 
-        <div class="submit-area">
 
-          <button class="submit-btn" type="submit">
-            Submit Application →
-          </button>
+          <!-- SUBMIT -->
 
-          <div class="note">
-            Your submitted CV will be managed from the Admin Dashboard.
+          <div class="submit-area">
+
+            <button
+              type="submit"
+              class="submit-btn"
+              id="submitBtn"
+            >
+              Submit Application
+            </button>
+
+            <p class="form-note">
+              Your information will be added to the DigiSER BD
+              Admin Dashboard for review.
+            </p>
+
           </div>
 
-          <div class="success" id="successMessage">
-            <strong>✓ Application submitted successfully.</strong>
-            <br>
-            Your application is now available in Admin Dashboard → Applicants.
-          </div>
+        </form>
 
-          <div class="application-result" id="applicationResult">
-            Application ID:
-            <div class="application-id" id="applicationId"></div>
-          </div>
-
-        </div>
-
-      </form>
+      </div>
 
     </section>
 
-    <aside class="card cv-card">
 
-      <div class="cv-label">
-        <strong>CV Preview</strong>
-        <span class="live">● LIVE</span>
+    <!-- =====================
+         LIVE CV
+    ====================== -->
+
+    <aside class="card preview-card">
+
+      <div class="card-head preview-head">
+
+        <div>
+
+          <h2>Live CV Preview</h2>
+
+          <p>
+            Your CV updates as you type.
+          </p>
+
+        </div>
+
+        <span
+          class="preview-status"
+          id="previewStatus"
+        >
+          LIVE
+        </span>
+
       </div>
 
-      <div class="cv" id="cvPreview">
+      <div
+        class="cv-wrap"
+        id="cvPreview"
+      >
 
-        <div class="cv-name" id="cvName">Your Name</div>
-        <div class="cv-role" id="cvRole">Professional</div>
+        <div
+          class="cv-paper"
+          id="cvPaper"
+        >
 
-        <div class="cv-contact" id="cvContact">
-          Mobile · Email
-        </div>
+          <div class="cv-empty" id="cvEmpty">
 
-        <div class="cv-line"></div>
+            Start filling the form to generate
+            your professional CV preview.
 
-        <div class="cv-heading">Profile</div>
-        <div class="cv-text" id="cvProfile">
-          <span class="empty">Your professional profile will appear here.</span>
-        </div>
+          </div>
 
-        <div class="cv-heading">Education</div>
-        <div class="cv-text" id="cvEducation">
-          <span class="empty">Education information will appear here.</span>
-        </div>
-
-        <div class="cv-heading">Experience</div>
-        <div class="cv-text" id="cvExperience">
-          <span class="empty">Experience information will appear here.</span>
-        </div>
-
-        <div class="cv-heading">Skills</div>
-        <div class="cv-text" id="cvSkills">
-          <span class="empty">Skills will appear here.</span>
-        </div>
-
-        <div class="cv-heading">Job Preference</div>
-        <div class="cv-text" id="cvPreference">
-          <span class="empty">Job preference will appear here.</span>
         </div>
 
       </div>
@@ -661,39 +1205,192 @@ button{
 
 </main>
 
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<section
+  class="success-screen"
+  id="successScreen"
+>
+
+  <div class="success-box">
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <h2>
+      Application Submitted
+    </h2>
+
+    <p>
+      Your application has been successfully
+      submitted to DigiSER BD.
+    </p>
+
+    <div
+      class="application-id"
+      id="successApplicationId"
+    >
+      DGBD-2026-000000
+    </div>
+
+    <p>
+      Please keep your Application ID for future reference.
+    </p>
+
+    <div class="success-actions">
+
+      <button
+        class="success-btn primary"
+        id="printOwnCV"
+      >
+        Print / Save CV
+      </button>
+
+      <a
+        href="../"
+        class="success-btn"
+      >
+        Back to Home
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+  © <span id="currentYear"></span> DigiSER BD.
+  All rights reserved.
+
+</footer>
+
+
 <script>
 "use strict";
 
-/*
-  Temporary database bridge.
-
-  IMPORTANT:
-  The CV is NOT saved as a separate browser file.
-  Only the applicant's structured data is stored in the
-  applicant record.
-
-  Firebase can replace this storage later.
-*/
+/* =========================
+   CONFIG
+========================= */
 
 const STORAGE_KEY = "digiserbd_admin_v1";
 
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const form =
+  document.getElementById("registerForm");
+
+const submitBtn =
+  document.getElementById("submitBtn");
+
+const cvPaper =
+  document.getElementById("cvPaper");
+
+const cvEmpty =
+  document.getElementById("cvEmpty");
+
+const previewStatus =
+  document.getElementById("previewStatus");
+
+const registerPage =
+  document.getElementById("registerPage");
+
+const successScreen =
+  document.getElementById("successScreen");
+
+const successApplicationId =
+  document.getElementById("successApplicationId");
+
+const printOwnCV =
+  document.getElementById("printOwnCV");
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function value(id){
+
+  const element =
+    document.getElementById(id);
+
+  return element
+    ? element.value.trim()
+    : "";
+
+}
+
+
+function escapeHTML(text){
+
+  return String(text || "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+function generateApplicationID(){
+
+  const year =
+    new Date().getFullYear();
+
+  const random =
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    );
+
+  return `DGBD-${year}-${random}`;
+
+}
+
+
+/* =========================
+   DATABASE
+========================= */
+
 function getDB(){
+
   try{
-    const raw = localStorage.getItem(STORAGE_KEY);
+
+    const raw =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
 
     if(!raw){
+
       return {
-        users: [],
-        jobs: [],
-        services: [],
-        employees: [],
-        businesses: [],
-        messages: [],
-        blog: []
+        users:[],
+        jobs:[],
+        services:[],
+        employees:[],
+        businesses:[],
+        messages:[],
+        blog:[]
       };
+
     }
 
-    const db = JSON.parse(raw);
+    const db =
+      JSON.parse(raw);
 
     db.users ||= [];
     db.jobs ||= [];
@@ -706,236 +1403,681 @@ function getDB(){
     return db;
 
   }catch(error){
+
     return {
-      users: [],
-      jobs: [],
-      services: [],
-      employees: [],
-      businesses: [],
-      messages: [],
-      blog: []
+      users:[],
+      jobs:[],
+      services:[],
+      employees:[],
+      businesses:[],
+      messages:[],
+      blog:[]
     };
+
   }
+
 }
+
 
 function saveDB(db){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(db)
+  );
+
 }
 
-function value(id){
-  return document.getElementById(id).value.trim();
-}
 
-function generateApplicationId(){
-  const year = new Date().getFullYear();
-  const random = Math.floor(100000 + Math.random() * 900000);
+/* =========================
+   BUILD CV
+========================= */
 
-  return `DGBD-${year}-${random}`;
-}
-
-function updateCV(){
-
-  const name = value("name");
-  const mobile = value("mobile");
-  const email = value("email");
-  const role = value("role");
-  const profile = value("profile");
-
-  document.getElementById("cvName").textContent =
-    name || "Your Name";
-
-  document.getElementById("cvRole").textContent =
-    role || "Professional";
-
-  document.getElementById("cvContact").textContent =
-    [mobile,email].filter(Boolean).join(" · ") || "Mobile · Email";
-
-  document.getElementById("cvProfile").innerHTML =
-    profile
-      ? escapeHTML(profile)
-      : '<span class="empty">Your professional profile will appear here.</span>';
+function buildCV(data){
 
   const education = [
-    value("ssc") ? "SSC: " + value("ssc") : "",
-    value("hsc") ? "HSC: " + value("hsc") : "",
-    value("graduate") ? "Graduate: " + value("graduate") : "",
-    value("otherEducation")
-  ].filter(Boolean).join("\n");
 
-  document.getElementById("cvEducation").innerHTML =
-    education
-      ? escapeHTML(education)
-      : '<span class="empty">Education information will appear here.</span>';
+    data.education.ssc
+      ? "SSC: " +
+        data.education.ssc
+      : "",
+
+    data.education.hsc
+      ? "HSC: " +
+        data.education.hsc
+      : "",
+
+    data.education.graduate
+      ? "Graduate: " +
+        data.education.graduate
+      : "",
+
+    data.education.other || ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
 
   const experience = [
-    value("experience"),
-    value("duty") ? "Duties: " + value("duty") : "",
-    value("previousSalary") ? "Previous Salary: " + value("previousSalary") : ""
-  ].filter(Boolean).join("\n");
 
-  document.getElementById("cvExperience").innerHTML =
-    experience
-      ? escapeHTML(experience)
-      : '<span class="empty">Experience information will appear here.</span>';
+    data.experience.experience || "",
 
-  document.getElementById("cvSkills").innerHTML =
-    value("skills")
-      ? escapeHTML(value("skills"))
-      : '<span class="empty">Skills will appear here.</span>';
+    data.experience.duty
+      ? "Duties: " +
+        data.experience.duty
+      : "",
+
+    data.experience.previousSalary
+      ? "Previous Salary: " +
+        data.experience.previousSalary
+      : ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
 
   const preference = [
-    value("role") ? "Role: " + value("role") : "",
-    value("salary") ? "Salary: " + value("salary") : "",
-    value("type") ? "Type: " + value("type") : "",
-    value("location") ? "Location: " + value("location") : ""
-  ].filter(Boolean).join("\n");
 
-  document.getElementById("cvPreference").innerHTML =
-    preference
-      ? escapeHTML(preference)
-      : '<span class="empty">Job preference will appear here.</span>';
+    data.wanted.role
+      ? "Role: " +
+        data.wanted.role
+      : "",
+
+    data.wanted.salary
+      ? "Expected Salary: " +
+        data.wanted.salary
+      : "",
+
+    data.wanted.type
+      ? "Type: " +
+        data.wanted.type
+      : "",
+
+    data.wanted.location
+      ? "Location: " +
+        data.wanted.location
+      : ""
+
+  ]
+  .filter(Boolean)
+  .join("\n");
+
+
+  return `
+
+    <div class="cv-name">
+      ${escapeHTML(
+        data.personal.name ||
+        "Your Name"
+      )}
+    </div>
+
+
+    <div class="cv-role">
+      ${escapeHTML(
+        data.wanted.role ||
+        "Professional"
+      )}
+    </div>
+
+
+    <div class="cv-contact">
+
+      ${escapeHTML(
+        data.personal.mobile || ""
+      )}
+
+      ${
+        data.personal.email
+          ? " · " +
+            escapeHTML(
+              data.personal.email
+            )
+          : ""
+      }
+
+    </div>
+
+
+    <div class="cv-line"></div>
+
+
+    ${
+      data.personal.profile
+        ? `
+
+          <div class="cv-title">
+            Professional Profile
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              data.personal.profile
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      education
+        ? `
+
+          <div class="cv-title">
+            Education
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              education
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      experience
+        ? `
+
+          <div class="cv-title">
+            Experience
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              experience
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      data.skills.skills
+        ? `
+
+          <div class="cv-title">
+            Skills
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              data.skills.skills
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      data.language.language
+        ? `
+
+          <div class="cv-title">
+            Languages
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              data.language.language
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      preference
+        ? `
+
+          <div class="cv-title">
+            Job Preference
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              preference
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+
+    ${
+      (
+        data.reference.name ||
+        data.reference.contact ||
+        data.reference.relation
+      )
+        ? `
+
+          <div class="cv-title">
+            Reference
+          </div>
+
+          <div class="cv-text">
+            ${escapeHTML(
+              [
+                data.reference.name,
+                data.reference.contact,
+                data.reference.relation
+              ]
+              .filter(Boolean)
+              .join(" · ")
+            )}
+          </div>
+
+        `
+        : ""
+    }
+
+  `;
+
 }
 
-function escapeHTML(text){
-  return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+/* =========================
+   COLLECT FORM DATA
+========================= */
+
+function collectFormData(){
+
+  return {
+
+    name:value("name"),
+
+    personal:{
+
+      name:value("name"),
+
+      mobile:value("mobile"),
+
+      email:value("email"),
+
+      emergency:value("emergency"),
+
+      currentAddress:
+        value("currentAddress"),
+
+      permanentAddress:
+        value("permanentAddress"),
+
+      profile:
+        value("profile")
+
+    },
+
+
+    education:{
+
+      ssc:value("ssc"),
+
+      hsc:value("hsc"),
+
+      graduate:
+        value("graduate"),
+
+      other:
+        value("other")
+
+    },
+
+
+    experience:{
+
+      experience:
+        value("experience"),
+
+      duty:
+        value("duty"),
+
+      previousSalary:
+        value("previousSalary")
+
+    },
+
+
+    skills:{
+
+      skills:
+        value("skills")
+
+    },
+
+
+    language:{
+
+      language:
+        value("language")
+
+    },
+
+
+    wanted:{
+
+      role:
+        value("role"),
+
+      salary:
+        value("salary"),
+
+      type:
+        value("type"),
+
+      location:
+        value("location")
+
+    },
+
+
+    reference:{
+
+      name:
+        value("referenceName"),
+
+      contact:
+        value("referenceContact"),
+
+      relation:
+        value("referenceRelation")
+
+    }
+
+  };
+
 }
 
-document
-  .querySelectorAll("input, textarea, select")
-  .forEach(element => {
-    element.addEventListener("input", updateCV);
-    element.addEventListener("change", updateCV);
+
+/* =========================
+   LIVE CV
+========================= */
+
+function updateCVPreview(){
+
+  const data =
+    collectFormData();
+
+
+  const hasName =
+    data.personal.name;
+
+  const hasContent =
+    hasName ||
+    data.personal.profile ||
+    data.education.ssc ||
+    data.education.hsc ||
+    data.education.graduate ||
+    data.experience.experience ||
+    data.skills.skills ||
+    data.wanted.role;
+
+
+  if(!hasContent){
+
+    cvPaper.innerHTML = `
+      <div class="cv-empty">
+        Start filling the form to generate
+        your professional CV preview.
+      </div>
+    `;
+
+    previewStatus.style.display = "none";
+
+    return;
+
+  }
+
+
+  cvPaper.innerHTML =
+    buildCV(data);
+
+  previewStatus.style.display =
+    "inline-flex";
+
+}
+
+
+/* =========================
+   FORM INPUT EVENTS
+========================= */
+
+form
+  .querySelectorAll(
+    "input, textarea, select"
+  )
+  .forEach(field=>{
+
+    field.addEventListener(
+      "input",
+      updateCVPreview
+    );
+
+    field.addEventListener(
+      "change",
+      updateCVPreview
+    );
+
   });
 
-document
-  .getElementById("applicationForm")
-  .addEventListener("submit", function(event){
+
+/* =========================
+   SUBMIT
+========================= */
+
+form.addEventListener(
+  "submit",
+  event=>{
 
     event.preventDefault();
 
-    const name = value("name");
-    const mobile = value("mobile");
 
-    if(!name || !mobile){
-      alert("Please enter your name and mobile number.");
+    const data =
+      collectFormData();
+
+
+    if(
+      !data.personal.name ||
+      !data.personal.mobile
+    ){
+
+      alert(
+        "Please provide your full name and mobile number."
+      );
+
       return;
+
     }
 
-    const db = getDB();
 
-    const duplicate = db.users.some(user =>
-      user.personal?.mobile === mobile &&
-      user.personal?.name?.toLowerCase() === name.toLowerCase()
-    );
+    submitBtn.disabled = true;
 
-    if(duplicate){
-      alert("An application with this name and mobile number already exists.");
-      return;
-    }
+    submitBtn.textContent =
+      "Submitting...";
 
-    const now = new Date().toISOString();
 
-    /*
-      IMPORTANT:
-      No separate CV file is created.
-      The CV is represented by the applicant data below.
-    */
+    try{
 
-    const applicant = {
+      const db =
+        getDB();
 
-      id: generateApplicationId(),
 
-      name,
+      const applicationId =
+        generateApplicationID();
 
-      personal:{
-        name,
-        mobile,
-        emergency:value("emergency"),
-        email:value("email"),
-        currentAddress:value("currentAddress"),
-        permanentAddress:value("permanentAddress"),
-        profile:value("profile")
-      },
 
-      education:{
-        ssc:value("ssc"),
-        hsc:value("hsc"),
-        graduate:value("graduate"),
-        other:value("otherEducation")
-      },
+      const now =
+        new Date().toISOString();
 
-      experience:{
-        experience:value("experience"),
-        duty:value("duty"),
-        previousSalary:value("previousSalary")
-      },
 
-      skills:{
-        skills:value("skills")
-      },
+      const applicant = {
 
-      language:{
-        language:value("language")
-      },
+        id:applicationId,
 
-      wanted:{
-        role:value("role"),
-        salary:value("salary"),
-        type:value("type"),
-        location:value("location")
-      },
+        name:data.name,
 
-      reference:{
-        name:value("referenceName"),
-        contact:value("referenceContact"),
-        relation:value("referenceRelation")
-      },
+        personal:data.personal,
+
+        education:data.education,
+
+        experience:data.experience,
+
+        skills:data.skills,
+
+        language:data.language,
+
+        wanted:data.wanted,
+
+        reference:data.reference,
+
+
+        cv:{
+
+          generated:true,
+
+          version:"1.0",
+
+          generatedAt:now
+
+        },
+
+
+        attachments:{
+
+          cvGenerated:true
+
+        },
+
+
+        status:"new",
+
+        source:"register",
+
+        created:now,
+
+        updated:now
+
+      };
+
+
+      db.users.push(
+        applicant
+      );
+
+
+      saveDB(db);
+
 
       /*
-        CV is a logical view of applicant data.
-        It is NOT a separate uploaded file.
+        Store only the structured applicant
+        information.
+
+        No separate PDF is created or saved
+        inside the browser.
+
+        Admin Dashboard generates the CV
+        when needed.
       */
-      cv:{
-        generated:true,
-        version:"1.0",
-        generatedAt:now
-      },
 
-      attachments:{
-        cvGenerated:true
-      },
 
-      status:"new",
-      source:"register",
-      created:now,
-      updated:now
-    };
+      successApplicationId.textContent =
+        applicationId;
 
-    db.users.unshift(applicant);
 
-    saveDB(db);
+      registerPage.style.display =
+        "none";
 
-    document.getElementById("successMessage")
-      .classList.add("show");
 
-    document.getElementById("applicationResult")
-      .classList.add("show");
+      successScreen.classList.add(
+        "show"
+      );
 
-    document.getElementById("applicationId")
-      .textContent = applicant.id;
 
-    window.scrollTo({
-      top:document.body.scrollHeight,
-      behavior:"smooth"
-    });
-  });
+      /*
+        Keep the submitted CV available
+        for the print button on this page.
+      */
 
-updateCV();
+      printOwnCV.dataset.cv =
+        buildCV(data);
+
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "Sorry, the application could not be submitted. Please try again."
+      );
+
+    }
+
+
+    submitBtn.disabled = false;
+
+    submitBtn.textContent =
+      "Submit Application";
+
+  }
+);
+
+
+/* =========================
+   PRINT OWN CV
+========================= */
+
+printOwnCV.addEventListener(
+  "click",
+  ()=>{
+
+    const cv =
+      printOwnCV.dataset.cv;
+
+    if(!cv){
+      return;
+    }
+
+
+    cvPaper.innerHTML =
+      cv;
+
+
+    window.print();
+
+  }
+);
+
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById(
+  "currentYear"
+).textContent =
+  new Date().getFullYear();
+
+
+/* =========================
+   INITIAL CV
+========================= */
+
+updateCVPreview();
+
 </script>
 
 </body>
