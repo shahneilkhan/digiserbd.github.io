@@ -1,52 +1,373 @@
-<section class="contact-section">
-  <div class="wrap">
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-    <div class="contact-box">
+  <meta charset="UTF-8">
 
-      <div class="contact-content">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-        <div class="contact-heading">
-          <span>CONTACT DIGISER BD</span>
+  <title>Contact | DigiSER BD</title>
 
-          <h1>Send us a message</h1>
+  <meta
+    name="description"
+    content="Contact DigiSER BD for services, hiring, business solutions and digital projects."
+  >
 
-          <p>
-            Questions, hiring or services?
-            Send us a message and our team will get back to you shortly.
-          </p>
-        </div>
+  <meta
+    name="theme-color"
+    content="#0087c4"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../assets/style.css"
+  >
+
+  <!-- Lightweight page styling -->
+  <style>
+
+    .contact-page {
+      min-height: 100vh;
+      padding: 80px 20px;
+    }
+
+    .contact-wrap {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .contact-box {
+      background: var(--card, #ffffff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: 24px;
+      padding: 42px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .07);
+    }
+
+    .contact-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: var(--primary, #0087c4);
+      text-transform: uppercase;
+    }
+
+    .contact-title {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      font-weight: 800;
+      color: var(--text, #111827);
+    }
+
+    .contact-description {
+      max-width: 650px;
+      margin: 18px 0 35px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted, #6b7280);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-field label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text, #111827);
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid var(--border, #d9dee5);
+      border-radius: 13px;
+      background: var(--bg, #ffffff);
+      color: var(--text, #111827);
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .contact-field input {
+      min-height: 50px;
+    }
+
+    .contact-field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-field input:focus,
+    .contact-field textarea:focus {
+      border-color: var(--primary, #0087c4);
+      box-shadow: 0 0 0 3px rgba(0, 135, 196, .10);
+    }
+
+    .contact-submit {
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      border-radius: 13px;
+      padding: 14px 20px;
+      background: var(--primary, #0087c4);
+      color: #ffffff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition:
+        transform .2s ease,
+        opacity .2s ease;
+    }
+
+    .contact-submit:hover {
+      transform: translateY(-2px);
+    }
+
+    .contact-submit:disabled {
+      cursor: not-allowed;
+      opacity: .65;
+      transform: none;
+    }
+
+    .contact-success {
+      display: none;
+      padding: 16px 18px;
+      border-radius: 13px;
+      background: rgba(16, 185, 129, .10);
+      border: 1px solid rgba(16, 185, 129, .25);
+      color: #047857;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .contact-success.show {
+      display: block;
+    }
+
+    /* Developer Connect */
+
+    .developer-connect {
+      margin-top: 28px;
+      width: 100%;
+      min-height: 125px;
+      box-sizing: border-box;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      padding: 28px 32px;
+
+      text-decoration: none;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #063b55 0%,
+          #007da9 55%,
+          #00a4c7 100%
+        );
+
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+
+      box-shadow:
+        0 18px 40px rgba(0, 86, 120, .20);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .developer-connect:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 22px 48px rgba(0, 86, 120, .28);
+    }
+
+    .developer-connect small {
+      display: block;
+      margin-bottom: 8px;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+
+      opacity: .78;
+    }
+
+    .developer-connect strong {
+      display: block;
+
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .developer-arrow {
+      flex: 0 0 auto;
+
+      width: 52px;
+      height: 52px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.20);
+
+      font-size: 25px;
+    }
+
+    @media (max-width: 650px) {
+
+      .contact-page {
+        padding: 45px 15px;
+      }
+
+      .contact-box {
+        padding: 25px 18px;
+        border-radius: 18px;
+      }
+
+      .contact-description {
+        margin-bottom: 27px;
+      }
+
+      .developer-connect {
+        min-height: 105px;
+        padding: 22px 20px;
+        border-radius: 18px;
+      }
+
+      .developer-connect strong {
+        font-size: 25px;
+      }
+
+      .developer-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 21px;
+      }
+
+    }
+
+  </style>
+
+</head>
 
 
-        <form id="contactForm" class="contact-form">
+<body
+  data-page="contact"
+  data-root="../"
+>
 
-          <div class="field">
-            <label for="contactName">Your name *</label>
+
+  <!-- Header -->
+  <div id="hdr-slot"></div>
+
+
+  <main class="contact-page">
+
+    <div class="contact-wrap">
+
+      <section class="contact-box">
+
+        <span class="contact-label">
+          Contact DigiSER BD
+        </span>
+
+        <h1 class="contact-title">
+          Send us a message
+        </h1>
+
+        <p class="contact-description">
+          Have a question, need a service, want to work with us,
+          or have a digital project in mind?
+          Send us a message and our team will get back to you.
+        </p>
+
+
+        <!-- Contact Form -->
+
+        <form
+          id="contactForm"
+          class="contact-form"
+          novalidate
+        >
+
+          <!-- Name -->
+
+          <div class="contact-field">
+
+            <label for="contactName">
+              Your name *
+            </label>
 
             <input
               id="contactName"
               name="name"
               type="text"
               placeholder="Enter your name"
+              autocomplete="name"
               required
             >
+
           </div>
 
 
-          <div class="field">
-            <label for="contactContact">Phone or email *</label>
+          <!-- Contact -->
+
+          <div class="contact-field">
+
+            <label for="contactContact">
+              Phone or email *
+            </label>
 
             <input
               id="contactContact"
               name="contact"
               type="text"
               placeholder="Phone number or email"
+              autocomplete="email"
               required
             >
+
           </div>
 
 
-          <div class="field">
-            <label for="contactMessage">Message *</label>
+          <!-- Message -->
+
+          <div class="contact-field">
+
+            <label for="contactMessage">
+              Message *
+            </label>
 
             <textarea
               id="contactMessage"
@@ -55,62 +376,187 @@
               placeholder="How can we help you?"
               required
             ></textarea>
+
           </div>
 
+
+          <!-- Submit -->
 
           <button
             type="submit"
             class="contact-submit"
             id="contactSubmitBtn"
           >
-            <span>Send Message</span>
-            <span>→</span>
+
+            <span id="contactSubmitText">
+              Send Message
+            </span>
+
+            <span>
+              →
+            </span>
+
           </button>
 
+
+          <!-- Success -->
 
           <div
             id="contactSuccess"
             class="contact-success"
+            role="status"
+            aria-live="polite"
           >
-            <strong>✓ Message submitted successfully</strong>
 
-            <br><br>
+            <strong>
+              ✓ Message submitted successfully
+            </strong>
 
-            আপনার মেসেজটি Admin Dashboard-এ
-            পাঠানো হয়েছে।
+            <br>
+
+            আপনার মেসেজটি সফলভাবে গ্রহণ করা হয়েছে।
+
           </div>
 
         </form>
 
-      </div>
+
+        <!-- Developer Connect -->
+
+        <a
+          href="https://snkbp.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="developer-connect"
+        >
+
+          <div>
+
+            <small>
+              NEED A WEBSITE OR DIGITAL SOLUTION?
+            </small>
+
+            <strong>
+              Developer Connect
+            </strong>
+
+          </div>
+
+          <span
+            class="developer-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+
+        </a>
 
 
-      <!-- Developer Connect -->
-
-      <a
-        href="https://snkbp.com/"
-        target="_blank"
-        rel="noopener"
-        class="developer-connect"
-      >
-
-        <div>
-          <small>
-            NEED A WEBSITE OR DIGITAL SOLUTION?
-          </small>
-
-          <strong>
-            Developer Connect
-          </strong>
-        </div>
-
-        <span class="developer-arrow">
-          ↗
-        </span>
-
-      </a>
+      </section>
 
     </div>
 
-  </div>
-</section>
+  </main>
+
+
+  <!-- Footer -->
+  <div id="ftr-slot"></div>
+
+
+  <!-- Existing DigiSER scripts -->
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/app.js"></script>
+
+
+  <!-- Contact Form UI -->
+
+  <script>
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+    const submitButton =
+      document.getElementById("contactSubmitBtn");
+
+    const submitText =
+      document.getElementById("contactSubmitText");
+
+    const successBox =
+      document.getElementById("contactSuccess");
+
+
+    contactForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document.getElementById("contactName").value.trim();
+
+        const contact =
+          document.getElementById("contactContact").value.trim();
+
+        const message =
+          document.getElementById("contactMessage").value.trim();
+
+
+        if (!name || !contact || !message) {
+
+          alert("Please complete all required fields.");
+
+          return;
+
+        }
+
+
+        /*
+          TEMPORARY UI FLOW
+
+          Firebase/Firestore is NOT connected here yet.
+
+          Later this form can send data to:
+
+          contactMessages
+
+          in Firebase Firestore.
+
+          After Firebase connection,
+          the Admin Dashboard can receive and manage
+          these messages centrally.
+        */
+
+
+        submitButton.disabled = true;
+
+        submitText.textContent =
+          "Submitting...";
+
+
+        setTimeout(
+          function () {
+
+            successBox.classList.add("show");
+
+            contactForm.reset();
+
+            submitButton.disabled = false;
+
+            submitText.textContent =
+              "Send Message";
+
+          },
+          500
+        );
+
+      }
+    );
+
+  </script>
+
+
+</body>
+</html>
