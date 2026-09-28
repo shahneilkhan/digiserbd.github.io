@@ -3,95 +3,602 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DigiSER BD | Job • Service • Growth</title>
-<meta name="description" content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh.">
+
+<meta
+  name="description"
+  content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh."
+>
+
 <meta name="theme-color" content="#0087c4">
+
 <link rel="canonical" href="https://digiserbd.com/">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DigiSER BD">
 <meta property="og:title" content="DigiSER BD | Job • Service • Growth">
-<meta property="og:description" content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh.">
+<meta
+  property="og:description"
+  content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh."
+>
 <meta property="og:url" content="https://digiserbd.com/">
 <meta property="og:image" content="https://digiserbd.com/logo.png">
+
 <meta name="twitter:card" content="summary">
+
 <link rel="icon" href="favicon.png" type="image/png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
+
 <link rel="stylesheet" href="assets/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DigiSER BD", "url": "https://digiserbd.com/", "logo": "https://digiserbd.com/logo.png", "description": "Jobs, skilled employees, local businesses and digital services in Bangladesh.", "founder": {"@type": "Person", "name": "Helal"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+8801719333614", "contactType": "customer service", "areaServed": "BD", "availableLanguage": ["English", "Bengali"]}}</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DigiSER BD",
+  "url": "https://digiserbd.com/",
+  "logo": "https://digiserbd.com/logo.png",
+  "description": "Jobs, skilled employees, local businesses and digital services in Bangladesh.",
+  "founder": {
+    "@type": "Person",
+    "name": "Helal"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+8801719333614",
+    "contactType": "customer service",
+    "areaServed": "BD",
+    "availableLanguage": [
+      "English",
+      "Bengali"
+    ]
+  }
+}
+</script>
+
 </head>
+
 <body data-page="home" data-root="">
+
 <div id="hdr-slot"></div>
+
 <main>
 
-<section class="hero"><div class="wrap">
-  <div>
-    <h1>চাকরি খুঁজুন। মানুষ নিয়োগ দিন। <em>ব্যবসা বড় করুন।</em></h1>
-    <p class="lead">DigiSER BD connects job seekers, skilled employees, local businesses and digital services across Bangladesh, in one simple place.</p>
-    <div class="search">
-      <div class="tabs" role="group" aria-label="Search in">
-        <button type="button" class="on" data-t="jobs" aria-pressed="true">Jobs</button>
-        <button type="button" data-t="employees" aria-pressed="false">Employees</button>
-        <button type="button" data-t="services" aria-pressed="false">Services</button>
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+  <div class="wrap">
+
+    <div>
+
+      <h1>
+        চাকরি খুঁজুন। মানুষ নিয়োগ দিন।
+        <em>ব্যবসা বড় করুন।</em>
+      </h1>
+
+      <p class="lead">
+        DigiSER BD connects job seekers, skilled employees, local businesses
+        and digital services across Bangladesh, in one simple place.
+      </p>
+
+      <div class="search">
+
+        <div class="tabs" role="group" aria-label="Search in">
+
+          <button
+            type="button"
+            class="on"
+            data-t="jobs"
+            aria-pressed="true"
+          >
+            Jobs
+          </button>
+
+          <button
+            type="button"
+            data-t="employees"
+            aria-pressed="false"
+          >
+            Employees
+          </button>
+
+          <button
+            type="button"
+            data-t="services"
+            aria-pressed="false"
+          >
+            Services
+          </button>
+
+        </div>
+
+        <form id="searchForm">
+
+          <input
+            id="q"
+            type="search"
+            placeholder="Search jobs..."
+            aria-label="Search"
+          >
+
+          <button
+            class="btn pri"
+            type="submit"
+          >
+            Search
+          </button>
+
+        </form>
+
       </div>
-      <form id="searchForm"><input id="q" type="search" placeholder="Search jobs..." aria-label="Search"><button class="btn pri" type="submit">Search</button></form>
+
+      <div class="trust">
+        <span>Verified profiles</span>
+        <span>Local businesses</span>
+        <span>Quick hiring</span>
+      </div>
+
     </div>
-    <div class="trust"><span>Verified profiles</span><span>Local businesses</span><span>Quick hiring</span></div>
+
+
+    <!-- OPEN JOBS -->
+
+    <aside
+      class="live"
+      aria-label="Open jobs"
+    >
+
+      <h3>Open jobs now</h3>
+
+      <div id="live"></div>
+
+      <p style="margin-top:8px">
+        <a
+          class="more"
+          href="jobs/"
+        >
+          See all jobs
+        </a>
+      </p>
+
+    </aside>
+
   </div>
-  <aside class="live" aria-label="Open jobs"><h3>Open jobs now</h3><div id="live"></div><p style="margin-top:8px"><a class="more" href="jobs/">See all jobs</a></p></aside>
-</div></section>
+</section>
 
-<section class="sec"><div class="wrap">
-  <div class="sec-h"><div><h2>Services for your business</h2><p>Digital work and local support, so you can save time and focus on customers.</p></div><a class="more" href="services/">All services</a></div>
-  <div id="homeServices"></div>
-</div></section>
 
-<section class="sec alt"><div class="wrap">
-  <div class="sec-h"><div><h2>Latest jobs</h2><p>Openings from local businesses. Apply in a minute.</p></div><a class="more" href="jobs/">Browse all jobs</a></div>
-  <div id="homeJobs"></div>
-</div></section>
+<!-- =========================================================
+     JOB APPLICATION TRACKING
+========================================================= -->
 
-<section class="sec"><div class="wrap">
-  <div class="sec-h"><div><h2>Skilled people, ready to work</h2><p>Find the right professional for your project or business.</p></div><a class="more" href="employees/">View all employees</a></div>
-  <div id="homeEmployees"></div>
-</div></section>
+<section class="sec">
 
-<section class="sec alt"><div class="wrap split">
-  <div>
-    <h2>Local businesses, local growth</h2>
-    <p>List your business, hire staff or get professional digital services, all from one platform.</p>
-    <a class="btn pri" href="businesses/">List your business</a>
+  <div class="wrap">
+
+    <div
+      class="application-track-box"
+      style="
+        background:linear-gradient(135deg,#eef8fc,#ffffff);
+        border:1px solid #d8eaf2;
+        border-radius:18px;
+        padding:28px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:24px;
+        flex-wrap:wrap;
+      "
+    >
+
+      <div style="flex:1;min-width:260px;">
+
+        <span
+          style="
+            display:inline-block;
+            font-size:13px;
+            font-weight:700;
+            color:#0087c4;
+            margin-bottom:8px;
+          "
+        >
+          JOB APPLICATION TRACKING
+        </span>
+
+        <h2
+          style="
+            margin:0 0 8px;
+          "
+        >
+          আপনার Job Application-এর অবস্থান Track করুন
+        </h2>
+
+        <p
+          style="
+            margin:0;
+            color:#687580;
+            line-height:1.7;
+          "
+        >
+          Application Submit করার পর পাওয়া
+          <strong>Tracking Number</strong>
+          এবং আপনার
+          <strong>Mobile Number</strong>
+          ব্যবহার করে Application-এর বর্তমান Status দেখুন।
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <a
+          href="track-application.html"
+          class="btn pri"
+          style="
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            white-space:nowrap;
+          "
+        >
+          Track Application
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
-  <div class="perks">
-    <div class="perk"><b>Find employees</b><span>Skilled and trusted people for your team.</span></div>
-    <div class="perk"><b>Get customers</b><span>Build your online presence.</span></div>
-    <div class="perk"><b>Digital services</b><span>Graphic, web and social media work.</span></div>
-    <div class="perk"><b>Grow faster</b><span>Use digital tools and the right people.</span></div>
-  </div>
-</div></section>
 
-<section class="sec"><div class="wrap">
-  <div class="sec-h"><div><h2>How it works</h2><p>Job, hire or service, getting started takes four steps.</p></div></div>
-  <div class="steps">
-    <div class="step"><h3>Create an account</h3><p>Register as a job seeker, employee, business or service provider.</p></div>
-    <div class="step"><h3>Search and choose</h3><p>Find the right job, employee, business or service.</p></div>
-    <div class="step"><h3>Apply or contact</h3><p>Apply for a job or contact the professional directly.</p></div>
-    <div class="step"><h3>Get started</h3><p>Connect, work together and grow.</p></div>
-  </div>
-</div></section>
+</section>
 
-<section class="cta"><div class="wrap">
-  <h2>Ready to start?</h2>
-  <p>Find a job, hire people or get digital services with DigiSER BD.</p>
-  <a class="btn wa" data-wa href="#">Chat on WhatsApp</a>
-  <a class="btn" href="contact/">Contact us</a>
-</div></section>
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="sec">
+
+  <div class="wrap">
+
+    <div class="sec-h">
+
+      <div>
+
+        <h2>
+          Services for your business
+        </h2>
+
+        <p>
+          Digital work and local support, so you can save time and focus on customers.
+        </p>
+
+      </div>
+
+      <a
+        class="more"
+        href="services/"
+      >
+        All services
+      </a>
+
+    </div>
+
+    <div id="homeServices"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     LATEST JOBS
+========================================================= -->
+
+<section class="sec alt">
+
+  <div class="wrap">
+
+    <div class="sec-h">
+
+      <div>
+
+        <h2>
+          Latest jobs
+        </h2>
+
+        <p>
+          Openings from local businesses. Apply in a minute.
+        </p>
+
+      </div>
+
+      <a
+        class="more"
+        href="jobs/"
+      >
+        Browse all jobs
+      </a>
+
+    </div>
+
+    <div id="homeJobs"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     EMPLOYEES
+========================================================= -->
+
+<section class="sec">
+
+  <div class="wrap">
+
+    <div class="sec-h">
+
+      <div>
+
+        <h2>
+          Skilled people, ready to work
+        </h2>
+
+        <p>
+          Find the right professional for your project or business.
+        </p>
+
+      </div>
+
+      <a
+        class="more"
+        href="employees/"
+      >
+        View all employees
+      </a>
+
+    </div>
+
+    <div id="homeEmployees"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     LOCAL BUSINESSES
+========================================================= -->
+
+<section class="sec alt">
+
+  <div class="wrap split">
+
+    <div>
+
+      <h2>
+        Local businesses, local growth
+      </h2>
+
+      <p>
+        List your business, hire staff or get professional digital services,
+        all from one platform.
+      </p>
+
+      <a
+        class="btn pri"
+        href="businesses/"
+      >
+        List your business
+      </a>
+
+    </div>
+
+
+    <div class="perks">
+
+      <div class="perk">
+
+        <b>
+          Find employees
+        </b>
+
+        <span>
+          Skilled and trusted people for your team.
+        </span>
+
+      </div>
+
+
+      <div class="perk">
+
+        <b>
+          Get customers
+        </b>
+
+        <span>
+          Build your online presence.
+        </span>
+
+      </div>
+
+
+      <div class="perk">
+
+        <b>
+          Digital services
+        </b>
+
+        <span>
+          Graphic, web and social media work.
+        </span>
+
+      </div>
+
+
+      <div class="perk">
+
+        <b>
+          Grow faster
+        </b>
+
+        <span>
+          Use digital tools and the right people.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     HOW IT WORKS
+========================================================= -->
+
+<section class="sec">
+
+  <div class="wrap">
+
+    <div class="sec-h">
+
+      <div>
+
+        <h2>
+          How it works
+        </h2>
+
+        <p>
+          Job, hire or service, getting started takes four steps.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <h3>
+          Create an account
+        </h3>
+
+        <p>
+          Register as a job seeker, employee, business or service provider.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>
+          Search and choose
+        </h3>
+
+        <p>
+          Find the right job, employee, business or service.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>
+          Apply or contact
+        </h3>
+
+        <p>
+          Apply for a job or contact the professional directly.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <h3>
+          Get started
+        </h3>
+
+        <p>
+          Connect, work together and grow.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta">
+
+  <div class="wrap">
+
+    <h2>
+      Ready to start?
+    </h2>
+
+    <p>
+      Find a job, hire people or get digital services with DigiSER BD.
+    </p>
+
+    <a
+      class="btn wa"
+      data-wa
+      href="#"
+    >
+      Chat on WhatsApp
+    </a>
+
+    <a
+      class="btn"
+      href="contact/"
+    >
+      Contact us
+    </a>
+
+  </div>
+
+</section>
 
 </main>
+
+
 <div id="ftr-slot"></div>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
 <script src="assets/data.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/app.js"></script>
+
 </body>
 </html>
