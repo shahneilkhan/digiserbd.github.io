@@ -1,1 +1,4648 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>DigiSER BD · Admin Dashboard</title>
+
+<meta
+  name="description"
+  content="DigiSER BD administration dashboard."
+>
+
+<meta
+  name="theme-color"
+  content="#0087c4"
+>
+
+<link
+  rel="icon"
+  href="../assets/favicon.svg"
+  type="image/svg+xml"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<link
+  rel="stylesheet"
+  href="../assets/style.css"
+>
+
+
+<style>
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+:root{
+
+  --primary:#0087c4;
+  --primary-dark:#006b9d;
+
+  --dark:#10202b;
+  --text:#17202a;
+  --muted:#687580;
+
+  --line:#e3e8ec;
+
+  --bg:#f4f7f9;
+  --white:#fff;
+
+  --success:#13864c;
+  --warning:#d98b00;
+  --danger:#d13c32;
+
+  --shadow:
+    0 15px 45px
+    rgba(16,32,43,.07);
+
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  margin:0;
+
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(0,135,196,.06),
+      transparent 30%
+    ),
+    var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    "Hind Siliguri",
+    sans-serif;
+
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================================
+   ADMIN HEADER
+========================================================= */
+
+.admin-header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  background:
+    rgba(255,255,255,.94);
+
+  backdrop-filter:
+    blur(16px);
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+.admin-header-inner{
+
+  max-width:1400px;
+
+  min-height:72px;
+
+  margin:auto;
+
+  padding:
+    0 22px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+}
+
+.admin-brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:11px;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:20px;
+
+  font-weight:700;
+
+}
+
+.admin-brand img{
+
+  width:40px;
+  height:40px;
+
+  object-fit:contain;
+
+  border-radius:10px;
+
+}
+
+.admin-brand span{
+  color:var(--primary);
+}
+
+.admin-badge{
+
+  margin-left:7px;
+
+  padding:
+    5px 9px;
+
+  border-radius:20px;
+
+  background:
+    #eef8fc;
+
+  color:
+    var(--primary-dark);
+
+  font-size:9px;
+
+  font-weight:700;
+
+  letter-spacing:.06em;
+
+}
+
+.admin-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+}
+
+.header-btn{
+
+  border:
+    1px solid var(--line);
+
+  background:#fff;
+
+  border-radius:9px;
+
+  padding:
+    9px 13px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+}
+
+.header-btn:hover{
+
+  border-color:
+    var(--primary);
+
+  color:
+    var(--primary);
+
+}
+
+.header-btn.danger{
+
+  color:
+    var(--danger);
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.dashboard{
+
+  max-width:1400px;
+
+  margin:auto;
+
+  padding:
+    30px 22px 70px;
+
+}
+
+.dashboard-top{
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:24px;
+
+}
+
+.dashboard-title h1{
+
+  margin:0;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:
+    clamp(28px,4vw,42px);
+
+  line-height:1.05;
+
+}
+
+.dashboard-title p{
+
+  margin:
+    8px 0 0;
+
+  color:var(--muted);
+
+  font-size:14px;
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,minmax(0,1fr));
+
+  gap:14px;
+
+  margin-bottom:22px;
+
+}
+
+.stat{
+
+  padding:19px;
+
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:16px;
+
+  box-shadow:
+    0 8px 30px
+    rgba(16,32,43,.04);
+
+}
+
+.stat-label{
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:.05em;
+
+}
+
+.stat-number{
+
+  margin-top:7px;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:29px;
+
+  font-weight:700;
+
+}
+
+.stat.new .stat-number{
+  color:var(--primary);
+}
+
+.stat.reviewing .stat-number{
+  color:var(--warning);
+}
+
+.stat.shortlisted .stat-number{
+  color:#7655c7;
+}
+
+.stat.interview .stat-number{
+  color:#d66b00;
+}
+
+.stat.selected .stat-number{
+  color:var(--success);
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+.panel-head{
+
+  padding:
+    20px 21px;
+
+  border-bottom:
+    1px solid var(--line);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+}
+
+.panel-title h2{
+
+  margin:0;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:18px;
+
+}
+
+.panel-title p{
+
+  margin:
+    4px 0 0;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+}
+
+.panel-tools{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+}
+
+.search{
+
+  min-width:220px;
+
+  padding:
+    10px 12px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:9px;
+
+  outline:none;
+
+}
+
+.search:focus{
+
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(0,135,196,.09);
+
+}
+
+.filter{
+
+  padding:
+    10px 12px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:9px;
+
+  background:#fff;
+
+  outline:none;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrap{
+
+  width:100%;
+
+  overflow-x:auto;
+
+}
+
+table{
+
+  width:100%;
+
+  min-width:1050px;
+
+  border-collapse:collapse;
+
+}
+
+thead{
+  background:#f7fafb;
+}
+
+th{
+
+  padding:
+    12px 15px;
+
+  text-align:left;
+
+  color:#63727c;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.05em;
+
+  white-space:nowrap;
+
+}
+
+td{
+
+  padding:
+    14px 15px;
+
+  border-top:
+    1px solid #edf1f3;
+
+  font-size:12px;
+
+  vertical-align:middle;
+
+}
+
+tbody tr:hover{
+  background:#fbfdfe;
+}
+
+.applicant-name{
+
+  font-weight:700;
+
+  color:
+    var(--dark);
+
+}
+
+.applicant-phone{
+
+  color:
+    var(--muted);
+
+  font-size:11px;
+
+  margin-top:2px;
+
+}
+
+.tracking{
+
+  display:inline-block;
+
+  padding:
+    5px 8px;
+
+  border-radius:7px;
+
+  background:
+    #eef8fc;
+
+  color:
+    var(--primary-dark);
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:5px;
+
+  padding:
+    5px 9px;
+
+  border-radius:20px;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  white-space:nowrap;
+
+}
+
+.status::before{
+
+  content:"";
+
+  width:6px;
+
+  height:6px;
+
+  border-radius:50%;
+
+  background:currentColor;
+
+}
+
+.status.new{
+
+  color:
+    var(--primary);
+
+  background:
+    #eef8fc;
+
+}
+
+.status.reviewing{
+
+  color:
+    #a16a00;
+
+  background:
+    #fff6df;
+
+}
+
+.status.shortlisted{
+
+  color:
+    #7655c7;
+
+  background:
+    #f1ebff;
+
+}
+
+.status.interview{
+
+  color:
+    #c86100;
+
+  background:
+    #fff0e2;
+
+}
+
+.status.selected{
+
+  color:
+    var(--success);
+
+  background:
+    #eaf8f0;
+
+}
+
+.status.rejected{
+
+  color:
+    var(--danger);
+
+  background:
+    #fff0ef;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.row-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+}
+
+.row-btn{
+
+  border:
+    1px solid var(--line);
+
+  background:#fff;
+
+  border-radius:7px;
+
+  padding:
+    7px 9px;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  white-space:nowrap;
+
+}
+
+.row-btn:hover{
+
+  border-color:
+    var(--primary);
+
+  color:
+    var(--primary);
+
+}
+
+.row-btn.delete{
+
+  color:
+    var(--danger);
+
+}
+
+.row-btn.delete:hover{
+
+  border-color:
+    var(--danger);
+
+  background:
+    #fff5f4;
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-table{
+
+  padding:
+    70px 20px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+}
+
+.empty-icon{
+
+  font-size:32px;
+
+  margin-bottom:8px;
+
+}
+
+.empty-table strong{
+
+  display:block;
+
+  color:
+    var(--dark);
+
+  font-size:14px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:500;
+
+  padding:25px;
+
+  background:
+    rgba(16,32,43,.58);
+
+  backdrop-filter:
+    blur(7px);
+
+  overflow-y:auto;
+
+}
+
+.modal.show{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+}
+
+.modal-box{
+
+  width:
+    min(1050px,100%);
+
+  margin:
+    20px auto;
+
+  background:#fff;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.22);
+
+}
+
+.modal-head{
+
+  padding:
+    18px 21px;
+
+  border-bottom:
+    1px solid var(--line);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+}
+
+.modal-head h2{
+
+  margin:0;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:18px;
+
+}
+
+.close-btn{
+
+  width:34px;
+  height:34px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:9px;
+
+  background:#fff;
+
+  font-size:18px;
+
+}
+
+.close-btn:hover{
+
+  background:
+    #f4f7f9;
+
+}
+
+.modal-body{
+  padding:22px;
+}
+
+
+/* =========================================================
+   APPLICANT TOP
+========================================================= */
+
+.applicant-top{
+
+  display:grid;
+
+  grid-template-columns:
+    80px 1fr auto;
+
+  gap:16px;
+
+  align-items:center;
+
+  padding-bottom:20px;
+
+  margin-bottom:20px;
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+.applicant-photo{
+
+  width:80px;
+  height:80px;
+
+  border-radius:15px;
+
+  overflow:hidden;
+
+  background:#edf2f4;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:#87939a;
+
+  font-size:10px;
+
+  text-align:center;
+
+}
+
+.applicant-photo img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+.applicant-top h3{
+
+  margin:0;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:22px;
+
+}
+
+.applicant-meta{
+
+  margin-top:4px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+}
+
+.modal-status{
+
+  min-width:190px;
+
+}
+
+.modal-status label{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+}
+
+.modal-status select{
+
+  width:100%;
+
+  padding:
+    10px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:9px;
+
+  outline:none;
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:15px;
+
+}
+
+.detail-card{
+
+  border:
+    1px solid var(--line);
+
+  border-radius:13px;
+
+  padding:16px;
+
+  background:#fff;
+
+}
+
+.detail-card.full{
+  grid-column:1/-1;
+}
+
+.detail-card h4{
+
+  margin:
+    0 0 10px;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:11px;
+
+  color:
+    var(--primary-dark);
+
+  text-transform:uppercase;
+
+  letter-spacing:.06em;
+
+}
+
+.detail-row{
+
+  display:grid;
+
+  grid-template-columns:
+    135px 1fr;
+
+  gap:10px;
+
+  padding:
+    7px 0;
+
+  border-bottom:
+    1px dashed #e8edef;
+
+}
+
+.detail-row:last-child{
+  border-bottom:0;
+}
+
+.detail-label{
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  font-weight:600;
+
+}
+
+.detail-value{
+
+  color:
+    var(--text);
+
+  font-size:12px;
+
+  white-space:pre-line;
+
+  word-break:break-word;
+
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.modal-footer{
+
+  padding:
+    15px 21px;
+
+  border-top:
+    1px solid var(--line);
+
+  background:#fafcfd;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+}
+
+.modal-footer-left{
+
+  color:
+    var(--muted);
+
+  font-size:10px;
+
+}
+
+.modal-footer-right{
+
+  display:flex;
+
+  gap:8px;
+
+}
+
+.modal-action{
+
+  border:
+    1px solid var(--line);
+
+  background:#fff;
+
+  border-radius:9px;
+
+  padding:
+    9px 13px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+}
+
+.modal-action.primary{
+
+  border-color:
+    var(--primary);
+
+  background:
+    var(--primary);
+
+  color:#fff;
+
+}
+
+.modal-action.primary:hover{
+
+  background:
+    var(--primary-dark);
+
+}
+
+
+/* =========================================================
+   CV MODAL
+========================================================= */
+
+.cv-modal-box{
+
+  width:
+    min(850px,100%);
+
+}
+
+.cv-print-area{
+
+  background:#e9eef1;
+
+  padding:25px;
+
+}
+
+.cv{
+
+  max-width:760px;
+
+  margin:auto;
+
+  background:#fff;
+
+  min-height:1000px;
+
+  box-shadow:
+    0 12px 40px
+    rgba(0,0,0,.12);
+
+  overflow:hidden;
+
+}
+
+.cv-top{
+
+  padding:
+    30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10202b,
+      #006f9f
+    );
+
+  color:#fff;
+
+  display:flex;
+
+  gap:20px;
+
+  align-items:center;
+
+}
+
+.cv-photo{
+
+  width:100px;
+  height:100px;
+
+  border-radius:16px;
+
+  overflow:hidden;
+
+  background:
+    rgba(255,255,255,.14);
+
+  flex:none;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:10px;
+
+}
+
+.cv-photo img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+.cv-name{
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:29px;
+
+  font-weight:700;
+
+}
+
+.cv-role{
+
+  margin-top:5px;
+
+  color:#aee6fa;
+
+  font-size:13px;
+
+  font-weight:700;
+
+}
+
+.cv-contact{
+
+  margin-top:8px;
+
+  color:#dceaf0;
+
+  font-size:10px;
+
+  line-height:1.6;
+
+}
+
+.cv-body{
+
+  display:grid;
+
+  grid-template-columns:
+    170px 1fr;
+
+}
+
+.cv-side{
+
+  padding:
+    24px 18px;
+
+  background:#f4f8fa;
+
+  border-right:
+    1px solid #e2e9ed;
+
+}
+
+.cv-main{
+
+  padding:24px;
+
+}
+
+.cv-section{
+
+  margin-bottom:24px;
+
+}
+
+.cv-section h3{
+
+  margin:
+    0 0 9px;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.09em;
+
+  color:
+    var(--primary-dark);
+
+}
+
+.cv-section p{
+
+  margin:0;
+
+  color:#4e5a63;
+
+  font-size:10px;
+
+  line-height:1.7;
+
+  white-space:pre-line;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+  position:fixed;
+
+  right:20px;
+
+  bottom:20px;
+
+  z-index:1000;
+
+  padding:
+    12px 16px;
+
+  border-radius:10px;
+
+  background:
+    #10202b;
+
+  color:#fff;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.18);
+
+  transform:
+    translateY(20px);
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:
+    .25s ease;
+
+}
+
+.toast.show{
+
+  transform:
+    translateY(0);
+
+  opacity:1;
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-screen{
+
+  min-height:100vh;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(0,135,196,.14),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #f8fbfc,
+      #eef5f8
+    );
+
+}
+
+.login-box{
+
+  width:
+    min(420px,100%);
+
+  background:#fff;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:20px;
+
+  padding:30px;
+
+  box-shadow:
+    0 25px 80px
+    rgba(16,32,43,.10);
+
+}
+
+.login-logo{
+
+  width:55px;
+  height:55px;
+
+  margin:auto;
+
+  display:block;
+
+  object-fit:contain;
+
+  border-radius:14px;
+
+}
+
+.login-box h1{
+
+  margin:
+    15px 0 5px;
+
+  text-align:center;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:24px;
+
+}
+
+.login-box p{
+
+  margin:
+    0 0 22px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+}
+
+.login-field{
+
+  margin-bottom:13px;
+
+}
+
+.login-field label{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+}
+
+.login-field input{
+
+  width:100%;
+
+  padding:
+    12px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:10px;
+
+  outline:none;
+
+}
+
+.login-field input:focus{
+
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(0,135,196,.09);
+
+}
+
+.login-button{
+
+  width:100%;
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:13px;
+
+  background:
+    var(--primary);
+
+  color:#fff;
+
+  font-weight:700;
+
+}
+
+.login-button:hover{
+  background:var(--primary-dark);
+}
+
+.login-error{
+
+  display:none;
+
+  margin-top:10px;
+
+  padding:9px;
+
+  border-radius:8px;
+
+  background:#fff0ef;
+
+  color:var(--danger);
+
+  font-size:11px;
+
+  text-align:center;
+
+}
+
+.login-error.show{
+  display:block;
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.hidden{
+  display:none!important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .stats{
+
+    grid-template-columns:
+      repeat(3,1fr);
+
+  }
+
+}
+
+@media(max-width:750px){
+
+  .dashboard{
+    padding:
+      20px 12px 50px;
+  }
+
+  .admin-header-inner{
+    padding:
+      0 14px;
+  }
+
+  .admin-badge{
+    display:none;
+  }
+
+  .dashboard-top{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+  .stats{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .panel-head{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+  .panel-tools{
+    width:100%;
+  }
+
+  .search{
+    width:100%;
+  }
+
+  .filter{
+    flex:1;
+  }
+
+  .details-grid{
+    grid-template-columns:1fr;
+  }
+
+  .detail-card.full{
+    grid-column:auto;
+  }
+
+  .applicant-top{
+
+    grid-template-columns:
+      65px 1fr;
+
+  }
+
+  .modal-status{
+
+    grid-column:
+      1/-1;
+
+  }
+
+  .modal{
+
+    padding:10px;
+
+  }
+
+  .modal-box{
+    margin:5px auto;
+  }
+
+  .modal-body{
+    padding:15px;
+  }
+
+  .modal-footer{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+}
+
+@media(max-width:480px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .admin-actions .header-btn:first-child{
+    display:none;
+  }
+
+  .login-box{
+    padding:24px 18px;
+  }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+  body *{
+    visibility:hidden!important;
+  }
+
+  #cvPrintArea,
+  #cvPrintArea *{
+    visibility:visible!important;
+  }
+
+  #cvPrintArea{
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+  }
+
+  .cv-print-area{
+
+    padding:0;
+
+    background:#fff;
+
+  }
+
+  .cv{
+    box-shadow:none;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     LOGIN SCREEN
+========================================================= -->
+
+<section
+  class="login-screen"
+  id="loginScreen"
+>
+
+<div class="login-box">
+
+
+<img
+  class="login-logo"
+  src="../assets/favicon.svg"
+  alt="DigiSER BD"
+>
+
+
+<h1>
+  DigiSER BD Admin
+</h1>
+
+
+<p>
+  Secure administration dashboard
+</p>
+
+
+<form id="loginForm">
+
+
+<div class="login-field">
+
+<label for="adminPassword">
+  Admin Password
+</label>
+
+<input
+  id="adminPassword"
+  type="password"
+  placeholder="Enter admin password"
+  autocomplete="current-password"
+  required
+>
+
+</div>
+
+
+<button
+  class="login-button"
+  type="submit"
+>
+  Login to Dashboard
+</button>
+
+
+<div
+  class="login-error"
+  id="loginError"
+>
+  Incorrect password. Please try again.
+</div>
+
+
+</form>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<div
+  id="dashboardApp"
+  class="hidden"
+>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="admin-header">
+
+<div class="admin-header-inner">
+
+
+<a
+  href="../"
+  class="admin-brand"
+>
+
+<img
+  src="../assets/favicon.svg"
+  alt="DigiSER BD"
+>
+
+<div>
+
+DigiSER <span>BD</span>
+
+<span class="admin-badge">
+ADMIN
+</span>
+
+</div>
+
+</a>
+
+
+<div class="admin-actions">
+
+
+<a
+  href="../"
+  class="header-btn"
+>
+  View Website
+</a>
+
+
+<a
+  href="../register/"
+  class="header-btn"
+>
+  Register Page
+</a>
+
+
+<button
+  class="header-btn danger"
+  id="logoutBtn"
+  type="button"
+>
+  Logout
+</button>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="dashboard">
+
+
+<div class="dashboard-top">
+
+
+<div class="dashboard-title">
+
+<h1>
+  Admin Dashboard
+</h1>
+
+<p>
+  Manage DigiSER BD applicants, applications and tracking status.
+</p>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+
+<div class="stat">
+
+<div class="stat-label">
+  Total Applications
+</div>
+
+<div
+  class="stat-number"
+  id="totalCount"
+>
+  0
+</div>
+
+</div>
+
+
+<div class="stat new">
+
+<div class="stat-label">
+  New
+</div>
+
+<div
+  class="stat-number"
+  id="newCount"
+>
+  0
+</div>
+
+</div>
+
+
+<div class="stat reviewing">
+
+<div class="stat-label">
+  Under Review
+</div>
+
+<div
+  class="stat-number"
+  id="reviewingCount"
+>
+  0
+</div>
+
+</div>
+
+
+<div class="stat shortlisted">
+
+<div class="stat-label">
+  Shortlisted
+</div>
+
+<div
+  class="stat-number"
+  id="shortlistedCount"
+>
+  0
+</div>
+
+</div>
+
+
+<div class="stat selected">
+
+<div class="stat-label">
+  Selected
+</div>
+
+<div
+  class="stat-number"
+  id="selectedCount"
+>
+  0
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+     APPLICANTS
+===================================================== -->
+
+<section class="panel">
+
+
+<div class="panel-head">
+
+
+<div class="panel-title">
+
+<h2>
+  Job Applications
+</h2>
+
+<p>
+  View applicant details and update application status.
+</p>
+
+</div>
+
+
+<div class="panel-tools">
+
+
+<input
+  class="search"
+  id="searchInput"
+  type="search"
+  placeholder="Search name, mobile or tracking..."
+>
+
+
+<select
+  class="filter"
+  id="statusFilter"
+>
+
+<option value="">
+  All Status
+</option>
+
+<option value="new">
+  Application Submitted
+</option>
+
+<option value="reviewing">
+  Under Review
+</option>
+
+<option value="shortlisted">
+  Shortlisted
+</option>
+
+<option value="interview">
+  Interview
+</option>
+
+<option value="selected">
+  Selected
+</option>
+
+<option value="rejected">
+  Not Selected
+</option>
+
+</select>
+
+
+</div>
+
+</div>
+
+
+<div class="table-wrap">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+  Tracking Number
+</th>
+
+<th>
+  Applicant
+</th>
+
+<th>
+  Desired Role
+</th>
+
+<th>
+  Status
+</th>
+
+<th>
+  Applied
+</th>
+
+<th>
+  Updated
+</th>
+
+<th>
+  Actions
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="applicantTable">
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+</div>
+
+
+<!-- =========================================================
+     APPLICANT MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="applicantModal"
+>
+
+<div class="modal-box">
+
+
+<div class="modal-head">
+
+<h2>
+  Applicant Details
+</h2>
+
+
+<button
+  class="close-btn"
+  id="closeApplicantModal"
+  type="button"
+>
+  ×
+</button>
+
+</div>
+
+
+<div
+  class="modal-body"
+  id="applicantModalBody"
+>
+</div>
+
+
+<div class="modal-footer">
+
+
+<div
+  class="modal-footer-left"
+  id="modalUpdated"
+>
+</div>
+
+
+<div class="modal-footer-right">
+
+
+<button
+  class="modal-action"
+  id="viewCVBtn"
+  type="button"
+>
+  View CV
+</button>
+
+
+<button
+  class="modal-action primary"
+  id="saveStatusBtn"
+  type="button"
+>
+  Save Status
+</button>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CV MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="cvModal"
+>
+
+<div class="modal-box cv-modal-box">
+
+
+<div class="modal-head">
+
+<h2>
+  Professional CV
+</h2>
+
+
+<button
+  class="close-btn"
+  id="closeCVModal"
+  type="button"
+>
+  ×
+</button>
+
+</div>
+
+
+<div
+  class="cv-print-area"
+  id="cvPrintArea"
+>
+</div>
+
+
+<div class="modal-footer">
+
+
+<div class="modal-footer-left">
+  DigiSER BD Applicant CV
+</div>
+
+
+<div class="modal-footer-right">
+
+
+<button
+  class="modal-action primary"
+  id="printApplicantCV"
+  type="button"
+>
+  Print / Save CV
+</button>
+
+
+<button
+  class="modal-action"
+  id="closeCVModalBottom"
+  type="button"
+>
+  Close
+</button>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+  class="toast"
+  id="toast"
+>
+</div>
+
+
+<script src="../assets/data.js"></script>
+
+<script src="../assets/i18n.js"></script>
+
+<script src="../assets/app.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const ADMIN_PASSWORD =
+  "digiser2026";
+
+const SESSION_KEY =
+  "digiserbd_admin_session";
+
+
+/* =========================================================
+   SHARED DATA
+========================================================= */
+
+const DS =
+  window.DigiSERBD || {};
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginScreen =
+  document.getElementById(
+    "loginScreen"
+  );
+
+const dashboardApp =
+  document.getElementById(
+    "dashboardApp"
+  );
+
+const loginForm =
+  document.getElementById(
+    "loginForm"
+  );
+
+const adminPassword =
+  document.getElementById(
+    "adminPassword"
+  );
+
+const loginError =
+  document.getElementById(
+    "loginError"
+  );
+
+const logoutBtn =
+  document.getElementById(
+    "logoutBtn"
+  );
+
+const applicantTable =
+  document.getElementById(
+    "applicantTable"
+  );
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const statusFilter =
+  document.getElementById(
+    "statusFilter"
+  );
+
+const applicantModal =
+  document.getElementById(
+    "applicantModal"
+  );
+
+const applicantModalBody =
+  document.getElementById(
+    "applicantModalBody"
+  );
+
+const cvModal =
+  document.getElementById(
+    "cvModal"
+  );
+
+const cvPrintArea =
+  document.getElementById(
+    "cvPrintArea"
+  );
+
+const modalUpdated =
+  document.getElementById(
+    "modalUpdated"
+  );
+
+const toast =
+  document.getElementById(
+    "toast"
+  );
+
+
+let currentApplicantId =
+  null;
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function showDashboard(){
+
+  loginScreen.classList.add(
+    "hidden"
+  );
+
+  dashboardApp.classList.remove(
+    "hidden"
+  );
+
+  renderDashboard();
+
+}
+
+
+function showLogin(){
+
+  dashboardApp.classList.add(
+    "hidden"
+  );
+
+  loginScreen.classList.remove(
+    "hidden"
+  );
+
+  adminPassword.value = "";
+
+}
+
+
+/* =========================================================
+   CHECK SESSION
+========================================================= */
+
+if(
+  sessionStorage.getItem(
+    SESSION_KEY
+  ) === "true"
+){
+
+  showDashboard();
+
+}else{
+
+  showLogin();
+
+}
+
+
+/* =========================================================
+   LOGIN SUBMIT
+========================================================= */
+
+loginForm.addEventListener(
+  "submit",
+  function(e){
+
+    e.preventDefault();
+
+
+    const password =
+      adminPassword.value;
+
+
+    if(
+      password ===
+      ADMIN_PASSWORD
+    ){
+
+      sessionStorage.setItem(
+        SESSION_KEY,
+        "true"
+      );
+
+
+      loginError.classList.remove(
+        "show"
+      );
+
+
+      showDashboard();
+
+
+    }else{
+
+      loginError.classList.add(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+logoutBtn.addEventListener(
+  "click",
+  function(){
+
+    sessionStorage.removeItem(
+      SESSION_KEY
+    );
+
+    showLogin();
+
+  }
+);
+
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+function getDatabase(){
+
+  if(
+    typeof DS.getDB ===
+    "function"
+  ){
+
+    return DS.getDB();
+
+  }
+
+
+  return {
+
+    users:[],
+    jobs:[],
+    services:[],
+    employees:[],
+    businesses:[],
+    messages:[],
+    blog:[]
+
+  };
+
+}
+
+
+function saveDatabase(db){
+
+  if(
+    typeof DS.saveDB ===
+    "function"
+  ){
+
+    DS.saveDB(db);
+
+  }
+
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHTML(value){
+
+  if(
+    typeof DS.esc ===
+    "function"
+  ){
+
+    return DS.esc(value);
+
+  }
+
+  return String(value || "")
+
+    .replaceAll("&","&amp;")
+
+    .replaceAll("<","&lt;")
+
+    .replaceAll(">","&gt;")
+
+    .replaceAll('"',"&quot;")
+
+    .replaceAll("'","&#039;");
+
+}
+
+
+function getName(user){
+
+  if(
+    typeof DS.getApplicantName ===
+    "function"
+  ){
+
+    return DS.getApplicantName(user);
+
+  }
+
+  return (
+    user?.personal?.name ||
+    user?.name ||
+    "Unnamed Applicant"
+  );
+
+}
+
+
+function getMobile(user){
+
+  if(
+    typeof DS.getApplicantMobile ===
+    "function"
+  ){
+
+    return DS.getApplicantMobile(user);
+
+  }
+
+  return (
+    user?.personal?.mobile ||
+    ""
+  );
+
+}
+
+
+function getRole(user){
+
+  if(
+    typeof DS.getApplicantRole ===
+    "function"
+  ){
+
+    return DS.getApplicantRole(user);
+
+  }
+
+  return (
+    user?.wanted?.role ||
+    "Not specified"
+  );
+
+}
+
+
+function getTracking(user){
+
+  if(
+    typeof DS.getTrackingNumber ===
+    "function"
+  ){
+
+    return DS.getTrackingNumber(user);
+
+  }
+
+  return (
+    user?.trackingNumber ||
+    user?.id ||
+    ""
+  );
+
+}
+
+
+function getStatus(user){
+
+  if(
+    typeof DS.getUserStatus ===
+    "function"
+  ){
+
+    return DS.getUserStatus(user);
+
+  }
+
+  return user?.status || "new";
+
+}
+
+
+function statusLabel(status){
+
+  if(
+    typeof DS.getStatusLabel ===
+    "function"
+  ){
+
+    return DS.getStatusLabel(status);
+
+  }
+
+
+  const labels = {
+
+    new:
+      "Application Submitted",
+
+    reviewing:
+      "Under Review",
+
+    shortlisted:
+      "Shortlisted",
+
+    interview:
+      "Interview",
+
+    selected:
+      "Selected",
+
+    rejected:
+      "Not Selected"
+
+  };
+
+
+  return (
+    labels[status] ||
+    status
+  );
+
+}
+
+
+function statusClass(status){
+
+  const allowed = [
+
+    "new",
+    "reviewing",
+    "shortlisted",
+    "interview",
+    "selected",
+    "rejected"
+
+  ];
+
+  return allowed.includes(status)
+    ? status
+    : "new";
+
+}
+
+
+function formatDate(value){
+
+  if(!value){
+    return "—";
+  }
+
+
+  if(
+    typeof DS.formatDate ===
+    "function"
+  ){
+
+    return DS.formatDate(
+      value,
+      "en-BD"
+    );
+
+  }
+
+
+  try{
+
+    return new Date(value)
+      .toLocaleDateString(
+        "en-BD",
+        {
+          day:"2-digit",
+          month:"short",
+          year:"numeric"
+        }
+      );
+
+  }catch(e){
+
+    return "—";
+
+  }
+
+}
+
+
+function formatDateTime(value){
+
+  if(!value){
+    return "—";
+  }
+
+
+  if(
+    typeof DS.formatDateTime ===
+    "function"
+  ){
+
+    return DS.formatDateTime(
+      value,
+      "en-BD"
+    );
+
+  }
+
+
+  try{
+
+    return new Date(value)
+      .toLocaleString(
+        "en-BD"
+      );
+
+  }catch(e){
+
+    return "—";
+
+  }
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer = null;
+
+
+function showToast(message){
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      function(){
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2500
+    );
+
+}
+
+
+/* =========================================================
+   DASHBOARD STATS
+========================================================= */
+
+function renderStats(users){
+
+  const count = status =>
+
+    users.filter(
+      user =>
+        getStatus(user) ===
+        status
+    ).length;
+
+
+  document.getElementById(
+    "totalCount"
+  ).textContent =
+    users.length;
+
+
+  document.getElementById(
+    "newCount"
+  ).textContent =
+    count("new");
+
+
+  document.getElementById(
+    "reviewingCount"
+  ).textContent =
+    count("reviewing");
+
+
+  document.getElementById(
+    "shortlistedCount"
+  ).textContent =
+    count("shortlisted");
+
+
+  document.getElementById(
+    "selectedCount"
+  ).textContent =
+    count("selected");
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function getFilteredUsers(users){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const filter =
+    statusFilter.value;
+
+
+  return users
+
+    .filter(
+      user => {
+
+        const name =
+          getName(user)
+            .toLowerCase();
+
+        const mobile =
+          getMobile(user)
+            .toLowerCase();
+
+        const tracking =
+          getTracking(user)
+            .toLowerCase();
+
+        const role =
+          getRole(user)
+            .toLowerCase();
+
+
+        const matchesSearch =
+
+          !search ||
+
+          name.includes(search) ||
+
+          mobile.includes(search) ||
+
+          tracking.includes(search) ||
+
+          role.includes(search);
+
+
+        const matchesStatus =
+
+          !filter ||
+
+          getStatus(user) ===
+          filter;
+
+
+        return (
+          matchesSearch &&
+          matchesStatus
+        );
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER TABLE
+========================================================= */
+
+function renderApplicants(){
+
+  const db =
+    getDatabase();
+
+
+  const users =
+    Array.isArray(db.users)
+      ? db.users
+      : [];
+
+
+  const filtered =
+    getFilteredUsers(users);
+
+
+  if(!filtered.length){
+
+    applicantTable.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="7"
+        >
+
+          <div class="empty-table">
+
+            <div class="empty-icon">
+              ◌
+            </div>
+
+            <strong>
+              No applications found
+            </strong>
+
+            <span>
+              Registered applicants will appear here.
+            </span>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  applicantTable.innerHTML =
+
+    filtered.map(
+      user => {
+
+        const status =
+          getStatus(user);
+
+        const tracking =
+          getTracking(user);
+
+        const name =
+          getName(user);
+
+        const mobile =
+          getMobile(user);
+
+        const role =
+          getRole(user);
+
+
+        return `
+
+        <tr>
+
+
+          <td>
+
+            <span class="tracking">
+
+              ${escapeHTML(tracking)}
+
+            </span>
+
+          </td>
+
+
+          <td>
+
+            <div class="applicant-name">
+
+              ${escapeHTML(name)}
+
+            </div>
+
+            <div class="applicant-phone">
+
+              ${escapeHTML(mobile)}
+
+            </div>
+
+          </td>
+
+
+          <td>
+
+            ${escapeHTML(role)}
+
+          </td>
+
+
+          <td>
+
+            <span
+              class="status ${statusClass(status)}"
+            >
+
+              ${escapeHTML(
+                statusLabel(status)
+              )}
+
+            </span>
+
+          </td>
+
+
+          <td>
+
+            ${escapeHTML(
+              formatDate(user.created)
+            )}
+
+          </td>
+
+
+          <td>
+
+            ${escapeHTML(
+              formatDate(user.updated)
+            )}
+
+          </td>
+
+
+          <td>
+
+            <div class="row-actions">
+
+
+              <button
+                class="row-btn"
+                type="button"
+                data-view="${escapeHTML(user.id)}"
+              >
+                View
+              </button>
+
+
+              <button
+                class="row-btn delete"
+                type="button"
+                data-delete="${escapeHTML(user.id)}"
+              >
+                Delete
+              </button>
+
+
+            </div>
+
+          </td>
+
+
+        </tr>
+
+        `;
+
+      }
+    ).join("");
+
+
+}
+
+
+/* =========================================================
+   DASHBOARD RENDER
+========================================================= */
+
+function renderDashboard(){
+
+  const db =
+    getDatabase();
+
+
+  const users =
+    Array.isArray(db.users)
+      ? db.users
+      : [];
+
+
+  renderStats(users);
+
+  renderApplicants();
+
+}
+
+
+/* =========================================================
+   TABLE CLICK
+========================================================= */
+
+applicantTable.addEventListener(
+  "click",
+  function(e){
+
+    const viewButton =
+      e.target.closest(
+        "[data-view]"
+      );
+
+
+    const deleteButton =
+      e.target.closest(
+        "[data-delete]"
+      );
+
+
+    if(viewButton){
+
+      openApplicant(
+        viewButton.dataset.view
+      );
+
+      return;
+
+    }
+
+
+    if(deleteButton){
+
+      deleteApplicant(
+        deleteButton.dataset.delete
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SEARCH / FILTER
+========================================================= */
+
+searchInput.addEventListener(
+  "input",
+  renderApplicants
+);
+
+statusFilter.addEventListener(
+  "change",
+  renderApplicants
+);
+
+
+/* =========================================================
+   FIND APPLICANT
+========================================================= */
+
+function findApplicant(id){
+
+  const db =
+    getDatabase();
+
+
+  return db.users.find(
+    user =>
+      String(user.id) ===
+      String(id)
+  );
+
+}
+
+
+/* =========================================================
+   OPEN APPLICANT
+========================================================= */
+
+function openApplicant(id){
+
+  const applicant =
+    findApplicant(id);
+
+
+  if(!applicant){
+
+    showToast(
+      "Applicant not found."
+    );
+
+    return;
+
+  }
+
+
+  currentApplicantId =
+    applicant.id;
+
+
+  const name =
+    getName(applicant);
+
+  const mobile =
+    getMobile(applicant);
+
+  const tracking =
+    getTracking(applicant);
+
+  const role =
+    getRole(applicant);
+
+  const status =
+    getStatus(applicant);
+
+
+  const photo =
+    applicant?.personal?.photo ||
+    "";
+
+
+  applicantModalBody.innerHTML = `
+
+    <div class="applicant-top">
+
+
+      <div class="applicant-photo">
+
+        ${
+          photo
+
+            ? `
+
+              <img
+                src="${escapeHTML(photo)}"
+                alt="Applicant"
+              >
+
+              `
+
+            : "PHOTO"
+        }
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          ${escapeHTML(name)}
+        </h3>
+
+        <div class="applicant-meta">
+
+          ${escapeHTML(mobile)}
+
+          ·
+
+          ${escapeHTML(role)}
+
+          ·
+
+          ${escapeHTML(tracking)}
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-status">
+
+        <label>
+          Application Status
+        </label>
+
+        <select id="modalStatusSelect">
+
+          <option
+            value="new"
+            ${status === "new" ? "selected" : ""}
+          >
+            Application Submitted
+          </option>
+
+          <option
+            value="reviewing"
+            ${status === "reviewing" ? "selected" : ""}
+          >
+            Under Review
+          </option>
+
+          <option
+            value="shortlisted"
+            ${status === "shortlisted" ? "selected" : ""}
+          >
+            Shortlisted
+          </option>
+
+          <option
+            value="interview"
+            ${status === "interview" ? "selected" : ""}
+          >
+            Interview
+          </option>
+
+          <option
+            value="selected"
+            ${status === "selected" ? "selected" : ""}
+          >
+            Selected
+          </option>
+
+          <option
+            value="rejected"
+            ${status === "rejected" ? "selected" : ""}
+          >
+            Not Selected
+          </option>
+
+        </select>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="details-grid">
+
+
+      <!-- PERSONAL -->
+
+      <div class="detail-card">
+
+        <h4>
+          Personal Information
+        </h4>
+
+
+        ${detailRow(
+          "Full Name",
+          name
+        )}
+
+        ${detailRow(
+          "Mobile",
+          mobile
+        )}
+
+        ${detailRow(
+          "Email",
+          applicant?.personal?.email
+        )}
+
+        ${detailRow(
+          "Emergency",
+          applicant?.personal?.emergency
+        )}
+
+        ${detailRow(
+          "Current Address",
+          applicant?.personal?.currentAddress
+        )}
+
+        ${detailRow(
+          "Permanent Address",
+          applicant?.personal?.permanentAddress
+        )}
+
+      </div>
+
+
+      <!-- JOB -->
+
+      <div class="detail-card">
+
+        <h4>
+          Job Preference
+        </h4>
+
+
+        ${detailRow(
+          "Desired Role",
+          applicant?.wanted?.role
+        )}
+
+        ${detailRow(
+          "Expected Salary",
+          applicant?.wanted?.salary
+        )}
+
+        ${detailRow(
+          "Employment Type",
+          applicant?.wanted?.type
+        )}
+
+        ${detailRow(
+          "Preferred Location",
+          applicant?.wanted?.location
+        )}
+
+      </div>
+
+
+      <!-- PROFILE -->
+
+      <div class="detail-card full">
+
+        <h4>
+          Professional Profile
+        </h4>
+
+
+        ${detailRow(
+          "Summary",
+          applicant?.personal?.profile
+        )}
+
+      </div>
+
+
+      <!-- EDUCATION -->
+
+      <div class="detail-card">
+
+        <h4>
+          Education
+        </h4>
+
+
+        ${detailRow(
+          "SSC",
+          applicant?.education?.ssc
+        )}
+
+        ${detailRow(
+          "HSC",
+          applicant?.education?.hsc
+        )}
+
+        ${detailRow(
+          "Graduate",
+          applicant?.education?.graduate
+        )}
+
+        ${detailRow(
+          "Other",
+          applicant?.education?.other
+        )}
+
+      </div>
+
+
+      <!-- EXPERIENCE -->
+
+      <div class="detail-card">
+
+        <h4>
+          Experience
+        </h4>
+
+
+        ${detailRow(
+          "Experience",
+          applicant?.experience?.experience
+        )}
+
+        ${detailRow(
+          "Duties",
+          applicant?.experience?.duty
+        )}
+
+        ${detailRow(
+          "Previous Salary",
+          applicant?.experience?.previousSalary
+        )}
+
+      </div>
+
+
+      <!-- SKILLS -->
+
+      <div class="detail-card">
+
+        <h4>
+          Skills & Languages
+        </h4>
+
+
+        ${detailRow(
+          "Skills",
+          applicant?.skills?.skills
+        )}
+
+        ${detailRow(
+          "Languages",
+          applicant?.language?.language
+        )}
+
+      </div>
+
+
+      <!-- REFERENCE -->
+
+      <div class="detail-card">
+
+        <h4>
+          Reference
+        </h4>
+
+
+        ${detailRow(
+          "Name",
+          applicant?.reference?.name
+        )}
+
+        ${detailRow(
+          "Contact",
+          applicant?.reference?.contact
+        )}
+
+        ${detailRow(
+          "Relationship",
+          applicant?.reference?.relation
+        )}
+
+      </div>
+
+
+      <!-- APPLICATION -->
+
+      <div class="detail-card full">
+
+        <h4>
+          Application Information
+        </h4>
+
+
+        ${detailRow(
+          "Tracking Number",
+          tracking
+        )}
+
+        ${detailRow(
+          "Application ID",
+          applicant?.id
+        )}
+
+        ${detailRow(
+          "Status",
+          statusLabel(status)
+        )}
+
+        ${detailRow(
+          "Source",
+          applicant?.source
+        )}
+
+        ${detailRow(
+          "Created",
+          formatDateTime(
+            applicant?.created
+          )
+        )}
+
+        ${detailRow(
+          "Last Updated",
+          formatDateTime(
+            applicant?.updated
+          )
+        )}
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  modalUpdated.textContent =
+    `Last updated: ${formatDateTime(
+      applicant.updated
+    )}`;
+
+
+  applicantModal.classList.add(
+    "show"
+  );
+
+}
+
+
+function detailRow(
+  label,
+  value
+){
+
+  if(
+    value === undefined ||
+    value === null ||
+    String(value).trim() === ""
+  ){
+
+    value = "—";
+
+  }
+
+
+  return `
+
+    <div class="detail-row">
+
+      <div class="detail-label">
+
+        ${escapeHTML(label)}
+
+      </div>
+
+      <div class="detail-value">
+
+        ${escapeHTML(value)}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   CLOSE APPLICANT MODAL
+========================================================= */
+
+document.getElementById(
+  "closeApplicantModal"
+).addEventListener(
+  "click",
+  closeApplicantModal
+);
+
+
+function closeApplicantModal(){
+
+  applicantModal.classList.remove(
+    "show"
+  );
+
+  currentApplicantId =
+    null;
+
+}
+
+
+/* =========================================================
+   SAVE STATUS
+========================================================= */
+
+document.getElementById(
+  "saveStatusBtn"
+).addEventListener(
+  "click",
+  saveStatus
+);
+
+
+function saveStatus(){
+
+  if(!currentApplicantId){
+
+    return;
+
+  }
+
+
+  const select =
+    document.getElementById(
+      "modalStatusSelect"
+    );
+
+
+  if(!select){
+
+    return;
+
+  }
+
+
+  const newStatus =
+    select.value;
+
+
+  const db =
+    getDatabase();
+
+
+  const applicant =
+    db.users.find(
+      user =>
+        String(user.id) ===
+        String(currentApplicantId)
+    );
+
+
+  if(!applicant){
+
+    showToast(
+      "Applicant not found."
+    );
+
+    return;
+
+  }
+
+
+  applicant.status =
+    newStatus;
+
+
+  applicant.updated =
+    new Date().toISOString();
+
+
+  /* -------------------------------------------------------
+     Make sure old records also have Tracking Number
+  ------------------------------------------------------- */
+
+  if(
+    !applicant.trackingNumber
+  ){
+
+    applicant.trackingNumber =
+      applicant.id;
+
+  }
+
+
+  saveDatabase(db);
+
+
+  renderDashboard();
+
+
+  modalUpdated.textContent =
+    `Last updated: ${formatDateTime(
+      applicant.updated
+    )}`;
+
+
+  showToast(
+    "Application status saved successfully."
+  );
+
+
+  /* -------------------------------------------------------
+     Refresh modal content
+  ------------------------------------------------------- */
+
+  openApplicant(
+    applicant.id
+  );
+
+}
+
+
+/* =========================================================
+   DELETE APPLICANT
+========================================================= */
+
+function deleteApplicant(id){
+
+  const applicant =
+    findApplicant(id);
+
+
+  if(!applicant){
+
+    showToast(
+      "Applicant not found."
+    );
+
+    return;
+
+  }
+
+
+  const name =
+    getName(applicant);
+
+
+  const confirmed =
+    confirm(
+      `Delete application for "${name}"?\n\nThis action cannot be undone.`
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  const db =
+    getDatabase();
+
+
+  db.users =
+    db.users.filter(
+      user =>
+        String(user.id) !==
+        String(id)
+    );
+
+
+  saveDatabase(db);
+
+
+  renderDashboard();
+
+
+  showToast(
+    "Application deleted."
+  );
+
+}
+
+
+/* =========================================================
+   VIEW CV
+========================================================= */
+
+document.getElementById(
+  "viewCVBtn"
+).addEventListener(
+  "click",
+  function(){
+
+    if(!currentApplicantId){
+
+      return;
+
+    }
+
+
+    const applicant =
+      findApplicant(
+        currentApplicantId
+      );
+
+
+    if(!applicant){
+
+      return;
+
+    }
+
+
+    renderApplicantCV(
+      applicant
+    );
+
+
+    cvModal.classList.add(
+      "show"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   CV GENERATOR
+========================================================= */
+
+function renderApplicantCV(
+  data
+){
+
+  const education = [
+
+    data?.education?.ssc
+      ? `SSC: ${data.education.ssc}`
+      : "",
+
+    data?.education?.hsc
+      ? `HSC: ${data.education.hsc}`
+      : "",
+
+    data?.education?.graduate
+      ? data.education.graduate
+      : "",
+
+    data?.education?.other
+      ? data.education.other
+      : ""
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  const experience = [
+
+    data?.experience?.experience,
+
+    data?.experience?.duty
+      ? `Duties: ${data.experience.duty}`
+      : "",
+
+    data?.experience?.previousSalary
+      ? `Previous Salary: ${data.experience.previousSalary}`
+      : ""
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  const reference = [
+
+    data?.reference?.name,
+
+    data?.reference?.contact,
+
+    data?.reference?.relation
+
+  ]
+
+  .filter(Boolean)
+
+  .join(" · ");
+
+
+  const photo =
+    data?.personal?.photo ||
+    "";
+
+
+  const skills =
+    data?.skills?.skills ||
+    "";
+
+
+  const languages =
+    data?.language?.language ||
+    "";
+
+
+  const preference = [
+
+    data?.wanted?.type,
+
+    data?.wanted?.location,
+
+    data?.wanted?.salary
+
+  ]
+
+  .filter(Boolean)
+
+  .join("\n");
+
+
+  cvPrintArea.innerHTML = `
+
+    <div class="cv">
+
+
+      <div class="cv-top">
+
+
+        <div class="cv-photo">
+
+          ${
+            photo
+
+              ? `
+
+                <img
+                  src="${escapeHTML(photo)}"
+                  alt="Profile"
+                >
+
+                `
+
+              : "PHOTO"
+          }
+
+        </div>
+
+
+        <div>
+
+
+          <div class="cv-name">
+
+            ${escapeHTML(
+              getName(data)
+            )}
+
+          </div>
+
+
+          <div class="cv-role">
+
+            ${escapeHTML(
+              getRole(data) ||
+              "Professional"
+            )}
+
+          </div>
+
+
+          <div class="cv-contact">
+
+            ${escapeHTML(
+              getMobile(data)
+            )}
+
+            ${
+              data?.personal?.email
+
+                ? " · " +
+                  escapeHTML(
+                    data.personal.email
+                  )
+
+                : ""
+            }
+
+
+            ${
+              data?.personal?.currentAddress
+
+                ? "<br>" +
+                  escapeHTML(
+                    data.personal.currentAddress
+                  )
+
+                : ""
+            }
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <div class="cv-body">
+
+
+        <aside class="cv-side">
+
+
+          ${
+            skills
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Skills
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(skills)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            languages
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Languages
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(languages)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            preference
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Preference
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(preference)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            reference
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Reference
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(reference)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+        </aside>
+
+
+        <div class="cv-main">
+
+
+          ${
+            data?.personal?.profile
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Profile
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(
+                      data.personal.profile
+                    )}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            experience
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Experience
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(experience)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            education
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Education
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(education)}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+          ${
+            data?.personal?.permanentAddress
+
+              ? `
+
+                <div class="cv-section">
+
+                  <h3>
+                    Address
+                  </h3>
+
+                  <p>
+                    ${escapeHTML(
+                      data.personal.permanentAddress
+                    )}
+                  </p>
+
+                </div>
+
+                `
+
+              : ""
+          }
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   PRINT CV
+========================================================= */
+
+document.getElementById(
+  "printApplicantCV"
+).addEventListener(
+  "click",
+  function(){
+
+    window.print();
+
+  }
+);
+
+
+/* =========================================================
+   CLOSE CV
+========================================================= */
+
+document.getElementById(
+  "closeCVModal"
+).addEventListener(
+  "click",
+  closeCVModal
+);
+
+
+document.getElementById(
+  "closeCVModalBottom"
+).addEventListener(
+  "click",
+  closeCVModal
+);
+
+
+function closeCVModal(){
+
+  cvModal.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL ON BACKDROP
+========================================================= */
+
+applicantModal.addEventListener(
+  "click",
+  function(e){
+
+    if(
+      e.target ===
+      applicantModal
+    ){
+
+      closeApplicantModal();
+
+    }
+
+  }
+);
+
+
+cvModal.addEventListener(
+  "click",
+  function(e){
+
+    if(
+      e.target ===
+      cvModal
+    ){
+
+      closeCVModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(
+      e.key ===
+      "Escape"
+    ){
+
+      closeApplicantModal();
+
+      closeCVModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+if(
+  sessionStorage.getItem(
+    SESSION_KEY
+  ) === "true"
+){
+
+  renderDashboard();
+
+}
+
+</script>
+
+
+</body>
+
+</html>
