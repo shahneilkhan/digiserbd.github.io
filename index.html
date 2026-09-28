@@ -1,604 +1,1718 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DigiSER BD | Job • Service • Growth</title>
+  <meta charset="UTF-8">
 
-<meta
-  name="description"
-  content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh."
->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<meta name="theme-color" content="#0087c4">
+  <title>DigiSER BD | Job • Service • Growth</title>
 
-<link rel="canonical" href="https://digiserbd.com/">
+  <meta
+    name="description"
+    content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services across Bangladesh."
+  >
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="DigiSER BD | Job • Service • Growth">
-<meta
-  property="og:description"
-  content="DigiSER BD connects job seekers, skilled employees, local businesses and digital services in Bangladesh."
->
-<meta property="og:url" content="https://digiserbd.com/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
+  <meta
+    name="theme-color"
+    content="#0087c4"
+  >
 
-<meta name="twitter:card" content="summary">
+  <link
+    rel="canonical"
+    href="https://digiserbd.com/"
+  >
 
-<link rel="icon" href="favicon.png" type="image/png">
+  <!-- =====================================================
+       OPEN GRAPH
+  ====================================================== -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta
+    property="og:type"
+    content="website"
+  >
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-  rel="stylesheet"
->
+  <meta
+    property="og:site_name"
+    content="DigiSER BD"
+  >
 
-<link rel="stylesheet" href="assets/style.css">
+  <meta
+    property="og:title"
+    content="DigiSER BD | Job • Service • Growth"
+  >
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "DigiSER BD",
-  "url": "https://digiserbd.com/",
-  "logo": "https://digiserbd.com/logo.png",
-  "description": "Jobs, skilled employees, local businesses and digital services in Bangladesh.",
-  "founder": {
-    "@type": "Person",
-    "name": "Helal"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+8801719333614",
-    "contactType": "customer service",
-    "areaServed": "BD",
-    "availableLanguage": [
-      "English",
-      "Bengali"
-    ]
+  <meta
+    property="og:description"
+    content="Jobs, skilled employees, local businesses and digital services in Bangladesh."
+  >
+
+  <meta
+    property="og:url"
+    content="https://digiserbd.com/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+
+  <!-- =====================================================
+       TWITTER
+  ====================================================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="DigiSER BD | Job • Service • Growth"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Jobs, skilled employees, local businesses and digital services in Bangladesh."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
+  <link
+    rel="icon"
+    href="favicon.png"
+    type="image/png"
+  >
+
+
+  <!-- =====================================================
+       GOOGLE FONTS
+  ====================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       GLOBAL CSS
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="assets/style.css"
+  >
+
+
+  <!-- =====================================================
+       PREMIUM PAGE-ONLY CSS
+  ====================================================== -->
+
+  <style>
+
+    /* =====================================================
+       HERO
+    ====================================================== */
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:96px 0 78px;
+      background:
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(0,135,196,.12),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 5% 90%,
+          rgba(0,135,196,.08),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f7fbfd 100%
+        );
+    }
+
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:460px;
+      height:460px;
+      right:-180px;
+      top:-220px;
+      border:1px solid rgba(0,135,196,.12);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      left:-150px;
+      bottom:-170px;
+      border:1px solid rgba(0,135,196,.1);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+
+    .hero .wrap{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:
+        minmax(0,1.35fr)
+        minmax(320px,.65fr);
+      gap:60px;
+      align-items:center;
+    }
+
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 16px;
+      color:#0087c4;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+
+    .eyebrow::before{
+      content:"";
+      width:26px;
+      height:2px;
+      border-radius:999px;
+      background:#0087c4;
+    }
+
+
+    .hero h1{
+      max-width:820px;
+      margin:0;
+      font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+      font-size:clamp(42px,6vw,76px);
+      line-height:1.04;
+      letter-spacing:-.055em;
+      color:#10202b;
+    }
+
+
+    .hero h1 em{
+      display:block;
+      margin-top:10px;
+      color:#0087c4;
+      font-style:normal;
+    }
+
+
+    .hero .lead{
+      max-width:700px;
+      margin:25px 0 0;
+      color:#687580;
+      font-size:18px;
+      line-height:1.8;
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ====================================================== */
+
+    .search{
+      max-width:720px;
+      margin-top:34px;
+      padding:8px;
+      background:#ffffff;
+      border:1px solid #dce7ec;
+      border-radius:20px;
+      box-shadow:
+        0 20px 60px rgba(16,32,43,.09);
+    }
+
+
+    .tabs{
+      display:flex;
+      gap:4px;
+      padding:4px;
+      margin-bottom:6px;
+    }
+
+
+    .tabs button{
+      border:0;
+      background:transparent;
+      color:#687580;
+      padding:9px 15px;
+      border-radius:10px;
+      font-family:inherit;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+
+    .tabs button:hover{
+      background:#f1f7fa;
+      color:#0087c4;
+    }
+
+
+    .tabs button.on{
+      background:#eef8fc;
+      color:#0087c4;
+    }
+
+
+    #searchForm{
+      display:flex;
+      gap:8px;
+    }
+
+
+    #searchForm input{
+      min-width:0;
+      flex:1;
+      height:52px;
+      border:1px solid #e1e7eb;
+      border-radius:13px;
+      padding:0 17px;
+      outline:none;
+      font:inherit;
+      color:#10202b;
+      background:#fbfdfe;
+    }
+
+
+    #searchForm input:focus{
+      border-color:#0087c4;
+      box-shadow:
+        0 0 0 4px rgba(0,135,196,.08);
+    }
+
+
+    #searchForm .btn{
+      min-height:52px;
+      padding-left:25px;
+      padding-right:25px;
+    }
+
+
+    /* =====================================================
+       TRUST
+    ====================================================== */
+
+    .trust{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:19px;
+    }
+
+
+    .trust span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border:1px solid #e1e9ed;
+      border-radius:999px;
+      background:rgba(255,255,255,.75);
+      color:#5f6d76;
+      font-size:13px;
+      font-weight:600;
+    }
+
+
+    /* =====================================================
+       LIVE JOBS
+    ====================================================== */
+
+    .live{
+      position:relative;
+      padding:26px;
+      border:1px solid #dce7ec;
+      border-radius:24px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.98),
+          rgba(245,250,252,.96)
+        );
+      box-shadow:
+        0 25px 70px rgba(16,32,43,.09);
+    }
+
+
+    .live::before{
+      content:"";
+      position:absolute;
+      top:20px;
+      right:20px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#159447;
+      box-shadow:
+        0 0 0 5px rgba(21,148,71,.1);
+    }
+
+
+    .live h3{
+      margin:0 0 18px;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:20px;
+      color:#10202b;
+    }
+
+
+    .live-job{
+      display:block;
+      padding:14px 0;
+      border-top:1px solid #e8eef1;
+      color:inherit;
+      text-decoration:none;
+      transition:.2s ease;
+    }
+
+
+    .live-job:hover{
+      padding-left:5px;
+    }
+
+
+    .live-job strong{
+      display:block;
+      color:#17202a;
+      font-size:14px;
+    }
+
+
+    .live-job span{
+      display:block;
+      margin-top:4px;
+      color:#7b8790;
+      font-size:12px;
+    }
+
+
+    .live-empty{
+      padding:18px 0;
+      color:#8b98a1;
+      font-size:13px;
+    }
+
+
+    /* =====================================================
+       TRACKING BOX
+    ====================================================== */
+
+    .application-track-box{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(
+          circle at 100% 0,
+          rgba(0,135,196,.12),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #eef8fc,
+          #ffffff
+        ) !important;
+      border:1px solid #d8eaf2 !important;
+      border-radius:24px !important;
+      padding:34px !important;
+      box-shadow:
+        0 20px 60px rgba(16,32,43,.06);
+    }
+
+
+    .application-track-box::after{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      right:-90px;
+      bottom:-110px;
+      border:1px solid rgba(0,135,196,.12);
+      border-radius:50%;
+    }
+
+
+    .application-track-box h2{
+      font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+      letter-spacing:-.025em;
+    }
+
+
+    .track-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+
+    .track-label::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#159447;
+      box-shadow:
+        0 0 0 5px rgba(21,148,71,.1);
+    }
+
+
+    /* =====================================================
+       SECTION HEADINGS
+    ====================================================== */
+
+    .sec{
+      position:relative;
+    }
+
+
+    .sec-h h2{
+      font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+      letter-spacing:-.035em;
+    }
+
+
+    .sec-h p{
+      max-width:620px;
+    }
+
+
+    /* =====================================================
+       EMPTY STATE
+    ====================================================== */
+
+    .empty-state{
+      padding:34px;
+      border:1px dashed #dbe5ea;
+      border-radius:18px;
+      background:#fbfdfe;
+      text-align:center;
+    }
+
+
+    .empty-state h3{
+      margin:0 0 8px;
+    }
+
+
+    .empty-state p{
+      color:#7b8790;
+    }
+
+
+    /* =====================================================
+       EMPLOYEE CARDS
+    ====================================================== */
+
+    #homeEmployees{
+      display:grid;
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+
+    #homeEmployees .card{
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+
+    #homeEmployees .card:hover{
+      transform:translateY(-5px);
+      border-color:#cfe3eb;
+      box-shadow:
+        0 20px 45px rgba(16,32,43,.08);
+    }
+
+
+    /* =====================================================
+       BUSINESS SECTION
+    ====================================================== */
+
+    .split > div:first-child h2{
+      font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+      letter-spacing:-.035em;
+    }
+
+
+    .perks{
+      gap:12px;
+    }
+
+
+    .perk{
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+
+    .perk:hover{
+      transform:translateX(4px);
+      border-color:#d2e5ed;
+      background:#ffffff;
+    }
+
+
+    /* =====================================================
+       HOW IT WORKS
+    ====================================================== */
+
+    .steps{
+      counter-reset:step;
+    }
+
+
+    .step{
+      position:relative;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .step:hover{
+      transform:translateY(-4px);
+      box-shadow:
+        0 18px 45px rgba(16,32,43,.07);
+    }
+
+
+    .step-number{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:42px;
+      height:42px;
+      margin-bottom:15px;
+      border-radius:12px;
+      background:#eef8fc;
+      color:#0087c4;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:13px;
+      font-weight:700;
+    }
+
+
+    /* =====================================================
+       CTA
+    ====================================================== */
+
+    .cta{
+      position:relative;
+      overflow:hidden;
+      padding:90px 0;
+      background:
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(255,255,255,.16),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #006f9f,
+          #0087c4
+        );
+    }
+
+
+    .cta::before{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      right:-180px;
+      top:-220px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:50%;
+    }
+
+
+    .cta::after{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      left:-150px;
+      bottom:-160px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;
+    }
+
+
+    .cta .wrap{
+      position:relative;
+      z-index:1;
+    }
+
+
+    .cta .eyebrow{
+      color:#ffffff;
+      opacity:.85;
+    }
+
+
+    .cta .eyebrow::before{
+      background:#ffffff;
+    }
+
+
+    .cta h2{
+      max-width:650px;
+      margin:0;
+      color:#ffffff;
+      font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+      font-size:clamp(38px,5vw,62px);
+      line-height:1.05;
+      letter-spacing:-.045em;
+    }
+
+
+    .cta p{
+      max-width:620px;
+      margin:17px 0 26px;
+      color:rgba(255,255,255,.82);
+      font-size:17px;
+      line-height:1.7;
+    }
+
+
+    .cta .btn{
+      margin-right:7px;
+    }
+
+
+    .cta .btn:not(.wa){
+      background:#ffffff;
+      color:#006f9f;
+      border-color:#ffffff;
+    }
+
+
+    /* =====================================================
+       HEADER PREMIUM TOUCH
+    ====================================================== */
+
+    .site-header{
+      position:relative;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(225,231,235,.8);
+    }
+
+
+    .brand{
+      text-decoration:none;
+    }
+
+
+    .brand-mark{
+      box-shadow:
+        0 8px 20px rgba(0,135,196,.2);
+    }
+
+
+    .main-nav a{
+      transition:
+        color .2s ease,
+        background .2s ease;
+    }
+
+
+    .main-nav a:hover{
+      background:#f1f7fa;
+    }
+
+
+    .main-nav a.active{
+      color:#0087c4;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    .site-footer{
+      background:#0e1b23;
+      color:#ffffff;
+    }
+
+
+    .site-footer a{
+      transition:
+        color .2s ease;
+    }
+
+
+    .site-footer a:hover{
+      color:#5bc5f1;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media(max-width:900px){
+
+      .hero{
+        padding:72px 0 60px;
+      }
+
+
+      .hero .wrap{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+
+
+      .hero h1{
+        font-size:
+          clamp(40px,8vw,62px);
+      }
+
+
+      #homeEmployees{
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
+    }
+
+
+    @media(max-width:640px){
+
+      .hero{
+        padding:55px 0 45px;
+      }
+
+
+      .hero h1{
+        font-size:
+          clamp(36px,11vw,52px);
+        letter-spacing:-.045em;
+      }
+
+
+      .hero .lead{
+        font-size:16px;
+      }
+
+
+      .search{
+        border-radius:17px;
+      }
+
+
+      .tabs{
+        overflow-x:auto;
+      }
+
+
+      .tabs button{
+        white-space:nowrap;
+      }
+
+
+      #searchForm{
+        flex-direction:column;
+      }
+
+
+      #searchForm .btn{
+        width:100%;
+      }
+
+
+      .application-track-box{
+        padding:25px !important;
+      }
+
+
+      #homeEmployees{
+        grid-template-columns:1fr;
+      }
+
+
+      .cta{
+        padding:65px 0;
+      }
+
+
+      .cta .btn{
+        display:flex;
+        width:100%;
+        margin:8px 0 0;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- =====================================================
+       ORGANIZATION SCHEMA
+  ====================================================== -->
+
+  <script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DigiSER BD",
+    "url": "https://digiserbd.com/",
+    "logo": "https://digiserbd.com/logo.png",
+    "description": "Jobs, skilled employees, local businesses and digital services in Bangladesh.",
+    "founder": {
+      "@type": "Person",
+      "name": "Helal"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+8801719333614",
+      "contactType": "customer service",
+      "areaServed": "BD",
+      "availableLanguage": [
+        "English",
+        "Bengali"
+      ]
+    }
   }
-}
-</script>
+
+  </script>
 
 </head>
 
-<body data-page="home" data-root="">
 
-<div id="hdr-slot"></div>
+<body
+  data-page="home"
+  data-root=""
+>
 
-<main>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
-<section class="hero">
-  <div class="wrap">
+  <div id="hdr-slot"></div>
 
-    <div>
 
-      <h1>
-        চাকরি খুঁজুন। মানুষ নিয়োগ দিন।
-        <em>ব্যবসা বড় করুন।</em>
-      </h1>
+  <main>
 
-      <p class="lead">
-        DigiSER BD connects job seekers, skilled employees, local businesses
-        and digital services across Bangladesh, in one simple place.
-      </p>
 
-      <div class="search">
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
-        <div class="tabs" role="group" aria-label="Search in">
+    <section class="hero">
 
-          <button
-            type="button"
-            class="on"
-            data-t="jobs"
-            aria-pressed="true"
-          >
-            Jobs
-          </button>
+      <div class="wrap">
 
-          <button
-            type="button"
-            data-t="employees"
-            aria-pressed="false"
-          >
-            Employees
-          </button>
 
-          <button
-            type="button"
-            data-t="services"
-            aria-pressed="false"
-          >
-            Services
-          </button>
+        <div>
+
+          <p class="eyebrow">
+            Job • Service • Growth
+          </p>
+
+
+          <h1>
+
+            চাকরি খুঁজুন।
+            মানুষ নিয়োগ দিন।
+
+            <em>
+              ব্যবসা বড় করুন।
+            </em>
+
+          </h1>
+
+
+          <p class="lead">
+
+            DigiSER BD connects job seekers,
+            skilled employees, local businesses
+            and digital services across Bangladesh,
+            in one simple place.
+
+          </p>
+
+
+          <!-- SEARCH -->
+
+          <div class="search">
+
+            <div
+              class="tabs"
+              role="group"
+              aria-label="Search in"
+            >
+
+              <button
+                type="button"
+                class="on"
+                data-t="jobs"
+                aria-pressed="true"
+              >
+                Jobs
+              </button>
+
+
+              <button
+                type="button"
+                data-t="employees"
+                aria-pressed="false"
+              >
+                Employees
+              </button>
+
+
+              <button
+                type="button"
+                data-t="services"
+                aria-pressed="false"
+              >
+                Services
+              </button>
+
+            </div>
+
+
+            <form
+              id="searchForm"
+            >
+
+              <input
+                id="q"
+                type="search"
+                placeholder="Search jobs..."
+                aria-label="Search"
+                autocomplete="off"
+              >
+
+
+              <button
+                class="btn pri"
+                type="submit"
+              >
+                Search
+              </button>
+
+            </form>
+
+          </div>
+
+
+          <!-- TRUST -->
+
+          <div class="trust">
+
+            <span>
+              ✓ Verified profiles
+            </span>
+
+            <span>
+              ✓ Local businesses
+            </span>
+
+            <span>
+              ✓ Quick hiring
+            </span>
+
+          </div>
 
         </div>
 
-        <form id="searchForm">
 
-          <input
-            id="q"
-            type="search"
-            placeholder="Search jobs..."
-            aria-label="Search"
+        <!-- OPEN JOBS -->
+
+        <aside
+          class="live"
+          aria-label="Open jobs"
+        >
+
+          <h3>
+            Open jobs now
+          </h3>
+
+
+          <div id="live">
+
+            <div class="live-empty">
+              Loading jobs...
+            </div>
+
+          </div>
+
+
+          <p style="margin-top:8px">
+
+            <a
+              class="more"
+              href="jobs/"
+            >
+              See all jobs
+            </a>
+
+          </p>
+
+        </aside>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         APPLICATION TRACKING
+    ==================================================== -->
+
+    <section class="sec">
+
+      <div class="wrap">
+
+        <div
+          class="application-track-box"
+        >
+
+          <div
+            style="
+              flex:1;
+              min-width:260px;
+              position:relative;
+              z-index:2;
+            "
           >
 
-          <button
+            <span
+              class="track-label"
+              style="
+                display:inline-flex;
+                font-size:12px;
+                font-weight:700;
+                color:#0087c4;
+                margin-bottom:10px;
+                letter-spacing:.08em;
+              "
+            >
+              JOB APPLICATION TRACKING
+            </span>
+
+
+            <h2>
+              আপনার Job Application-এর
+              অবস্থান Track করুন
+            </h2>
+
+
+            <p
+              style="
+                margin:0;
+                color:#687580;
+                line-height:1.8;
+                max-width:700px;
+              "
+            >
+
+              Application Submit করার পর পাওয়া
+              <strong>Tracking Number</strong>
+              এবং আপনার
+              <strong>Mobile Number</strong>
+              ব্যবহার করে Application-এর
+              বর্তমান Status দেখুন।
+
+            </p>
+
+          </div>
+
+
+          <div
+            style="
+              position:relative;
+              z-index:2;
+            "
+          >
+
+            <a
+              href="track-application.html"
+              class="btn pri"
+            >
+              Track Application
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SERVICES
+    ==================================================== -->
+
+    <section class="sec">
+
+      <div class="wrap">
+
+        <div class="sec-h">
+
+          <div>
+
+            <p class="eyebrow">
+              What we provide
+            </p>
+
+            <h2>
+              Services for your business
+            </h2>
+
+            <p>
+              Digital work and local support,
+              so you can save time and focus
+              on customers.
+            </p>
+
+          </div>
+
+
+          <a
+            class="more"
+            href="services/"
+          >
+            All services
+          </a>
+
+        </div>
+
+
+        <div id="homeServices">
+
+          <div class="empty-state">
+
+            <p>
+              Loading services...
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LATEST JOBS
+    ==================================================== -->
+
+    <section class="sec alt">
+
+      <div class="wrap">
+
+        <div class="sec-h">
+
+          <div>
+
+            <p class="eyebrow">
+              Opportunities
+            </p>
+
+            <h2>
+              Latest jobs
+            </h2>
+
+            <p>
+              Openings from local businesses.
+              Apply in a minute.
+            </p>
+
+          </div>
+
+
+          <a
+            class="more"
+            href="jobs/"
+          >
+            Browse all jobs
+          </a>
+
+        </div>
+
+
+        <div id="homeJobs">
+
+          <div class="empty-state">
+
+            <p>
+              Loading jobs...
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         EMPLOYEES
+    ==================================================== -->
+
+    <section class="sec">
+
+      <div class="wrap">
+
+        <div class="sec-h">
+
+          <div>
+
+            <p class="eyebrow">
+              Talent
+            </p>
+
+            <h2>
+              Skilled people,
+              ready to work
+            </h2>
+
+            <p>
+              Find the right professional
+              for your project or business.
+            </p>
+
+          </div>
+
+
+          <a
+            class="more"
+            href="employees/"
+          >
+            View all employees
+          </a>
+
+        </div>
+
+
+        <div id="homeEmployees">
+
+          <article class="card">
+
+            <div class="card-icon">
+              👤
+            </div>
+
+            <h3>
+              Skilled professionals
+            </h3>
+
+            <p>
+              Find people with the skills
+              your business needs.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              ⚡
+            </div>
+
+            <h3>
+              Quick connection
+            </h3>
+
+            <p>
+              Connect with professionals
+              for your next opportunity.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              ✓
+            </div>
+
+            <h3>
+              Profile information
+            </h3>
+
+            <p>
+              Review professional information
+              before connecting.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LOCAL BUSINESSES
+    ==================================================== -->
+
+    <section class="sec alt">
+
+      <div class="wrap split">
+
+        <div>
+
+          <p class="eyebrow">
+            For Businesses
+          </p>
+
+
+          <h2>
+            Local businesses,
+            local growth
+          </h2>
+
+
+          <p>
+            List your business, hire staff
+            or get professional digital services,
+            all from one platform.
+          </p>
+
+
+          <a
             class="btn pri"
-            type="submit"
+            href="businesses/"
           >
-            Search
-          </button>
+            List your business
+          </a>
 
-        </form>
+        </div>
+
+
+        <div class="perks">
+
+          <div class="perk">
+
+            <b>
+              Find employees
+            </b>
+
+            <span>
+              Skilled and trusted people
+              for your team.
+            </span>
+
+          </div>
+
+
+          <div class="perk">
+
+            <b>
+              Get customers
+            </b>
+
+            <span>
+              Build your online presence.
+            </span>
+
+          </div>
+
+
+          <div class="perk">
+
+            <b>
+              Digital services
+            </b>
+
+            <span>
+              Graphic, web and social media work.
+            </span>
+
+          </div>
+
+
+          <div class="perk">
+
+            <b>
+              Grow faster
+            </b>
+
+            <span>
+              Use digital tools and
+              the right people.
+            </span>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="trust">
-        <span>Verified profiles</span>
-        <span>Local businesses</span>
-        <span>Quick hiring</span>
+    </section>
+
+
+
+    <!-- ===================================================
+         HOW IT WORKS
+    ==================================================== -->
+
+    <section class="sec">
+
+      <div class="wrap">
+
+        <div class="sec-h">
+
+          <div>
+
+            <p class="eyebrow">
+              Simple process
+            </p>
+
+
+            <h2>
+              How it works
+            </h2>
+
+
+            <p>
+              Job, hire or service,
+              getting started takes four steps.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="steps">
+
+
+          <div class="step">
+
+            <span class="step-number">
+              01
+            </span>
+
+            <h3>
+              Create an account
+            </h3>
+
+            <p>
+              Register as a job seeker,
+              employee, business or service provider.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <span class="step-number">
+              02
+            </span>
+
+            <h3>
+              Search and choose
+            </h3>
+
+            <p>
+              Find the right job, employee,
+              business or service.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <span class="step-number">
+              03
+            </span>
+
+            <h3>
+              Apply or contact
+            </h3>
+
+            <p>
+              Apply for a job or contact
+              the professional directly.
+            </p>
+
+          </div>
+
+
+          <div class="step">
+
+            <span class="step-number">
+              04
+            </span>
+
+            <h3>
+              Get started
+            </h3>
+
+            <p>
+              Connect, work together
+              and grow.
+            </p>
+
+          </div>
+
+
+        </div>
+
       </div>
 
-    </div>
+    </section>
 
 
-    <!-- OPEN JOBS -->
 
-    <aside
-      class="live"
-      aria-label="Open jobs"
-    >
+    <!-- ===================================================
+         FINAL CTA
+    ==================================================== -->
 
-      <h3>Open jobs now</h3>
+    <section class="cta">
 
-      <div id="live"></div>
+      <div class="wrap">
 
-      <p style="margin-top:8px">
-        <a
-          class="more"
-          href="jobs/"
-        >
-          See all jobs
-        </a>
-      </p>
-
-    </aside>
-
-  </div>
-</section>
-
-
-<!-- =========================================================
-     JOB APPLICATION TRACKING
-========================================================= -->
-
-<section class="sec">
-
-  <div class="wrap">
-
-    <div
-      class="application-track-box"
-      style="
-        background:linear-gradient(135deg,#eef8fc,#ffffff);
-        border:1px solid #d8eaf2;
-        border-radius:18px;
-        padding:28px;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:24px;
-        flex-wrap:wrap;
-      "
-    >
-
-      <div style="flex:1;min-width:260px;">
-
-        <span
-          style="
-            display:inline-block;
-            font-size:13px;
-            font-weight:700;
-            color:#0087c4;
-            margin-bottom:8px;
-          "
-        >
-          JOB APPLICATION TRACKING
-        </span>
-
-        <h2
-          style="
-            margin:0 0 8px;
-          "
-        >
-          আপনার Job Application-এর অবস্থান Track করুন
-        </h2>
-
-        <p
-          style="
-            margin:0;
-            color:#687580;
-            line-height:1.7;
-          "
-        >
-          Application Submit করার পর পাওয়া
-          <strong>Tracking Number</strong>
-          এবং আপনার
-          <strong>Mobile Number</strong>
-          ব্যবহার করে Application-এর বর্তমান Status দেখুন।
+        <p class="eyebrow">
+          DigiSER BD
         </p>
 
-      </div>
-
-
-      <div>
-
-        <a
-          href="track-application.html"
-          class="btn pri"
-          style="
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            white-space:nowrap;
-          "
-        >
-          Track Application
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     SERVICES
-========================================================= -->
-
-<section class="sec">
-
-  <div class="wrap">
-
-    <div class="sec-h">
-
-      <div>
 
         <h2>
-          Services for your business
+          Ready to start?
         </h2>
 
-        <p>
-          Digital work and local support, so you can save time and focus on customers.
-        </p>
-
-      </div>
-
-      <a
-        class="more"
-        href="services/"
-      >
-        All services
-      </a>
-
-    </div>
-
-    <div id="homeServices"></div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     LATEST JOBS
-========================================================= -->
-
-<section class="sec alt">
-
-  <div class="wrap">
-
-    <div class="sec-h">
-
-      <div>
-
-        <h2>
-          Latest jobs
-        </h2>
 
         <p>
-          Openings from local businesses. Apply in a minute.
+          Find a job, hire people or get
+          digital services with DigiSER BD.
         </p>
 
-      </div>
 
-      <a
-        class="more"
-        href="jobs/"
-      >
-        Browse all jobs
-      </a>
+        <div class="actions">
 
-    </div>
-
-    <div id="homeJobs"></div>
-
-  </div>
-
-</section>
+          <a
+            class="btn wa"
+            data-wa
+            data-wa-message="Hello DigiSER BD, I would like to know more."
+            href="#"
+          >
+            Chat on WhatsApp
+          </a>
 
 
-<!-- =========================================================
-     EMPLOYEES
-========================================================= -->
+          <a
+            class="btn"
+            href="contact/"
+          >
+            Contact us
+          </a>
 
-<section class="sec">
-
-  <div class="wrap">
-
-    <div class="sec-h">
-
-      <div>
-
-        <h2>
-          Skilled people, ready to work
-        </h2>
-
-        <p>
-          Find the right professional for your project or business.
-        </p>
+        </div>
 
       </div>
 
-      <a
-        class="more"
-        href="employees/"
-      >
-        View all employees
-      </a>
+    </section>
 
-    </div>
 
-    <div id="homeEmployees"></div>
+  </main>
 
-  </div>
 
-</section>
 
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-<!-- =========================================================
-     LOCAL BUSINESSES
-========================================================= -->
+  <div id="ftr-slot"></div>
 
-<section class="sec alt">
 
-  <div class="wrap split">
 
-    <div>
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
-      <h2>
-        Local businesses, local growth
-      </h2>
+  <script
+    src="assets/data.js"
+  ></script>
 
-      <p>
-        List your business, hire staff or get professional digital services,
-        all from one platform.
-      </p>
+  <script
+    src="assets/i18n.js"
+  ></script>
 
-      <a
-        class="btn pri"
-        href="businesses/"
-      >
-        List your business
-      </a>
+  <script
+    src="assets/app.js"
+  ></script>
 
-    </div>
-
-
-    <div class="perks">
-
-      <div class="perk">
-
-        <b>
-          Find employees
-        </b>
-
-        <span>
-          Skilled and trusted people for your team.
-        </span>
-
-      </div>
-
-
-      <div class="perk">
-
-        <b>
-          Get customers
-        </b>
-
-        <span>
-          Build your online presence.
-        </span>
-
-      </div>
-
-
-      <div class="perk">
-
-        <b>
-          Digital services
-        </b>
-
-        <span>
-          Graphic, web and social media work.
-        </span>
-
-      </div>
-
-
-      <div class="perk">
-
-        <b>
-          Grow faster
-        </b>
-
-        <span>
-          Use digital tools and the right people.
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     HOW IT WORKS
-========================================================= -->
-
-<section class="sec">
-
-  <div class="wrap">
-
-    <div class="sec-h">
-
-      <div>
-
-        <h2>
-          How it works
-        </h2>
-
-        <p>
-          Job, hire or service, getting started takes four steps.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="steps">
-
-      <div class="step">
-
-        <h3>
-          Create an account
-        </h3>
-
-        <p>
-          Register as a job seeker, employee, business or service provider.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <h3>
-          Search and choose
-        </h3>
-
-        <p>
-          Find the right job, employee, business or service.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <h3>
-          Apply or contact
-        </h3>
-
-        <p>
-          Apply for a job or contact the professional directly.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <h3>
-          Get started
-        </h3>
-
-        <p>
-          Connect, work together and grow.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CTA
-========================================================= -->
-
-<section class="cta">
-
-  <div class="wrap">
-
-    <h2>
-      Ready to start?
-    </h2>
-
-    <p>
-      Find a job, hire people or get digital services with DigiSER BD.
-    </p>
-
-    <a
-      class="btn wa"
-      data-wa
-      href="#"
-    >
-      Chat on WhatsApp
-    </a>
-
-    <a
-      class="btn"
-      href="contact/"
-    >
-      Contact us
-    </a>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<div id="ftr-slot"></div>
-
-
-<!-- =========================================================
-     SCRIPTS
-========================================================= -->
-
-<script src="assets/data.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/app.js"></script>
 
 </body>
+
 </html>
