@@ -15,7 +15,26 @@ window.SITE = {
     {name: 'Helal', role: 'Founder', phone: '+880 1719-333614', wa: '8801719333614'},
     {name: 'SNK', role: 'Co-founder', phone: '+880 1705-633700', wa: '8801705633700'}
   ],
-  address: 'Dhaka, Bangladesh'
+  address: 'Dhaka, Bangladesh',
+
+  // Google Sheet e applicant data pathanor URL (Apps Script "Web app" URL, .../exec diye shesh hoy).
+  // Khali thakle sheet-e kichu jabe na.
+  sheetsUrl: '',
+
+  // Register-er somoy payment. Niche 3ta jinis bosale-i register form-e payment section dekhabe:
+  //   1) fee  > 0    2) kom-pokkhe ekta method-er number    3) enabled: true
+  // Kono ekta khali thakle payment section lukiye thakbe (form age-r moto-i cholbe).
+  payment: {
+    enabled: true,
+    fee: 0,                       // registration fee taka-y, jemon 200
+    currency: '৳',
+    methods: [
+      {id: 'bkash',  name: 'bKash',  number: '', type: 'Personal'},   // type: Personal / Merchant / Agent
+      {id: 'nagad',  name: 'Nagad',  number: '', type: 'Personal'},
+      {id: 'rocket', name: 'Rocket', number: '', type: 'Personal'}
+    ],
+    note: ''                      // ichha hole extra kono nirdesh (Bangla-te likhun)
+  }
 };
 
 (function () {
