@@ -1,58 +1,1520 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | DigiSER BD</title>
-<meta name="description" content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh.">
-<meta name="theme-color" content="#0087c4">
-<link rel="canonical" href="https://digiserbd.com/about/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="About Us | DigiSER BD">
-<meta property="og:description" content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh.">
-<meta property="og:url" content="https://digiserbd.com/about/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="../favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>About Us | DigiSER BD</title>
+
+  <meta
+    name="description"
+    content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0087c4"
+  >
+
+  <link
+    rel="canonical"
+    href="https://digiserbd.com/about/"
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:site_name"
+    content="DigiSER BD"
+  >
+
+  <meta
+    property="og:title"
+    content="About Us | DigiSER BD"
+  >
+
+  <meta
+    property="og:description"
+    content="About DigiSER BD, a platform for jobs, skilled employees, local businesses and digital services in Bangladesh."
+  >
+
+  <meta
+    property="og:url"
+    content="https://digiserbd.com/about/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <link
+    rel="icon"
+    href="../favicon.png"
+    type="image/png"
+  >
+
+  <!-- Fonts -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Global CSS -->
+
+  <link
+    rel="stylesheet"
+    href="../assets/style.css"
+  >
+
+
+  <style>
+
+    /* =========================================================
+       ABOUT PAGE
+    ========================================================= */
+
+    .about-page {
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        72px
+        20px
+        90px;
+
+      background:
+        radial-gradient(
+          circle at 8% 10%,
+          rgba(0, 135, 196, .07),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 94% 22%,
+          rgba(0, 164, 199, .06),
+          transparent 25%
+        ),
+        #ffffff;
+    }
+
+
+    .about-page::before {
+      content: "";
+
+      position: absolute;
+
+      width: 390px;
+      height: 390px;
+
+      top: -210px;
+      right: -130px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(0, 135, 196, .045);
+
+      pointer-events: none;
+    }
+
+
+    .about-page::after {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      left: -140px;
+      bottom: -170px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(0, 135, 196, .04);
+
+      pointer-events: none;
+    }
+
+
+    .about-container {
+      position: relative;
+
+      z-index: 1;
+
+      width: min(1120px, 100%);
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .about-hero {
+      max-width: 820px;
+
+      margin:
+        0 auto
+        55px;
+
+      text-align: center;
+    }
+
+
+    .about-eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding:
+        8px
+        13px;
+
+      border:
+        1px solid
+        rgba(0, 135, 196, .16);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255, 255, 255, .86);
+
+      color:
+        var(--primary, #0087c4);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        0 8px 24px rgba(16, 32, 43, .04);
+    }
+
+
+    .about-eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--primary, #0087c4);
+    }
+
+
+    .about-title {
+      margin:
+        18px
+        0
+        17px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size:
+        clamp(42px, 6vw, 70px);
+
+      line-height: .98;
+
+      letter-spacing: -.045em;
+
+      font-weight: 700;
+    }
+
+
+    .about-title span {
+      color:
+        var(--primary, #0087c4);
+    }
+
+
+    .about-intro {
+      max-width: 720px;
+
+      margin: 0 auto;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 17px;
+
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       MISSION CARD
+    ========================================================= */
+
+    .about-mission {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(260px, .65fr);
+
+      gap: 24px;
+
+      margin-bottom: 24px;
+    }
+
+
+    .mission-main {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 36px;
+
+      border:
+        1px solid
+        var(--border, #e1e7eb);
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f3fafd 0%,
+          #ffffff 58%,
+          #f7fbfd 100%
+        );
+
+      box-shadow:
+        0 18px 50px
+        rgba(16, 32, 43, .06);
+    }
+
+
+    .mission-main::after {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      right: -130px;
+      bottom: -130px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(0, 135, 196, .055);
+    }
+
+
+    .mission-label {
+      position: relative;
+
+      z-index: 1;
+
+      display: block;
+
+      margin-bottom: 12px;
+
+      color:
+        var(--primary, #0087c4);
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+    }
+
+
+    .mission-main h2 {
+      position: relative;
+
+      z-index: 1;
+
+      max-width: 700px;
+
+      margin:
+        0
+        0
+        15px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size:
+        clamp(28px, 4vw, 43px);
+
+      line-height: 1.1;
+
+      letter-spacing: -.035em;
+    }
+
+
+    .mission-main p {
+      position: relative;
+
+      z-index: 1;
+
+      max-width: 700px;
+
+      margin: 0;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    .mission-side {
+      padding: 30px;
+
+      border:
+        1px solid
+        var(--border, #e1e7eb);
+
+      border-radius: 24px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 18px 50px
+        rgba(16, 32, 43, .06);
+    }
+
+
+    .mission-side-label {
+      display: block;
+
+      margin-bottom: 20px;
+
+      color:
+        var(--muted-light, #8b98a1);
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+    }
+
+
+    .mission-stat {
+      padding:
+        16px
+        0;
+
+      border-bottom:
+        1px solid
+        var(--border-soft, #edf1f3);
+    }
+
+
+    .mission-stat:last-child {
+      border-bottom: 0;
+
+      padding-bottom: 0;
+    }
+
+
+    .mission-stat strong {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size: 20px;
+    }
+
+
+    .mission-stat span {
+      display: block;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .about-section {
+      margin-top: 24px;
+    }
+
+
+    .about-section-heading {
+      margin-bottom: 20px;
+    }
+
+
+    .about-section-heading small {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color:
+        var(--primary, #0087c4);
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: .11em;
+
+      text-transform: uppercase;
+    }
+
+
+    .about-section-heading h2 {
+      margin: 0;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size:
+        clamp(27px, 4vw, 38px);
+
+      line-height: 1.1;
+
+      letter-spacing: -.03em;
+    }
+
+
+    /* =========================================================
+       WHAT WE DO
+    ========================================================= */
+
+    .about-services {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .about-service {
+      padding: 23px 20px;
+
+      border:
+        1px solid
+        var(--border, #e1e7eb);
+
+      border-radius: 19px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 12px 35px
+        rgba(16, 32, 43, .045);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+    }
+
+
+    .about-service:hover {
+      transform:
+        translateY(-3px);
+
+      border-color:
+        rgba(0, 135, 196, .20);
+
+      box-shadow:
+        0 18px 40px
+        rgba(16, 32, 43, .07);
+    }
+
+
+    .about-service-number {
+      display: inline-grid;
+
+      place-items: center;
+
+      width: 34px;
+      height: 34px;
+
+      margin-bottom: 18px;
+
+      border-radius: 10px;
+
+      background:
+        var(--primary-soft, #eef8fc);
+
+      color:
+        var(--primary, #0087c4);
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+
+    .about-service h3 {
+      margin:
+        0
+        0
+        8px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-size: 16px;
+
+      line-height: 1.3;
+    }
+
+
+    .about-service p {
+      margin: 0;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 12px;
+
+      line-height: 1.65;
+    }
+
+
+    /* =========================================================
+       STORY
+    ========================================================= */
+
+    .about-story {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 24px;
+
+      margin-top: 24px;
+    }
+
+
+    .story-card {
+      padding: 32px;
+
+      border:
+        1px solid
+        var(--border, #e1e7eb);
+
+      border-radius: 22px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 14px 40px
+        rgba(16, 32, 43, .05);
+    }
+
+
+    .story-card h2 {
+      margin:
+        0
+        0
+        14px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size: 26px;
+
+      line-height: 1.15;
+    }
+
+
+    .story-card p {
+      margin:
+        0
+        0
+        14px;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       TEAM
+    ========================================================= */
+
+    .team-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+    }
+
+
+    .team-card {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      padding: 20px;
+
+      border:
+        1px solid
+        var(--border, #e1e7eb);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #f8fbfc
+        );
+
+      box-shadow:
+        0 12px 30px
+        rgba(16, 32, 43, .045);
+    }
+
+
+    .team-avatar {
+      flex: 0 0 auto;
+
+      width: 52px;
+      height: 52px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 15px;
+
+      background:
+        var(--primary-soft, #eef8fc);
+
+      color:
+        var(--primary, #0087c4);
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size: 17px;
+
+      font-weight: 700;
+    }
+
+
+    .team-card h3 {
+      margin:
+        0
+        4px;
+
+      color:
+        var(--text-dark, #17202a);
+
+      font-size: 15px;
+    }
+
+
+    .team-card p {
+      margin: 0;
+
+      color:
+        var(--muted, #687580);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       LANGUAGE CONTENT
+    ========================================================= */
+
+    .lang-bn {
+      display: none;
+    }
+
+
+    body[data-lang="bn"] .lang-en {
+      display: none;
+    }
+
+
+    body[data-lang="bn"] .lang-bn {
+      display: block;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .about-cta {
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 24px;
+
+      margin-top: 30px;
+
+      padding:
+        30px
+        32px;
+
+      border-radius: 22px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #063b55 0%,
+          #007da9 55%,
+          #00a4c7 100%
+        );
+
+      box-shadow:
+        0 18px 42px
+        rgba(0, 86, 120, .18);
+    }
+
+
+    .about-cta::after {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      right: -90px;
+      top: -110px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.08);
+    }
+
+
+    .about-cta-content {
+      position: relative;
+
+      z-index: 1;
+    }
+
+
+    .about-cta small {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: .11em;
+
+      opacity: .72;
+    }
+
+
+    .about-cta h2 {
+      margin: 0;
+
+      font-family:
+        "Space Grotesk",
+        Inter,
+        sans-serif;
+
+      font-size:
+        clamp(25px, 4vw, 36px);
+
+      line-height: 1.1;
+
+      letter-spacing: -.025em;
+    }
+
+
+    .about-cta .btn {
+      position: relative;
+
+      z-index: 2;
+
+      flex: 0 0 auto;
+
+      border: 0;
+
+      background: #ffffff;
+
+      color:
+        #006f9f;
+
+      box-shadow:
+        0 10px 24px
+        rgba(0,0,0,.10);
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .about-mission {
+        grid-template-columns: 1fr;
+      }
+
+
+      .about-services {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .about-page {
+        padding:
+          48px
+          15px
+          65px;
+      }
+
+
+      .about-hero {
+        margin-bottom: 35px;
+      }
+
+
+      .about-title {
+        font-size:
+          clamp(39px, 12vw, 54px);
+      }
+
+
+      .about-intro {
+        font-size: 15px;
+      }
+
+
+      .mission-main,
+      .mission-side,
+      .story-card {
+        padding: 23px 19px;
+
+        border-radius: 19px;
+      }
+
+
+      .mission-main h2 {
+        font-size: 29px;
+      }
+
+
+      .about-services {
+        grid-template-columns: 1fr;
+      }
+
+
+      .about-story {
+        grid-template-columns: 1fr;
+      }
+
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .about-cta {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding:
+          24px
+          20px;
+
+        border-radius: 19px;
+      }
+
+
+      .about-cta .btn {
+        width: 100%;
+
+        justify-content: center;
+      }
+
+    }
+
+  </style>
+
 </head>
-<body data-page="about" data-root="../">
-<div id="hdr-slot"></div>
-<main>
-<section class="ph"><div class="wrap"><h1>About us</h1><p>Job, Service and Growth for Bangladesh.</p></div></section><section class="sec" style="padding-top:8px"><div class="wrap"><div class="prose lang-en">
-<p>DigiSER BD is a platform that connects job seekers, skilled employees, local businesses and digital service providers in Bangladesh.</p>
-<p>We started with a simple idea: good people and good businesses should find each other easily. Many local businesses struggle to find reliable staff, and many skilled people struggle to find honest work. We want to fix both.</p>
-<h2>What we do</h2>
-<ul>
-<li><b>Jobs:</b> we list openings from local businesses.</li>
-<li><b>Employees:</b> we help businesses find skilled people.</li>
-<li><b>Digital services:</b> graphic design, social media management, website maintenance, digital marketing and data entry.</li>
-<li><b>Local support:</b> manpower supply, land supported service, printing, delivery and event support.</li>
-</ul>
-<h2>Our team</h2>
-<ul><li><b>Helal</b>, Founder</li><li><b>SNK</b>, Co-founder</li></ul>
-<p><a class="btn pri" href="../contact/">Contact us</a></p></div>
-<div class="prose lang-bn" hidden>
-<p>DigiSER BD হলো এমন একটি প্ল্যাটফর্ম যা বাংলাদেশের চাকরিপ্রার্থী, দক্ষ কর্মী, স্থানীয় ব্যবসা এবং ডিজিটাল সার্ভিস প্রদানকারীদের এক জায়গায় যুক্ত করে।</p>
-<p>আমাদের ভাবনা সহজ: ভালো মানুষ আর ভালো ব্যবসা যেন সহজে একে অপরকে খুঁজে পায়। অনেক স্থানীয় ব্যবসা বিশ্বস্ত কর্মী খুঁজে পায় না, আবার অনেক দক্ষ মানুষ সৎ কাজ খুঁজে পায় না। আমরা দুটোরই সমাধান করতে চাই।</p>
-<h2>আমরা কী করি</h2>
-<ul>
-<li><b>চাকরি:</b> স্থানীয় ব্যবসার খালি পদ প্রকাশ করি।</li>
-<li><b>কর্মী:</b> ব্যবসাকে দক্ষ মানুষ খুঁজে পেতে সাহায্য করি।</li>
-<li><b>ডিজিটাল সার্ভিস:</b> গ্রাফিক ডিজাইন, সোশ্যাল মিডিয়া ম্যানেজমেন্ট, ওয়েবসাইট মেইনটেনেন্স, ডিজিটাল মার্কেটিং ও ডাটা এন্ট্রি।</li>
-<li><b>স্থানীয় সহায়তা:</b> জনবল সরবরাহ, ভূমি সহায়তা সেবা, প্রিন্টিং, ডেলিভারি ও ইভেন্ট সাপোর্ট।</li>
-</ul>
-<h2>আমাদের টিম</h2>
-<ul><li><b>Helal</b>, প্রতিষ্ঠাতা</li><li><b>SNK</b>, সহ-প্রতিষ্ঠাতা</li></ul>
-<p><a class="btn pri" href="../contact/">যোগাযোগ করুন</a></p></div></div></section>
-</main>
-<div id="ftr-slot"></div>
-<script src="../assets/data.js"></script>
-<script src="../assets/i18n.js"></script>
-<script src="../assets/app.js"></script>
+
+
+<body
+  data-page="about"
+  data-root="../"
+>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <div id="hdr-slot"></div>
+
+
+  <main class="about-page">
+
+    <div class="about-container">
+
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <section class="about-hero">
+
+        <span class="about-eyebrow">
+
+          <span class="about-eyebrow-dot"></span>
+
+          About DigiSER BD
+
+        </span>
+
+
+        <h1 class="about-title">
+
+          Job.
+          Service.
+          <span>Growth.</span>
+
+        </h1>
+
+
+        <p class="about-intro">
+
+          DigiSER BD is a platform built to connect
+          people, businesses and digital services —
+          helping Bangladesh find opportunities,
+          skilled people and practical solutions.
+
+        </p>
+
+      </section>
+
+
+      <!-- =====================================================
+           MISSION
+      ====================================================== -->
+
+      <section class="about-mission">
+
+
+        <div class="mission-main">
+
+          <span class="mission-label">
+            Our mission
+          </span>
+
+
+          <h2>
+            Making it easier for good people
+            and good businesses to find each other.
+          </h2>
+
+
+          <p>
+            Many local businesses need reliable people,
+            while many skilled people are looking for
+            genuine opportunities. DigiSER BD brings these
+            needs together in one simple platform.
+          </p>
+
+        </div>
+
+
+        <div class="mission-side">
+
+          <span class="mission-side-label">
+            What connects here
+          </span>
+
+
+          <div class="mission-stat">
+
+            <strong>
+              Job Seekers
+            </strong>
+
+            <span>
+              Discover opportunities and apply.
+            </span>
+
+          </div>
+
+
+          <div class="mission-stat">
+
+            <strong>
+              Skilled People
+            </strong>
+
+            <span>
+              Showcase skills and connect with businesses.
+            </span>
+
+          </div>
+
+
+          <div class="mission-stat">
+
+            <strong>
+              Businesses
+            </strong>
+
+            <span>
+              Find people, services and business support.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           WHAT WE DO
+      ====================================================== -->
+
+      <section class="about-section">
+
+        <div class="about-section-heading">
+
+          <small>
+            What we do
+          </small>
+
+          <h2>
+            One platform. Multiple possibilities.
+          </h2>
+
+        </div>
+
+
+        <div class="about-services">
+
+
+          <article class="about-service">
+
+            <span class="about-service-number">
+              01
+            </span>
+
+            <h3>
+              Jobs
+            </h3>
+
+            <p>
+              Discover job openings from local businesses
+              and apply through a simple process.
+            </p>
+
+          </article>
+
+
+          <article class="about-service">
+
+            <span class="about-service-number">
+              02
+            </span>
+
+            <h3>
+              Employees
+            </h3>
+
+            <p>
+              Help businesses discover skilled designers,
+              developers, writers and other professionals.
+            </p>
+
+          </article>
+
+
+          <article class="about-service">
+
+            <span class="about-service-number">
+              03
+            </span>
+
+            <h3>
+              Digital Services
+            </h3>
+
+            <p>
+              Graphic design, social media management,
+              websites, digital marketing and data entry.
+            </p>
+
+          </article>
+
+
+          <article class="about-service">
+
+            <span class="about-service-number">
+              04
+            </span>
+
+            <h3>
+              Local Support
+            </h3>
+
+            <p>
+              Manpower supply, land-related support,
+              printing, delivery and event assistance.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           STORY
+      ====================================================== -->
+
+      <section class="about-story">
+
+
+        <article class="story-card">
+
+          <h2>
+            Why DigiSER BD?
+          </h2>
+
+
+          <p>
+            Finding the right opportunity or the right
+            person should not have to be complicated.
+            We are building DigiSER BD around a simple
+            experience: discover, connect and grow.
+          </p>
+
+
+          <p>
+            Our focus is on practical opportunities,
+            useful services and connections that can
+            create real value for people and businesses.
+          </p>
+
+        </article>
+
+
+        <article class="story-card">
+
+          <h2>
+            Built for Bangladesh
+          </h2>
+
+
+          <p>
+            DigiSER BD focuses on the needs of local
+            job seekers, skilled professionals,
+            businesses and service providers.
+          </p>
+
+
+          <p>
+            From employment and manpower to digital
+            services and local business support,
+            the platform is designed around everyday
+            opportunities in Bangladesh.
+          </p>
+
+        </article>
+
+
+      </section>
+
+
+      <!-- =====================================================
+           TEAM
+      ====================================================== -->
+
+      <section class="about-section">
+
+        <div class="about-section-heading">
+
+          <small>
+            Our team
+          </small>
+
+          <h2>
+            The people behind DigiSER BD.
+          </h2>
+
+        </div>
+
+
+        <div class="team-grid">
+
+
+          <article class="team-card">
+
+            <div class="team-avatar">
+              H
+            </div>
+
+            <div>
+
+              <h3>
+                Helal
+              </h3>
+
+              <p>
+                Founder
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="team-card">
+
+            <div class="team-avatar">
+              SNK
+            </div>
+
+            <div>
+
+              <h3>
+                SNK
+              </h3>
+
+              <p>
+                Co-founder
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           BANGLA CONTENT
+      ====================================================== -->
+
+      <section
+        class="about-section lang-bn"
+        hidden
+      >
+
+        <div class="about-section-heading">
+
+          <small>
+            DigiSER BD সম্পর্কে
+          </small>
+
+          <h2>
+            চাকরি, সার্ভিস ও গ্রোথ — একসাথে।
+          </h2>
+
+        </div>
+
+
+        <div class="story-card">
+
+          <p>
+            DigiSER BD হলো এমন একটি প্ল্যাটফর্ম,
+            যা বাংলাদেশের চাকরিপ্রার্থী, দক্ষ কর্মী,
+            স্থানীয় ব্যবসা এবং ডিজিটাল সার্ভিস
+            প্রদানকারীদের একসাথে যুক্ত করার জন্য তৈরি।
+          </p>
+
+
+          <p>
+            আমাদের লক্ষ্য সহজ — ভালো মানুষ এবং ভালো
+            ব্যবসা যেন সহজে একে অপরকে খুঁজে পায়।
+            একইসাথে মানুষ যেন চাকরি, দক্ষতা এবং
+            সার্ভিসের মাধ্যমে নতুন সুযোগ তৈরি করতে পারে।
+          </p>
+
+
+          <p>
+            আমরা Jobs, Employees, Digital Services
+            এবং Local Business Support-এর মাধ্যমে
+            একটি ব্যবহারিক প্ল্যাটফর্ম তৈরি করছি।
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           CTA
+      ====================================================== -->
+
+      <section class="about-cta">
+
+        <div class="about-cta-content">
+
+          <small>
+            READY TO CONNECT?
+          </small>
+
+          <h2>
+            Let's build something useful together.
+          </h2>
+
+        </div>
+
+
+        <a
+          href="../contact/"
+          class="btn"
+        >
+          Contact us →
+        </a>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <div id="ftr-slot"></div>
+
+
+  <!-- =======================================================
+       SHARED DIGISER SCRIPTS
+  ======================================================== -->
+
+  <script src="../assets/data.js"></script>
+
+  <script src="../assets/i18n.js"></script>
+
+  <script src="../assets/app.js"></script>
+
+
 </body>
+
 </html>
