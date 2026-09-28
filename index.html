@@ -13,19 +13,70 @@
 
   <meta
     name="description"
-    content="DigiSER BD — Connect jobs, skilled people, services and businesses."
+    content="DigiSER BD connects job seekers, skilled professionals, businesses and digital services in Bangladesh."
   >
 
   <meta
     name="theme-color"
-    content="#0284c7"
+    content="#0087c4"
   >
 
-  <!-- Brand Assets -->
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link
+    rel="canonical"
+    href="https://digiserbd.com/"
+  >
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DigiSER BD">
+  <meta
+    property="og:title"
+    content="DigiSER BD | Job • Service • Growth"
+  >
+  <meta
+    property="og:description"
+    content="Find jobs. Hire people. Get services. Grow your business."
+  >
+  <meta
+    property="og:url"
+    content="https://digiserbd.com/"
+  >
+  <meta
+    property="og:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="DigiSER BD | Job • Service • Growth"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Find jobs. Hire people. Get services. Grow your business."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    href="favicon.png"
+    type="image/png"
+  >
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
   <link
     rel="preconnect"
@@ -38,68 +89,66 @@
     rel="stylesheet"
   >
 
-  <!-- Existing global system -->
-  <link rel="stylesheet" href="assets/style.css">
-
+  <!-- Global CSS -->
+  <link
+    rel="stylesheet"
+    href="assets/style.css"
+  >
 
   <style>
 
-    /* =====================================================
-       DIGISER BD — PREMIUM HOMEPAGE
-       ===================================================== */
+    /* =========================================================
+       DIGISER BD — ULTRA PREMIUM HOMEPAGE
+       ========================================================= */
 
     :root {
-      --blue: #0284c7;
-      --blue-dark: #0369a1;
-      --blue-light: #e0f2fe;
-      --blue-soft: #f0f9ff;
+      --u-blue: #0087c4;
+      --u-blue-dark: #006f9f;
+      --u-blue-light: #eaf8fd;
+      --u-blue-soft: #f4fbfe;
 
-      --navy: #0b1b29;
-      --text: #17202a;
-      --muted: #64748b;
+      --u-text: #10202b;
+      --u-muted: #687580;
 
-      --line: #e6edf2;
-      --white: #ffffff;
+      --u-border: #e4edf1;
+      --u-white: #ffffff;
 
-      --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 17px;
+      --u-radius-xl: 30px;
+      --u-radius-lg: 24px;
+      --u-radius-md: 18px;
 
-      --shadow:
-        0 24px 70px rgba(15, 31, 46, .08);
+      --u-shadow:
+        0 24px 70px rgba(13, 55, 75, 0.10);
 
-      --shadow-small:
-        0 10px 30px rgba(15, 31, 46, .06);
-
-      --container: 1200px;
+      --u-shadow-soft:
+        0 14px 45px rgba(13, 55, 75, 0.07);
     }
-
 
     * {
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
 
-
     body {
-      margin: 0;
-      background: #fff;
-      color: var(--text);
-
-      font-family:
-        "Inter",
-        sans-serif;
+      font-family: "Inter", sans-serif;
+      background: #ffffff;
+      color: var(--u-text);
+      overflow-x: hidden;
     }
 
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Space Grotesk", sans-serif;
+    }
 
     a {
       text-decoration: none;
     }
-
 
     button,
     input {
@@ -107,1060 +156,1112 @@
     }
 
 
-    .premium-container {
-      width: min(
-        var(--container),
-        calc(100% - 40px)
-      );
+    /* =========================================================
+       HERO
+       ========================================================= */
 
-      margin: 0 auto;
-    }
-
-
-    /* =====================================================
-       HEADER
-       ===================================================== */
-
-    .premium-header {
-      position: sticky;
-
-      top: 0;
-
-      z-index: 1000;
-
+    .ultra-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 70px;
       background:
-        rgba(255, 255, 255, .88);
-
-      backdrop-filter:
-        blur(18px);
-
-      -webkit-backdrop-filter:
-        blur(18px);
-
-      border-bottom:
-        1px solid rgba(226, 232, 240, .8);
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(0, 135, 196, 0.10),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 10% 90%,
+          rgba(0, 135, 196, 0.06),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f7fcfe 100%
+        );
     }
 
+    .ultra-hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -250px;
+      top: -250px;
+      border: 1px solid rgba(0, 135, 196, 0.12);
+      border-radius: 50%;
+    }
 
-    .premium-nav {
-      min-height: 78px;
+    .ultra-hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      left: -250px;
+      bottom: -250px;
+      border: 1px solid rgba(0, 135, 196, 0.10);
+      border-radius: 50%;
+    }
 
-      display: flex;
+    .hero-grid {
+      position: relative;
+      z-index: 2;
 
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(400px, 0.92fr);
+
+      gap: 70px;
       align-items: center;
-
-      justify-content: space-between;
-
-      gap: 25px;
     }
 
+    .hero-copy {
+      max-width: 700px;
+    }
 
-    /* LOGO */
-
-    .premium-logo {
-      display: flex;
-
+    .hero-eyebrow {
+      display: inline-flex;
       align-items: center;
+      gap: 9px;
 
-      flex-shrink: 0;
+      padding: 8px 13px;
+
+      border: 1px solid #d9edf4;
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.85);
+
+      color: var(--u-blue);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 25px rgba(0, 135, 196, 0.06);
     }
 
-
-    .premium-logo img {
-      display: block;
-
-      width: auto;
-
-      max-width: 190px;
-
-      height: 48px;
-
-      object-fit: contain;
+    .hero-eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--u-blue);
+      box-shadow: 0 0 0 5px rgba(0, 135, 196, 0.10);
     }
 
+    .hero-title {
+      margin: 22px 0 20px;
 
-    .premium-navigation {
+      font-size: clamp(46px, 6vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -3.8px;
+      font-weight: 700;
+
+      color: #10202b;
+    }
+
+    .hero-title span {
+      color: var(--u-blue);
+    }
+
+    .hero-description {
+      max-width: 620px;
+
+      margin: 0;
+
+      color: var(--u-muted);
+
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
 
-      align-items: center;
-
-      gap: 3px;
+      margin-top: 32px;
     }
 
+    .ultra-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
 
-    .premium-navigation a {
-      padding: 10px 13px;
+      min-height: 52px;
+      padding: 0 21px;
 
       border-radius: 999px;
 
-      color: #586875;
-
-      font-size: 12px;
-
-      font-weight: 650;
+      font-size: 14px;
+      font-weight: 700;
 
       transition:
-        background .2s ease,
-        color .2s ease,
-        transform .2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
-
-    .premium-navigation a:hover {
-      color: var(--blue);
-
-      background:
-        var(--blue-soft);
-
-      transform: translateY(-1px);
+    .ultra-btn:hover {
+      transform: translateY(-2px);
     }
 
+    .ultra-btn-primary {
+      color: #ffffff;
+      background: var(--u-blue);
 
-    .premium-navigation a.active {
-      color: var(--blue);
-
-      background:
-        var(--blue-light);
+      box-shadow:
+        0 12px 28px rgba(0, 135, 196, 0.22);
     }
 
+    .ultra-btn-primary:hover {
+      background: var(--u-blue-dark);
+      box-shadow:
+        0 16px 35px rgba(0, 135, 196, 0.27);
+    }
 
-    .premium-actions {
+    .ultra-btn-secondary {
+      color: var(--u-text);
+      background: #ffffff;
+      border: 1px solid var(--u-border);
+    }
+
+    .ultra-btn-secondary:hover {
+      border-color: #b9dce9;
+      background: #f9fdff;
+    }
+
+    .hero-note {
       display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
 
-      align-items: center;
+      margin-top: 25px;
 
-      gap: 8px;
+      color: #73808a;
+      font-size: 13px;
+      font-weight: 600;
     }
 
-
-    .premium-btn {
-      min-height: 41px;
-
-      padding: 0 17px;
-
-      border-radius: 999px;
-
+    .hero-note span {
       display: inline-flex;
-
       align-items: center;
+      gap: 7px;
+    }
 
-      justify-content: center;
+    .hero-note i {
+      width: 6px;
+      height: 6px;
 
-      font-size: 11px;
+      border-radius: 50%;
 
-      font-weight: 750;
-
-      transition: .2s ease;
+      background: var(--u-blue);
     }
 
 
-    .premium-login {
-      color: var(--navy);
+    /* =========================================================
+       HERO VISUAL
+       ========================================================= */
 
-      background: #fff;
-
-      border:
-        1px solid #dbe4ea;
-    }
-
-
-    .premium-login:hover {
-      color: var(--blue);
-
-      border-color:
-        #a5dcf7;
-    }
-
-
-    .premium-register {
-      color: #fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          #0284c7,
-          #0ea5e9
-        );
-
-      box-shadow:
-        0 8px 22px
-        rgba(2, 132, 199, .20);
-    }
-
-
-    .premium-register:hover {
-      transform:
-        translateY(-1px);
-
-      box-shadow:
-        0 12px 28px
-        rgba(2, 132, 199, .25);
-    }
-
-
-    .premium-language {
-      color: var(--navy);
-
-      border:
-        1px solid #dbe4ea;
-
-      background: #fff;
-    }
-
-
-    .premium-language:hover {
-      color: var(--blue);
-
-      border-color:
-        #a5dcf7;
-    }
-
-
-    .premium-mobile {
-      display: none;
-
-      width: 42px;
-
-      height: 42px;
-
-      border:
-        1px solid #dbe4ea;
-
-      border-radius: 13px;
-
-      background: white;
-
-      cursor: pointer;
-
-      font-size: 19px;
-    }
-
-
-    /* =====================================================
-       HERO
-       ===================================================== */
-
-    .premium-hero {
+    .hero-visual {
       position: relative;
+      min-height: 510px;
+    }
+
+    .ecosystem-card {
+      position: relative;
+      min-height: 470px;
+
+      padding: 28px;
 
       overflow: hidden;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f5fbff 50%,
-          #eaf7fd 100%
-        );
-
-      padding:
-        82px 0 90px;
-    }
-
-
-    .premium-hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 680px;
-
-      height: 680px;
-
-      right: -340px;
-
-      top: -280px;
-
-      border:
-        100px solid
-        rgba(125, 211, 252, .13);
-
-      border-radius: 50%;
-    }
-
-
-    .premium-hero::after {
-      content: "";
-
-      position: absolute;
-
-      width: 340px;
-
-      height: 340px;
-
-      left: -220px;
-
-      bottom: -240px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(186, 230, 253, .25);
-
-      filter: blur(5px);
-    }
-
-
-    .premium-hero-grid {
-      position: relative;
-
-      z-index: 2;
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(370px, .92fr);
-
-      align-items: center;
-
-      gap: 70px;
-    }
-
-
-    .premium-badge {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      padding:
-        7px 12px;
-
-      border-radius: 999px;
-
-      background:
-        rgba(255, 255, 255, .85);
-
-      border:
-        1px solid #dceff8;
-
-      color: var(--blue);
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      box-shadow:
-        0 8px 24px
-        rgba(2, 132, 199, .06);
-    }
-
-
-    .premium-badge-dot {
-      width: 7px;
-
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: #22c55e;
-
-      box-shadow:
-        0 0 0 4px
-        rgba(34, 197, 94, .10);
-    }
-
-
-    .premium-hero h1 {
-      max-width: 690px;
-
-      margin:
-        19px 0 18px;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(46px, 5.5vw, 72px);
-
-      line-height:
-        .97;
-
-      letter-spacing:
-        -.055em;
-
-      color: var(--navy);
-    }
-
-
-    .premium-hero h1 span {
-      color: var(--blue);
-    }
-
-
-    .premium-hero-text {
-      max-width: 590px;
-
-      margin: 0 0 31px;
-
-      color: #697987;
-
-      font-size: 15px;
-
-      line-height: 1.8;
-    }
-
-
-    /* =====================================================
-       SEARCH
-       ===================================================== */
-
-    .premium-search {
-      max-width: 710px;
-
-      padding: 9px;
-
-      border-radius: 22px;
-
-      background: #fff;
-
-      border:
-        1px solid
-        rgba(226, 232, 240, .95);
-
-      box-shadow:
-        0 20px 60px
-        rgba(15, 31, 46, .09);
-    }
-
-
-    .premium-tabs {
-      display: flex;
-
-      gap: 4px;
-
-      margin:
-        0 0 8px;
-    }
-
-
-    .premium-tab {
-      border: 0;
-
-      background: transparent;
-
-      color: #71808d;
-
-      padding:
-        8px 14px;
-
-      border-radius: 999px;
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-
-    .premium-tab.active {
-      color: #fff;
-
-      background: var(--navy);
-    }
-
-
-    .premium-search-row {
-      display: flex;
-
-      gap: 8px;
-    }
-
-
-    .premium-search-input {
-      flex: 1;
-
-      min-width: 0;
-
-      height: 53px;
-
-      padding:
-        0 18px;
-
-      border:
-        1px solid #e4ebef;
-
-      border-radius: 15px;
-
-      outline: none;
-
-      background: #f9fbfc;
-
-      color: var(--navy);
-
-      font-size: 13px;
-    }
-
-
-    .premium-search-input:focus {
-      background: #fff;
-
-      border-color:
-        #7dd3fc;
-
-      box-shadow:
-        0 0 0 4px
-        rgba(125, 211, 252, .12);
-    }
-
-
-    .premium-search-button {
-      height: 53px;
-
-      padding:
-        0 25px;
-
-      border: 0;
-
-      border-radius: 15px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #0284c7,
-          #0ea5e9
-        );
-
-      color: #fff;
-
-      font-size: 11px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 9px 23px
-        rgba(2, 132, 199, .20);
-    }
-
-
-    .premium-trust {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 17px;
-
-      margin-top: 17px;
-    }
-
-
-    .premium-trust-item {
-      display: flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      color: #72818d;
-
-      font-size: 10px;
-
-      font-weight: 650;
-    }
-
-
-    .premium-check {
-      width: 18px;
-
-      height: 18px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: #dcfce7;
-
-      color: #16a34a;
-
-      font-size: 9px;
-
-      font-weight: 900;
-    }
-
-
-    /* =====================================================
-       HERO PREVIEW
-       ===================================================== */
-
-    .premium-preview {
-      position: relative;
-    }
-
-
-    .premium-preview-glow {
-      position: absolute;
-
-      width: 270px;
-
-      height: 270px;
-
-      right: -40px;
-
-      top: -50px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(56, 189, 248, .26);
-
-      filter: blur(55px);
-    }
-
-
-    .premium-job-window {
-      position: relative;
-
-      z-index: 2;
-
-      padding: 26px;
-
-      border-radius: 30px;
-
-      background:
-        rgba(255,255,255,.92);
-
-      border:
-        1px solid
-        rgba(255,255,255,.95);
-
-      box-shadow:
-        0 35px 90px
-        rgba(15, 31, 46, .13);
-    }
-
-
-    .premium-window-head {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 20px;
-    }
-
-
-    .premium-window-dots {
-      display: flex;
-
-      gap: 5px;
-    }
-
-
-    .premium-window-dots span {
-      width: 7px;
-
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: #d8e1e7;
-    }
-
-
-    .premium-window-link {
-      color: var(--blue);
-
-      font-size: 10px;
-
-      font-weight: 800;
-    }
-
-
-    .premium-job-feature {
-      padding: 22px;
-
-      border-radius: 21px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 34px;
 
       background:
         linear-gradient(
           145deg,
-          #f8fcfe,
-          #eef8fc
+          #eefaff 0%,
+          #ffffff 55%,
+          #f4fbfe 100%
         );
 
-      border:
-        1px solid #e0eef4;
+      box-shadow: var(--u-shadow);
     }
 
-
-    .premium-job-icon {
-      width: 51px;
-
-      height: 51px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #dff4fd,
-          #bae6fd
-        );
-
-      color: var(--blue);
-
-      font-size: 21px;
-
-      margin-bottom: 17px;
-    }
-
-
-    .premium-job-feature h3 {
-      margin: 0 0 6px;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 21px;
-    }
-
-
-    .premium-job-company {
-      color: #71808d;
-
-      font-size: 10px;
-
-      font-weight: 650;
-    }
-
-
-    .premium-job-tags {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-top: 17px;
-    }
-
-
-    .premium-job-tag {
-      padding:
-        7px 10px;
-
-      border-radius: 999px;
-
-      background: #fff;
-
-      border:
-        1px solid #dfe9ee;
-
-      color: #687783;
-
-      font-size: 9px;
-
-      font-weight: 650;
-    }
-
-
-    .premium-window-stats {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 8px;
-
-      margin-top: 10px;
-    }
-
-
-    .premium-window-stat {
-      padding: 14px 9px;
-
-      border-radius: 15px;
-
-      background: #f8fafb;
-
-      text-align: center;
-    }
-
-
-    .premium-window-stat strong {
-      display: block;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 15px;
-    }
-
-
-    .premium-window-stat span {
-      display: block;
-
-      margin-top: 3px;
-
-      color: #8795a0;
-
-      font-size: 8px;
-
-      font-weight: 650;
-    }
-
-
-    /* =====================================================
-       SECTIONS
-       ===================================================== */
-
-    .premium-section {
-      padding: 92px 0;
-    }
-
-
-    .premium-soft-section {
-      background:
-        #f8fbfd;
-    }
-
-
-    .premium-section-heading {
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: space-between;
-
-      gap: 30px;
-
-      margin-bottom: 35px;
-    }
-
-
-    .premium-kicker {
-      margin-bottom: 8px;
-
-      color: var(--blue);
-
-      font-size: 10px;
-
-      font-weight: 850;
-
-      text-transform: uppercase;
-
-      letter-spacing: .12em;
-    }
-
-
-    .premium-title {
-      margin: 0;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:
-        clamp(30px, 4vw, 43px);
-
-      line-height: 1.05;
-
-      letter-spacing: -.035em;
-    }
-
-
-    .premium-description {
-      max-width: 560px;
-
-      margin:
-        10px 0 0;
-
-      color: #72818d;
-
-      font-size: 13px;
-
-      line-height: 1.75;
-    }
-
-
-    .premium-more {
-      flex-shrink: 0;
-
-      color: var(--blue);
-
-      font-size: 11px;
-
-      font-weight: 800;
-    }
-
-
-    /* =====================================================
-       SERVICES
-       ===================================================== */
-
-    .premium-services {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 16px;
-    }
-
-
-    .premium-service {
-      position: relative;
-
-      min-height: 245px;
-
-      padding: 25px;
-
-      background: #fff;
-
-      border:
-        1px solid #e6edf1;
-
-      border-radius: 23px;
-
-      box-shadow:
-        var(--shadow-small);
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
-    }
-
-
-    .premium-service:hover {
-      transform:
-        translateY(-6px);
-
-      border-color:
-        #bae6fd;
-
-      box-shadow:
-        0 25px 55px
-        rgba(15, 31, 46, .10);
-    }
-
-
-    .premium-service-icon {
-      width: 54px;
-
-      height: 54px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 17px;
-
-      background:
-        var(--blue-soft);
-
-      font-size: 23px;
-
-      margin-bottom: 21px;
-    }
-
-
-    .premium-service h3 {
-      margin: 0 0 9px;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 17px;
-
-      line-height: 1.25;
-    }
-
-
-    .premium-service p {
-      margin: 0;
-
-      color: #75838e;
-
-      font-size: 11px;
-
-      line-height: 1.75;
-    }
-
-
-    .premium-service-arrow {
+    .ecosystem-card::before {
+      content: "";
       position: absolute;
 
-      right: 21px;
+      width: 290px;
+      height: 290px;
 
-      bottom: 20px;
-
-      width: 31px;
-
-      height: 31px;
-
-      display: grid;
-
-      place-items: center;
+      right: -110px;
+      top: -110px;
 
       border-radius: 50%;
 
       background:
-        #f1f5f9;
+        radial-gradient(
+          circle,
+          rgba(0, 135, 196, 0.13),
+          transparent 68%
+        );
+    }
 
-      color: var(--blue);
+    .visual-top {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .visual-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--u-blue);
+    }
+
+    .visual-pill {
+      padding: 7px 10px;
+
+      border: 1px solid #d8edf4;
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.8);
+
+      color: #647580;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .visual-heading {
+      position: relative;
+      z-index: 2;
+
+      max-width: 400px;
+
+      margin: 18px 0 25px;
+
+      font-size: 29px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .ecosystem-list {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      gap: 12px;
+    }
+
+    .eco-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      padding: 16px;
+
+      border: 1px solid rgba(220, 234, 240, 0.95);
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, 0.88);
+
+      box-shadow:
+        0 8px 25px rgba(18, 58, 75, 0.045);
+    }
+
+    .eco-icon {
+      flex: 0 0 46px;
+
+      width: 46px;
+      height: 46px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 15px;
+
+      background: var(--u-blue-light);
+      color: var(--u-blue);
+    }
+
+    .eco-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .eco-content {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .eco-content strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      font-size: 14px;
+      color: #1a2a33;
+    }
+
+    .eco-content span {
+      color: #7b8891;
+      font-size: 12px;
+    }
+
+    .eco-arrow {
+      color: #9aa8b0;
+    }
+
+    .visual-footer {
+      position: absolute;
+
+      left: 28px;
+      right: 28px;
+      bottom: 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-top: 17px;
+
+      border-top: 1px solid #deedf2;
+    }
+
+    .visual-footer strong {
+      font-size: 13px;
+    }
+
+    .visual-footer span {
+      color: #7d8b94;
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       SEARCH
+       ========================================================= */
+
+    .ultra-search-wrap {
+      position: relative;
+      z-index: 5;
+
+      margin-top: -25px;
+    }
+
+    .ultra-search {
+      padding: 10px;
+
+      border: 1px solid #e2edf1;
+      border-radius: 25px;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      box-shadow:
+        0 22px 65px rgba(15, 55, 72, 0.11);
+    }
+
+    .search-tabs {
+      display: flex;
+      gap: 5px;
+
+      padding: 5px;
+    }
+
+    .search-tab {
+      border: 0;
+      background: transparent;
+
+      padding: 10px 17px;
+
+      border-radius: 999px;
+
+      color: #71808a;
 
       font-size: 13px;
+      font-weight: 700;
 
-      transition: .2s ease;
+      cursor: pointer;
+    }
+
+    .search-tab.active {
+      color: var(--u-blue);
+      background: var(--u-blue-light);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 9px;
+
+      padding: 5px;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      min-width: 0;
+
+      padding: 0 16px;
+
+      border: 1px solid #e4ecef;
+      border-radius: 17px;
+
+      background: #fbfdfe;
+    }
+
+    .search-input-wrap svg {
+      flex: 0 0 auto;
+      color: #8b9aa3;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 50px;
+
+      border: 0;
+      outline: 0;
+
+      background: transparent;
+
+      color: var(--u-text);
+
+      font-size: 14px;
+    }
+
+    .search-input::placeholder {
+      color: #9aa7ae;
+    }
+
+    .search-submit {
+      min-width: 125px;
+
+      border: 0;
+      border-radius: 17px;
+
+      background: var(--u-blue);
+      color: #ffffff;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .search-submit:hover {
+      background: var(--u-blue-dark);
     }
 
 
-    .premium-service:hover
-    .premium-service-arrow {
-      color: #fff;
+    /* =========================================================
+       SECTION
+       ========================================================= */
 
-      background:
-        var(--blue);
+    .ultra-section {
+      padding: 95px 0;
+    }
+
+    .ultra-section-soft {
+      background: #f7fbfd;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+
+      margin-bottom: 34px;
+    }
+
+    .section-eyebrow {
+      display: block;
+
+      margin-bottom: 9px;
+
+      color: var(--u-blue);
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .section-description {
+      max-width: 510px;
+
+      margin: 12px 0 0;
+
+      color: var(--u-muted);
+
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .section-link {
+      flex: 0 0 auto;
+
+      color: var(--u-blue);
+
+      font-size: 13px;
+      font-weight: 800;
     }
 
 
-    /* =====================================================
-       TRACK
-       ===================================================== */
+    /* =========================================================
+       PATH CARDS
+       ========================================================= */
 
-    .premium-track {
-      padding: 85px 0;
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-
-    .premium-track-box {
+    .path-card {
       position: relative;
+
+      min-height: 265px;
+
+      padding: 27px;
 
       overflow: hidden;
 
+      border: 1px solid var(--u-border);
+      border-radius: var(--u-radius-lg);
+
+      background: #ffffff;
+
+      box-shadow: var(--u-shadow-soft);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 24px 60px rgba(15, 55, 72, 0.11);
+    }
+
+    .path-number {
+      position: absolute;
+
+      right: 20px;
+      top: 15px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 65px;
+      font-weight: 700;
+
+      color: #f0f6f8;
+    }
+
+    .path-icon {
+      position: relative;
+
+      width: 53px;
+      height: 53px;
+
       display: grid;
+      place-items: center;
 
-      grid-template-columns:
-        .9fr 1.1fr;
+      margin-bottom: 23px;
 
+      border-radius: 17px;
+
+      background: var(--u-blue-light);
+      color: var(--u-blue);
+    }
+
+    .path-icon svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .path-card h3 {
+      position: relative;
+
+      margin: 0 0 9px;
+
+      font-size: 21px;
+    }
+
+    .path-card p {
+      position: relative;
+
+      margin: 0;
+
+      color: var(--u-muted);
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .path-card a {
+      position: absolute;
+
+      left: 27px;
+      bottom: 24px;
+
+      color: var(--u-blue);
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+
+    /* =========================================================
+       LIVE JOBS
+       ========================================================= */
+
+    .job-shell {
+      padding: 30px;
+
+      border: 1px solid var(--u-border);
+      border-radius: var(--u-radius-xl);
+
+      background: #ffffff;
+
+      box-shadow: var(--u-shadow-soft);
+    }
+
+    #ultraJobs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .ultra-job-card {
+      padding: 22px;
+
+      border: 1px solid #e4edf1;
+      border-radius: 20px;
+
+      background: #fbfdfe;
+    }
+
+    .ultra-job-card .job-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .job-mark {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background: var(--u-blue-light);
+      color: var(--u-blue);
+
+      font-weight: 800;
+    }
+
+    .job-type {
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background: #edf8f1;
+      color: #19884d;
+
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .ultra-job-card h3 {
+      margin: 18px 0 7px;
+
+      font-size: 18px;
+    }
+
+    .job-company {
+      margin: 0;
+
+      color: #63727c;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-top: 17px;
+    }
+
+    .job-meta span {
+      padding: 7px 9px;
+
+      border: 1px solid #e4ecef;
+      border-radius: 999px;
+
+      color: #70808a;
+
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .job-empty {
+      grid-column: 1 / -1;
+
+      padding: 45px 25px;
+
+      text-align: center;
+
+      border: 1px dashed #cddfe7;
+      border-radius: 20px;
+
+      background: #fbfdfe;
+    }
+
+    .job-empty-icon {
+      width: 55px;
+      height: 55px;
+
+      display: grid;
+      place-items: center;
+
+      margin: 0 auto 15px;
+
+      border-radius: 17px;
+
+      background: var(--u-blue-light);
+      color: var(--u-blue);
+    }
+
+    .job-empty h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+    }
+
+    .job-empty p {
+      margin: 0;
+      color: var(--u-muted);
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       SERVICES
+       ========================================================= */
+
+    #ultraServices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card-ultra {
+      padding: 23px;
+
+      border: 1px solid var(--u-border);
+      border-radius: 21px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 10px 35px rgba(13, 55, 75, 0.055);
+
+      transition: 0.25s ease;
+    }
+
+    .service-card-ultra:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--u-shadow);
+    }
+
+    .service-icon-ultra {
+      width: 47px;
+      height: 47px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 20px;
+
+      border-radius: 15px;
+
+      background: var(--u-blue-light);
+      color: var(--u-blue);
+    }
+
+    .service-card-ultra h3 {
+      margin: 0 0 8px;
+
+      font-size: 17px;
+    }
+
+    .service-card-ultra p {
+      min-height: 58px;
+
+      margin: 0;
+
+      color: var(--u-muted);
+
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .service-card-ultra a {
+      display: inline-flex;
+
+      margin-top: 17px;
+
+      color: var(--u-blue);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+
+    /* =========================================================
+       TRACKING
+       ========================================================= */
+
+    .tracking-section {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0079b0,
+          #008fca
+        );
+    }
+
+    .tracking-section::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -180px;
+      top: -280px;
+
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+    }
+
+    .tracking-section .wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tracking-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
       align-items: center;
+    }
 
-      gap: 55px;
+    .tracking-copy .section-eyebrow {
+      color: #c8f2ff;
+    }
+
+    .tracking-copy .section-title {
+      color: #ffffff;
+    }
+
+    .tracking-copy .section-description {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .tracking-points {
+      display: grid;
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .tracking-point {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(255, 255, 255, 0.88);
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .tracking-point svg {
+      color: #c8f2ff;
+    }
+
+    .tracking-box {
+      padding: 27px;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 27px;
+
+      background: rgba(255, 255, 255, 0.12);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .tracking-box h3 {
+      margin: 0 0 6px;
+
+      color: #ffffff;
+
+      font-size: 21px;
+    }
+
+    .tracking-box > p {
+      margin: 0 0 20px;
+
+      color: rgba(255, 255, 255, 0.70);
+
+      font-size: 12px;
+    }
+
+    .tracking-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tracking-input {
+      width: 100%;
+      height: 51px;
+
+      padding: 0 15px;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 15px;
+
+      outline: none;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      color: var(--u-text);
+
+      font-size: 13px;
+    }
+
+    .tracking-submit {
+      height: 51px;
+
+      border: 0;
+      border-radius: 15px;
+
+      background: #ffffff;
+      color: var(--u-blue);
+
+      font-size: 13px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    .tracking-submit:hover {
+      background: #f1fbff;
+    }
+
+
+    /* =========================================================
+       HOW IT WORKS
+       ========================================================= */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-card {
+      padding: 27px;
+
+      border: 1px solid var(--u-border);
+      border-radius: 22px;
+
+      background: #ffffff;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 38px;
+      height: 38px;
+
+      margin-bottom: 23px;
+
+      border-radius: 12px;
+
+      background: var(--u-blue);
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .step-card h3 {
+      margin: 0 0 8px;
+
+      font-size: 19px;
+    }
+
+    .step-card p {
+      margin: 0;
+
+      color: var(--u-muted);
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       FINAL CTA
+       ========================================================= */
+
+    .final-cta {
+      padding: 85px 0;
+    }
+
+    .cta-box {
+      position: relative;
+
+      overflow: hidden;
 
       padding: 55px;
 
@@ -1169,810 +1270,222 @@
       background:
         linear-gradient(
           135deg,
-          #091923,
-          #12374d
+          #effaff,
+          #f8fcfd
         );
 
-      box-shadow:
-        0 35px 80px
-        rgba(15, 31, 46, .16);
+      border: 1px solid #dceef4;
     }
 
-
-    .premium-track-box::after {
+    .cta-box::after {
       content: "";
 
       position: absolute;
 
-      width: 450px;
-
-      height: 450px;
-
-      right: -230px;
-
-      top: -280px;
-
-      border:
-        75px solid
-        rgba(125,211,252,.07);
-
-      border-radius: 50%;
-    }
-
-
-    .premium-track-content {
-      position: relative;
-
-      z-index: 2;
-    }
-
-
-    .premium-track-content
-    .premium-kicker {
-      color: #7dd3fc;
-    }
-
-
-    .premium-track-content h2 {
-      margin: 0 0 12px;
-
-      color: white;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 37px;
-
-      line-height: 1.05;
-
-      letter-spacing: -.03em;
-    }
-
-
-    .premium-track-content p {
-      max-width: 470px;
-
-      margin: 0;
-
-      color: #aebfca;
-
-      font-size: 12px;
-
-      line-height: 1.75;
-    }
-
-
-    .premium-track-form {
-      position: relative;
-
-      z-index: 2;
-
-      padding: 8px;
-
-      border-radius: 19px;
-
-      background: #fff;
-    }
-
-
-    .premium-track-fields {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr auto;
-
-      gap: 7px;
-    }
-
-
-    .premium-track-input {
-      width: 100%;
-
-      height: 51px;
-
-      padding:
-        0 14px;
-
-      border: 0;
-
-      outline: 0;
-
-      border-radius: 13px;
-
-      background: #f5f8fa;
-
-      color: var(--navy);
-
-      font-size: 11px;
-    }
-
-
-    .premium-track-button {
-      height: 51px;
-
-      padding:
-        0 20px;
-
-      border: 0;
-
-      border-radius: 13px;
-
-      color: white;
-
-      background:
-        var(--blue);
-
-      font-size: 11px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================================
-       JOBS
-       ===================================================== */
-
-    .premium-jobs {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 16px;
-    }
-
-
-    .premium-job-card {
-      padding: 22px;
-
-      background: white;
-
-      border:
-        1px solid #e5ebef;
-
-      border-radius: 21px;
-
-      transition: .25s ease;
-    }
-
-
-    .premium-job-card:hover {
-      transform:
-        translateY(-4px);
-
-      box-shadow:
-        var(--shadow-small);
-
-      border-color:
-        #cbeaf8;
-    }
-
-
-    .premium-job-card-top {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: flex-start;
-    }
-
-
-    .premium-job-small-icon {
-      width: 44px;
-
-      height: 44px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 14px;
-
-      background:
-        var(--blue-light);
-
-      font-size: 18px;
-    }
-
-
-    .premium-job-status {
-      padding:
-        6px 9px;
-
-      border-radius: 999px;
-
-      background:
-        #ecfdf5;
-
-      color:
-        #15803d;
-
-      font-size: 8px;
-
-      font-weight: 800;
-    }
-
-
-    .premium-job-card h3 {
-      margin:
-        17px 0 5px;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 17px;
-    }
-
-
-    .premium-job-company {
-      color: #7b8994;
-
-      font-size: 10px;
-
-      font-weight: 600;
-    }
-
-
-    .premium-job-card-meta {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-top: 16px;
-    }
-
-
-    .premium-job-card-meta span {
-      padding:
-        6px 8px;
-
-      border-radius: 8px;
-
-      background:
-        #f7fafb;
-
-      color: #6c7b87;
-
-      font-size: 8px;
-
-      font-weight: 650;
-    }
-
-
-    /* =====================================================
-       HOW IT WORKS
-       ===================================================== */
-
-    .premium-steps {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 16px;
-    }
-
-
-    .premium-step {
-      position: relative;
-
-      padding: 29px;
-
-      background: #fff;
-
-      border:
-        1px solid #e6edf1;
-
-      border-radius: 22px;
-    }
-
-
-    .premium-step-number {
-      width: 43px;
-
-      height: 43px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 14px;
-
-      background:
-        var(--blue-light);
-
-      color: var(--blue);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      margin-bottom: 20px;
-    }
-
-
-    .premium-step h3 {
-      margin: 0 0 8px;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 18px;
-    }
-
-
-    .premium-step p {
-      margin: 0;
-
-      color: #74828e;
-
-      font-size: 11px;
-
-      line-height: 1.75;
-    }
-
-
-    /* =====================================================
-       CTA
-       ===================================================== */
-
-    .premium-cta {
-      padding:
-        0 0 90px;
-    }
-
-
-    .premium-cta-box {
-      position: relative;
-
-      overflow: hidden;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 30px;
-
-      padding:
-        47px 50px;
-
-      border-radius: 30px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #eef9fe,
-          #f7fcff
-        );
-
-      border:
-        1px solid #d9eff9;
-    }
-
-
-    .premium-cta-box::after {
-      content: "";
-
-      position: absolute;
-
-      width: 250px;
-
-      height: 250px;
+      width: 320px;
+      height: 320px;
 
       right: -100px;
+      bottom: -210px;
 
-      top: -130px;
-
-      border:
-        45px solid
-        rgba(125,211,252,.18);
-
+      border: 1px solid rgba(0, 135, 196, 0.13);
       border-radius: 50%;
     }
 
-
-    .premium-cta-content {
+    .cta-content {
       position: relative;
-
       z-index: 2;
+
+      max-width: 700px;
     }
 
+    .cta-content h2 {
+      margin: 0 0 13px;
 
-    .premium-cta-box h2 {
-      margin: 0 0 8px;
-
-      color: var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 31px;
-
-      letter-spacing: -.03em;
+      font-size: clamp(30px, 4vw, 47px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
     }
 
+    .cta-content p {
+      max-width: 570px;
 
-    .premium-cta-box p {
       margin: 0;
 
-      color: #71808c;
+      color: var(--u-muted);
 
-      font-size: 11px;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
-
-    .premium-cta-button {
-      position: relative;
-
-      z-index: 2;
-
-      flex-shrink: 0;
-
-      min-height: 48px;
-
-      padding:
-        0 23px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      border-radius: 999px;
-
-      color: white;
-
-      background:
-        linear-gradient(
-          135deg,
-          #0284c7,
-          #0ea5e9
-        );
-
-      font-size: 11px;
-
-      font-weight: 800;
-
-      box-shadow:
-        0 12px 25px
-        rgba(2,132,199,.20);
-    }
-
-
-    /* =====================================================
-       FOOTER
-       ===================================================== */
-
-    .premium-footer {
-      background:
-        #091720;
-
-      color: white;
-
-      padding:
-        58px 0 24px;
-    }
-
-
-    .premium-footer-grid {
-      display: grid;
-
-      grid-template-columns:
-        1.6fr repeat(3, 1fr);
-
-      gap: 45px;
-
-      padding-bottom: 42px;
-
-      border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-    }
-
-
-    .premium-footer-logo img {
-      width: auto;
-
-      max-width: 185px;
-
-      height: 45px;
-
-      object-fit: contain;
-    }
-
-
-    .premium-footer-description {
-      max-width: 300px;
-
-      margin:
-        17px 0 0;
-
-      color: #81929e;
-
-      font-size: 10px;
-
-      line-height: 1.8;
-    }
-
-
-    .premium-footer-column h4 {
-      margin:
-        0 0 16px;
-
-      color: white;
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: .09em;
-    }
-
-
-    .premium-footer-column a {
-      display: block;
-
-      margin-bottom: 11px;
-
-      color: #7f909c;
-
-      font-size: 10px;
-
-      transition: .2s ease;
-    }
-
-
-    .premium-footer-column a:hover {
-      color: #7dd3fc;
-    }
-
-
-    .premium-footer-bottom {
+    .cta-actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
 
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding-top: 21px;
-
-      color: #697b87;
-
-      font-size: 9px;
+      margin-top: 25px;
     }
 
 
-    /* =====================================================
-       MOBILE
-       ===================================================== */
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1050px) {
 
-      .premium-navigation {
-        display: none;
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
       }
 
+      .hero-copy {
+        max-width: 850px;
+      }
 
-      .premium-mobile {
+      .hero-visual {
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #ultraServices {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #ultraJobs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tracking-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .ultra-hero {
+        padding: 55px 0 60px;
+      }
+
+      .hero-title {
+        letter-spacing: -2.5px;
+      }
+
+      .path-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
         display: block;
       }
 
-
-      .premium-hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
+      .section-link {
+        display: inline-block;
+        margin-top: 15px;
       }
 
-
-      .premium-preview {
-        max-width: 650px;
-      }
-
-
-      .premium-services {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-
-      .premium-jobs {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-
-      .premium-footer-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
+      .job-shell {
+        padding: 18px;
       }
 
     }
 
 
-    @media (max-width: 720px) {
+    @media (max-width: 620px) {
 
-      .premium-container {
-        width:
-          calc(100% - 28px);
+      .ultra-hero {
+        padding-top: 38px;
       }
 
-
-      .premium-nav {
-        min-height: 68px;
+      .hero-title {
+        font-size: 43px;
+        line-height: 1;
+        letter-spacing: -2px;
       }
 
-
-      .premium-logo img {
-        max-width: 150px;
-
-        height: 42px;
+      .hero-description {
+        font-size: 15px;
       }
 
-
-      .premium-actions
-      .premium-login,
-      .premium-actions
-      .premium-language {
-        display: none;
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
       }
 
-
-      .premium-register {
-        min-height: 37px;
-
-        padding:
-          0 14px;
-      }
-
-
-      .premium-hero {
-        padding:
-          55px 0 65px;
-      }
-
-
-      .premium-hero h1 {
-        font-size: 45px;
-      }
-
-
-      .premium-hero-text {
-        font-size: 13px;
-      }
-
-
-      .premium-search-row {
-        flex-direction: column;
-      }
-
-
-      .premium-search-button {
+      .ultra-btn {
         width: 100%;
       }
 
-
-      .premium-trust {
-        gap: 10px 14px;
+      .hero-visual {
+        min-height: 430px;
       }
 
-
-      .premium-job-window {
-        padding: 19px;
+      .ecosystem-card {
+        min-height: 410px;
+        padding: 20px;
+        border-radius: 25px;
       }
 
+      .visual-heading {
+        font-size: 24px;
+      }
 
-      .premium-section {
+      .eco-item {
+        padding: 13px;
+      }
+
+      .eco-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .visual-footer {
+        left: 20px;
+        right: 20px;
+        bottom: 19px;
+      }
+
+      .ultra-search-wrap {
+        margin-top: -15px;
+      }
+
+      .search-tabs {
+        overflow-x: auto;
+      }
+
+      .search-tab {
+        white-space: nowrap;
+      }
+
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+
+      .search-submit {
+        min-height: 50px;
+      }
+
+      .ultra-section {
         padding: 65px 0;
       }
 
-
-      .premium-section-heading {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 12px;
-
-        margin-bottom: 25px;
-      }
-
-
-      .premium-services,
-      .premium-jobs,
-      .premium-steps {
+      #ultraJobs,
+      #ultraServices {
         grid-template-columns: 1fr;
       }
 
-
-      .premium-track {
-        padding:
-          65px 0;
+      .tracking-box {
+        padding: 20px;
       }
 
-
-      .premium-track-box {
-        grid-template-columns: 1fr;
-
-        padding:
-          31px 21px;
-
-        gap: 25px;
-      }
-
-
-      .premium-track-content h2 {
-        font-size: 31px;
-      }
-
-
-      .premium-track-fields {
-        grid-template-columns: 1fr;
-      }
-
-
-      .premium-track-button {
-        width: 100%;
-      }
-
-
-      .premium-cta {
-        padding-bottom:
-          65px;
-      }
-
-
-      .premium-cta-box {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        padding:
-          32px 23px;
-      }
-
-
-      .premium-cta-button {
-        width: 100%;
-      }
-
-
-      .premium-footer-grid {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-      }
-
-
-      .premium-footer-bottom {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 8px;
+      .cta-box {
+        padding: 32px 22px;
+        border-radius: 25px;
       }
 
     }
@@ -1982,269 +1495,129 @@
 </head>
 
 
-<body>
+<body
+  data-page="home"
+  data-root="./"
+>
 
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
+  <!-- =======================================================
+       SHARED PREMIUM NAVBAR
+       assets/app.js automatically renders:
+       Logo / Home / Jobs / Employees / Services /
+       Businesses / Track / Contact / বাংলা / Register
+       ======================================================= -->
 
-  <header class="premium-header">
+  <div id="hdr-slot"></div>
 
-    <div class="premium-container">
-
-      <nav class="premium-nav">
-
-
-        <!-- LOGO -->
-
-        <a
-          href="index.html"
-          class="premium-logo"
-        >
-
-          <img
-            src="logo.png"
-            alt="DigiSER BD"
-          >
-
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <div class="premium-navigation">
-
-          <a
-            href="index.html"
-            class="active"
-          >
-            Home
-          </a>
-
-          <a href="jobs/">
-            Jobs
-          </a>
-
-          <a href="services/">
-            Services
-          </a>
-
-          <a href="employees/">
-            Employees
-          </a>
-
-          <a href="businesses/">
-            Businesses
-          </a>
-
-          <a href="blog/">
-            Blog
-          </a>
-
-          <a href="contact/">
-            Contact
-          </a>
-
-        </div>
-
-
-        <!-- ACTIONS -->
-
-        <div class="premium-actions">
-
-          <a
-            href="admin/"
-            class="premium-btn premium-login"
-          >
-            Login
-          </a>
-
-
-          <a
-            href="register/"
-            class="premium-btn premium-register"
-          >
-            Register
-          </a>
-
-
-          <a
-            href="#"
-            class="premium-btn premium-language"
-            onclick="
-              if(window.toggleLanguage){
-                toggleLanguage();
-              }
-              return false;
-            "
-          >
-            বাংলা
-          </a>
-
-
-          <button
-            type="button"
-            class="premium-mobile"
-            onclick="togglePremiumMenu()"
-            aria-label="Menu"
-          >
-            ☰
-          </button>
-
-        </div>
-
-      </nav>
-
-    </div>
-
-  </header>
-
-
-
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
 
   <main>
 
-    <section class="premium-hero">
 
-      <div class="premium-container">
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
 
-        <div class="premium-hero-grid">
+    <section class="ultra-hero">
+
+      <div class="wrap">
+
+        <div class="hero-grid">
 
 
-          <!-- LEFT -->
+          <!-- HERO COPY -->
 
-          <div>
+          <div class="hero-copy">
 
-            <div class="premium-badge">
+            <div class="hero-eyebrow">
 
-              <span class="premium-badge-dot"></span>
+              <span class="hero-eyebrow-dot"></span>
 
-              Bangladesh's Job & Service Platform
+              DigiSER BD
+
+              <span>•</span>
+
+              Job • Service • Growth
 
             </div>
 
 
-            <h1>
+            <h1 class="hero-title">
 
-              Find Jobs.
-              <br>
+              Find Jobs.<br>
 
-              <span>Hire People.</span>
-              <br>
+              Hire People.<br>
 
-              Grow Business.
+              <span>Grow Business.</span>
 
             </h1>
 
 
-            <p class="premium-hero-text">
+            <p class="hero-description">
 
-              Connect people, skills and businesses in one
-              simple digital platform. Find opportunities,
-              hire talent and get the services you need.
+              One simple platform for discovering opportunities,
+              skilled people, digital services and local business
+              connections across Bangladesh.
 
             </p>
 
 
-            <!-- SEARCH -->
+            <div class="hero-actions">
 
-            <div class="premium-search">
-
-              <div class="premium-tabs">
-
-                <button
-                  type="button"
-                  class="premium-tab active"
-                  data-search-type="jobs"
-                >
-                  Jobs
-                </button>
-
-
-                <button
-                  type="button"
-                  class="premium-tab"
-                  data-search-type="employees"
-                >
-                  Employees
-                </button>
-
-
-                <button
-                  type="button"
-                  class="premium-tab"
-                  data-search-type="services"
-                >
-                  Services
-                </button>
-
-              </div>
-
-
-              <form
-                id="premiumSearchForm"
-                class="premium-search-row"
+              <a
+                href="register/"
+                class="ultra-btn ultra-btn-primary"
               >
 
-                <input
-                  id="premiumSearchInput"
-                  class="premium-search-input"
-                  type="search"
-                  placeholder="Search jobs..."
-                  autocomplete="off"
+                Create Your Profile
+
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
                 >
+                  <path d="M5 12h14"></path>
+                  <path d="m13 6 6 6-6 6"></path>
+                </svg>
+
+              </a>
 
 
-                <button
-                  type="submit"
-                  class="premium-search-button"
-                >
-                  Search
-                </button>
+              <a
+                href="jobs/"
+                class="ultra-btn ultra-btn-secondary"
+              >
 
-              </form>
+                Explore Jobs
+
+              </a>
 
             </div>
 
 
-            <!-- TRUST -->
+            <div class="hero-note">
 
-            <div class="premium-trust">
-
-              <span class="premium-trust-item">
-
-                <span class="premium-check">
-                  ✓
-                </span>
-
-                Verified profiles
-
+              <span>
+                <i></i>
+                Jobs
               </span>
 
-
-              <span class="premium-trust-item">
-
-                <span class="premium-check">
-                  ✓
-                </span>
-
-                Local businesses
-
+              <span>
+                <i></i>
+                Skilled People
               </span>
 
+              <span>
+                <i></i>
+                Digital Services
+              </span>
 
-              <span class="premium-trust-item">
-
-                <span class="premium-check">
-                  ✓
-                </span>
-
-                Quick hiring
-
+              <span>
+                <i></i>
+                Local Business
               </span>
 
             </div>
@@ -2252,123 +1625,533 @@
           </div>
 
 
+          <!-- HERO VISUAL -->
 
-          <!-- RIGHT -->
+          <div class="hero-visual">
 
-          <div class="premium-preview">
+            <div class="ecosystem-card">
 
-            <div class="premium-preview-glow"></div>
+              <div class="visual-top">
 
+                <span class="visual-label">
+                  DigiSER Ecosystem
+                </span>
 
-            <div class="premium-job-window">
-
-
-              <div class="premium-window-head">
-
-                <div class="premium-window-dots">
-
-                  <span></span>
-                  <span></span>
-                  <span></span>
-
-                </div>
-
-
-                <a
-                  href="jobs/"
-                  class="premium-window-link"
-                >
-                  See all jobs →
-                </a>
+                <span class="visual-pill">
+                  Bangladesh
+                </span>
 
               </div>
 
 
-              <div class="premium-job-feature">
+              <h2 class="visual-heading">
+                Everything you need to
+                connect, work and grow.
+              </h2>
 
-                <div class="premium-job-icon">
-                  💼
+
+              <div class="ecosystem-list">
+
+
+                <div class="eco-item">
+
+                  <div class="eco-icon">
+
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <rect
+                        x="3"
+                        y="4"
+                        width="18"
+                        height="16"
+                        rx="2"
+                      />
+                      <path d="M7 8h10M7 12h6" />
+                    </svg>
+
+                  </div>
+
+                  <div class="eco-content">
+
+                    <strong>
+                      Find Work
+                    </strong>
+
+                    <span>
+                      Explore job opportunities
+                    </span>
+
+                  </div>
+
+                  <span class="eco-arrow">→</span>
+
                 </div>
 
 
-                <h3 id="premiumHeroJobTitle">
-                  Explore new opportunities
-                </h3>
+                <div class="eco-item">
 
+                  <div class="eco-icon">
 
-                <div
-                  id="premiumHeroJobCompany"
-                  class="premium-job-company"
-                >
-                  Discover jobs from growing businesses
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <circle
+                        cx="9"
+                        cy="8"
+                        r="3"
+                      />
+                      <circle
+                        cx="17"
+                        cy="10"
+                        r="2.5"
+                      />
+                      <path
+                        d="M3.5 20c.6-3.2 2.4-5 5.5-5s4.9 1.8 5.5 5"
+                      />
+                      <path
+                        d="M14 16c2.5-.8 5.2.7 6 3"
+                      />
+                    </svg>
+
+                  </div>
+
+                  <div class="eco-content">
+
+                    <strong>
+                      Find People
+                    </strong>
+
+                    <span>
+                      Discover skilled professionals
+                    </span>
+
+                  </div>
+
+                  <span class="eco-arrow">→</span>
+
                 </div>
 
 
-                <div
-                  id="premiumHeroJobMeta"
-                  class="premium-job-tags"
-                >
+                <div class="eco-item">
 
-                  <span class="premium-job-tag">
-                    Bangladesh
-                  </span>
+                  <div class="eco-icon">
 
-                  <span class="premium-job-tag">
-                    Full Time
-                  </span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path
+                        d="M4 19V9"
+                      />
+                      <path
+                        d="M10 19V5"
+                      />
+                      <path
+                        d="M16 19v-7"
+                      />
+                      <path
+                        d="M22 19V3"
+                      />
+                    </svg>
 
-                  <span class="premium-job-tag">
-                    Verified
-                  </span>
+                  </div>
+
+                  <div class="eco-content">
+
+                    <strong>
+                      Get Services
+                    </strong>
+
+                    <span>
+                      Access practical digital services
+                    </span>
+
+                  </div>
+
+                  <span class="eco-arrow">→</span>
 
                 </div>
+
+
+                <div class="eco-item">
+
+                  <div class="eco-icon">
+
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path
+                        d="M3 21h18"
+                      />
+                      <path
+                        d="M5 21V9l7-5 7 5v12"
+                      />
+                      <path
+                        d="M9 21v-6h6v6"
+                      />
+                    </svg>
+
+                  </div>
+
+                  <div class="eco-content">
+
+                    <strong>
+                      Grow Locally
+                    </strong>
+
+                    <span>
+                      Connect with businesses
+                    </span>
+
+                  </div>
+
+                  <span class="eco-arrow">→</span>
+
+                </div>
+
 
               </div>
 
 
-              <div class="premium-window-stats">
+              <div class="visual-footer">
 
-                <div class="premium-window-stat">
+                <strong>
+                  Job • Service • Growth
+                </strong>
 
-                  <strong>
-                    Jobs
-                  </strong>
-
-                  <span>
-                    Opportunities
-                  </span>
-
-                </div>
-
-
-                <div class="premium-window-stat">
-
-                  <strong>
-                    Talent
-                  </strong>
-
-                  <span>
-                    Skilled people
-                  </span>
-
-                </div>
-
-
-                <div class="premium-window-stat">
-
-                  <strong>
-                    Services
-                  </strong>
-
-                  <span>
-                    Business support
-                  </span>
-
-                </div>
+                <span>
+                  DigiSER BD
+                </span>
 
               </div>
 
             </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SMART SEARCH
+         ===================================================== -->
+
+    <section class="ultra-search-wrap">
+
+      <div class="wrap">
+
+        <div class="ultra-search">
+
+
+          <div class="search-tabs">
+
+            <button
+              type="button"
+              class="search-tab active"
+              data-search-type="jobs"
+            >
+              Jobs
+            </button>
+
+            <button
+              type="button"
+              class="search-tab"
+              data-search-type="employees"
+            >
+              Employees
+            </button>
+
+            <button
+              type="button"
+              class="search-tab"
+              data-search-type="services"
+            >
+              Services
+            </button>
+
+          </div>
+
+
+          <form
+            class="search-form"
+            id="ultraSearchForm"
+          >
+
+            <div class="search-input-wrap">
+
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                />
+                <path
+                  d="m20 20-4-4"
+                />
+              </svg>
+
+
+              <input
+                id="ultraSearchInput"
+                class="search-input"
+                type="search"
+                placeholder="Search jobs, skills or services..."
+                autocomplete="off"
+              >
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="search-submit"
+            >
+              Search
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         THREE PATHS
+         ===================================================== -->
+
+    <section class="ultra-section">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-eyebrow">
+              One Platform
+            </span>
+
+            <h2 class="section-title">
+              Built around your goal.
+            </h2>
+
+            <p class="section-description">
+              Whether you are looking for work, looking for
+              talent or looking for a service, DigiSER BD
+              gives you a simple place to start.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="path-grid">
+
+
+          <!-- JOB SEEKER -->
+
+          <article class="path-card">
+
+            <span class="path-number">
+              01
+            </span>
+
+            <div class="path-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="3.5"
+                />
+                <path
+                  d="M5 21c.7-4.2 3-6.5 7-6.5s6.3 2.3 7 6.5"
+                />
+              </svg>
+
+            </div>
+
+            <h3>
+              Find a Job
+            </h3>
+
+            <p>
+              Create your profile, explore opportunities
+              and keep your application information organized.
+            </p>
+
+            <a href="jobs/">
+              Explore Jobs →
+            </a>
+
+          </article>
+
+
+          <!-- BUSINESS -->
+
+          <article class="path-card">
+
+            <span class="path-number">
+              02
+            </span>
+
+            <div class="path-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M4 21V8l8-4 8 4v13" />
+                <path d="M8 21v-5h8v5" />
+                <path d="M9 10h1M14 10h1M9 13h1M14 13h1" />
+              </svg>
+
+            </div>
+
+            <h3>
+              Hire People
+            </h3>
+
+            <p>
+              Discover skilled professionals who can support
+              your business, projects and day-to-day work.
+            </p>
+
+            <a href="employees/">
+              Find Employees →
+            </a>
+
+          </article>
+
+
+          <!-- SERVICES -->
+
+          <article class="path-card">
+
+            <span class="path-number">
+              03
+            </span>
+
+            <div class="path-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M4 19h16" />
+                <path d="M6 16V8" />
+                <path d="M10 16V5" />
+                <path d="M14 16v-6" />
+                <path d="M18 16V3" />
+              </svg>
+
+            </div>
+
+            <h3>
+              Get Services
+            </h3>
+
+            <p>
+              Access useful digital and business services
+              designed around practical needs.
+            </p>
+
+            <a href="services/">
+              Explore Services →
+            </a>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LATEST JOBS
+         ===================================================== -->
+
+    <section class="ultra-section ultra-section-soft">
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="section-eyebrow">
+              Opportunities
+            </span>
+
+            <h2 class="section-title">
+              Latest jobs.
+            </h2>
+
+            <p class="section-description">
+              Explore the latest opportunities currently
+              available in the DigiSER BD directory.
+            </p>
+
+          </div>
+
+
+          <a
+            href="jobs/"
+            class="section-link"
+          >
+            View all jobs →
+          </a>
+
+        </div>
+
+
+        <div class="job-shell">
+
+          <div id="ultraJobs">
+
+            <!-- Dynamic jobs are rendered here -->
 
           </div>
 
@@ -2384,26 +2167,25 @@
          SERVICES
          ===================================================== -->
 
-    <section class="premium-section">
+    <section class="ultra-section">
 
-      <div class="premium-container">
+      <div class="wrap">
 
-
-        <div class="premium-section-heading">
+        <div class="section-head">
 
           <div>
 
-            <div class="premium-kicker">
-              Business Support
-            </div>
+            <span class="section-eyebrow">
+              Digital Services
+            </span>
 
-            <h2 class="premium-title">
-              Services for your business
+            <h2 class="section-title">
+              Practical services.
             </h2>
 
-            <p class="premium-description">
-              Digital work and local support, so you can save
-              time and focus on customers.
+            <p class="section-description">
+              Explore digital services that can help you
+              create, maintain and grow your online presence.
             </p>
 
           </div>
@@ -2411,104 +2193,17 @@
 
           <a
             href="services/"
-            class="premium-more"
+            class="section-link"
           >
-            All services →
+            View all services →
           </a>
 
         </div>
 
 
-        <div class="premium-services">
+        <div id="ultraServices">
 
-
-          <article class="premium-service">
-
-            <div class="premium-service-icon">
-              🎨
-            </div>
-
-            <h3>
-              Graphic Design
-            </h3>
-
-            <p>
-              Logo, Banner, Social Media Post, Print Design
-              and more.
-            </p>
-
-            <span class="premium-service-arrow">
-              →
-            </span>
-
-          </article>
-
-
-          <article class="premium-service">
-
-            <div class="premium-service-icon">
-              📱
-            </div>
-
-            <h3>
-              Social Media Management
-            </h3>
-
-            <p>
-              Facebook, Instagram, YouTube, TikTok marketing
-              and management.
-            </p>
-
-            <span class="premium-service-arrow">
-              →
-            </span>
-
-          </article>
-
-
-          <article class="premium-service">
-
-            <div class="premium-service-icon">
-              💻
-            </div>
-
-            <h3>
-              Website Maintenance
-            </h3>
-
-            <p>
-              Website update, backup, security and content
-              support.
-            </p>
-
-            <span class="premium-service-arrow">
-              →
-            </span>
-
-          </article>
-
-
-          <article class="premium-service">
-
-            <div class="premium-service-icon">
-              🧑‍💼
-            </div>
-
-            <h3>
-              Employee Supplier
-            </h3>
-
-            <p>
-              Find skilled and reliable people to support
-              your business.
-            </p>
-
-            <span class="premium-service-arrow">
-              →
-            </span>
-
-          </article>
-
+          <!-- Dynamic services are rendered here -->
 
         </div>
 
@@ -2519,124 +2214,140 @@
 
 
     <!-- =====================================================
-         APPLICATION TRACKING
+         TRACK APPLICATION
          ===================================================== -->
 
-    <section class="premium-track">
+    <section class="ultra-section tracking-section">
 
-      <div class="premium-container">
+      <div class="wrap">
 
-        <div class="premium-track-box">
+        <div class="tracking-grid">
 
 
-          <div class="premium-track-content">
+          <div class="tracking-copy">
 
-            <div class="premium-kicker">
+            <span class="section-eyebrow">
               Application Tracking
-            </div>
+            </span>
 
-            <h2>
-              Track your application
+            <h2 class="section-title">
+              Know where your application stands.
             </h2>
 
-            <p>
-              Already applied for a job? Enter your mobile
-              number and tracking number to check your
-              application status.
+            <p class="section-description">
+              Already applied through DigiSER BD?
+              Use your mobile number and tracking number
+              to check your application status.
             </p>
+
+
+            <div class="tracking-points">
+
+              <div class="tracking-point">
+
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+
+                Application status
+
+              </div>
+
+
+              <div class="tracking-point">
+
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+
+                Application timeline
+
+              </div>
+
+
+              <div class="tracking-point">
+
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+
+                Updated application information
+
+              </div>
+
+            </div>
 
           </div>
 
 
-          <form
-            id="premiumTrackForm"
-            class="premium-track-form"
-          >
 
-            <div class="premium-track-fields">
+          <div class="tracking-box">
+
+            <h3>
+              Track your application
+            </h3>
+
+            <p>
+              Enter the same information used during registration.
+            </p>
+
+
+            <form
+              class="tracking-form"
+              id="ultraTrackingForm"
+            >
 
               <input
-                id="premiumTrackMobile"
-                class="premium-track-input"
+                id="trackMobile"
+                class="tracking-input"
                 type="tel"
                 placeholder="Mobile Number"
+                autocomplete="tel"
                 required
               >
 
 
               <input
-                id="premiumTrackNumber"
-                class="premium-track-input"
+                id="trackNumber"
+                class="tracking-input"
                 type="text"
                 placeholder="Tracking Number"
+                autocomplete="off"
                 required
               >
 
 
               <button
                 type="submit"
-                class="premium-track-button"
+                class="tracking-submit"
               >
-                Track
+                Track Application
               </button>
 
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         JOBS
-         ===================================================== -->
-
-    <section class="premium-section premium-soft-section">
-
-      <div class="premium-container">
-
-
-        <div class="premium-section-heading">
-
-          <div>
-
-            <div class="premium-kicker">
-              Opportunities
-            </div>
-
-            <h2 class="premium-title">
-              Latest jobs
-            </h2>
-
-            <p class="premium-description">
-              Discover current opportunities from businesses
-              and organizations.
-            </p>
+            </form>
 
           </div>
-
-
-          <a
-            href="jobs/"
-            class="premium-more"
-          >
-            View all jobs →
-          </a>
-
-        </div>
-
-
-        <div
-          id="homeJobs"
-          class="premium-jobs"
-        >
-
-          <!-- Existing app.js can render jobs here -->
 
         </div>
 
@@ -2650,26 +2361,25 @@
          HOW IT WORKS
          ===================================================== -->
 
-    <section class="premium-section">
+    <section class="ultra-section">
 
-      <div class="premium-container">
+      <div class="wrap">
 
-
-        <div class="premium-section-heading">
+        <div class="section-head">
 
           <div>
 
-            <div class="premium-kicker">
+            <span class="section-eyebrow">
               Simple Process
-            </div>
+            </span>
 
-            <h2 class="premium-title">
-              How DigiSER BD works
+            <h2 class="section-title">
+              Start in three steps.
             </h2>
 
-            <p class="premium-description">
-              One platform for finding opportunities, connecting
-              with people and getting business support.
+            <p class="section-description">
+              Keep the process simple, clear and focused on
+              connecting the right people with the right opportunity.
             </p>
 
           </div>
@@ -2677,58 +2387,58 @@
         </div>
 
 
-        <div class="premium-steps">
+        <div class="steps-grid">
 
 
-          <article class="premium-step">
+          <article class="step-card">
 
-            <div class="premium-step-number">
+            <span class="step-number">
               01
-            </div>
+            </span>
 
             <h3>
-              Discover
+              Register
             </h3>
 
             <p>
-              Search jobs, employees and digital services
-              based on what you need.
+              Create your profile and provide the information
+              needed for your application or professional profile.
             </p>
 
           </article>
 
 
-          <article class="premium-step">
+          <article class="step-card">
 
-            <div class="premium-step-number">
+            <span class="step-number">
               02
-            </div>
+            </span>
 
             <h3>
               Connect
             </h3>
 
             <p>
-              Apply for opportunities or connect with the
-              right people and businesses.
+              Explore jobs, employees, services and businesses
+              that match what you are looking for.
             </p>
 
           </article>
 
 
-          <article class="premium-step">
+          <article class="step-card">
 
-            <div class="premium-step-number">
+            <span class="step-number">
               03
-            </div>
+            </span>
 
             <h3>
               Grow
             </h3>
 
             <p>
-              Build your career, find skilled talent and
-              move your business forward.
+              Build useful connections and move forward with
+              your next job, service or business opportunity.
             </p>
 
           </article>
@@ -2743,36 +2453,51 @@
 
 
     <!-- =====================================================
-         CTA
+         FINAL CTA
          ===================================================== -->
 
-    <section class="premium-cta">
+    <section class="final-cta">
 
-      <div class="premium-container">
+      <div class="wrap">
 
-        <div class="premium-cta-box">
+        <div class="cta-box">
 
+          <div class="cta-content">
 
-          <div class="premium-cta-content">
+            <span class="section-eyebrow">
+              Ready to start?
+            </span>
 
             <h2>
-              Ready to get started?
+              Your next opportunity can start here.
             </h2>
 
             <p>
-              Create your profile and become part of DigiSER BD.
+              Create your profile, explore opportunities,
+              discover skilled people or connect with useful
+              digital services through DigiSER BD.
             </p>
 
+
+            <div class="cta-actions">
+
+              <a
+                href="register/"
+                class="ultra-btn ultra-btn-primary"
+              >
+                Create Profile →
+              </a>
+
+              <a
+                href="businesses/"
+                class="ultra-btn ultra-btn-secondary"
+              >
+                Explore Businesses
+              </a>
+
+            </div>
+
           </div>
-
-
-          <a
-            href="register/"
-            class="premium-cta-button"
-          >
-            Create Your Profile →
-          </a>
-
 
         </div>
 
@@ -2780,612 +2505,677 @@
 
     </section>
 
+
   </main>
 
 
+  <!-- =======================================================
+       SHARED FOOTER
+       ======================================================= -->
 
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="premium-footer">
-
-    <div class="premium-container">
+  <div id="ftr-slot"></div>
 
 
-      <div class="premium-footer-grid">
-
-
-        <div>
-
-          <a
-            href="index.html"
-            class="premium-footer-logo"
-          >
-
-            <img
-              src="logo.png"
-              alt="DigiSER BD"
-            >
-
-          </a>
-
-
-          <p class="premium-footer-description">
-            DigiSER BD connects jobs, skilled people,
-            digital services and businesses through one
-            simple platform.
-          </p>
-
-        </div>
-
-
-        <div class="premium-footer-column">
-
-          <h4>
-            Platform
-          </h4>
-
-          <a href="jobs/">
-            Jobs
-          </a>
-
-          <a href="employees/">
-            Employees
-          </a>
-
-          <a href="services/">
-            Services
-          </a>
-
-          <a href="businesses/">
-            Businesses
-          </a>
-
-        </div>
-
-
-        <div class="premium-footer-column">
-
-          <h4>
-            Company
-          </h4>
-
-          <a href="about/">
-            About
-          </a>
-
-          <a href="blog/">
-            Blog
-          </a>
-
-          <a href="contact/">
-            Contact
-          </a>
-
-          <a href="track-application.html">
-            Track Application
-          </a>
-
-        </div>
-
-
-        <div class="premium-footer-column">
-
-          <h4>
-            Account
-          </h4>
-
-          <a href="register/">
-            Register
-          </a>
-
-          <a href="admin/">
-            Login
-          </a>
-
-          <a href="register/">
-            Find a Job
-          </a>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="premium-footer-bottom">
-
-        <span>
-          © <span id="premiumYear"></span>
-          DigiSER BD. All rights reserved.
-        </span>
-
-        <span>
-          Job • Service • Growth
-        </span>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-
-  <!-- =====================================================
-       EXISTING DIGISER SYSTEM
-       ===================================================== -->
+  <!-- =======================================================
+       SHARED JS
+       ======================================================= -->
 
   <script src="assets/data.js"></script>
-
   <script src="assets/i18n.js"></script>
-
   <script src="assets/app.js"></script>
 
 
-
-  <!-- =====================================================
+  <!-- =======================================================
        HOMEPAGE JS
-       ===================================================== -->
+       ======================================================= -->
 
   <script>
 
     "use strict";
 
 
-    /* ============================================
-       MOBILE MENU
-       ============================================ */
+    /* =======================================================
+       HELPERS
+       ======================================================= */
 
-    function togglePremiumMenu() {
-
-      const menu =
-        document.querySelector(
-          ".premium-navigation"
-        );
+    const DS = window.DigiSERBD || {};
 
 
-      if (!menu) return;
+    function safe(value) {
 
-
-      const isOpen =
-        menu.dataset.open === "true";
-
-
-      if (isOpen) {
-
-        menu.style.display = "";
-
-        menu.style.position = "";
-
-        menu.style.top = "";
-
-        menu.style.left = "";
-
-        menu.style.right = "";
-
-        menu.style.padding = "";
-
-        menu.style.background = "";
-
-        menu.style.border = "";
-
-        menu.style.borderRadius = "";
-
-        menu.style.boxShadow = "";
-
-        menu.style.flexDirection = "";
-
-        menu.style.alignItems = "";
-
-        menu.dataset.open = "false";
-
-      } else {
-
-        menu.style.display = "flex";
-
-        menu.style.position = "absolute";
-
-        menu.style.top = "67px";
-
-        menu.style.left = "14px";
-
-        menu.style.right = "14px";
-
-        menu.style.padding = "9px";
-
-        menu.style.background = "#fff";
-
-        menu.style.border =
-          "1px solid #e5e7eb";
-
-        menu.style.borderRadius = "18px";
-
-        menu.style.boxShadow =
-          "0 20px 60px rgba(15,31,46,.13)";
-
-        menu.style.flexDirection = "column";
-
-        menu.style.alignItems = "stretch";
-
-        menu.dataset.open = "true";
-
+      if (value === undefined || value === null) {
+        return "";
       }
+
+      return String(value).trim();
 
     }
 
 
+    function escapeHTML(value) {
 
-    /* ============================================
-       INIT
-       ============================================ */
+      if (DS.esc) {
+        return DS.esc(value);
+      }
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function () {
+      return safe(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-
-        /* ----------------------------------------
-           SEARCH TABS
-           ---------------------------------------- */
-
-        const tabs =
-          document.querySelectorAll(
-            ".premium-tab"
-          );
+    }
 
 
-        const searchInput =
-          document.getElementById(
-            "premiumSearchInput"
-          );
+    function firstValue(object, keys) {
+
+      for (const key of keys) {
+
+        if (
+          object &&
+          object[key] !== undefined &&
+          object[key] !== null &&
+          String(object[key]).trim() !== ""
+        ) {
+          return object[key];
+        }
+
+      }
+
+      return "";
+
+    }
 
 
-        const placeholders = {
+    /* =======================================================
+       SEARCH
+       ======================================================= */
 
-          jobs:
-            "Search jobs...",
-
-          employees:
-            "Search employees...",
-
-          services:
-            "Search services..."
-
-        };
+    let activeSearchType = "jobs";
 
 
-        tabs.forEach(
-          function (tab) {
-
-            tab.addEventListener(
-              "click",
-              function () {
-
-                tabs.forEach(
-                  function (item) {
-
-                    item.classList.remove(
-                      "active"
-                    );
-
-                  }
-                );
+    const searchTabs =
+      document.querySelectorAll("[data-search-type]");
 
 
-                tab.classList.add(
-                  "active"
-                );
+    const searchInput =
+      document.getElementById("ultraSearchInput");
 
 
-                const type =
-                  tab.dataset.searchType;
+    const searchForm =
+      document.getElementById("ultraSearchForm");
 
 
-                if (searchInput) {
+    const searchPlaceholders = {
 
-                  searchInput.placeholder =
-                    placeholders[type] ||
-                    "Search...";
+      jobs:
+        "Search jobs, job titles or locations...",
 
-                }
+      employees:
+        "Search employees, skills or professions...",
 
-              }
-            );
+      services:
+        "Search services or service categories..."
 
-          }
-        );
-
+    };
 
 
-        /* ----------------------------------------
-           SEARCH FORM
-           ---------------------------------------- */
+    searchTabs.forEach(function(tab) {
 
-        const searchForm =
-          document.getElementById(
-            "premiumSearchForm"
-          );
+      tab.addEventListener("click", function() {
 
+        searchTabs.forEach(function(item) {
+          item.classList.remove("active");
+        });
 
-        if (searchForm) {
+        tab.classList.add("active");
 
-          searchForm.addEventListener(
-            "submit",
-            function (event) {
+        activeSearchType =
+          tab.getAttribute("data-search-type") || "jobs";
 
-              event.preventDefault();
+        if (searchInput) {
+          searchInput.placeholder =
+            searchPlaceholders[activeSearchType];
+        }
 
+      });
 
-              const value =
-                searchInput
-                  ? searchInput.value.trim()
-                  : "";
+    });
 
 
-              if (!value) {
+    if (searchForm) {
 
-                if (searchInput) {
-                  searchInput.focus();
-                }
+      searchForm.addEventListener("submit", function(event) {
 
-                return;
+        event.preventDefault();
 
-              }
+        const query =
+          searchInput
+            ? searchInput.value.trim()
+            : "";
 
-
-              const activeTab =
-                document.querySelector(
-                  ".premium-tab.active"
-                );
+        const encoded =
+          encodeURIComponent(query);
 
 
-              const type =
-                activeTab
-                  ? activeTab.dataset.searchType
-                  : "jobs";
+        let target = "jobs/";
 
+        if (activeSearchType === "employees") {
+          target = "employees/";
+        }
 
-              let target =
-                "jobs/";
-
-
-              if (
-                type === "employees"
-              ) {
-
-                target =
-                  "employees/";
-
-              }
-
-
-              if (
-                type === "services"
-              ) {
-
-                target =
-                  "services/";
-
-              }
-
-
-              window.location.href =
-                target +
-                "?search=" +
-                encodeURIComponent(
-                  value
-                );
-
-            }
-          );
-
+        if (activeSearchType === "services") {
+          target = "services/";
         }
 
 
-
-        /* ----------------------------------------
-           TRACK FORM
-           ---------------------------------------- */
-
-        const trackForm =
-          document.getElementById(
-            "premiumTrackForm"
-          );
-
-
-        if (trackForm) {
-
-          trackForm.addEventListener(
-            "submit",
-            function (event) {
-
-              event.preventDefault();
-
-
-              const mobile =
-                document.getElementById(
-                  "premiumTrackMobile"
-                ).value.trim();
-
-
-              const tracking =
-                document.getElementById(
-                  "premiumTrackNumber"
-                ).value.trim();
-
-
-              if (
-                !mobile ||
-                !tracking
-              ) {
-
-                return;
-
-              }
-
-
-              window.location.href =
-                "track-application.html" +
-                "?mobile=" +
-                encodeURIComponent(
-                  mobile
-                ) +
-                "&tracking=" +
-                encodeURIComponent(
-                  tracking
-                );
-
-            }
-          );
-
+        if (query) {
+          target += "?search=" + encoded;
         }
 
 
+        window.location.href = target;
 
-        /* ----------------------------------------
-           YEAR
-           ---------------------------------------- */
+      });
 
-        const year =
-          document.getElementById(
-            "premiumYear"
-          );
+    }
 
 
-        if (year) {
+    /* =======================================================
+       TRACKING
+       ======================================================= */
 
-          year.textContent =
-            new Date().getFullYear();
-
-        }
+    const trackingForm =
+      document.getElementById("ultraTrackingForm");
 
 
+    if (trackingForm) {
 
-        /* ----------------------------------------
-           HERO JOB
-           ---------------------------------------- */
+      trackingForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const mobile =
+          document.getElementById("trackMobile")
+            ?.value
+            .trim() || "";
+
+
+        const tracking =
+          document.getElementById("trackNumber")
+            ?.value
+            .trim() || "";
+
 
         try {
 
-          const DS =
-            window.DigiSERBD;
-
-
-          if (
-            DS &&
-            typeof DS.getDB === "function"
-          ) {
-
-            const db =
-              DS.getDB();
-
-
-            if (
-              db &&
-              Array.isArray(db.jobs) &&
-              db.jobs.length > 0
-            ) {
-
-              const job =
-                db.jobs[0];
-
-
-              const title =
-                document.getElementById(
-                  "premiumHeroJobTitle"
-                );
-
-
-              const company =
-                document.getElementById(
-                  "premiumHeroJobCompany"
-                );
-
-
-              const meta =
-                document.getElementById(
-                  "premiumHeroJobMeta"
-                );
-
-
-              if (title) {
-
-                title.textContent =
-                  job.title ||
-                  "Latest opportunity";
-
-              }
-
-
-              if (company) {
-
-                company.textContent =
-                  job.company ||
-                  job.business ||
-                  "DigiSER BD";
-
-              }
-
-
-              if (meta) {
-
-                meta.innerHTML = "";
-
-
-                const values = [
-
-                  job.location ||
-                    "Bangladesh",
-
-                  job.type ||
-                    "Full Time",
-
-                  "Verified"
-
-                ];
-
-
-                values.forEach(
-                  function (value) {
-
-                    const span =
-                      document.createElement(
-                        "span"
-                      );
-
-
-                    span.className =
-                      "premium-job-tag";
-
-
-                    span.textContent =
-                      value;
-
-
-                    meta.appendChild(
-                      span
-                    );
-
-                  }
-                );
-
-              }
-
-            }
-
-          }
-
-        } catch (error) {
-
-          console.warn(
-            "DigiSER BD homepage:",
-            error
+          sessionStorage.setItem(
+            "digiserbd_track_prefill",
+            JSON.stringify({
+              mobile: mobile,
+              tracking: tracking
+            })
           );
 
+        } catch (error) {
+          /* Storage may be unavailable */
         }
 
+
+        window.location.href =
+          "track-application.html";
+
+      });
+
+    }
+
+
+    /* =======================================================
+       DYNAMIC JOBS
+       ======================================================= */
+
+    function renderUltraJobs() {
+
+      const container =
+        document.getElementById("ultraJobs");
+
+      if (!container) {
+        return;
+      }
+
+
+      let db = {};
+
+      try {
+        db = DS.getDB ? DS.getDB() : {};
+      } catch (error) {
+        db = {};
+      }
+
+
+      const jobs =
+        Array.isArray(db.jobs)
+          ? db.jobs
+          : [];
+
+
+      const latestJobs =
+        jobs
+          .slice()
+          .sort(function(a, b) {
+
+            const dateA =
+              new Date(
+                firstValue(
+                  a,
+                  ["created", "createdAt", "updated"]
+                )
+              ).getTime() || 0;
+
+            const dateB =
+              new Date(
+                firstValue(
+                  b,
+                  ["created", "createdAt", "updated"]
+                )
+              ).getTime() || 0;
+
+            return dateB - dateA;
+
+          })
+          .slice(0, 3);
+
+
+      if (!latestJobs.length) {
+
+        container.innerHTML = `
+
+          <div class="job-empty">
+
+            <div class="job-empty-icon">
+
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2"
+                />
+
+                <path d="M8 5V3h8v2" />
+
+                <path d="M7 10h10" />
+
+              </svg>
+
+            </div>
+
+            <h3>
+              New opportunities are coming.
+            </h3>
+
+            <p>
+              Check the jobs directory for the latest available listings.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        latestJobs
+          .map(function(job) {
+
+            const title =
+              firstValue(
+                job,
+                [
+                  "title",
+                  "name",
+                  "jobTitle",
+                  "position"
+                ]
+              ) || "Job Opportunity";
+
+
+            const company =
+              firstValue(
+                job,
+                [
+                  "company",
+                  "companyName",
+                  "business",
+                  "businessName",
+                  "organization"
+                ]
+              ) || "DigiSER BD";
+
+
+            const location =
+              firstValue(
+                job,
+                [
+                  "location",
+                  "address",
+                  "area",
+                  "city"
+                ]
+              );
+
+
+            const type =
+              firstValue(
+                job,
+                [
+                  "type",
+                  "jobType",
+                  "employmentType"
+                ]
+              ) || "Opportunity";
+
+
+            const salary =
+              firstValue(
+                job,
+                [
+                  "salary",
+                  "pay",
+                  "salaryRange"
+                ]
+              );
+
+
+            const initial =
+              escapeHTML(
+                title
+                  .charAt(0)
+                  .toUpperCase()
+              );
+
+
+            return `
+
+              <article class="ultra-job-card">
+
+                <div class="job-top">
+
+                  <div class="job-mark">
+                    ${initial}
+                  </div>
+
+                  <span class="job-type">
+                    ${escapeHTML(type)}
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  ${escapeHTML(title)}
+                </h3>
+
+
+                <p class="job-company">
+                  ${escapeHTML(company)}
+                </p>
+
+
+                <div class="job-meta">
+
+                  ${
+                    location
+                      ? `<span>${escapeHTML(location)}</span>`
+                      : ""
+                  }
+
+                  ${
+                    salary
+                      ? `<span>${escapeHTML(salary)}</span>`
+                      : ""
+                  }
+
+                </div>
+
+              </article>
+
+            `;
+
+          })
+          .join("");
+
+    }
+
+
+    /* =======================================================
+       DYNAMIC SERVICES
+       ======================================================= */
+
+    function renderUltraServices() {
+
+      const container =
+        document.getElementById("ultraServices");
+
+      if (!container) {
+        return;
+      }
+
+
+      let db = {};
+
+      try {
+        db = DS.getDB ? DS.getDB() : {};
+      } catch (error) {
+        db = {};
+      }
+
+
+      const services =
+        Array.isArray(db.services)
+          ? db.services
+          : [];
+
+
+      const latestServices =
+        services
+          .slice()
+          .sort(function(a, b) {
+
+            const dateA =
+              new Date(
+                firstValue(
+                  a,
+                  ["created", "createdAt", "updated"]
+                )
+              ).getTime() || 0;
+
+            const dateB =
+              new Date(
+                firstValue(
+                  b,
+                  ["created", "createdAt", "updated"]
+                )
+              ).getTime() || 0;
+
+            return dateB - dateA;
+
+          })
+          .slice(0, 4);
+
+
+      if (!latestServices.length) {
+
+        const fallbackServices = [
+
+          {
+            title: "Graphic Design",
+            description:
+              "Creative visual design for brands, social media and business needs."
+          },
+
+          {
+            title: "Social Media",
+            description:
+              "Practical support for creating and managing your social presence."
+          },
+
+          {
+            title: "Website Maintenance",
+            description:
+              "Website updates, content changes and ongoing digital support."
+          },
+
+          {
+            title: "Digital Marketing",
+            description:
+              "Digital support to help businesses improve their online presence."
+          }
+
+        ];
+
+
+        container.innerHTML =
+          fallbackServices
+            .map(function(service) {
+
+              return createServiceCard(
+                service
+              );
+
+            })
+            .join("");
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        latestServices
+          .map(function(service) {
+
+            return createServiceCard(
+              service
+            );
+
+          })
+          .join("");
+
+    }
+
+
+    function createServiceCard(service) {
+
+      const title =
+        firstValue(
+          service,
+          [
+            "title",
+            "name",
+            "serviceName",
+            "category"
+          ]
+        ) || "Digital Service";
+
+
+      const description =
+        firstValue(
+          service,
+          [
+            "description",
+            "details",
+            "summary"
+          ]
+        ) ||
+        "Professional service support for your business needs.";
+
+
+      return `
+
+        <article class="service-card-ultra">
+
+          <div class="service-icon-ultra">
+
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+
+              <path
+                d="M4 19h16"
+              />
+
+              <path
+                d="M6 16V8"
+              />
+
+              <path
+                d="M10 16V5"
+              />
+
+              <path
+                d="M14 16v-6"
+              />
+
+              <path
+                d="M18 16V3"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <h3>
+            ${escapeHTML(title)}
+          </h3>
+
+
+          <p>
+            ${escapeHTML(description)}
+          </p>
+
+
+          <a href="services/">
+            View service →
+          </a>
+
+        </article>
+
+      `;
+
+    }
+
+
+    /* =======================================================
+       INITIALIZE
+       ======================================================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        renderUltraJobs();
+
+        renderUltraServices();
 
       }
     );
