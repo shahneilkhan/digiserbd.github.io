@@ -2,241 +2,423 @@
 <html lang="en">
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<title>Track Application | DigiSER BD</title>
 
-  <title>Track Application | DigiSER BD</title>
+<meta
+  name="description"
+  content="Track your DigiSER BD job application using your mobile number and tracking number."
+>
 
-  <meta
-    name="description"
-    content="Track your DigiSER BD job application using your mobile number and tracking number."
-  >
+<meta name="theme-color" content="#0087c4">
 
-  <meta
-    name="theme-color"
-    content="#0087c4"
-  >
+<link rel="icon" href="favicon.png" type="image/png">
 
-  <link
-    rel="icon"
-    href="favicon.png"
-    type="image/png"
-  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+<link
+  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+  rel="stylesheet"
+>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+<link rel="stylesheet" href="assets/style.css">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-    rel="stylesheet"
-  >
 
-  <link
-    rel="stylesheet"
-    href="assets/style.css"
-  >
+<style>
 
-  <style>
+.track-page{
+  min-height:calc(100vh - 160px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:70px 20px;
+  background:#f4f7f9;
+}
 
-    .track-page {
-      min-height: calc(100vh - 160px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 70px 20px;
-      background: #f4f7f9;
-    }
+.track-container{
+  width:100%;
+  max-width:650px;
+}
 
-    .track-container {
-      width: 100%;
-      max-width: 620px;
-    }
+.track-card{
+  background:#fff;
+  border:1px solid #e1e7eb;
+  border-radius:22px;
+  padding:40px;
+  box-shadow:0 18px 50px rgba(16,32,43,.08);
+}
 
-    .track-card {
-      background: #ffffff;
-      border: 1px solid #e1e7eb;
-      border-radius: 22px;
-      padding: 40px;
-      box-shadow: 0 18px 50px rgba(16, 32, 43, 0.08);
-    }
+.track-icon{
+  width:64px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  background:#eef8fc;
+  color:#0087c4;
+  font-size:28px;
+  margin-bottom:22px;
+}
 
-    .track-icon {
-      width: 64px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 18px;
-      background: #eef8fc;
-      color: #0087c4;
-      font-size: 28px;
-      margin-bottom: 22px;
-    }
+.track-card h1{
+  margin:0 0 10px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:32px;
+  line-height:1.2;
+  color:#10202b;
+}
 
-    .track-card h1 {
-      margin: 0 0 10px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 32px;
-      line-height: 1.2;
-      color: #10202b;
-    }
+.subtitle{
+  margin:0 0 30px;
+  color:#687580;
+  line-height:1.7;
+  font-size:16px;
+}
 
-    .track-card .subtitle {
-      margin: 0 0 30px;
-      color: #687580;
-      line-height: 1.7;
-      font-size: 16px;
-    }
+.track-form{
+  display:grid;
+  gap:18px;
+}
 
-    .track-form {
-      display: grid;
-      gap: 18px;
-    }
+.track-field{
+  display:grid;
+  gap:8px;
+}
 
-    .track-field {
-      display: grid;
-      gap: 8px;
-    }
+.track-field label{
+  font-weight:700;
+  color:#17202a;
+  font-size:14px;
+}
 
-    .track-field label {
-      font-weight: 700;
-      color: #17202a;
-      font-size: 14px;
-    }
+.track-field input{
+  width:100%;
+  min-height:52px;
+  padding:13px 15px;
+  border:1px solid #d7e0e5;
+  border-radius:12px;
+  background:#fff;
+  color:#17202a;
+  font-family:inherit;
+  font-size:16px;
+  outline:none;
+  transition:.2s ease;
+}
 
-    .track-field input {
-      width: 100%;
-      box-sizing: border-box;
-      min-height: 52px;
-      padding: 13px 15px;
-      border: 1px solid #d7e0e5;
-      border-radius: 12px;
-      background: #ffffff;
-      color: #17202a;
-      font-family: inherit;
-      font-size: 16px;
-      outline: none;
-      transition: 0.2s ease;
-    }
+.track-field input:focus{
+  border-color:#0087c4;
+  box-shadow:0 0 0 4px rgba(0,135,196,.10);
+}
 
-    .track-field input:focus {
-      border-color: #0087c4;
-      box-shadow: 0 0 0 4px rgba(0, 135, 196, 0.10);
-    }
+.track-help{
+  margin:0;
+  color:#7a8790;
+  font-size:13px;
+  line-height:1.5;
+}
 
-    .track-help {
-      margin: 0;
-      color: #7a8790;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+.track-submit{
+  width:100%;
+  min-height:54px;
+  border:0;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:700;
+  margin-top:4px;
+}
 
-    .track-submit {
-      width: 100%;
-      min-height: 54px;
-      border: 0;
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 4px;
-    }
+.track-message{
+  display:none;
+  margin-top:22px;
+  padding:15px 16px;
+  border-radius:12px;
+  line-height:1.6;
+  font-size:14px;
+}
 
-    .track-message {
-      display: none;
-      margin-top: 22px;
-      padding: 15px 16px;
-      border-radius: 12px;
-      line-height: 1.6;
-      font-size: 14px;
-    }
+.track-message.error{
+  display:block;
+  background:#fff1f0;
+  border:1px solid #f2c5c1;
+  color:#a12a20;
+}
 
-    .track-message.error {
-      display: block;
-      background: #fff1f0;
-      border: 1px solid #f2c5c1;
-      color: #a12a20;
-    }
+.track-message.success{
+  display:block;
+  background:#effaf4;
+  border:1px solid #bde6cc;
+  color:#176b3d;
+}
 
-    .track-message.success {
-      display: block;
-      background: #effaf4;
-      border: 1px solid #bde6cc;
-      color: #176b3d;
-    }
 
-    .track-info {
-      margin-top: 30px;
-      padding-top: 25px;
-      border-top: 1px solid #e7edf0;
-    }
+/* =========================================================
+   RESULT
+========================================================= */
 
-    .track-info h3 {
-      margin: 0 0 12px;
-      font-size: 16px;
-      color: #10202b;
-    }
+.track-result{
+  display:none;
+  margin-top:25px;
+  border:1px solid #dce7ec;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
 
-    .track-info ul {
-      margin: 0;
-      padding-left: 20px;
-      color: #687580;
-      line-height: 1.8;
-      font-size: 14px;
-    }
+.track-result.show{
+  display:block;
+}
 
-    .track-back {
-      text-align: center;
-      margin-top: 22px;
-    }
+.result-head{
+  padding:20px;
+  background:#f7fafb;
+  border-bottom:1px solid #e1e7eb;
+}
 
-    .track-back a {
-      color: #0087c4;
-      text-decoration: none;
-      font-weight: 700;
-    }
+.result-head small{
+  display:block;
+  margin-bottom:6px;
+  color:#687580;
+  font-size:12px;
+}
 
-    .track-back a:hover {
-      text-decoration: underline;
-    }
+.result-head h2{
+  margin:0;
+  color:#10202b;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+}
 
-    @media (max-width: 600px) {
+.result-body{
+  padding:20px;
+}
 
-      .track-page {
-        padding: 40px 15px;
-      }
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 0;
+  border-bottom:1px solid #edf1f3;
+}
 
-      .track-card {
-        padding: 28px 20px;
-        border-radius: 18px;
-      }
+.result-row:last-child{
+  border-bottom:0;
+}
 
-      .track-card h1 {
-        font-size: 27px;
-      }
+.result-label{
+  color:#687580;
+  font-size:13px;
+}
 
-      .track-icon {
-        width: 56px;
-        height: 56px;
-        font-size: 24px;
-      }
+.result-value{
+  color:#17202a;
+  font-size:13px;
+  font-weight:700;
+  text-align:right;
+}
 
-    }
+.tracking-number{
+  color:#0087c4;
+  font-family:"Space Grotesk",sans-serif;
+  letter-spacing:.04em;
+}
 
-  </style>
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-section{
+  margin-top:20px;
+}
+
+.status-section-title{
+  margin:0 0 12px;
+  color:#10202b;
+  font-size:15px;
+  font-weight:700;
+}
+
+.status-card{
+  padding:18px;
+  border-radius:14px;
+  background:#eef8fc;
+  border:1px solid #d7edf6;
+}
+
+.status-current{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.status-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#0087c4;
+  flex:none;
+}
+
+.status-current strong{
+  display:block;
+  color:#10202b;
+  font-size:16px;
+}
+
+.status-current span{
+  display:block;
+  margin-top:3px;
+  color:#687580;
+  font-size:12px;
+}
+
+
+/* =========================================================
+   STATUS TIMELINE
+========================================================= */
+
+.timeline{
+  margin-top:20px;
+  display:grid;
+  gap:0;
+}
+
+.timeline-item{
+  position:relative;
+  display:flex;
+  gap:13px;
+  min-height:58px;
+}
+
+.timeline-line{
+  position:absolute;
+  left:6px;
+  top:14px;
+  bottom:0;
+  width:2px;
+  background:#e0e7eb;
+}
+
+.timeline-item:last-child .timeline-line{
+  display:none;
+}
+
+.timeline-dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#d9e1e5;
+  border:3px solid #fff;
+  box-shadow:0 0 0 1px #d9e1e5;
+  flex:none;
+  position:relative;
+  z-index:2;
+}
+
+.timeline-item.active .timeline-dot{
+  background:#0087c4;
+  box-shadow:0 0 0 1px #0087c4;
+}
+
+.timeline-content{
+  padding-bottom:18px;
+}
+
+.timeline-content strong{
+  display:block;
+  font-size:13px;
+  color:#7a8790;
+}
+
+.timeline-item.active .timeline-content strong{
+  color:#0087c4;
+}
+
+.timeline-content small{
+  color:#9aa5ac;
+  font-size:11px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.track-info{
+  margin-top:30px;
+  padding-top:25px;
+  border-top:1px solid #e7edf0;
+}
+
+.track-info h3{
+  margin:0 0 12px;
+  font-size:16px;
+  color:#10202b;
+}
+
+.track-info ul{
+  margin:0;
+  padding-left:20px;
+  color:#687580;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.track-back{
+  text-align:center;
+  margin-top:22px;
+}
+
+.track-back a{
+  color:#0087c4;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.track-back a:hover{
+  text-decoration:underline;
+}
+
+
+@media(max-width:600px){
+
+  .track-page{
+    padding:40px 15px;
+  }
+
+  .track-card{
+    padding:28px 20px;
+    border-radius:18px;
+  }
+
+  .track-card h1{
+    font-size:27px;
+  }
+
+  .track-icon{
+    width:56px;
+    height:56px;
+    font-size:24px;
+  }
+
+  .result-row{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .result-value{
+    text-align:left;
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -252,147 +434,420 @@
 
 <main>
 
-  <section class="track-page">
+<section class="track-page">
 
-    <div class="track-container">
+<div class="track-container">
 
-      <div class="track-card">
-
-        <div class="track-icon">
-          ✓
-        </div>
+<div class="track-card">
 
 
-        <h1>
-          Track Your Application
-        </h1>
+<div class="track-icon">
+  ✓
+</div>
 
 
-        <p class="subtitle">
-          আপনার Job Application-এর অবস্থান Track করুন।
-          Application Submit করার পর পাওয়া
-          Tracking Number এবং Mobile Number ব্যবহার করুন।
-        </p>
+<h1>
+  Track Your Application
+</h1>
 
 
-        <form
-          id="trackForm"
-          class="track-form"
-          novalidate
-        >
-
-          <div class="track-field">
-
-            <label for="mobile">
-              Mobile Number
-            </label>
-
-            <input
-              id="mobile"
-              name="mobile"
-              type="tel"
-              inputmode="numeric"
-              autocomplete="tel"
-              placeholder="01XXXXXXXXX"
-              required
-            >
-
-            <p class="track-help">
-              যে Mobile Number দিয়ে Job Application করেছেন।
-            </p>
-
-          </div>
+<p class="subtitle">
+  আপনার Job Application-এর অবস্থান Track করুন।
+  Application Submit করার পর পাওয়া
+  Tracking Number এবং Mobile Number ব্যবহার করুন।
+</p>
 
 
-          <div class="track-field">
+<!-- =====================================================
+     TRACK FORM
+===================================================== -->
 
-            <label for="trackingNumber">
-              Tracking Number
-            </label>
-
-            <input
-              id="trackingNumber"
-              name="trackingNumber"
-              type="text"
-              autocomplete="off"
-              placeholder="Example: DGBD-2026-00001"
-              required
-            >
-
-            <p class="track-help">
-              Application Submit করার সময় পাওয়া Tracking Number।
-            </p>
-
-          </div>
+<form
+  id="trackForm"
+  class="track-form"
+  novalidate
+>
 
 
-          <button
-            type="submit"
-            class="btn pri track-submit"
-          >
-            Track Application
-          </button>
+<div class="track-field">
 
-        </form>
+<label for="mobile">
+  Mobile Number
+</label>
 
+<input
+  id="mobile"
+  name="mobile"
+  type="tel"
+  inputmode="tel"
+  autocomplete="tel"
+  placeholder="01XXXXXXXXX"
+  required
+>
 
-        <div
-          id="trackMessage"
-          class="track-message"
-          role="alert"
-        ></div>
+<p class="track-help">
+  যে Mobile Number দিয়ে Job Application করেছেন।
+</p>
 
-
-        <div class="track-info">
-
-          <h3>
-            Application Status
-          </h3>
-
-          <ul>
-
-            <li>
-              Application Submitted
-            </li>
-
-            <li>
-              Under Review
-            </li>
-
-            <li>
-              Shortlisted
-            </li>
-
-            <li>
-              Interview
-            </li>
-
-            <li>
-              Selected
-            </li>
-
-            <li>
-              Not Selected
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="track-back">
+<div class="track-field">
 
-        <a href="./">
-          ← Back to DigiSER BD
-        </a>
+<label for="trackingNumber">
+  Tracking Number
+</label>
 
-      </div>
+<input
+  id="trackingNumber"
+  name="trackingNumber"
+  type="text"
+  autocomplete="off"
+  placeholder="Example: DGBD-2026-123456"
+  required
+>
 
-    </div>
+<p class="track-help">
+  Application Submit করার সময় পাওয়া Tracking Number।
+</p>
 
-  </section>
+</div>
+
+
+<button
+  type="submit"
+  class="btn pri track-submit"
+>
+  Track Application
+</button>
+
+</form>
+
+
+<div
+  id="trackMessage"
+  class="track-message"
+  role="alert"
+></div>
+
+
+<!-- =====================================================
+     TRACK RESULT
+===================================================== -->
+
+<div
+  id="trackResult"
+  class="track-result"
+>
+
+
+<div class="result-head">
+
+<small>
+  APPLICATION FOUND
+</small>
+
+<h2>
+  Application Details
+</h2>
+
+</div>
+
+
+<div class="result-body">
+
+
+<div class="result-row">
+
+<span class="result-label">
+  Applicant
+</span>
+
+<span
+  class="result-value"
+  id="resultName"
+>
+  —
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="result-label">
+  Tracking Number
+</span>
+
+<span
+  class="result-value tracking-number"
+  id="resultTracking"
+>
+  —
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="result-label">
+  Mobile Number
+</span>
+
+<span
+  class="result-value"
+  id="resultMobile"
+>
+  —
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="result-label">
+  Applied Date
+</span>
+
+<span
+  class="result-value"
+  id="resultDate"
+>
+  —
+</span>
+
+</div>
+
+
+<!-- CURRENT STATUS -->
+
+<div class="status-section">
+
+<h3 class="status-section-title">
+  Current Application Status
+</h3>
+
+
+<div class="status-card">
+
+<div class="status-current">
+
+<div
+  class="status-dot"
+  id="statusDot"
+></div>
+
+<div>
+
+<strong id="resultStatus">
+  Application Submitted
+</strong>
+
+<span id="statusDescription">
+  Your application has been received.
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TIMELINE -->
+
+<div class="timeline">
+
+<div
+  class="timeline-item"
+  data-status="new"
+>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<strong>
+  Application Submitted
+</strong>
+
+<small>
+  Application received
+</small>
+
+</div>
+
+</div>
+
+
+<div
+  class="timeline-item"
+  data-status="reviewing"
+>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<strong>
+  Under Review
+</strong>
+
+<small>
+  Application is being reviewed
+</small>
+
+</div>
+
+</div>
+
+
+<div
+  class="timeline-item"
+  data-status="shortlisted"
+>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<strong>
+  Shortlisted
+</strong>
+
+<small>
+  Candidate shortlisted
+</small>
+
+</div>
+
+</div>
+
+
+<div
+  class="timeline-item"
+  data-status="interview"
+>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<strong>
+  Interview
+</strong>
+
+<small>
+  Interview stage
+</small>
+
+</div>
+
+</div>
+
+
+<div
+  class="timeline-item"
+  data-status="selected"
+>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-content">
+
+<strong>
+  Selected
+</strong>
+
+<small>
+  Application selected
+</small>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     INFO
+===================================================== -->
+
+<div class="track-info">
+
+<h3>
+  Application Status
+</h3>
+
+<ul>
+
+<li>
+  Application Submitted
+</li>
+
+<li>
+  Under Review
+</li>
+
+<li>
+  Shortlisted
+</li>
+
+<li>
+  Interview
+</li>
+
+<li>
+  Selected
+</li>
+
+<li>
+  Not Selected
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+<div class="track-back">
+
+<a href="./">
+  ← Back to DigiSER BD
+</a>
+
+</div>
+
+
+</div>
+
+</section>
 
 </main>
 
@@ -407,25 +862,403 @@
 
 <script>
 
-  const trackForm = document.getElementById("trackForm");
-  const trackMessage = document.getElementById("trackMessage");
+"use strict";
 
-  trackForm.addEventListener("submit", function(event) {
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+const STORAGE_KEY =
+  "digiserbd_admin_v1";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const trackForm =
+  document.getElementById("trackForm");
+
+const trackMessage =
+  document.getElementById("trackMessage");
+
+const trackResult =
+  document.getElementById("trackResult");
+
+const mobileInput =
+  document.getElementById("mobile");
+
+const trackingInput =
+  document.getElementById("trackingNumber");
+
+
+/* =========================================================
+   GET DATABASE
+========================================================= */
+
+function getDB(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(STORAGE_KEY);
+
+    if(!raw){
+
+      return {
+        users:[],
+        jobs:[],
+        services:[],
+        employees:[],
+        businesses:[],
+        messages:[],
+        blog:[]
+      };
+
+    }
+
+
+    const db =
+      JSON.parse(raw);
+
+
+    db.users ||= [];
+
+
+    return db;
+
+  }catch(error){
+
+    console.error(
+      "Database error:",
+      error
+    );
+
+    return {
+      users:[]
+    };
+
+  }
+
+}
+
+
+/* =========================================================
+   NORMALIZE MOBILE
+========================================================= */
+
+function normalizeMobile(value){
+
+  return String(value || "")
+    .replace(/\D/g,"")
+    .replace(/^880/,"0");
+
+}
+
+
+/* =========================================================
+   STATUS LABEL
+========================================================= */
+
+function getStatusLabel(status){
+
+  const labels = {
+
+    new:
+      "Application Submitted",
+
+    reviewing:
+      "Under Review",
+
+    shortlisted:
+      "Shortlisted",
+
+    interview:
+      "Interview",
+
+    selected:
+      "Selected",
+
+    rejected:
+      "Not Selected"
+
+  };
+
+
+  return labels[status] ||
+    "Application Submitted";
+
+}
+
+
+/* =========================================================
+   STATUS DESCRIPTION
+========================================================= */
+
+function getStatusDescription(status){
+
+  const descriptions = {
+
+    new:
+      "Your application has been received.",
+
+    reviewing:
+      "Your application is currently being reviewed.",
+
+    shortlisted:
+      "You have been shortlisted for the next stage.",
+
+    interview:
+      "Your application has reached the interview stage.",
+
+    selected:
+      "Your application has been selected.",
+
+    rejected:
+      "The application process has been completed."
+
+  };
+
+
+  return descriptions[status] ||
+    "Your application has been received.";
+
+}
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(value){
+
+  if(!value){
+    return "—";
+  }
+
+
+  try{
+
+    const date =
+      new Date(value);
+
+
+    return date.toLocaleDateString(
+      "en-BD",
+      {
+        year:"numeric",
+        month:"short",
+        day:"numeric"
+      }
+    );
+
+  }catch(error){
+
+    return "—";
+
+  }
+
+}
+
+
+/* =========================================================
+   STATUS ORDER
+========================================================= */
+
+const statusOrder = [
+
+  "new",
+  "reviewing",
+  "shortlisted",
+  "interview",
+  "selected"
+
+];
+
+
+/* =========================================================
+   UPDATE TIMELINE
+========================================================= */
+
+function updateTimeline(status){
+
+  const items =
+    document.querySelectorAll(
+      ".timeline-item"
+    );
+
+
+  items.forEach(item=>{
+
+    item.classList.remove(
+      "active"
+    );
+
+  });
+
+
+  if(status === "rejected"){
+
+    return;
+
+  }
+
+
+  let currentIndex =
+    statusOrder.indexOf(status);
+
+
+  if(currentIndex < 0){
+
+    currentIndex = 0;
+
+  }
+
+
+  items.forEach(item=>{
+
+    const itemStatus =
+      item.dataset.status;
+
+    const itemIndex =
+      statusOrder.indexOf(
+        itemStatus
+      );
+
+
+    if(
+      itemIndex >= 0 &&
+      itemIndex <= currentIndex
+    ){
+
+      item.classList.add(
+        "active"
+      );
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   SHOW RESULT
+========================================================= */
+
+function showResult(user){
+
+  const personal =
+    user.personal || {};
+
+
+  const trackingNumber =
+    user.trackingNumber ||
+    user.id ||
+    "—";
+
+
+  const status =
+    user.status ||
+    "new";
+
+
+  document.getElementById(
+    "resultName"
+  ).textContent =
+    personal.name ||
+    user.name ||
+    "Applicant";
+
+
+  document.getElementById(
+    "resultTracking"
+  ).textContent =
+    trackingNumber;
+
+
+  document.getElementById(
+    "resultMobile"
+  ).textContent =
+    personal.mobile ||
+    "—";
+
+
+  document.getElementById(
+    "resultDate"
+  ).textContent =
+    formatDate(
+      user.created
+    );
+
+
+  document.getElementById(
+    "resultStatus"
+  ).textContent =
+    getStatusLabel(status);
+
+
+  document.getElementById(
+    "statusDescription"
+  ).textContent =
+    getStatusDescription(status);
+
+
+  updateTimeline(
+    status
+  );
+
+
+  trackResult.classList.add(
+    "show"
+  );
+
+
+  trackResult.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+}
+
+
+/* =========================================================
+   TRACK APPLICATION
+========================================================= */
+
+trackForm.addEventListener(
+  "submit",
+  function(event){
 
     event.preventDefault();
 
+
+    trackMessage.className =
+      "track-message";
+
+    trackMessage.textContent =
+      "";
+
+
+    trackResult.classList.remove(
+      "show"
+    );
+
+
     const mobile =
-      document.getElementById("mobile").value.trim();
+      normalizeMobile(
+        mobileInput.value
+      );
+
 
     const trackingNumber =
-      document.getElementById("trackingNumber").value.trim();
+      trackingInput.value
+        .trim()
+        .toUpperCase();
 
 
-    trackMessage.className = "track-message";
-    trackMessage.textContent = "";
-
-
-    if (!mobile) {
+    if(!mobile){
 
       trackMessage.className =
         "track-message error";
@@ -433,12 +1266,14 @@
       trackMessage.textContent =
         "Please enter your Mobile Number.";
 
+      mobileInput.focus();
+
       return;
 
     }
 
 
-    if (!trackingNumber) {
+    if(!trackingNumber){
 
       trackMessage.className =
         "track-message error";
@@ -446,32 +1281,98 @@
       trackMessage.textContent =
         "Please enter your Tracking Number.";
 
+      trackingInput.focus();
+
       return;
 
     }
 
 
+    const db =
+      getDB();
+
+
     /*
-      STEP 2 ONLY
-
-      Real application tracking will be connected
-      in the next steps.
-
-      For now, we are checking that both fields
-      have been entered.
+      Find application by:
+      1. Tracking Number
+      2. Mobile Number
     */
+
+    const user =
+      db.users.find(applicant=>{
+
+        const applicantTracking =
+          String(
+            applicant.trackingNumber ||
+            applicant.id ||
+            ""
+          )
+          .trim()
+          .toUpperCase();
+
+
+        const applicantMobile =
+          normalizeMobile(
+            applicant.personal?.mobile ||
+            applicant.mobile ||
+            ""
+          );
+
+
+        return (
+          applicantTracking ===
+          trackingNumber
+        )
+        &&
+        (
+          applicantMobile ===
+          mobile
+        );
+
+      });
+
+
+    if(!user){
+
+      trackMessage.className =
+        "track-message error";
+
+      trackMessage.textContent =
+        "Application not found. Please check your Mobile Number and Tracking Number.";
+
+      return;
+
+    }
+
 
     trackMessage.className =
       "track-message success";
 
-    trackMessage.innerHTML =
-      "<strong>Tracking information received.</strong><br>" +
-      "Real application status tracking will be connected next.";
+    trackMessage.textContent =
+      "Application found successfully.";
 
-  });
+
+    showResult(user);
+
+  }
+);
+
+
+/* =========================================================
+   AUTO UPPERCASE TRACKING NUMBER
+========================================================= */
+
+trackingInput.addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.toUpperCase();
+
+  }
+);
 
 </script>
-
 
 </body>
 </html>
