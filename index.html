@@ -13,7 +13,7 @@
 
   <meta
     name="description"
-    content="DigiSER BD — Find jobs, hire skilled people and grow your business."
+    content="DigiSER BD — Connect jobs, skilled people, services and businesses."
   >
 
   <meta
@@ -21,13 +21,10 @@
     content="#0284c7"
   >
 
-  <link
-    rel="icon"
-    href="favicon.png"
-    type="image/png"
-  >
+  <!-- Brand Assets -->
+  <link rel="icon" href="favicon.png" type="image/png">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -41,40 +38,40 @@
     rel="stylesheet"
   >
 
-  <!-- Main CSS -->
-  <link
-    rel="stylesheet"
-    href="assets/style.css"
-  >
+  <!-- Existing global system -->
+  <link rel="stylesheet" href="assets/style.css">
+
 
   <style>
 
     /* =====================================================
-       DIGISER BD PREMIUM HOMEPAGE
+       DIGISER BD — PREMIUM HOMEPAGE
        ===================================================== */
 
     :root {
-      --ds-blue: #0284c7;
-      --ds-blue-dark: #0369a1;
-      --ds-blue-soft: #e0f2fe;
-      --ds-blue-pale: #f0f9ff;
+      --blue: #0284c7;
+      --blue-dark: #0369a1;
+      --blue-light: #e0f2fe;
+      --blue-soft: #f0f9ff;
 
-      --ds-navy: #0f1f2e;
-      --ds-text: #17202a;
-      --ds-muted: #64748b;
+      --navy: #0b1b29;
+      --text: #17202a;
+      --muted: #64748b;
 
-      --ds-white: #ffffff;
-      --ds-border: #e5e7eb;
+      --line: #e6edf2;
+      --white: #ffffff;
 
-      --ds-radius-lg: 28px;
-      --ds-radius-md: 20px;
-      --ds-radius-sm: 14px;
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 17px;
 
-      --ds-shadow:
-        0 20px 60px rgba(15, 31, 46, 0.08);
+      --shadow:
+        0 24px 70px rgba(15, 31, 46, .08);
 
-      --ds-shadow-soft:
-        0 10px 35px rgba(15, 31, 46, 0.06);
+      --shadow-small:
+        0 10px 30px rgba(15, 31, 46, .06);
+
+      --container: 1200px;
     }
 
 
@@ -90,9 +87,12 @@
 
     body {
       margin: 0;
-      background: #ffffff;
-      color: var(--ds-text);
-      font-family: "Inter", sans-serif;
+      background: #fff;
+      color: var(--text);
+
+      font-family:
+        "Inter",
+        sans-serif;
     }
 
 
@@ -101,8 +101,18 @@
     }
 
 
-    .ds-container {
-      width: min(1180px, calc(100% - 40px));
+    button,
+    input {
+      font-family: inherit;
+    }
+
+
+    .premium-container {
+      width: min(
+        var(--container),
+        calc(100% - 40px)
+      );
+
       margin: 0 auto;
     }
 
@@ -111,200 +121,218 @@
        HEADER
        ===================================================== */
 
-    .ds-header {
+    .premium-header {
       position: sticky;
+
       top: 0;
+
       z-index: 1000;
 
-      background: rgba(255, 255, 255, 0.88);
+      background:
+        rgba(255, 255, 255, .88);
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(18px);
 
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid rgba(226, 232, 240, .8);
     }
 
 
-    .ds-nav {
-      min-height: 76px;
+    .premium-nav {
+      min-height: 78px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
-      gap: 24px;
+      gap: 25px;
     }
 
 
-    .ds-brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
+    /* LOGO */
 
-      color: var(--ds-navy);
+    .premium-logo {
+      display: flex;
+
+      align-items: center;
+
       flex-shrink: 0;
     }
 
 
-    .ds-brand-icon {
-      width: 42px;
-      height: 42px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 13px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #0284c7,
-          #38bdf8
-        );
-
-      color: white;
-
-      box-shadow:
-        0 8px 20px rgba(2, 132, 199, 0.22);
-    }
-
-
-    .ds-brand-icon svg {
-      width: 23px;
-      height: 23px;
-    }
-
-
-    .ds-brand-name {
+    .premium-logo img {
       display: block;
 
-      font-family: "Space Grotesk", sans-serif;
+      width: auto;
 
-      font-size: 19px;
-      font-weight: 700;
+      max-width: 190px;
 
-      line-height: 1.1;
+      height: 48px;
+
+      object-fit: contain;
     }
 
 
-    .ds-brand-tagline {
-      display: block;
-
-      margin-top: 3px;
-
-      color: var(--ds-muted);
-
-      font-size: 10px;
-      font-weight: 600;
-
-      letter-spacing: 0.08em;
-    }
-
-
-    .ds-menu {
+    .premium-navigation {
       display: flex;
+
       align-items: center;
-      gap: 4px;
+
+      gap: 3px;
     }
 
 
-    .ds-menu a {
-      color: #52606d;
-
-      font-size: 13px;
-      font-weight: 600;
-
+    .premium-navigation a {
       padding: 10px 13px;
 
       border-radius: 999px;
 
-      transition: 0.2s ease;
+      color: #586875;
+
+      font-size: 12px;
+
+      font-weight: 650;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
     }
 
 
-    .ds-menu a:hover {
-      color: var(--ds-blue);
-      background: var(--ds-blue-pale);
+    .premium-navigation a:hover {
+      color: var(--blue);
+
+      background:
+        var(--blue-soft);
+
+      transform: translateY(-1px);
     }
 
 
-    .ds-menu a.active {
-      color: var(--ds-blue);
+    .premium-navigation a.active {
+      color: var(--blue);
 
-      background: var(--ds-blue-soft);
+      background:
+        var(--blue-light);
     }
 
 
-    .ds-nav-actions {
+    .premium-actions {
       display: flex;
+
       align-items: center;
+
       gap: 8px;
     }
 
 
-    .ds-login,
-    .ds-register,
-    .ds-language {
-      min-height: 40px;
+    .premium-btn {
+      min-height: 41px;
 
       padding: 0 17px;
 
       border-radius: 999px;
 
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
 
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11px;
 
-      transition: 0.2s ease;
+      font-weight: 750;
+
+      transition: .2s ease;
     }
 
 
-    .ds-login,
-    .ds-language {
-      border: 1px solid #d8e0e7;
-      color: var(--ds-navy);
-      background: white;
+    .premium-login {
+      color: var(--navy);
+
+      background: #fff;
+
+      border:
+        1px solid #dbe4ea;
     }
 
 
-    .ds-login:hover,
-    .ds-language:hover {
-      border-color: #bae6fd;
-      color: var(--ds-blue);
-      background: var(--ds-blue-pale);
+    .premium-login:hover {
+      color: var(--blue);
+
+      border-color:
+        #a5dcf7;
     }
 
 
-    .ds-register {
-      color: white;
-      background: var(--ds-blue);
+    .premium-register {
+      color: #fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0284c7,
+          #0ea5e9
+        );
 
       box-shadow:
-        0 7px 18px rgba(2, 132, 199, 0.2);
+        0 8px 22px
+        rgba(2, 132, 199, .20);
     }
 
 
-    .ds-register:hover {
-      background: var(--ds-blue-dark);
-      transform: translateY(-1px);
+    .premium-register:hover {
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 12px 28px
+        rgba(2, 132, 199, .25);
     }
 
 
-    .ds-mobile-btn {
+    .premium-language {
+      color: var(--navy);
+
+      border:
+        1px solid #dbe4ea;
+
+      background: #fff;
+    }
+
+
+    .premium-language:hover {
+      color: var(--blue);
+
+      border-color:
+        #a5dcf7;
+    }
+
+
+    .premium-mobile {
       display: none;
 
       width: 42px;
+
       height: 42px;
 
-      border: 1px solid var(--ds-border);
-      border-radius: 12px;
+      border:
+        1px solid #dbe4ea;
+
+      border-radius: 13px;
 
       background: white;
 
       cursor: pointer;
+
+      font-size: 19px;
     }
 
 
@@ -312,286 +340,338 @@
        HERO
        ===================================================== */
 
-    .ds-hero {
+    .premium-hero {
       position: relative;
+
       overflow: hidden;
 
-      padding: 74px 0 82px;
-
       background:
-        radial-gradient(
-          circle at 85% 25%,
-          rgba(125, 211, 252, 0.35),
-          transparent 30%
-        ),
-
         linear-gradient(
           135deg,
           #ffffff 0%,
-          #f0f9ff 100%
+          #f5fbff 50%,
+          #eaf7fd 100%
         );
+
+      padding:
+        82px 0 90px;
     }
 
 
-    .ds-hero::before {
+    .premium-hero::before {
       content: "";
 
       position: absolute;
 
-      width: 560px;
-      height: 560px;
+      width: 680px;
 
-      right: -280px;
-      top: -170px;
+      height: 680px;
 
-      border: 85px solid rgba(125, 211, 252, 0.16);
+      right: -340px;
+
+      top: -280px;
+
+      border:
+        100px solid
+        rgba(125, 211, 252, .13);
 
       border-radius: 50%;
     }
 
 
-    .ds-hero::after {
+    .premium-hero::after {
       content: "";
 
       position: absolute;
 
-      width: 260px;
-      height: 260px;
+      width: 340px;
 
-      left: -180px;
-      bottom: -160px;
+      height: 340px;
+
+      left: -220px;
+
+      bottom: -240px;
 
       border-radius: 50%;
 
-      background: rgba(186, 230, 253, 0.28);
+      background:
+        rgba(186, 230, 253, .25);
+
+      filter: blur(5px);
     }
 
 
-    .ds-hero-grid {
+    .premium-hero-grid {
       position: relative;
+
       z-index: 2;
 
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(370px, .92fr);
 
       align-items: center;
 
-      gap: 60px;
+      gap: 70px;
     }
 
 
-    .ds-eyebrow {
+    .premium-badge {
       display: inline-flex;
+
       align-items: center;
+
       gap: 8px;
 
-      padding: 7px 11px;
+      padding:
+        7px 12px;
 
       border-radius: 999px;
 
-      background: white;
+      background:
+        rgba(255, 255, 255, .85);
 
-      border: 1px solid #dff2fc;
+      border:
+        1px solid #dceff8;
 
-      color: var(--ds-blue);
+      color: var(--blue);
 
-      font-size: 11px;
+      font-size: 10px;
+
       font-weight: 800;
 
-      box-shadow: 0 7px 22px rgba(2, 132, 199, 0.06);
+      box-shadow:
+        0 8px 24px
+        rgba(2, 132, 199, .06);
     }
 
 
-    .ds-eyebrow-dot {
+    .premium-badge-dot {
       width: 7px;
+
       height: 7px;
 
       border-radius: 50%;
 
       background: #22c55e;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(34, 197, 94, .10);
     }
 
 
-    .ds-hero h1 {
-      max-width: 650px;
+    .premium-hero h1 {
+      max-width: 690px;
 
-      margin: 18px 0 16px;
+      margin:
+        19px 0 18px;
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      color: var(--ds-navy);
+      font-size:
+        clamp(46px, 5.5vw, 72px);
 
-      font-size: clamp(42px, 5vw, 68px);
+      line-height:
+        .97;
 
-      line-height: 0.99;
+      letter-spacing:
+        -.055em;
 
-      letter-spacing: -0.045em;
+      color: var(--navy);
     }
 
 
-    .ds-hero h1 span {
-      color: var(--ds-blue);
+    .premium-hero h1 span {
+      color: var(--blue);
     }
 
 
-    .ds-hero-description {
-      max-width: 570px;
+    .premium-hero-text {
+      max-width: 590px;
 
-      margin: 0 0 30px;
+      margin: 0 0 31px;
 
-      color: #657482;
+      color: #697987;
 
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 15px;
+
+      line-height: 1.8;
     }
 
 
     /* =====================================================
-       SEARCH BOX
+       SEARCH
        ===================================================== */
 
-    .ds-search-card {
-      max-width: 680px;
+    .premium-search {
+      max-width: 710px;
 
-      padding: 10px;
-
-      background: white;
-
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 9px;
 
       border-radius: 22px;
 
+      background: #fff;
+
+      border:
+        1px solid
+        rgba(226, 232, 240, .95);
+
       box-shadow:
-        0 20px 60px rgba(15, 31, 46, 0.09);
+        0 20px 60px
+        rgba(15, 31, 46, .09);
     }
 
 
-    .ds-search-tabs {
+    .premium-tabs {
       display: flex;
-      gap: 5px;
 
-      margin-bottom: 9px;
+      gap: 4px;
+
+      margin:
+        0 0 8px;
     }
 
 
-    .ds-search-tab {
+    .premium-tab {
       border: 0;
 
       background: transparent;
 
-      color: #64748b;
+      color: #71808d;
 
-      padding: 8px 13px;
+      padding:
+        8px 14px;
 
       border-radius: 999px;
 
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 10px;
+
+      font-weight: 800;
 
       cursor: pointer;
     }
 
 
-    .ds-search-tab.active {
-      color: white;
-      background: var(--ds-navy);
+    .premium-tab.active {
+      color: #fff;
+
+      background: var(--navy);
     }
 
 
-    .ds-search-row {
+    .premium-search-row {
       display: flex;
+
       gap: 8px;
     }
 
 
-    .ds-search-input {
+    .premium-search-input {
       flex: 1;
 
       min-width: 0;
 
-      height: 52px;
+      height: 53px;
 
-      padding: 0 18px;
+      padding:
+        0 18px;
 
-      border: 1px solid #e5e7eb;
+      border:
+        1px solid #e4ebef;
 
       border-radius: 15px;
 
       outline: none;
 
-      color: var(--ds-navy);
+      background: #f9fbfc;
 
-      font-family: inherit;
-      font-size: 14px;
+      color: var(--navy);
 
-      background: #fafcfd;
+      font-size: 13px;
     }
 
 
-    .ds-search-input:focus {
-      border-color: #7dd3fc;
+    .premium-search-input:focus {
+      background: #fff;
 
-      background: white;
+      border-color:
+        #7dd3fc;
 
       box-shadow:
-        0 0 0 4px rgba(125, 211, 252, 0.14);
+        0 0 0 4px
+        rgba(125, 211, 252, .12);
     }
 
 
-    .ds-search-button {
-      height: 52px;
+    .premium-search-button {
+      height: 53px;
 
-      padding: 0 24px;
+      padding:
+        0 25px;
 
       border: 0;
 
       border-radius: 15px;
 
-      background: var(--ds-blue);
+      background:
+        linear-gradient(
+          135deg,
+          #0284c7,
+          #0ea5e9
+        );
 
-      color: white;
+      color: #fff;
 
-      font-size: 13px;
+      font-size: 11px;
+
       font-weight: 800;
 
       cursor: pointer;
 
       box-shadow:
-        0 9px 22px rgba(2, 132, 199, 0.2);
+        0 9px 23px
+        rgba(2, 132, 199, .20);
     }
 
 
-    .ds-search-button:hover {
-      background: var(--ds-blue-dark);
-    }
-
-
-    .ds-trust {
+    .premium-trust {
       display: flex;
+
       flex-wrap: wrap;
-      gap: 10px;
+
+      gap: 17px;
 
       margin-top: 17px;
     }
 
 
-    .ds-trust-item {
-      display: inline-flex;
+    .premium-trust-item {
+      display: flex;
+
       align-items: center;
+
       gap: 6px;
 
-      color: #667685;
+      color: #72818d;
 
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10px;
+
+      font-weight: 650;
     }
 
 
-    .ds-trust-check {
+    .premium-check {
       width: 18px;
+
       height: 18px;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 50%;
@@ -600,220 +680,265 @@
 
       color: #16a34a;
 
-      font-size: 10px;
+      font-size: 9px;
+
       font-weight: 900;
     }
 
 
     /* =====================================================
-       HERO JOB PREVIEW
+       HERO PREVIEW
        ===================================================== */
 
-    .ds-preview-wrap {
+    .premium-preview {
       position: relative;
     }
 
 
-    .ds-preview-glow {
+    .premium-preview-glow {
       position: absolute;
 
-      width: 220px;
-      height: 220px;
+      width: 270px;
 
-      right: -30px;
-      top: -35px;
+      height: 270px;
+
+      right: -40px;
+
+      top: -50px;
 
       border-radius: 50%;
 
-      background: #bae6fd;
+      background:
+        rgba(56, 189, 248, .26);
 
-      filter: blur(50px);
-
-      opacity: 0.45;
+      filter: blur(55px);
     }
 
 
-    .ds-preview-card {
+    .premium-job-window {
       position: relative;
+
       z-index: 2;
 
-      padding: 27px;
+      padding: 26px;
 
-      border-radius: 28px;
+      border-radius: 30px;
 
-      background: rgba(255, 255, 255, 0.94);
+      background:
+        rgba(255,255,255,.92);
 
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border:
+        1px solid
+        rgba(255,255,255,.95);
 
       box-shadow:
-        0 30px 80px rgba(15, 31, 46, 0.12);
+        0 35px 90px
+        rgba(15, 31, 46, .13);
     }
 
 
-    .ds-preview-top {
+    .premium-window-head {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
-      margin-bottom: 27px;
+      margin-bottom: 20px;
     }
 
 
-    .ds-preview-label {
-      color: #8794a0;
+    .premium-window-dots {
+      display: flex;
 
-      font-size: 11px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.08em;
+      gap: 5px;
     }
 
 
-    .ds-preview-link {
-      color: var(--ds-blue);
+    .premium-window-dots span {
+      width: 7px;
 
-      font-size: 12px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #d8e1e7;
+    }
+
+
+    .premium-window-link {
+      color: var(--blue);
+
+      font-size: 10px;
+
       font-weight: 800;
     }
 
 
-    .ds-job-main {
-      padding: 21px;
+    .premium-job-feature {
+      padding: 22px;
 
-      border: 1px solid #edf2f5;
+      border-radius: 21px;
 
-      border-radius: 20px;
+      background:
+        linear-gradient(
+          145deg,
+          #f8fcfe,
+          #eef8fc
+        );
 
-      background: #fbfdfe;
+      border:
+        1px solid #e0eef4;
     }
 
 
-    .ds-job-icon {
-      width: 48px;
-      height: 48px;
+    .premium-job-icon {
+      width: 51px;
+
+      height: 51px;
 
       display: grid;
+
       place-items: center;
 
-      border-radius: 15px;
+      border-radius: 16px;
 
-      background: var(--ds-blue-soft);
+      background:
+        linear-gradient(
+          135deg,
+          #dff4fd,
+          #bae6fd
+        );
 
-      color: var(--ds-blue);
+      color: var(--blue);
 
       font-size: 21px;
 
-      margin-bottom: 16px;
+      margin-bottom: 17px;
     }
 
 
-    .ds-job-title {
-      margin: 0 0 7px;
+    .premium-job-feature h3 {
+      margin: 0 0 6px;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 21px;
     }
 
 
-    .ds-job-company {
+    .premium-job-company {
       color: #71808d;
 
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 10px;
+
+      font-weight: 650;
     }
 
 
-    .ds-job-meta {
+    .premium-job-tags {
       display: flex;
+
       flex-wrap: wrap;
-      gap: 7px;
+
+      gap: 6px;
 
       margin-top: 17px;
     }
 
 
-    .ds-meta-pill {
-      padding: 7px 10px;
+    .premium-job-tag {
+      padding:
+        7px 10px;
 
       border-radius: 999px;
 
-      background: white;
+      background: #fff;
 
-      border: 1px solid #e5eaee;
+      border:
+        1px solid #dfe9ee;
 
       color: #687783;
 
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 9px;
+
+      font-weight: 650;
     }
 
 
-    .ds-preview-bottom {
+    .premium-window-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
 
       gap: 8px;
 
-      margin-top: 13px;
+      margin-top: 10px;
     }
 
 
-    .ds-mini-stat {
-      padding: 14px 12px;
+    .premium-window-stat {
+      padding: 14px 9px;
 
       border-radius: 15px;
 
-      background: #f7fafc;
+      background: #f8fafb;
 
       text-align: center;
     }
 
 
-    .ds-mini-stat strong {
+    .premium-window-stat strong {
       display: block;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-size: 17px;
-      font-weight: 800;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size: 15px;
     }
 
 
-    .ds-mini-stat span {
+    .premium-window-stat span {
       display: block;
 
       margin-top: 3px;
 
-      color: #8996a1;
+      color: #8795a0;
 
-      font-size: 9px;
-      font-weight: 600;
+      font-size: 8px;
+
+      font-weight: 650;
     }
 
 
     /* =====================================================
-       SECTION COMMON
+       SECTIONS
        ===================================================== */
 
-    .ds-section {
-      padding: 90px 0;
+    .premium-section {
+      padding: 92px 0;
     }
 
 
-    .ds-section-soft {
-      background: #f8fbfd;
+    .premium-soft-section {
+      background:
+        #f8fbfd;
     }
 
 
-    .ds-section-head {
+    .premium-section-heading {
       display: flex;
-      align-items: end;
+
+      align-items: flex-end;
+
       justify-content: space-between;
 
       gap: 30px;
@@ -822,54 +947,61 @@
     }
 
 
-    .ds-section-kicker {
+    .premium-kicker {
       margin-bottom: 8px;
 
-      color: var(--ds-blue);
+      color: var(--blue);
 
-      font-size: 11px;
-      font-weight: 800;
+      font-size: 10px;
+
+      font-weight: 850;
 
       text-transform: uppercase;
 
-      letter-spacing: 0.1em;
+      letter-spacing: .12em;
     }
 
 
-    .ds-section-title {
+    .premium-title {
       margin: 0;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: clamp(29px, 4vw, 42px);
+      font-size:
+        clamp(30px, 4vw, 43px);
 
-      line-height: 1.08;
+      line-height: 1.05;
 
-      letter-spacing: -0.03em;
+      letter-spacing: -.035em;
     }
 
 
-    .ds-section-description {
-      max-width: 540px;
+    .premium-description {
+      max-width: 560px;
 
-      margin: 10px 0 0;
+      margin:
+        10px 0 0;
 
-      color: #71808d;
+      color: #72818d;
 
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 13px;
+
+      line-height: 1.75;
     }
 
 
-    .ds-view-all {
-      color: var(--ds-blue);
+    .premium-more {
+      flex-shrink: 0;
 
-      font-size: 12px;
+      color: var(--blue);
+
+      font-size: 11px;
+
       font-weight: 800;
-
-      white-space: nowrap;
     }
 
 
@@ -877,7 +1009,7 @@
        SERVICES
        ===================================================== */
 
-    .ds-service-grid {
+    .premium-services {
       display: grid;
 
       grid-template-columns:
@@ -887,45 +1019,56 @@
     }
 
 
-    .ds-service-card {
+    .premium-service {
       position: relative;
 
-      min-height: 235px;
+      min-height: 245px;
 
       padding: 25px;
 
-      background: white;
+      background: #fff;
 
-      border: 1px solid #e7edf1;
+      border:
+        1px solid #e6edf1;
 
-      border-radius: 22px;
-
-      box-shadow: var(--ds-shadow-soft);
-
-      transition: 0.25s ease;
-    }
-
-
-    .ds-service-card:hover {
-      transform: translateY(-5px);
-
-      border-color: #bae6fd;
+      border-radius: 23px;
 
       box-shadow:
-        0 22px 50px rgba(15, 31, 46, 0.09);
+        var(--shadow-small);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
     }
 
 
-    .ds-service-icon {
-      width: 52px;
-      height: 52px;
+    .premium-service:hover {
+      transform:
+        translateY(-6px);
+
+      border-color:
+        #bae6fd;
+
+      box-shadow:
+        0 25px 55px
+        rgba(15, 31, 46, .10);
+    }
+
+
+    .premium-service-icon {
+      width: 54px;
+
+      height: 54px;
 
       display: grid;
+
       place-items: center;
 
-      border-radius: 16px;
+      border-radius: 17px;
 
-      background: var(--ds-blue-pale);
+      background:
+        var(--blue-soft);
 
       font-size: 23px;
 
@@ -933,188 +1076,223 @@
     }
 
 
-    .ds-service-card h3 {
+    .premium-service h3 {
       margin: 0 0 9px;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 18px;
+      font-size: 17px;
+
+      line-height: 1.25;
     }
 
 
-    .ds-service-card p {
+    .premium-service p {
       margin: 0;
 
-      color: #71808d;
+      color: #75838e;
 
-      font-size: 12px;
+      font-size: 11px;
 
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
 
-    .ds-service-arrow {
+    .premium-service-arrow {
       position: absolute;
 
-      right: 22px;
-      bottom: 21px;
+      right: 21px;
 
-      width: 30px;
-      height: 30px;
+      bottom: 20px;
+
+      width: 31px;
+
+      height: 31px;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 50%;
 
-      background: #f1f5f9;
+      background:
+        #f1f5f9;
 
-      color: var(--ds-blue);
+      color: var(--blue);
 
       font-size: 13px;
+
+      transition: .2s ease;
+    }
+
+
+    .premium-service:hover
+    .premium-service-arrow {
+      color: #fff;
+
+      background:
+        var(--blue);
     }
 
 
     /* =====================================================
-       TRACKING
+       TRACK
        ===================================================== */
 
-    .ds-track {
+    .premium-track {
       padding: 85px 0;
     }
 
 
-    .ds-track-box {
+    .premium-track-box {
       position: relative;
+
       overflow: hidden;
 
       display: grid;
 
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns:
+        .9fr 1.1fr;
 
       align-items: center;
 
-      gap: 45px;
+      gap: 55px;
 
-      padding: 50px;
+      padding: 55px;
 
-      border-radius: 30px;
+      border-radius: 32px;
 
       background:
         linear-gradient(
           135deg,
-          #0f1f2e,
-          #12354a
+          #091923,
+          #12374d
         );
 
       box-shadow:
-        0 30px 70px rgba(15, 31, 46, 0.16);
+        0 35px 80px
+        rgba(15, 31, 46, .16);
     }
 
 
-    .ds-track-box::after {
+    .premium-track-box::after {
       content: "";
 
       position: absolute;
 
-      width: 330px;
-      height: 330px;
+      width: 450px;
 
-      right: -110px;
-      top: -160px;
+      height: 450px;
 
-      border: 65px solid rgba(125, 211, 252, 0.08);
+      right: -230px;
+
+      top: -280px;
+
+      border:
+        75px solid
+        rgba(125,211,252,.07);
 
       border-radius: 50%;
     }
 
 
-    .ds-track-content {
+    .premium-track-content {
       position: relative;
+
       z-index: 2;
     }
 
 
-    .ds-track-content .ds-section-kicker {
+    .premium-track-content
+    .premium-kicker {
       color: #7dd3fc;
     }
 
 
-    .ds-track-content h2 {
-      margin: 0 0 13px;
+    .premium-track-content h2 {
+      margin: 0 0 12px;
 
       color: white;
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 35px;
+      font-size: 37px;
 
-      line-height: 1.1;
+      line-height: 1.05;
+
+      letter-spacing: -.03em;
     }
 
 
-    .ds-track-content p {
-      max-width: 450px;
+    .premium-track-content p {
+      max-width: 470px;
 
       margin: 0;
 
-      color: #b8c8d4;
+      color: #aebfca;
 
-      font-size: 13px;
+      font-size: 12px;
 
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
 
-    .ds-track-form {
+    .premium-track-form {
       position: relative;
+
       z-index: 2;
 
       padding: 8px;
 
-      border-radius: 18px;
+      border-radius: 19px;
 
-      background: white;
+      background: #fff;
     }
 
 
-    .ds-track-form-inner {
-      display: flex;
-      gap: 8px;
+    .premium-track-fields {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr auto;
+
+      gap: 7px;
     }
 
 
-    .ds-track-input {
-      flex: 1;
-
-      min-width: 0;
+    .premium-track-input {
+      width: 100%;
 
       height: 51px;
 
+      padding:
+        0 14px;
+
       border: 0;
 
-      outline: none;
-
-      padding: 0 15px;
+      outline: 0;
 
       border-radius: 13px;
 
       background: #f5f8fa;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: inherit;
-
-      font-size: 12px;
+      font-size: 11px;
     }
 
 
-    .ds-track-button {
+    .premium-track-button {
       height: 51px;
 
-      padding: 0 21px;
+      padding:
+        0 20px;
 
       border: 0;
 
@@ -1122,11 +1300,12 @@
 
       color: white;
 
-      background: var(--ds-blue);
+      background:
+        var(--blue);
+
+      font-size: 11px;
 
       font-weight: 800;
-
-      font-size: 12px;
 
       cursor: pointer;
     }
@@ -1136,124 +1315,135 @@
        JOBS
        ===================================================== */
 
-    .ds-job-grid {
+    .premium-jobs {
       display: grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 17px;
+      gap: 16px;
     }
 
 
-    .ds-job-card {
-      padding: 23px;
-
-      border: 1px solid #e5ebef;
-
-      border-radius: 21px;
+    .premium-job-card {
+      padding: 22px;
 
       background: white;
 
-      transition: 0.2s ease;
+      border:
+        1px solid #e5ebef;
+
+      border-radius: 21px;
+
+      transition: .25s ease;
     }
 
 
-    .ds-job-card:hover {
-      transform: translateY(-3px);
+    .premium-job-card:hover {
+      transform:
+        translateY(-4px);
 
-      box-shadow: var(--ds-shadow-soft);
+      box-shadow:
+        var(--shadow-small);
 
-      border-color: #cfeefb;
+      border-color:
+        #cbeaf8;
     }
 
 
-    .ds-job-card-top {
+    .premium-job-card-top {
       display: flex;
 
       justify-content: space-between;
 
       align-items: flex-start;
-
-      gap: 15px;
     }
 
 
-    .ds-job-small-icon {
-      width: 43px;
-      height: 43px;
+    .premium-job-small-icon {
+      width: 44px;
+
+      height: 44px;
 
       display: grid;
+
       place-items: center;
 
-      border-radius: 13px;
+      border-radius: 14px;
 
-      background: var(--ds-blue-soft);
-
-      color: var(--ds-blue);
+      background:
+        var(--blue-light);
 
       font-size: 18px;
     }
 
 
-    .ds-job-type {
-      padding: 6px 9px;
+    .premium-job-status {
+      padding:
+        6px 9px;
 
       border-radius: 999px;
 
-      background: #ecfdf5;
+      background:
+        #ecfdf5;
 
-      color: #15803d;
+      color:
+        #15803d;
 
-      font-size: 9px;
+      font-size: 8px;
 
       font-weight: 800;
     }
 
 
-    .ds-job-card h3 {
-      margin: 17px 0 5px;
+    .premium-job-card h3 {
+      margin:
+        17px 0 5px;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
       font-size: 17px;
     }
 
 
-    .ds-job-card-company {
-      color: #7a8792;
+    .premium-job-company {
+      color: #7b8994;
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: 600;
     }
 
 
-    .ds-job-card-meta {
+    .premium-job-card-meta {
       display: flex;
 
       flex-wrap: wrap;
 
       gap: 6px;
 
-      margin-top: 17px;
+      margin-top: 16px;
     }
 
 
-    .ds-job-card-meta span {
-      padding: 6px 9px;
+    .premium-job-card-meta span {
+      padding:
+        6px 8px;
 
       border-radius: 8px;
 
-      background: #f7fafb;
+      background:
+        #f7fafb;
 
-      color: #687783;
+      color: #6c7b87;
 
-      font-size: 9px;
+      font-size: 8px;
 
-      font-weight: 600;
+      font-weight: 650;
     }
 
 
@@ -1261,68 +1451,79 @@
        HOW IT WORKS
        ===================================================== */
 
-    .ds-steps {
+    .premium-steps {
       display: grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 17px;
+      gap: 16px;
     }
 
 
-    .ds-step {
-      padding: 28px;
+    .premium-step {
+      position: relative;
 
-      border-radius: 21px;
+      padding: 29px;
 
-      background: white;
+      background: #fff;
 
-      border: 1px solid #e7edf1;
+      border:
+        1px solid #e6edf1;
+
+      border-radius: 22px;
     }
 
 
-    .ds-step-number {
-      width: 40px;
-      height: 40px;
+    .premium-step-number {
+      width: 43px;
+
+      height: 43px;
 
       display: grid;
+
       place-items: center;
 
-      border-radius: 12px;
+      border-radius: 14px;
 
-      background: var(--ds-blue-soft);
+      background:
+        var(--blue-light);
 
-      color: var(--ds-blue);
+      color: var(--blue);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 15px;
+      font-size: 13px;
+
       font-weight: 800;
 
       margin-bottom: 20px;
     }
 
 
-    .ds-step h3 {
+    .premium-step h3 {
       margin: 0 0 8px;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
       font-size: 18px;
     }
 
 
-    .ds-step p {
+    .premium-step p {
       margin: 0;
 
-      color: #74818c;
+      color: #74828e;
 
-      font-size: 12px;
+      font-size: 11px;
 
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
 
@@ -1330,78 +1531,130 @@
        CTA
        ===================================================== */
 
-    .ds-cta {
-      padding: 0 0 90px;
+    .premium-cta {
+      padding:
+        0 0 90px;
     }
 
 
-    .ds-cta-box {
+    .premium-cta-box {
+      position: relative;
+
+      overflow: hidden;
+
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 30px;
 
-      padding: 42px 45px;
+      padding:
+        47px 50px;
 
-      border-radius: 27px;
+      border-radius: 30px;
 
-      background: var(--ds-blue-pale);
+      background:
+        linear-gradient(
+          135deg,
+          #eef9fe,
+          #f7fcff
+        );
 
-      border: 1px solid #d9f0fc;
+      border:
+        1px solid #d9eff9;
     }
 
 
-    .ds-cta-box h2 {
+    .premium-cta-box::after {
+      content: "";
+
+      position: absolute;
+
+      width: 250px;
+
+      height: 250px;
+
+      right: -100px;
+
+      top: -130px;
+
+      border:
+        45px solid
+        rgba(125,211,252,.18);
+
+      border-radius: 50%;
+    }
+
+
+    .premium-cta-content {
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .premium-cta-box h2 {
       margin: 0 0 8px;
 
-      color: var(--ds-navy);
+      color: var(--navy);
 
-      font-family: "Space Grotesk", sans-serif;
+      font-family:
+        "Space Grotesk",
+        sans-serif;
 
-      font-size: 30px;
+      font-size: 31px;
+
+      letter-spacing: -.03em;
     }
 
 
-    .ds-cta-box p {
+    .premium-cta-box p {
       margin: 0;
 
-      color: #6c7c88;
+      color: #71808c;
 
-      font-size: 12px;
+      font-size: 11px;
     }
 
 
-    .ds-cta-button {
+    .premium-cta-button {
+      position: relative;
+
+      z-index: 2;
+
       flex-shrink: 0;
+
+      min-height: 48px;
+
+      padding:
+        0 23px;
 
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
-
-      min-height: 47px;
-
-      padding: 0 22px;
 
       border-radius: 999px;
 
-      background: var(--ds-blue);
-
       color: white;
 
-      font-size: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          #0284c7,
+          #0ea5e9
+        );
+
+      font-size: 11px;
 
       font-weight: 800;
 
       box-shadow:
-        0 10px 24px rgba(2, 132, 199, 0.2);
-    }
-
-
-    .ds-cta-button:hover {
-      background: var(--ds-blue-dark);
+        0 12px 25px
+        rgba(2,132,199,.20);
     }
 
 
@@ -1409,216 +1662,238 @@
        FOOTER
        ===================================================== */
 
-    .ds-footer {
-      padding: 55px 0 25px;
-
-      background: #0b1823;
+    .premium-footer {
+      background:
+        #091720;
 
       color: white;
+
+      padding:
+        58px 0 24px;
     }
 
 
-    .ds-footer-grid {
+    .premium-footer-grid {
       display: grid;
 
-      grid-template-columns: 1.5fr repeat(3, 1fr);
+      grid-template-columns:
+        1.6fr repeat(3, 1fr);
 
       gap: 45px;
 
-      padding-bottom: 45px;
+      padding-bottom: 42px;
 
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
     }
 
 
-    .ds-footer-brand {
-      max-width: 290px;
+    .premium-footer-logo img {
+      width: auto;
+
+      max-width: 185px;
+
+      height: 45px;
+
+      object-fit: contain;
     }
 
 
-    .ds-footer-brand .ds-brand {
+    .premium-footer-description {
+      max-width: 300px;
+
+      margin:
+        17px 0 0;
+
+      color: #81929e;
+
+      font-size: 10px;
+
+      line-height: 1.8;
+    }
+
+
+    .premium-footer-column h4 {
+      margin:
+        0 0 16px;
+
       color: white;
-    }
 
+      font-size: 10px;
 
-    .ds-footer-brand .ds-brand-tagline {
-      color: #8293a0;
-    }
-
-
-    .ds-footer-description {
-      margin: 17px 0 0;
-
-      color: #8999a5;
-
-      font-size: 11px;
-
-      line-height: 1.7;
-    }
-
-
-    .ds-footer-column h4 {
-      margin: 0 0 16px;
-
-      font-size: 11px;
+      font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: 0.08em;
-
-      color: white;
+      letter-spacing: .09em;
     }
 
 
-    .ds-footer-column a {
+    .premium-footer-column a {
       display: block;
 
       margin-bottom: 11px;
 
-      color: #8293a0;
+      color: #7f909c;
 
-      font-size: 11px;
+      font-size: 10px;
+
+      transition: .2s ease;
     }
 
 
-    .ds-footer-column a:hover {
+    .premium-footer-column a:hover {
       color: #7dd3fc;
     }
 
 
-    .ds-footer-bottom {
+    .premium-footer-bottom {
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 20px;
 
-      padding-top: 22px;
+      padding-top: 21px;
 
-      color: #71818e;
+      color: #697b87;
 
-      font-size: 10px;
+      font-size: 9px;
     }
 
 
     /* =====================================================
-       RESPONSIVE
+       MOBILE
        ===================================================== */
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1080px) {
 
-      .ds-menu {
+      .premium-navigation {
         display: none;
       }
 
-      .ds-mobile-btn {
+
+      .premium-mobile {
         display: block;
       }
 
-      .ds-hero-grid {
+
+      .premium-hero-grid {
         grid-template-columns: 1fr;
+
+        gap: 50px;
       }
 
-      .ds-preview-wrap {
+
+      .premium-preview {
         max-width: 650px;
       }
 
-      .ds-service-grid {
+
+      .premium-services {
         grid-template-columns:
           repeat(2, 1fr);
       }
 
-      .ds-job-grid {
+
+      .premium-jobs {
         grid-template-columns:
           repeat(2, 1fr);
       }
 
-      .ds-footer-grid {
+
+      .premium-footer-grid {
         grid-template-columns:
           repeat(2, 1fr);
       }
+
     }
 
 
     @media (max-width: 720px) {
 
-      .ds-container {
-        width: min(
-          100% - 28px,
-          1180px
-        );
+      .premium-container {
+        width:
+          calc(100% - 28px);
       }
 
 
-      .ds-nav {
+      .premium-nav {
         min-height: 68px;
       }
 
 
-      .ds-nav-actions .ds-login {
+      .premium-logo img {
+        max-width: 150px;
+
+        height: 42px;
+      }
+
+
+      .premium-actions
+      .premium-login,
+      .premium-actions
+      .premium-language {
         display: none;
       }
 
 
-      .ds-nav-actions .ds-language {
-        display: none;
-      }
-
-
-      .ds-register {
+      .premium-register {
         min-height: 37px;
 
-        padding: 0 14px;
-
-        font-size: 11px;
+        padding:
+          0 14px;
       }
 
 
-      .ds-hero {
-        padding: 55px 0 60px;
+      .premium-hero {
+        padding:
+          55px 0 65px;
       }
 
 
-      .ds-hero h1 {
-        font-size: 43px;
+      .premium-hero h1 {
+        font-size: 45px;
       }
 
 
-      .ds-hero-description {
-        font-size: 14px;
+      .premium-hero-text {
+        font-size: 13px;
       }
 
 
-      .ds-search-row {
+      .premium-search-row {
         flex-direction: column;
       }
 
 
-      .ds-search-button {
+      .premium-search-button {
         width: 100%;
       }
 
 
-      .ds-search-card {
-        padding: 9px;
+      .premium-trust {
+        gap: 10px 14px;
       }
 
 
-      .ds-preview-card {
+      .premium-job-window {
         padding: 19px;
       }
 
 
-      .ds-section {
+      .premium-section {
         padding: 65px 0;
       }
 
 
-      .ds-section-head {
-        align-items: flex-start;
-
+      .premium-section-heading {
         flex-direction: column;
+
+        align-items: flex-start;
 
         gap: 12px;
 
@@ -1626,72 +1901,81 @@
       }
 
 
-      .ds-service-grid,
-      .ds-job-grid,
-      .ds-steps {
+      .premium-services,
+      .premium-jobs,
+      .premium-steps {
         grid-template-columns: 1fr;
       }
 
 
-      .ds-track {
-        padding: 65px 0;
+      .premium-track {
+        padding:
+          65px 0;
       }
 
 
-      .ds-track-box {
+      .premium-track-box {
         grid-template-columns: 1fr;
 
-        padding: 30px 22px;
+        padding:
+          31px 21px;
 
         gap: 25px;
       }
 
 
-      .ds-track-form-inner {
-        flex-direction: column;
+      .premium-track-content h2 {
+        font-size: 31px;
       }
 
 
-      .ds-track-button {
+      .premium-track-fields {
+        grid-template-columns: 1fr;
+      }
+
+
+      .premium-track-button {
         width: 100%;
       }
 
 
-      .ds-cta {
-        padding-bottom: 65px;
+      .premium-cta {
+        padding-bottom:
+          65px;
       }
 
 
-      .ds-cta-box {
+      .premium-cta-box {
         align-items: flex-start;
 
         flex-direction: column;
 
-        padding: 30px 23px;
+        padding:
+          32px 23px;
       }
 
 
-      .ds-cta-button {
+      .premium-cta-button {
         width: 100%;
       }
 
 
-      .ds-footer-grid {
+      .premium-footer-grid {
         grid-template-columns: 1fr;
 
         gap: 30px;
       }
 
 
-      .ds-footer-bottom {
-        align-items: flex-start;
-
+      .premium-footer-bottom {
         flex-direction: column;
+
+        align-items: flex-start;
 
         gap: 8px;
       }
-    }
 
+    }
 
   </style>
 
@@ -1700,61 +1984,36 @@
 
 <body>
 
-  <!-- ===================================================
+
+  <!-- =====================================================
        HEADER
-       =================================================== -->
+       ===================================================== -->
 
-  <header class="ds-header">
+  <header class="premium-header">
 
-    <div class="ds-container">
+    <div class="premium-container">
 
-      <nav class="ds-nav">
+      <nav class="premium-nav">
 
-        <!-- BRAND -->
+
+        <!-- LOGO -->
 
         <a
           href="index.html"
-          class="ds-brand"
+          class="premium-logo"
         >
 
-          <span class="ds-brand-icon">
-
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M4 5h16v10H8l-4 4V5z"
-              />
-
-              <path
-                d="M8 9h8M8 12h5"
-              />
-            </svg>
-
-          </span>
-
-
-          <span>
-
-            <span class="ds-brand-name">
-              DigiSER BD
-            </span>
-
-            <span class="ds-brand-tagline">
-              JOB • SERVICE • GROWTH
-            </span>
-
-          </span>
+          <img
+            src="logo.png"
+            alt="DigiSER BD"
+          >
 
         </a>
 
 
-        <!-- MENU -->
+        <!-- NAVIGATION -->
 
-        <div class="ds-menu">
+        <div class="premium-navigation">
 
           <a
             href="index.html"
@@ -1792,35 +2051,43 @@
 
         <!-- ACTIONS -->
 
-        <div class="ds-nav-actions">
+        <div class="premium-actions">
 
           <a
             href="admin/"
-            class="ds-login"
+            class="premium-btn premium-login"
           >
             Login
           </a>
 
+
           <a
             href="register/"
-            class="ds-register"
+            class="premium-btn premium-register"
           >
             Register
           </a>
 
+
           <a
             href="#"
-            class="ds-language"
-            onclick="toggleLanguage(); return false;"
+            class="premium-btn premium-language"
+            onclick="
+              if(window.toggleLanguage){
+                toggleLanguage();
+              }
+              return false;
+            "
           >
             বাংলা
           </a>
 
+
           <button
-            class="ds-mobile-btn"
             type="button"
-            onclick="toggleDSMenu()"
-            aria-label="Open menu"
+            class="premium-mobile"
+            onclick="togglePremiumMenu()"
+            aria-label="Menu"
           >
             ☰
           </button>
@@ -1834,25 +2101,27 @@
   </header>
 
 
-  <!-- ===================================================
+
+  <!-- =====================================================
        HERO
-       =================================================== -->
+       ===================================================== -->
 
   <main>
 
-    <section class="ds-hero">
+    <section class="premium-hero">
 
-      <div class="ds-container">
+      <div class="premium-container">
 
-        <div class="ds-hero-grid">
+        <div class="premium-hero-grid">
+
 
           <!-- LEFT -->
 
           <div>
 
-            <div class="ds-eyebrow">
+            <div class="premium-badge">
 
-              <span class="ds-eyebrow-dot"></span>
+              <span class="premium-badge-dot"></span>
 
               Bangladesh's Job & Service Platform
 
@@ -1860,46 +2129,54 @@
 
 
             <h1>
+
               Find Jobs.
               <br>
+
               <span>Hire People.</span>
               <br>
+
               Grow Business.
+
             </h1>
 
 
-            <p class="ds-hero-description">
-              Connect people, skills and businesses in one simple
-              digital platform. Find opportunities, hire talent and
-              get the services you need.
+            <p class="premium-hero-text">
+
+              Connect people, skills and businesses in one
+              simple digital platform. Find opportunities,
+              hire talent and get the services you need.
+
             </p>
 
 
             <!-- SEARCH -->
 
-            <div class="ds-search-card">
+            <div class="premium-search">
 
-              <div class="ds-search-tabs">
+              <div class="premium-tabs">
 
                 <button
-                  class="ds-search-tab active"
                   type="button"
+                  class="premium-tab active"
                   data-search-type="jobs"
                 >
                   Jobs
                 </button>
 
+
                 <button
-                  class="ds-search-tab"
                   type="button"
+                  class="premium-tab"
                   data-search-type="employees"
                 >
                   Employees
                 </button>
 
+
                 <button
-                  class="ds-search-tab"
                   type="button"
+                  class="premium-tab"
                   data-search-type="services"
                 >
                   Services
@@ -1909,21 +2186,22 @@
 
 
               <form
-                class="ds-search-row"
-                id="dsSearchForm"
+                id="premiumSearchForm"
+                class="premium-search-row"
               >
 
                 <input
-                  class="ds-search-input"
-                  id="dsSearchInput"
+                  id="premiumSearchInput"
+                  class="premium-search-input"
                   type="search"
                   placeholder="Search jobs..."
                   autocomplete="off"
                 >
 
+
                 <button
-                  class="ds-search-button"
                   type="submit"
+                  class="premium-search-button"
                 >
                   Search
                 </button>
@@ -1935,11 +2213,11 @@
 
             <!-- TRUST -->
 
-            <div class="ds-trust">
+            <div class="premium-trust">
 
-              <span class="ds-trust-item">
+              <span class="premium-trust-item">
 
-                <span class="ds-trust-check">
+                <span class="premium-check">
                   ✓
                 </span>
 
@@ -1948,9 +2226,9 @@
               </span>
 
 
-              <span class="ds-trust-item">
+              <span class="premium-trust-item">
 
-                <span class="ds-trust-check">
+                <span class="premium-check">
                   ✓
                 </span>
 
@@ -1959,9 +2237,9 @@
               </span>
 
 
-              <span class="ds-trust-item">
+              <span class="premium-trust-item">
 
-                <span class="ds-trust-check">
+                <span class="premium-check">
                   ✓
                 </span>
 
@@ -1974,24 +2252,31 @@
           </div>
 
 
+
           <!-- RIGHT -->
 
-          <div class="ds-preview-wrap">
+          <div class="premium-preview">
 
-            <div class="ds-preview-glow"></div>
+            <div class="premium-preview-glow"></div>
 
 
-            <div class="ds-preview-card">
+            <div class="premium-job-window">
 
-              <div class="ds-preview-top">
 
-                <span class="ds-preview-label">
-                  Latest opportunity
-                </span>
+              <div class="premium-window-head">
+
+                <div class="premium-window-dots">
+
+                  <span></span>
+                  <span></span>
+                  <span></span>
+
+                </div>
+
 
                 <a
                   href="jobs/"
-                  class="ds-preview-link"
+                  class="premium-window-link"
                 >
                   See all jobs →
                 </a>
@@ -1999,43 +2284,40 @@
               </div>
 
 
-              <div class="ds-job-main">
+              <div class="premium-job-feature">
 
-                <div class="ds-job-icon">
+                <div class="premium-job-icon">
                   💼
                 </div>
 
 
-                <h3
-                  class="ds-job-title"
-                  id="heroJobTitle"
-                >
+                <h3 id="premiumHeroJobTitle">
                   Explore new opportunities
                 </h3>
 
 
                 <div
-                  class="ds-job-company"
-                  id="heroJobCompany"
+                  id="premiumHeroJobCompany"
+                  class="premium-job-company"
                 >
                   Discover jobs from growing businesses
                 </div>
 
 
                 <div
-                  class="ds-job-meta"
-                  id="heroJobMeta"
+                  id="premiumHeroJobMeta"
+                  class="premium-job-tags"
                 >
 
-                  <span class="ds-meta-pill">
+                  <span class="premium-job-tag">
                     Bangladesh
                   </span>
 
-                  <span class="ds-meta-pill">
+                  <span class="premium-job-tag">
                     Full Time
                   </span>
 
-                  <span class="ds-meta-pill">
+                  <span class="premium-job-tag">
                     Verified
                   </span>
 
@@ -2044,9 +2326,9 @@
               </div>
 
 
-              <div class="ds-preview-bottom">
+              <div class="premium-window-stats">
 
-                <div class="ds-mini-stat">
+                <div class="premium-window-stat">
 
                   <strong>
                     Jobs
@@ -2059,7 +2341,7 @@
                 </div>
 
 
-                <div class="ds-mini-stat">
+                <div class="premium-window-stat">
 
                   <strong>
                     Talent
@@ -2072,7 +2354,7 @@
                 </div>
 
 
-                <div class="ds-mini-stat">
+                <div class="premium-window-stat">
 
                   <strong>
                     Services
@@ -2097,27 +2379,29 @@
     </section>
 
 
-    <!-- =================================================
+
+    <!-- =====================================================
          SERVICES
-         ================================================= -->
+         ===================================================== -->
 
-    <section class="ds-section">
+    <section class="premium-section">
 
-      <div class="ds-container">
+      <div class="premium-container">
 
-        <div class="ds-section-head">
+
+        <div class="premium-section-heading">
 
           <div>
 
-            <div class="ds-section-kicker">
+            <div class="premium-kicker">
               Business Support
             </div>
 
-            <h2 class="ds-section-title">
+            <h2 class="premium-title">
               Services for your business
             </h2>
 
-            <p class="ds-section-description">
+            <p class="premium-description">
               Digital work and local support, so you can save
               time and focus on customers.
             </p>
@@ -2127,7 +2411,7 @@
 
           <a
             href="services/"
-            class="ds-view-all"
+            class="premium-more"
           >
             All services →
           </a>
@@ -2135,13 +2419,12 @@
         </div>
 
 
-        <div class="ds-service-grid">
+        <div class="premium-services">
 
-          <!-- CARD 1 -->
 
-          <article class="ds-service-card">
+          <article class="premium-service">
 
-            <div class="ds-service-icon">
+            <div class="premium-service-icon">
               🎨
             </div>
 
@@ -2154,18 +2437,16 @@
               and more.
             </p>
 
-            <span class="ds-service-arrow">
+            <span class="premium-service-arrow">
               →
             </span>
 
           </article>
 
 
-          <!-- CARD 2 -->
+          <article class="premium-service">
 
-          <article class="ds-service-card">
-
-            <div class="ds-service-icon">
+            <div class="premium-service-icon">
               📱
             </div>
 
@@ -2178,18 +2459,16 @@
               and management.
             </p>
 
-            <span class="ds-service-arrow">
+            <span class="premium-service-arrow">
               →
             </span>
 
           </article>
 
 
-          <!-- CARD 3 -->
+          <article class="premium-service">
 
-          <article class="ds-service-card">
-
-            <div class="ds-service-icon">
+            <div class="premium-service-icon">
               💻
             </div>
 
@@ -2202,18 +2481,16 @@
               support.
             </p>
 
-            <span class="ds-service-arrow">
+            <span class="premium-service-arrow">
               →
             </span>
 
           </article>
 
 
-          <!-- CARD 4 -->
+          <article class="premium-service">
 
-          <article class="ds-service-card">
-
-            <div class="ds-service-icon">
+            <div class="premium-service-icon">
               🧑‍💼
             </div>
 
@@ -2226,11 +2503,12 @@
               your business.
             </p>
 
-            <span class="ds-service-arrow">
+            <span class="premium-service-arrow">
               →
             </span>
 
           </article>
+
 
         </div>
 
@@ -2239,19 +2517,21 @@
     </section>
 
 
-    <!-- =================================================
-         TRACK APPLICATION
-         ================================================= -->
 
-    <section class="ds-track">
+    <!-- =====================================================
+         APPLICATION TRACKING
+         ===================================================== -->
 
-      <div class="ds-container">
+    <section class="premium-track">
 
-        <div class="ds-track-box">
+      <div class="premium-container">
 
-          <div class="ds-track-content">
+        <div class="premium-track-box">
 
-            <div class="ds-section-kicker">
+
+          <div class="premium-track-content">
+
+            <div class="premium-kicker">
               Application Tracking
             </div>
 
@@ -2260,39 +2540,42 @@
             </h2>
 
             <p>
-              Already applied for a job? Use your mobile number
-              and tracking number to check your application status.
+              Already applied for a job? Enter your mobile
+              number and tracking number to check your
+              application status.
             </p>
 
           </div>
 
 
           <form
-            class="ds-track-form"
-            id="dsTrackForm"
+            id="premiumTrackForm"
+            class="premium-track-form"
           >
 
-            <div class="ds-track-form-inner">
+            <div class="premium-track-fields">
 
               <input
-                class="ds-track-input"
-                id="dsTrackMobile"
+                id="premiumTrackMobile"
+                class="premium-track-input"
                 type="tel"
                 placeholder="Mobile Number"
                 required
               >
 
+
               <input
-                class="ds-track-input"
-                id="dsTrackNumber"
+                id="premiumTrackNumber"
+                class="premium-track-input"
                 type="text"
                 placeholder="Tracking Number"
                 required
               >
 
+
               <button
-                class="ds-track-button"
                 type="submit"
+                class="premium-track-button"
               >
                 Track
               </button>
@@ -2308,27 +2591,29 @@
     </section>
 
 
-    <!-- =================================================
+
+    <!-- =====================================================
          JOBS
-         ================================================= -->
+         ===================================================== -->
 
-    <section class="ds-section ds-section-soft">
+    <section class="premium-section premium-soft-section">
 
-      <div class="ds-container">
+      <div class="premium-container">
 
-        <div class="ds-section-head">
+
+        <div class="premium-section-heading">
 
           <div>
 
-            <div class="ds-section-kicker">
+            <div class="premium-kicker">
               Opportunities
             </div>
 
-            <h2 class="ds-section-title">
+            <h2 class="premium-title">
               Latest jobs
             </h2>
 
-            <p class="ds-section-description">
+            <p class="premium-description">
               Discover current opportunities from businesses
               and organizations.
             </p>
@@ -2338,7 +2623,7 @@
 
           <a
             href="jobs/"
-            class="ds-view-all"
+            class="premium-more"
           >
             View all jobs →
           </a>
@@ -2347,11 +2632,11 @@
 
 
         <div
-          class="ds-job-grid"
           id="homeJobs"
+          class="premium-jobs"
         >
 
-          <!-- Dynamic jobs -->
+          <!-- Existing app.js can render jobs here -->
 
         </div>
 
@@ -2360,27 +2645,29 @@
     </section>
 
 
-    <!-- =================================================
+
+    <!-- =====================================================
          HOW IT WORKS
-         ================================================= -->
+         ===================================================== -->
 
-    <section class="ds-section">
+    <section class="premium-section">
 
-      <div class="ds-container">
+      <div class="premium-container">
 
-        <div class="ds-section-head">
+
+        <div class="premium-section-heading">
 
           <div>
 
-            <div class="ds-section-kicker">
+            <div class="premium-kicker">
               Simple Process
             </div>
 
-            <h2 class="ds-section-title">
+            <h2 class="premium-title">
               How DigiSER BD works
             </h2>
 
-            <p class="ds-section-description">
+            <p class="premium-description">
               One platform for finding opportunities, connecting
               with people and getting business support.
             </p>
@@ -2390,11 +2677,12 @@
         </div>
 
 
-        <div class="ds-steps">
+        <div class="premium-steps">
 
-          <article class="ds-step">
 
-            <div class="ds-step-number">
+          <article class="premium-step">
+
+            <div class="premium-step-number">
               01
             </div>
 
@@ -2410,9 +2698,9 @@
           </article>
 
 
-          <article class="ds-step">
+          <article class="premium-step">
 
-            <div class="ds-step-number">
+            <div class="premium-step-number">
               02
             </div>
 
@@ -2428,9 +2716,9 @@
           </article>
 
 
-          <article class="ds-step">
+          <article class="premium-step">
 
-            <div class="ds-step-number">
+            <div class="premium-step-number">
               03
             </div>
 
@@ -2445,6 +2733,7 @@
 
           </article>
 
+
         </div>
 
       </div>
@@ -2452,17 +2741,19 @@
     </section>
 
 
-    <!-- =================================================
+
+    <!-- =====================================================
          CTA
-         ================================================= -->
+         ===================================================== -->
 
-    <section class="ds-cta">
+    <section class="premium-cta">
 
-      <div class="ds-container">
+      <div class="premium-container">
 
-        <div class="ds-cta-box">
+        <div class="premium-cta-box">
 
-          <div>
+
+          <div class="premium-cta-content">
 
             <h2>
               Ready to get started?
@@ -2477,10 +2768,11 @@
 
           <a
             href="register/"
-            class="ds-cta-button"
+            class="premium-cta-button"
           >
             Create Your Profile →
           </a>
+
 
         </div>
 
@@ -2491,68 +2783,44 @@
   </main>
 
 
-  <!-- ===================================================
+
+  <!-- =====================================================
        FOOTER
-       =================================================== -->
+       ===================================================== -->
 
-  <footer class="ds-footer">
+  <footer class="premium-footer">
 
-    <div class="ds-container">
+    <div class="premium-container">
 
-      <div class="ds-footer-grid">
 
-        <div class="ds-footer-brand">
+      <div class="premium-footer-grid">
+
+
+        <div>
 
           <a
             href="index.html"
-            class="ds-brand"
+            class="premium-footer-logo"
           >
 
-            <span class="ds-brand-icon">
-
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M4 5h16v10H8l-4 4V5z"
-                />
-
-                <path
-                  d="M8 9h8M8 12h5"
-                />
-
-              </svg>
-
-            </span>
-
-
-            <span>
-
-              <span class="ds-brand-name">
-                DigiSER BD
-              </span>
-
-              <span class="ds-brand-tagline">
-                JOB • SERVICE • GROWTH
-              </span>
-
-            </span>
+            <img
+              src="logo.png"
+              alt="DigiSER BD"
+            >
 
           </a>
 
 
-          <p class="ds-footer-description">
-            A digital platform connecting jobs, skilled people,
-            services and businesses.
+          <p class="premium-footer-description">
+            DigiSER BD connects jobs, skilled people,
+            digital services and businesses through one
+            simple platform.
           </p>
 
         </div>
 
 
-        <div class="ds-footer-column">
+        <div class="premium-footer-column">
 
           <h4>
             Platform
@@ -2577,7 +2845,7 @@
         </div>
 
 
-        <div class="ds-footer-column">
+        <div class="premium-footer-column">
 
           <h4>
             Company
@@ -2602,7 +2870,7 @@
         </div>
 
 
-        <div class="ds-footer-column">
+        <div class="premium-footer-column">
 
           <h4>
             Account
@@ -2622,13 +2890,15 @@
 
         </div>
 
+
       </div>
 
 
-      <div class="ds-footer-bottom">
+      <div class="premium-footer-bottom">
 
         <span>
-          © <span id="dsYear"></span> DigiSER BD. All rights reserved.
+          © <span id="premiumYear"></span>
+          DigiSER BD. All rights reserved.
         </span>
 
         <span>
@@ -2642,65 +2912,48 @@
   </footer>
 
 
-  <!-- ===================================================
-       SHARED SYSTEM
-       =================================================== -->
+
+  <!-- =====================================================
+       EXISTING DIGISER SYSTEM
+       ===================================================== -->
 
   <script src="assets/data.js"></script>
+
   <script src="assets/i18n.js"></script>
+
   <script src="assets/app.js"></script>
 
 
-  <!-- ===================================================
+
+  <!-- =====================================================
        HOMEPAGE JS
-       =================================================== -->
+       ===================================================== -->
 
   <script>
 
     "use strict";
 
 
-    /* -----------------------------------------------
+    /* ============================================
        MOBILE MENU
-       ----------------------------------------------- */
+       ============================================ */
 
-    function toggleDSMenu() {
+    function togglePremiumMenu() {
 
-      const menu = document.querySelector(".ds-menu");
+      const menu =
+        document.querySelector(
+          ".premium-navigation"
+        );
+
 
       if (!menu) return;
 
-      const current =
-        window.getComputedStyle(menu).display;
 
-      if (current === "none") {
+      const isOpen =
+        menu.dataset.open === "true";
 
-        menu.style.display = "flex";
 
-        menu.style.position = "absolute";
-
-        menu.style.top = "68px";
-
-        menu.style.left = "14px";
-
-        menu.style.right = "14px";
-
-        menu.style.padding = "10px";
-
-        menu.style.flexDirection = "column";
-
-        menu.style.alignItems = "stretch";
-
-        menu.style.background = "white";
-
-        menu.style.border = "1px solid #e5e7eb";
-
-        menu.style.borderRadius = "18px";
-
-        menu.style.boxShadow =
-          "0 20px 50px rgba(15,31,46,.12)";
-
-      } else {
+      if (isOpen) {
 
         menu.style.display = "";
 
@@ -2714,10 +2967,6 @@
 
         menu.style.padding = "";
 
-        menu.style.flexDirection = "";
-
-        menu.style.alignItems = "";
-
         menu.style.background = "";
 
         menu.style.border = "";
@@ -2726,27 +2975,70 @@
 
         menu.style.boxShadow = "";
 
+        menu.style.flexDirection = "";
+
+        menu.style.alignItems = "";
+
+        menu.dataset.open = "false";
+
+      } else {
+
+        menu.style.display = "flex";
+
+        menu.style.position = "absolute";
+
+        menu.style.top = "67px";
+
+        menu.style.left = "14px";
+
+        menu.style.right = "14px";
+
+        menu.style.padding = "9px";
+
+        menu.style.background = "#fff";
+
+        menu.style.border =
+          "1px solid #e5e7eb";
+
+        menu.style.borderRadius = "18px";
+
+        menu.style.boxShadow =
+          "0 20px 60px rgba(15,31,46,.13)";
+
+        menu.style.flexDirection = "column";
+
+        menu.style.alignItems = "stretch";
+
+        menu.dataset.open = "true";
+
       }
 
     }
 
 
-    /* -----------------------------------------------
-       SEARCH TABS
-       ----------------------------------------------- */
+
+    /* ============================================
+       INIT
+       ============================================ */
 
     document.addEventListener(
       "DOMContentLoaded",
       function () {
 
+
+        /* ----------------------------------------
+           SEARCH TABS
+           ---------------------------------------- */
+
         const tabs =
           document.querySelectorAll(
-            ".ds-search-tab"
+            ".premium-tab"
           );
 
-        const input =
+
+        const searchInput =
           document.getElementById(
-            "dsSearchInput"
+            "premiumSearchInput"
           );
 
 
@@ -2764,51 +3056,56 @@
         };
 
 
-        tabs.forEach(function (tab) {
+        tabs.forEach(
+          function (tab) {
 
-          tab.addEventListener(
-            "click",
-            function () {
+            tab.addEventListener(
+              "click",
+              function () {
 
-              tabs.forEach(function (item) {
+                tabs.forEach(
+                  function (item) {
 
-                item.classList.remove(
+                    item.classList.remove(
+                      "active"
+                    );
+
+                  }
+                );
+
+
+                tab.classList.add(
                   "active"
                 );
 
-              });
+
+                const type =
+                  tab.dataset.searchType;
 
 
-              tab.classList.add(
-                "active"
-              );
+                if (searchInput) {
 
+                  searchInput.placeholder =
+                    placeholders[type] ||
+                    "Search...";
 
-              const type =
-                tab.dataset.searchType;
-
-
-              if (input) {
-
-                input.placeholder =
-                  placeholders[type] ||
-                  "Search...";
+                }
 
               }
+            );
 
-            }
-          );
-
-        });
+          }
+        );
 
 
-        /* -------------------------------------------
-           SEARCH
-           ------------------------------------------- */
+
+        /* ----------------------------------------
+           SEARCH FORM
+           ---------------------------------------- */
 
         const searchForm =
           document.getElementById(
-            "dsSearchForm"
+            "premiumSearchForm"
           );
 
 
@@ -2820,16 +3117,17 @@
 
               event.preventDefault();
 
+
               const value =
-                input
-                  ? input.value.trim()
+                searchInput
+                  ? searchInput.value.trim()
                   : "";
 
 
               if (!value) {
 
-                if (input) {
-                  input.focus();
+                if (searchInput) {
+                  searchInput.focus();
                 }
 
                 return;
@@ -2839,7 +3137,7 @@
 
               const activeTab =
                 document.querySelector(
-                  ".ds-search-tab.active"
+                  ".premium-tab.active"
                 );
 
 
@@ -2853,19 +3151,32 @@
                 "jobs/";
 
 
-              if (type === "employees") {
-                target = "employees/";
+              if (
+                type === "employees"
+              ) {
+
+                target =
+                  "employees/";
+
               }
 
-              if (type === "services") {
-                target = "services/";
+
+              if (
+                type === "services"
+              ) {
+
+                target =
+                  "services/";
+
               }
 
 
               window.location.href =
                 target +
                 "?search=" +
-                encodeURIComponent(value);
+                encodeURIComponent(
+                  value
+                );
 
             }
           );
@@ -2873,13 +3184,14 @@
         }
 
 
-        /* -------------------------------------------
-           TRACK APPLICATION
-           ------------------------------------------- */
+
+        /* ----------------------------------------
+           TRACK FORM
+           ---------------------------------------- */
 
         const trackForm =
           document.getElementById(
-            "dsTrackForm"
+            "premiumTrackForm"
           );
 
 
@@ -2894,27 +3206,36 @@
 
               const mobile =
                 document.getElementById(
-                  "dsTrackMobile"
+                  "premiumTrackMobile"
                 ).value.trim();
 
 
               const tracking =
                 document.getElementById(
-                  "dsTrackNumber"
+                  "premiumTrackNumber"
                 ).value.trim();
 
 
-              if (!mobile || !tracking) {
+              if (
+                !mobile ||
+                !tracking
+              ) {
+
                 return;
+
               }
 
 
               window.location.href =
                 "track-application.html" +
                 "?mobile=" +
-                encodeURIComponent(mobile) +
+                encodeURIComponent(
+                  mobile
+                ) +
                 "&tracking=" +
-                encodeURIComponent(tracking);
+                encodeURIComponent(
+                  tracking
+                );
 
             }
           );
@@ -2922,13 +3243,14 @@
         }
 
 
-        /* -------------------------------------------
+
+        /* ----------------------------------------
            YEAR
-           ------------------------------------------- */
+           ---------------------------------------- */
 
         const year =
           document.getElementById(
-            "dsYear"
+            "premiumYear"
           );
 
 
@@ -2940,9 +3262,10 @@
         }
 
 
-        /* -------------------------------------------
-           HERO JOB PREVIEW
-           ------------------------------------------- */
+
+        /* ----------------------------------------
+           HERO JOB
+           ---------------------------------------- */
 
         try {
 
@@ -2950,7 +3273,10 @@
             window.DigiSERBD;
 
 
-          if (DS && DS.getDB) {
+          if (
+            DS &&
+            typeof DS.getDB === "function"
+          ) {
 
             const db =
               DS.getDB();
@@ -2959,7 +3285,7 @@
             if (
               db &&
               Array.isArray(db.jobs) &&
-              db.jobs.length
+              db.jobs.length > 0
             ) {
 
               const job =
@@ -2968,19 +3294,19 @@
 
               const title =
                 document.getElementById(
-                  "heroJobTitle"
+                  "premiumHeroJobTitle"
                 );
 
 
               const company =
                 document.getElementById(
-                  "heroJobCompany"
+                  "premiumHeroJobCompany"
                 );
 
 
               const meta =
                 document.getElementById(
-                  "heroJobMeta"
+                  "premiumHeroJobMeta"
                 );
 
 
@@ -2988,7 +3314,7 @@
 
                 title.textContent =
                   job.title ||
-                  "Latest job opportunity";
+                  "Latest opportunity";
 
               }
 
@@ -3005,21 +3331,45 @@
 
               if (meta) {
 
-                meta.innerHTML = `
+                meta.innerHTML = "";
 
-                  <span class="ds-meta-pill">
-                    ${job.location || "Bangladesh"}
-                  </span>
 
-                  <span class="ds-meta-pill">
-                    ${job.type || "Full Time"}
-                  </span>
+                const values = [
 
-                  <span class="ds-meta-pill">
-                    Verified
-                  </span>
+                  job.location ||
+                    "Bangladesh",
 
-                `;
+                  job.type ||
+                    "Full Time",
+
+                  "Verified"
+
+                ];
+
+
+                values.forEach(
+                  function (value) {
+
+                    const span =
+                      document.createElement(
+                        "span"
+                      );
+
+
+                    span.className =
+                      "premium-job-tag";
+
+
+                    span.textContent =
+                      value;
+
+
+                    meta.appendChild(
+                      span
+                    );
+
+                  }
+                );
 
               }
 
@@ -3030,15 +3380,15 @@
         } catch (error) {
 
           console.warn(
-            "DigiSER BD hero preview:",
+            "DigiSER BD homepage:",
             error
           );
 
         }
 
+
       }
     );
-
 
   </script>
 
