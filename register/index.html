@@ -28,662 +28,145 @@
   --white:#fff;
   --soft:#eef8fc;
   --success:#13864c;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Hind Siliguri",sans-serif;
-}
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
-}
-
-.header-inner{
-  max-width:1180px;
-  min-height:70px;
-  padding:0 20px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-family:"Space Grotesk",sans-serif;
-  font-weight:700;
-  font-size:20px;
-}
-
-.brand img{
-  width:38px;
-  height:38px;
-  object-fit:contain;
-  border-radius:9px;
-}
-
-.brand span{
-  color:var(--primary);
-}
-
-.back{
-  color:var(--muted);
-  font-size:13px;
-  font-weight:600;
-}
-
-.hero{
-  padding:65px 20px 45px;
-  background:
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(0,135,196,.15),
-      transparent 35%
-    ),
-    linear-gradient(#fff,#f4f7f9);
-  text-align:center;
-}
-
-.hero-inner{
-  max-width:850px;
-  margin:auto;
-}
-
-.badge{
-  display:inline-block;
-  padding:7px 13px;
-  border:1px solid #d8edf5;
-  border-radius:30px;
-  background:var(--soft);
-  color:var(--primary-dark);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.05em;
-}
-
-.hero h1{
-  margin:18px 0 10px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(34px,5vw,55px);
-  line-height:1.05;
-}
-
-.hero p{
-  max-width:650px;
-  margin:auto;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.page{
-  max-width:1200px;
-  margin:auto;
-  padding:22px 20px 70px;
-}
-
-.layout{
-  display:grid;
-  grid-template-columns:minmax(0,1.25fr) minmax(390px,.85fr);
-  gap:22px;
-  align-items:start;
-}
-
-.card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.card-head{
-  padding:21px;
-  border-bottom:1px solid var(--line);
-}
-
-.card-head h2{
-  margin:0;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:19px;
-}
-
-.card-head p{
-  margin:5px 0 0;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.card-body{
-  padding:22px;
-}
-
-.section-title{
-  margin:27px 0 14px;
-  padding-bottom:9px;
-  border-bottom:1px solid var(--line);
-  font-family:"Space Grotesk",sans-serif;
-  font-size:14px;
-}
-
-.section-title:first-child{
-  margin-top:0;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-.field label{
-  font-size:13px;
-  font-weight:700;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#fff;
-  padding:11px 12px;
-  outline:none;
-  color:var(--text);
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(0,135,196,.1);
-}
-
-.field textarea{
-  min-height:95px;
-  resize:vertical;
-}
-
-.photo-box{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:14px;
-  border:1px dashed #cbd8df;
-  border-radius:14px;
-  background:#fafcfd;
-}
-
-.photo-preview{
-  width:82px;
-  height:82px;
-  flex:none;
-  border-radius:50%;
-  overflow:hidden;
-  background:#e9eef1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#7a8790;
-  font-size:11px;
-  text-align:center;
-}
-
-.photo-preview img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.photo-info{
-  flex:1;
-}
-
-.photo-info strong{
-  display:block;
-  margin-bottom:4px;
-  font-size:13px;
-}
-
-.photo-info small{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-}
-
-.submit-area{
-  margin-top:30px;
-  padding-top:20px;
-  border-top:1px solid var(--line);
-}
-
-.submit{
-  width:100%;
-  border:0;
-  border-radius:11px;
-  background:var(--primary);
-  color:#fff;
-  padding:14px;
-  font-weight:700;
-}
-
-.submit:hover{
-  background:var(--primary-dark);
-}
-
-.submit:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
-
-.note{
-  margin:9px 0 0;
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.preview{
-  position:sticky;
-  top:92px;
-}
-
-.cv-area{
-  padding:15px;
-  background:#e9eef1;
-}
-
-.cv{
-  background:#fff;
-  min-height:820px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
-  overflow:hidden;
-}
-
-.cv-top{
-  padding:27px 28px;
-  background:linear-gradient(135deg,#10202b,#006f9f);
-  color:#fff;
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
-
-.cv-photo{
-  width:94px;
-  height:94px;
-  border-radius:16px;
-  overflow:hidden;
-  background:rgba(255,255,255,.14);
-  flex:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:10px;
-  text-align:center;
-}
-
-.cv-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.cv-name{
-  font-family:"Space Grotesk",sans-serif;
-  font-size:26px;
-  font-weight:700;
-  line-height:1.1;
-}
-
-.cv-role{
-  margin-top:6px;
-  color:#aee6fa;
-  font-size:13px;
-  font-weight:700;
-}
-
-.cv-contact{
-  margin-top:8px;
-  color:#dceaf0;
-  font-size:10px;
-  line-height:1.6;
-}
-
-.cv-body{
-  display:grid;
-  grid-template-columns:150px 1fr;
-}
-
-.cv-side{
-  padding:22px 17px;
-  background:#f4f8fa;
-  border-right:1px solid #e2e9ed;
-}
-
-.cv-main{
-  padding:22px;
-}
-
-.cv-section{
-  margin-bottom:22px;
-}
-
-.cv-section h3{
-  margin:0 0 8px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.09em;
-  color:var(--primary-dark);
-}
-
-.cv-section p{
-  margin:0;
-  color:#4e5a63;
-  font-size:10px;
-  line-height:1.65;
-  white-space:pre-line;
-}
-
-.empty{
-  padding:100px 25px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
-
-
-/* =========================================================
-   SUCCESS SCREEN
-========================================================= */
-
-.success{
-  display:none;
-  min-height:65vh;
-  align-items:center;
-  justify-content:center;
-  padding:60px 20px;
-}
-
-.success.show{
-  display:flex;
-}
-
-.success-box{
-  max-width:680px;
-  width:100%;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:45px 25px;
-  text-align:center;
-  box-shadow:0 18px 60px rgba(0,0,0,.07);
-}
-
-.success-icon{
-  width:70px;
-  height:70px;
-  margin:auto auto 18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:#e9f8ef;
-  color:var(--success);
-  font-size:32px;
-  font-weight:700;
-}
-
-.success-box h2{
-  margin:0;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:28px;
-}
-
-.success-box p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-
-/* =========================================================
-   TRACKING NUMBER
-========================================================= */
-
-.tracking-label{
-  margin-top:24px;
-  margin-bottom:7px;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:700;
-}
-
-.app-id{
-  display:inline-block;
-  margin:0 0 8px;
-  padding:12px 18px;
-  border-radius:10px;
-  background:var(--soft);
-  border:1px solid #d6edf6;
-  color:var(--primary-dark);
-  font-family:"Space Grotesk",sans-serif;
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:.04em;
-}
-
-.tracking-help{
-  margin:0 0 20px;
-  font-size:13px;
-  color:var(--muted);
-}
-
-.tracking-mobile{
-  display:inline-block;
-  margin-bottom:22px;
-  padding:8px 13px;
-  border-radius:8px;
-  background:#f4f7f9;
-  color:#4e5a63;
-  font-size:13px;
-  font-weight:600;
-}
-
-.status-box{
-  margin:0 auto 25px;
-  max-width:500px;
-  padding:16px;
-  border-radius:12px;
-  background:#f7fafb;
-  border:1px solid var(--line);
-  text-align:left;
-}
-
-.status-box strong{
-  display:block;
-  margin-bottom:5px;
-  color:#10202b;
-}
-
-.status-box span{
-  color:var(--primary-dark);
-  font-weight:700;
-}
-
-.actions{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.action{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:9px;
-  padding:11px 16px;
-  font-weight:700;
-}
-
-.action.primary{
-  background:var(--primary);
-  border-color:var(--primary);
-  color:#fff;
-}
-
-.action.primary:hover{
-  background:var(--primary-dark);
-}
-
-.action.secondary{
-  background:#eef8fc;
-  border-color:#d8edf5;
-  color:var(--primary-dark);
-}
-
-.footer{
-  padding:25px;
-  text-align:center;
-  background:#fff;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:11px;
-}
+  --danger:#c62f26;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hind Siliguri",sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-inner{max-width:1180px;min-height:70px;padding:0 20px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px}
+.brand img{width:38px;height:38px;object-fit:contain;border-radius:9px}
+.brand span{color:var(--primary)}
+.back{color:var(--muted);font-size:13px;font-weight:600}
+
+.hero{padding:65px 20px 45px;background:radial-gradient(circle at 90% 10%,rgba(0,135,196,.15),transparent 35%),linear-gradient(#fff,#f4f7f9);text-align:center}
+.hero-inner{max-width:850px;margin:auto}
+.badge{display:inline-block;padding:7px 13px;border:1px solid #d8edf5;border-radius:30px;background:var(--soft);color:var(--primary-dark);font-size:11px;font-weight:700;letter-spacing:.05em}
+.hero h1{margin:18px 0 10px;font-family:"Space Grotesk",sans-serif;font-size:clamp(34px,5vw,55px);line-height:1.05}
+.hero p{max-width:650px;margin:auto;color:var(--muted);line-height:1.7}
+
+.page{max-width:1200px;margin:auto;padding:22px 20px 70px}
+.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(390px,.85fr);gap:22px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.card-head{padding:21px;border-bottom:1px solid var(--line)}
+.card-head h2{margin:0;font-family:"Space Grotesk",sans-serif;font-size:19px}
+.card-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.card-body{padding:22px}
+
+.section-title{margin:27px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line);font-family:"Space Grotesk",sans-serif;font-size:14px}
+.section-title:first-child{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:13px;font-weight:700}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:11px 12px;outline:none;color:var(--text)}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,135,196,.1)}
+.field textarea{min-height:95px;resize:vertical}
+
+.photo-box{display:flex;align-items:center;gap:18px;padding:14px;border:1px dashed #cbd8df;border-radius:14px;background:#fafcfd}
+.photo-preview{width:82px;height:82px;flex:none;border-radius:50%;overflow:hidden;background:#e9eef1;display:flex;align-items:center;justify-content:center;color:#7a8790;font-size:11px;text-align:center}
+.photo-preview img{width:100%;height:100%;object-fit:cover}
+.photo-info{flex:1}
+.photo-info strong{display:block;margin-bottom:4px;font-size:13px}
+.photo-info small{display:block;color:var(--muted);font-size:11px;line-height:1.5}
+
+/* ---------- payment ---------- */
+.pay-box{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fafcfd}
+.pay-fee{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-size:14px;font-weight:700}
+.pay-fee strong{font-family:"Space Grotesk",sans-serif;font-size:24px;color:var(--primary-dark)}
+.pay-methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.pay-card{position:relative;display:block;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}
+.pay-card input{position:absolute;opacity:0;pointer-events:none}
+.pay-card b{display:block;font-size:15px}
+.pay-card span{display:block;color:var(--muted);font-size:12px}
+.pay-card.on{border-color:var(--primary);background:var(--soft);box-shadow:0 0 0 3px rgba(0,135,196,.1)}
+.pay-card:focus-within{outline:2px solid var(--primary);outline-offset:2px}
+.pay-how{margin-bottom:14px;padding:13px 14px;border:1px solid #d6edf6;border-radius:10px;background:var(--soft);font-size:13px;line-height:1.75}
+.pay-how strong{font-family:"Space Grotesk",sans-serif;font-size:17px;letter-spacing:.03em;color:var(--primary-dark)}
+.copy-btn{margin-left:8px;padding:3px 10px;border:1px solid #bcdcea;border-radius:7px;background:#fff;color:var(--primary-dark);font-size:12px;font-weight:700}
+.pay-warn{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+
+.submit-area{margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+.submit{width:100%;border:0;border-radius:11px;background:var(--primary);color:#fff;padding:14px;font-weight:700}
+.submit:hover{background:var(--primary-dark)}
+.submit:disabled{opacity:.6;cursor:not-allowed}
+.note{margin:9px 0 0;text-align:center;color:var(--muted);font-size:11px}
+.form-error{display:none;margin-top:12px;padding:11px 13px;border:1px solid #f2c9c5;border-radius:10px;background:#fff1f0;color:var(--danger);font-size:13px;font-weight:600}
+.form-error.show{display:block}
+
+.preview{position:sticky;top:92px}
+.cv-area{padding:15px;background:#e9eef1}
+.cv{background:#fff;min-height:820px;box-shadow:0 8px 30px rgba(0,0,0,.08);overflow:hidden}
+.cv-top{padding:27px 28px;background:linear-gradient(135deg,#10202b,#006f9f);color:#fff;display:flex;gap:20px;align-items:center}
+.cv-photo{width:94px;height:94px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.14);flex:none;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center}
+.cv-photo img{width:100%;height:100%;object-fit:cover}
+.cv-name{font-family:"Space Grotesk",sans-serif;font-size:26px;font-weight:700;line-height:1.1}
+.cv-role{margin-top:6px;color:#aee6fa;font-size:13px;font-weight:700}
+.cv-contact{margin-top:8px;color:#dceaf0;font-size:10px;line-height:1.6}
+.cv-body{display:grid;grid-template-columns:150px 1fr}
+.cv-side{padding:22px 17px;background:#f4f8fa;border-right:1px solid #e2e9ed}
+.cv-main{padding:22px}
+.cv-section{margin-bottom:22px}
+.cv-section h3{margin:0 0 8px;font-family:"Space Grotesk",sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--primary-dark)}
+.cv-section p{margin:0;color:#4e5a63;font-size:10px;line-height:1.65;white-space:pre-line}
+.empty{padding:100px 25px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ---------- success ---------- */
+.success{display:none;min-height:65vh;align-items:center;justify-content:center;padding:60px 20px}
+.success.show{display:flex}
+.success-box{max-width:680px;width:100%;background:#fff;border:1px solid var(--line);border-radius:22px;padding:45px 25px;text-align:center;box-shadow:0 18px 60px rgba(0,0,0,.07)}
+.success-icon{width:70px;height:70px;margin:auto auto 18px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e9f8ef;color:var(--success);font-size:32px;font-weight:700}
+.success-box h2{margin:0;font-family:"Space Grotesk",sans-serif;font-size:28px}
+.success-box p{color:var(--muted);line-height:1.7}
+.tracking-label{margin-top:24px;margin-bottom:7px;color:var(--muted);font-size:12px;font-weight:700}
+.app-id{display:inline-block;margin:0 0 8px;padding:12px 18px;border-radius:10px;background:var(--soft);border:1px solid #d6edf6;color:var(--primary-dark);font-family:"Space Grotesk",sans-serif;font-size:20px;font-weight:700;letter-spacing:.04em}
+.tracking-help{margin:0 0 20px;font-size:13px;color:var(--muted)}
+.tracking-mobile{display:inline-block;margin-bottom:22px;padding:8px 13px;border-radius:8px;background:#f4f7f9;color:#4e5a63;font-size:13px;font-weight:600}
+.status-box{margin:0 auto 14px;max-width:500px;padding:16px;border-radius:12px;background:#f7fafb;border:1px solid var(--line);text-align:left}
+.status-box strong{display:block;margin-bottom:5px;color:#10202b}
+.status-box span{color:var(--primary-dark);font-weight:700}
+.status-box[hidden]{display:none}
+.wa-hint{max-width:500px;margin:14px auto 22px;font-size:13px}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.action{border:1px solid var(--line);background:#fff;border-radius:9px;padding:11px 16px;font-weight:700}
+.action.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.action.primary:hover{background:var(--primary-dark)}
+.action.secondary{background:#eef8fc;border-color:#d8edf5;color:var(--primary-dark)}
+.action.wa{background:#159447;border-color:#159447;color:#fff}
+.action.wa:hover{background:#117b3b}
+.action[hidden]{display:none}
+
+.footer{padding:25px;text-align:center;background:#fff;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
 
 @media(max-width:950px){
-
-  .layout{
-    grid-template-columns:1fr;
-  }
-
-  .preview{
-    position:static;
-  }
-
+  .layout{grid-template-columns:1fr}
+  .preview{position:static}
 }
-
 @media(max-width:650px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .page{
-    padding:15px 12px 50px;
-  }
-
-  .card-body,
-  .card-head{
-    padding:17px;
-  }
-
-  .cv-body{
-    grid-template-columns:1fr;
-  }
-
-  .cv-side{
-    border-right:0;
-    border-bottom:1px solid #e2e9ed;
-  }
-
-  .cv-top{
-    padding:22px;
-  }
-
-  .cv-name{
-    font-size:22px;
-  }
-
-  .photo-box{
-    align-items:flex-start;
-  }
-
-  .success-box{
-    padding:35px 18px;
-  }
-
-  .app-id{
-    font-size:17px;
-  }
-
+  .grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .page{padding:15px 12px 50px}
+  .card-body,.card-head{padding:17px}
+  .cv-body{grid-template-columns:1fr}
+  .cv-side{border-right:0;border-bottom:1px solid #e2e9ed}
+  .cv-top{padding:22px}
+  .cv-name{font-size:22px}
+  .photo-box{align-items:flex-start}
+  .success-box{padding:35px 18px}
+  .app-id{font-size:17px}
 }
-
 @media print{
-
-  body *{
-    visibility:hidden!important;
-  }
-
-  #cvPreview,
-  #cvPreview *{
-    visibility:visible!important;
-  }
-
-  #cvPreview{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-  }
-
-  .cv-area{
-    padding:0;
-    background:#fff;
-  }
-
-  .cv{
-    box-shadow:none;
-  }
-
+  body *{visibility:hidden!important}
+  #cvPreview,#cvPreview *{visibility:visible!important}
+  #cvPreview{position:absolute;left:0;top:0;width:100%}
+  .cv-area{padding:0;background:#fff}
+  .cv{box-shadow:none}
 }
 </style>
 </head>
@@ -692,861 +175,466 @@ a{
 <body>
 
 <header class="header">
-
   <div class="header-inner">
-
     <a href="../" class="brand">
-
-      <img
-        src="../assets/favicon.svg"
-        alt="DigiSER BD"
-      >
-
-      <div>
-        DigiSER <span>BD</span>
-      </div>
-
+      <img src="../assets/favicon.svg" alt="DigiSER BD">
+      <div>DigiSER <span>BD</span></div>
     </a>
-
-
-    <a href="../" class="back">
-      ← Back to DigiSER BD
-    </a>
-
+    <a href="../" class="back">← Back to DigiSER BD</a>
   </div>
-
 </header>
 
 
 <section class="hero">
-
   <div class="hero-inner">
-
-    <span class="badge">
-      DIGISER BD · REGISTRATION
-    </span>
-
-    <h1>
-      Create Your Professional CV
-    </h1>
-
+    <span class="badge">DIGISER BD · REGISTRATION</span>
+    <h1>Create Your Professional CV</h1>
     <p>
       Complete your profile and create a professional CV.
       Your application will be available in the DigiSER BD Admin Dashboard.
     </p>
-
   </div>
-
 </section>
 
 
-<main
-  class="page"
-  id="registerPage"
->
-
+<main class="page" id="registerPage">
 <div class="layout">
 
-
 <section class="card">
-
-<div class="card-head">
-
-  <h2>
-    Applicant Registration
-  </h2>
-
-  <p>
-    Provide accurate information for your professional profile.
-  </p>
-
-</div>
-
-
-<div class="card-body">
-
-<form id="registerForm">
-
-
-<h3 class="section-title">
-  01 · Personal Information
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field">
-
-<label>
-  Full Name *
-</label>
-
-<input
-  id="name"
-  required
-  placeholder="Your full name"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Mobile Number *
-</label>
-
-<input
-  id="mobile"
-  type="tel"
-  required
-  placeholder="+880 1XXXXXXXXX"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Email
-</label>
-
-<input
-  id="email"
-  type="email"
-  placeholder="you@example.com"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Emergency Contact
-</label>
-
-<input
-  id="emergency"
-  placeholder="Name / phone"
->
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Current Address
-</label>
-
-<textarea id="currentAddress"></textarea>
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Permanent Address
-</label>
-
-<textarea id="permanentAddress"></textarea>
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  02 · Profile Photo
-</h3>
-
-
-<div class="photo-box">
-
-<div
-  class="photo-preview"
-  id="photoPreview"
->
-  No Photo
-</div>
-
-
-<div class="photo-info">
-
-<strong>
-  Upload Professional Photo
-</strong>
-
-<small>
-  JPG or PNG recommended. Maximum 2MB.
-  The photo will appear on your CV and in Admin Dashboard.
-</small>
-
-<br>
-
-<input
-  id="photo"
-  type="file"
-  accept="image/png,image/jpeg"
->
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  03 · Professional Profile
-</h3>
-
-
-<div class="grid">
-
-<div class="field full">
-
-<label>
-  Professional Summary
-</label>
-
-<textarea
-  id="profile"
-  rows="5"
-  placeholder="Write a short professional summary..."
-></textarea>
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  04 · Education
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field">
-
-<label>
-  SSC / Equivalent
-</label>
-
-<input
-  id="ssc"
-  placeholder="Institution, year, result"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  HSC / Equivalent
-</label>
-
-<input
-  id="hsc"
-  placeholder="Institution, year, result"
->
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Graduate / Higher Education
-</label>
-
-<textarea id="graduate"></textarea>
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Other Education / Training
-</label>
-
-<textarea id="other"></textarea>
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  05 · Experience
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field full">
-
-<label>
-  Work Experience
-</label>
-
-<textarea
-  id="experience"
-  rows="5"
-  placeholder="Company, position, duration..."
-></textarea>
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Key Duties / Responsibilities
-</label>
-
-<textarea id="duty"></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Previous Salary
-</label>
-
-<input id="previousSalary">
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  06 · Skills & Languages
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field full">
-
-<label>
-  Skills
-</label>
-
-<textarea
-  id="skills"
-  placeholder="Web Design, Marketing, MS Office..."
-></textarea>
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Languages
-</label>
-
-<input
-  id="language"
-  placeholder="Bangla, English, Hindi"
->
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  07 · Job Preference
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field">
-
-<label>
-  Desired Role
-</label>
-
-<input
-  id="role"
-  placeholder="Software Engineer"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Expected Salary
-</label>
-
-<input
-  id="salary"
-  placeholder="30,000 BDT"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Employment Type
-</label>
-
-<select id="type">
-
-<option value="">
-  Select type
-</option>
-
-<option>
-  Full-time
-</option>
-
-<option>
-  Part-time
-</option>
-
-<option>
-  Contract
-</option>
-
-<option>
-  Internship
-</option>
-
-<option>
-  Remote
-</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Preferred Location
-</label>
-
-<input
-  id="location"
-  placeholder="Dhaka / Remote"
->
-
-</div>
-
-</div>
-
-
-<h3 class="section-title">
-  08 · Reference
-</h3>
-
-
-<div class="grid">
-
-
-<div class="field">
-
-<label>
-  Reference Name
-</label>
-
-<input id="referenceName">
-
-</div>
-
-
-<div class="field">
-
-<label>
-  Reference Contact
-</label>
-
-<input id="referenceContact">
-
-</div>
-
-
-<div class="field full">
-
-<label>
-  Relationship
-</label>
-
-<input
-  id="referenceRelation"
-  placeholder="Former Manager"
->
-
-</div>
-
-</div>
-
-
-<div class="submit-area">
-
-<button
-  class="submit"
-  id="submitBtn"
-  type="submit"
->
-  Submit Application
-</button>
-
-<p class="note">
-  Your information will be stored with your application record.
-</p>
-
-</div>
-
-
-</form>
-
-</div>
-
+  <div class="card-head">
+    <h2>Applicant Registration</h2>
+    <p>Provide accurate information for your professional profile.</p>
+  </div>
+
+  <div class="card-body">
+  <form id="registerForm" novalidate>
+
+    <h3 class="section-title">01 · Personal Information</h3>
+    <div class="grid">
+      <div class="field">
+        <label for="name">Full Name *</label>
+        <input id="name" required placeholder="Your full name">
+      </div>
+      <div class="field">
+        <label for="mobile">Mobile Number *</label>
+        <input id="mobile" type="tel" required placeholder="+880 1XXXXXXXXX">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="emergency">Emergency Contact</label>
+        <input id="emergency" placeholder="Name / phone">
+      </div>
+      <div class="field full">
+        <label for="currentAddress">Current Address</label>
+        <textarea id="currentAddress"></textarea>
+      </div>
+      <div class="field full">
+        <label for="permanentAddress">Permanent Address</label>
+        <textarea id="permanentAddress"></textarea>
+      </div>
+    </div>
+
+
+    <h3 class="section-title">02 · Profile Photo</h3>
+    <div class="photo-box">
+      <div class="photo-preview" id="photoPreview">No Photo</div>
+      <div class="photo-info">
+        <strong>Upload Professional Photo</strong>
+        <small>
+          JPG or PNG recommended. Maximum 2MB.
+          The photo will appear on your CV and in Admin Dashboard.
+        </small>
+        <br>
+        <input id="photo" type="file" accept="image/png,image/jpeg">
+      </div>
+    </div>
+
+
+    <h3 class="section-title">03 · Professional Profile</h3>
+    <div class="grid">
+      <div class="field full">
+        <label for="profile">Professional Summary</label>
+        <textarea id="profile" rows="5" placeholder="Write a short professional summary..."></textarea>
+      </div>
+    </div>
+
+
+    <h3 class="section-title">04 · Education</h3>
+    <div class="grid">
+      <div class="field">
+        <label for="ssc">SSC / Equivalent</label>
+        <input id="ssc" placeholder="Institution, year, result">
+      </div>
+      <div class="field">
+        <label for="hsc">HSC / Equivalent</label>
+        <input id="hsc" placeholder="Institution, year, result">
+      </div>
+      <div class="field full">
+        <label for="graduate">Graduate / Higher Education</label>
+        <textarea id="graduate"></textarea>
+      </div>
+      <div class="field full">
+        <label for="other">Other Education / Training</label>
+        <textarea id="other"></textarea>
+      </div>
+    </div>
+
+
+    <h3 class="section-title">05 · Experience</h3>
+    <div class="grid">
+      <div class="field full">
+        <label for="experience">Work Experience</label>
+        <textarea id="experience" rows="5" placeholder="Company, position, duration..."></textarea>
+      </div>
+      <div class="field full">
+        <label for="duty">Key Duties / Responsibilities</label>
+        <textarea id="duty"></textarea>
+      </div>
+      <div class="field">
+        <label for="previousSalary">Previous Salary</label>
+        <input id="previousSalary">
+      </div>
+    </div>
+
+
+    <h3 class="section-title">06 · Skills &amp; Languages</h3>
+    <div class="grid">
+      <div class="field full">
+        <label for="skills">Skills</label>
+        <textarea id="skills" placeholder="Web Design, Marketing, MS Office..."></textarea>
+      </div>
+      <div class="field full">
+        <label for="language">Languages</label>
+        <input id="language" placeholder="Bangla, English, Hindi">
+      </div>
+    </div>
+
+
+    <h3 class="section-title">07 · Job Preference</h3>
+    <div class="grid">
+      <div class="field">
+        <label for="role">Desired Role</label>
+        <input id="role" placeholder="Software Engineer">
+      </div>
+      <div class="field">
+        <label for="salary">Expected Salary</label>
+        <input id="salary" placeholder="30,000 BDT">
+      </div>
+      <div class="field">
+        <label for="type">Employment Type</label>
+        <select id="type">
+          <option value="">Select type</option>
+          <option>Full-time</option>
+          <option>Part-time</option>
+          <option>Contract</option>
+          <option>Internship</option>
+          <option>Remote</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="location">Preferred Location</label>
+        <input id="location" placeholder="Dhaka / Remote">
+      </div>
+    </div>
+
+
+    <h3 class="section-title">08 · Reference</h3>
+    <div class="grid">
+      <div class="field">
+        <label for="referenceName">Reference Name</label>
+        <input id="referenceName">
+      </div>
+      <div class="field">
+        <label for="referenceContact">Reference Contact</label>
+        <input id="referenceContact">
+      </div>
+      <div class="field full">
+        <label for="referenceRelation">Relationship</label>
+        <input id="referenceRelation" placeholder="Former Manager">
+      </div>
+    </div>
+
+
+    <!-- Payment section: shown only when data.js has a fee and a payment number -->
+    <div id="paymentSection" hidden>
+      <h3 class="section-title">09 · Registration Payment</h3>
+
+      <div class="pay-box">
+        <div class="pay-fee">
+          <span>Registration Fee</span>
+          <strong id="payFee"></strong>
+        </div>
+
+        <div class="pay-methods" id="payMethods" role="radiogroup" aria-label="Payment method"></div>
+
+        <div class="pay-how" id="payHow"></div>
+
+        <div class="grid">
+          <div class="field">
+            <label for="paySender">Your Payment Number *</label>
+            <input id="paySender" type="tel" placeholder="01XXXXXXXXX" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="payTrx">Transaction ID (TrxID) *</label>
+            <input id="payTrx" placeholder="e.g. 9A7B6C5D4E" autocomplete="off">
+          </div>
+        </div>
+
+        <p class="pay-warn">
+          Payment পাঠানোর পর প্রাপ্ত SMS বা App থেকে TrxID দিন।
+          আমরা TrxID মিলিয়ে payment যাচাই করব, তাই সঠিক তথ্য দিন।
+        </p>
+      </div>
+    </div>
+
+
+    <div class="submit-area">
+      <button class="submit" id="submitBtn" type="submit">Submit Application</button>
+      <div class="form-error" id="formError" role="alert"></div>
+      <p class="note">Your information will be stored with your application record.</p>
+    </div>
+
+  </form>
+  </div>
 </section>
 
 
 <aside class="card preview">
+  <div class="card-head">
+    <h2>Premium CV Preview</h2>
+    <p>Live preview including your photo.</p>
+  </div>
 
-<div class="card-head">
-
-<h2>
-  Premium CV Preview
-</h2>
-
-<p>
-  Live preview including your photo.
-</p>
-
-</div>
-
-
-<div
-  class="cv-area"
-  id="cvPreview"
->
-
-<div
-  class="cv"
-  id="cvPaper"
->
-
-<div class="empty">
-  Start filling the form to generate your CV.
-</div>
-
-</div>
-
-</div>
-
+  <div class="cv-area" id="cvPreview">
+    <div class="cv" id="cvPaper">
+      <div class="empty">Start filling the form to generate your CV.</div>
+    </div>
+  </div>
 </aside>
 
-
 </div>
-
 </main>
 
 
-<!-- =========================================================
-     SUCCESS SCREEN
-========================================================= -->
-
-<section
-  class="success"
-  id="successScreen"
->
-
+<!-- SUCCESS SCREEN -->
+<section class="success" id="successScreen">
 <div class="success-box">
 
-<div class="success-icon">
-  ✓
-</div>
+  <div class="success-icon">✓</div>
 
+  <h2>Application Submitted Successfully</h2>
 
-<h2>
-  Application Submitted Successfully
-</h2>
+  <p>আপনার Job Application সফলভাবে DigiSER BD-তে Submit হয়েছে।</p>
 
+  <div class="tracking-label">আপনার Application Tracking Number</div>
+  <div class="app-id" id="successId"></div>
 
-<p>
-  আপনার Job Application সফলভাবে DigiSER BD-তে Submit হয়েছে।
-</p>
+  <p class="tracking-help">
+    এই Tracking Number অবশ্যই সংরক্ষণ করুন।
+    ভবিষ্যতে আপনার Application-এর অবস্থান জানতে
+    Tracking Number এবং Mobile Number প্রয়োজন হবে।
+  </p>
 
+  <div class="tracking-mobile" id="successMobile"></div>
 
-<div class="tracking-label">
-  আপনার Application Tracking Number
-</div>
+  <div class="status-box">
+    <strong>Current Application Status</strong>
+    <span>Application Submitted</span>
+  </div>
 
+  <div class="status-box" id="payStatusBox" hidden>
+    <strong>Payment Status</strong>
+    <span id="payStatusText"></span>
+  </div>
 
-<div
-  class="app-id"
-  id="successId"
->
-</div>
+  <p class="wa-hint" id="waHint" hidden>
+    দ্রুত confirmation-এর জন্য নিচের বোতামে চাপ দিয়ে
+    আপনার Tracking Number
+    <span id="waHintPay">ও Payment তথ্য</span>
+    আমাদের WhatsApp-এ পাঠিয়ে দিন।
+  </p>
 
-
-<p class="tracking-help">
-  এই Tracking Number অবশ্যই সংরক্ষণ করুন।
-  ভবিষ্যতে আপনার Application-এর অবস্থান জানতে
-  Tracking Number এবং Mobile Number প্রয়োজন হবে।
-</p>
-
-
-<div
-  class="tracking-mobile"
-  id="successMobile"
->
-</div>
-
-
-<div class="status-box">
-
-<strong>
-  Current Application Status
-</strong>
-
-<span>
-  Application Submitted
-</span>
+  <div class="actions">
+    <a class="action wa" id="waBtn" href="#" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+    <button class="action primary" id="printCV" type="button">Print / Save CV</button>
+    <a href="../track-application.html" class="action secondary">Track Application</a>
+    <a href="../" class="action">Back to Home</a>
+  </div>
 
 </div>
-
-
-<div class="actions">
-
-<button
-  class="action primary"
-  id="printCV"
->
-  Print / Save CV
-</button>
-
-
-<a
-  href="../track-application.html"
-  class="action secondary"
->
-  Track Application
-</a>
-
-
-<a
-  href="../"
-  class="action"
->
-  Back to Home
-</a>
-
-</div>
-
-
-</div>
-
 </section>
 
 
 <footer class="footer">
-
-© <span id="year"></span>
-DigiSER BD. All rights reserved.
-
+  © <span id="year"></span> DigiSER BD. All rights reserved.
 </footer>
 
 
+<script src="../assets/data.js"></script>
 <script>
 "use strict";
 
-
 /* =========================================================
-   DATABASE
+   CONFIG (from assets/data.js)
 ========================================================= */
 
 const STORAGE_KEY = "digiserbd_admin_v1";
+
+const SITE_CFG = window.SITE || {};
+const PAY = SITE_CFG.payment || {};
+const CUR = PAY.currency || "৳";
+const PAY_FEE = Number(PAY.fee) || 0;
+const PAY_METHODS = (Array.isArray(PAY.methods) ? PAY.methods : [])
+  .filter(m => m && m.id && m.name && String(m.number || "").trim());
+const PAY_ON = !!PAY.enabled && PAY_FEE > 0 && PAY_METHODS.length > 0;
 
 
 /* =========================================================
    ELEMENTS
 ========================================================= */
 
-const form =
-  document.getElementById("registerForm");
+const $ = id => document.getElementById(id);
 
-const submitBtn =
-  document.getElementById("submitBtn");
-
-const photoInput =
-  document.getElementById("photo");
-
-const photoPreview =
-  document.getElementById("photoPreview");
-
-const cvPaper =
-  document.getElementById("cvPaper");
-
-const registerPage =
-  document.getElementById("registerPage");
-
-const successScreen =
-  document.getElementById("successScreen");
-
-const successId =
-  document.getElementById("successId");
-
-const successMobile =
-  document.getElementById("successMobile");
-
-const printCV =
-  document.getElementById("printCV");
-
+const form = $("registerForm");
+const submitBtn = $("submitBtn");
+const formError = $("formError");
+const photoInput = $("photo");
+const photoPreview = $("photoPreview");
+const cvPaper = $("cvPaper");
+const registerPage = $("registerPage");
+const successScreen = $("successScreen");
+const printCV = $("printCV");
 
 let photoData = "";
 
 
 /* =========================================================
-   GET VALUE
+   HELPERS
 ========================================================= */
 
-function val(id){
-
-  return (
-    document.getElementById(id)?.value.trim() || ""
-  );
-
+function val(id) {
+  const el = $(id);
+  return el ? el.value.trim() : "";
 }
 
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function esc(text){
-
-  return String(text || "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
+function esc(text) {
+  return String(text === undefined || text === null ? "" : text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
-
-/* =========================================================
-   GENERATE TRACKING NUMBER
-========================================================= */
-
-function idGenerate(){
-
-  const year =
-    new Date().getFullYear();
-
-  const number =
-    Math.floor(
-      100000 + Math.random() * 900000
-    );
-
+function idGenerate() {
+  const year = new Date().getFullYear();
+  const number = Math.floor(100000 + Math.random() * 900000);
   return `DGBD-${year}-${number}`;
+}
 
+function showError(message) {
+  formError.textContent = message;
+  formError.classList.add("show");
+  formError.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function clearError() {
+  formError.textContent = "";
+  formError.classList.remove("show");
+}
+
+/* 01XXXXXXXXX (Bangladesh mobile) or "" if invalid */
+function normalizeMobile(value) {
+  let digits = String(value || "").replace(/\D/g, "");
+  if (digits.startsWith("880")) digits = "0" + digits.slice(3);
+  return /^01[3-9]\d{8}$/.test(digits) ? digits : "";
 }
 
 
 /* =========================================================
-   DATABASE DEFAULT
+   DATABASE (same key as the admin panel)
 ========================================================= */
 
-function defaultDB(){
-
-  return {
-
-    users:[],
-    jobs:[],
-    services:[],
-    employees:[],
-    businesses:[],
-    messages:[],
-    blog:[]
-
-  };
-
+function defaultDB() {
+  return { users: [], jobs: [], services: [], employees: [], businesses: [], messages: [], blog: [] };
 }
 
-
-/* =========================================================
-   GET DATABASE
-========================================================= */
-
-function getDB(){
-
-  try{
-
-    const raw =
-      localStorage.getItem(STORAGE_KEY);
-
-    if(!raw){
-
-      return defaultDB();
-
-    }
-
-    const db =
-      JSON.parse(raw);
-
-    db.users ||= [];
-    db.jobs ||= [];
-    db.services ||= [];
-    db.employees ||= [];
-    db.businesses ||= [];
-    db.messages ||= [];
-    db.blog ||= [];
-
+function getDB() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultDB();
+    const db = JSON.parse(raw);
+    ["users", "jobs", "services", "employees", "businesses", "messages", "blog"]
+      .forEach(k => { if (!Array.isArray(db[k])) db[k] = []; });
     return db;
-
-  }catch(e){
-
-    console.error(
-      "Database read error:",
-      e
-    );
-
+  } catch (e) {
+    console.error("Database read error:", e);
     return defaultDB();
-
   }
+}
 
+function saveDB(db) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
 }
 
 
 /* =========================================================
-   SAVE DATABASE
+   PAYMENT SECTION
 ========================================================= */
 
-function saveDB(db){
+function currentMethod() {
+  const checked = document.querySelector('input[name="payMethod"]:checked');
+  return PAY_METHODS.find(m => checked && m.id === checked.value) || null;
+}
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(db)
-  );
+function renderPayHow() {
+  const m = currentMethod();
+  if (!m) return;
 
+  const action = String(m.type || "").toLowerCase() === "merchant" ? "Payment" : "Send Money";
+  const fee = `${CUR}${PAY_FEE.toLocaleString("en-US")}`;
+
+  $("payHow").innerHTML =
+    `<div>${esc(m.name)} ${esc(m.type || "Personal")} নম্বর:
+       <strong>${esc(m.number)}</strong>
+       <button type="button" class="copy-btn" id="copyNum">Copy</button></div>
+     <div>এই নম্বরে <b>${esc(fee)}</b> ${esc(action)} করুন,
+       তারপর নিচে আপনার নম্বর ও TrxID লিখুন।</div>` +
+    (PAY.note ? `<div>${esc(PAY.note)}</div>` : "");
+
+  $("copyNum").addEventListener("click", function () {
+    const btn = this;
+    const done = () => { btn.textContent = "Copied"; setTimeout(() => { btn.textContent = "Copy"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(String(m.number)).then(done).catch(() => {});
+    }
+  });
+}
+
+function setupPayment() {
+  if (!PAY_ON) return;
+
+  $("paymentSection").hidden = false;
+  $("payFee").textContent = `${CUR}${PAY_FEE.toLocaleString("en-US")}`;
+
+  $("payMethods").innerHTML = PAY_METHODS.map((m, i) =>
+    `<label class="pay-card${i === 0 ? " on" : ""}">
+       <input type="radio" name="payMethod" value="${esc(m.id)}"${i === 0 ? " checked" : ""}>
+       <b>${esc(m.name)}</b>
+       <span>${esc(m.type || "Personal")}</span>
+     </label>`).join("");
+
+  $("payMethods").addEventListener("change", () => {
+    document.querySelectorAll(".pay-card").forEach(card => {
+      card.classList.toggle("on", card.querySelector("input").checked);
+    });
+    renderPayHow();
+  });
+
+  renderPayHow();
 }
 
 
@@ -1554,196 +642,80 @@ function saveDB(db){
    PHOTO UPLOAD
 ========================================================= */
 
-photoInput.addEventListener(
-  "change",
-  function(){
+photoInput.addEventListener("change", function () {
+  const file = this.files && this.files[0];
+  if (!file) return;
 
-    const file =
-      this.files?.[0];
-
-    if(!file) return;
-
-
-    if(
-      ![
-        "image/jpeg",
-        "image/png"
-      ].includes(file.type)
-    ){
-
-      alert(
-        "Please upload JPG or PNG image."
-      );
-
-      this.value = "";
-
-      return;
-
-    }
-
-
-    if(
-      file.size >
-      2 * 1024 * 1024
-    ){
-
-      alert(
-        "Photo must be smaller than 2MB."
-      );
-
-      this.value = "";
-
-      return;
-
-    }
-
-
-    const reader =
-      new FileReader();
-
-
-    reader.onload =
-      function(e){
-
-        photoData =
-          e.target.result;
-
-        photoPreview.innerHTML =
-          `<img
-             src="${photoData}"
-             alt="Profile Photo"
-           >`;
-
-        updateCV();
-
-      };
-
-
-    reader.readAsDataURL(file);
-
+  if (!["image/jpeg", "image/png"].includes(file.type)) {
+    alert("Please upload JPG or PNG image.");
+    this.value = "";
+    return;
   }
-);
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Photo must be smaller than 2MB.");
+    this.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    photoData = e.target.result;
+    photoPreview.innerHTML = `<img src="${photoData}" alt="Profile Photo">`;
+    updateCV();
+  };
+  reader.readAsDataURL(file);
+});
 
 
 /* =========================================================
    COLLECT FORM DATA
 ========================================================= */
 
-function collect(){
-
+function collect() {
   return {
+    name: val("name"),
 
-    name:
-      val("name"),
-
-    personal:{
-
-      name:
-        val("name"),
-
-      mobile:
-        val("mobile"),
-
-      email:
-        val("email"),
-
-      emergency:
-        val("emergency"),
-
-      currentAddress:
-        val("currentAddress"),
-
-      permanentAddress:
-        val("permanentAddress"),
-
-      profile:
-        val("profile"),
-
-      photo:
-        photoData
-
+    personal: {
+      name: val("name"),
+      mobile: val("mobile"),
+      email: val("email"),
+      emergency: val("emergency"),
+      currentAddress: val("currentAddress"),
+      permanentAddress: val("permanentAddress"),
+      profile: val("profile"),
+      photo: photoData
     },
 
-
-    education:{
-
-      ssc:
-        val("ssc"),
-
-      hsc:
-        val("hsc"),
-
-      graduate:
-        val("graduate"),
-
-      other:
-        val("other")
-
+    education: {
+      ssc: val("ssc"),
+      hsc: val("hsc"),
+      graduate: val("graduate"),
+      other: val("other")
     },
 
-
-    experience:{
-
-      experience:
-        val("experience"),
-
-      duty:
-        val("duty"),
-
-      previousSalary:
-        val("previousSalary")
-
+    experience: {
+      experience: val("experience"),
+      duty: val("duty"),
+      previousSalary: val("previousSalary")
     },
 
+    skills: { skills: val("skills") },
+    language: { language: val("language") },
 
-    skills:{
-
-      skills:
-        val("skills")
-
+    wanted: {
+      role: val("role"),
+      salary: val("salary"),
+      type: val("type"),
+      location: val("location")
     },
 
-
-    language:{
-
-      language:
-        val("language")
-
-    },
-
-
-    wanted:{
-
-      role:
-        val("role"),
-
-      salary:
-        val("salary"),
-
-      type:
-        val("type"),
-
-      location:
-        val("location")
-
-    },
-
-
-    reference:{
-
-      name:
-        val("referenceName"),
-
-      contact:
-        val("referenceContact"),
-
-      relation:
-        val("referenceRelation")
-
+    reference: {
+      name: val("referenceName"),
+      contact: val("referenceContact"),
+      relation: val("referenceRelation")
     }
-
   };
-
 }
 
 
@@ -1751,339 +723,75 @@ function collect(){
    CV HTML
 ========================================================= */
 
-function cvHTML(data){
+function cvSection(title, text) {
+  return text
+    ? `<div class="cv-section"><h3>${title}</h3><p>${esc(text)}</p></div>`
+    : "";
+}
 
+function cvHTML(data) {
   const education = [
-
-    data.education.ssc
-      ? `SSC: ${data.education.ssc}`
-      : "",
-
-    data.education.hsc
-      ? `HSC: ${data.education.hsc}`
-      : "",
-
-    data.education.graduate
-      ? data.education.graduate
-      : "",
-
+    data.education.ssc ? `SSC: ${data.education.ssc}` : "",
+    data.education.hsc ? `HSC: ${data.education.hsc}` : "",
+    data.education.graduate,
     data.education.other
-      ? data.education.other
-      : ""
-
-  ]
-  .filter(Boolean)
-  .join("\n");
-
+  ].filter(Boolean).join("\n");
 
   const experience = [
-
     data.experience.experience,
-
-    data.experience.duty
-      ? `Duties: ${data.experience.duty}`
-      : "",
-
-    data.experience.previousSalary
-      ? `Previous Salary: ${data.experience.previousSalary}`
-      : ""
-
-  ]
-  .filter(Boolean)
-  .join("\n");
-
+    data.experience.duty ? `Duties: ${data.experience.duty}` : "",
+    data.experience.previousSalary ? `Previous Salary: ${data.experience.previousSalary}` : ""
+  ].filter(Boolean).join("\n");
 
   const reference = [
-
     data.reference.name,
-
     data.reference.contact,
-
     data.reference.relation
+  ].filter(Boolean).join(" · ");
 
-  ]
-  .filter(Boolean)
-  .join(" · ");
-
+  const preference = [
+    data.wanted.type,
+    data.wanted.location,
+    data.wanted.salary
+  ].filter(Boolean).join("\n");
 
   return `
-
 <div class="cv-top">
-
-<div class="cv-photo">
-
-${
-  data.personal.photo
-
-    ? `<img
-         src="${data.personal.photo}"
-         alt="Profile"
-       >`
-
-    : "PHOTO"
-}
-
+  <div class="cv-photo">
+    ${data.personal.photo ? `<img src="${data.personal.photo}" alt="Profile">` : "PHOTO"}
+  </div>
+  <div>
+    <div class="cv-name">${esc(data.personal.name || "Your Name")}</div>
+    <div class="cv-role">${esc(data.wanted.role || "Professional")}</div>
+    <div class="cv-contact">
+      ${esc(data.personal.mobile)}
+      ${data.personal.email ? " · " + esc(data.personal.email) : ""}
+      ${data.personal.currentAddress ? "<br>" + esc(data.personal.currentAddress) : ""}
+    </div>
+  </div>
 </div>
-
-
-<div>
-
-<div class="cv-name">
-${esc(data.personal.name || "Your Name")}
-</div>
-
-
-<div class="cv-role">
-${esc(data.wanted.role || "Professional")}
-</div>
-
-
-<div class="cv-contact">
-
-${esc(data.personal.mobile)}
-
-${
-  data.personal.email
-    ? " · " + esc(data.personal.email)
-    : ""
-}
-
-${
-  data.personal.currentAddress
-    ? "<br>" + esc(data.personal.currentAddress)
-    : ""
-}
-
-</div>
-
-</div>
-
-</div>
-
 
 <div class="cv-body">
+  <aside class="cv-side">
+    ${cvSection("Skills", data.skills.skills)}
+    ${cvSection("Languages", data.language.language)}
+    ${cvSection("Preference", preference)}
+    ${cvSection("Reference", reference)}
+  </aside>
 
-
-<aside class="cv-side">
-
-
-${
-  data.skills.skills
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Skills
-    </h3>
-
-    <p>
-      ${esc(data.skills.skills)}
-    </p>
-
+  <div class="cv-main">
+    ${cvSection("Profile", data.personal.profile)}
+    ${cvSection("Experience", experience)}
+    ${cvSection("Education", education)}
+    ${cvSection("Address", data.personal.permanentAddress)}
   </div>
-
-  `
-
-  : ""
+</div>`;
 }
 
-
-${
-  data.language.language
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Languages
-    </h3>
-
-    <p>
-      ${esc(data.language.language)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-${
-  data.wanted.type ||
-  data.wanted.location ||
-  data.wanted.salary
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Preference
-    </h3>
-
-    <p>
-${esc([
-  data.wanted.type,
-  data.wanted.location,
-  data.wanted.salary
-].filter(Boolean).join("\n"))}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-${
-  reference
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Reference
-    </h3>
-
-    <p>
-      ${esc(reference)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-</aside>
-
-
-<div class="cv-main">
-
-
-${
-  data.personal.profile
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Profile
-    </h3>
-
-    <p>
-      ${esc(data.personal.profile)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-${
-  experience
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Experience
-    </h3>
-
-    <p>
-      ${esc(experience)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-${
-  education
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Education
-    </h3>
-
-    <p>
-      ${esc(education)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-${
-  data.personal.permanentAddress
-
-  ? `
-
-  <div class="cv-section">
-
-    <h3>
-      Address
-    </h3>
-
-    <p>
-      ${esc(data.personal.permanentAddress)}
-    </p>
-
-  </div>
-
-  `
-
-  : ""
-}
-
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* =========================================================
-   UPDATE CV
-========================================================= */
-
-function updateCV(){
-
-  const data =
-    collect();
-
+function updateCV() {
+  const data = collect();
 
   const hasData =
-
     data.personal.name ||
     data.personal.profile ||
     data.education.ssc ||
@@ -2093,311 +801,252 @@ function updateCV(){
     data.wanted.role ||
     data.personal.photo;
 
+  cvPaper.innerHTML = hasData
+    ? cvHTML(data)
+    : `<div class="empty">Start filling the form to generate your CV.</div>`;
+}
 
-  if(!hasData){
-
-    cvPaper.innerHTML = `
-
-      <div class="empty">
-
-        Start filling the form
-        to generate your CV.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
+form.querySelectorAll("input, textarea, select").forEach(el => {
+  el.addEventListener("input", updateCV);
+  el.addEventListener("change", updateCV);
+});
 
 
-  cvPaper.innerHTML =
-    cvHTML(data);
+/* =========================================================
+   GOOGLE SHEET (optional, needs SITE.sheetsUrl in data.js)
+========================================================= */
 
+function sendToSheet(a) {
+  const url = SITE_CFG.sheetsUrl;
+  if (!url) return;
+
+  const p = a.personal, e = a.education, x = a.experience, w = a.wanted, r = a.reference, pay = a.payment;
+
+  const row = {
+    Tracking_Number: a.trackingNumber,
+    Name: a.name,
+    Mobile: p.mobile,
+    Email: p.email,
+    Emergency: p.emergency,
+    Current_Address: p.currentAddress,
+    Permanent_Address: p.permanentAddress,
+    Summary: p.profile,
+    SSC: e.ssc,
+    HSC: e.hsc,
+    Graduate: e.graduate,
+    Other_Education: e.other,
+    Experience: x.experience,
+    Duties: x.duty,
+    Previous_Salary: x.previousSalary,
+    Skills: a.skills.skills,
+    Languages: a.language.language,
+    Desired_Role: w.role,
+    Expected_Salary: w.salary,
+    Job_Type: w.type,
+    Preferred_Location: w.location,
+    Reference: [r.name, r.contact, r.relation].filter(Boolean).join(" / "),
+    Payment_Method: pay.method || "",
+    Payment_Amount: pay.amount || "",
+    Payment_Sender: pay.senderNumber || "",
+    Payment_TrxID: pay.trxId || "",
+    Payment_Status: pay.status === "pending" ? "Pending verification" : "Not required",
+    Status: "New",
+    Submitted_At: a.created
+  };
+
+  try {
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ type: "Applicants", data: row })
+    });
+  } catch (err) { /* sheet is optional */ }
 }
 
 
 /* =========================================================
-   LIVE CV EVENTS
+   WHATSAPP CONFIRMATION
 ========================================================= */
 
-form.querySelectorAll(
-  "input, textarea, select"
-).forEach(
-  el=>{
+function whatsappLink(a) {
+  const number = String(SITE_CFG.whatsapp || "").replace(/\D/g, "");
+  if (!number) return "";
 
-    el.addEventListener(
-      "input",
-      updateCV
+  const lines = [
+    "Hello DigiSER BD, I have submitted my application.",
+    "Tracking No: " + a.trackingNumber,
+    "Name: " + a.name,
+    "Mobile: " + a.personal.mobile
+  ];
+
+  if (a.payment.required) {
+    lines.push(
+      `Payment: ${a.payment.method} ${CUR}${a.payment.amount}`,
+      "Paid from: " + a.payment.senderNumber,
+      "TrxID: " + a.payment.trxId
     );
-
-    el.addEventListener(
-      "change",
-      updateCV
-    );
-
   }
-);
+
+  return "https://wa.me/" + number + "?text=" + encodeURIComponent(lines.join("\n"));
+}
 
 
 /* =========================================================
    SUBMIT APPLICATION
 ========================================================= */
 
-form.addEventListener(
-  "submit",
-  function(e){
-
-    e.preventDefault();
-
-
-    const data =
-      collect();
-
-
-    if(
-      !data.personal.name ||
-      !data.personal.mobile
-    ){
-
-      alert(
-        "Please provide your full name and mobile number."
-      );
-
-      return;
-
-    }
-
-
-    submitBtn.disabled = true;
-
-    submitBtn.textContent =
-      "Submitting...";
-
-
-    try{
-
-      const db =
-        getDB();
-
-
-      /*
-        UNIQUE TRACKING NUMBER
-      */
-
-      let applicationId = "";
-
-      let exists = true;
-
-
-      while(exists){
-
-        applicationId =
-          idGenerate();
-
-        exists =
-          db.users.some(
-            user =>
-              user.id === applicationId ||
-              user.trackingNumber === applicationId
-          );
-
-      }
-
-
-      const now =
-        new Date().toISOString();
-
-
-      /*
-        APPLICATION RECORD
-      */
-
-      const applicant = {
-
-        id:
-          applicationId,
-
-        trackingNumber:
-          applicationId,
-
-        name:
-          data.name,
-
-        personal:
-          data.personal,
-
-        education:
-          data.education,
-
-        experience:
-          data.experience,
-
-        skills:
-          data.skills,
-
-        language:
-          data.language,
-
-        wanted:
-          data.wanted,
-
-        reference:
-          data.reference,
-
-
-        cv:{
-
-          generated:true,
-
-          version:"2.0",
-
-          generatedAt:now
-
-        },
-
-
-        attachments:{
-
-          cvGenerated:true,
-
-          profilePhoto:
-            !!photoData
-
-        },
-
-
-        status:
-          "new",
-
-
-        source:
-          "register",
-
-
-        created:
-          now,
-
-        updated:
-          now
-
-      };
-
-
-      /*
-        SAVE APPLICATION
-      */
-
-      db.users.push(
-        applicant
-      );
-
-      saveDB(db);
-
-
-      /*
-        SUCCESS SCREEN
-      */
-
-      successId.textContent =
-        applicationId;
-
-
-      successMobile.textContent =
-        `Mobile Number: ${data.personal.mobile}`;
-
-
-      printCV.dataset.cv =
-        cvHTML(data);
-
-
-      registerPage.style.display =
-        "none";
-
-
-      successScreen.classList.add(
-        "show"
-      );
-
-
-      /*
-        Scroll to confirmation
-      */
-
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
-
-
-    }catch(error){
-
-      console.error(
-        "Application submit error:",
-        error
-      );
-
-
-      alert(
-        "Application could not be submitted. Please try again."
-      );
-
-
-    }
-
-
-    submitBtn.disabled =
-      false;
-
-    submitBtn.textContent =
-      "Submit Application";
-
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  clearError();
+
+  const data = collect();
+
+  if (!data.personal.name || !data.personal.mobile) {
+    showError("Please provide your full name and mobile number.");
+    return;
   }
-);
+
+  /* ---- payment validation ---- */
+
+  let payment = { required: false, status: "not_required" };
+
+  if (PAY_ON) {
+    const method = currentMethod();
+    const sender = normalizeMobile(val("paySender"));
+    const trx = val("payTrx").replace(/\s+/g, "").toUpperCase();
+
+    if (!method) {
+      showError("Please select a payment method.");
+      return;
+    }
+    if (!sender) {
+      showError("Payment যে নম্বর থেকে করেছেন সেটি লিখুন (যেমন 01XXXXXXXXX)।");
+      $("paySender").focus();
+      return;
+    }
+    if (!/^[A-Z0-9]{6,20}$/.test(trx)) {
+      showError("সঠিক Transaction ID (TrxID) লিখুন। এটি শুধু অক্ষর ও সংখ্যা, ৬ থেকে ২০ ঘর।");
+      $("payTrx").focus();
+      return;
+    }
+    if (getDB().users.some(u => u.payment && u.payment.trxId === trx)) {
+      showError("এই TrxID আগে ব্যবহার করা হয়েছে। সঠিক TrxID দিন।");
+      $("payTrx").focus();
+      return;
+    }
+
+    payment = {
+      required: true,
+      status: "pending",
+      amount: PAY_FEE,
+      currency: "BDT",
+      method: method.name,
+      methodNumber: String(method.number),
+      senderNumber: sender,
+      trxId: trx,
+      submittedAt: new Date().toISOString()
+    };
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
+
+  try {
+    const db = getDB();
+
+    /* unique tracking number */
+    let applicationId = "";
+    let exists = true;
+
+    while (exists) {
+      applicationId = idGenerate();
+      exists = db.users.some(
+        user => user.id === applicationId || user.trackingNumber === applicationId
+      );
+    }
+
+    const now = new Date().toISOString();
+
+    const applicant = {
+      id: applicationId,
+      trackingNumber: applicationId,
+      name: data.name,
+      personal: data.personal,
+      education: data.education,
+      experience: data.experience,
+      skills: data.skills,
+      language: data.language,
+      wanted: data.wanted,
+      reference: data.reference,
+      payment: payment,
+
+      cv: { generated: true, version: "2.0", generatedAt: now },
+      attachments: { cvGenerated: true, profilePhoto: !!photoData },
+
+      status: "new",
+      source: "register",
+      created: now,
+      updated: now
+    };
+
+    db.users.push(applicant);
+    saveDB(db);
+
+    sendToSheet(applicant);
+
+    /* success screen */
+    $("successId").textContent = applicationId;
+    $("successMobile").textContent = `Mobile Number: ${data.personal.mobile}`;
+    printCV.dataset.cv = cvHTML(data);
+
+    if (payment.required) {
+      $("payStatusText").textContent =
+        `${payment.method} ${CUR}${PAY_FEE.toLocaleString("en-US")} · Verification pending`;
+      $("payStatusBox").hidden = false;
+    }
+
+    const wa = whatsappLink(applicant);
+    if (wa) {
+      $("waBtn").href = wa;
+      $("waBtn").hidden = false;
+      $("waHint").hidden = false;
+      $("waHintPay").hidden = !payment.required;
+    }
+
+    registerPage.style.display = "none";
+    successScreen.classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+  } catch (error) {
+    console.error("Application submit error:", error);
+    showError("Application could not be submitted. Please try again.");
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Submit Application";
+});
 
 
 /* =========================================================
    PRINT CV
 ========================================================= */
 
-printCV.addEventListener(
-  "click",
-  function(){
-
-    const cv =
-      this.dataset.cv;
-
-
-    if(!cv) return;
-
-
-    cvPaper.innerHTML =
-      cv;
-
-
-    window.print();
-
-  }
-);
+printCV.addEventListener("click", function () {
+  const cv = this.dataset.cv;
+  if (!cv) return;
+  cvPaper.innerHTML = cv;
+  window.print();
+});
 
 
 /* =========================================================
-   YEAR
+   INIT
 ========================================================= */
 
-document.getElementById(
-  "year"
-).textContent =
-  new Date().getFullYear();
-
-
-/* =========================================================
-   INITIAL CV
-========================================================= */
-
+$("year").textContent = new Date().getFullYear();
+setupPayment();
 updateCV();
-
 </script>
 
 </body>
