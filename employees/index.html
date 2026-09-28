@@ -1,37 +1,1329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skilled Employees | DigiSER BD</title>
-<meta name="description" content="Find skilled employees and freelancers such as designers, developers and writers in Bangladesh.">
-<meta name="theme-color" content="#0087c4">
-<link rel="canonical" href="https://digiserbd.com/employees/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigiSER BD">
-<meta property="og:title" content="Skilled Employees | DigiSER BD">
-<meta property="og:description" content="Find skilled employees and freelancers such as designers, developers and writers in Bangladesh.">
-<meta property="og:url" content="https://digiserbd.com/employees/">
-<meta property="og:image" content="https://digiserbd.com/logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="../favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Skilled Employees | DigiSER BD</title>
+
+  <meta
+    name="description"
+    content="Find skilled employees and freelancers such as designers, developers and writers in Bangladesh."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0087c4"
+  >
+
+  <link
+    rel="canonical"
+    href="https://digiserbd.com/employees/"
+  >
+
+  <!-- Open Graph -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:site_name"
+    content="DigiSER BD"
+  >
+
+  <meta
+    property="og:title"
+    content="Skilled Employees | DigiSER BD"
+  >
+
+  <meta
+    property="og:description"
+    content="Find skilled employees and freelancers such as designers, developers and writers in Bangladesh."
+  >
+
+  <meta
+    property="og:url"
+    content="https://digiserbd.com/employees/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://digiserbd.com/logo.png"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <!-- Favicon -->
+
+  <link
+    rel="icon"
+    href="../favicon.png"
+    type="image/png"
+  >
+
+  <!-- Fonts -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Global CSS -->
+
+  <link
+    rel="stylesheet"
+    href="../assets/style.css"
+  >
+
+
+  <style>
+
+    /* =====================================================
+       DIGISER BD — EMPLOYEES PAGE
+       Premium Marketplace UI
+    ===================================================== */
+
+    :root {
+
+      --employee-primary: #0087c4;
+      --employee-primary-dark: #006f9f;
+      --employee-soft: #eef8fc;
+      --employee-border: #e3edf2;
+      --employee-text: #10202b;
+      --employee-muted: #6d7b84;
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .employees-hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 72px 0 58px;
+
+      background:
+        radial-gradient(
+          circle at 86% 20%,
+          rgba(0, 135, 196, 0.10),
+          transparent 29%
+        ),
+        linear-gradient(
+          180deg,
+          #f8fcfe 0%,
+          #ffffff 100%
+        );
+
+      border-bottom: 1px solid #edf2f5;
+
+    }
+
+
+    .employees-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      right: -130px;
+      top: -145px;
+
+      border:
+        1px solid
+        rgba(0, 135, 196, 0.10);
+
+      border-radius: 50%;
+
+    }
+
+
+    .employees-hero::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 190px;
+      height: 190px;
+
+      left: -95px;
+      bottom: -105px;
+
+      border:
+        1px solid
+        rgba(0, 135, 196, 0.08);
+
+      border-radius: 50%;
+
+    }
+
+
+    .employees-hero-inner {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 850px;
+
+    }
+
+
+    .employees-eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      margin-bottom: 18px;
+
+      border:
+        1px solid
+        #d8ebf3;
+
+      border-radius: 999px;
+
+      background: #ffffff;
+
+      color: var(--employee-primary);
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 6px 22px
+        rgba(16, 32, 43, 0.04);
+
+    }
+
+
+    .employees-eyebrow-dot {
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--employee-primary);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(0, 135, 196, 0.10);
+
+    }
+
+
+    .employees-hero h1 {
+
+      max-width: 780px;
+
+      margin: 0 0 16px;
+
+      color: var(--employee-text);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size:
+        clamp(40px, 6vw, 66px);
+
+      line-height: 1.03;
+
+      letter-spacing: -0.045em;
+
+    }
+
+
+    .employees-hero h1 span {
+
+      color:
+        var(--employee-primary);
+
+    }
+
+
+    .employees-hero p {
+
+      max-width: 690px;
+
+      margin: 0;
+
+      color:
+        var(--employee-muted);
+
+      font-size: 18px;
+
+      line-height: 1.75;
+
+    }
+
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    .employees-main {
+
+      padding: 34px 0 90px;
+
+      background: #ffffff;
+
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    .employees-toolbar {
+
+      position: relative;
+
+      z-index: 5;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+
+      margin-bottom: 42px;
+
+      padding: 14px;
+
+      border:
+        1px solid
+        var(--employee-border);
+
+      border-radius: 20px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 18px 45px
+        rgba(16, 32, 43, 0.07);
+
+    }
+
+
+    .employees-search-wrap {
+
+      position: relative;
+
+      flex: 1;
+
+    }
+
+
+    .employees-search-icon {
+
+      position: absolute;
+
+      top: 50%;
+      left: 18px;
+
+      width: 20px;
+      height: 20px;
+
+      transform:
+        translateY(-50%);
+
+      color: #82919a;
+
+      pointer-events: none;
+
+    }
+
+
+    .employees-search {
+
+      width: 100%;
+
+      min-height: 54px;
+
+      padding:
+        0 18px 0 50px;
+
+      border:
+        1px solid
+        #e2e9ed;
+
+      border-radius: 14px;
+
+      outline: none;
+
+      background: #f9fbfc;
+
+      color:
+        var(--employee-text);
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .employees-search::placeholder {
+
+      color: #97a3aa;
+
+    }
+
+
+    .employees-search:focus {
+
+      border-color:
+        rgba(0, 135, 196, 0.45);
+
+      background: #ffffff;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(0, 135, 196, 0.08);
+
+    }
+
+
+    .employees-count {
+
+      flex-shrink: 0;
+
+      min-width: 110px;
+
+      text-align: center;
+
+      color:
+        var(--employee-muted);
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+    }
+
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+
+    .employees-section-head {
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 22px;
+
+    }
+
+
+    .employees-section-head h2 {
+
+      margin: 0;
+
+      color:
+        var(--employee-text);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size: 27px;
+
+      line-height: 1.2;
+
+      letter-spacing: -0.025em;
+
+    }
+
+
+    .employees-section-head p {
+
+      margin: 6px 0 0;
+
+      color:
+        var(--employee-muted);
+
+      font-size: 14px;
+
+    }
+
+
+    .employees-live {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 12px;
+
+      border:
+        1px solid
+        #dceee5;
+
+      border-radius: 999px;
+
+      background: #f7fcf9;
+
+      color: #278051;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+    }
+
+
+    .employees-live-dot {
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #2aa66b;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(42, 166, 107, 0.10);
+
+    }
+
+
+    /* =====================================================
+       EMPLOYEE LIST
+    ===================================================== */
+
+    #list {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 20px;
+
+    }
+
+
+    /* =====================================================
+       GENERATED CARDS
+    ===================================================== */
+
+    #list > * {
+
+      min-width: 0;
+
+      border:
+        1px solid
+        var(--employee-border);
+
+      border-radius: 20px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 10px 32px
+        rgba(16, 32, 43, 0.055);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+      overflow: hidden;
+
+    }
+
+
+    #list > *:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        #cfe5ee;
+
+      box-shadow:
+        0 20px 45px
+        rgba(16, 32, 43, 0.09);
+
+    }
+
+
+    #list .card,
+    #list .employee-card {
+
+      height: 100%;
+
+    }
+
+
+    /* =====================================================
+       EMPTY STATE
+    ===================================================== */
+
+    .employees-empty {
+
+      grid-column: 1 / -1;
+
+      padding: 70px 24px;
+
+      border:
+        1px dashed
+        #d7e3e9;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fbfdfe 0%,
+          #f7fafb 100%
+        );
+
+      text-align: center;
+
+    }
+
+
+    .employees-empty-icon {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 64px;
+      height: 64px;
+
+      margin:
+        0 auto 18px;
+
+      border-radius: 18px;
+
+      background:
+        var(--employee-soft);
+
+      color:
+        var(--employee-primary);
+
+    }
+
+
+    .employees-empty-icon svg {
+
+      width: 28px;
+      height: 28px;
+
+    }
+
+
+    .employees-empty h3 {
+
+      margin: 0 0 8px;
+
+      color:
+        var(--employee-text);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size: 22px;
+
+    }
+
+
+    .employees-empty p {
+
+      max-width: 470px;
+
+      margin: 0 auto;
+
+      color:
+        var(--employee-muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .employees-cta {
+
+      position: relative;
+
+      overflow: hidden;
+
+      margin-top: 60px;
+
+      padding: 34px;
+
+      border:
+        1px solid
+        #dcecf3;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f2fafd 0%,
+          #ffffff 70%
+        );
+
+    }
+
+
+    .employees-cta::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      right: -100px;
+      top: -100px;
+
+      border:
+        1px solid
+        rgba(0, 135, 196, 0.09);
+
+      border-radius: 50%;
+
+    }
+
+
+    .employees-cta-inner {
+
+      position: relative;
+
+      z-index: 2;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 28px;
+
+    }
+
+
+    .employees-cta h2 {
+
+      margin: 0 0 8px;
+
+      color:
+        var(--employee-text);
+
+      font-family:
+        "Space Grotesk",
+        sans-serif;
+
+      font-size: 26px;
+
+      letter-spacing: -0.025em;
+
+    }
+
+
+    .employees-cta p {
+
+      max-width: 650px;
+
+      margin: 0;
+
+      color:
+        var(--employee-muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+    }
+
+
+    .employees-cta-btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      min-height: 48px;
+
+      padding: 0 20px;
+
+      border-radius: 999px;
+
+      background:
+        var(--employee-primary);
+
+      color: #ffffff;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 10px 24px
+        rgba(0, 135, 196, 0.20);
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .employees-cta-btn:hover {
+
+      background:
+        var(--employee-primary-dark);
+
+      color: #ffffff;
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 980px) {
+
+      #list {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+      }
+
+      .employees-hero {
+
+        padding: 58px 0 48px;
+
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .employees-hero {
+
+        padding: 48px 0 40px;
+
+      }
+
+
+      .employees-hero h1 {
+
+        font-size: 42px;
+
+      }
+
+
+      .employees-hero p {
+
+        font-size: 16px;
+
+      }
+
+
+      .employees-toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        margin-bottom: 34px;
+
+        padding: 10px;
+
+      }
+
+
+      .employees-count {
+
+        text-align: left;
+
+        padding:
+          0 8px 4px;
+
+      }
+
+
+      .employees-section-head {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        margin-bottom: 18px;
+
+      }
+
+
+      #list {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+      }
+
+
+      .employees-cta {
+
+        padding: 26px 22px;
+
+        margin-top: 42px;
+
+      }
+
+
+      .employees-cta-inner {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+
+      .employees-cta-btn {
+
+        width: 100%;
+
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .employees-hero h1 {
+
+        font-size: 36px;
+
+      }
+
+
+      .employees-eyebrow {
+
+        font-size: 12px;
+
+      }
+
+
+      .employees-section-head h2 {
+
+        font-size: 23px;
+
+      }
+
+
+      .employees-empty {
+
+        padding: 52px 18px;
+
+      }
+
+    }
+
+  </style>
+
 </head>
-<body data-page="employees" data-root="../">
-<div id="hdr-slot"></div>
-<main>
-<section class="ph"><div class="wrap"><h1>Employees</h1><p>Find skilled professionals for your business or project.</p></div></section>
-<section class="sec" style="padding-top:8px"><div class="wrap">
-<div class="filters"><input id="q" type="search" placeholder="Search by name or skill..." aria-label="Search by name or skill..."><span id="count" style="align-self:center;color:var(--muted)"></span></div>
-  <div id="list"></div>
-</div></section>
-</main>
-<div id="ftr-slot"></div>
-<script src="../assets/data.js"></script>
-<script src="../assets/i18n.js"></script>
-<script src="../assets/app.js"></script>
+
+
+<body
+  data-page="employees"
+  data-root="../"
+>
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <div id="hdr-slot"></div>
+
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
+
+    <section class="employees-hero">
+
+      <div class="wrap">
+
+        <div class="employees-hero-inner">
+
+
+          <div class="employees-eyebrow">
+
+            <span class="employees-eyebrow-dot"></span>
+
+            DigiSER BD Talent Network
+
+          </div>
+
+
+          <h1>
+
+            Find skilled people
+            <span>for your next project.</span>
+
+          </h1>
+
+
+          <p>
+
+            Discover designers, developers, writers,
+            marketers and other skilled professionals
+            ready to support your business or project
+            across Bangladesh.
+
+          </p>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         MAIN CONTENT
+    ==================================================== -->
+
+    <section class="employees-main">
+
+      <div class="wrap">
+
+
+        <!-- Search -->
+
+        <div class="employees-toolbar">
+
+          <div class="employees-search-wrap">
+
+
+            <svg
+              class="employees-search-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+
+              <circle
+                cx="11"
+                cy="11"
+                r="7"
+              ></circle>
+
+              <path
+                d="m20 20-3.5-3.5"
+              ></path>
+
+            </svg>
+
+
+            <input
+              id="q"
+              class="employees-search"
+              type="search"
+              placeholder="Search by name or skill..."
+              aria-label="Search by name or skill"
+              autocomplete="off"
+            >
+
+          </div>
+
+
+          <span
+            id="count"
+            class="employees-count"
+          ></span>
+
+
+        </div>
+
+
+
+        <!-- Section Heading -->
+
+        <div class="employees-section-head">
+
+          <div>
+
+            <h2>
+              Skilled professionals
+            </h2>
+
+            <p>
+              Explore available talent and find the right skills.
+            </p>
+
+          </div>
+
+
+          <div class="employees-live">
+
+            <span class="employees-live-dot"></span>
+
+            Talent available
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Dynamic Employee List -->
+
+        <div id="list"></div>
+
+
+
+        <!-- CTA -->
+
+        <div class="employees-cta">
+
+          <div class="employees-cta-inner">
+
+
+            <div>
+
+              <h2>
+                Looking for work?
+              </h2>
+
+              <p>
+                Create your DigiSER BD profile and
+                let businesses discover your skills
+                and experience.
+              </p>
+
+            </div>
+
+
+            <a
+              href="../register/"
+              class="employees-cta-btn"
+            >
+              Create Your Profile
+            </a>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <div id="ftr-slot"></div>
+
+
+
+  <!-- =====================================================
+       SHARED JAVASCRIPT
+  ====================================================== -->
+
+  <script src="../assets/data.js"></script>
+
+  <script src="../assets/i18n.js"></script>
+
+  <script src="../assets/app.js"></script>
+
+
+
+  <!-- =====================================================
+       EMPLOYEES PAGE ENHANCEMENT
+  ====================================================== -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const searchInput =
+          document.getElementById("q");
+
+        if (!searchInput) return;
+
+
+        /*
+         * Support homepage/search links:
+         * /employees/?search=designer
+         */
+
+        const params =
+          new URLSearchParams(
+            window.location.search
+          );
+
+
+        const searchValue =
+          params.get("search");
+
+
+        if (searchValue) {
+
+          searchInput.value =
+            searchValue;
+
+          searchInput.dispatchEvent(
+            new Event(
+              "input",
+              {
+                bubbles: true
+              }
+            )
+          );
+
+        }
+
+
+        /*
+         * Add premium class to
+         * dynamically generated cards.
+         */
+
+        const list =
+          document.getElementById("list");
+
+        if (!list) return;
+
+
+        const observer =
+          new MutationObserver(
+            function () {
+
+              const children =
+                list.children;
+
+
+              for (
+                let i = 0;
+                i < children.length;
+                i++
+              ) {
+
+                children[i].classList.add(
+                  "premium-employee-card"
+                );
+
+              }
+
+            }
+          );
+
+
+        observer.observe(
+          list,
+          {
+            childList: true
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+
 </body>
+
 </html>
