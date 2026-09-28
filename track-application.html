@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Track Application | DigiSER BD</title>
+
+  <meta
+    name="description"
+    content="Track your DigiSER BD job application using your mobile number and tracking number."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0087c4"
+  >
+
+  <link
+    rel="icon"
+    href="favicon.png"
+    type="image/png"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/style.css"
+  >
+
+  <style>
+
+    .track-page {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 20px;
+      background: #f4f7f9;
+    }
+
+    .track-container {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .track-card {
+      background: #ffffff;
+      border: 1px solid #e1e7eb;
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: 0 18px 50px rgba(16, 32, 43, 0.08);
+    }
+
+    .track-icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: #eef8fc;
+      color: #0087c4;
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+
+    .track-card h1 {
+      margin: 0 0 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 32px;
+      line-height: 1.2;
+      color: #10202b;
+    }
+
+    .track-card .subtitle {
+      margin: 0 0 30px;
+      color: #687580;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .track-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .track-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .track-field label {
+      font-weight: 700;
+      color: #17202a;
+      font-size: 14px;
+    }
+
+    .track-field input {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 52px;
+      padding: 13px 15px;
+      border: 1px solid #d7e0e5;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #17202a;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .track-field input:focus {
+      border-color: #0087c4;
+      box-shadow: 0 0 0 4px rgba(0, 135, 196, 0.10);
+    }
+
+    .track-help {
+      margin: 0;
+      color: #7a8790;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .track-submit {
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .track-message {
+      display: none;
+      margin-top: 22px;
+      padding: 15px 16px;
+      border-radius: 12px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .track-message.error {
+      display: block;
+      background: #fff1f0;
+      border: 1px solid #f2c5c1;
+      color: #a12a20;
+    }
+
+    .track-message.success {
+      display: block;
+      background: #effaf4;
+      border: 1px solid #bde6cc;
+      color: #176b3d;
+    }
+
+    .track-info {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #e7edf0;
+    }
+
+    .track-info h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: #10202b;
+    }
+
+    .track-info ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #687580;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .track-back {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .track-back a {
+      color: #0087c4;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .track-back a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+
+      .track-page {
+        padding: 40px 15px;
+      }
+
+      .track-card {
+        padding: 28px 20px;
+        border-radius: 18px;
+      }
+
+      .track-card h1 {
+        font-size: 27px;
+      }
+
+      .track-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  data-page="track-application"
+  data-root=""
+>
+
+
+<div id="hdr-slot"></div>
+
+
+<main>
+
+  <section class="track-page">
+
+    <div class="track-container">
+
+      <div class="track-card">
+
+        <div class="track-icon">
+          ✓
+        </div>
+
+
+        <h1>
+          Track Your Application
+        </h1>
+
+
+        <p class="subtitle">
+          আপনার Job Application-এর অবস্থান Track করুন।
+          Application Submit করার পর পাওয়া
+          Tracking Number এবং Mobile Number ব্যবহার করুন।
+        </p>
+
+
+        <form
+          id="trackForm"
+          class="track-form"
+          novalidate
+        >
+
+          <div class="track-field">
+
+            <label for="mobile">
+              Mobile Number
+            </label>
+
+            <input
+              id="mobile"
+              name="mobile"
+              type="tel"
+              inputmode="numeric"
+              autocomplete="tel"
+              placeholder="01XXXXXXXXX"
+              required
+            >
+
+            <p class="track-help">
+              যে Mobile Number দিয়ে Job Application করেছেন।
+            </p>
+
+          </div>
+
+
+          <div class="track-field">
+
+            <label for="trackingNumber">
+              Tracking Number
+            </label>
+
+            <input
+              id="trackingNumber"
+              name="trackingNumber"
+              type="text"
+              autocomplete="off"
+              placeholder="Example: DGBD-2026-00001"
+              required
+            >
+
+            <p class="track-help">
+              Application Submit করার সময় পাওয়া Tracking Number।
+            </p>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn pri track-submit"
+          >
+            Track Application
+          </button>
+
+        </form>
+
+
+        <div
+          id="trackMessage"
+          class="track-message"
+          role="alert"
+        ></div>
+
+
+        <div class="track-info">
+
+          <h3>
+            Application Status
+          </h3>
+
+          <ul>
+
+            <li>
+              Application Submitted
+            </li>
+
+            <li>
+              Under Review
+            </li>
+
+            <li>
+              Shortlisted
+            </li>
+
+            <li>
+              Interview
+            </li>
+
+            <li>
+              Selected
+            </li>
+
+            <li>
+              Not Selected
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="track-back">
+
+        <a href="./">
+          ← Back to DigiSER BD
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<div id="ftr-slot"></div>
+
+
+<script src="assets/data.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+
+
+<script>
+
+  const trackForm = document.getElementById("trackForm");
+  const trackMessage = document.getElementById("trackMessage");
+
+  trackForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const mobile =
+      document.getElementById("mobile").value.trim();
+
+    const trackingNumber =
+      document.getElementById("trackingNumber").value.trim();
+
+
+    trackMessage.className = "track-message";
+    trackMessage.textContent = "";
+
+
+    if (!mobile) {
+
+      trackMessage.className =
+        "track-message error";
+
+      trackMessage.textContent =
+        "Please enter your Mobile Number.";
+
+      return;
+
+    }
+
+
+    if (!trackingNumber) {
+
+      trackMessage.className =
+        "track-message error";
+
+      trackMessage.textContent =
+        "Please enter your Tracking Number.";
+
+      return;
+
+    }
+
+
+    /*
+      STEP 2 ONLY
+
+      Real application tracking will be connected
+      in the next steps.
+
+      For now, we are checking that both fields
+      have been entered.
+    */
+
+    trackMessage.className =
+      "track-message success";
+
+    trackMessage.innerHTML =
+      "<strong>Tracking information received.</strong><br>" +
+      "Real application status tracking will be connected next.";
+
+  });
+
+</script>
+
+
+</body>
+</html>
