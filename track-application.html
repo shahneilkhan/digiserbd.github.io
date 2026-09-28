@@ -29,26 +29,33 @@
 
 <style>
 
+/* =========================================================
+   PAGE
+========================================================= */
+
 .track-page{
   min-height:calc(100vh - 160px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   padding:70px 20px;
   background:#f4f7f9;
 }
 
 .track-container{
   width:100%;
-  max-width:650px;
+  max-width:720px;
+  margin:0 auto;
 }
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .track-card{
   background:#fff;
   border:1px solid #e1e7eb;
-  border-radius:22px;
-  padding:40px;
-  box-shadow:0 18px 50px rgba(16,32,43,.08);
+  border-radius:24px;
+  padding:42px;
+  box-shadow:0 20px 60px rgba(16,32,43,.08);
 }
 
 .track-icon{
@@ -61,13 +68,14 @@
   background:#eef8fc;
   color:#0087c4;
   font-size:28px;
+  font-weight:700;
   margin-bottom:22px;
 }
 
 .track-card h1{
   margin:0 0 10px;
   font-family:"Space Grotesk",sans-serif;
-  font-size:32px;
+  font-size:34px;
   line-height:1.2;
   color:#10202b;
 }
@@ -75,9 +83,14 @@
 .subtitle{
   margin:0 0 30px;
   color:#687580;
-  line-height:1.7;
+  line-height:1.8;
   font-size:16px;
 }
+
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .track-form{
   display:grid;
@@ -97,8 +110,8 @@
 
 .track-field input{
   width:100%;
-  min-height:52px;
-  padding:13px 15px;
+  min-height:54px;
+  padding:14px 16px;
   border:1px solid #d7e0e5;
   border-radius:12px;
   background:#fff;
@@ -106,7 +119,12 @@
   font-family:inherit;
   font-size:16px;
   outline:none;
+  box-sizing:border-box;
   transition:.2s ease;
+}
+
+.track-field input:hover{
+  border-color:#b9c8d0;
 }
 
 .track-field input:focus{
@@ -123,7 +141,7 @@
 
 .track-submit{
   width:100%;
-  min-height:54px;
+  min-height:55px;
   border:0;
   border-radius:12px;
   cursor:pointer;
@@ -132,6 +150,11 @@
   font-weight:700;
   margin-top:4px;
 }
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
 
 .track-message{
   display:none;
@@ -165,7 +188,7 @@
   display:none;
   margin-top:25px;
   border:1px solid #dce7ec;
-  border-radius:16px;
+  border-radius:18px;
   overflow:hidden;
   background:#fff;
 }
@@ -175,38 +198,46 @@
 }
 
 .result-head{
-  padding:20px;
+  padding:22px;
   background:#f7fafb;
   border-bottom:1px solid #e1e7eb;
 }
 
 .result-head small{
   display:block;
-  margin-bottom:6px;
+  margin-bottom:7px;
   color:#687580;
-  font-size:12px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
 }
 
 .result-head h2{
   margin:0;
   color:#10202b;
   font-family:"Space Grotesk",sans-serif;
-  font-size:20px;
+  font-size:21px;
 }
 
 .result-body{
-  padding:20px;
+  padding:22px;
 }
+
+
+/* =========================================================
+   RESULT ROW
+========================================================= */
 
 .result-row{
   display:flex;
+  align-items:center;
   justify-content:space-between;
   gap:20px;
-  padding:12px 0;
+  padding:13px 0;
   border-bottom:1px solid #edf1f3;
 }
 
-.result-row:last-child{
+.result-row:last-of-type{
   border-bottom:0;
 }
 
@@ -230,11 +261,11 @@
 
 
 /* =========================================================
-   STATUS
+   STATUS SECTION
 ========================================================= */
 
 .status-section{
-  margin-top:20px;
+  margin-top:25px;
 }
 
 .status-section-title{
@@ -245,7 +276,7 @@
 }
 
 .status-card{
-  padding:18px;
+  padding:19px;
   border-radius:14px;
   background:#eef8fc;
   border:1px solid #d7edf6;
@@ -253,8 +284,8 @@
 
 .status-current{
   display:flex;
-  align-items:center;
-  gap:12px;
+  align-items:flex-start;
+  gap:13px;
 }
 
 .status-dot{
@@ -262,44 +293,77 @@
   height:12px;
   border-radius:50%;
   background:#0087c4;
+  margin-top:5px;
   flex:none;
 }
 
 .status-current strong{
   display:block;
   color:#10202b;
-  font-size:16px;
+  font-size:17px;
 }
 
 .status-current span{
   display:block;
-  margin-top:3px;
+  margin-top:4px;
   color:#687580;
   font-size:12px;
+  line-height:1.5;
 }
 
 
 /* =========================================================
-   STATUS TIMELINE
+   STATUS COLORS
+========================================================= */
+
+.status-card.is-selected{
+  background:#effaf4;
+  border-color:#c9ead6;
+}
+
+.status-card.is-selected .status-dot{
+  background:#159447;
+}
+
+.status-card.is-rejected{
+  background:#fff3f2;
+  border-color:#f1cfcb;
+}
+
+.status-card.is-rejected .status-dot{
+  background:#d13c32;
+}
+
+.status-card.is-interview{
+  background:#fff9ed;
+  border-color:#f1dfb7;
+}
+
+.status-card.is-interview .status-dot{
+  background:#d98b00;
+}
+
+
+/* =========================================================
+   TIMELINE
 ========================================================= */
 
 .timeline{
-  margin-top:20px;
+  margin-top:25px;
   display:grid;
-  gap:0;
 }
 
 .timeline-item{
   position:relative;
   display:flex;
-  gap:13px;
-  min-height:58px;
+  gap:14px;
+  min-height:64px;
 }
 
 .timeline-line{
   position:absolute;
   left:6px;
-  top:14px;
+  top:15px;
   bottom:0;
   width:2px;
   background:#e0e7eb;
@@ -326,8 +390,13 @@
   box-shadow:0 0 0 1px #0087c4;
 }
 
+.timeline-item.completed .timeline-dot{
+  background:#159447;
+  box-shadow:0 0 0 1px #159447;
+}
+
 .timeline-content{
-  padding-bottom:18px;
+  padding-bottom:19px;
 }
 
 .timeline-content strong{
@@ -336,13 +405,50 @@
   color:#7a8790;
 }
 
-.timeline-item.active .timeline-content strong{
+.timeline-item.active .timeline-content strong,
+.timeline-item.completed .timeline-content strong{
   color:#0087c4;
+}
+
+.timeline-item.current .timeline-content strong{
+  color:#10202b;
+  font-weight:700;
 }
 
 .timeline-content small{
   color:#9aa5ac;
   font-size:11px;
+}
+
+
+/* =========================================================
+   REJECTED STATUS
+========================================================= */
+
+.rejected-status{
+  display:none;
+  margin-top:20px;
+  padding:17px;
+  border-radius:14px;
+  background:#fff3f2;
+  border:1px solid #f1cfcb;
+}
+
+.rejected-status.show{
+  display:block;
+}
+
+.rejected-status strong{
+  display:block;
+  color:#a12a20;
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.rejected-status span{
+  color:#7f514c;
+  font-size:12px;
+  line-height:1.5;
 }
 
 
@@ -370,21 +476,38 @@
   font-size:14px;
 }
 
-.track-back{
-  text-align:center;
-  margin-top:22px;
+.track-info li::marker{
+  color:#0087c4;
 }
 
-.track-back a{
+
+/* =========================================================
+   BACK LINKS
+========================================================= */
+
+.track-links{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.track-links a{
   color:#0087c4;
   text-decoration:none;
   font-weight:700;
+  font-size:14px;
 }
 
-.track-back a:hover{
+.track-links a:hover{
   text-decoration:underline;
 }
 
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:600px){
 
@@ -408,12 +531,19 @@
   }
 
   .result-row{
+    align-items:flex-start;
     flex-direction:column;
     gap:4px;
   }
 
   .result-value{
     text-align:left;
+  }
+
+  .track-links{
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
   }
 
 }
@@ -438,6 +568,7 @@
 
 <div class="track-container">
 
+
 <div class="track-card">
 
 
@@ -452,9 +583,10 @@
 
 
 <p class="subtitle">
-  আপনার Job Application-এর অবস্থান Track করুন।
-  Application Submit করার পর পাওয়া
-  Tracking Number এবং Mobile Number ব্যবহার করুন।
+  আপনার Job Application-এর বর্তমান অবস্থা দেখুন।
+  Application Submit করার সময় পাওয়া
+  <strong>Tracking Number</strong> এবং
+  <strong>Mobile Number</strong> ব্যবহার করুন।
 </p>
 
 
@@ -503,12 +635,12 @@
   name="trackingNumber"
   type="text"
   autocomplete="off"
-  placeholder="Example: DGBD-2026-123456"
+  placeholder="DGBD-2026-123456"
   required
 >
 
 <p class="track-help">
-  Application Submit করার সময় পাওয়া Tracking Number।
+  Application Submit করার পর পাওয়া Tracking Number।
 </p>
 
 </div>
@@ -524,6 +656,8 @@
 </form>
 
 
+<!-- MESSAGE -->
+
 <div
   id="trackMessage"
   class="track-message"
@@ -532,7 +666,7 @@
 
 
 <!-- =====================================================
-     TRACK RESULT
+     RESULT
 ===================================================== -->
 
 <div
@@ -566,6 +700,22 @@
 <span
   class="result-value"
   id="resultName"
+>
+  —
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<span class="result-label">
+  Desired Role
+</span>
+
+<span
+  class="result-value"
+  id="resultRole"
 >
   —
 </span>
@@ -621,7 +771,9 @@
 </div>
 
 
-<!-- CURRENT STATUS -->
+<!-- =====================================================
+     CURRENT STATUS
+===================================================== -->
 
 <div class="status-section">
 
@@ -630,7 +782,10 @@
 </h3>
 
 
-<div class="status-card">
+<div
+  class="status-card"
+  id="statusCard"
+>
 
 <div class="status-current">
 
@@ -658,9 +813,15 @@
 </div>
 
 
-<!-- TIMELINE -->
+<!-- =====================================================
+     NORMAL TIMELINE
+===================================================== -->
 
-<div class="timeline">
+<div
+  class="timeline"
+  id="normalTimeline"
+>
+
 
 <div
   class="timeline-item"
@@ -781,11 +942,29 @@
 
 </div>
 
-
 </div>
 
 
+<!-- =====================================================
+     REJECTED
+===================================================== -->
+
+<div
+  id="rejectedStatus"
+  class="rejected-status"
+>
+
+<strong>
+  Not Selected
+</strong>
+
+<span>
+  আপনার Application-এর বর্তমান status অনুযায়ী
+  এই application process সম্পন্ন হয়েছে।
+</span>
+
 </div>
+
 
 </div>
 
@@ -799,7 +978,7 @@
 <div class="track-info">
 
 <h3>
-  Application Status
+  Application Status Flow
 </h3>
 
 <ul>
@@ -836,10 +1015,16 @@
 </div>
 
 
-<div class="track-back">
+<!-- LINKS -->
+
+<div class="track-links">
 
 <a href="./">
   ← Back to DigiSER BD
+</a>
+
+<a href="register/">
+  Apply for a Job
 </a>
 
 </div>
@@ -892,6 +1077,24 @@ const mobileInput =
 const trackingInput =
   document.getElementById("trackingNumber");
 
+const statusCard =
+  document.getElementById("statusCard");
+
+const statusDot =
+  document.getElementById("statusDot");
+
+const resultStatus =
+  document.getElementById("resultStatus");
+
+const statusDescription =
+  document.getElementById("statusDescription");
+
+const normalTimeline =
+  document.getElementById("normalTimeline");
+
+const rejectedStatus =
+  document.getElementById("rejectedStatus");
+
 
 /* =========================================================
    GET DATABASE
@@ -903,6 +1106,7 @@ function getDB(){
 
     const raw =
       localStorage.getItem(STORAGE_KEY);
+
 
     if(!raw){
 
@@ -923,7 +1127,9 @@ function getDB(){
       JSON.parse(raw);
 
 
-    db.users ||= [];
+    if(!Array.isArray(db.users)){
+      db.users = [];
+    }
 
 
     return db;
@@ -935,8 +1141,15 @@ function getDB(){
       error
     );
 
+
     return {
-      users:[]
+      users:[],
+      jobs:[],
+      services:[],
+      employees:[],
+      businesses:[],
+      messages:[],
+      blog:[]
     };
 
   }
@@ -950,9 +1163,42 @@ function getDB(){
 
 function normalizeMobile(value){
 
+  let mobile =
+    String(value || "")
+      .replace(/\D/g,"");
+
+
+  /*
+    Bangladesh international format:
+    8801XXXXXXXXX
+    becomes
+    01XXXXXXXXX
+  */
+
+  if(mobile.startsWith("880")){
+
+    mobile =
+      "0" +
+      mobile.substring(3);
+
+  }
+
+
+  return mobile;
+
+}
+
+
+/* =========================================================
+   NORMALIZE TRACKING NUMBER
+========================================================= */
+
+function normalizeTracking(value){
+
   return String(value || "")
-    .replace(/\D/g,"")
-    .replace(/^880/,"0");
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g,"");
 
 }
 
@@ -1038,26 +1284,23 @@ function formatDate(value){
   }
 
 
-  try{
-
-    const date =
-      new Date(value);
+  const date =
+    new Date(value);
 
 
-    return date.toLocaleDateString(
-      "en-BD",
-      {
-        year:"numeric",
-        month:"short",
-        day:"numeric"
-      }
-    );
-
-  }catch(error){
-
+  if(Number.isNaN(date.getTime())){
     return "—";
-
   }
+
+
+  return date.toLocaleDateString(
+    "en-BD",
+    {
+      year:"numeric",
+      month:"short",
+      day:"numeric"
+    }
+  );
 
 }
 
@@ -1078,42 +1321,98 @@ const statusOrder = [
 
 
 /* =========================================================
-   UPDATE TIMELINE
+   RESET STATUS UI
 ========================================================= */
 
-function updateTimeline(status){
+function resetStatusUI(){
 
-  const items =
-    document.querySelectorAll(
-      ".timeline-item"
-    );
+  statusCard.classList.remove(
+    "is-selected",
+    "is-rejected",
+    "is-interview"
+  );
 
 
-  items.forEach(item=>{
+  normalTimeline
+    .querySelectorAll(".timeline-item")
+    .forEach(item=>{
 
-    item.classList.remove(
-      "active"
-    );
+      item.classList.remove(
+        "active",
+        "completed",
+        "current"
+      );
 
-  });
+    });
 
+
+  rejectedStatus.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   UPDATE STATUS UI
+========================================================= */
+
+function updateStatusUI(status){
+
+  resetStatusUI();
+
+
+  /*
+    REJECTED
+  */
 
   if(status === "rejected"){
+
+    statusCard.classList.add(
+      "is-rejected"
+    );
+
+
+    statusDot.style.background =
+      "#d13c32";
+
+
+    normalTimeline.style.display =
+      "none";
+
+
+    rejectedStatus.classList.add(
+      "show"
+    );
+
 
     return;
 
   }
 
 
-  let currentIndex =
+  /*
+    NORMAL STATUS
+  */
+
+  normalTimeline.style.display =
+    "grid";
+
+
+  const currentIndex =
     statusOrder.indexOf(status);
 
 
-  if(currentIndex < 0){
+  const safeIndex =
+    currentIndex >= 0
+      ? currentIndex
+      : 0;
 
-    currentIndex = 0;
 
-  }
+  const items =
+    normalTimeline.querySelectorAll(
+      ".timeline-item"
+    );
 
 
   items.forEach(item=>{
@@ -1121,24 +1420,86 @@ function updateTimeline(status){
     const itemStatus =
       item.dataset.status;
 
+
     const itemIndex =
       statusOrder.indexOf(
         itemStatus
       );
 
 
-    if(
-      itemIndex >= 0 &&
-      itemIndex <= currentIndex
-    ){
+    /*
+      Completed previous steps
+    */
+
+    if(itemIndex < safeIndex){
 
       item.classList.add(
-        "active"
+        "completed"
+      );
+
+    }
+
+
+    /*
+      Current step
+    */
+
+    if(itemIndex === safeIndex){
+
+      item.classList.add(
+        "active",
+        "current"
       );
 
     }
 
   });
+
+
+  /*
+    Selected color
+  */
+
+  if(status === "selected"){
+
+    statusCard.classList.add(
+      "is-selected"
+    );
+
+
+    statusDot.style.background =
+      "#159447";
+
+  }
+
+
+  /*
+    Interview color
+  */
+
+  else if(status === "interview"){
+
+    statusCard.classList.add(
+      "is-interview"
+    );
+
+
+    statusDot.style.background =
+      "#d98b00";
+
+  }
+
+
+  /*
+    Default color
+  */
+
+  else{
+
+    statusDot.style.background =
+      "#0087c4";
+
+  }
 
 }
 
@@ -1153,6 +1514,10 @@ function showResult(user){
     user.personal || {};
 
 
+  const wanted =
+    user.wanted || {};
+
+
   const trackingNumber =
     user.trackingNumber ||
     user.id ||
@@ -1164,12 +1529,34 @@ function showResult(user){
     "new";
 
 
-  document.getElementById(
-    "resultName"
-  ).textContent =
+  const applicantName =
     personal.name ||
     user.name ||
     "Applicant";
+
+
+  const mobile =
+    personal.mobile ||
+    user.mobile ||
+    "—";
+
+
+  const role =
+    wanted.role ||
+    user.role ||
+    "—";
+
+
+  document.getElementById(
+    "resultName"
+  ).textContent =
+    applicantName;
+
+
+  document.getElementById(
+    "resultRole"
+  ).textContent =
+    role;
 
 
   document.getElementById(
@@ -1181,8 +1568,7 @@ function showResult(user){
   document.getElementById(
     "resultMobile"
   ).textContent =
-    personal.mobile ||
-    "—";
+    mobile;
 
 
   document.getElementById(
@@ -1193,21 +1579,15 @@ function showResult(user){
     );
 
 
-  document.getElementById(
-    "resultStatus"
-  ).textContent =
+  resultStatus.textContent =
     getStatusLabel(status);
 
 
-  document.getElementById(
-    "statusDescription"
-  ).textContent =
+  statusDescription.textContent =
     getStatusDescription(status);
 
 
-  updateTimeline(
-    status
-  );
+  updateStatusUI(status);
 
 
   trackResult.classList.add(
@@ -1215,16 +1595,88 @@ function showResult(user){
   );
 
 
-  trackResult.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  /*
+    Scroll result into view
+  */
+
+  setTimeout(()=>{
+
+    trackResult.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },50);
 
 }
 
 
 /* =========================================================
-   TRACK APPLICATION
+   FIND APPLICATION
+========================================================= */
+
+function findApplication(
+  mobile,
+  trackingNumber
+){
+
+  const db =
+    getDB();
+
+
+  const normalizedMobile =
+    normalizeMobile(
+      mobile
+    );
+
+
+  const normalizedTracking =
+    normalizeTracking(
+      trackingNumber
+    );
+
+
+  return db.users.find(
+    applicant=>{
+
+      const applicantTracking =
+        normalizeTracking(
+          applicant.trackingNumber ||
+          applicant.id ||
+          ""
+        );
+
+
+      const applicantMobile =
+        normalizeMobile(
+          applicant.personal?.mobile ||
+          applicant.mobile ||
+          ""
+        );
+
+
+      return (
+
+        applicantTracking ===
+        normalizedTracking
+
+      )
+      &&
+      (
+
+        applicantMobile ===
+        normalizedMobile
+
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   TRACK FORM
 ========================================================= */
 
 trackForm.addEventListener(
@@ -1234,17 +1686,30 @@ trackForm.addEventListener(
     event.preventDefault();
 
 
+    /*
+      Reset message
+    */
+
     trackMessage.className =
       "track-message";
+
 
     trackMessage.textContent =
       "";
 
 
+    /*
+      Hide previous result
+    */
+
     trackResult.classList.remove(
       "show"
     );
 
+
+    /*
+      Get input
+    */
 
     const mobile =
       normalizeMobile(
@@ -1253,100 +1718,117 @@ trackForm.addEventListener(
 
 
     const trackingNumber =
-      trackingInput.value
-        .trim()
-        .toUpperCase();
+      normalizeTracking(
+        trackingInput.value
+      );
 
+
+    /*
+      Validate mobile
+    */
 
     if(!mobile){
 
       trackMessage.className =
         "track-message error";
 
+
       trackMessage.textContent =
         "Please enter your Mobile Number.";
 
+
       mobileInput.focus();
+
 
       return;
 
     }
 
+
+    /*
+      Basic Bangladesh mobile validation
+    */
+
+    if(
+      mobile.length !== 11 ||
+      !mobile.startsWith("01")
+    ){
+
+      trackMessage.className =
+        "track-message error";
+
+
+      trackMessage.textContent =
+        "Please enter a valid Bangladesh Mobile Number.";
+
+
+      mobileInput.focus();
+
+
+      return;
+
+    }
+
+
+    /*
+      Validate tracking number
+    */
 
     if(!trackingNumber){
 
       trackMessage.className =
         "track-message error";
 
+
       trackMessage.textContent =
         "Please enter your Tracking Number.";
 
+
       trackingInput.focus();
+
 
       return;
 
     }
 
 
-    const db =
-      getDB();
-
-
     /*
-      Find application by:
-      1. Tracking Number
-      2. Mobile Number
+      Find application
     */
 
     const user =
-      db.users.find(applicant=>{
-
-        const applicantTracking =
-          String(
-            applicant.trackingNumber ||
-            applicant.id ||
-            ""
-          )
-          .trim()
-          .toUpperCase();
+      findApplication(
+        mobile,
+        trackingNumber
+      );
 
 
-        const applicantMobile =
-          normalizeMobile(
-            applicant.personal?.mobile ||
-            applicant.mobile ||
-            ""
-          );
-
-
-        return (
-          applicantTracking ===
-          trackingNumber
-        )
-        &&
-        (
-          applicantMobile ===
-          mobile
-        );
-
-      });
-
+    /*
+      Not found
+    */
 
     if(!user){
 
       trackMessage.className =
         "track-message error";
 
+
       trackMessage.textContent =
         "Application not found. Please check your Mobile Number and Tracking Number.";
+
 
       return;
 
     }
 
 
+    /*
+      Found
+    */
+
     trackMessage.className =
       "track-message success";
+
 
     trackMessage.textContent =
       "Application found successfully.";
@@ -1367,7 +1849,27 @@ trackingInput.addEventListener(
   function(){
 
     this.value =
-      this.value.toUpperCase();
+      normalizeTracking(
+        this.value
+      );
+
+  }
+);
+
+
+/* =========================================================
+   CLEAN MOBILE INPUT
+========================================================= */
+
+mobileInput.addEventListener(
+  "input",
+  function(){
+
+    this.value =
+      this.value.replace(
+        /[^\d+]/g,
+        ""
+      );
 
   }
 );
