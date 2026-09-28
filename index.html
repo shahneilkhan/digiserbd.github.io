@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -14,39 +13,22 @@
 
   <meta
     name="description"
-    content="DigiSER BD — Job • Service • Growth. Find jobs, skilled employees, digital services and local business support."
+    content="DigiSER BD — Find jobs, hire skilled people and grow your business."
   >
 
   <meta
     name="theme-color"
-    content="#0284C7"
-  >
-
-  <meta
-    property="og:title"
-    content="DigiSER BD | Job • Service • Growth"
-  >
-
-  <meta
-    property="og:description"
-    content="Find jobs, hire skilled people and grow your business with DigiSER BD."
-  >
-
-  <meta
-    property="og:type"
-    content="website"
+    content="#0284c7"
   >
 
   <link
     rel="icon"
-    href="assets/favicon.svg"
-    type="image/svg+xml"
+    href="favicon.png"
+    type="image/png"
   >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
     rel="preconnect"
@@ -55,3306 +37,3010 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   >
 
+  <!-- Main CSS -->
   <link
     rel="stylesheet"
     href="assets/style.css"
   >
 
-
   <style>
 
     /* =====================================================
-       DIGISER BD — PREMIUM HOMEPAGE
-    ===================================================== */
+       DIGISER BD PREMIUM HOMEPAGE
+       ===================================================== */
 
-    :root{
+    :root {
+      --ds-blue: #0284c7;
+      --ds-blue-dark: #0369a1;
+      --ds-blue-soft: #e0f2fe;
+      --ds-blue-pale: #f0f9ff;
 
-      --blue:#0284C7;
-      --blue-dark:#0369A1;
-      --blue-soft:#E0F2FE;
+      --ds-navy: #0f1f2e;
+      --ds-text: #17202a;
+      --ds-muted: #64748b;
 
-      --navy:#0F1F2E;
-      --text:#1E2933;
-      --muted:#687782;
+      --ds-white: #ffffff;
+      --ds-border: #e5e7eb;
 
-      --white:#ffffff;
+      --ds-radius-lg: 28px;
+      --ds-radius-md: 20px;
+      --ds-radius-sm: 14px;
 
-      --border:#E4EDF2;
+      --ds-shadow:
+        0 20px 60px rgba(15, 31, 46, 0.08);
 
-      --green:#159447;
-
-      --radius:18px;
-
-      --shadow:
-        0 18px 55px rgba(15,31,46,.08);
-
+      --ds-shadow-soft:
+        0 10px 35px rgba(15, 31, 46, 0.06);
     }
 
 
-    /* =====================================================
-       GLOBAL
-    ===================================================== */
-
-    *{
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+
+    html {
+      scroll-behavior: smooth;
     }
 
-    body{
 
-      margin:0;
-
-      color:var(--text);
-
-      background:#fff;
-
-      font-family:
-        "Inter",
-        sans-serif;
-
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--ds-text);
+      font-family: "Inter", sans-serif;
     }
 
-    h1,
-    h2,
-    h3,
-    h4{
 
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      color:var(--navy);
-
+    a {
+      text-decoration: none;
     }
 
-    a{
-      text-decoration:none;
+
+    .ds-container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
     }
 
 
     /* =====================================================
        HEADER
-    ===================================================== */
+       ===================================================== */
 
-    #hdr-slot{
+    .ds-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
 
-      position:relative;
+      background: rgba(255, 255, 255, 0.88);
 
-      z-index:50;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     }
 
-    .site-header{
+
+    .ds-nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+    }
+
+
+    .ds-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      color: var(--ds-navy);
+      flex-shrink: 0;
+    }
+
+
+    .ds-brand-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
 
       background:
-        rgba(255,255,255,.94);
+        linear-gradient(
+          135deg,
+          #0284c7,
+          #38bdf8
+        );
 
-      backdrop-filter:
-        blur(18px);
+      color: white;
 
-      border-bottom:
-        1px solid #edf2f5;
-
-    }
-
-    .site-header-inner{
-
-      max-width:1200px;
-
-      min-height:76px;
-
-      margin:auto;
-
-      padding:
-        0 22px;
-
-      display:flex;
-
-      align-items:center;
-
-      gap:24px;
-
-    }
-
-    .brand{
-
-      display:flex;
-
-      align-items:center;
-
-      gap:10px;
-
-      flex:none;
-
-    }
-
-    .brand-logo{
-
-      width:42px;
-      height:42px;
-
-      object-fit:contain;
-
-      border-radius:11px;
-
-    }
-
-    .brand-text{
-
-      line-height:1.05;
-
-    }
-
-    .brand-name{
-
-      color:var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:19px;
-
-      font-weight:700;
-
-    }
-
-    .brand-name span{
-      color:var(--blue);
-    }
-
-    .brand-tagline{
-
-      margin-top:4px;
-
-      color:#87939B;
-
-      font-size:9px;
-
-      letter-spacing:.08em;
-
-      font-weight:600;
-
+      box-shadow:
+        0 8px 20px rgba(2, 132, 199, 0.22);
     }
 
 
-    .main-nav{
-
-      flex:1;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      gap:3px;
-
-    }
-
-    .main-nav a{
-
-      padding:
-        9px 13px;
-
-      border-radius:999px;
-
-      color:#53626d;
-
-      font-size:12px;
-
-      font-weight:600;
-
-      transition:.2s ease;
-
-    }
-
-    .main-nav a:hover{
-
-      color:var(--blue);
-
-      background:
-        #f0f9ff;
-
-    }
-
-    .main-nav a.active{
-
-      color:var(--blue);
-
-      background:
-        var(--blue-soft);
-
+    .ds-brand-icon svg {
+      width: 23px;
+      height: 23px;
     }
 
 
-    .header-actions{
+    .ds-brand-name {
+      display: block;
 
-      display:flex;
+      font-family: "Space Grotesk", sans-serif;
 
-      align-items:center;
+      font-size: 19px;
+      font-weight: 700;
 
-      gap:7px;
-
-      flex:none;
-
+      line-height: 1.1;
     }
 
-    .header-pill{
 
-      display:inline-flex;
+    .ds-brand-tagline {
+      display: block;
 
-      align-items:center;
+      margin-top: 3px;
 
-      justify-content:center;
+      color: var(--ds-muted);
 
-      min-height:38px;
+      font-size: 10px;
+      font-weight: 600;
 
-      padding:
-        0 15px;
-
-      border-radius:999px;
-
-      font-size:11px;
-
-      font-weight:700;
-
-      white-space:nowrap;
-
+      letter-spacing: 0.08em;
     }
 
-    .header-login{
 
-      color:var(--navy);
-
-      background:#fff;
-
-      border:
-        1px solid #dce6eb;
-
+    .ds-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .header-register{
 
-      color:#fff;
+    .ds-menu a {
+      color: #52606d;
 
-      background:var(--blue);
+      font-size: 13px;
+      font-weight: 600;
 
-      border:
-        1px solid var(--blue);
+      padding: 10px 13px;
 
+      border-radius: 999px;
+
+      transition: 0.2s ease;
     }
 
-    .header-register:hover{
 
-      background:
-        var(--blue-dark);
-
+    .ds-menu a:hover {
+      color: var(--ds-blue);
+      background: var(--ds-blue-pale);
     }
 
-    .header-language{
 
-      color:var(--blue);
+    .ds-menu a.active {
+      color: var(--ds-blue);
 
-      background:#fff;
+      background: var(--ds-blue-soft);
+    }
 
-      border:
-        1px solid #cfe3ed;
 
+    .ds-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+
+    .ds-login,
+    .ds-register,
+    .ds-language {
+      min-height: 40px;
+
+      padding: 0 17px;
+
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+
+    .ds-login,
+    .ds-language {
+      border: 1px solid #d8e0e7;
+      color: var(--ds-navy);
+      background: white;
+    }
+
+
+    .ds-login:hover,
+    .ds-language:hover {
+      border-color: #bae6fd;
+      color: var(--ds-blue);
+      background: var(--ds-blue-pale);
+    }
+
+
+    .ds-register {
+      color: white;
+      background: var(--ds-blue);
+
+      box-shadow:
+        0 7px 18px rgba(2, 132, 199, 0.2);
+    }
+
+
+    .ds-register:hover {
+      background: var(--ds-blue-dark);
+      transform: translateY(-1px);
+    }
+
+
+    .ds-mobile-btn {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid var(--ds-border);
+      border-radius: 12px;
+
+      background: white;
+
+      cursor: pointer;
     }
 
 
     /* =====================================================
        HERO
-    ===================================================== */
+       ===================================================== */
 
-    .hero{
+    .ds-hero {
+      position: relative;
+      overflow: hidden;
 
-      position:relative;
-
-      overflow:hidden;
+      padding: 74px 0 82px;
 
       background:
-
         radial-gradient(
-          circle at 85% 40%,
-          rgba(224,242,254,.95),
-          transparent 28%
+          circle at 85% 25%,
+          rgba(125, 211, 252, 0.35),
+          transparent 30%
         ),
 
         linear-gradient(
-          115deg,
-          #fff 0%,
-          #fff 45%,
-          #f5fbfe 100%
+          135deg,
+          #ffffff 0%,
+          #f0f9ff 100%
         );
-
-    }
-
-    .hero::after{
-
-      content:"";
-
-      position:absolute;
-
-      width:560px;
-      height:560px;
-
-      right:-250px;
-      top:-120px;
-
-      border-radius:50%;
-
-      background:
-        rgba(224,242,254,.78);
-
-      box-shadow:
-        0 0 0 75px rgba(224,242,254,.34),
-        0 0 0 150px rgba(224,242,254,.14);
-
-      pointer-events:none;
-
-    }
-
-    .hero-inner{
-
-      position:relative;
-
-      z-index:2;
-
-      max-width:1200px;
-
-      min-height:520px;
-
-      margin:auto;
-
-      padding:
-        78px 22px 70px;
-
-      display:grid;
-
-      grid-template-columns:
-        1.1fr .9fr;
-
-      align-items:center;
-
-      gap:55px;
-
     }
 
 
-    .hero-copy{
+    .ds-hero::before {
+      content: "";
 
-      max-width:650px;
+      position: absolute;
 
+      width: 560px;
+      height: 560px;
+
+      right: -280px;
+      top: -170px;
+
+      border: 85px solid rgba(125, 211, 252, 0.16);
+
+      border-radius: 50%;
     }
 
-    .hero-eyebrow{
 
-      display:inline-flex;
+    .ds-hero::after {
+      content: "";
 
-      align-items:center;
+      position: absolute;
 
-      gap:7px;
+      width: 260px;
+      height: 260px;
 
-      padding:
-        7px 11px;
+      left: -180px;
+      bottom: -160px;
 
-      border-radius:999px;
+      border-radius: 50%;
 
-      background:
-        #eff9fe;
-
-      color:
-        var(--blue-dark);
-
-      font-size:10px;
-
-      font-weight:700;
-
-      margin-bottom:16px;
-
+      background: rgba(186, 230, 253, 0.28);
     }
 
-    .hero-eyebrow::before{
 
-      content:"";
+    .ds-hero-grid {
+      position: relative;
+      z-index: 2;
 
-      width:6px;
-      height:6px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
 
-      border-radius:50%;
+      align-items: center;
 
-      background:
-        var(--blue);
-
+      gap: 60px;
     }
 
-    .hero h1{
 
-      margin:
-        0 0 17px;
+    .ds-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
 
-      max-width:650px;
+      padding: 7px 11px;
 
-      font-size:
-        clamp(38px,5vw,64px);
+      border-radius: 999px;
 
-      line-height:
-        1.02;
+      background: white;
 
-      letter-spacing:
-        -.045em;
+      border: 1px solid #dff2fc;
 
+      color: var(--ds-blue);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      box-shadow: 0 7px 22px rgba(2, 132, 199, 0.06);
     }
 
-    .hero h1 span{
 
-      color:
-        var(--blue);
+    .ds-eyebrow-dot {
+      width: 7px;
+      height: 7px;
 
+      border-radius: 50%;
+
+      background: #22c55e;
     }
 
-    .hero-description{
 
-      max-width:570px;
+    .ds-hero h1 {
+      max-width: 650px;
 
-      margin:0 0 28px;
+      margin: 18px 0 16px;
 
-      color:var(--muted);
+      font-family: "Space Grotesk", sans-serif;
 
-      font-size:15px;
+      color: var(--ds-navy);
 
-      line-height:1.75;
+      font-size: clamp(42px, 5vw, 68px);
 
+      line-height: 0.99;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .ds-hero h1 span {
+      color: var(--ds-blue);
+    }
+
+
+    .ds-hero-description {
+      max-width: 570px;
+
+      margin: 0 0 30px;
+
+      color: #657482;
+
+      font-size: 16px;
+      line-height: 1.75;
     }
 
 
     /* =====================================================
-       SEARCH CARD
-    ===================================================== */
+       SEARCH BOX
+       ===================================================== */
 
-    .search-card{
+    .ds-search-card {
+      max-width: 680px;
 
-      max-width:690px;
+      padding: 10px;
 
-      padding:9px;
+      background: white;
 
-      border:
-        1px solid #e1eaf0;
+      border: 1px solid rgba(226, 232, 240, 0.9);
 
-      border-radius:18px;
-
-      background:#fff;
+      border-radius: 22px;
 
       box-shadow:
-        0 18px 55px
-        rgba(15,31,46,.09);
-
+        0 20px 60px rgba(15, 31, 46, 0.09);
     }
 
-    .search-tabs{
 
-      display:flex;
+    .ds-search-tabs {
+      display: flex;
+      gap: 5px;
 
-      gap:4px;
-
-      padding:2px;
-
-      margin-bottom:8px;
-
+      margin-bottom: 9px;
     }
 
-    .search-tab{
 
-      border:0;
+    .ds-search-tab {
+      border: 0;
 
-      background:transparent;
+      background: transparent;
 
-      color:#71808a;
+      color: #64748b;
 
-      padding:
-        8px 14px;
+      padding: 8px 13px;
 
-      border-radius:999px;
+      border-radius: 999px;
 
-      font-size:11px;
+      font-size: 11px;
+      font-weight: 700;
 
-      font-weight:700;
-
-      cursor:pointer;
-
+      cursor: pointer;
     }
 
-    .search-tab.active{
 
-      color:#fff;
-
-      background:
-        var(--navy);
-
+    .ds-search-tab.active {
+      color: white;
+      background: var(--ds-navy);
     }
 
-    .search-form{
 
-      display:flex;
-
-      gap:7px;
-
+    .ds-search-row {
+      display: flex;
+      gap: 8px;
     }
 
-    .search-input{
 
-      flex:1;
+    .ds-search-input {
+      flex: 1;
 
-      min-width:0;
+      min-width: 0;
 
-      height:52px;
+      height: 52px;
 
-      border:
-        1px solid #e1e8ed;
+      padding: 0 18px;
 
-      border-radius:13px;
+      border: 1px solid #e5e7eb;
 
-      padding:
-        0 17px;
+      border-radius: 15px;
 
-      outline:none;
+      outline: none;
 
-      color:var(--navy);
+      color: var(--ds-navy);
 
-      background:#fbfdfe;
+      font-family: inherit;
+      font-size: 14px;
 
-      font-size:13px;
-
+      background: #fafcfd;
     }
 
-    .search-input:focus{
 
-      border-color:
-        var(--blue);
+    .ds-search-input:focus {
+      border-color: #7dd3fc;
 
-      background:#fff;
+      background: white;
 
       box-shadow:
-        0 0 0 3px
-        rgba(2,132,199,.08);
-
-    }
-
-    .search-button{
-
-      height:52px;
-
-      border:0;
-
-      padding:
-        0 23px;
-
-      border-radius:13px;
-
-      color:#fff;
-
-      background:
-        var(--blue);
-
-      font-size:12px;
-
-      font-weight:700;
-
-      cursor:pointer;
-
-    }
-
-    .search-button:hover{
-
-      background:
-        var(--blue-dark);
-
+        0 0 0 4px rgba(125, 211, 252, 0.14);
     }
 
 
-    .trust-line{
+    .ds-search-button {
+      height: 52px;
 
-      display:flex;
+      padding: 0 24px;
 
-      flex-wrap:wrap;
+      border: 0;
 
-      gap:17px;
+      border-radius: 15px;
 
-      margin-top:16px;
+      background: var(--ds-blue);
 
+      color: white;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 9px 22px rgba(2, 132, 199, 0.2);
     }
 
-    .trust-item{
 
-      color:#73808a;
-
-      font-size:10px;
-
-      font-weight:600;
-
+    .ds-search-button:hover {
+      background: var(--ds-blue-dark);
     }
 
-    .trust-item::first-letter{
 
-      color:
-        var(--green);
+    .ds-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
 
+      margin-top: 17px;
     }
 
-    .trust-item span{
 
-      color:
-        var(--green);
+    .ds-trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
 
-      font-weight:800;
+      color: #667685;
 
-      margin-right:4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
 
+
+    .ds-trust-check {
+      width: 18px;
+      height: 18px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #dcfce7;
+
+      color: #16a34a;
+
+      font-size: 10px;
+      font-weight: 900;
     }
 
 
     /* =====================================================
-       HERO JOB CARD
-    ===================================================== */
+       HERO JOB PREVIEW
+       ===================================================== */
 
-    .hero-side{
-
-      display:flex;
-
-      justify-content:flex-end;
-
+    .ds-preview-wrap {
+      position: relative;
     }
 
-    .jobs-preview{
 
-      width:
-        min(390px,100%);
+    .ds-preview-glow {
+      position: absolute;
 
-      padding:23px;
+      width: 220px;
+      height: 220px;
 
-      border:
-        1px solid #e0eaf0;
+      right: -30px;
+      top: -35px;
 
-      border-radius:21px;
+      border-radius: 50%;
 
-      background:#fff;
+      background: #bae6fd;
+
+      filter: blur(50px);
+
+      opacity: 0.45;
+    }
+
+
+    .ds-preview-card {
+      position: relative;
+      z-index: 2;
+
+      padding: 27px;
+
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      border: 1px solid rgba(255, 255, 255, 0.9);
 
       box-shadow:
-        var(--shadow);
-
+        0 30px 80px rgba(15, 31, 46, 0.12);
     }
 
-    .jobs-preview-top{
 
-      display:flex;
+    .ds-preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      justify-content:space-between;
-
-      align-items:center;
-
-      margin-bottom:20px;
-
+      margin-bottom: 27px;
     }
 
-    .jobs-preview-title{
 
-      color:var(--navy);
+    .ds-preview-label {
+      color: #8794a0;
 
-      font-family:
-        "Space Grotesk",
-        sans-serif;
+      font-size: 11px;
+      font-weight: 700;
 
-      font-size:17px;
+      text-transform: uppercase;
 
-      font-weight:700;
-
+      letter-spacing: 0.08em;
     }
 
-    .see-all{
 
-      color:
-        var(--blue);
+    .ds-preview-link {
+      color: var(--ds-blue);
 
-      font-size:11px;
-
-      font-weight:700;
-
+      font-size: 12px;
+      font-weight: 800;
     }
 
-    .preview-job{
 
-      padding:
-        15px 0;
+    .ds-job-main {
+      padding: 21px;
 
-      border-top:
-        1px solid #edf1f3;
+      border: 1px solid #edf2f5;
 
+      border-radius: 20px;
+
+      background: #fbfdfe;
     }
 
-    .preview-job-title{
 
-      color:var(--navy);
+    .ds-job-icon {
+      width: 48px;
+      height: 48px;
 
-      font-size:13px;
+      display: grid;
+      place-items: center;
 
-      font-weight:700;
+      border-radius: 15px;
 
+      background: var(--ds-blue-soft);
+
+      color: var(--ds-blue);
+
+      font-size: 21px;
+
+      margin-bottom: 16px;
     }
 
-    .preview-job-meta{
 
-      margin-top:5px;
+    .ds-job-title {
+      margin: 0 0 7px;
 
-      color:#7c8991;
+      color: var(--ds-navy);
 
-      font-size:10px;
+      font-family: "Space Grotesk", sans-serif;
 
+      font-size: 22px;
+      font-weight: 700;
     }
 
-    .preview-job-bottom{
 
-      display:flex;
+    .ds-job-company {
+      color: #71808d;
 
-      justify-content:space-between;
-
-      align-items:center;
-
-      margin-top:9px;
-
+      font-size: 12px;
+      font-weight: 600;
     }
 
-    .preview-tag{
 
-      padding:
-        5px 8px;
+    .ds-job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
 
-      border-radius:999px;
-
-      background:
-        #eef8fc;
-
-      color:
-        var(--blue-dark);
-
-      font-size:9px;
-
-      font-weight:700;
-
+      margin-top: 17px;
     }
 
-    .preview-more{
 
-      color:#7c8991;
+    .ds-meta-pill {
+      padding: 7px 10px;
 
-      font-size:9px;
+      border-radius: 999px;
 
+      background: white;
+
+      border: 1px solid #e5eaee;
+
+      color: #687783;
+
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+
+    .ds-preview-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 8px;
+
+      margin-top: 13px;
+    }
+
+
+    .ds-mini-stat {
+      padding: 14px 12px;
+
+      border-radius: 15px;
+
+      background: #f7fafc;
+
+      text-align: center;
+    }
+
+
+    .ds-mini-stat strong {
+      display: block;
+
+      color: var(--ds-navy);
+
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+
+    .ds-mini-stat span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: #8996a1;
+
+      font-size: 9px;
+      font-weight: 600;
     }
 
 
     /* =====================================================
-       SECTION
-    ===================================================== */
+       SECTION COMMON
+       ===================================================== */
 
-    .section{
-
-      padding:
-        82px 22px;
-
-      background:#fff;
-
+    .ds-section {
+      padding: 90px 0;
     }
 
-    .section-inner{
 
-      max-width:1200px;
-
-      margin:auto;
-
+    .ds-section-soft {
+      background: #f8fbfd;
     }
 
-    .section-heading{
 
-      display:flex;
+    .ds-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
 
-      align-items:flex-end;
+      gap: 30px;
 
-      justify-content:space-between;
-
-      gap:25px;
-
-      margin-bottom:29px;
-
+      margin-bottom: 35px;
     }
 
-    .section-heading h2{
 
-      margin:0;
+    .ds-section-kicker {
+      margin-bottom: 8px;
 
-      font-size:
-        clamp(28px,3vw,40px);
+      color: var(--ds-blue);
 
-      line-height:1.08;
+      font-size: 11px;
+      font-weight: 800;
 
-      letter-spacing:-.035em;
+      text-transform: uppercase;
 
+      letter-spacing: 0.1em;
     }
 
-    .section-heading p{
 
-      max-width:580px;
+    .ds-section-title {
+      margin: 0;
 
-      margin:
-        9px 0 0;
+      color: var(--ds-navy);
 
-      color:var(--muted);
+      font-family: "Space Grotesk", sans-serif;
 
-      font-size:13px;
+      font-size: clamp(29px, 4vw, 42px);
 
-      line-height:1.65;
+      line-height: 1.08;
 
+      letter-spacing: -0.03em;
     }
 
-    .section-link{
 
-      color:
-        var(--blue);
+    .ds-section-description {
+      max-width: 540px;
 
-      font-size:12px;
+      margin: 10px 0 0;
 
-      font-weight:700;
+      color: #71808d;
 
-      white-space:nowrap;
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
+
+    .ds-view-all {
+      color: var(--ds-blue);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      white-space: nowrap;
     }
 
 
     /* =====================================================
        SERVICES
-    ===================================================== */
+       ===================================================== */
 
-    .services-grid{
-
-      display:grid;
+    .ds-service-grid {
+      display: grid;
 
       grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
-      gap:15px;
-
+      gap: 16px;
     }
 
-    .service-card{
 
-      min-height:230px;
+    .ds-service-card {
+      position: relative;
 
-      padding:22px;
+      min-height: 235px;
 
-      border:
-        1px solid var(--border);
+      padding: 25px;
 
-      border-radius:17px;
+      background: white;
 
-      background:#fff;
+      border: 1px solid #e7edf1;
 
-      transition:
-        transform .22s ease,
-        box-shadow .22s ease,
-        border-color .22s ease;
+      border-radius: 22px;
 
+      box-shadow: var(--ds-shadow-soft);
+
+      transition: 0.25s ease;
     }
 
-    .service-card:hover{
 
-      transform:
-        translateY(-5px);
+    .ds-service-card:hover {
+      transform: translateY(-5px);
 
-      border-color:
-        #c9e4f1;
+      border-color: #bae6fd;
 
       box-shadow:
-        0 18px 45px
-        rgba(15,31,46,.07);
-
+        0 22px 50px rgba(15, 31, 46, 0.09);
     }
 
-    .service-icon{
 
-      width:48px;
-      height:48px;
+    .ds-service-icon {
+      width: 52px;
+      height: 52px;
 
-      display:flex;
+      display: grid;
+      place-items: center;
 
-      align-items:center;
+      border-radius: 16px;
 
-      justify-content:center;
+      background: var(--ds-blue-pale);
 
-      border-radius:14px;
+      font-size: 23px;
 
-      background:
-        #f0f9ff;
-
-      font-size:23px;
-
-      margin-bottom:23px;
-
+      margin-bottom: 21px;
     }
 
-    .service-card h3{
 
-      margin:
-        0 0 8px;
+    .ds-service-card h3 {
+      margin: 0 0 9px;
 
-      font-size:16px;
+      color: var(--ds-navy);
 
-      line-height:1.25;
+      font-family: "Space Grotesk", sans-serif;
 
+      font-size: 18px;
     }
 
-    .service-card p{
 
-      margin:0;
+    .ds-service-card p {
+      margin: 0;
 
-      color:var(--muted);
+      color: #71808d;
 
-      font-size:11px;
+      font-size: 12px;
 
-      line-height:1.75;
+      line-height: 1.7;
+    }
 
+
+    .ds-service-arrow {
+      position: absolute;
+
+      right: 22px;
+      bottom: 21px;
+
+      width: 30px;
+      height: 30px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #f1f5f9;
+
+      color: var(--ds-blue);
+
+      font-size: 13px;
     }
 
 
     /* =====================================================
        TRACKING
-    ===================================================== */
+       ===================================================== */
 
-    .tracking-section{
+    .ds-track {
+      padding: 85px 0;
+    }
 
-      padding:
-        65px 22px;
+
+    .ds-track-box {
+      position: relative;
+      overflow: hidden;
+
+      display: grid;
+
+      grid-template-columns: 0.9fr 1.1fr;
+
+      align-items: center;
+
+      gap: 45px;
+
+      padding: 50px;
+
+      border-radius: 30px;
 
       background:
-        #f7fbfd;
+        linear-gradient(
+          135deg,
+          #0f1f2e,
+          #12354a
+        );
 
+      box-shadow:
+        0 30px 70px rgba(15, 31, 46, 0.16);
     }
 
-    .tracking-box{
 
-      max-width:1200px;
+    .ds-track-box::after {
+      content: "";
 
-      margin:auto;
+      position: absolute;
 
-      padding:
-        35px;
+      width: 330px;
+      height: 330px;
 
-      border:
-        1px solid #dcecf4;
+      right: -110px;
+      top: -160px;
 
-      border-radius:22px;
+      border: 65px solid rgba(125, 211, 252, 0.08);
 
-      background:
-
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(224,242,254,.9),
-          transparent 30%
-        ),
-
-        #fff;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:30px;
-
+      border-radius: 50%;
     }
 
-    .tracking-copy h2{
 
-      margin:
-        0 0 7px;
-
-      font-size:27px;
-
+    .ds-track-content {
+      position: relative;
+      z-index: 2;
     }
 
-    .tracking-copy p{
 
-      margin:0;
-
-      color:var(--muted);
-
-      font-size:12px;
-
+    .ds-track-content .ds-section-kicker {
+      color: #7dd3fc;
     }
 
-    .tracking-button{
 
-      display:inline-flex;
+    .ds-track-content h2 {
+      margin: 0 0 13px;
 
-      align-items:center;
+      color: white;
 
-      justify-content:center;
+      font-family: "Space Grotesk", sans-serif;
 
-      min-height:43px;
+      font-size: 35px;
 
-      padding:
-        0 19px;
+      line-height: 1.1;
+    }
 
-      border-radius:999px;
 
-      color:#fff;
+    .ds-track-content p {
+      max-width: 450px;
 
-      background:
-        var(--blue);
+      margin: 0;
 
-      font-size:11px;
+      color: #b8c8d4;
 
-      font-weight:700;
+      font-size: 13px;
 
-      white-space:nowrap;
+      line-height: 1.7;
+    }
 
+
+    .ds-track-form {
+      position: relative;
+      z-index: 2;
+
+      padding: 8px;
+
+      border-radius: 18px;
+
+      background: white;
+    }
+
+
+    .ds-track-form-inner {
+      display: flex;
+      gap: 8px;
+    }
+
+
+    .ds-track-input {
+      flex: 1;
+
+      min-width: 0;
+
+      height: 51px;
+
+      border: 0;
+
+      outline: none;
+
+      padding: 0 15px;
+
+      border-radius: 13px;
+
+      background: #f5f8fa;
+
+      color: var(--ds-navy);
+
+      font-family: inherit;
+
+      font-size: 12px;
+    }
+
+
+    .ds-track-button {
+      height: 51px;
+
+      padding: 0 21px;
+
+      border: 0;
+
+      border-radius: 13px;
+
+      color: white;
+
+      background: var(--ds-blue);
+
+      font-weight: 800;
+
+      font-size: 12px;
+
+      cursor: pointer;
     }
 
 
     /* =====================================================
        JOBS
-    ===================================================== */
+       ===================================================== */
 
-    .jobs-section{
-
-      padding:
-        82px 22px;
-
-    }
-
-    .jobs-grid{
-
-      display:grid;
+    .ds-job-grid {
+      display: grid;
 
       grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-      gap:16px;
-
-    }
-
-    .job-card{
-
-      padding:20px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:17px;
-
-      background:#fff;
-
-      transition:.2s ease;
-
-    }
-
-    .job-card:hover{
-
-      transform:
-        translateY(-4px);
-
-      box-shadow:
-        0 15px 40px
-        rgba(15,31,46,.06);
-
-    }
-
-    .job-card-top{
-
-      display:flex;
-
-      justify-content:space-between;
-
-      gap:10px;
-
-    }
-
-    .job-title{
-
-      margin:0;
-
-      color:var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:15px;
-
-      font-weight:700;
-
-    }
-
-    .job-type{
-
-      padding:
-        5px 8px;
-
-      border-radius:999px;
-
-      background:
-        #eef8fc;
-
-      color:
-        var(--blue-dark);
-
-      font-size:8px;
-
-      font-weight:700;
-
-      white-space:nowrap;
-
-    }
-
-    .job-company{
-
-      margin-top:7px;
-
-      color:var(--muted);
-
-      font-size:10px;
-
-    }
-
-    .job-details{
-
-      display:flex;
-
-      flex-wrap:wrap;
-
-      gap:8px;
-
-      margin-top:15px;
-
-      color:#75838c;
-
-      font-size:9px;
-
+      gap: 17px;
     }
 
 
-    /* =====================================================
-       EMPLOYEES
-    ===================================================== */
+    .ds-job-card {
+      padding: 23px;
 
-    .employees-section{
+      border: 1px solid #e5ebef;
 
-      padding:
-        82px 22px;
+      border-radius: 21px;
 
-      background:
-        #f8fbfc;
+      background: white;
 
-    }
-
-    .employees-grid{
-
-      display:grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:15px;
-
-    }
-
-    .employee-card{
-
-      padding:21px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:17px;
-
-      background:#fff;
-
-      text-align:center;
-
-    }
-
-    .employee-avatar{
-
-      width:68px;
-      height:68px;
-
-      margin:
-        0 auto 12px;
-
-      border-radius:50%;
-
-      overflow:hidden;
-
-      background:
-        #e9f5fa;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      color:
-        var(--blue-dark);
-
-      font-size:20px;
-
-      font-weight:700;
-
-    }
-
-    .employee-avatar img{
-
-      width:100%;
-      height:100%;
-
-      object-fit:cover;
-
-    }
-
-    .employee-name{
-
-      color:var(--navy);
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:14px;
-
-      font-weight:700;
-
-    }
-
-    .employee-role{
-
-      margin-top:4px;
-
-      color:var(--blue);
-
-      font-size:10px;
-
-      font-weight:700;
-
-    }
-
-    .employee-info{
-
-      margin-top:10px;
-
-      color:var(--muted);
-
-      font-size:9px;
-
-      line-height:1.6;
-
+      transition: 0.2s ease;
     }
 
 
-    /* =====================================================
-       BUSINESSES
-    ===================================================== */
+    .ds-job-card:hover {
+      transform: translateY(-3px);
 
-    .business-section{
+      box-shadow: var(--ds-shadow-soft);
 
-      padding:
-        82px 22px;
-
+      border-color: #cfeefb;
     }
 
-    .business-box{
 
-      padding:
-        45px;
+    .ds-job-card-top {
+      display: flex;
 
-      border-radius:22px;
+      justify-content: space-between;
 
-      background:
-        var(--navy);
+      align-items: flex-start;
 
-      position:relative;
-
-      overflow:hidden;
-
+      gap: 15px;
     }
 
-    .business-box::after{
 
-      content:"";
+    .ds-job-small-icon {
+      width: 43px;
+      height: 43px;
 
-      position:absolute;
+      display: grid;
+      place-items: center;
 
-      width:320px;
-      height:320px;
+      border-radius: 13px;
 
-      right:-130px;
-      top:-140px;
+      background: var(--ds-blue-soft);
 
-      border-radius:50%;
+      color: var(--ds-blue);
 
-      background:
-        rgba(2,132,199,.28);
-
+      font-size: 18px;
     }
 
-    .business-content{
 
-      position:relative;
+    .ds-job-type {
+      padding: 6px 9px;
 
-      z-index:2;
+      border-radius: 999px;
 
-      max-width:670px;
+      background: #ecfdf5;
 
+      color: #15803d;
+
+      font-size: 9px;
+
+      font-weight: 800;
     }
 
-    .business-content h2{
 
-      margin:
-        0 0 11px;
+    .ds-job-card h3 {
+      margin: 17px 0 5px;
 
-      color:#fff;
+      color: var(--ds-navy);
 
-      font-size:31px;
+      font-family: "Space Grotesk", sans-serif;
 
-      letter-spacing:-.03em;
-
+      font-size: 17px;
     }
 
-    .business-content p{
 
-      margin:0;
+    .ds-job-card-company {
+      color: #7a8792;
 
-      color:#b9c7cf;
+      font-size: 11px;
 
-      font-size:12px;
-
-      line-height:1.75;
-
+      font-weight: 600;
     }
 
-    .business-perks{
 
-      display:grid;
+    .ds-job-card-meta {
+      display: flex;
 
-      grid-template-columns:
-        repeat(3,1fr);
+      flex-wrap: wrap;
 
-      gap:10px;
+      gap: 6px;
 
-      margin-top:24px;
-
+      margin-top: 17px;
     }
 
-    .business-perk{
 
-      padding:
-        13px;
+    .ds-job-card-meta span {
+      padding: 6px 9px;
 
-      border:
-        1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
 
-      border-radius:12px;
+      background: #f7fafb;
 
-      color:#dbe8ee;
+      color: #687783;
 
-      background:
-        rgba(255,255,255,.045);
+      font-size: 9px;
 
-      font-size:10px;
-
-      font-weight:600;
-
-    }
-
-    .business-perk span{
-
-      color:
-        #67d3ff;
-
-      margin-right:5px;
-
+      font-weight: 600;
     }
 
 
     /* =====================================================
        HOW IT WORKS
-    ===================================================== */
+       ===================================================== */
 
-    .steps{
-
-      display:grid;
+    .ds-steps {
+      display: grid;
 
       grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-      gap:16px;
-
+      gap: 17px;
     }
 
-    .step{
 
-      padding:
-        23px;
+    .ds-step {
+      padding: 28px;
 
-      border:
-        1px solid var(--border);
+      border-radius: 21px;
 
-      border-radius:17px;
+      background: white;
 
-      background:#fff;
-
+      border: 1px solid #e7edf1;
     }
 
-    .step-number{
 
-      width:35px;
-      height:35px;
+    .ds-step-number {
+      width: 40px;
+      height: 40px;
 
-      display:flex;
+      display: grid;
+      place-items: center;
 
-      align-items:center;
+      border-radius: 12px;
 
-      justify-content:center;
+      background: var(--ds-blue-soft);
 
-      border-radius:11px;
+      color: var(--ds-blue);
 
-      color:
-        var(--blue-dark);
+      font-family: "Space Grotesk", sans-serif;
 
-      background:
-        var(--blue-soft);
+      font-size: 15px;
+      font-weight: 800;
 
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size:12px;
-
-      font-weight:700;
-
+      margin-bottom: 20px;
     }
 
-    .step h3{
 
-      margin:
-        18px 0 7px;
+    .ds-step h3 {
+      margin: 0 0 8px;
 
-      font-size:16px;
+      color: var(--ds-navy);
 
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 18px;
     }
 
-    .step p{
 
-      margin:0;
+    .ds-step p {
+      margin: 0;
 
-      color:var(--muted);
+      color: #74818c;
 
-      font-size:10px;
+      font-size: 12px;
 
-      line-height:1.7;
-
+      line-height: 1.7;
     }
 
 
     /* =====================================================
        CTA
-    ===================================================== */
+       ===================================================== */
 
-    .final-cta{
-
-      padding:
-        35px 22px 85px;
-
+    .ds-cta {
+      padding: 0 0 90px;
     }
 
-    .cta-box{
 
-      max-width:1200px;
+    .ds-cta-box {
+      display: flex;
 
-      margin:auto;
+      align-items: center;
+      justify-content: space-between;
 
-      padding:
-        38px;
+      gap: 30px;
 
-      border-radius:21px;
+      padding: 42px 45px;
 
-      background:
-        #eaf7fd;
+      border-radius: 27px;
 
-      display:flex;
+      background: var(--ds-blue-pale);
 
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:25px;
-
+      border: 1px solid #d9f0fc;
     }
 
-    .cta-box h2{
 
-      margin:0;
+    .ds-cta-box h2 {
+      margin: 0 0 8px;
 
-      font-size:27px;
+      color: var(--ds-navy);
 
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 30px;
     }
 
-    .cta-box p{
 
-      margin:
-        7px 0 0;
+    .ds-cta-box p {
+      margin: 0;
 
-      color:var(--muted);
+      color: #6c7c88;
 
-      font-size:11px;
-
+      font-size: 12px;
     }
 
-    .cta-actions{
 
-      display:flex;
+    .ds-cta-button {
+      flex-shrink: 0;
 
-      gap:8px;
+      display: inline-flex;
 
+      align-items: center;
+      justify-content: center;
+
+      min-height: 47px;
+
+      padding: 0 22px;
+
+      border-radius: 999px;
+
+      background: var(--ds-blue);
+
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 24px rgba(2, 132, 199, 0.2);
     }
 
-    .cta-button{
 
-      min-height:43px;
-
-      padding:
-        0 18px;
-
-      display:inline-flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      border-radius:999px;
-
-      font-size:11px;
-
-      font-weight:700;
-
-    }
-
-    .cta-primary{
-
-      color:#fff;
-
-      background:
-        var(--blue);
-
-    }
-
-    .cta-secondary{
-
-      color:var(--blue-dark);
-
-      background:#fff;
-
-      border:
-        1px solid #cfe3ed;
-
+    .ds-cta-button:hover {
+      background: var(--ds-blue-dark);
     }
 
 
     /* =====================================================
-       DYNAMIC CONTENT
-    ===================================================== */
+       FOOTER
+       ===================================================== */
 
-    #homeServices:empty::after{
+    .ds-footer {
+      padding: 55px 0 25px;
 
-      content:"Services will appear here.";
+      background: #0b1823;
 
-      color:#9aa6ad;
-
-      font-size:12px;
-
+      color: white;
     }
 
-    #homeJobs:empty::after{
 
-      content:"Latest jobs will appear here.";
+    .ds-footer-grid {
+      display: grid;
 
-      color:#9aa6ad;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
 
-      font-size:12px;
+      gap: 45px;
 
+      padding-bottom: 45px;
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+
+    .ds-footer-brand {
+      max-width: 290px;
+    }
+
+
+    .ds-footer-brand .ds-brand {
+      color: white;
+    }
+
+
+    .ds-footer-brand .ds-brand-tagline {
+      color: #8293a0;
+    }
+
+
+    .ds-footer-description {
+      margin: 17px 0 0;
+
+      color: #8999a5;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+    }
+
+
+    .ds-footer-column h4 {
+      margin: 0 0 16px;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+
+      color: white;
+    }
+
+
+    .ds-footer-column a {
+      display: block;
+
+      margin-bottom: 11px;
+
+      color: #8293a0;
+
+      font-size: 11px;
+    }
+
+
+    .ds-footer-column a:hover {
+      color: #7dd3fc;
+    }
+
+
+    .ds-footer-bottom {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding-top: 22px;
+
+      color: #71818e;
+
+      font-size: 10px;
     }
 
 
     /* =====================================================
-       MOBILE
-    ===================================================== */
+       RESPONSIVE
+       ===================================================== */
 
-    @media(max-width:1050px){
+    @media (max-width: 1050px) {
 
-      .main-nav{
-        display:none;
+      .ds-menu {
+        display: none;
       }
 
-      .hero-inner{
+      .ds-mobile-btn {
+        display: block;
+      }
 
+      .ds-hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ds-preview-wrap {
+        max-width: 650px;
+      }
+
+      .ds-service-grid {
         grid-template-columns:
-          1fr;
-
-        min-height:auto;
-
+          repeat(2, 1fr);
       }
 
-      .hero-side{
-
-        justify-content:flex-start;
-
-      }
-
-      .services-grid{
-
+      .ds-job-grid {
         grid-template-columns:
-          repeat(2,1fr);
-
+          repeat(2, 1fr);
       }
 
-      .employees-grid{
-
+      .ds-footer-grid {
         grid-template-columns:
-          repeat(2,1fr);
-
+          repeat(2, 1fr);
       }
-
     }
 
 
-    @media(max-width:760px){
+    @media (max-width: 720px) {
 
-      .site-header-inner{
-
-        min-height:68px;
-
-        padding:
-          0 14px;
-
+      .ds-container {
+        width: min(
+          100% - 28px,
+          1180px
+        );
       }
 
-      .brand-tagline{
-        display:none;
+
+      .ds-nav {
+        min-height: 68px;
       }
 
-      .header-login{
-        display:none;
+
+      .ds-nav-actions .ds-login {
+        display: none;
       }
 
-      .header-pill{
-        min-height:35px;
-        padding:
-          0 11px;
+
+      .ds-nav-actions .ds-language {
+        display: none;
       }
 
-      .hero-inner{
 
-        padding:
-          55px 16px 55px;
+      .ds-register {
+        min-height: 37px;
 
-        gap:35px;
+        padding: 0 14px;
 
+        font-size: 11px;
       }
 
-      .hero h1{
 
-        font-size:
-          clamp(35px,11vw,48px);
-
+      .ds-hero {
+        padding: 55px 0 60px;
       }
 
-      .hero-description{
-        font-size:13px;
+
+      .ds-hero h1 {
+        font-size: 43px;
       }
 
-      .search-form{
-        flex-direction:column;
+
+      .ds-hero-description {
+        font-size: 14px;
       }
 
-      .search-button{
-        width:100%;
+
+      .ds-search-row {
+        flex-direction: column;
       }
 
-      .search-input{
-        width:100%;
+
+      .ds-search-button {
+        width: 100%;
       }
 
-      .trust-line{
-        gap:10px;
+
+      .ds-search-card {
+        padding: 9px;
       }
 
-      .section,
-      .jobs-section,
-      .employees-section,
-      .business-section{
 
-        padding:
-          60px 16px;
-
+      .ds-preview-card {
+        padding: 19px;
       }
 
-      .section-heading{
 
-        align-items:flex-start;
-
-        flex-direction:column;
-
+      .ds-section {
+        padding: 65px 0;
       }
 
-      .services-grid,
-      .jobs-grid,
-      .employees-grid,
-      .steps{
 
-        grid-template-columns:
-          1fr;
+      .ds-section-head {
+        align-items: flex-start;
 
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-bottom: 25px;
       }
 
-      .tracking-section{
-        padding:
-          45px 16px;
+
+      .ds-service-grid,
+      .ds-job-grid,
+      .ds-steps {
+        grid-template-columns: 1fr;
       }
 
-      .tracking-box{
 
-        align-items:flex-start;
-
-        flex-direction:column;
-
-        padding:27px;
-
+      .ds-track {
+        padding: 65px 0;
       }
 
-      .business-box{
-        padding:30px 23px;
+
+      .ds-track-box {
+        grid-template-columns: 1fr;
+
+        padding: 30px 22px;
+
+        gap: 25px;
       }
 
-      .business-perks{
 
-        grid-template-columns:
-          1fr;
-
+      .ds-track-form-inner {
+        flex-direction: column;
       }
 
-      .cta-box{
 
-        align-items:flex-start;
-
-        flex-direction:column;
-
-        padding:29px 23px;
-
+      .ds-track-button {
+        width: 100%;
       }
 
-      .cta-actions{
 
-        width:100%;
-
-        flex-direction:column;
-
+      .ds-cta {
+        padding-bottom: 65px;
       }
 
-      .cta-button{
-        width:100%;
+
+      .ds-cta-box {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 30px 23px;
       }
 
+
+      .ds-cta-button {
+        width: 100%;
+      }
+
+
+      .ds-footer-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+      }
+
+
+      .ds-footer-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+      }
     }
 
-
-    @media(max-width:420px){
-
-      .brand-name{
-        font-size:16px;
-      }
-
-      .header-language{
-        display:none;
-      }
-
-      .hero-eyebrow{
-        font-size:9px;
-      }
-
-      .search-card{
-        padding:7px;
-      }
-
-      .search-tabs{
-        overflow:auto;
-      }
-
-    }
 
   </style>
 
 </head>
 
 
-<body
-  data-page="home"
-  data-root=""
->
+<body>
 
+  <!-- ===================================================
+       HEADER
+       =================================================== -->
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <header class="ds-header">
 
-<div id="hdr-slot">
+    <div class="ds-container">
 
-  <header class="site-header">
+      <nav class="ds-nav">
 
-    <div class="site-header-inner">
+        <!-- BRAND -->
 
-      <a
-        href="./"
-        class="brand"
-      >
-
-        <img
-          class="brand-logo"
-          src="assets/favicon.svg"
-          alt="DigiSER BD"
+        <a
+          href="index.html"
+          class="ds-brand"
         >
 
-        <div class="brand-text">
+          <span class="ds-brand-icon">
 
-          <div class="brand-name">
-            DigiSER <span>BD</span>
-          </div>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M4 5h16v10H8l-4 4V5z"
+              />
 
-          <div class="brand-tagline">
-            Job • Service • Growth
-          </div>
+              <path
+                d="M8 9h8M8 12h5"
+              />
+            </svg>
+
+          </span>
+
+
+          <span>
+
+            <span class="ds-brand-name">
+              DigiSER BD
+            </span>
+
+            <span class="ds-brand-tagline">
+              JOB • SERVICE • GROWTH
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- MENU -->
+
+        <div class="ds-menu">
+
+          <a
+            href="index.html"
+            class="active"
+          >
+            Home
+          </a>
+
+          <a href="jobs/">
+            Jobs
+          </a>
+
+          <a href="services/">
+            Services
+          </a>
+
+          <a href="employees/">
+            Employees
+          </a>
+
+          <a href="businesses/">
+            Businesses
+          </a>
+
+          <a href="blog/">
+            Blog
+          </a>
+
+          <a href="contact/">
+            Contact
+          </a>
 
         </div>
 
-      </a>
 
+        <!-- ACTIONS -->
 
-      <nav class="main-nav">
+        <div class="ds-nav-actions">
 
-        <a
-          href="./"
-          class="active"
-        >
-          Home
-        </a>
+          <a
+            href="admin/"
+            class="ds-login"
+          >
+            Login
+          </a>
 
-        <a href="jobs/">
-          Jobs
-        </a>
+          <a
+            href="register/"
+            class="ds-register"
+          >
+            Register
+          </a>
 
-        <a href="services/">
-          Services
-        </a>
+          <a
+            href="#"
+            class="ds-language"
+            onclick="toggleLanguage(); return false;"
+          >
+            বাংলা
+          </a>
 
-        <a href="employees/">
-          Employees
-        </a>
+          <button
+            class="ds-mobile-btn"
+            type="button"
+            onclick="toggleDSMenu()"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
 
-        <a href="businesses/">
-          Businesses
-        </a>
-
-        <a href="blog/">
-          Blog
-        </a>
-
-        <a href="contact/">
-          Contact
-        </a>
+        </div>
 
       </nav>
-
-
-      <div class="header-actions">
-
-        <a
-          href="admin/"
-          class="header-pill header-login"
-        >
-          Login
-        </a>
-
-        <a
-          href="register/"
-          class="header-pill header-register"
-        >
-          Register
-        </a>
-
-        <button
-          class="header-pill header-language"
-          type="button"
-          data-language
-        >
-          বাংলা
-        </button>
-
-      </div>
 
     </div>
 
   </header>
 
-</div>
+
+  <!-- ===================================================
+       HERO
+       =================================================== -->
+
+  <main>
+
+    <section class="ds-hero">
+
+      <div class="ds-container">
+
+        <div class="ds-hero-grid">
+
+          <!-- LEFT -->
+
+          <div>
+
+            <div class="ds-eyebrow">
+
+              <span class="ds-eyebrow-dot"></span>
+
+              Bangladesh's Job & Service Platform
+
+            </div>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-  <div class="hero-inner">
-
-
-    <div class="hero-copy">
+            <h1>
+              Find Jobs.
+              <br>
+              <span>Hire People.</span>
+              <br>
+              Grow Business.
+            </h1>
 
 
-      <div class="hero-eyebrow">
-        Job • Service • Growth
-      </div>
+            <p class="ds-hero-description">
+              Connect people, skills and businesses in one simple
+              digital platform. Find opportunities, hire talent and
+              get the services you need.
+            </p>
 
 
-      <h1>
-        Find Jobs.
-        <br>
-        Hire People.
-        <br>
-        <span>Grow Business.</span>
-      </h1>
+            <!-- SEARCH -->
+
+            <div class="ds-search-card">
+
+              <div class="ds-search-tabs">
+
+                <button
+                  class="ds-search-tab active"
+                  type="button"
+                  data-search-type="jobs"
+                >
+                  Jobs
+                </button>
+
+                <button
+                  class="ds-search-tab"
+                  type="button"
+                  data-search-type="employees"
+                >
+                  Employees
+                </button>
+
+                <button
+                  class="ds-search-tab"
+                  type="button"
+                  data-search-type="services"
+                >
+                  Services
+                </button>
+
+              </div>
 
 
-      <p class="hero-description">
-        Find the right opportunities, connect with skilled people,
-        get digital services and build better local businesses with DigiSER BD.
-      </p>
+              <form
+                class="ds-search-row"
+                id="dsSearchForm"
+              >
+
+                <input
+                  class="ds-search-input"
+                  id="dsSearchInput"
+                  type="search"
+                  placeholder="Search jobs..."
+                  autocomplete="off"
+                >
+
+                <button
+                  class="ds-search-button"
+                  type="submit"
+                >
+                  Search
+                </button>
+
+              </form>
+
+            </div>
 
 
-      <!-- SEARCH -->
+            <!-- TRUST -->
 
-      <div class="search-card">
+            <div class="ds-trust">
 
+              <span class="ds-trust-item">
 
-        <div class="search-tabs">
+                <span class="ds-trust-check">
+                  ✓
+                </span>
 
+                Verified profiles
 
-          <button
-            type="button"
-            class="search-tab active"
-            data-search-type="jobs"
-          >
-            Jobs
-          </button>
+              </span>
 
 
-          <button
-            type="button"
-            class="search-tab"
-            data-search-type="employees"
-          >
-            Employees
-          </button>
+              <span class="ds-trust-item">
+
+                <span class="ds-trust-check">
+                  ✓
+                </span>
+
+                Local businesses
+
+              </span>
 
 
-          <button
-            type="button"
-            class="search-tab"
-            data-search-type="services"
-          >
-            Services
-          </button>
+              <span class="ds-trust-item">
 
+                <span class="ds-trust-check">
+                  ✓
+                </span>
 
-        </div>
+                Quick hiring
 
+              </span>
 
-        <form
-          class="search-form"
-          id="marketSearch"
-        >
+            </div>
 
-          <input
-            id="marketSearchInput"
-            class="search-input"
-            type="search"
-            placeholder="Search jobs..."
-            autocomplete="off"
-          >
-
-
-          <button
-            class="search-button"
-            type="submit"
-          >
-            Search
-          </button>
-
-        </form>
-
-
-      </div>
-
-
-      <!-- TRUST -->
-
-      <div class="trust-line">
-
-        <div class="trust-item">
-          <span>✓</span>
-          Verified profiles
-        </div>
-
-        <div class="trust-item">
-          <span>✓</span>
-          Local businesses
-        </div>
-
-        <div class="trust-item">
-          <span>✓</span>
-          Quick hiring
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-    <!-- HERO JOB PREVIEW -->
-
-    <div class="hero-side">
-
-      <div class="jobs-preview">
-
-
-        <div class="jobs-preview-top">
-
-          <div class="jobs-preview-title">
-            Latest opportunities
           </div>
+
+
+          <!-- RIGHT -->
+
+          <div class="ds-preview-wrap">
+
+            <div class="ds-preview-glow"></div>
+
+
+            <div class="ds-preview-card">
+
+              <div class="ds-preview-top">
+
+                <span class="ds-preview-label">
+                  Latest opportunity
+                </span>
+
+                <a
+                  href="jobs/"
+                  class="ds-preview-link"
+                >
+                  See all jobs →
+                </a>
+
+              </div>
+
+
+              <div class="ds-job-main">
+
+                <div class="ds-job-icon">
+                  💼
+                </div>
+
+
+                <h3
+                  class="ds-job-title"
+                  id="heroJobTitle"
+                >
+                  Explore new opportunities
+                </h3>
+
+
+                <div
+                  class="ds-job-company"
+                  id="heroJobCompany"
+                >
+                  Discover jobs from growing businesses
+                </div>
+
+
+                <div
+                  class="ds-job-meta"
+                  id="heroJobMeta"
+                >
+
+                  <span class="ds-meta-pill">
+                    Bangladesh
+                  </span>
+
+                  <span class="ds-meta-pill">
+                    Full Time
+                  </span>
+
+                  <span class="ds-meta-pill">
+                    Verified
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="ds-preview-bottom">
+
+                <div class="ds-mini-stat">
+
+                  <strong>
+                    Jobs
+                  </strong>
+
+                  <span>
+                    Opportunities
+                  </span>
+
+                </div>
+
+
+                <div class="ds-mini-stat">
+
+                  <strong>
+                    Talent
+                  </strong>
+
+                  <span>
+                    Skilled people
+                  </span>
+
+                </div>
+
+
+                <div class="ds-mini-stat">
+
+                  <strong>
+                    Services
+                  </strong>
+
+                  <span>
+                    Business support
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SERVICES
+         ================================================= -->
+
+    <section class="ds-section">
+
+      <div class="ds-container">
+
+        <div class="ds-section-head">
+
+          <div>
+
+            <div class="ds-section-kicker">
+              Business Support
+            </div>
+
+            <h2 class="ds-section-title">
+              Services for your business
+            </h2>
+
+            <p class="ds-section-description">
+              Digital work and local support, so you can save
+              time and focus on customers.
+            </p>
+
+          </div>
+
+
+          <a
+            href="services/"
+            class="ds-view-all"
+          >
+            All services →
+          </a>
+
+        </div>
+
+
+        <div class="ds-service-grid">
+
+          <!-- CARD 1 -->
+
+          <article class="ds-service-card">
+
+            <div class="ds-service-icon">
+              🎨
+            </div>
+
+            <h3>
+              Graphic Design
+            </h3>
+
+            <p>
+              Logo, Banner, Social Media Post, Print Design
+              and more.
+            </p>
+
+            <span class="ds-service-arrow">
+              →
+            </span>
+
+          </article>
+
+
+          <!-- CARD 2 -->
+
+          <article class="ds-service-card">
+
+            <div class="ds-service-icon">
+              📱
+            </div>
+
+            <h3>
+              Social Media Management
+            </h3>
+
+            <p>
+              Facebook, Instagram, YouTube, TikTok marketing
+              and management.
+            </p>
+
+            <span class="ds-service-arrow">
+              →
+            </span>
+
+          </article>
+
+
+          <!-- CARD 3 -->
+
+          <article class="ds-service-card">
+
+            <div class="ds-service-icon">
+              💻
+            </div>
+
+            <h3>
+              Website Maintenance
+            </h3>
+
+            <p>
+              Website update, backup, security and content
+              support.
+            </p>
+
+            <span class="ds-service-arrow">
+              →
+            </span>
+
+          </article>
+
+
+          <!-- CARD 4 -->
+
+          <article class="ds-service-card">
+
+            <div class="ds-service-icon">
+              🧑‍💼
+            </div>
+
+            <h3>
+              Employee Supplier
+            </h3>
+
+            <p>
+              Find skilled and reliable people to support
+              your business.
+            </p>
+
+            <span class="ds-service-arrow">
+              →
+            </span>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         TRACK APPLICATION
+         ================================================= -->
+
+    <section class="ds-track">
+
+      <div class="ds-container">
+
+        <div class="ds-track-box">
+
+          <div class="ds-track-content">
+
+            <div class="ds-section-kicker">
+              Application Tracking
+            </div>
+
+            <h2>
+              Track your application
+            </h2>
+
+            <p>
+              Already applied for a job? Use your mobile number
+              and tracking number to check your application status.
+            </p>
+
+          </div>
+
+
+          <form
+            class="ds-track-form"
+            id="dsTrackForm"
+          >
+
+            <div class="ds-track-form-inner">
+
+              <input
+                class="ds-track-input"
+                id="dsTrackMobile"
+                type="tel"
+                placeholder="Mobile Number"
+                required
+              >
+
+              <input
+                class="ds-track-input"
+                id="dsTrackNumber"
+                type="text"
+                placeholder="Tracking Number"
+                required
+              >
+
+              <button
+                class="ds-track-button"
+                type="submit"
+              >
+                Track
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         JOBS
+         ================================================= -->
+
+    <section class="ds-section ds-section-soft">
+
+      <div class="ds-container">
+
+        <div class="ds-section-head">
+
+          <div>
+
+            <div class="ds-section-kicker">
+              Opportunities
+            </div>
+
+            <h2 class="ds-section-title">
+              Latest jobs
+            </h2>
+
+            <p class="ds-section-description">
+              Discover current opportunities from businesses
+              and organizations.
+            </p>
+
+          </div>
+
 
           <a
             href="jobs/"
-            class="see-all"
+            class="ds-view-all"
           >
-            See all jobs →
+            View all jobs →
           </a>
 
         </div>
 
 
         <div
-          id="heroJobsPreview"
+          class="ds-job-grid"
+          id="homeJobs"
         >
 
-          <div class="preview-job">
+          <!-- Dynamic jobs -->
 
-            <div class="preview-job-title">
-              New opportunities are coming
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         HOW IT WORKS
+         ================================================= -->
+
+    <section class="ds-section">
+
+      <div class="ds-container">
+
+        <div class="ds-section-head">
+
+          <div>
+
+            <div class="ds-section-kicker">
+              Simple Process
             </div>
 
-            <div class="preview-job-meta">
-              Discover jobs and connect with employers.
+            <h2 class="ds-section-title">
+              How DigiSER BD works
+            </h2>
+
+            <p class="ds-section-description">
+              One platform for finding opportunities, connecting
+              with people and getting business support.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="ds-steps">
+
+          <article class="ds-step">
+
+            <div class="ds-step-number">
+              01
             </div>
 
-            <div class="preview-job-bottom">
+            <h3>
+              Discover
+            </h3>
 
-              <span class="preview-tag">
+            <p>
+              Search jobs, employees and digital services
+              based on what you need.
+            </p>
+
+          </article>
+
+
+          <article class="ds-step">
+
+            <div class="ds-step-number">
+              02
+            </div>
+
+            <h3>
+              Connect
+            </h3>
+
+            <p>
+              Apply for opportunities or connect with the
+              right people and businesses.
+            </p>
+
+          </article>
+
+
+          <article class="ds-step">
+
+            <div class="ds-step-number">
+              03
+            </div>
+
+            <h3>
+              Grow
+            </h3>
+
+            <p>
+              Build your career, find skilled talent and
+              move your business forward.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CTA
+         ================================================= -->
+
+    <section class="ds-cta">
+
+      <div class="ds-container">
+
+        <div class="ds-cta-box">
+
+          <div>
+
+            <h2>
+              Ready to get started?
+            </h2>
+
+            <p>
+              Create your profile and become part of DigiSER BD.
+            </p>
+
+          </div>
+
+
+          <a
+            href="register/"
+            class="ds-cta-button"
+          >
+            Create Your Profile →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ===================================================
+       FOOTER
+       =================================================== -->
+
+  <footer class="ds-footer">
+
+    <div class="ds-container">
+
+      <div class="ds-footer-grid">
+
+        <div class="ds-footer-brand">
+
+          <a
+            href="index.html"
+            class="ds-brand"
+          >
+
+            <span class="ds-brand-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 5h16v10H8l-4 4V5z"
+                />
+
+                <path
+                  d="M8 9h8M8 12h5"
+                />
+
+              </svg>
+
+            </span>
+
+
+            <span>
+
+              <span class="ds-brand-name">
                 DigiSER BD
               </span>
 
-              <span class="preview-more">
-                View opportunities
+              <span class="ds-brand-tagline">
+                JOB • SERVICE • GROWTH
               </span>
 
-            </div>
+            </span>
 
-          </div>
+          </a>
 
 
-          <div class="preview-job">
-
-            <div class="preview-job-title">
-              Build your professional profile
-            </div>
-
-            <div class="preview-job-meta">
-              Register and showcase your skills.
-            </div>
-
-            <div class="preview-job-bottom">
-
-              <span class="preview-tag">
-                Register
-              </span>
-
-              <span class="preview-more">
-                Get started
-              </span>
-
-            </div>
-
-          </div>
-
+          <p class="ds-footer-description">
+            A digital platform connecting jobs, skilled people,
+            services and businesses.
+          </p>
 
         </div>
 
 
-      </div>
+        <div class="ds-footer-column">
 
-    </div>
+          <h4>
+            Platform
+          </h4>
 
+          <a href="jobs/">
+            Jobs
+          </a>
 
-  </div>
+          <a href="employees/">
+            Employees
+          </a>
 
-</section>
+          <a href="services/">
+            Services
+          </a>
 
+          <a href="businesses/">
+            Businesses
+          </a>
 
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section
-  class="section"
-  id="services"
->
-
-
-  <div class="section-inner">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <h2>
-          Services for your business
-        </h2>
-
-        <p>
-          Digital work and local support, so you can save time
-          and focus on customers.
-        </p>
-
-      </div>
-
-
-      <a
-        href="services/"
-        class="section-link"
-      >
-        All services →
-      </a>
-
-
-    </div>
-
-
-    <div
-      class="services-grid"
-      id="homeServices"
-    >
-
-
-      <article class="service-card">
-
-
-        <div class="service-icon">
-          🎨
         </div>
 
 
-        <h3>
-          Graphic Design
-        </h3>
+        <div class="ds-footer-column">
 
+          <h4>
+            Company
+          </h4>
 
-        <p>
-          Logo, Banner, Social Media Post, Print Design and more.
-        </p>
+          <a href="about/">
+            About
+          </a>
 
+          <a href="blog/">
+            Blog
+          </a>
 
-      </article>
+          <a href="contact/">
+            Contact
+          </a>
 
+          <a href="track-application.html">
+            Track Application
+          </a>
 
-      <article class="service-card">
-
-
-        <div class="service-icon">
-          📱
         </div>
 
 
-        <h3>
-          Social Media Management
-        </h3>
+        <div class="ds-footer-column">
 
+          <h4>
+            Account
+          </h4>
 
-        <p>
-          Facebook, Instagram, YouTube, TikTok marketing and management.
-        </p>
+          <a href="register/">
+            Register
+          </a>
 
+          <a href="admin/">
+            Login
+          </a>
 
-      </article>
+          <a href="register/">
+            Find a Job
+          </a>
 
-
-      <article class="service-card">
-
-
-        <div class="service-icon">
-          💻
         </div>
-
-
-        <h3>
-          Website Maintenance
-        </h3>
-
-
-        <p>
-          Website update, backup, security and content support.
-        </p>
-
-
-      </article>
-
-
-      <article class="service-card">
-
-
-        <div class="service-icon">
-          🧑‍💼
-        </div>
-
-
-        <h3>
-          Employee Supplier
-        </h3>
-
-
-        <p>
-          Skilled and reliable people to power your business and support your team.
-        </p>
-
-
-      </article>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     APPLICATION TRACKING
-===================================================== -->
-
-<section class="tracking-section">
-
-
-  <div class="tracking-box">
-
-
-    <div class="tracking-copy">
-
-      <h2>
-        Track your job application
-      </h2>
-
-      <p>
-        Enter your Tracking Number and Mobile Number to see your current application status.
-      </p>
-
-    </div>
-
-
-    <a
-      href="track-application.html"
-      class="tracking-button"
-    >
-      Track Application →
-    </a>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     LATEST JOBS
-===================================================== -->
-
-<section
-  class="jobs-section"
-  id="jobs"
->
-
-
-  <div class="section-inner">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <h2>
-          Latest Jobs
-        </h2>
-
-        <p>
-          Explore current opportunities and find a role that matches your skills.
-        </p>
 
       </div>
 
 
-      <a
-        href="jobs/"
-        class="section-link"
-      >
-        View all jobs →
-      </a>
+      <div class="ds-footer-bottom">
 
+        <span>
+          © <span id="dsYear"></span> DigiSER BD. All rights reserved.
+        </span>
 
-    </div>
-
-
-    <div
-      class="jobs-grid"
-      id="homeJobs"
-    >
-
-
-      <article class="job-card">
-
-
-        <div class="job-card-top">
-
-          <h3 class="job-title">
-            Discover New Opportunities
-          </h3>
-
-          <span class="job-type">
-            OPEN
-          </span>
-
-        </div>
-
-
-        <div class="job-company">
-          DigiSER BD
-        </div>
-
-
-        <div class="job-details">
-
-          <span>
-            📍 Bangladesh
-          </span>
-
-          <span>
-            •
-          </span>
-
-          <span>
-            Apply online
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-      <article class="job-card">
-
-
-        <div class="job-card-top">
-
-          <h3 class="job-title">
-            Build Your Career Profile
-          </h3>
-
-          <span class="job-type">
-            PROFILE
-          </span>
-
-        </div>
-
-
-        <div class="job-company">
-          Register with DigiSER BD
-        </div>
-
-
-        <div class="job-details">
-
-          <span>
-            🧑‍💼 Skilled Professionals
-          </span>
-
-          <span>
-            •
-          </span>
-
-          <span>
-            Career opportunities
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-      <article class="job-card">
-
-
-        <div class="job-card-top">
-
-          <h3 class="job-title">
-            Find the Right People
-          </h3>
-
-          <span class="job-type">
-            HIRING
-          </span>
-
-        </div>
-
-
-        <div class="job-company">
-          For local businesses
-        </div>
-
-
-        <div class="job-details">
-
-          <span>
-            🤝 Quick hiring
-          </span>
-
-          <span>
-            •
-          </span>
-
-          <span>
-            Local support
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     EMPLOYEES
-===================================================== -->
-
-<section
-  class="employees-section"
-  id="employees"
->
-
-
-  <div class="section-inner">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <h2>
-          Skilled Employees
-        </h2>
-
-        <p>
-          Discover professionals and connect with people who can help your business move forward.
-        </p>
-
-      </div>
-
-
-      <a
-        href="employees/"
-        class="section-link"
-      >
-        View employees →
-      </a>
-
-
-    </div>
-
-
-    <div
-      class="employees-grid"
-      id="homeEmployees"
-    >
-
-
-      <article class="employee-card">
-
-
-        <div class="employee-avatar">
-          👤
-        </div>
-
-
-        <div class="employee-name">
-          Skilled Professionals
-        </div>
-
-
-        <div class="employee-role">
-          Ready to connect
-        </div>
-
-
-        <div class="employee-info">
-          Create your profile and showcase your professional skills.
-        </div>
-
-
-      </article>
-
-
-      <article class="employee-card">
-
-
-        <div class="employee-avatar">
-          💻
-        </div>
-
-
-        <div class="employee-name">
-          Digital Experts
-        </div>
-
-
-        <div class="employee-role">
-          Digital & Technology
-        </div>
-
-
-        <div class="employee-info">
-          Connect businesses with digital professionals.
-        </div>
-
-
-      </article>
-
-
-      <article class="employee-card">
-
-
-        <div class="employee-avatar">
-          🎨
-        </div>
-
-
-        <div class="employee-name">
-          Creative Professionals
-        </div>
-
-
-        <div class="employee-role">
-          Design & Creative
-        </div>
-
-
-        <div class="employee-info">
-          Find creative talent for your next project.
-        </div>
-
-
-      </article>
-
-
-      <article class="employee-card">
-
-
-        <div class="employee-avatar">
-          🧑‍💼
-        </div>
-
-
-        <div class="employee-name">
-          Business Support
-        </div>
-
-
-        <div class="employee-role">
-          Local Professionals
-        </div>
-
-
-        <div class="employee-info">
-          Build your team with reliable local talent.
-        </div>
-
-
-      </article>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     BUSINESSES
-===================================================== -->
-
-<section
-  class="business-section"
-  id="businesses"
->
-
-
-  <div class="section-inner">
-
-
-    <div class="business-box">
-
-
-      <div class="business-content">
-
-
-        <h2>
-          Everything your business needs to grow.
-        </h2>
-
-
-        <p>
-          Get digital services, skilled employees and local business support from one simple platform.
-        </p>
-
-
-        <div class="business-perks">
-
-
-          <div class="business-perk">
-            <span>✓</span>
-            Digital Services
-          </div>
-
-
-          <div class="business-perk">
-            <span>✓</span>
-            Skilled Employees
-          </div>
-
-
-          <div class="business-perk">
-            <span>✓</span>
-            Local Support
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     HOW IT WORKS
-===================================================== -->
-
-<section class="section">
-
-
-  <div class="section-inner">
-
-
-    <div class="section-heading">
-
-
-      <div>
-
-        <h2>
-          How DigiSER BD works
-        </h2>
-
-        <p>
-          A simple way to connect jobs, people, services and businesses.
-        </p>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="steps">
-
-
-      <article class="step">
-
-
-        <div class="step-number">
-          01
-        </div>
-
-
-        <h3>
-          Find or Register
-        </h3>
-
-
-        <p>
-          Search for jobs and services, or register your professional profile with DigiSER BD.
-        </p>
-
-
-      </article>
-
-
-      <article class="step">
-
-
-        <div class="step-number">
-          02
-        </div>
-
-
-        <h3>
-          Connect
-        </h3>
-
-
-        <p>
-          Connect employers with skilled people and businesses with the services they need.
-        </p>
-
-
-      </article>
-
-
-      <article class="step">
-
-
-        <div class="step-number">
-          03
-        </div>
-
-
-        <h3>
-          Grow
-        </h3>
-
-
-        <p>
-          Build careers, complete digital work and help local businesses grow.
-        </p>
-
-
-      </article>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     FINAL CTA
-===================================================== -->
-
-<section class="final-cta">
-
-
-  <div class="cta-box">
-
-
-    <div>
-
-      <h2>
-        Ready to get started?
-      </h2>
-
-      <p>
-        Find opportunities, hire people or get the support your business needs.
-      </p>
-
-    </div>
-
-
-    <div class="cta-actions">
-
-
-      <a
-        href="register/"
-        class="cta-button cta-primary"
-      >
-        Register Now
-      </a>
-
-
-      <a
-        href="contact/"
-        class="cta-button cta-secondary"
-      >
-        Contact Us
-      </a>
-
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<div id="ftr-slot">
-
-  <footer
-    style="
-      border-top:1px solid #edf1f3;
-      padding:28px 22px;
-      background:#fff;
-    "
-  >
-
-    <div
-      style="
-        max-width:1200px;
-        margin:auto;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-        flex-wrap:wrap;
-      "
-    >
-
-      <div>
-
-        <strong
-          style="
-            font-family:'Space Grotesk',sans-serif;
-            color:#0F1F2E;
-            font-size:14px;
-          "
-        >
-          DigiSER <span style="color:#0284C7;">BD</span>
-        </strong>
-
-        <div
-          style="
-            margin-top:4px;
-            color:#7a8790;
-            font-size:10px;
-          "
-        >
+        <span>
           Job • Service • Growth
-        </div>
+        </span>
 
       </div>
-
-
-      <div
-        style="
-          color:#89959d;
-          font-size:9px;
-        "
-      >
-        © 2026 DigiSER BD. All rights reserved.
-      </div>
-
 
     </div>
 
   </footer>
 
-</div>
+
+  <!-- ===================================================
+       SHARED SYSTEM
+       =================================================== -->
+
+  <script src="assets/data.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/app.js"></script>
 
 
-<!-- =====================================================
-     SHARED SYSTEM
-===================================================== -->
+  <!-- ===================================================
+       HOMEPAGE JS
+       =================================================== -->
 
-<script src="assets/data.js"></script>
+  <script>
 
-<script src="assets/i18n.js"></script>
-
-<script src="assets/app.js"></script>
+    "use strict";
 
 
-<!-- =====================================================
-     HOMEPAGE SEARCH
-===================================================== -->
+    /* -----------------------------------------------
+       MOBILE MENU
+       ----------------------------------------------- */
 
-<script>
+    function toggleDSMenu() {
 
-(function(){
+      const menu = document.querySelector(".ds-menu");
 
-  "use strict";
+      if (!menu) return;
+
+      const current =
+        window.getComputedStyle(menu).display;
+
+      if (current === "none") {
+
+        menu.style.display = "flex";
+
+        menu.style.position = "absolute";
+
+        menu.style.top = "68px";
+
+        menu.style.left = "14px";
+
+        menu.style.right = "14px";
+
+        menu.style.padding = "10px";
+
+        menu.style.flexDirection = "column";
+
+        menu.style.alignItems = "stretch";
+
+        menu.style.background = "white";
+
+        menu.style.border = "1px solid #e5e7eb";
+
+        menu.style.borderRadius = "18px";
+
+        menu.style.boxShadow =
+          "0 20px 50px rgba(15,31,46,.12)";
+
+      } else {
+
+        menu.style.display = "";
+
+        menu.style.position = "";
+
+        menu.style.top = "";
+
+        menu.style.left = "";
+
+        menu.style.right = "";
+
+        menu.style.padding = "";
+
+        menu.style.flexDirection = "";
+
+        menu.style.alignItems = "";
+
+        menu.style.background = "";
+
+        menu.style.border = "";
+
+        menu.style.borderRadius = "";
+
+        menu.style.boxShadow = "";
+
+      }
+
+    }
 
 
-  const input =
-    document.getElementById(
-      "marketSearchInput"
-    );
+    /* -----------------------------------------------
+       SEARCH TABS
+       ----------------------------------------------- */
 
-  const form =
-    document.getElementById(
-      "marketSearch"
-    );
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
 
-  const tabs =
-    document.querySelectorAll(
-      "[data-search-type]"
-    );
+        const tabs =
+          document.querySelectorAll(
+            ".ds-search-tab"
+          );
 
-
-  let searchType =
-    "jobs";
-
-
-  const placeholders = {
-
-    jobs:
-      "Search jobs...",
-
-    employees:
-      "Search employees...",
-
-    services:
-      "Search services..."
-
-  };
+        const input =
+          document.getElementById(
+            "dsSearchInput"
+          );
 
 
-  tabs.forEach(
-    function(tab){
+        const placeholders = {
 
-      tab.addEventListener(
-        "click",
-        function(){
+          jobs:
+            "Search jobs...",
 
-          tabs.forEach(
-            function(item){
+          employees:
+            "Search employees...",
 
-              item.classList.remove(
+          services:
+            "Search services..."
+
+        };
+
+
+        tabs.forEach(function (tab) {
+
+          tab.addEventListener(
+            "click",
+            function () {
+
+              tabs.forEach(function (item) {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              });
+
+
+              tab.classList.add(
                 "active"
               );
+
+
+              const type =
+                tab.dataset.searchType;
+
+
+              if (input) {
+
+                input.placeholder =
+                  placeholders[type] ||
+                  "Search...";
+
+              }
 
             }
           );
 
+        });
 
-          tab.classList.add(
-            "active"
+
+        /* -------------------------------------------
+           SEARCH
+           ------------------------------------------- */
+
+        const searchForm =
+          document.getElementById(
+            "dsSearchForm"
           );
 
 
-          searchType =
-            tab.dataset.searchType ||
-            "jobs";
+        if (searchForm) {
+
+          searchForm.addEventListener(
+            "submit",
+            function (event) {
+
+              event.preventDefault();
+
+              const value =
+                input
+                  ? input.value.trim()
+                  : "";
 
 
-          input.placeholder =
-            placeholders[
-              searchType
-            ];
+              if (!value) {
+
+                if (input) {
+                  input.focus();
+                }
+
+                return;
+
+              }
 
 
-          input.focus();
+              const activeTab =
+                document.querySelector(
+                  ".ds-search-tab.active"
+                );
+
+
+              const type =
+                activeTab
+                  ? activeTab.dataset.searchType
+                  : "jobs";
+
+
+              let target =
+                "jobs/";
+
+
+              if (type === "employees") {
+                target = "employees/";
+              }
+
+              if (type === "services") {
+                target = "services/";
+              }
+
+
+              window.location.href =
+                target +
+                "?search=" +
+                encodeURIComponent(value);
+
+            }
+          );
 
         }
-      );
 
-    }
-  );
 
+        /* -------------------------------------------
+           TRACK APPLICATION
+           ------------------------------------------- */
 
-  form.addEventListener(
-    "submit",
-    function(e){
+        const trackForm =
+          document.getElementById(
+            "dsTrackForm"
+          );
 
-      e.preventDefault();
 
+        if (trackForm) {
 
-      const query =
-        input.value
-          .trim();
+          trackForm.addEventListener(
+            "submit",
+            function (event) {
 
+              event.preventDefault();
 
-      if(!query){
 
-        input.focus();
+              const mobile =
+                document.getElementById(
+                  "dsTrackMobile"
+                ).value.trim();
 
-        return;
 
-      }
+              const tracking =
+                document.getElementById(
+                  "dsTrackNumber"
+                ).value.trim();
 
 
-      let destination =
-        "jobs/";
+              if (!mobile || !tracking) {
+                return;
+              }
 
 
-      if(
-        searchType ===
-        "employees"
-      ){
+              window.location.href =
+                "track-application.html" +
+                "?mobile=" +
+                encodeURIComponent(mobile) +
+                "&tracking=" +
+                encodeURIComponent(tracking);
 
-        destination =
-          "employees/";
-
-      }
-
-
-      if(
-        searchType ===
-        "services"
-      ){
-
-        destination =
-          "services/";
-
-      }
-
-
-      window.location.href =
-        destination +
-        "?search=" +
-        encodeURIComponent(
-          query
-        );
-
-    }
-  );
-
-
-})();
-
-
-/* =====================================================
-   HERO PREVIEW
-===================================================== */
-
-(function(){
-
-  "use strict";
-
-
-  const container =
-    document.getElementById(
-      "heroJobsPreview"
-    );
-
-
-  if(!container){
-    return;
-  }
-
-
-  try{
-
-    const DS =
-      window.DigiSERBD || {};
-
-    if(
-      typeof DS.getDB !==
-      "function"
-    ){
-
-      return;
-
-    }
-
-
-    const db =
-      DS.getDB();
-
-
-    const jobs =
-      Array.isArray(db.jobs)
-        ? db.jobs
-        : [];
-
-
-    if(!jobs.length){
-      return;
-    }
-
-
-    const latest =
-      jobs
-        .slice()
-        .reverse()
-        .slice(0,3);
-
-
-    container.innerHTML =
-      latest.map(
-        function(job){
-
-          const title =
-            job.title ||
-            job.name ||
-            "Job Opportunity";
-
-
-          const company =
-            job.company ||
-            job.business ||
-            "DigiSER BD";
-
-
-          const location =
-            job.location ||
-            "Bangladesh";
-
-
-          const type =
-            job.type ||
-            job.employmentType ||
-            "OPEN";
-
-
-          return `
-
-            <div class="preview-job">
-
-              <div class="preview-job-title">
-                ${escapeHero(title)}
-              </div>
-
-              <div class="preview-job-meta">
-                ${escapeHero(company)}
-                ·
-                ${escapeHero(location)}
-              </div>
-
-              <div class="preview-job-bottom">
-
-                <span class="preview-tag">
-                  ${escapeHero(type)}
-                </span>
-
-                <span class="preview-more">
-                  View opportunity
-                </span>
-
-              </div>
-
-            </div>
-
-          `;
+            }
+          );
 
         }
-      ).join("");
 
 
-  }catch(error){
+        /* -------------------------------------------
+           YEAR
+           ------------------------------------------- */
 
-    console.warn(
-      "Hero jobs preview:",
-      error
+        const year =
+          document.getElementById(
+            "dsYear"
+          );
+
+
+        if (year) {
+
+          year.textContent =
+            new Date().getFullYear();
+
+        }
+
+
+        /* -------------------------------------------
+           HERO JOB PREVIEW
+           ------------------------------------------- */
+
+        try {
+
+          const DS =
+            window.DigiSERBD;
+
+
+          if (DS && DS.getDB) {
+
+            const db =
+              DS.getDB();
+
+
+            if (
+              db &&
+              Array.isArray(db.jobs) &&
+              db.jobs.length
+            ) {
+
+              const job =
+                db.jobs[0];
+
+
+              const title =
+                document.getElementById(
+                  "heroJobTitle"
+                );
+
+
+              const company =
+                document.getElementById(
+                  "heroJobCompany"
+                );
+
+
+              const meta =
+                document.getElementById(
+                  "heroJobMeta"
+                );
+
+
+              if (title) {
+
+                title.textContent =
+                  job.title ||
+                  "Latest job opportunity";
+
+              }
+
+
+              if (company) {
+
+                company.textContent =
+                  job.company ||
+                  job.business ||
+                  "DigiSER BD";
+
+              }
+
+
+              if (meta) {
+
+                meta.innerHTML = `
+
+                  <span class="ds-meta-pill">
+                    ${job.location || "Bangladesh"}
+                  </span>
+
+                  <span class="ds-meta-pill">
+                    ${job.type || "Full Time"}
+                  </span>
+
+                  <span class="ds-meta-pill">
+                    Verified
+                  </span>
+
+                `;
+
+              }
+
+            }
+
+          }
+
+        } catch (error) {
+
+          console.warn(
+            "DigiSER BD hero preview:",
+            error
+          );
+
+        }
+
+      }
     );
 
-  }
 
-
-  function escapeHero(value){
-
-    return String(
-      value || ""
-    )
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-  }
-
-})();
-
-</script>
+  </script>
 
 
 </body>
