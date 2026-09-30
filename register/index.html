@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DigiSER BD — অ্যাডমিন ড্যাশবোর্ড</title>
+
+<title>DigiSER BD — নিবন্ধন ও আবেদন</title>
+
+<meta name="description" content="DigiSER BD Applicant Registration & Job Application">
 <meta name="theme-color" content="#0087c4">
+
 <link rel="icon" href="../favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --primary:#0087c4;
   --primary2:#00a8e8;
@@ -26,14 +32,14 @@
   --yellow:#ffc857;
   --red:#ff6262;
   --white:#fff;
-  --shadow:0 20px 60px rgba(0,0,0,.30);
-  --radius:18px;
+  --shadow:0 25px 80px rgba(0,0,0,.32);
+  --radius:20px;
 }
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
@@ -42,11 +48,11 @@ html{
 
 body{
   font-family:"Hind Siliguri","Space Grotesk",sans-serif;
-  background:
-    radial-gradient(circle at 10% 0%,rgba(0,135,196,.13),transparent 30%),
-    radial-gradient(circle at 90% 20%,rgba(0,168,232,.08),transparent 30%),
-    var(--bg);
   color:var(--text);
+  background:
+    radial-gradient(circle at 5% 0%,rgba(0,135,196,.16),transparent 28%),
+    radial-gradient(circle at 95% 15%,rgba(0,168,232,.09),transparent 30%),
+    var(--bg);
   min-height:100vh;
 }
 
@@ -67,169 +73,39 @@ a{
 }
 
 /* =========================
-   LOGIN
+   HEADER
 ========================= */
 
-.login-screen{
-  min-height:100vh;
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:72px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:24px;
-}
-
-.login-card{
-  width:100%;
-  max-width:440px;
-  background:rgba(16,29,38,.94);
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:36px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(20px);
-}
-
-.login-logo{
-  width:64px;
-  height:64px;
-  border-radius:18px;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  display:grid;
-  place-items:center;
-  font-weight:800;
-  font-size:22px;
-  margin-bottom:24px;
-  box-shadow:0 15px 40px rgba(0,135,196,.28);
-}
-
-.login-card h1{
-  font-size:28px;
-  margin-bottom:8px;
-}
-
-.login-card p{
-  color:var(--muted);
-  line-height:1.7;
-  margin-bottom:28px;
-}
-
-.field{
-  margin-bottom:17px;
-}
-
-.field label{
-  display:block;
-  font-size:13px;
-  color:#b6c5cd;
-  margin-bottom:8px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid var(--border);
-  background:#0b171f;
-  color:var(--text);
-  padding:13px 14px;
-  border-radius:12px;
-  outline:none;
-  transition:.2s;
-}
-
-.field textarea{
-  min-height:110px;
-  resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:rgba(0,168,232,.7);
-  box-shadow:0 0 0 3px rgba(0,168,232,.09);
-}
-
-.btn{
-  border:0;
-  border-radius:12px;
-  padding:12px 17px;
-  color:#fff;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  font-weight:700;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.07);
-}
-
-.btn.secondary{
-  background:#172833;
-  border:1px solid var(--border);
-}
-
-.btn.danger{
-  background:rgba(255,98,98,.13);
-  color:#ff8c8c;
-  border:1px solid rgba(255,98,98,.22);
-}
-
-.btn.success{
-  background:rgba(37,217,139,.13);
-  color:#5ff0ae;
-  border:1px solid rgba(37,217,139,.22);
-}
-
-.btn.small{
-  padding:8px 11px;
-  font-size:12px;
-}
-
-.login-error{
-  color:#ff8585;
-  font-size:13px;
-  margin-top:12px;
-  display:none;
-}
-
-/* =========================
-   APP
-========================= */
-
-.app{
-  display:none;
-  min-height:100vh;
-}
-
-.sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:255px;
-  background:rgba(8,18,25,.96);
-  border-right:1px solid var(--border);
-  padding:22px 15px;
-  overflow-y:auto;
-  z-index:50;
+  justify-content:space-between;
+  padding:0 6%;
+  background:rgba(7,16,23,.82);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(18px);
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
-  padding:6px 10px 25px;
 }
 
-.brand-mark{
+.brand-logo{
   width:44px;
   height:44px;
   border-radius:13px;
   display:grid;
   place-items:center;
   background:linear-gradient(135deg,var(--primary),var(--primary2));
+  font-size:16px;
   font-weight:800;
+  box-shadow:0 10px 30px rgba(0,135,196,.25);
 }
 
 .brand-text strong{
@@ -238,689 +114,619 @@ a{
 }
 
 .brand-text span{
+  display:block;
   color:var(--muted);
-  font-size:11px;
-}
-
-.nav-label{
-  color:#647782;
   font-size:10px;
-  letter-spacing:1.2px;
-  padding:17px 11px 8px;
 }
 
-.nav-item{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:11px 12px;
-  border-radius:11px;
-  color:#9caeb8;
-  background:none;
-  border:0;
-  text-align:left;
-  margin-bottom:3px;
+.header-link{
+  color:#a9bac3;
+  font-size:13px;
   transition:.2s;
 }
 
-.nav-item:hover{
-  background:#10212b;
+.header-link:hover{
   color:#fff;
-}
-
-.nav-item.active{
-  background:linear-gradient(90deg,rgba(0,135,196,.20),rgba(0,168,232,.06));
-  color:#fff;
-  border:1px solid rgba(0,168,232,.13);
-}
-
-.nav-icon{
-  width:21px;
-  text-align:center;
-}
-
-.sidebar-bottom{
-  margin-top:20px;
-  padding:12px;
-  border-top:1px solid var(--border);
-}
-
-.main{
-  margin-left:255px;
-  min-height:100vh;
-}
-
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:40;
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 30px;
-  background:rgba(7,16,23,.82);
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(18px);
-}
-
-.page-title{
-  font-size:20px;
-  font-weight:700;
-}
-
-.page-subtitle{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:3px;
-}
-
-.top-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.status-pill{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 12px;
-  border-radius:20px;
-  background:rgba(37,217,139,.08);
-  color:#66eaae;
-  border:1px solid rgba(37,217,139,.13);
-  font-size:12px;
-}
-
-.status-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 10px var(--green);
-}
-
-.content{
-  padding:28px 30px 50px;
-  max-width:1600px;
-  margin:auto;
 }
 
 /* =========================
-   CARDS
+   HERO
+========================= */
+
+.hero{
+  max-width:1180px;
+  margin:auto;
+  padding:55px 22px 30px;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border-radius:30px;
+  background:rgba(0,168,232,.09);
+  border:1px solid rgba(0,168,232,.16);
+  color:#69d9ff;
+  font-size:11px;
+  font-weight:700;
+}
+
+.hero h1{
+  font-size:clamp(32px,5vw,58px);
+  line-height:1.08;
+  margin-top:18px;
+  max-width:800px;
+  letter-spacing:-1.5px;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#fff,#70dcff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:720px;
+  color:#8fa4af;
+  font-size:15px;
+  line-height:1.8;
+  margin-top:15px;
+}
+
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:22px;
+}
+
+.meta{
+  padding:8px 12px;
+  border-radius:10px;
+  background:#0d1b24;
+  border:1px solid var(--border);
+  color:#a8bac3;
+  font-size:11px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  width:min(1180px,calc(100% - 32px));
+  margin:auto;
+  padding-bottom:70px;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-card{
+  background:linear-gradient(
+    180deg,
+    rgba(20,35,45,.95),
+    rgba(11,24,32,.95)
+  );
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+
+.progress{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.progress-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#718590;
+  font-size:12px;
+}
+
+.progress-number{
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#172933;
+  border:1px solid var(--border);
+}
+
+.progress-item.active{
+  color:#fff;
+}
+
+.progress-item.active .progress-number{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  border-color:transparent;
+  color:#fff;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+  background:linear-gradient(
+    180deg,
+    rgba(20,35,45,.96),
+    rgba(11,24,32,.96)
+  );
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:0 15px 45px rgba(0,0,0,.16);
+  padding:25px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.section-title h2{
+  font-size:20px;
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+  line-height:1.6;
+}
+
+.required{
+  color:#ff7c7c;
+}
+
+/* =========================
+   GRID
 ========================= */
 
 .grid{
   display:grid;
-  gap:18px;
-}
-
-.stats-grid{
-  grid-template-columns:repeat(5,1fr);
-}
-
-.card{
-  background:linear-gradient(180deg,rgba(20,35,45,.94),rgba(12,25,33,.94));
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  box-shadow:0 12px 35px rgba(0,0,0,.13);
-}
-
-.stat-card{
-  padding:20px;
-}
-
-.stat-label{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.stat-number{
-  font-size:29px;
-  font-weight:700;
-  margin-top:8px;
-}
-
-.stat-note{
-  color:#607681;
-  font-size:11px;
-  margin-top:5px;
-}
-
-.section{
-  margin-top:22px;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   gap:15px;
-  margin-bottom:13px;
 }
 
-.section-head h2{
-  font-size:18px;
+.grid-2{
+  grid-template-columns:repeat(2,1fr);
 }
 
-.section-head p{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.two-col{
-  grid-template-columns:1.45fr .9fr;
-}
-
-.three-col{
+.grid-3{
   grid-template-columns:repeat(3,1fr);
 }
 
-.panel{
-  padding:22px;
-}
-
 /* =========================
-   UPDATE HERO
+   FORM
 ========================= */
 
-.update-hero{
-  position:relative;
-  overflow:hidden;
-  padding:27px;
-  min-height:260px;
+.field{
+  margin-bottom:16px;
 }
 
-.update-hero::after{
-  content:"";
-  position:absolute;
-  width:230px;
-  height:230px;
-  right:-70px;
-  top:-80px;
-  border-radius:50%;
-  background:rgba(0,168,232,.09);
-  filter:blur(3px);
-}
-
-.update-top{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  position:relative;
-  z-index:1;
-}
-
-.update-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  border-radius:20px;
-  padding:7px 11px;
-  font-size:11px;
-  font-weight:700;
-  background:rgba(0,168,232,.10);
-  border:1px solid rgba(0,168,232,.15);
-  color:#63d4ff;
-}
-
-.update-hero h2{
-  font-size:25px;
-  margin-top:18px;
-  max-width:720px;
-}
-
-.update-description{
-  color:#9eb0b9;
-  line-height:1.7;
-  margin-top:9px;
-  max-width:720px;
-}
-
-.update-meta{
-  margin-top:19px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.meta-chip{
-  padding:7px 10px;
-  border-radius:9px;
-  background:#0b171f;
-  border:1px solid var(--border);
-  color:#9eb0b9;
-  font-size:11px;
-}
-
-.update-actions{
-  position:relative;
-  z-index:2;
-}
-
-.update-list{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-
-.update-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  padding:14px;
-  background:#0b171f;
-  border:1px solid var(--border);
-  border-radius:13px;
-}
-
-.update-row-main{
-  min-width:0;
-}
-
-.update-row-title{
-  font-size:14px;
-  font-weight:600;
-}
-
-.update-row-desc{
-  color:#788d98;
-  font-size:11px;
-  margin-top:4px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  padding:5px 8px;
-  border-radius:8px;
-  font-size:10px;
-  font-weight:700;
-  white-space:nowrap;
-}
-
-.badge.green{
-  color:#61edac;
-  background:rgba(37,217,139,.09);
-}
-
-.badge.yellow{
-  color:#ffd779;
-  background:rgba(255,200,87,.09);
-}
-
-.badge.red{
-  color:#ff9292;
-  background:rgba(255,98,98,.09);
-}
-
-.badge.blue{
-  color:#69d7ff;
-  background:rgba(0,168,232,.09);
-}
-
-.badge.gray{
-  color:#a4b2b8;
-  background:rgba(255,255,255,.06);
-}
-
-/* =========================
-   SYSTEM REVIEW
-========================= */
-
-.review-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.review-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#0b171f;
-}
-
-.review-name{
+.field label{
+  display:block;
+  color:#b8c8cf;
   font-size:12px;
+  margin-bottom:7px;
 }
 
-.review-state{
-  font-size:10px;
-  padding:5px 8px;
-  border-radius:8px;
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrap{
-  overflow:auto;
-}
-
-table{
+.field input,
+.field textarea,
+.field select{
   width:100%;
-  border-collapse:collapse;
-  min-width:800px;
-}
-
-th{
-  text-align:left;
-  color:#687d88;
-  font-size:10px;
-  padding:12px 10px;
-  border-bottom:1px solid var(--border);
-}
-
-td{
-  padding:13px 10px;
-  border-bottom:1px solid rgba(255,255,255,.055);
-  font-size:12px;
-  color:#c5d0d5;
-}
-
-td strong{
-  color:#fff;
-}
-
-.actions{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.search-row{
-  display:flex;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.search-row input,
-.search-row select{
-  flex:1;
-  min-width:150px;
+  padding:13px 14px;
+  border-radius:12px;
   border:1px solid var(--border);
-  background:#0b171f;
+  background:#09161e;
   color:#fff;
-  border-radius:11px;
-  padding:11px 13px;
   outline:none;
-}
-
-/* =========================
-   SETTINGS
-========================= */
-
-.settings-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.method-card{
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  background:#0b171f;
-}
-
-.method-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-
-.switch{
-  width:40px;
-  height:22px;
-  border-radius:20px;
-  background:#293943;
-  position:relative;
-  border:0;
-}
-
-.switch::after{
-  content:"";
-  position:absolute;
-  top:3px;
-  left:3px;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:#82929a;
   transition:.2s;
 }
 
-.switch.on{
-  background:rgba(0,168,232,.35);
+.field textarea{
+  min-height:105px;
+  resize:vertical;
 }
 
-.switch.on::after{
-  left:21px;
-  background:#55d7ff;
+.field input::placeholder,
+.field textarea::placeholder{
+  color:#506570;
 }
 
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.66);
-  backdrop-filter:blur(8px);
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:rgba(0,168,232,.65);
+  box-shadow:0 0 0 3px rgba(0,168,232,.08);
 }
 
-.modal.show{
-  display:flex;
-}
-
-.modal-card{
-  width:100%;
-  max-width:650px;
-  max-height:90vh;
-  overflow:auto;
-  background:#10202a;
-  border:1px solid var(--border);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-}
-
-.modal-head{
-  padding:19px 21px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.modal-head h3{
-  font-size:17px;
-}
-
-.modal-close{
-  border:0;
-  background:#172b35;
-  color:#aebdc4;
-  width:34px;
-  height:34px;
-  border-radius:10px;
-}
-
-.modal-body{
-  padding:21px;
-}
-
-.modal-foot{
-  padding:15px 21px;
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:flex-end;
-  gap:9px;
-}
-
-/* =========================
-   CLIENT POPUP
-========================= */
-
-.client-popup{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  width:min(410px,calc(100vw - 30px));
-  background:#10212b;
-  border:1px solid rgba(0,168,232,.25);
-  border-radius:20px;
-  box-shadow:0 25px 80px rgba(0,0,0,.48);
-  z-index:120;
-  overflow:hidden;
-  display:none;
-  animation:popupIn .35s ease;
-}
-
-.client-popup.show{
-  display:block;
-}
-
-@keyframes popupIn{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.popup-accent{
-  height:4px;
-  background:linear-gradient(90deg,var(--primary),var(--primary2));
-}
-
-.popup-inner{
-  padding:19px;
-}
-
-.popup-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-}
-
-.popup-label{
-  color:#6ddaff;
+.help{
+  color:#657a85;
   font-size:10px;
-  letter-spacing:1px;
-  font-weight:700;
-}
-
-.popup-close{
-  border:0;
-  background:none;
-  color:#728792;
-  font-size:18px;
-}
-
-.popup-title{
-  font-size:18px;
-  margin-top:7px;
-}
-
-.popup-text{
-  color:#93a6af;
-  font-size:12px;
-  line-height:1.7;
-  margin-top:7px;
-}
-
-.popup-status{
-  margin-top:14px;
-}
-
-.popup-footer{
-  margin-top:17px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.popup-date{
-  color:#607681;
-  font-size:10px;
+  line-height:1.6;
+  margin-top:5px;
 }
 
 /* =========================
-   NOTIFICATION SETUP CARD
+   PHOTO
 ========================= */
 
-.notification-card{
+.photo-box{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:20px;
-  padding:17px;
-  margin-top:15px;
+  gap:18px;
+  padding:15px;
   background:#0b171f;
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:15px;
 }
 
-.notification-card-left{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-}
-
-.notification-icon{
-  width:42px;
-  height:42px;
-  border-radius:12px;
+.photo-preview{
+  width:80px;
+  height:80px;
+  border-radius:16px;
+  overflow:hidden;
+  background:#162832;
   display:grid;
   place-items:center;
-  background:rgba(0,168,232,.1);
-  font-size:20px;
+  color:#617985;
+  font-size:24px;
+  flex-shrink:0;
 }
 
-.notification-card h4{
+.photo-preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.file-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 13px;
+  border-radius:10px;
+  background:#172b35;
+  border:1px solid var(--border);
+  color:#d6e2e7;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.file-label input{
+  display:none;
+}
+
+/* =========================
+   PAYMENT
+========================= */
+
+.payment-card{
+  border:1px solid rgba(0,168,232,.17);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(0,168,232,.10),transparent 35%),
+    #0b171f;
+  border-radius:17px;
+  padding:18px;
+}
+
+.payment-fee{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:15px;
+  margin-bottom:15px;
+  border-bottom:1px solid var(--border);
+}
+
+.payment-fee span:first-child{
+  color:#8ea2ac;
+  font-size:12px;
+}
+
+.payment-fee strong{
+  font-size:26px;
+}
+
+.method-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.method{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+  background:#09161e;
+  color:#91a3ae;
+  cursor:pointer;
+  text-align:center;
+  transition:.2s;
+}
+
+.method:hover{
+  border-color:rgba(0,168,232,.35);
+}
+
+.method.active{
+  border-color:rgba(0,168,232,.65);
+  background:rgba(0,168,232,.09);
+  color:#fff;
+}
+
+.method strong{
+  display:block;
   font-size:14px;
 }
 
-.notification-card p{
-  color:#78909b;
-  font-size:11px;
-  line-height:1.6;
+.method small{
+  display:block;
+  font-size:9px;
+  margin-top:3px;
+  color:#657a85;
+}
+
+.merchant-box{
+  padding:14px;
+  border-radius:12px;
+  background:#08131a;
+  border:1px dashed rgba(255,255,255,.12);
+  margin-bottom:16px;
+}
+
+.merchant-label{
+  color:#657984;
+  font-size:10px;
+}
+
+.merchant-number{
+  color:#6edcff;
+  font-size:18px;
+  font-weight:700;
   margin-top:3px;
 }
 
 /* =========================
-   EMPTY
+   CHECKBOX
 ========================= */
 
-.empty{
+.agreement{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:15px;
+  background:#0b171f;
+  border:1px solid var(--border);
+  border-radius:13px;
+  color:#879ba5;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.agreement input{
+  margin-top:4px;
+  accent-color:var(--primary2);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+  border:0;
+  border-radius:13px;
+  padding:13px 20px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  font-weight:700;
+  box-shadow:0 12px 30px rgba(0,135,196,.18);
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.06);
+}
+
+.btn.secondary{
+  background:#162a34;
+  border:1px solid var(--border);
+  box-shadow:none;
+}
+
+.btn.full{
+  width:100%;
+}
+
+.submit-row{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:18px;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+  display:flex;
+  gap:12px;
+  padding:14px;
+  border-radius:13px;
+  background:rgba(255,200,87,.06);
+  border:1px solid rgba(255,200,87,.12);
+  color:#c6b27f;
+  font-size:11px;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-screen{
+  display:none;
+  max-width:760px;
+  margin:70px auto;
   text-align:center;
-  padding:35px 20px;
+}
+
+.success-icon{
+  width:82px;
+  height:82px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(37,217,139,.10);
+  border:1px solid rgba(37,217,139,.25);
+  color:#52e9a5;
+  font-size:38px;
+}
+
+.success-screen h1{
+  font-size:34px;
+}
+
+.success-screen > p{
+  color:#8fa3ad;
+  line-height:1.8;
+  margin:10px auto 25px;
+  max-width:600px;
+}
+
+.result-card{
+  background:linear-gradient(
+    180deg,
+    rgba(20,35,45,.96),
+    rgba(11,24,32,.96)
+  );
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  text-align:left;
+  margin-bottom:18px;
+}
+
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.result-row:last-child{
+  border-bottom:0;
+}
+
+.result-row span{
   color:#718590;
-  font-size:13px;
+  font-size:11px;
+}
+
+.result-row strong{
+  text-align:right;
+  font-size:12px;
+}
+
+.success-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error-box{
+  display:none;
+  padding:12px 14px;
+  border-radius:12px;
+  color:#ff9a9a;
+  background:rgba(255,98,98,.08);
+  border:1px solid rgba(255,98,98,.15);
+  font-size:12px;
+  margin-bottom:15px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  text-align:center;
+  color:#526773;
+  font-size:10px;
+  padding:25px 20px 40px;
+}
+
+.footer strong{
+  color:#78919d;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+  position:fixed;
+  inset:0;
+  background:rgba(7,16,23,.92);
+  backdrop-filter:blur(8px);
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+.loading.show{
+  display:flex;
+}
+
+.loading-box{
+  text-align:center;
+}
+
+.spinner{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.08);
+  border-top-color:#4fd6ff;
+  animation:spin .8s linear infinite;
+  margin:auto;
+}
+
+.loading-box p{
+  color:#91a3ae;
+  font-size:12px;
+  margin-top:12px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 /* =========================
@@ -929,163 +735,170 @@ td strong{
 
 .toast{
   position:fixed;
-  right:22px;
-  top:88px;
-  background:#132832;
-  border:1px solid rgba(37,217,139,.2);
-  color:#dff9ed;
+  right:20px;
+  bottom:20px;
+  z-index:300;
+  padding:13px 16px;
   border-radius:12px;
-  padding:12px 15px;
-  box-shadow:var(--shadow);
-  z-index:200;
-  transform:translateX(130%);
-  transition:.3s;
+  background:#142832;
+  border:1px solid rgba(37,217,139,.18);
+  color:#dff9ed;
   font-size:12px;
+  box-shadow:var(--shadow);
+  transform:translateY(130px);
+  opacity:0;
+  transition:.3s;
 }
 
 .toast.show{
   transform:none;
+  opacity:1;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-.mobile-menu{
-  display:none;
-  border:0;
-  background:#142731;
-  color:#fff;
-  width:38px;
-  height:38px;
-  border-radius:10px;
-}
+@media(max-width:800px){
 
-@media(max-width:1100px){
-
-  .stats-grid{
-    grid-template-columns:repeat(3,1fr);
+  .hero{
+    padding-top:38px;
   }
 
-  .two-col{
+  .grid-2,
+  .grid-3{
     grid-template-columns:1fr;
   }
 
-}
-
-@media(max-width:850px){
-
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-  }
-
-  .sidebar.open{
-    transform:none;
-  }
-
-  .main{
-    margin-left:0;
-  }
-
-  .mobile-menu{
-    display:block;
-  }
-
-  .topbar{
-    padding:0 16px;
-  }
-
-  .content{
-    padding:20px 16px 40px;
-  }
-
-  .stats-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .settings-grid,
-  .three-col,
-  .review-grid{
+  .method-grid{
     grid-template-columns:1fr;
   }
 
-  .notification-card{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-}
-
-@media(max-width:560px){
-
-  .stats-grid{
+  .progress{
     grid-template-columns:1fr;
   }
 
-  .top-actions .status-pill{
+  .header{
+    padding:0 18px;
+  }
+
+  .header-link{
     display:none;
   }
 
-  .update-top{
+}
+
+@media(max-width:520px){
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .container{
+    width:min(100% - 20px,1180px);
+  }
+
+  .card{
+    padding:18px;
+    border-radius:17px;
+  }
+
+  .photo-box{
+    align-items:flex-start;
+  }
+
+  .submit-row{
     flex-direction:column;
   }
 
-  .search-row{
-    flex-direction:column;
+  .submit-row .btn{
+    width:100%;
   }
 
-  .login-card{
-    padding:25px;
+  .result-row{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .result-row strong{
+    text-align:left;
   }
 
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- =========================
-     LOGIN
+     HEADER
 ========================= -->
 
-<section class="login-screen" id="loginScreen">
+<header class="header">
 
-  <div class="login-card">
+  <a href="../index.html" class="brand">
 
-    <div class="login-logo">DS</div>
-
-    <h1>DigiSER BD</h1>
-
-    <p>
-      আবেদনকারী, আবেদন, পেমেন্ট এবং সিস্টেম আপডেট
-      পরিচালনার জন্য নিরাপদ অ্যাডমিন ড্যাশবোর্ড।
-    </p>
-
-    <div class="field">
-
-      <label>অ্যাডমিন পাসওয়ার্ড</label>
-
-      <input
-        type="password"
-        id="loginPassword"
-        placeholder="অ্যাডমিন পাসওয়ার্ড লিখুন"
-        autocomplete="current-password"
-      >
-
+    <div class="brand-logo">
+      DS
     </div>
 
-    <button
-      class="btn"
-      style="width:100%"
-      onclick="login()"
-    >
-      ড্যাশবোর্ডে প্রবেশ করুন
-    </button>
-
-    <div class="login-error" id="loginError">
-      পাসওয়ার্ড সঠিক নয়।
+    <div class="brand-text">
+      <strong>DigiSER BD</strong>
+      <span>Job • Service • Growth</span>
     </div>
+
+  </a>
+
+  <a
+    href="../track-application.html"
+    class="header-link"
+  >
+    আবেদন ট্র্যাক করুন →
+  </a>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <span class="hero-badge">
+    ● DigiSER BD Applicant Registration
+  </span>
+
+  <h1>
+    আপনার <span>Applicant Profile</span>
+    তৈরি করুন এবং চাকরিতে আবেদন করুন।
+  </h1>
+
+  <p>
+    একবার আপনার Applicant Profile তৈরি করুন।
+    এরপর একই প্রোফাইল ব্যবহার করে একাধিক চাকরিতে
+    আবেদন করতে পারবেন। আবেদন ও পেমেন্টের তথ্য
+    আলাদাভাবে সংরক্ষণ করা হবে।
+  </p>
+
+  <div class="hero-meta">
+
+    <span class="meta">
+      👤 Applicant Profile
+    </span>
+
+    <span class="meta">
+      📋 Job Application
+    </span>
+
+    <span class="meta">
+      💳 Application Fee ৳50
+    </span>
+
+    <span class="meta">
+      📱 Mobile Tracking
+    </span>
 
   </div>
 
@@ -1093,1805 +906,1140 @@ td strong{
 
 
 <!-- =========================
-     APP
+     MAIN
 ========================= -->
 
-<div class="app" id="app">
+<main class="container" id="registrationArea">
 
-  <!-- SIDEBAR -->
+  <!-- PROGRESS -->
 
-  <aside class="sidebar" id="sidebar">
+  <div class="progress-card">
 
-    <div class="brand">
+    <div class="progress">
 
-      <div class="brand-mark">DS</div>
+      <div class="progress-item active">
 
-      <div class="brand-text">
-        <strong>DigiSER BD</strong>
-        <span>অ্যাডমিন কন্ট্রোল সেন্টার</span>
-      </div>
+        <span class="progress-number">
+          1
+        </span>
 
-    </div>
-
-
-    <div class="nav-label">ওভারভিউ</div>
-
-    <button
-      class="nav-item active"
-      data-page="dashboard"
-    >
-      <span class="nav-icon">⌂</span>
-      ড্যাশবোর্ড
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="updates"
-    >
-      <span class="nav-icon">🔔</span>
-      ক্লায়েন্ট আপডেট
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="review"
-    >
-      <span class="nav-icon">◉</span>
-      সিস্টেম পর্যালোচনা
-    </button>
-
-
-    <div class="nav-label">আবেদনকারী</div>
-
-
-    <button
-      class="nav-item"
-      data-page="applicants"
-    >
-      <span class="nav-icon">👤</span>
-      আবেদনকারীর প্রোফাইল
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="applications"
-    >
-      <span class="nav-icon">▣</span>
-      আবেদনসমূহ
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="payments"
-    >
-      <span class="nav-icon">৳</span>
-      পেমেন্ট
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="cv"
-    >
-      <span class="nav-icon">▤</span>
-      CV ব্যবস্থাপনা
-    </button>
-
-
-    <div class="nav-label">ওয়েবসাইট</div>
-
-
-    <button
-      class="nav-item"
-      data-page="jobs"
-    >
-      <span class="nav-icon">▦</span>
-      চাকরি
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="services"
-    >
-      <span class="nav-icon">◈</span>
-      সেবা
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="businesses"
-    >
-      <span class="nav-icon">⌘</span>
-      ব্যবসা
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="blog"
-    >
-      <span class="nav-icon">✎</span>
-      ব্লগ
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="messages"
-    >
-      <span class="nav-icon">✉</span>
-      বার্তা
-    </button>
-
-
-    <div class="nav-label">কনফিগারেশন</div>
-
-
-    <button
-      class="nav-item"
-      data-page="payment-settings"
-    >
-      <span class="nav-icon">⚙</span>
-      পেমেন্ট সেটিংস
-    </button>
-
-
-    <button
-      class="nav-item"
-      data-page="site-settings"
-    >
-      <span class="nav-icon">⚙</span>
-      সাইট সেটিংস
-    </button>
-
-
-    <div class="sidebar-bottom">
-
-      <button
-        class="nav-item"
-        onclick="logout()"
-      >
-        <span class="nav-icon">↪</span>
-        লগআউট
-      </button>
-
-    </div>
-
-  </aside>
-
-
-  <!-- MAIN -->
-
-  <main class="main">
-
-    <header class="topbar">
-
-      <div style="display:flex;align-items:center;gap:12px">
-
-        <button
-          class="mobile-menu"
-          onclick="toggleSidebar()"
-        >
-          ☰
-        </button>
-
-        <div>
-
-          <div
-            class="page-title"
-            id="pageTitle"
-          >
-            ড্যাশবোর্ড
-          </div>
-
-          <div
-            class="page-subtitle"
-            id="pageSubtitle"
-          >
-            DigiSER BD অ্যাডমিন সেন্টার
-          </div>
-
-        </div>
+        Applicant Profile
 
       </div>
 
+      <div class="progress-item">
 
-      <div class="top-actions">
+        <span class="progress-number">
+          2
+        </span>
 
-        <div class="status-pill">
-
-          <span class="status-dot"></span>
-
-          সিস্টেম সচল
-
-        </div>
-
-
-        <button
-          class="btn small secondary"
-          onclick="enableBrowserNotifications()"
-        >
-          🔔 নোটিফিকেশন
-        </button>
-
-
-        <button
-          class="btn small secondary"
-          onclick="showPage('updates')"
-        >
-          আপডেট
-        </button>
+        Job Application
 
       </div>
 
-    </header>
+      <div class="progress-item">
 
+        <span class="progress-number">
+          3
+        </span>
 
-    <div class="content">
-
-      <!-- =====================
-           DASHBOARD
-      ====================== -->
-
-      <section
-        id="page-dashboard"
-        class="page"
-      >
-
-        <div class="grid stats-grid">
-
-          <div class="card stat-card">
-
-            <div class="stat-label">
-              আবেদনকারীর প্রোফাইল
-            </div>
-
-            <div
-              class="stat-number"
-              id="statProfiles"
-            >
-              0
-            </div>
-
-            <div class="stat-note">
-              নিবন্ধিত আবেদনকারী
-            </div>
-
-          </div>
-
-
-          <div class="card stat-card">
-
-            <div class="stat-label">
-              আবেদনসমূহ
-            </div>
-
-            <div
-              class="stat-number"
-              id="statApplications"
-            >
-              0
-            </div>
-
-            <div class="stat-note">
-              মোট জমা দেওয়া আবেদন
-            </div>
-
-          </div>
-
-
-          <div class="card stat-card">
-
-            <div class="stat-label">
-              পেমেন্ট অপেক্ষমাণ
-            </div>
-
-            <div
-              class="stat-number"
-              id="statPendingPayments"
-            >
-              0
-            </div>
-
-            <div class="stat-note">
-              যাচাইয়ের অপেক্ষায়
-            </div>
-
-          </div>
-
-
-          <div class="card stat-card">
-
-            <div class="stat-label">
-              পর্যালোচনাধীন
-            </div>
-
-            <div
-              class="stat-number"
-              id="statReview"
-            >
-              0
-            </div>
-
-            <div class="stat-note">
-              বর্তমানে পর্যালোচনায়
-            </div>
-
-          </div>
-
-
-          <div class="card stat-card">
-
-            <div class="stat-label">
-              আবেদন ফি
-            </div>
-
-            <div class="stat-number">
-              ৳50
-            </div>
-
-            <div class="stat-note">
-              বর্তমান আবেদন ফি
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- UPDATE HERO -->
-
-        <div class="section">
-
-          <div class="card update-hero">
-
-            <div class="update-top">
-
-              <div>
-
-                <span class="update-badge">
-                  🔔 ক্লায়েন্ট আপডেট সেন্টার
-                </span>
-
-
-                <h2 id="dashboardUpdateTitle">
-                  DigiSER BD অ্যাডমিন ড্যাশবোর্ডে স্বাগতম
-                </h2>
-
-
-                <div
-                  class="update-description"
-                  id="dashboardUpdateDescription"
-                >
-                  এখানে আবেদনকারী, আবেদন, পেমেন্ট এবং
-                  সিস্টেমের অগ্রগতি পরিচালনা করুন।
-                </div>
-
-
-                <div class="update-meta">
-
-                  <span class="meta-chip">
-                    আবেদন ফি: ৳50
-                  </span>
-
-                  <span class="meta-chip">
-                    bKash: +8801580422117
-                  </span>
-
-                  <span class="meta-chip">
-                    ট্র্যাকিং: মোবাইল নম্বর
-                  </span>
-
-                </div>
-
-              </div>
-
-
-              <div class="update-actions">
-
-                <button
-                  class="btn small"
-                  onclick="openUpdateModal()"
-                >
-                  + নতুন আপডেট
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="notification-card">
-
-              <div class="notification-card-left">
-
-                <div class="notification-icon">
-                  🔔
-                </div>
-
-                <div>
-
-                  <h4>
-                    Browser Notification
-                  </h4>
-
-                  <p>
-                    গুরুত্বপূর্ণ সিস্টেম আপডেট browser notification
-                    হিসেবে পেতে নোটিফিকেশন চালু করুন।
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              <button
-                class="btn small"
-                onclick="enableBrowserNotifications()"
-              >
-                🔔 নোটিফিকেশন চালু করুন
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- TWO COLUMN -->
-
-        <div class="section grid two-col">
-
-          <div class="card panel">
-
-            <div class="section-head">
-
-              <div>
-
-                <h2>
-                  সর্বশেষ ক্লায়েন্ট আপডেট
-                </h2>
-
-                <p>
-                  এক ধাপে এক ধাপে ক্লায়েন্টকে আপডেট রাখুন।
-                </p>
-
-              </div>
-
-
-              <button
-                class="btn small secondary"
-                onclick="showPage('updates')"
-              >
-                সব দেখুন
-              </button>
-
-            </div>
-
-
-            <div
-              id="dashboardUpdates"
-              class="update-list"
-            ></div>
-
-          </div>
-
-
-          <div class="card panel">
-
-            <div class="section-head">
-
-              <div>
-
-                <h2>
-                  সিস্টেমের অবস্থা
-                </h2>
-
-                <p>
-                  বর্তমান কার্যক্রমের সারসংক্ষেপ।
-                </p>
-
-              </div>
-
-              <span class="badge green">
-                সচল
-              </span>
-
-            </div>
-
-
-            <div
-              class="review-grid"
-              id="dashboardReview"
-            ></div>
-
-          </div>
-
-        </div>
-
-
-        <!-- RECENT APPLICATIONS -->
-
-        <div class="section card panel">
-
-          <div class="section-head">
-
-            <div>
-
-              <h2>
-                সাম্প্রতিক আবেদন
-              </h2>
-
-              <p>
-                সর্বশেষ আবেদনকারীর কার্যক্রম।
-              </p>
-
-            </div>
-
-
-            <button
-              class="btn small secondary"
-              onclick="showPage('applications')"
-            >
-              পরিচালনা করুন
-            </button>
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>আবেদনকারী</th>
-                  <th>আবেদন ID</th>
-                  <th>চাকরি</th>
-                  <th>পেমেন্ট</th>
-                  <th>স্ট্যাটাস</th>
-                  <th>তারিখ</th>
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="recentApplications"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           CLIENT UPDATES
-      ====================== -->
-
-      <section
-        id="page-updates"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              ক্লায়েন্ট আপডেট সেন্টার
-            </h2>
-
-            <p>
-              কোন কাজ সম্পন্ন, কোনটি চলছে এবং
-              কোনটি পরবর্তী ধাপে রয়েছে তা পরিষ্কারভাবে জানান।
-            </p>
-
-          </div>
-
-
-          <button
-            class="btn"
-            onclick="openUpdateModal()"
-          >
-            + আপডেট যোগ করুন
-          </button>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div
-            class="update-list"
-            id="allUpdates"
-          ></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           SYSTEM REVIEW
-      ====================== -->
-
-      <section
-        id="page-review"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              সিস্টেম পর্যালোচনা
-            </h2>
-
-            <p>
-              DigiSER BD প্ল্যাটফর্মের বর্তমান কার্যক্রম।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div
-            class="review-grid"
-            id="fullReview"
-          ></div>
-
-        </div>
-
-
-        <div class="section grid three-col">
-
-          <div class="card panel">
-
-            <span class="badge green">
-              সচল
-            </span>
-
-            <h3 style="margin-top:12px">
-              নিবন্ধন
-            </h3>
-
-            <p class="update-description">
-              আবেদনকারী নিবন্ধন এবং প্রোফাইল
-              তৈরি করা যাচ্ছে।
-            </p>
-
-          </div>
-
-
-          <div class="card panel">
-
-            <span class="badge green">
-              সচল
-            </span>
-
-            <h3 style="margin-top:12px">
-              ট্র্যাকিং
-            </h3>
-
-            <p class="update-description">
-              নিবন্ধিত মোবাইল নম্বর ব্যবহার করে
-              আবেদন ট্র্যাক করা যাচ্ছে।
-            </p>
-
-          </div>
-
-
-          <div class="card panel">
-
-            <span class="badge yellow">
-              ম্যানুয়াল
-            </span>
-
-            <h3 style="margin-top:12px">
-              পেমেন্ট যাচাই
-            </h3>
-
-            <p class="update-description">
-              অ্যাডমিন কর্তৃক ম্যানুয়ালি পেমেন্ট যাচাই করা হচ্ছে।
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           APPLICANTS
-      ====================== -->
-
-      <section
-        id="page-applicants"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              আবেদনকারীর প্রোফাইল
-            </h2>
-
-            <p>
-              নিবন্ধিত আবেদনকারীর প্রোফাইল পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="search-row">
-
-            <input
-              id="applicantSearch"
-              placeholder="নাম, মোবাইল অথবা ইমেইল দিয়ে খুঁজুন..."
-              oninput="renderApplicants()"
-            >
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>নাম</th>
-                  <th>মোবাইল</th>
-                  <th>ইমেইল</th>
-                  <th>আবেদন</th>
-                  <th>তৈরির তারিখ</th>
-                  <th>অ্যাকশন</th>
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="applicantTable"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           APPLICATIONS
-      ====================== -->
-
-      <section
-        id="page-applications"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              আবেদনসমূহ
-            </h2>
-
-            <p>
-              জমা দেওয়া আবেদন পর্যালোচনা ও পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="search-row">
-
-            <input
-              id="applicationSearch"
-              placeholder="আবেদনকারী, মোবাইল, ID অথবা চাকরি খুঁজুন..."
-              oninput="renderApplications()"
-            >
-
-
-            <select
-              id="applicationStatusFilter"
-              onchange="renderApplications()"
-            >
-
-              <option value="">
-                সব স্ট্যাটাস
-              </option>
-
-              <option value="submitted">
-                জমা দেওয়া
-              </option>
-
-              <option value="payment_pending">
-                পেমেন্ট অপেক্ষমাণ
-              </option>
-
-              <option value="payment_confirmed">
-                পেমেন্ট নিশ্চিত
-              </option>
-
-              <option value="under_review">
-                পর্যালোচনাধীন
-              </option>
-
-              <option value="approved">
-                অনুমোদিত
-              </option>
-
-              <option value="rejected">
-                প্রত্যাখ্যাত
-              </option>
-
-              <option value="cancelled">
-                বাতিল
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>আবেদনকারী</th>
-                  <th>আবেদন ID</th>
-                  <th>চাকরি</th>
-                  <th>পেমেন্ট</th>
-                  <th>স্ট্যাটাস</th>
-                  <th>অ্যাকশন</th>
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="applicationTable"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           PAYMENTS
-      ====================== -->
-
-      <section
-        id="page-payments"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              পেমেন্ট
-            </h2>
-
-            <p>
-              আবেদনকারীর ম্যানুয়াল পেমেন্ট যাচাই করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-                  <th>আবেদন</th>
-                  <th>মাধ্যম</th>
-                  <th>পরিমাণ</th>
-                  <th>প্রেরকের নম্বর</th>
-                  <th>Transaction ID</th>
-                  <th>স্ট্যাটাস</th>
-                  <th>অ্যাকশন</th>
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="paymentTable"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           CV
-      ====================== -->
-
-      <section
-        id="page-cv"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              CV ব্যবস্থাপনা
-            </h2>
-
-            <p>
-              শুধু অ্যাডমিনের জন্য CV দেখা,
-              ডাউনলোড এবং প্রিন্ট সুবিধা।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="empty">
-
-            একটি আবেদন নির্বাচন করে
-            <strong>CV দেখুন</strong> অথবা
-            <strong>Branded CV</strong> ব্যবহার করুন।
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================
-           JOBS
-      ====================== -->
-
-      <section
-        id="page-jobs"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              চাকরি
-            </h2>
-
-            <p>
-              উপলব্ধ চাকরির সুযোগ পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div
-            id="jobsContent"
-            class="empty"
-          >
-            চাকরি ব্যবস্থাপনা মডিউল পরবর্তী ধাপে যুক্ত করা হবে।
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- SERVICES -->
-
-      <section
-        id="page-services"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>সেবা</h2>
-
-            <p>
-              DigiSER BD-এর সেবা পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="empty">
-            সেবা ব্যবস্থাপনা মডিউল প্রস্তুত।
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- BUSINESSES -->
-
-      <section
-        id="page-businesses"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>ব্যবসা</h2>
-
-            <p>
-              নিবন্ধিত ব্যবসা পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="empty">
-            ব্যবসা ব্যবস্থাপনা মডিউল প্রস্তুত।
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- BLOG -->
-
-      <section
-        id="page-blog"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>ব্লগ</h2>
-
-            <p>
-              ওয়েবসাইটের নিবন্ধ এবং আপডেট পরিচালনা করুন।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="empty">
-            ব্লগ ব্যবস্থাপনা মডিউল পরবর্তী ধাপে যুক্ত হবে।
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- MESSAGES -->
-
-      <section
-        id="page-messages"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>বার্তা</h2>
-
-            <p>
-              ওয়েবসাইটের যোগাযোগের বার্তা।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="empty">
-            বার্তা ব্যবস্থাপনা মডিউল পরবর্তী ধাপে যুক্ত হবে।
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- PAYMENT SETTINGS -->
-
-      <section
-        id="page-payment-settings"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              পেমেন্ট সেটিংস
-            </h2>
-
-            <p>
-              আবেদন ফি এবং merchant payment method কনফিগার করুন।
-            </p>
-
-          </div>
-
-
-          <button
-            class="btn"
-            onclick="savePaymentSettings()"
-          >
-            সেটিংস সংরক্ষণ করুন
-          </button>
-
-        </div>
-
-
-        <div class="settings-grid">
-
-          <div class="card panel">
-
-            <h3>
-              আবেদন ফি
-            </h3>
-
-
-            <div
-              class="field"
-              style="margin-top:18px"
-            >
-
-              <label>
-                আবেদন ফি (BDT)
-              </label>
-
-
-              <input
-                type="number"
-                id="feeInput"
-                value="50"
-                min="0"
-              >
-
-            </div>
-
-
-            <p
-              style="color:#708590;font-size:11px;line-height:1.6"
-            >
-              বর্তমান আবেদন ফি ৳50।
-              প্রকৃত ফি পরিবর্তন না হলে এটি পরিবর্তন করবেন না।
-            </p>
-
-          </div>
-
-
-          <div class="card panel">
-
-            <h3>
-              পেমেন্ট নির্দেশনা
-            </h3>
-
-
-            <div
-              class="field"
-              style="margin-top:18px"
-            >
-
-              <label>
-                নির্দেশনা
-              </label>
-
-
-              <textarea id="paymentInstructions">
-সক্রিয় merchant method ব্যবহার করে আবেদন ফি পাঠান। প্রেরকের মোবাইল নম্বর এবং transaction ID সঠিকভাবে লিখুন। DigiSER BD administration ম্যানুয়ালি পেমেন্ট যাচাই করবে।
-              </textarea>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section grid three-col">
-
-          <div class="method-card">
-
-            <div class="method-head">
-
-              <strong>
-                bKash Merchant
-              </strong>
-
-
-              <button
-                class="switch on"
-                id="bkashSwitch"
-                onclick="toggleMethod('bkash')"
-              ></button>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Merchant Number
-              </label>
-
-
-              <input
-                id="bkashNumber"
-                value="+8801580422117"
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="method-card">
-
-            <div class="method-head">
-
-              <strong>
-                Nagad Merchant
-              </strong>
-
-
-              <button
-                class="switch on"
-                id="nagadSwitch"
-                onclick="toggleMethod('nagad')"
-              ></button>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Merchant Number
-              </label>
-
-
-              <input
-                id="nagadNumber"
-                placeholder="Nagad merchant নম্বর লিখুন"
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="method-card">
-
-            <div class="method-head">
-
-              <strong>
-                Rocket Merchant
-              </strong>
-
-
-              <button
-                class="switch on"
-                id="rocketSwitch"
-                onclick="toggleMethod('rocket')"
-              ></button>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Merchant Number
-              </label>
-
-
-              <input
-                id="rocketNumber"
-                placeholder="Rocket merchant নম্বর লিখুন"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- SITE SETTINGS -->
-
-      <section
-        id="page-site-settings"
-        class="page"
-        style="display:none"
-      >
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              সাইট সেটিংস
-            </h2>
-
-            <p>
-              ওয়েবসাইটের মৌলিক প্রশাসনিক সেটিংস।
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="card panel">
-
-          <div class="field">
-
-            <label>
-              ওয়েবসাইটের নাম
-            </label>
-
-
-            <input
-              id="siteName"
-              value="DigiSER BD"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Tagline
-            </label>
-
-
-            <input
-              id="siteTagline"
-              value="Job • Service • Growth"
-            >
-
-          </div>
-
-
-          <button
-            class="btn"
-            onclick="saveSiteSettings()"
-          >
-            সাইট সেটিংস সংরক্ষণ করুন
-          </button>
-
-        </div>
-
-      </section>
-
-    </div>
-
-  </main>
-
-</div>
-
-
-<!-- =========================
-     UPDATE MODAL
-========================= -->
-
-<div
-  class="modal"
-  id="updateModal"
->
-
-  <div class="modal-card">
-
-    <div class="modal-head">
-
-      <h3 id="updateModalTitle">
-        নতুন ক্লায়েন্ট আপডেট
-      </h3>
-
-
-      <button
-        class="modal-close"
-        onclick="closeModal('updateModal')"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-      <input
-        type="hidden"
-        id="editingUpdateId"
-      >
-
-
-      <div class="field">
-
-        <label>
-          আপডেটের শিরোনাম
-        </label>
-
-
-        <input
-          id="updateTitle"
-          placeholder="যেমন: Payment System Update"
-        >
+        Payment
 
       </div>
-
-
-      <div class="field">
-
-        <label>
-          বিস্তারিত
-        </label>
-
-
-        <textarea
-          id="updateDescription"
-          placeholder="কী পরিবর্তন হয়েছে বা কোন কাজ চলছে তা পরিষ্কারভাবে লিখুন।"
-        ></textarea>
-
-      </div>
-
-
-      <div class="settings-grid">
-
-        <div class="field">
-
-          <label>
-            ফিচার
-          </label>
-
-
-          <select id="updateFeature">
-
-            <option value="Registration">
-              নিবন্ধন
-            </option>
-
-            <option value="Applicant Profile">
-              আবেদনকারীর প্রোফাইল
-            </option>
-
-            <option value="Application">
-              আবেদন
-            </option>
-
-            <option value="Payment">
-              পেমেন্ট
-            </option>
-
-            <option value="Tracking">
-              ট্র্যাকিং
-            </option>
-
-            <option value="CV">
-              CV
-            </option>
-
-            <option value="Admin">
-              অ্যাডমিন
-            </option>
-
-            <option value="Website">
-              ওয়েবসাইট
-            </option>
-
-            <option value="Other">
-              অন্যান্য
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            স্ট্যাটাস
-          </label>
-
-
-          <select id="updateStatus">
-
-            <option value="completed">
-              🟢 সম্পন্ন
-            </option>
-
-            <option value="in_progress">
-              🟡 চলমান
-            </option>
-
-            <option value="coming_next">
-              ⚪ পরবর্তী ধাপে
-            </option>
-
-            <option value="maintenance">
-              🔴 রক্ষণাবেক্ষণ
-            </option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-
-          <input
-            type="checkbox"
-            id="updatePinned"
-            style="width:auto;margin-right:7px"
-          >
-
-          উপরে পিন করুন
-
-        </label>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-
-          <input
-            type="checkbox"
-            id="updatePopup"
-            checked
-            style="width:auto;margin-right:7px"
-          >
-
-          Browser notification ও popup দেখান
-
-        </label>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-foot">
-
-      <button
-        class="btn secondary"
-        onclick="closeModal('updateModal')"
-      >
-        বাতিল
-      </button>
-
-
-      <button
-        class="btn"
-        onclick="saveUpdate()"
-      >
-        আপডেট প্রকাশ করুন
-      </button>
 
     </div>
 
   </div>
 
-</div>
+
+  <div
+    class="error-box"
+    id="errorBox"
+  ></div>
 
 
-<!-- =========================
-     DETAIL MODAL
-========================= -->
+  <!-- =========================
+       PERSONAL INFORMATION
+  ========================== -->
 
-<div
-  class="modal"
-  id="detailModal"
->
+  <section class="card">
 
-  <div class="modal-card">
-
-    <div class="modal-head">
-
-      <h3 id="detailTitle">
-        বিস্তারিত
-      </h3>
-
-
-      <button
-        class="modal-close"
-        onclick="closeModal('detailModal')"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div
-      class="modal-body"
-      id="detailBody"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     CLIENT POPUP
-========================= -->
-
-<div
-  class="client-popup"
-  id="clientPopup"
->
-
-  <div class="popup-accent"></div>
-
-
-  <div class="popup-inner">
-
-    <div class="popup-head">
+    <div class="section-title">
 
       <div>
 
-        <div class="popup-label">
-          DigiSER BD • সিস্টেম আপডেট
-        </div>
+        <h2>
+          👤 ব্যক্তিগত তথ্য
+        </h2>
 
-
-        <div
-          class="popup-title"
-          id="popupTitle"
-        >
-          সিস্টেম আপডেট
-        </div>
+        <p>
+          আপনার Applicant Profile-এর মৌলিক তথ্য দিন।
+        </p>
 
       </div>
 
-
-      <button
-        class="popup-close"
-        onclick="closeClientPopup()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div
-      class="popup-text"
-      id="popupText"
-    ></div>
-
-
-    <div class="popup-status">
-
-      <span
-        class="badge yellow"
-        id="popupStatus"
-      >
-        চলমান
+      <span class="required">
+        * আবশ্যক
       </span>
 
     </div>
 
 
-    <div class="popup-footer">
+    <div class="grid grid-2">
 
-      <span
-        class="popup-date"
-        id="popupDate"
-      ></span>
+      <div class="field">
+
+        <label>
+          পূর্ণ নাম <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="আপনার পূর্ণ নাম"
+          autocomplete="name"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          মোবাইল নম্বর <span class="required">*</span>
+        </label>
+
+        <input
+          type="tel"
+          id="mobile"
+          placeholder="01XXXXXXXXX"
+          autocomplete="tel"
+          required
+        >
+
+        <div class="help">
+          এই নম্বর ব্যবহার করে ভবিষ্যতে আপনার সব আবেদন ট্র্যাক করা যাবে।
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          ইমেইল
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="example@email.com"
+          autocomplete="email"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          জরুরি যোগাযোগ নম্বর
+        </label>
+
+        <input
+          type="tel"
+          id="emergency"
+          placeholder="জরুরি যোগাযোগের নম্বর"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- PHOTO -->
+
+    <div class="field">
+
+      <label>
+        প্রোফাইল ছবি
+      </label>
+
+      <div class="photo-box">
+
+        <div
+          class="photo-preview"
+          id="photoPreview"
+        >
+          👤
+        </div>
+
+        <div>
+
+          <label class="file-label">
+
+            📷 ছবি নির্বাচন করুন
+
+            <input
+              type="file"
+              id="photo"
+              accept="image/*"
+            >
+
+          </label>
+
+          <div class="help">
+            JPG / PNG ছবি ব্যবহার করুন।
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ADDRESS
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          📍 ঠিকানা
+        </h2>
+
+        <p>
+          আপনার বর্তমান ও স্থায়ী ঠিকানা দিন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-2">
+
+      <div class="field">
+
+        <label>
+          বর্তমান ঠিকানা
+        </label>
+
+        <textarea
+          id="currentAddress"
+          placeholder="বর্তমান ঠিকানা লিখুন..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          স্থায়ী ঠিকানা
+        </label>
+
+        <textarea
+          id="permanentAddress"
+          placeholder="স্থায়ী ঠিকানা লিখুন..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EDUCATION
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          🎓 শিক্ষাগত যোগ্যতা
+        </h2>
+
+        <p>
+          আপনার শিক্ষাগত যোগ্যতার তথ্য দিন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-2">
+
+      <div class="field">
+
+        <label>
+          SSC / সমমান
+        </label>
+
+        <input
+          type="text"
+          id="ssc"
+          placeholder="প্রতিষ্ঠান, বিভাগ, ফলাফল"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          HSC / সমমান
+        </label>
+
+        <input
+          type="text"
+          id="hsc"
+          placeholder="প্রতিষ্ঠান, বিভাগ, ফলাফল"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          স্নাতক / Graduate
+        </label>
+
+        <input
+          type="text"
+          id="graduate"
+          placeholder="ডিগ্রি, প্রতিষ্ঠান, বিষয়"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          অন্যান্য যোগ্যতা
+        </label>
+
+        <input
+          type="text"
+          id="otherEducation"
+          placeholder="অন্যান্য শিক্ষা / প্রশিক্ষণ"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EXPERIENCE
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          💼 অভিজ্ঞতা
+        </h2>
+
+        <p>
+          আপনার কাজের অভিজ্ঞতা থাকলে বিস্তারিত দিন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        কাজের অভিজ্ঞতা
+      </label>
+
+      <textarea
+        id="experience"
+        placeholder="কোথায় কাজ করেছেন, কত বছর, কোন পদে..."
+      ></textarea>
+
+    </div>
+
+
+    <div class="grid grid-2">
+
+      <div class="field">
+
+        <label>
+          প্রধান দায়িত্ব
+        </label>
+
+        <textarea
+          id="duty"
+          placeholder="আপনার প্রধান কাজ / দায়িত্ব..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          পূর্বের বেতন
+        </label>
+
+        <input
+          type="text"
+          id="previousSalary"
+          placeholder="যেমন: ৳20,000"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          🛠 দক্ষতা
+        </h2>
+
+        <p>
+          আপনার গুরুত্বপূর্ণ দক্ষতাগুলো লিখুন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-2">
+
+      <div class="field">
+
+        <label>
+          Skills
+        </label>
+
+        <textarea
+          id="skills"
+          placeholder="যেমন: Computer, MS Office, Communication, Graphic Design..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          ভাষাগত দক্ষতা
+        </label>
+
+        <textarea
+          id="language"
+          placeholder="যেমন: বাংলা — ভালো, English — মাঝারি..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       REFERENCE
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          👥 Reference
+        </h2>
+
+        <p>
+          প্রয়োজনে একজন reference ব্যক্তির তথ্য দিন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+      <div class="field">
+
+        <label>
+          নাম
+        </label>
+
+        <input
+          type="text"
+          id="referenceName"
+          placeholder="Reference-এর নাম"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          যোগাযোগ
+        </label>
+
+        <input
+          type="tel"
+          id="referenceContact"
+          placeholder="মোবাইল নম্বর"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          সম্পর্ক
+        </label>
+
+        <input
+          type="text"
+          id="referenceRelation"
+          placeholder="যেমন: Supervisor"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CV
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          📄 CV / Resume
+        </h2>
+
+        <p>
+          আপনার সর্বশেষ CV upload করুন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        CV ফাইল <span class="required">*</span>
+      </label>
+
+      <input
+        type="file"
+        id="cv"
+        accept=".pdf,.doc,.docx"
+        required
+      >
+
+      <div class="help">
+        PDF, DOC অথবা DOCX ফাইল ব্যবহার করুন।
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       JOB APPLICATION
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          📋 Job Application
+        </h2>
+
+        <p>
+          যে চাকরির জন্য আবেদন করতে চান সেটি নির্বাচন করুন।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        চাকরির নাম <span class="required">*</span>
+      </label>
+
+      <select id="jobTitle">
+
+        <option value="">
+          চাকরি নির্বাচন করুন
+        </option>
+
+        <option value="Graphic Designer">
+          Graphic Designer
+        </option>
+
+        <option value="Web Developer">
+          Web Developer
+        </option>
+
+        <option value="Digital Marketing Executive">
+          Digital Marketing Executive
+        </option>
+
+        <option value="Sales Executive">
+          Sales Executive
+        </option>
+
+        <option value="Customer Support Executive">
+          Customer Support Executive
+        </option>
+
+        <option value="Office Assistant">
+          Office Assistant
+        </option>
+
+        <option value="Other">
+          অন্যান্য
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+      <div class="field">
+
+        <label>
+          প্রত্যাশিত বেতন
+        </label>
+
+        <input
+          type="text"
+          id="expectedSalary"
+          placeholder="যেমন: ৳25,000"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          কাজের ধরন
+        </label>
+
+        <select id="applicationType">
+
+          <option value="Full Time">
+            Full Time
+          </option>
+
+          <option value="Part Time">
+            Part Time
+          </option>
+
+          <option value="Remote">
+            Remote
+          </option>
+
+          <option value="Contract">
+            Contract
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          পছন্দের Location
+        </label>
+
+        <input
+          type="text"
+          id="location"
+          placeholder="যেমন: Dhaka"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        অতিরিক্ত তথ্য
+      </label>
+
+      <textarea
+        id="applicationReference"
+        placeholder="আবেদন সম্পর্কিত অতিরিক্ত তথ্য..."
+      ></textarea>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PAYMENT
+  ========================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h2>
+          💳 Application Payment
+        </h2>
+
+        <p>
+          আবেদন submit করার আগে application fee payment তথ্য দিন।
+        </p>
+
+      </div>
+
+      <span class="required">
+        ৳50
+      </span>
+
+    </div>
+
+
+    <div class="notice">
+
+      <span>⚠️</span>
+
+      <div>
+        বর্তমান Application Fee <strong>৳50</strong>।
+        নির্বাচিত merchant নম্বরে payment সম্পন্ন করে
+        sender mobile number এবং Transaction ID সঠিকভাবে দিন।
+        Payment admin দ্বারা manually verify করা হবে।
+      </div>
+
+    </div>
+
+
+    <div class="payment-card">
+
+      <div class="payment-fee">
+
+        <span>
+          Application Fee
+        </span>
+
+        <strong>
+          ৳50
+        </strong>
+
+      </div>
+
+
+      <div class="method-grid">
+
+        <button
+          type="button"
+          class="method active"
+          data-method="bkash"
+          onclick="selectPaymentMethod('bkash')"
+        >
+
+          <strong>
+            bKash
+          </strong>
+
+          <small>
+            Merchant
+          </small>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="method"
+          data-method="nagad"
+          onclick="selectPaymentMethod('nagad')"
+        >
+
+          <strong>
+            Nagad
+          </strong>
+
+          <small>
+            Merchant
+          </small>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="method"
+          data-method="rocket"
+          onclick="selectPaymentMethod('rocket')"
+        >
+
+          <strong>
+            Rocket
+          </strong>
+
+          <small>
+            Merchant
+          </small>
+
+        </button>
+
+      </div>
+
+
+      <div class="merchant-box">
+
+        <div class="merchant-label">
+          Selected Merchant Number
+        </div>
+
+        <div
+          class="merchant-number"
+          id="merchantNumber"
+        >
+          +8801580422117
+        </div>
+
+      </div>
+
+
+      <div class="grid grid-2">
+
+        <div class="field">
+
+          <label>
+            আপনার Sender Mobile Number
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="tel"
+            id="senderNumber"
+            placeholder="যে নম্বর থেকে payment করেছেন"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Transaction ID
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="trxId"
+            placeholder="Transaction ID লিখুন"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Payment Date
+          </label>
+
+          <input
+            type="date"
+            id="paymentDate"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Payment Screenshot
+          </label>
+
+          <input
+            type="file"
+            id="paymentScreenshot"
+            accept="image/*"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AGREEMENT
+  ========================== -->
+
+  <section class="card">
+
+    <label class="agreement">
+
+      <input
+        type="checkbox"
+        id="agreement"
+      >
+
+      <span>
+        আমি নিশ্চিত করছি যে আমি যে তথ্য দিয়েছি তা আমার জানা অনুযায়ী
+        সঠিক। DigiSER BD প্রয়োজন অনুযায়ী তথ্য যাচাই করতে পারে।
+        Payment verification সম্পন্ন না হওয়া পর্যন্ত application
+        confirmed হিসেবে গণ্য হবে না।
+      </span>
+
+    </label>
+
+
+    <div class="submit-row">
+
+      <a
+        href="../index.html"
+        class="btn secondary"
+      >
+        বাতিল
+      </a>
 
 
       <button
-        class="btn small"
-        onclick="closeClientPopup()"
+        type="button"
+        class="btn"
+        onclick="submitApplication()"
       >
-        বুঝেছি
+        আবেদন Submit করুন →
       </button>
 
     </div>
+
+  </section>
+
+</main>
+
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<section
+  class="success-screen"
+  id="successScreen"
+>
+
+  <div class="success-icon">
+    ✓
+  </div>
+
+  <h1>
+    আবেদন সফলভাবে জমা হয়েছে
+  </h1>
+
+  <p>
+    আপনার Applicant Profile এবং Job Application
+    সফলভাবে সংরক্ষণ করা হয়েছে। Payment এখন
+    Admin verification-এর অপেক্ষায় রয়েছে।
+  </p>
+
+
+  <div class="result-card">
+
+    <div class="result-row">
+
+      <span>
+        Applicant
+      </span>
+
+      <strong id="resultName">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="result-row">
+
+      <span>
+        Application ID
+      </span>
+
+      <strong id="resultApplicationId">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="result-row">
+
+      <span>
+        Applied Job
+      </span>
+
+      <strong id="resultJob">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="result-row">
+
+      <span>
+        Payment
+      </span>
+
+      <strong>
+        <span
+          style="color:#ffd779"
+        >
+          Pending Verification
+        </span>
+      </strong>
+
+    </div>
+
+
+    <div class="result-row">
+
+      <span>
+        Application Status
+      </span>
+
+      <strong>
+        <span
+          style="color:#ffd779"
+        >
+          Payment Pending
+        </span>
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="success-actions">
+
+    <a
+      href="../track-application.html"
+      class="btn"
+    >
+      📱 আবেদন ট্র্যাক করুন
+    </a>
+
+
+    <a
+      href="../index.html"
+      class="btn secondary"
+    >
+      ← হোমপেজে যান
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer class="footer">
+
+  <strong>DigiSER BD</strong>
+  · Job • Service • Growth
+
+  <br>
+
+  আপনার তথ্য নিরাপদভাবে সংরক্ষণ ও ব্যবস্থাপনার জন্য
+  এই registration system তৈরি করা হয়েছে।
+
+</footer>
+
+
+<!-- LOADING -->
+
+<div
+  class="loading"
+  id="loading"
+>
+
+  <div class="loading-box">
+
+    <div class="spinner"></div>
+
+    <p>
+      আপনার আবেদন সংরক্ষণ করা হচ্ছে...
+    </p>
 
   </div>
 
@@ -2909,14 +2057,9 @@ td strong{
 <script>
 
 /* =========================================================
-   DIGISER BD ADMIN V3
-   BANGLA + BROWSER NOTIFICATION
+   DIGISER BD REGISTRATION SYSTEM
+   PROFILE + APPLICATION + PAYMENT
 ========================================================= */
-
-const ADMIN_PASSWORD = "digiser2026";
-
-const SESSION_KEY =
-  "digiserbd_admin_session";
 
 const DB_KEY =
   "digiserbd_admin_v2";
@@ -2924,11 +2067,26 @@ const DB_KEY =
 const LEGACY_KEY =
   "digiserbd_admin_v1";
 
-const UPDATE_KEY =
-  "digiserbd_client_updates_v1";
+const APPLICATION_FEE = 50;
 
-const NOTIFICATION_SEEN_KEY =
-  "digiserbd_browser_notification_seen";
+const PAYMENT_METHODS = {
+
+  bkash:{
+    name:"bKash",
+    number:"+8801580422117"
+  },
+
+  nagad:{
+    name:"Nagad",
+    number:""
+  },
+
+  rocket:{
+    name:"Rocket",
+    number:""
+  }
+
+};
 
 
 /* =========================================================
@@ -2937,15 +2095,15 @@ const NOTIFICATION_SEEN_KEY =
 
 const DEFAULT_DB = {
 
-  applicantProfiles: [],
+  applicantProfiles:[],
 
-  applications: [],
+  applications:[],
 
-  payments: [],
+  payments:[],
 
-  settings: {
+  settings:{
 
-    payment: {
+    payment:{
 
       enabled:true,
 
@@ -2954,7 +2112,7 @@ const DEFAULT_DB = {
       currency:"BDT",
 
       instructions:
-        "সক্রিয় merchant method ব্যবহার করে আবেদন ফি পাঠান। প্রেরকের মোবাইল নম্বর এবং transaction ID সঠিকভাবে লিখুন। DigiSER BD administration ম্যানুয়ালি পেমেন্ট যাচাই করবে।",
+        "সক্রিয় merchant method ব্যবহার করে আবেদন ফি পাঠান।",
 
       methods:{
 
@@ -3005,79 +2163,7 @@ const DEFAULT_DB = {
 
 
 /* =========================================================
-   DEFAULT UPDATES
-========================================================= */
-
-const DEFAULT_UPDATES = [
-
-  {
-
-    id:"upd_payment",
-
-    title:"Application Payment System",
-
-    description:
-      "আবেদন পেমেন্ট বর্তমানে manual merchant verification-এর মাধ্যমে পরিচালিত হচ্ছে। বর্তমান আবেদন ফি ৫০ টাকা।",
-
-    feature:"Payment",
-
-    status:"completed",
-
-    pinned:true,
-
-    popup:true,
-
-    created:"2026-10-01T10:00:00"
-
-  },
-
-  {
-
-    id:"upd_tracking",
-
-    title:"Application Tracking Updated",
-
-    description:
-      "আবেদনকারীরা এখন নিবন্ধিত মোবাইল নম্বর ব্যবহার করে তাদের আবেদন ট্র্যাক করতে পারবেন। একই মোবাইল নম্বরের একাধিক আবেদনও দেখা যাবে।",
-
-    feature:"Tracking",
-
-    status:"completed",
-
-    pinned:false,
-
-    popup:false,
-
-    created:"2026-10-01T09:00:00"
-
-  },
-
-  {
-
-    id:"upd_profile",
-
-    title:"Applicant Profile System",
-
-    description:
-      "Applicant Profile এবং Application আলাদা করা হয়েছে। ফলে একজন আবেদনকারী একাধিক চাকরিতে আবেদন করতে পারবেন।",
-
-    feature:"Applicant Profile",
-
-    status:"completed",
-
-    pinned:false,
-
-    popup:false,
-
-    created:"2026-10-01T08:00:00"
-
-  }
-
-];
-
-
-/* =========================================================
-   DB HELPERS
+   DATABASE HELPERS
 ========================================================= */
 
 function deepMerge(target,source){
@@ -3113,6 +2199,15 @@ function deepMerge(target,source){
 }
 
 
+function clone(obj){
+
+  return JSON.parse(
+    JSON.stringify(obj)
+  );
+
+}
+
+
 function loadDB(){
 
   try{
@@ -3125,7 +2220,7 @@ function loadDB(){
     if(saved){
 
       return deepMerge(
-        structuredClone(DEFAULT_DB),
+        clone(DEFAULT_DB),
         saved
       );
 
@@ -3137,21 +2232,18 @@ function loadDB(){
         localStorage.getItem(LEGACY_KEY) || "null"
       );
 
-
     if(legacy){
 
       const migrated =
         deepMerge(
-          structuredClone(DEFAULT_DB),
+          clone(DEFAULT_DB),
           legacy
         );
-
 
       localStorage.setItem(
         DB_KEY,
         JSON.stringify(migrated)
       );
-
 
       return migrated;
 
@@ -3159,24 +2251,29 @@ function loadDB(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Database error:",
+      error
+    );
 
   }
 
 
   const fresh =
-    structuredClone(DEFAULT_DB);
-
+    clone(DEFAULT_DB);
 
   localStorage.setItem(
     DB_KEY,
     JSON.stringify(fresh)
   );
 
-
   return fresh;
 
 }
+
+
+let DB =
+  loadDB();
 
 
 function saveDB(){
@@ -3189,3133 +2286,1324 @@ function saveDB(){
 }
 
 
-let DB =
-  loadDB();
-
-
 /* =========================================================
-   UPDATES
+   PAYMENT METHOD
 ========================================================= */
 
-function loadUpdates(){
+let selectedPaymentMethod =
+  "bkash";
 
-  try{
 
-    const saved =
-      JSON.parse(
-        localStorage.getItem(UPDATE_KEY) || "null"
+function selectPaymentMethod(method){
+
+  selectedPaymentMethod =
+    method;
+
+
+  document
+    .querySelectorAll(".method")
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "active",
+        button.dataset.method === method
       );
 
-
-    if(Array.isArray(saved)){
-      return saved;
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-  }
+    });
 
 
-  localStorage.setItem(
-    UPDATE_KEY,
-    JSON.stringify(DEFAULT_UPDATES)
-  );
+  const setting =
+    DB.settings?.payment?.methods?.[method];
 
 
-  return [...DEFAULT_UPDATES];
+  const defaultNumber =
+    PAYMENT_METHODS[method]?.number || "";
+
+
+  document.getElementById(
+    "merchantNumber"
+  ).textContent =
+    setting?.number ||
+    defaultNumber ||
+    "Merchant number এখনো সেট করা হয়নি";
 
 }
 
 
-let updates =
-  loadUpdates();
+/* =========================================================
+   PHOTO PREVIEW
+========================================================= */
+
+document
+  .getElementById("photo")
+  .addEventListener(
+    "change",
+    function(){
+
+      const file =
+        this.files?.[0];
+
+      if(!file)
+        return;
 
 
-function saveUpdates(){
+      if(!file.type.startsWith("image/")){
 
-  localStorage.setItem(
-    UPDATE_KEY,
-    JSON.stringify(updates)
+        showError(
+          "সঠিক image file নির্বাচন করুন।"
+        );
+
+        this.value = "";
+
+        return;
+
+      }
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(e){
+
+          document.getElementById(
+            "photoPreview"
+          ).innerHTML =
+            `<img src="${e.target.result}" alt="Profile Photo">`;
+
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   FILE TO DATA URL
+========================================================= */
+
+function fileToDataURL(file){
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      if(!file){
+
+        resolve(null);
+
+        return;
+
+      }
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        ()=>resolve(
+          reader.result
+        );
+
+
+      reader.onerror =
+        ()=>reject(
+          new Error(
+            "File read failed"
+          )
+        );
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
   );
 
 }
 
 
 /* =========================================================
-   LOGIN
+   IMAGE COMPRESSION
 ========================================================= */
 
-function login(){
+function compressImage(
+  file,
+  maxSize = 900,
+  quality = .78
+){
 
-  const password =
-    document.getElementById(
-      "loginPassword"
-    ).value;
+  return new Promise(
+    (resolve,reject)=>{
+
+      if(!file){
+
+        resolve(null);
+
+        return;
+
+      }
 
 
-  if(password === ADMIN_PASSWORD){
+      const reader =
+        new FileReader();
 
-    sessionStorage.setItem(
-      SESSION_KEY,
-      "true"
+
+      reader.onload =
+        function(event){
+
+          const img =
+            new Image();
+
+
+          img.onload =
+            function(){
+
+              let width =
+                img.width;
+
+              let height =
+                img.height;
+
+
+              if(width > maxSize){
+
+                height =
+                  Math.round(
+                    height *
+                    maxSize /
+                    width
+                  );
+
+                width =
+                  maxSize;
+
+              }
+
+
+              if(height > maxSize){
+
+                width =
+                  Math.round(
+                    width *
+                    maxSize /
+                    height
+                  );
+
+                height =
+                  maxSize;
+
+              }
+
+
+              const canvas =
+                document.createElement(
+                  "canvas"
+                );
+
+
+              canvas.width =
+                width;
+
+              canvas.height =
+                height;
+
+
+              const ctx =
+                canvas.getContext(
+                  "2d"
+                );
+
+
+              ctx.drawImage(
+                img,
+                0,
+                0,
+                width,
+                height
+              );
+
+
+              resolve(
+                canvas.toDataURL(
+                  "image/jpeg",
+                  quality
+                )
+              );
+
+            };
+
+
+          img.onerror =
+            reject;
+
+
+          img.src =
+            event.target.result;
+
+        };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   ID GENERATION
+========================================================= */
+
+function generateApplicationId(){
+
+  const existing =
+    new Set(
+      (DB.applications || [])
+        .map(
+          app =>
+            app.id
+        )
     );
 
 
+  let id;
+
+
+  do{
+
+    const random =
+      Math.floor(
+        10000 +
+        Math.random() *
+        90000
+      );
+
+
+    id =
+      "DGS-2026-" +
+      random;
+
+  }while(
+    existing.has(id)
+  );
+
+
+  return id;
+
+}
+
+
+function generateProfileId(){
+
+  return (
+    "PROFILE-" +
+    Date.now() +
+    "-" +
+    Math.floor(
+      Math.random() * 1000
+    )
+  );
+
+}
+
+
+function generatePaymentId(){
+
+  return (
+    "PAY-" +
+    Date.now() +
+    "-" +
+    Math.floor(
+      Math.random() * 1000
+    )
+  );
+
+}
+
+
+/* =========================================================
+   MOBILE NORMALIZATION
+========================================================= */
+
+function normalizeMobile(value){
+
+  return String(
+    value || ""
+  )
+  .replace(
+    /[\s-]/g,
+    ""
+  )
+  .trim();
+
+}
+
+
+function validBangladeshMobile(value){
+
+  const mobile =
+    normalizeMobile(
+      value
+    );
+
+
+  return /^01\d{9}$/.test(
+    mobile
+  );
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateForm(){
+
+  const name =
     document.getElementById(
-      "loginScreen"
-    ).style.display =
-      "none";
+      "name"
+    ).value.trim();
 
 
+  const mobile =
+    normalizeMobile(
+      document.getElementById(
+        "mobile"
+      ).value
+    );
+
+
+  const job =
     document.getElementById(
-      "app"
-    ).style.display =
-      "block";
+      "jobTitle"
+    ).value;
 
 
-    init();
-
-  }else{
-
+  const cv =
     document.getElementById(
-      "loginError"
-    ).style.display =
-      "block";
+      "cv"
+    ).files?.[0];
+
+
+  const sender =
+    normalizeMobile(
+      document.getElementById(
+        "senderNumber"
+      ).value
+    );
+
+
+  const trx =
+    document.getElementById(
+      "trxId"
+    ).value.trim();
+
+
+  const agreement =
+    document.getElementById(
+      "agreement"
+    ).checked;
+
+
+  if(!name){
+
+    return "আপনার পূর্ণ নাম লিখুন।";
+
+  }
+
+
+  if(!validBangladeshMobile(mobile)){
+
+    return "সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন। যেমন: 017XXXXXXXX";
+
+  }
+
+
+  if(!job){
+
+    return "একটি চাকরি নির্বাচন করুন।";
+
+  }
+
+
+  if(!cv){
+
+    return "আপনার CV upload করুন।";
+
+  }
+
+
+  const cvSize =
+    cv.size / 1024 / 1024;
+
+
+  if(cvSize > 5){
+
+    return "CV ফাইল সর্বোচ্চ 5MB হতে পারবে।";
+
+  }
+
+
+  if(!validBangladeshMobile(sender)){
+
+    return "সঠিক Sender Mobile Number দিন।";
+
+  }
+
+
+  if(!trx){
+
+    return "Payment Transaction ID দিন।";
+
+  }
+
+
+  if(!agreement){
+
+    return "আবেদন submit করার আগে declaration গ্রহণ করুন।";
+
+  }
+
+
+  const methodSetting =
+    DB.settings?.payment?.methods?.[
+      selectedPaymentMethod
+    ];
+
+
+  const merchant =
+    methodSetting?.number ||
+    PAYMENT_METHODS[selectedPaymentMethod]?.number ||
+    "";
+
+
+  if(!merchant){
+
+    return (
+      selectedPaymentMethod.toUpperCase() +
+      " merchant number এখনো সেট করা হয়নি।"
+    );
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =========================================================
+   SUBMIT APPLICATION
+========================================================= */
+
+async function submitApplication(){
+
+  hideError();
+
+
+  const validation =
+    validateForm();
+
+
+  if(validation){
+
+    showError(
+      validation
+    );
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+    return;
+
+  }
+
+
+  const loading =
+    document.getElementById(
+      "loading"
+    );
+
+
+  loading.classList.add(
+    "show"
+  );
+
+
+  try{
+
+    const now =
+      new Date().toISOString();
+
+
+    const name =
+      document.getElementById(
+        "name"
+      ).value.trim();
+
+
+    const mobile =
+      normalizeMobile(
+        document.getElementById(
+          "mobile"
+        ).value
+      );
+
+
+    const email =
+      document.getElementById(
+        "email"
+      ).value.trim();
+
+
+    /*
+      Existing profile খুঁজে বের করা হবে।
+      একই mobile হলে নতুন profile তৈরি হবে না।
+    */
+
+    let profile =
+      (DB.applicantProfiles || [])
+        .find(
+          p =>
+            normalizeMobile(
+              p.mobile
+            ) === mobile
+        );
+
+
+    const photoFile =
+      document.getElementById(
+        "photo"
+      ).files?.[0];
+
+
+    let photoData =
+      profile?.photo ||
+      "";
+
+
+    if(photoFile){
+
+      photoData =
+        await compressImage(
+          photoFile
+        );
+
+    }
+
+
+    const cvFile =
+      document.getElementById(
+        "cv"
+      ).files?.[0];
+
+
+    const cvData =
+      await fileToDataURL(
+        cvFile
+      );
+
+
+    /*
+      Applicant Profile
+    */
+
+    if(!profile){
+
+      profile = {
+
+        id:
+          generateProfileId(),
+
+        name,
+
+        mobile,
+
+        email,
+
+        emergency:
+          document.getElementById(
+            "emergency"
+          ).value.trim(),
+
+        photo:
+          photoData,
+
+        address:{
+
+          current:
+            document.getElementById(
+              "currentAddress"
+            ).value.trim(),
+
+          permanent:
+            document.getElementById(
+              "permanentAddress"
+            ).value.trim()
+
+        },
+
+        education:{
+
+          ssc:
+            document.getElementById(
+              "ssc"
+            ).value.trim(),
+
+          hsc:
+            document.getElementById(
+              "hsc"
+            ).value.trim(),
+
+          graduate:
+            document.getElementById(
+              "graduate"
+            ).value.trim(),
+
+          other:
+            document.getElementById(
+              "otherEducation"
+            ).value.trim()
+
+        },
+
+        experience:{
+
+          experience:
+            document.getElementById(
+              "experience"
+            ).value.trim(),
+
+          duty:
+            document.getElementById(
+              "duty"
+            ).value.trim(),
+
+          previousSalary:
+            document.getElementById(
+              "previousSalary"
+            ).value.trim()
+
+        },
+
+        skills:
+          document.getElementById(
+            "skills"
+          ).value.trim(),
+
+        language:
+          document.getElementById(
+            "language"
+          ).value.trim(),
+
+        reference:{
+
+          name:
+            document.getElementById(
+              "referenceName"
+            ).value.trim(),
+
+          contact:
+            document.getElementById(
+              "referenceContact"
+            ).value.trim(),
+
+          relation:
+            document.getElementById(
+              "referenceRelation"
+            ).value.trim()
+
+        },
+
+        cv:{
+
+          name:
+            cvFile.name,
+
+          type:
+            cvFile.type,
+
+          size:
+            cvFile.size,
+
+          dataUrl:
+            cvData
+
+        },
+
+        created:
+          now,
+
+        updated:
+          now
+
+      };
+
+
+      DB.applicantProfiles.push(
+        profile
+      );
+
+    }else{
+
+      /*
+        Existing profile update
+      */
+
+      profile.name =
+        name;
+
+      profile.email =
+        email;
+
+      profile.emergency =
+        document.getElementById(
+          "emergency"
+        ).value.trim();
+
+
+      if(photoData){
+
+        profile.photo =
+          photoData;
+
+      }
+
+
+      profile.address = {
+
+        current:
+          document.getElementById(
+            "currentAddress"
+          ).value.trim(),
+
+        permanent:
+          document.getElementById(
+            "permanentAddress"
+          ).value.trim()
+
+      };
+
+
+      profile.education = {
+
+        ssc:
+          document.getElementById(
+            "ssc"
+          ).value.trim(),
+
+        hsc:
+          document.getElementById(
+            "hsc"
+          ).value.trim(),
+
+        graduate:
+          document.getElementById(
+            "graduate"
+          ).value.trim(),
+
+        other:
+          document.getElementById(
+            "otherEducation"
+          ).value.trim()
+
+      };
+
+
+      profile.experience = {
+
+        experience:
+          document.getElementById(
+            "experience"
+          ).value.trim(),
+
+        duty:
+          document.getElementById(
+            "duty"
+          ).value.trim(),
+
+        previousSalary:
+          document.getElementById(
+            "previousSalary"
+          ).value.trim()
+
+      };
+
+
+      profile.skills =
+        document.getElementById(
+          "skills"
+        ).value.trim();
+
+
+      profile.language =
+        document.getElementById(
+          "language"
+        ).value.trim();
+
+
+      profile.reference = {
+
+        name:
+          document.getElementById(
+            "referenceName"
+          ).value.trim(),
+
+        contact:
+          document.getElementById(
+            "referenceContact"
+          ).value.trim(),
+
+        relation:
+          document.getElementById(
+            "referenceRelation"
+          ).value.trim()
+
+      };
+
+
+      profile.cv = {
+
+        name:
+          cvFile.name,
+
+        type:
+          cvFile.type,
+
+        size:
+          cvFile.size,
+
+        dataUrl:
+          cvData
+
+      };
+
+
+      profile.updated =
+        now;
+
+    }
+
+
+    /*
+      New Application
+    */
+
+    const applicationId =
+      generateApplicationId();
+
+
+    const application = {
+
+      id:
+        applicationId,
+
+      profileId:
+        profile.id,
+
+      jobId:
+        document.getElementById(
+          "jobTitle"
+        ).value
+        .toLowerCase()
+        .replace(
+          /\s+/g,
+          "-"
+        ),
+
+      jobTitle:
+        document.getElementById(
+          "jobTitle"
+        ).value,
+
+      source:
+        "website",
+
+      created:
+        now,
+
+      updated:
+        now,
+
+      status:
+        "payment_pending",
+
+      paymentStatus:
+        "pending",
+
+      notes:"",
+
+      applicationData:{
+
+        salary:
+          document.getElementById(
+            "expectedSalary"
+          ).value.trim(),
+
+        type:
+          document.getElementById(
+            "applicationType"
+          ).value,
+
+        location:
+          document.getElementById(
+            "location"
+          ).value.trim(),
+
+        reference:
+          document.getElementById(
+            "applicationReference"
+          ).value.trim()
+
+      },
+
+      statusHistory:[
+
+        {
+
+          status:
+            "submitted",
+
+          at:
+            now
+
+        },
+
+        {
+
+          status:
+            "payment_pending",
+
+          at:
+            now
+
+        }
+
+      ]
+
+    };
+
+
+    DB.applications.push(
+      application
+    );
+
+
+    /*
+      Payment
+    */
+
+    const paymentDate =
+      document.getElementById(
+        "paymentDate"
+      ).value ||
+      new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+    const screenshotFile =
+      document.getElementById(
+        "paymentScreenshot"
+      ).files?.[0];
+
+
+    let screenshotData =
+      null;
+
+
+    if(screenshotFile){
+
+      screenshotData =
+        await fileToDataURL(
+          screenshotFile
+        );
+
+    }
+
+
+    const payment = {
+
+      id:
+        generatePaymentId(),
+
+      applicationId:
+        applicationId,
+
+      method:
+        selectedPaymentMethod,
+
+      amount:
+        Number(
+          DB.settings?.payment?.fee ||
+          APPLICATION_FEE
+        ),
+
+      senderNumber:
+        normalizeMobile(
+          document.getElementById(
+            "senderNumber"
+          ).value
+        ),
+
+      trxId:
+        document.getElementById(
+          "trxId"
+        ).value.trim(),
+
+      paymentDate,
+
+      screenshot:{
+
+        name:
+          screenshotFile?.name ||
+          "",
+
+        type:
+          screenshotFile?.type ||
+          "",
+
+        dataUrl:
+          screenshotData
+
+      },
+
+      status:
+        "pending",
+
+      created:
+        now,
+
+      updated:
+        now
+
+    };
+
+
+    DB.payments.push(
+      payment
+    );
+
+
+    /*
+      Legacy users compatibility
+    */
+
+    if(!Array.isArray(DB.users)){
+
+      DB.users = [];
+
+    }
+
+
+    const legacyUser = {
+
+      id:
+        profile.id,
+
+      name:
+        profile.name,
+
+      mobile:
+        profile.mobile,
+
+      email:
+        profile.email,
+
+      trackingNumber:
+        applicationId,
+
+      applicationId:
+        applicationId,
+
+      job:
+        application.jobTitle,
+
+      status:
+        application.status,
+
+      paymentStatus:
+        payment.status,
+
+      created:
+        now
+
+    };
+
+
+    const oldUserIndex =
+      DB.users.findIndex(
+        user =>
+          normalizeMobile(
+            user.mobile
+          ) === mobile
+      );
+
+
+    if(oldUserIndex >= 0){
+
+      DB.users[
+        oldUserIndex
+      ] = {
+
+        ...DB.users[
+          oldUserIndex
+        ],
+
+        ...legacyUser
+
+      };
+
+    }else{
+
+      DB.users.push(
+        legacyUser
+      );
+
+    }
+
+
+    saveDB();
+
+
+    /*
+      Show Success
+    */
+
+    showSuccess(
+      profile,
+      application,
+      payment
+    );
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+    showError(
+      "আবেদন সংরক্ষণ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।"
+    );
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }finally{
+
+    loading.classList.remove(
+      "show"
+    );
 
   }
 
 }
 
 
-function logout(){
-
-  sessionStorage.removeItem(
-    SESSION_KEY
-  );
-
-  location.reload();
-
-}
-
-
-document
-  .getElementById("loginPassword")
-  .addEventListener(
-    "keydown",
-    function(e){
-
-      if(e.key === "Enter"){
-        login();
-      }
-
-    }
-  );
-
-
 /* =========================================================
-   INIT
+   SUCCESS
 ========================================================= */
 
-function init(){
-
-  refreshPaymentSettings();
-
-  renderDashboard();
-
-  renderUpdates();
-
-  renderReview();
-
-  renderApplicants();
-
-  renderApplications();
-
-  renderPayments();
-
-  checkClientPopup();
-
-  setupBrowserNotification();
-
-}
-
-
-if(
-  sessionStorage.getItem(
-    SESSION_KEY
-  ) === "true"
+function showSuccess(
+  profile,
+  application,
+  payment
 ){
 
   document.getElementById(
-    "loginScreen"
+    "registrationArea"
   ).style.display =
     "none";
 
 
   document.getElementById(
-    "app"
+    "successScreen"
   ).style.display =
     "block";
 
 
-  init();
+  document.getElementById(
+    "resultName"
+  ).textContent =
+    profile.name;
 
-}
 
+  document.getElementById(
+    "resultApplicationId"
+  ).textContent =
+    application.id;
 
-/* =========================================================
-   BROWSER NOTIFICATION
-========================================================= */
 
-function setupBrowserNotification(){
+  document.getElementById(
+    "resultJob"
+  ).textContent =
+    application.jobTitle;
 
-  if(
-    !("Notification" in window)
-  ){
 
-    return;
-
-  }
-
-
-  /*
-    প্রথমবার dashboard খোলার সময়
-    browser permission automatically চাইবে না।
-    কারণ browser policy অনুযায়ী user interaction
-    থেকে permission নেওয়া বেশি reliable।
-  */
-
-}
-
-
-function enableBrowserNotifications(){
-
-  if(
-    !("Notification" in window)
-  ){
-
-    showToast(
-      "এই browser notification support করে না।"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    Notification.permission === "granted"
-  ){
-
-    showToast(
-      "Browser notification ইতোমধ্যে চালু আছে।"
-    );
-
-    showBrowserTestNotification();
-
-    return;
-
-  }
-
-
-  if(
-    Notification.permission === "denied"
-  ){
-
-    showToast(
-      "Browser notification বন্ধ করা আছে। Browser settings থেকে permission চালু করুন।"
-    );
-
-    return;
-
-  }
-
-
-  Notification
-    .requestPermission()
-    .then(permission=>{
-
-      if(permission === "granted"){
-
-        showToast(
-          "Browser notification চালু হয়েছে।"
-        );
-
-        showBrowserTestNotification();
-
-      }else{
-
-        showToast(
-          "Browser notification permission দেওয়া হয়নি।"
-        );
-
-      }
-
-    });
-
-}
-
-
-function showBrowserTestNotification(){
-
-  if(
-    !("Notification" in window) ||
-    Notification.permission !== "granted"
-  ){
-
-    return;
-
-  }
-
-
-  const notification =
-    new Notification(
-      "DigiSER BD",
-      {
-        body:
-          "গুরুত্বপূর্ণ সিস্টেম আপডেট এখন browser notification হিসেবে পাবেন।",
-
-        icon:"../favicon.png",
-
-        tag:"digiserbd-test-notification"
-      }
-    );
-
-
-  notification.onclick =
-    function(){
-
-      window.focus();
-
-      showPage("updates");
-
-      notification.close();
-
-    };
-
-}
-
-
-function notifyClientAboutUpdate(update){
-
-  if(
-    !("Notification" in window)
-  ){
-
-    return;
-
-  }
-
-
-  if(
-    Notification.permission !== "granted"
-  ){
-
-    return;
-
-  }
-
-
-  const seen =
-    JSON.parse(
-      localStorage.getItem(
-        NOTIFICATION_SEEN_KEY
-      ) || "[]"
-    );
-
-
-  if(
-    seen.includes(update.id)
-  ){
-
-    return;
-
-  }
-
-
-  const state =
-    updateStatusInfo(
-      update.status
-    );
-
-
-  const notification =
-    new Notification(
-      "DigiSER BD • " +
-      state.text,
-      {
-
-        body:
-          update.title +
-          "\n\n" +
-          update.description,
-
-        icon:"../favicon.png",
-
-        tag:
-          "digiserbd-update-" +
-          update.id,
-
-        requireInteraction:false
-
-      }
-    );
-
-
-  notification.onclick =
-    function(){
-
-      window.focus();
-
-      showPage("updates");
-
-      notification.close();
-
-    };
-
-
-  seen.push(
-    update.id
-  );
-
-
-  /*
-    সর্বশেষ 100 notification ID রাখা হবে
-  */
-
-  const limited =
-    seen.slice(-100);
-
-
-  localStorage.setItem(
-    NOTIFICATION_SEEN_KEY,
-    JSON.stringify(limited)
-  );
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-const pageTitles = {
-
-  dashboard:[
-    "ড্যাশবোর্ড",
-    "DigiSER BD অ্যাডমিন সেন্টার"
-  ],
-
-  updates:[
-    "ক্লায়েন্ট আপডেট",
-    "এক ধাপে এক ধাপে ক্লায়েন্টকে আপডেট রাখুন"
-  ],
-
-  review:[
-    "সিস্টেম পর্যালোচনা",
-    "বর্তমান প্ল্যাটফর্মের কার্যক্রম"
-  ],
-
-  applicants:[
-    "আবেদনকারীর প্রোফাইল",
-    "নিবন্ধিত আবেদনকারীর প্রোফাইল পরিচালনা করুন"
-  ],
-
-  applications:[
-    "আবেদনসমূহ",
-    "জমা দেওয়া আবেদন পর্যালোচনা ও পরিচালনা করুন"
-  ],
-
-  payments:[
-    "পেমেন্ট",
-    "আবেদনকারীর ম্যানুয়াল পেমেন্ট যাচাই করুন"
-  ],
-
-  cv:[
-    "CV ব্যবস্থাপনা",
-    "অ্যাডমিনের জন্য CV ব্যবস্থাপনা"
-  ],
-
-  jobs:[
-    "চাকরি",
-    "চাকরির সুযোগ পরিচালনা করুন"
-  ],
-
-  services:[
-    "সেবা",
-    "DigiSER BD সেবা পরিচালনা করুন"
-  ],
-
-  businesses:[
-    "ব্যবসা",
-    "নিবন্ধিত ব্যবসা পরিচালনা করুন"
-  ],
-
-  blog:[
-    "ব্লগ",
-    "ওয়েবসাইটের নিবন্ধ পরিচালনা করুন"
-  ],
-
-  messages:[
-    "বার্তা",
-    "ওয়েবসাইটের যোগাযোগের বার্তা"
-  ],
-
-  "payment-settings":[
-    "পেমেন্ট সেটিংস",
-    "আবেদন ফি এবং merchant configuration"
-  ],
-
-  "site-settings":[
-    "সাইট সেটিংস",
-    "ওয়েবসাইটের মৌলিক প্রশাসনিক সেটিংস"
-  ]
-
-};
-
-
-document
-  .querySelectorAll(
-    ".nav-item[data-page]"
-  )
-  .forEach(item=>{
-
-    item.addEventListener(
-      "click",
-      ()=>{
-        showPage(
-          item.dataset.page
-        );
-      }
-    );
-
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
 
-
-function showPage(page){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(section=>{
-
-      section.style.display =
-        "none";
-
-    });
-
-
-  const target =
-    document.getElementById(
-      "page-" + page
-    );
-
-
-  if(target){
-
-    target.style.display =
-      "block";
-
-  }
-
-
-  document
-    .querySelectorAll(
-      ".nav-item[data-page]"
-    )
-    .forEach(item=>{
-
-      item.classList.toggle(
-        "active",
-        item.dataset.page === page
-      );
-
-    });
-
-
-  const info =
-    pageTitles[page] ||
-    [
-      "ড্যাশবোর্ড",
-      "DigiSER BD"
-    ];
-
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent =
-    info[0];
-
-
-  document.getElementById(
-    "pageSubtitle"
-  ).textContent =
-    info[1];
-
-
-  if(page === "dashboard"){
-    renderDashboard();
-  }
-
-  if(page === "updates"){
-    renderUpdates();
-  }
-
-  if(page === "review"){
-    renderReview();
-  }
-
-  if(page === "applicants"){
-    renderApplicants();
-  }
-
-  if(page === "applications"){
-    renderApplications();
-  }
-
-  if(page === "payments"){
-    renderPayments();
-  }
-
-  if(page === "payment-settings"){
-    refreshPaymentSettings();
-  }
-
-
-  document
-    .getElementById("sidebar")
-    .classList.remove("open");
-
-}
-
-
-function toggleSidebar(){
-
-  document
-    .getElementById("sidebar")
-    .classList.toggle("open");
-
 }
 
 
 /* =========================================================
-   DASHBOARD
+   ERROR
 ========================================================= */
 
-function renderDashboard(){
-
-  const profiles =
-    DB.applicantProfiles || [];
-
-
-  const applications =
-    DB.applications || [];
-
-
-  const payments =
-    DB.payments || [];
-
-
-  document.getElementById(
-    "statProfiles"
-  ).textContent =
-    profiles.length;
-
-
-  document.getElementById(
-    "statApplications"
-  ).textContent =
-    applications.length;
-
-
-  document.getElementById(
-    "statPendingPayments"
-  ).textContent =
-    payments.filter(
-      p =>
-        p.status === "pending"
-    ).length;
-
-
-  document.getElementById(
-    "statReview"
-  ).textContent =
-    applications.filter(
-      a =>
-        a.status === "under_review"
-    ).length;
-
-
-  const latest =
-    getSortedUpdates()[0];
-
-
-  if(latest){
-
-    document.getElementById(
-      "dashboardUpdateTitle"
-    ).textContent =
-      latest.title;
-
-
-    document.getElementById(
-      "dashboardUpdateDescription"
-    ).textContent =
-      latest.description;
-
-  }
-
-
-  renderDashboardUpdates();
-
-  renderDashboardReview();
-
-  renderRecentApplications();
-
-}
-
-
-function renderDashboardUpdates(){
+function showError(message){
 
   const box =
     document.getElementById(
-      "dashboardUpdates"
+      "errorBox"
     );
 
 
-  const list =
-    getSortedUpdates()
-      .slice(0,4);
+  box.textContent =
+    message;
 
 
-  if(!list.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        এখনো কোনো ক্লায়েন্ট আপডেট নেই।
-      </div>`;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    list
-      .map(updateRowHTML)
-      .join("");
+  box.style.display =
+    "block";
 
 }
 
 
-function renderRecentApplications(){
+function hideError(){
 
-  const tbody =
-    document.getElementById(
-      "recentApplications"
-    );
-
-
-  const apps =
-    [...(DB.applications || [])]
-      .sort(
-        (a,b)=>
-          new Date(
-            b.created || 0
-          ) -
-          new Date(
-            a.created || 0
-          )
-      )
-      .slice(0,8);
-
-
-  if(!apps.length){
-
-    tbody.innerHTML =
-      `<tr>
-        <td colspan="6">
-          <div class="empty">
-            এখনো কোনো আবেদন নেই।
-          </div>
-        </td>
-      </tr>`;
-
-    return;
-
-  }
-
-
-  tbody.innerHTML =
-    apps
-      .map(app=>{
-
-        const profile =
-          getProfile(
-            app.profileId
-          );
-
-
-        const payment =
-          getPayment(
-            app.id
-          );
-
-
-        return `
-          <tr>
-
-            <td>
-              <strong>
-                ${escapeHTML(
-                  profile?.name ||
-                  app.name ||
-                  "অজানা"
-                )}
-              </strong>
-            </td>
-
-            <td>
-              ${escapeHTML(
-                app.id || "-"
-              )}
-            </td>
-
-            <td>
-              ${escapeHTML(
-                app.jobTitle ||
-                app.job ||
-                "-"
-              )}
-            </td>
-
-            <td>
-              ${paymentBadge(
-                payment?.status ||
-                app.paymentStatus ||
-                "pending"
-              )}
-            </td>
-
-            <td>
-              ${statusBadge(
-                app.status ||
-                "submitted"
-              )}
-            </td>
-
-            <td>
-              ${formatDate(
-                app.created
-              )}
-            </td>
-
-          </tr>
-        `;
-
-      })
-      .join("");
-
-}
-
-
-function renderDashboardReview(){
-
-  const box =
-    document.getElementById(
-      "dashboardReview"
-    );
-
-
-  box.innerHTML =
-    systemReviewItems()
-      .slice(0,6)
-      .map(reviewHTML)
-      .join("");
+  document.getElementById(
+    "errorBox"
+  ).style.display =
+    "none";
 
 }
 
 
 /* =========================================================
-   UPDATE CENTER
+   TOAST
 ========================================================= */
 
-function getSortedUpdates(){
-
-  return [...updates]
-    .sort((a,b)=>{
-
-      if(
-        Boolean(b.pinned) !==
-        Boolean(a.pinned)
-      ){
-
-        return b.pinned
-          ? 1
-          : -1;
-
-      }
-
-
-      return new Date(
-        b.created || 0
-      ) -
-      new Date(
-        a.created || 0
-      );
-
-    });
-
-}
-
-
-function updateStatusInfo(status){
-
-  const map = {
-
-    completed:{
-      text:"সম্পন্ন",
-      cls:"green"
-    },
-
-    in_progress:{
-      text:"চলমান",
-      cls:"yellow"
-    },
-
-    coming_next:{
-      text:"পরবর্তী ধাপে",
-      cls:"gray"
-    },
-
-    maintenance:{
-      text:"রক্ষণাবেক্ষণ",
-      cls:"red"
-    }
-
-  };
-
-
-  return (
-    map[status] ||
-    map.in_progress
-  );
-
-}
-
-
-function updateRowHTML(u){
-
-  const state =
-    updateStatusInfo(
-      u.status
-    );
-
-
-  return `
-    <div class="update-row">
-
-      <div class="update-row-main">
-
-        <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
-
-          <div class="update-row-title">
-            ${escapeHTML(
-              u.title
-            )}
-          </div>
-
-          ${
-            u.pinned
-              ?
-              `<span class="badge blue">
-                উপরে পিন করা
-              </span>`
-              :
-              ""
-          }
-
-        </div>
-
-
-        <div class="update-row-desc">
-          ${escapeHTML(
-            u.description
-          )}
-        </div>
-
-
-        <div
-          style="margin-top:7px;color:#566d78;font-size:10px"
-        >
-          ${escapeHTML(
-            featureBangla(
-              u.feature
-            )
-          )}
-          ·
-          ${formatDate(
-            u.created
-          )}
-        </div>
-
-      </div>
-
-
-      <div
-        style="display:flex;align-items:center;gap:8px"
-      >
-
-        <span
-          class="badge ${state.cls}"
-        >
-          ${state.text}
-        </span>
-
-
-        <button
-          class="btn small secondary"
-          onclick="editUpdate('${u.id}')"
-        >
-          সম্পাদনা
-        </button>
-
-
-        <button
-          class="btn small danger"
-          onclick="deleteUpdate('${u.id}')"
-        >
-          মুছুন
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-}
-
-
-function featureBangla(feature){
-
-  const map = {
-
-    Registration:"নিবন্ধন",
-
-    "Applicant Profile":
-      "আবেদনকারীর প্রোফাইল",
-
-    Application:"আবেদন",
-
-    Payment:"পেমেন্ট",
-
-    Tracking:"ট্র্যাকিং",
-
-    CV:"CV",
-
-    Admin:"অ্যাডমিন",
-
-    Website:"ওয়েবসাইট",
-
-    Other:"অন্যান্য"
-
-  };
-
-
-  return map[feature] ||
-    feature ||
-    "অন্যান্য";
-
-}
-
-
-function renderUpdates(){
-
-  const box =
-    document.getElementById(
-      "allUpdates"
-    );
-
-
-  const list =
-    getSortedUpdates();
-
-
-  if(!list.length){
-
-    box.innerHTML =
-      `<div class="empty">
-        এখনো কোনো আপডেট প্রকাশিত হয়নি।
-      </div>`;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    list
-      .map(updateRowHTML)
-      .join("");
-
-
-  renderDashboardUpdates();
-
-}
-
-
-function openUpdateModal(){
-
-  document.getElementById(
-    "editingUpdateId"
-  ).value = "";
-
-
-  document.getElementById(
-    "updateTitle"
-  ).value = "";
-
-
-  document.getElementById(
-    "updateDescription"
-  ).value = "";
-
-
-  document.getElementById(
-    "updateFeature"
-  ).value =
-    "Website";
-
-
-  document.getElementById(
-    "updateStatus"
-  ).value =
-    "in_progress";
-
-
-  document.getElementById(
-    "updatePinned"
-  ).checked =
-    false;
-
-
-  document.getElementById(
-    "updatePopup"
-  ).checked =
-    true;
-
-
-  document.getElementById(
-    "updateModalTitle"
-  ).textContent =
-    "নতুন ক্লায়েন্ট আপডেট";
-
-
-  document.querySelector(
-    "#updateModal .modal-foot .btn:last-child"
-  ).textContent =
-    "আপডেট প্রকাশ করুন";
-
-
-  document.getElementById(
-    "updateModal"
-  ).classList.add(
-    "show"
-  );
-
-}
-
-
-function editUpdate(id){
-
-  const u =
-    updates.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!u) return;
-
-
-  document.getElementById(
-    "editingUpdateId"
-  ).value =
-    u.id;
-
-
-  document.getElementById(
-    "updateTitle"
-  ).value =
-    u.title || "";
-
-
-  document.getElementById(
-    "updateDescription"
-  ).value =
-    u.description || "";
-
-
-  document.getElementById(
-    "updateFeature"
-  ).value =
-    u.feature || "Other";
-
-
-  document.getElementById(
-    "updateStatus"
-  ).value =
-    u.status || "in_progress";
-
-
-  document.getElementById(
-    "updatePinned"
-  ).checked =
-    Boolean(
-      u.pinned
-    );
-
-
-  document.getElementById(
-    "updatePopup"
-  ).checked =
-    u.popup !== false;
-
-
-  document.getElementById(
-    "updateModalTitle"
-  ).textContent =
-    "ক্লায়েন্ট আপডেট সম্পাদনা";
-
-
-  document.querySelector(
-    "#updateModal .modal-foot .btn:last-child"
-  ).textContent =
-    "পরিবর্তন সংরক্ষণ করুন";
-
-
-  document.getElementById(
-    "updateModal"
-  ).classList.add(
-    "show"
-  );
-
-}
-
-
-function saveUpdate(){
-
-  const title =
-    document.getElementById(
-      "updateTitle"
-    ).value.trim();
-
-
-  const description =
-    document.getElementById(
-      "updateDescription"
-    ).value.trim();
-
-
-  if(
-    !title ||
-    !description
-  ){
-
-    showToast(
-      "শিরোনাম এবং বিস্তারিত লিখুন।"
-    );
-
-    return;
-
-  }
-
-
-  const id =
-    document.getElementById(
-      "editingUpdateId"
-    ).value;
-
-
-  const payload = {
-
-    title,
-
-    description,
-
-    feature:
-      document.getElementById(
-        "updateFeature"
-      ).value,
-
-    status:
-      document.getElementById(
-        "updateStatus"
-      ).value,
-
-    pinned:
-      document.getElementById(
-        "updatePinned"
-      ).checked,
-
-    popup:
-      document.getElementById(
-        "updatePopup"
-      ).checked,
-
-    created:
-      new Date().toISOString()
-
-  };
-
-
-  if(id){
-
-    const index =
-      updates.findIndex(
-        u =>
-          u.id === id
-      );
-
-
-    if(index !== -1){
-
-      payload.id =
-        id;
-
-
-      updates[index] = {
-
-        ...updates[index],
-
-        ...payload,
-
-        updated:
-          new Date().toISOString()
-
-      };
-
-    }
-
-
-    showToast(
-      "ক্লায়েন্ট আপডেট সংরক্ষণ হয়েছে।"
-    );
-
-  }else{
-
-    payload.id =
-      "upd_" +
-      Date.now();
-
-
-    updates.unshift(
-      payload
-    );
-
-
-    showToast(
-      "ক্লায়েন্ট আপডেট প্রকাশিত হয়েছে।"
-    );
-
-
-    /*
-      নতুন update publish হলে
-      browser notification পাঠানো হবে।
-    */
-
-    if(payload.popup){
-
-      setTimeout(
-        ()=>{
-          notifyClientAboutUpdate(
-            payload
-          );
-        },
-        300
-      );
-
-    }
-
-  }
-
-
-  saveUpdates();
-
-  closeModal(
-    "updateModal"
-  );
-
-  renderUpdates();
-
-  renderDashboard();
-
-}
-
-
-/* =========================================================
-   DELETE UPDATE
-========================================================= */
-
-function deleteUpdate(id){
-
-  const u =
-    updates.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!u) return;
-
-
-  if(
-    !confirm(
-      `আপনি কি "${u.title}" আপডেটটি মুছে ফেলতে চান?`
-    )
-  ){
-
-    return;
-
-  }
-
-
-  updates =
-    updates.filter(
-      item =>
-        item.id !== id
-    );
-
-
-  saveUpdates();
-
-  renderUpdates();
-
-  renderDashboard();
-
-  showToast(
-    "আপডেট মুছে ফেলা হয়েছে।"
-  );
-
-}
-
-
-/* =========================================================
-   CLIENT POPUP
-========================================================= */
-
-function checkClientPopup(){
-
-  const popupUpdate =
-    getSortedUpdates().find(
-      u =>
-        u.popup !== false
-    );
-
-
-  if(!popupUpdate){
-    return;
-  }
-
-
-  const seenKey =
-    "digiserbd_popup_seen_" +
-    popupUpdate.id;
-
-
-  if(
-    localStorage.getItem(
-      seenKey
-    ) === "true"
-  ){
-
-    return;
-
-  }
-
-
-  setTimeout(
-    ()=>{
-      showClientPopup(
-        popupUpdate
-      );
-    },
-    700
-  );
-
-}
-
-
-function showClientPopup(u){
-
-  const state =
-    updateStatusInfo(
-      u.status
-    );
-
-
-  document.getElementById(
-    "popupTitle"
-  ).textContent =
-    u.title;
-
-
-  document.getElementById(
-    "popupText"
-  ).textContent =
-    u.description;
-
-
-  const status =
-    document.getElementById(
-      "popupStatus"
-    );
-
-
-  status.textContent =
-    state.text;
-
-
-  status.className =
-    "badge " +
-    state.cls;
-
-
-  document.getElementById(
-    "popupDate"
-  ).textContent =
-    "আপডেট: " +
-    formatDate(
-      u.created
-    );
-
-
-  document.getElementById(
-    "clientPopup"
-  ).classList.add(
-    "show"
-  );
-
-
-  window.currentPopupId =
-    u.id;
-
-}
-
-
-function closeClientPopup(){
-
-  const id =
-    window.currentPopupId;
-
-
-  if(id){
-
-    localStorage.setItem(
-      "digiserbd_popup_seen_" +
-      id,
-      "true"
-    );
-
-  }
-
-
-  document.getElementById(
-    "clientPopup"
-  ).classList.remove(
-    "show"
-  );
-
-}
-
-
-/* =========================================================
-   SYSTEM REVIEW
-========================================================= */
-
-function systemReviewItems(){
-
-  return [
-
-    {
-      name:"নিবন্ধন",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"আবেদনকারীর প্রোফাইল",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"আবেদন জমা",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"আবেদন ট্র্যাকিং",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"পেমেন্ট জমা",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"পেমেন্ট যাচাই",
-      status:"ম্যানুয়াল",
-      cls:"yellow"
-    },
-
-    {
-      name:"CV আপলোড",
-      status:"সচল",
-      cls:"green"
-    },
-
-    {
-      name:"অ্যাডমিন CV ব্যবস্থাপনা",
-      status:"উপলব্ধ",
-      cls:"blue"
-    },
-
-    {
-      name:"Firebase",
-      status:"পরবর্তী ধাপে",
-      cls:"gray"
-    },
-
-    {
-      name:"Payment Gateway",
-      status:"সংযুক্ত নয়",
-      cls:"gray"
-    }
-
-  ];
-
-}
-
-
-function reviewHTML(item){
-
-  return `
-    <div class="review-item">
-
-      <div class="review-name">
-        ${item.name}
-      </div>
-
-      <span
-        class="review-state badge ${item.cls}"
-      >
-        ${item.status}
-      </span>
-
-    </div>
-  `;
-
-}
-
-
-function renderReview(){
-
-  const box =
-    document.getElementById(
-      "fullReview"
-    );
-
-
-  box.innerHTML =
-    systemReviewItems()
-      .map(reviewHTML)
-      .join("");
-
-
-  renderDashboardReview();
-
-}
-
-
-/* =========================================================
-   APPLICANTS
-========================================================= */
-
-function renderApplicants(){
-
-  const tbody =
-    document.getElementById(
-      "applicantTable"
-    );
-
-
-  if(!tbody) return;
-
-
-  const search =
-    (
-      document.getElementById(
-        "applicantSearch"
-      )?.value ||
-      ""
-    )
-    .toLowerCase()
-    .trim();
-
-
-  const profiles =
-    (DB.applicantProfiles || [])
-      .filter(profile=>{
-
-        if(!search)
-          return true;
-
-
-        return [
-
-          profile.name,
-
-          profile.mobile,
-
-          profile.email
-
-        ]
-        .join(" ")
-        .toLowerCase()
-        .includes(search);
-
-      });
-
-
-  if(!profiles.length){
-
-    tbody.innerHTML =
-      `<tr>
-        <td colspan="6">
-          <div class="empty">
-            কোনো আবেদনকারীর প্রোফাইল পাওয়া যায়নি।
-          </div>
-        </td>
-      </tr>`;
-
-    return;
-
-  }
-
-
-  tbody.innerHTML =
-    profiles
-      .map(profile=>{
-
-        const count =
-          (DB.applications || [])
-            .filter(
-              a =>
-                a.profileId ===
-                profile.id
-            )
-            .length;
-
-
-        return `
-          <tr>
-
-            <td>
-              <strong>
-                ${escapeHTML(
-                  profile.name || "-"
-                )}
-              </strong>
-            </td>
-
-            <td>
-              ${escapeHTML(
-                profile.mobile || "-"
-              )}
-            </td>
-
-            <td>
-              ${escapeHTML(
-                profile.email || "-"
-              )}
-            </td>
-
-            <td>
-              ${count}
-            </td>
-
-            <td>
-              ${formatDate(
-                profile.created
-              )}
-            </td>
-
-            <td>
-
-              <div class="actions">
-
-                <button
-                  class="btn small secondary"
-                  onclick="viewProfile('${profile.id}')"
-                >
-                  দেখুন
-                </button>
-
-              </div>
-
-            </td>
-
-          </tr>
-        `;
-
-      })
-      .join("");
-
-}
-
-
-function viewProfile(id){
-
-  const profile =
-    getProfile(id);
-
-
-  if(!profile)
-    return;
-
-
-  const apps =
-    (DB.applications || [])
-      .filter(
-        a =>
-          a.profileId === id
-      );
-
-
-  document.getElementById(
-    "detailTitle"
-  ).textContent =
-    "আবেদনকারীর প্রোফাইল";
-
-
-  document.getElementById(
-    "detailBody"
-  ).innerHTML = `
-
-    <div class="review-grid">
-
-      <div class="review-item">
-
-        <span class="review-name">
-          নাম
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            profile.name || "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          মোবাইল
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            profile.mobile || "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          ইমেইল
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            profile.email || "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          আবেদন সংখ্যা
-        </span>
-
-        <strong>
-          ${apps.length}
-        </strong>
-
-      </div>
-
-    </div>
-
-
-    <div style="margin-top:18px">
-
-      <div class="field">
-
-        <label>
-          ঠিকানা
-        </label>
-
-        <div
-          style="color:#b7c5cb;line-height:1.6"
-        >
-          ${escapeHTML(
-            profile.address?.current ||
-            profile.address ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          দক্ষতা
-        </label>
-
-        <div
-          style="color:#b7c5cb;line-height:1.6"
-        >
-          ${escapeHTML(
-            profile.skills || "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          অভিজ্ঞতা
-        </label>
-
-        <div
-          style="color:#b7c5cb;line-height:1.6"
-        >
-          ${escapeHTML(
-            profile.experience?.experience ||
-            profile.experience ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  openModal(
-    "detailModal"
-  );
-
-}
-
-
-/* =========================================================
-   APPLICATIONS
-========================================================= */
-
-function renderApplications(){
-
-  const tbody =
-    document.getElementById(
-      "applicationTable"
-    );
-
-
-  if(!tbody) return;
-
-
-  const search =
-    (
-      document.getElementById(
-        "applicationSearch"
-      )?.value ||
-      ""
-    )
-    .toLowerCase()
-    .trim();
-
-
-  const filter =
-    document.getElementById(
-      "applicationStatusFilter"
-    )?.value ||
-    "";
-
-
-  const apps =
-    (DB.applications || [])
-      .filter(app=>{
-
-        if(
-          filter &&
-          app.status !== filter
-        ){
-
-          return false;
-
-        }
-
-
-        if(!search){
-          return true;
-        }
-
-
-        const profile =
-          getProfile(
-            app.profileId
-          );
-
-
-        return [
-
-          app.id,
-
-          app.jobTitle,
-
-          app.job,
-
-          profile?.name,
-
-          profile?.mobile
-
-        ]
-        .join(" ")
-        .toLowerCase()
-        .includes(search);
-
-      });
-
-
-  if(!apps.length){
-
-    tbody.innerHTML =
-      `<tr>
-        <td colspan="6">
-          <div class="empty">
-            কোনো আবেদন পাওয়া যায়নি।
-          </div>
-        </td>
-      </tr>`;
-
-    return;
-
-  }
-
-
-  tbody.innerHTML =
-    apps
-      .map(app=>{
-
-        const profile =
-          getProfile(
-            app.profileId
-          );
-
-
-        const payment =
-          getPayment(
-            app.id
-          );
-
-
-        return `
-          <tr>
-
-            <td>
-
-              <strong>
-                ${escapeHTML(
-                  profile?.name ||
-                  app.name ||
-                  "-"
-                )}
-              </strong>
-
-              <div
-                style="color:#607681;font-size:10px;margin-top:3px"
-              >
-                ${escapeHTML(
-                  profile?.mobile ||
-                  "-"
-                )}
-              </div>
-
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                app.id || "-"
-              )}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                app.jobTitle ||
-                app.job ||
-                "-"
-              )}
-            </td>
-
-
-            <td>
-              ${paymentBadge(
-                payment?.status ||
-                app.paymentStatus ||
-                "pending"
-              )}
-            </td>
-
-
-            <td>
-              ${statusBadge(
-                app.status ||
-                "submitted"
-              )}
-            </td>
-
-
-            <td>
-
-              <div class="actions">
-
-                <button
-                  class="btn small secondary"
-                  onclick="viewApplication('${app.id}')"
-                >
-                  দেখুন
-                </button>
-
-
-                <button
-                  class="btn small"
-                  onclick="changeApplicationStatus('${app.id}')"
-                >
-                  স্ট্যাটাস
-                </button>
-
-              </div>
-
-            </td>
-
-          </tr>
-        `;
-
-      })
-      .join("");
-
-}
-
-
-function viewApplication(id){
-
-  const app =
-    (DB.applications || [])
-      .find(
-        a =>
-          a.id === id
-      );
-
-
-  if(!app) return;
-
-
-  const profile =
-    getProfile(
-      app.profileId
-    );
-
-
-  const payment =
-    getPayment(
-      id
-    );
-
-
-  document.getElementById(
-    "detailTitle"
-  ).textContent =
-    "আবেদন " + id;
-
-
-  document.getElementById(
-    "detailBody"
-  ).innerHTML = `
-
-    <div class="review-grid">
-
-      <div class="review-item">
-
-        <span class="review-name">
-          আবেদনকারী
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            profile?.name ||
-            app.name ||
-            "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          মোবাইল
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            profile?.mobile ||
-            "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          চাকরি
-        </span>
-
-        <strong>
-          ${escapeHTML(
-            app.jobTitle ||
-            app.job ||
-            "-"
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          আবেদন স্ট্যাটাস
-        </span>
-
-        <span>
-          ${statusBadge(
-            app.status ||
-            "submitted"
-          )}
-        </span>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          পেমেন্ট
-        </span>
-
-        <span>
-          ${paymentBadge(
-            payment?.status ||
-            app.paymentStatus ||
-            "pending"
-          )}
-        </span>
-
-      </div>
-
-
-      <div class="review-item">
-
-        <span class="review-name">
-          তৈরির তারিখ
-        </span>
-
-        <strong>
-          ${formatDate(
-            app.created
-          )}
-        </strong>
-
-      </div>
-
-    </div>
-
-
-    <div style="margin-top:20px">
-
-      <div class="field">
-
-        <label>
-          অ্যাডমিন নোট
-        </label>
-
-        <textarea id="applicationNote">${escapeHTML(
-          app.notes || ""
-        )}</textarea>
-
-      </div>
-
-
-      <button
-        class="btn"
-        onclick="saveApplicationNote('${app.id}')"
-      >
-        নোট সংরক্ষণ করুন
-      </button>
-
-    </div>
-
-  `;
-
-
-  openModal(
-    "detailModal"
-  );
-
-}
-
-
-function saveApplicationNote(id){
-
-  const app =
-    (DB.applications || [])
-      .find(
-        a =>
-          a.id === id
-      );
-
-
-  if(!app)
-    return;
-
-
-  app.notes =
-    document.getElementById(
-      "applicationNote"
-    ).value;
-
-
-  app.updated =
-    new Date().toISOString();
-
-
-  saveDB();
-
-
-  showToast(
-    "আবেদনের নোট সংরক্ষণ হয়েছে।"
-  );
-
-}
-
-
-function changeApplicationStatus(id){
-
-  const app =
-    (DB.applications || [])
-      .find(
-        a =>
-          a.id === id
-      );
-
-
-  if(!app)
-    return;
-
-
-  const statuses = [
-
-    ["submitted","জমা দেওয়া"],
-
-    ["payment_pending","পেমেন্ট অপেক্ষমাণ"],
-
-    ["payment_confirmed","পেমেন্ট নিশ্চিত"],
-
-    ["under_review","পর্যালোচনাধীন"],
-
-    ["approved","অনুমোদিত"],
-
-    ["rejected","প্রত্যাখ্যাত"],
-
-    ["cancelled","বাতিল"]
-
-  ];
-
-
-  const currentIndex =
-    statuses.findIndex(
-      x =>
-        x[0] ===
-        app.status
-    );
-
-
-  const message =
-    statuses
-      .map(
-        (x,i)=>
-          `${i+1}. ${x[1]}`
-      )
-      .join("\n");
-
-
-  const answer =
-    prompt(
-      `নতুন স্ট্যাটাস নির্বাচন করুন:\n\n${message}\n\nনম্বর লিখুন:`,
-      currentIndex >= 0
-        ?
-        String(
-          currentIndex + 1
-        )
-        :
-        "1"
-    );
-
-
-  if(!answer)
-    return;
-
-
-  const index =
-    Number(answer) - 1;
-
-
-  if(
-    index < 0 ||
-    index >= statuses.length
-  ){
-
-    showToast(
-      "ভুল স্ট্যাটাস নির্বাচন করা হয়েছে।"
-    );
-
-    return;
-
-  }
-
-
-  app.status =
-    statuses[index][0];
-
-
-  app.updated =
-    new Date().toISOString();
-
-
-  if(
-    !Array.isArray(
-      app.statusHistory
-    )
-  ){
-
-    app.statusHistory =
-      [];
-
-  }
-
-
-  app.statusHistory.push({
-
-    status:
-      app.status,
-
-    at:
-      new Date().toISOString()
-
-  });
-
-
-  saveDB();
-
-  renderApplications();
-
-  renderDashboard();
-
-
-  showToast(
-    "আবেদনের স্ট্যাটাস আপডেট হয়েছে।"
-  );
-
-}
-
-
-/* =========================================================
-   PAYMENTS
-========================================================= */
-
-function renderPayments(){
-
-  const tbody =
-    document.getElementById(
-      "paymentTable"
-    );
-
-
-  if(!tbody)
-    return;
-
-
-  const payments =
-    DB.payments || [];
-
-
-  if(!payments.length){
-
-    tbody.innerHTML =
-      `<tr>
-        <td colspan="7">
-          <div class="empty">
-            এখনো কোনো পেমেন্ট রেকর্ড নেই।
-          </div>
-        </td>
-      </tr>`;
-
-    return;
-
-  }
-
-
-  tbody.innerHTML =
-    payments
-      .map(payment=>{
-
-        return `
-
-          <tr>
-
-            <td>
-              ${escapeHTML(
-                payment.applicationId ||
-                "-"
-              )}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                payment.method ||
-                "-"
-              )}
-            </td>
-
-
-            <td>
-              ৳${Number(
-                payment.amount || 0
-              ).toFixed(2)}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                payment.senderNumber ||
-                "-"
-              )}
-            </td>
-
-
-            <td>
-              ${escapeHTML(
-                payment.trxId ||
-                "-"
-              )}
-            </td>
-
-
-            <td>
-              ${paymentBadge(
-                payment.status ||
-                "pending"
-              )}
-            </td>
-
-
-            <td>
-
-              <div class="actions">
-
-                ${
-                  payment.status === "pending"
-                    ?
-                    `
-                      <button
-                        class="btn small success"
-                        onclick="setPaymentStatus('${payment.id}','paid')"
-                      >
-                        নিশ্চিত করুন
-                      </button>
-
-                      <button
-                        class="btn small danger"
-                        onclick="setPaymentStatus('${payment.id}','failed')"
-                      >
-                        প্রত্যাখ্যান
-                      </button>
-                    `
-                    :
-                    ""
-                }
-
-              </div>
-
-            </td>
-
-          </tr>
-
-        `;
-
-      })
-      .join("");
-
-}
-
-
-function setPaymentStatus(
-  id,
-  status
-){
-
-  const payment =
-    (DB.payments || [])
-      .find(
-        p =>
-          p.id === id
-      );
-
-
-  if(!payment)
-    return;
-
-
-  payment.status =
-    status;
-
-
-  payment.updated =
-    new Date().toISOString();
-
-
-  const app =
-    (DB.applications || [])
-      .find(
-        a =>
-          a.id ===
-          payment.applicationId
-      );
-
-
-  if(app){
-
-    app.paymentStatus =
-      status;
-
-
-    app.updated =
-      new Date().toISOString();
-
-
-    if(status === "paid"){
-
-      app.status =
-        "payment_confirmed";
-
-    }
-
-  }
-
-
-  saveDB();
-
-  renderPayments();
-
-  renderApplications();
-
-  renderDashboard();
-
-
-  showToast(
-    status === "paid"
-      ?
-      "পেমেন্ট নিশ্চিত হয়েছে।"
-      :
-      "পেমেন্ট প্রত্যাখ্যান করা হয়েছে।"
-  );
-
-}
-
-
-/* =========================================================
-   PAYMENT SETTINGS
-========================================================= */
-
-function refreshPaymentSettings(){
-
-  const payment =
-    DB.settings.payment;
-
-
-  document.getElementById(
-    "feeInput"
-  ).value =
-    payment.fee ?? 50;
-
-
-  document.getElementById(
-    "paymentInstructions"
-  ).value =
-    payment.instructions ||
-    "";
-
-
-  document.getElementById(
-    "bkashNumber"
-  ).value =
-    payment.methods.bkash.number ||
-    "+8801580422117";
-
-
-  document.getElementById(
-    "nagadNumber"
-  ).value =
-    payment.methods.nagad.number ||
-    "";
-
-
-  document.getElementById(
-    "rocketNumber"
-  ).value =
-    payment.methods.rocket.number ||
-    "";
-
-
-  setSwitch(
-    "bkashSwitch",
-    payment.methods.bkash.enabled
-  );
-
-
-  setSwitch(
-    "nagadSwitch",
-    payment.methods.nagad.enabled
-  );
-
-
-  setSwitch(
-    "rocketSwitch",
-    payment.methods.rocket.enabled
-  );
-
-}
-
-
-function setSwitch(
-  id,
-  on
-){
-
-  const button =
-    document.getElementById(
-      id
-    );
-
-
-  if(!button)
-    return;
-
-
-  button.classList.toggle(
-    "on",
-    Boolean(on)
-  );
-
-}
-
-
-function toggleMethod(
-  method
-){
-
-  const setting =
-    DB.settings
-      .payment
-      .methods[method];
-
-
-  setting.enabled =
-    !setting.enabled;
-
-
-  setSwitch(
-    method +
-    "Switch",
-    setting.enabled
-  );
-
-}
-
-
-function savePaymentSettings(){
-
-  const payment =
-    DB.settings.payment;
-
-
-  payment.fee =
-    Number(
-      document.getElementById(
-        "feeInput"
-      ).value
-    ) || 0;
-
-
-  payment.instructions =
-    document.getElementById(
-      "paymentInstructions"
-    ).value.trim();
-
-
-  payment.methods.bkash.number =
-    document.getElementById(
-      "bkashNumber"
-    ).value.trim();
-
-
-  payment.methods.nagad.number =
-    document.getElementById(
-      "nagadNumber"
-    ).value.trim();
-
-
-  payment.methods.rocket.number =
-    document.getElementById(
-      "rocketNumber"
-    ).value.trim();
-
-
-  saveDB();
-
-  renderDashboard();
-
-
-  showToast(
-    "পেমেন্ট সেটিংস সংরক্ষণ হয়েছে।"
-  );
-
-}
-
-
-/* =========================================================
-   SITE SETTINGS
-========================================================= */
-
-function saveSiteSettings(){
-
-  DB.settings.site.name =
-    document.getElementById(
-      "siteName"
-    ).value.trim();
-
-
-  DB.settings.site.tagline =
-    document.getElementById(
-      "siteTagline"
-    ).value.trim();
-
-
-  saveDB();
-
-
-  showToast(
-    "সাইট সেটিংস সংরক্ষণ হয়েছে।"
-  );
-
-}
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function getProfile(id){
-
-  return (
-    DB.applicantProfiles || []
-  )
-  .find(
-    p =>
-      p.id === id
-  );
-
-}
-
-
-function getPayment(
-  applicationId
-){
-
-  return (
-    DB.payments || []
-  )
-  .find(
-    p =>
-      p.applicationId ===
-      applicationId
-  );
-
-}
-
-
-function statusBadge(status){
-
-  const map = {
-
-    submitted:[
-      "জমা দেওয়া",
-      "blue"
-    ],
-
-    payment_pending:[
-      "পেমেন্ট অপেক্ষমাণ",
-      "yellow"
-    ],
-
-    payment_confirmed:[
-      "পেমেন্ট নিশ্চিত",
-      "green"
-    ],
-
-    under_review:[
-      "পর্যালোচনাধীন",
-      "yellow"
-    ],
-
-    approved:[
-      "অনুমোদিত",
-      "green"
-    ],
-
-    rejected:[
-      "প্রত্যাখ্যাত",
-      "red"
-    ],
-
-    cancelled:[
-      "বাতিল",
-      "red"
-    ]
-
-  };
-
-
-  const item =
-    map[status] ||
-    [
-      status ||
-      "অজানা",
-      "gray"
-    ];
-
-
-  return `
-    <span class="badge ${item[1]}">
-      ${item[0]}
-    </span>
-  `;
-
-}
-
-
-function paymentBadge(status){
-
-  const map = {
-
-    pending:[
-      "অপেক্ষমাণ",
-      "yellow"
-    ],
-
-    paid:[
-      "পরিশোধিত",
-      "green"
-    ],
-
-    failed:[
-      "ব্যর্থ",
-      "red"
-    ],
-
-    cancelled:[
-      "বাতিল",
-      "red"
-    ]
-
-  };
-
-
-  const item =
-    map[status] ||
-    [
-      status ||
-      "অপেক্ষমাণ",
-      "gray"
-    ];
-
-
-  return `
-    <span class="badge ${item[1]}">
-      ${item[0]}
-    </span>
-  `;
-
-}
-
-
-function formatDate(value){
-
-  if(!value)
-    return "-";
-
-
-  const date =
-    new Date(value);
-
-
-  if(
-    Number.isNaN(
-      date.getTime()
-    )
-  ){
-
-    return "-";
-
-  }
-
-
-  return date.toLocaleDateString(
-    "bn-BD",
-    {
-      day:"2-digit",
-      month:"short",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-function escapeHTML(value){
-
-  return String(
-    value ?? ""
-  )
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
-
-}
-
-
-function openModal(id){
-
-  document
-    .getElementById(id)
-    .classList.add(
-      "show"
-    );
-
-}
-
-
-function closeModal(id){
-
-  document
-    .getElementById(id)
-    .classList.remove(
-      "show"
-    );
-
-}
-
-
-document
-  .querySelectorAll(
-    ".modal"
-  )
-  .forEach(modal=>{
-
-    modal.addEventListener(
-      "click",
-      function(e){
-
-        if(
-          e.target === modal
-        ){
-
-          modal.classList.remove(
-            "show"
-          );
-
-        }
-
-      }
-    );
-
-  });
-
-
-function showToast(
-  message
-){
+function showToast(message){
 
   const toast =
     document.getElementById(
@@ -6340,11 +3628,9 @@ function showToast(
   window.toastTimer =
     setTimeout(
       ()=>{
-
         toast.classList.remove(
           "show"
         );
-
       },
       3000
     );
@@ -6353,33 +3639,107 @@ function showToast(
 
 
 /* =========================================================
-   GLOBAL REFRESH
+   PAYMENT DATE DEFAULT
 ========================================================= */
 
-window.addEventListener(
-  "storage",
-  function(){
+(function(){
 
-    DB =
-      loadDB();
-
-
-    updates =
-      loadUpdates();
+  const dateInput =
+    document.getElementById(
+      "paymentDate"
+    );
 
 
-    renderDashboard();
+  if(dateInput){
 
-    renderUpdates();
-
-    renderApplicants();
-
-    renderApplications();
-
-    renderPayments();
+    dateInput.value =
+      new Date()
+        .toISOString()
+        .split("T")[0];
 
   }
-);
+
+})();
+
+
+/* =========================================================
+   LOAD PAYMENT SETTINGS
+========================================================= */
+
+(function(){
+
+  try{
+
+    const payment =
+      DB.settings?.payment;
+
+
+    if(!payment)
+      return;
+
+
+    const fee =
+      Number(
+        payment.fee
+      ) || APPLICATION_FEE;
+
+
+    document.querySelectorAll(
+      ".payment-fee strong"
+    )
+    .forEach(
+      el=>{
+        el.textContent =
+          "৳" + fee;
+      }
+    );
+
+
+    document.querySelectorAll(
+      ".hero-meta"
+    )
+    .forEach(
+      container=>{
+
+        const items =
+          container.querySelectorAll(
+            ".meta"
+          );
+
+
+        items.forEach(
+          item=>{
+
+            if(
+              item.textContent.includes(
+                "Application Fee"
+              )
+            ){
+
+              item.textContent =
+                "💳 Application Fee ৳" +
+                fee;
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    selectPaymentMethod(
+      selectedPaymentMethod
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+})();
 
 </script>
 
