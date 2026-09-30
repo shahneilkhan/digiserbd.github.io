@@ -1,1138 +1,1031 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Track Application | DigiSER BD</title>
+<title>DigiSER BD — Application Tracking</title>
 
-<meta
-  name="description"
-  content="Track your DigiSER BD job application using your mobile number and tracking number."
->
-
+<meta name="description" content="Track your DigiSER BD applications using your registered mobile number.">
 <meta name="theme-color" content="#0087c4">
 
-<link rel="icon" href="favicon.png" type="image/png">
+<link rel="icon" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
-  rel="stylesheet"
->
-
-<link rel="stylesheet" href="assets/style.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   PAGE
-========================================================= */
-
-.track-page{
-  min-height:calc(100vh - 160px);
-  padding:70px 20px;
-  background:#f4f7f9;
+:root{
+  --primary:#0087c4;
+  --primary2:#00a8e8;
+  --bg:#071017;
+  --panel:#101d26;
+  --panel2:#14232d;
+  --border:rgba(255,255,255,.09);
+  --text:#f5f9fb;
+  --muted:#8fa3ad;
+  --green:#2bd98e;
+  --yellow:#ffd166;
+  --red:#ff6b6b;
 }
 
-.track-container{
-  width:100%;
-  max-width:720px;
-  margin:0 auto;
-}
-
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
-
-.track-card{
-  background:#fff;
-  border:1px solid #e1e7eb;
-  border-radius:24px;
-  padding:42px;
-  box-shadow:0 20px 60px rgba(16,32,43,.08);
-}
-
-.track-icon{
-  width:64px;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:18px;
-  background:#eef8fc;
-  color:#0087c4;
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:22px;
-}
-
-.track-card h1{
-  margin:0 0 10px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:34px;
-  line-height:1.2;
-  color:#10202b;
-}
-
-.subtitle{
-  margin:0 0 30px;
-  color:#687580;
-  line-height:1.8;
-  font-size:16px;
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.track-form{
-  display:grid;
-  gap:18px;
-}
-
-.track-field{
-  display:grid;
-  gap:8px;
-}
-
-.track-field label{
-  font-weight:700;
-  color:#17202a;
-  font-size:14px;
-}
-
-.track-field input{
-  width:100%;
-  min-height:54px;
-  padding:14px 16px;
-  border:1px solid #d7e0e5;
-  border-radius:12px;
-  background:#fff;
-  color:#17202a;
-  font-family:inherit;
-  font-size:16px;
-  outline:none;
+*{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
-  transition:.2s ease;
 }
 
-.track-field input:hover{
-  border-color:#b9c8d0;
+body{
+  min-height:100vh;
+  font-family:
+    "Hind Siliguri",
+    "Space Grotesk",
+    sans-serif;
+
+  color:var(--text);
+
+  background:
+    radial-gradient(
+      circle at 5% 0%,
+      rgba(0,135,196,.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 20%,
+      rgba(0,168,232,.08),
+      transparent 30%
+    ),
+    var(--bg);
 }
 
-.track-field input:focus{
-  border-color:#0087c4;
-  box-shadow:0 0 0 4px rgba(0,135,196,.10);
+button,
+input{
+  font:inherit;
 }
 
-.track-help{
-  margin:0;
-  color:#7a8790;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.track-submit{
-  width:100%;
-  min-height:55px;
-  border:0;
-  border-radius:12px;
-  cursor:pointer;
-  font-family:inherit;
-  font-size:16px;
-  font-weight:700;
-  margin-top:4px;
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-.track-message{
-  display:none;
-  margin-top:22px;
-  padding:15px 16px;
-  border-radius:12px;
-  line-height:1.6;
-  font-size:14px;
-}
-
-.track-message.error{
-  display:block;
-  background:#fff1f0;
-  border:1px solid #f2c5c1;
-  color:#a12a20;
-}
-
-.track-message.success{
-  display:block;
-  background:#effaf4;
-  border:1px solid #bde6cc;
-  color:#176b3d;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 
-/* =========================================================
-   RESULT
-========================================================= */
+/* HEADER */
 
-.track-result{
-  display:none;
-  margin-top:25px;
-  border:1px solid #dce7ec;
-  border-radius:18px;
-  overflow:hidden;
-  background:#fff;
-}
+.header{
+  height:72px;
 
-.track-result.show{
-  display:block;
-}
-
-.result-head{
-  padding:22px;
-  background:#f7fafb;
-  border-bottom:1px solid #e1e7eb;
-}
-
-.result-head small{
-  display:block;
-  margin-bottom:7px;
-  color:#687580;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.08em;
-}
-
-.result-head h2{
-  margin:0;
-  color:#10202b;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:21px;
-}
-
-.result-body{
-  padding:22px;
-}
-
-
-/* =========================================================
-   RESULT ROW
-========================================================= */
-
-.result-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
-  padding:13px 0;
-  border-bottom:1px solid #edf1f3;
+
+  padding:0 6%;
+
+  position:sticky;
+  top:0;
+  z-index:20;
+
+  background:rgba(7,16,23,.84);
+  backdrop-filter:blur(18px);
+
+  border-bottom:
+    1px solid var(--border);
 }
 
-.result-row:last-of-type{
-  border-bottom:0;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.result-label{
-  color:#687580;
+.logo{
+  width:43px;
+  height:43px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary2)
+    );
+
+  font-weight:800;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,135,196,.25);
+}
+
+.brand strong{
+  display:block;
+  font-size:16px;
+}
+
+.brand span{
+  display:block;
+  color:#78909b;
+  font-size:10px;
+}
+
+.home-link{
+  color:#a4b6be;
   font-size:13px;
 }
 
-.result-value{
-  color:#17202a;
-  font-size:13px;
+.home-link:hover{
+  color:#fff;
+}
+
+
+/* MAIN */
+
+.main{
+  width:min(900px,calc(100% - 28px));
+  margin:auto;
+  padding:70px 0;
+}
+
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.badge{
+  display:inline-flex;
+  padding:8px 13px;
+
+  border-radius:30px;
+
+  background:
+    rgba(0,168,232,.08);
+
+  border:
+    1px solid
+    rgba(0,168,232,.16);
+
+  color:#6ddcff;
+
+  font-size:11px;
   font-weight:700;
-  text-align:right;
 }
 
-.tracking-number{
-  color:#0087c4;
-  font-family:"Space Grotesk",sans-serif;
-  letter-spacing:.04em;
+.hero h1{
+  font-size:
+    clamp(32px,6vw,54px);
+
+  line-height:1.1;
+
+  margin-top:18px;
+
+  letter-spacing:-1px;
+}
+
+.hero h1 span{
+  color:#63d9ff;
+}
+
+.hero p{
+  max-width:620px;
+  margin:14px auto 0;
+
+  color:var(--muted);
+
+  font-size:14px;
+  line-height:1.8;
 }
 
 
-/* =========================================================
-   STATUS SECTION
-========================================================= */
+/* SEARCH CARD */
 
-.status-section{
+.search-card{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20,35,45,.97),
+      rgba(11,24,32,.97)
+    );
+
+  border:
+    1px solid var(--border);
+
+  border-radius:23px;
+
+  padding:24px;
+
+  box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.22);
+}
+
+.search-title{
+  margin-bottom:17px;
+}
+
+.search-title h2{
+  font-size:19px;
+}
+
+.search-title p{
+  margin-top:4px;
+  color:#71858f;
+  font-size:11px;
+}
+
+.form{
+  display:flex;
+  gap:10px;
+}
+
+.input-wrap{
+  flex:1;
+  position:relative;
+}
+
+.input-wrap span{
+  position:absolute;
+  left:15px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#627985;
+}
+
+input{
+  width:100%;
+
+  padding:
+    14px
+    14px
+    14px
+    43px;
+
+  border-radius:13px;
+
+  border:
+    1px solid var(--border);
+
+  outline:none;
+
+  background:#09161e;
+
+  color:#fff;
+}
+
+input::placeholder{
+  color:#526772;
+}
+
+input:focus{
+  border-color:
+    rgba(0,168,232,.65);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(0,168,232,.08);
+}
+
+.search-btn{
+  border:0;
+
+  padding:0 23px;
+
+  border-radius:13px;
+
+  color:#fff;
+
+  font-weight:700;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary2)
+    );
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,135,196,.18);
+}
+
+.search-btn:hover{
+  filter:brightness(1.08);
+}
+
+
+/* INFO */
+
+.info{
+  display:flex;
+  gap:10px;
+
+  margin-top:15px;
+
+  padding:13px 15px;
+
+  border-radius:12px;
+
+  background:#0b171f;
+
+  border:
+    1px solid var(--border);
+
+  color:#718690;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+
+/* ERROR */
+
+.error{
+  display:none;
+
+  margin-top:15px;
+
+  padding:13px 15px;
+
+  border-radius:12px;
+
+  color:#ff9c9c;
+
+  background:
+    rgba(255,107,107,.07);
+
+  border:
+    1px solid
+    rgba(255,107,107,.15);
+
+  font-size:12px;
+}
+
+
+/* RESULTS */
+
+.results{
   margin-top:25px;
 }
 
-.status-section-title{
-  margin:0 0 12px;
-  color:#10202b;
-  font-size:15px;
+.results-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:13px;
+}
+
+.results-head h2{
+  font-size:19px;
+}
+
+.results-count{
+  color:#71858f;
+  font-size:11px;
+}
+
+
+/* APPLICATION */
+
+.application{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20,35,45,.96),
+      rgba(11,24,32,.96)
+    );
+
+  border:
+    1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:20px;
+
+  margin-bottom:14px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.14);
+}
+
+.app-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+
+  align-items:flex-start;
+
+  margin-bottom:18px;
+}
+
+.app-id{
+  color:#67d9ff;
+  font-size:11px;
   font-weight:700;
 }
 
-.status-card{
-  padding:19px;
-  border-radius:14px;
-  background:#eef8fc;
-  border:1px solid #d7edf6;
+.app-title{
+  font-size:21px;
+  margin-top:4px;
 }
 
-.status-current{
-  display:flex;
-  align-items:flex-start;
-  gap:13px;
+.app-date{
+  color:#607681;
+  font-size:10px;
+  margin-top:4px;
+}
+
+
+/* STATUS */
+
+.status{
+  display:inline-flex;
+
+  align-items:center;
+  gap:6px;
+
+  padding:7px 10px;
+
+  border-radius:20px;
+
+  font-size:10px;
+  font-weight:700;
+
+  white-space:nowrap;
 }
 
 .status-dot{
-  width:12px;
-  height:12px;
+  width:6px;
+  height:6px;
   border-radius:50%;
-  background:#0087c4;
-  margin-top:5px;
-  flex:none;
+  background:currentColor;
 }
 
-.status-current strong{
-  display:block;
-  color:#10202b;
-  font-size:17px;
+.status.payment{
+  color:var(--yellow);
+  background:rgba(255,209,102,.08);
 }
 
-.status-current span{
+.status.review{
+  color:#6ddcff;
+  background:rgba(0,168,232,.08);
+}
+
+.status.confirmed{
+  color:var(--green);
+  background:rgba(43,217,142,.08);
+}
+
+.status.rejected{
+  color:var(--red);
+  background:rgba(255,107,107,.08);
+}
+
+
+/* DETAILS */
+
+.details{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+
+  margin-bottom:20px;
+}
+
+.detail{
+  padding:12px;
+
+  border-radius:12px;
+
+  background:#0b171f;
+
+  border:
+    1px solid
+    rgba(255,255,255,.05);
+}
+
+.detail span{
   display:block;
-  margin-top:4px;
-  color:#687580;
+
+  color:#617681;
+
+  font-size:9px;
+
+  margin-bottom:3px;
+}
+
+.detail strong{
   font-size:12px;
-  line-height:1.5;
 }
 
 
-/* =========================================================
-   STATUS COLORS
-========================================================= */
+/* TIMELINE */
 
-.status-card.is-selected{
-  background:#effaf4;
-  border-color:#c9ead6;
+.timeline-title{
+  font-size:12px;
+
+  color:#a7b9c0;
+
+  margin-bottom:12px;
 }
-
-.status-card.is-selected .status-dot{
-  background:#159447;
-}
-
-.status-card.is-rejected{
-  background:#fff3f2;
-  border-color:#f1cfcb;
-}
-
-.status-card.is-rejected .status-dot{
-  background:#d13c32;
-}
-
-.status-card.is-interview{
-  background:#fff9ed;
-  border-color:#f1dfb7;
-}
-
-.status-card.is-interview .status-dot{
-  background:#d98b00;
-}
-
-
-/* =========================================================
-   TIMELINE
-========================================================= */
 
 .timeline{
-  margin-top:25px;
-  display:grid;
+  display:flex;
+  flex-direction:column;
+  gap:0;
 }
 
 .timeline-item{
   position:relative;
+
   display:flex;
-  gap:14px;
-  min-height:64px;
+  gap:12px;
+
+  padding-bottom:15px;
+}
+
+.timeline-item:last-child{
+  padding-bottom:0;
 }
 
 .timeline-line{
   position:absolute;
-  left:6px;
-  top:15px;
+
+  left:5px;
+  top:12px;
   bottom:0;
-  width:2px;
-  background:#e0e7eb;
+
+  width:1px;
+
+  background:
+    rgba(255,255,255,.09);
 }
 
-.timeline-item:last-child .timeline-line{
+.timeline-item:last-child
+.timeline-line{
   display:none;
 }
 
 .timeline-dot{
-  width:14px;
-  height:14px;
+  width:11px;
+  height:11px;
+
   border-radius:50%;
-  background:#d9e1e5;
-  border:3px solid #fff;
-  box-shadow:0 0 0 1px #d9e1e5;
-  flex:none;
-  position:relative;
-  z-index:2;
+
+  flex-shrink:0;
+
+  margin-top:2px;
+
+  background:#526975;
+
+  border:
+    2px solid #0b171f;
 }
 
-.timeline-item.active .timeline-dot{
-  background:#0087c4;
-  box-shadow:0 0 0 1px #0087c4;
-}
+.timeline-item.active
+.timeline-dot{
+  background:
+    var(--primary2);
 
-.timeline-item.completed .timeline-dot{
-  background:#159447;
-  box-shadow:0 0 0 1px #159447;
-}
-
-.timeline-content{
-  padding-bottom:19px;
+  box-shadow:
+    0 0 0 4px
+    rgba(0,168,232,.08);
 }
 
 .timeline-content strong{
   display:block;
-  font-size:13px;
-  color:#7a8790;
-}
-
-.timeline-item.active .timeline-content strong,
-.timeline-item.completed .timeline-content strong{
-  color:#0087c4;
-}
-
-.timeline-item.current .timeline-content strong{
-  color:#10202b;
-  font-weight:700;
-}
-
-.timeline-content small{
-  color:#9aa5ac;
   font-size:11px;
 }
 
+.timeline-content span{
+  display:block;
 
-/* =========================================================
-   REJECTED STATUS
-========================================================= */
+  color:#617681;
 
-.rejected-status{
+  font-size:9px;
+
+  margin-top:2px;
+}
+
+
+/* EMPTY */
+
+.empty{
   display:none;
-  margin-top:20px;
-  padding:17px;
-  border-radius:14px;
-  background:#fff3f2;
-  border:1px solid #f1cfcb;
+
+  text-align:center;
+
+  padding:40px 20px;
+
+  background:
+    #0b171f;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:18px;
 }
 
-.rejected-status.show{
-  display:block;
+.empty-icon{
+  font-size:35px;
+  margin-bottom:10px;
 }
 
-.rejected-status strong{
-  display:block;
-  color:#a12a20;
-  font-size:14px;
-  margin-bottom:4px;
+.empty h3{
+  font-size:17px;
 }
 
-.rejected-status span{
-  color:#7f514c;
-  font-size:12px;
-  line-height:1.5;
-}
-
-
-/* =========================================================
-   INFO
-========================================================= */
-
-.track-info{
-  margin-top:30px;
-  padding-top:25px;
-  border-top:1px solid #e7edf0;
-}
-
-.track-info h3{
-  margin:0 0 12px;
-  font-size:16px;
-  color:#10202b;
-}
-
-.track-info ul{
-  margin:0;
-  padding-left:20px;
-  color:#687580;
-  line-height:1.8;
-  font-size:14px;
-}
-
-.track-info li::marker{
-  color:#0087c4;
+.empty p{
+  color:#71858f;
+  font-size:11px;
+  margin-top:5px;
 }
 
 
-/* =========================================================
-   BACK LINKS
-========================================================= */
+/* FOOTER */
 
-.track-links{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-  margin-top:25px;
-}
+.footer{
+  text-align:center;
 
-.track-links a{
-  color:#0087c4;
-  text-decoration:none;
-  font-weight:700;
-  font-size:14px;
-}
+  padding:
+    10px
+    20px
+    40px;
 
-.track-links a:hover{
-  text-decoration:underline;
+  color:#526772;
+
+  font-size:10px;
 }
 
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* RESPONSIVE */
 
-@media(max-width:600px){
+@media(max-width:650px){
 
-  .track-page{
-    padding:40px 15px;
+  .header{
+    padding:0 18px;
   }
 
-  .track-card{
-    padding:28px 20px;
-    border-radius:18px;
+  .home-link{
+    display:none;
   }
 
-  .track-card h1{
-    font-size:27px;
+  .main{
+    padding:45px 0;
   }
 
-  .track-icon{
-    width:56px;
-    height:56px;
-    font-size:24px;
+  .search-card{
+    padding:18px;
   }
 
-  .result-row{
-    align-items:flex-start;
+  .form{
     flex-direction:column;
-    gap:4px;
   }
 
-  .result-value{
-    text-align:left;
+  .search-btn{
+    min-height:48px;
   }
 
-  .track-links{
+  .app-top{
     flex-direction:column;
-    align-items:center;
-    gap:12px;
+  }
+
+  .details{
+    grid-template-columns:1fr;
   }
 
 }
 
 </style>
-
 </head>
 
+<body>
 
-<body
-  data-page="track-application"
-  data-root=""
->
 
+<header class="header">
 
-<div id="hdr-slot"></div>
+  <a href="index.html" class="brand">
 
+    <div class="logo">
+      DS
+    </div>
 
-<main>
+    <div>
+      <strong>DigiSER BD</strong>
+      <span>Job • Service • Growth</span>
+    </div>
 
-<section class="track-page">
+  </a>
 
-<div class="track-container">
+  <a
+    href="register/"
+    class="home-link"
+  >
+    নতুন আবেদন করুন →
+  </a>
 
+</header>
 
-<div class="track-card">
 
+<main class="main">
 
-<div class="track-icon">
-  ✓
-</div>
+  <section class="hero">
 
+    <span class="badge">
+      ● APPLICATION TRACKING
+    </span>
 
-<h1>
-  Track Your Application
-</h1>
+    <h1>
+      আপনার আবেদন <span>Track</span> করুন
+    </h1>
 
+    <p>
+      Registration করার সময় যে Mobile Number ব্যবহার করেছেন,
+      সেটি দিয়ে আপনার সব DigiSER BD application-এর বর্তমান
+      status দেখতে পারবেন।
+    </p>
 
-<p class="subtitle">
-  আপনার Job Application-এর বর্তমান অবস্থা দেখুন।
-  Application Submit করার সময় পাওয়া
-  <strong>Tracking Number</strong> এবং
-  <strong>Mobile Number</strong> ব্যবহার করুন।
-</p>
+  </section>
 
 
-<!-- =====================================================
-     TRACK FORM
-===================================================== -->
+  <section class="search-card">
 
-<form
-  id="trackForm"
-  class="track-form"
-  novalidate
->
+    <div class="search-title">
 
+      <h2>
+        📱 Registered Mobile Number
+      </h2>
 
-<div class="track-field">
+      <p>
+        আপনার registration-এর mobile number লিখুন।
+      </p>
 
-<label for="mobile">
-  Mobile Number
-</label>
+    </div>
 
-<input
-  id="mobile"
-  name="mobile"
-  type="tel"
-  inputmode="tel"
-  autocomplete="tel"
-  placeholder="01XXXXXXXXX"
-  required
->
 
-<p class="track-help">
-  যে Mobile Number দিয়ে Job Application করেছেন।
-</p>
+    <div class="form">
 
-</div>
+      <div class="input-wrap">
 
+        <span>📱</span>
 
-<div class="track-field">
+        <input
+          type="tel"
+          id="mobileInput"
+          placeholder="01XXXXXXXXX"
+          autocomplete="tel"
+        >
 
-<label for="trackingNumber">
-  Tracking Number
-</label>
+      </div>
 
-<input
-  id="trackingNumber"
-  name="trackingNumber"
-  type="text"
-  autocomplete="off"
-  placeholder="DGBD-2026-123456"
-  required
->
 
-<p class="track-help">
-  Application Submit করার পর পাওয়া Tracking Number।
-</p>
+      <button
+        class="search-btn"
+        onclick="trackApplications()"
+      >
+        Track Application
+      </button>
 
-</div>
+    </div>
 
 
-<button
-  type="submit"
-  class="btn pri track-submit"
->
-  Track Application
-</button>
+    <div class="info">
 
-</form>
+      <span>ℹ️</span>
 
+      <div>
+        একই mobile number দিয়ে একাধিক application করলে
+        সবগুলো application এখানে একসাথে দেখানো হবে।
+        CV, payment screenshot বা অন্য sensitive তথ্য এখানে
+        দেখানো হবে না।
+      </div>
 
-<!-- MESSAGE -->
+    </div>
 
-<div
-  id="trackMessage"
-  class="track-message"
-  role="alert"
-></div>
 
+    <div
+      class="error"
+      id="error"
+    ></div>
 
-<!-- =====================================================
-     RESULT
-===================================================== -->
+  </section>
 
-<div
-  id="trackResult"
-  class="track-result"
->
 
+  <section
+    class="results"
+    id="results"
+    style="display:none;"
+  >
 
-<div class="result-head">
+    <div class="results-head">
 
-<small>
-  APPLICATION FOUND
-</small>
+      <h2>
+        আপনার Applications
+      </h2>
 
-<h2>
-  Application Details
-</h2>
+      <span
+        class="results-count"
+        id="resultsCount"
+      >
+        0টি আবেদন
+      </span>
 
-</div>
+    </div>
 
 
-<div class="result-body">
+    <div id="applicationList"></div>
 
 
-<div class="result-row">
+    <div
+      class="empty"
+      id="empty"
+    >
 
-<span class="result-label">
-  Applicant
-</span>
+      <div class="empty-icon">
+        🔎
+      </div>
 
-<span
-  class="result-value"
-  id="resultName"
->
-  —
-</span>
+      <h3>
+        কোনো আবেদন পাওয়া যায়নি
+      </h3>
 
-</div>
+      <p>
+        এই mobile number দিয়ে কোনো application
+        এখনো পাওয়া যায়নি।
+      </p>
 
+    </div>
 
-<div class="result-row">
-
-<span class="result-label">
-  Desired Role
-</span>
-
-<span
-  class="result-value"
-  id="resultRole"
->
-  —
-</span>
-
-</div>
-
-
-<div class="result-row">
-
-<span class="result-label">
-  Tracking Number
-</span>
-
-<span
-  class="result-value tracking-number"
-  id="resultTracking"
->
-  —
-</span>
-
-</div>
-
-
-<div class="result-row">
-
-<span class="result-label">
-  Mobile Number
-</span>
-
-<span
-  class="result-value"
-  id="resultMobile"
->
-  —
-</span>
-
-</div>
-
-
-<div class="result-row">
-
-<span class="result-label">
-  Applied Date
-</span>
-
-<span
-  class="result-value"
-  id="resultDate"
->
-  —
-</span>
-
-</div>
-
-
-<!-- =====================================================
-     CURRENT STATUS
-===================================================== -->
-
-<div class="status-section">
-
-<h3 class="status-section-title">
-  Current Application Status
-</h3>
-
-
-<div
-  class="status-card"
-  id="statusCard"
->
-
-<div class="status-current">
-
-<div
-  class="status-dot"
-  id="statusDot"
-></div>
-
-<div>
-
-<strong id="resultStatus">
-  Application Submitted
-</strong>
-
-<span id="statusDescription">
-  Your application has been received.
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     NORMAL TIMELINE
-===================================================== -->
-
-<div
-  class="timeline"
-  id="normalTimeline"
->
-
-
-<div
-  class="timeline-item"
-  data-status="new"
->
-
-<div class="timeline-line"></div>
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-content">
-
-<strong>
-  Application Submitted
-</strong>
-
-<small>
-  Application received
-</small>
-
-</div>
-
-</div>
-
-
-<div
-  class="timeline-item"
-  data-status="reviewing"
->
-
-<div class="timeline-line"></div>
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-content">
-
-<strong>
-  Under Review
-</strong>
-
-<small>
-  Application is being reviewed
-</small>
-
-</div>
-
-</div>
-
-
-<div
-  class="timeline-item"
-  data-status="shortlisted"
->
-
-<div class="timeline-line"></div>
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-content">
-
-<strong>
-  Shortlisted
-</strong>
-
-<small>
-  Candidate shortlisted
-</small>
-
-</div>
-
-</div>
-
-
-<div
-  class="timeline-item"
-  data-status="interview"
->
-
-<div class="timeline-line"></div>
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-content">
-
-<strong>
-  Interview
-</strong>
-
-<small>
-  Interview stage
-</small>
-
-</div>
-
-</div>
-
-
-<div
-  class="timeline-item"
-  data-status="selected"
->
-
-<div class="timeline-line"></div>
-
-<div class="timeline-dot"></div>
-
-<div class="timeline-content">
-
-<strong>
-  Selected
-</strong>
-
-<small>
-  Application selected
-</small>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     REJECTED
-===================================================== -->
-
-<div
-  id="rejectedStatus"
-  class="rejected-status"
->
-
-<strong>
-  Not Selected
-</strong>
-
-<span>
-  আপনার Application-এর বর্তমান status অনুযায়ী
-  এই application process সম্পন্ন হয়েছে।
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     INFO
-===================================================== -->
-
-<div class="track-info">
-
-<h3>
-  Application Status Flow
-</h3>
-
-<ul>
-
-<li>
-  Application Submitted
-</li>
-
-<li>
-  Under Review
-</li>
-
-<li>
-  Shortlisted
-</li>
-
-<li>
-  Interview
-</li>
-
-<li>
-  Selected
-</li>
-
-<li>
-  Not Selected
-</li>
-
-</ul>
-
-</div>
-
-
-</div>
-
-
-<!-- LINKS -->
-
-<div class="track-links">
-
-<a href="./">
-  ← Back to DigiSER BD
-</a>
-
-<a href="register/">
-  Apply for a Job
-</a>
-
-</div>
-
-
-</div>
-
-</section>
+  </section>
 
 </main>
 
 
-<div id="ftr-slot"></div>
+<footer class="footer">
 
+  <strong>DigiSER BD</strong>
+  · Job • Service • Growth
 
-<script src="assets/data.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/app.js"></script>
+  <br>
+
+  Application Tracking System
+
+</footer>
 
 
 <script>
 
-"use strict";
-
-
 /* =========================================================
-   DATABASE
+   DIGISER BD APPLICATION TRACKING
+   MOBILE NUMBER ONLY
 ========================================================= */
 
-const STORAGE_KEY =
+const DB_KEY =
+  "digiserbd_admin_v2";
+
+const LEGACY_KEY =
   "digiserbd_admin_v1";
 
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+/* DATABASE */
 
-const trackForm =
-  document.getElementById("trackForm");
+const DEFAULT_DB = {
 
-const trackMessage =
-  document.getElementById("trackMessage");
+  applicantProfiles:[],
 
-const trackResult =
-  document.getElementById("trackResult");
+  applications:[],
 
-const mobileInput =
-  document.getElementById("mobile");
+  payments:[],
 
-const trackingInput =
-  document.getElementById("trackingNumber");
+  users:[],
 
-const statusCard =
-  document.getElementById("statusCard");
+  jobs:[],
 
-const statusDot =
-  document.getElementById("statusDot");
+  services:[],
 
-const resultStatus =
-  document.getElementById("resultStatus");
+  employees:[],
 
-const statusDescription =
-  document.getElementById("statusDescription");
+  businesses:[],
 
-const normalTimeline =
-  document.getElementById("normalTimeline");
+  messages:[],
 
-const rejectedStatus =
-  document.getElementById("rejectedStatus");
+  blog:[],
+
+  settings:{
+    payment:{
+      enabled:true,
+      fee:50,
+      currency:"BDT",
+      methods:{
+        bkash:{
+          enabled:true,
+          number:"+8801580422117"
+        },
+        nagad:{
+          enabled:true,
+          number:""
+        },
+        rocket:{
+          enabled:true,
+          number:""
+        }
+      }
+    }
+  }
+
+};
 
 
-/* =========================================================
-   GET DATABASE
-========================================================= */
+function clone(obj){
 
-function getDB(){
+  return JSON.parse(
+    JSON.stringify(obj)
+  );
+
+}
+
+
+function deepMerge(target,source){
+
+  for(const key in source){
+
+    if(
+      source[key] &&
+      typeof source[key] === "object" &&
+      !Array.isArray(source[key])
+    ){
+
+      if(!target[key]){
+        target[key] = {};
+      }
+
+      deepMerge(
+        target[key],
+        source[key]
+      );
+
+    }else{
+
+      target[key] =
+        source[key];
+
+    }
+
+  }
+
+  return target;
+
+}
+
+
+function loadDB(){
 
   try{
 
-    const raw =
-      localStorage.getItem(STORAGE_KEY);
+    const saved =
+      JSON.parse(
+        localStorage.getItem(DB_KEY) || "null"
+      );
 
 
-    if(!raw){
+    if(saved){
 
-      return {
-        users:[],
-        jobs:[],
-        services:[],
-        employees:[],
-        businesses:[],
-        messages:[],
-        blog:[]
-      };
+      return deepMerge(
+        clone(DEFAULT_DB),
+        saved
+      );
 
     }
 
 
-    const db =
-      JSON.parse(raw);
+    const legacy =
+      JSON.parse(
+        localStorage.getItem(LEGACY_KEY) || "null"
+      );
 
 
-    if(!Array.isArray(db.users)){
-      db.users = [];
+    if(legacy){
+
+      return deepMerge(
+        clone(DEFAULT_DB),
+        legacy
+      );
+
     }
-
-
-    return db;
 
   }catch(error){
 
@@ -1141,738 +1034,838 @@ function getDB(){
       error
     );
 
-
-    return {
-      users:[],
-      jobs:[],
-      services:[],
-      employees:[],
-      businesses:[],
-      messages:[],
-      blog:[]
-    };
-
   }
+
+
+  return clone(
+    DEFAULT_DB
+  );
 
 }
 
 
-/* =========================================================
-   NORMALIZE MOBILE
-========================================================= */
+/* NORMALIZE MOBILE */
 
 function normalizeMobile(value){
 
-  let mobile =
-    String(value || "")
-      .replace(/\D/g,"");
-
-
-  /*
-    Bangladesh international format:
-    8801XXXXXXXXX
-    becomes
-    01XXXXXXXXX
-  */
-
-  if(mobile.startsWith("880")){
-
-    mobile =
-      "0" +
-      mobile.substring(3);
-
-  }
-
-
-  return mobile;
+  return String(
+    value || ""
+  )
+  .replace(
+    /[\s\-]/g,
+    ""
+  )
+  .trim();
 
 }
 
 
-/* =========================================================
-   NORMALIZE TRACKING NUMBER
-========================================================= */
-
-function normalizeTracking(value){
-
-  return String(value || "")
-    .trim()
-    .toUpperCase()
-    .replace(/\s+/g,"");
-
-}
-
-
-/* =========================================================
-   STATUS LABEL
-========================================================= */
-
-function getStatusLabel(status){
-
-  const labels = {
-
-    new:
-      "Application Submitted",
-
-    reviewing:
-      "Under Review",
-
-    shortlisted:
-      "Shortlisted",
-
-    interview:
-      "Interview",
-
-    selected:
-      "Selected",
-
-    rejected:
-      "Not Selected"
-
-  };
-
-
-  return labels[status] ||
-    "Application Submitted";
-
-}
-
-
-/* =========================================================
-   STATUS DESCRIPTION
-========================================================= */
-
-function getStatusDescription(status){
-
-  const descriptions = {
-
-    new:
-      "Your application has been received.",
-
-    reviewing:
-      "Your application is currently being reviewed.",
-
-    shortlisted:
-      "You have been shortlisted for the next stage.",
-
-    interview:
-      "Your application has reached the interview stage.",
-
-    selected:
-      "Your application has been selected.",
-
-    rejected:
-      "The application process has been completed."
-
-  };
-
-
-  return descriptions[status] ||
-    "Your application has been received.";
-
-}
-
-
-/* =========================================================
-   FORMAT DATE
-========================================================= */
+/* DATE */
 
 function formatDate(value){
 
-  if(!value){
+  if(!value)
     return "—";
-  }
 
 
   const date =
     new Date(value);
 
 
-  if(Number.isNaN(date.getTime())){
-    return "—";
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return value;
+
   }
 
 
   return date.toLocaleDateString(
-    "en-BD",
+    "bn-BD",
     {
-      year:"numeric",
-      month:"short",
-      day:"numeric"
+      day:"numeric",
+      month:"long",
+      year:"numeric"
     }
   );
 
 }
 
 
-/* =========================================================
-   STATUS ORDER
-========================================================= */
+/* TIME */
 
-const statusOrder = [
+function formatDateTime(value){
 
-  "new",
-  "reviewing",
-  "shortlisted",
-  "interview",
-  "selected"
-
-];
+  if(!value)
+    return "—";
 
 
-/* =========================================================
-   RESET STATUS UI
-========================================================= */
-
-function resetStatusUI(){
-
-  statusCard.classList.remove(
-    "is-selected",
-    "is-rejected",
-    "is-interview"
-  );
+  const date =
+    new Date(value);
 
 
-  normalTimeline
-    .querySelectorAll(".timeline-item")
-    .forEach(item=>{
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
 
-      item.classList.remove(
-        "active",
-        "completed",
-        "current"
-      );
+    return value;
 
-    });
+  }
 
 
-  rejectedStatus.classList.remove(
-    "show"
+  return date.toLocaleString(
+    "bn-BD",
+    {
+      day:"numeric",
+      month:"short",
+      year:"numeric",
+      hour:"numeric",
+      minute:"2-digit"
+    }
   );
 
 }
 
 
-/* =========================================================
-   UPDATE STATUS UI
-========================================================= */
+/* STATUS */
 
-function updateStatusUI(status){
+function getStatusLabel(status){
 
-  resetStatusUI();
+  const map = {
+
+    submitted:
+      "আবেদন জমা হয়েছে",
+
+    payment_pending:
+      "Payment Pending",
+
+    payment_confirmed:
+      "Payment Confirmed",
+
+    under_review:
+      "Under Review",
+
+    confirmed:
+      "Confirmed",
+
+    approved:
+      "Approved",
+
+    rejected:
+      "Rejected",
+
+    cancelled:
+      "Cancelled"
+
+  };
+
+
+  return (
+    map[status] ||
+    status ||
+    "Pending"
+  );
+
+}
+
+
+function getStatusClass(status){
+
+  if(
+    status === "confirmed" ||
+    status === "approved"
+  ){
+
+    return "confirmed";
+
+  }
+
+
+  if(
+    status === "rejected" ||
+    status === "cancelled"
+  ){
+
+    return "rejected";
+
+  }
+
+
+  if(
+    status === "under_review" ||
+    status === "payment_confirmed"
+  ){
+
+    return "review";
+
+  }
+
+
+  return "payment";
+
+}
+
+
+/* PAYMENT LABEL */
+
+function getPaymentLabel(status){
+
+  const map = {
+
+    pending:
+      "Pending",
+
+    paid:
+      "Paid",
+
+    failed:
+      "Failed",
+
+    cancelled:
+      "Cancelled"
+
+  };
+
+
+  return (
+    map[status] ||
+    status ||
+    "Pending"
+  );
+
+}
+
+
+/* PAYMENT CLASS */
+
+function getPaymentClass(status){
+
+  if(status === "paid"){
+    return "confirmed";
+  }
+
+  if(
+    status === "failed" ||
+    status === "cancelled"
+  ){
+
+    return "rejected";
+
+  }
+
+  return "payment";
+
+}
+
+
+/* TIMELINE */
+
+function renderTimeline(application){
+
+  const history =
+    Array.isArray(
+      application.statusHistory
+    )
+      ? application.statusHistory
+      : [];
+
+
+  if(!history.length){
+
+    return `
+      <div class="timeline-item active">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <strong>
+            ${escapeHTML(
+              getStatusLabel(
+                application.status
+              )
+            )}
+          </strong>
+
+          <span>
+            ${formatDateTime(
+              application.updated ||
+              application.created
+            )}
+          </span>
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  return history
+    .map(
+      (item,index)=>`
+
+        <div class="timeline-item active">
+
+          <div class="timeline-dot"></div>
+
+          ${
+            index <
+            history.length - 1
+              ? `<div class="timeline-line"></div>`
+              : ""
+          }
+
+          <div class="timeline-content">
+
+            <strong>
+              ${escapeHTML(
+                getStatusLabel(
+                  item.status
+                )
+              )}
+            </strong>
+
+            <span>
+              ${formatDateTime(
+                item.at
+              )}
+            </span>
+
+          </div>
+
+        </div>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* FIND PROFILE */
+
+function findProfileByMobile(
+  db,
+  mobile
+){
+
+  return (
+    db.applicantProfiles || []
+  )
+  .find(
+    profile =>
+      normalizeMobile(
+        profile.mobile
+      ) === mobile
+  );
+
+}
+
+
+/* FIND APPLICATIONS */
+
+function findApplications(
+  db,
+  mobile
+){
+
+  const profile =
+    findProfileByMobile(
+      db,
+      mobile
+    );
+
+
+  let applications =
+    (db.applications || [])
+      .filter(
+        application => {
+
+          if(
+            profile &&
+            application.profileId ===
+            profile.id
+          ){
+
+            return true;
+
+          }
+
+
+          /*
+            Compatibility fallback:
+            old records may have mobile directly.
+          */
+
+          return (
+            normalizeMobile(
+              application.mobile
+            ) === mobile
+          );
+
+        }
+      );
 
 
   /*
-    REJECTED
+    Legacy users fallback
   */
 
-  if(status === "rejected"){
+  if(
+    !applications.length &&
+    Array.isArray(db.users)
+  ){
 
-    statusCard.classList.add(
-      "is-rejected"
+    const users =
+      db.users.filter(
+        user =>
+          normalizeMobile(
+            user.mobile
+          ) === mobile
+      );
+
+
+    applications =
+      users.map(
+        user => ({
+
+          id:
+            user.applicationId ||
+            user.trackingNumber ||
+            "N/A",
+
+          profileId:
+            user.id,
+
+          jobTitle:
+            user.job ||
+            user.jobTitle ||
+            "Application",
+
+          created:
+            user.created,
+
+          updated:
+            user.updated ||
+            user.created,
+
+          status:
+            user.status ||
+            "payment_pending",
+
+          paymentStatus:
+            user.paymentStatus ||
+            "pending",
+
+          statusHistory:[]
+
+        })
+      );
+
+  }
+
+
+  return applications
+    .sort(
+      (a,b)=>
+        new Date(
+          b.created || 0
+        ) -
+        new Date(
+          a.created || 0
+        )
+    );
+
+}
+
+
+/* PAYMENT FOR APPLICATION */
+
+function getPayment(
+  db,
+  applicationId
+){
+
+  return (
+    db.payments || []
+  )
+  .find(
+    payment =>
+      payment.applicationId ===
+      applicationId
+  );
+
+}
+
+
+/* RENDER APPLICATION */
+
+function renderApplication(
+  db,
+  application
+){
+
+  const payment =
+    getPayment(
+      db,
+      application.id
     );
 
 
-    statusDot.style.background =
-      "#d13c32";
-
-
-    normalTimeline.style.display =
-      "none";
-
-
-    rejectedStatus.classList.add(
-      "show"
+  const statusClass =
+    getStatusClass(
+      application.status
     );
 
+
+  const paymentClass =
+    getPaymentClass(
+      payment?.status ||
+      application.paymentStatus
+    );
+
+
+  const statusLabel =
+    getStatusLabel(
+      application.status
+    );
+
+
+  const paymentLabel =
+    getPaymentLabel(
+      payment?.status ||
+      application.paymentStatus
+    );
+
+
+  return `
+
+    <article class="application">
+
+      <div class="app-top">
+
+        <div>
+
+          <div class="app-id">
+            ${escapeHTML(
+              application.id
+            )}
+          </div>
+
+          <div class="app-title">
+            ${escapeHTML(
+              application.jobTitle ||
+              application.job ||
+              "Job Application"
+            )}
+          </div>
+
+          <div class="app-date">
+            আবেদন:
+            ${formatDate(
+              application.created
+            )}
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="status ${statusClass}">
+
+            <span class="status-dot"></span>
+
+            ${escapeHTML(
+              statusLabel
+            )}
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="details">
+
+        <div class="detail">
+
+          <span>
+            APPLICATION STATUS
+          </span>
+
+          <strong>
+            ${escapeHTML(
+              statusLabel
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>
+            PAYMENT STATUS
+          </span>
+
+          <strong
+            style="
+              color:${
+                paymentClass === "confirmed"
+                  ? "#2bd98e"
+                  : paymentClass === "rejected"
+                    ? "#ff6b6b"
+                    : "#ffd166"
+              };
+            "
+          >
+            ${escapeHTML(
+              paymentLabel
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>
+            APPLICATION TYPE
+          </span>
+
+          <strong>
+            ${escapeHTML(
+              application
+                .applicationData
+                ?.type ||
+              "—"
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>
+            LOCATION
+          </span>
+
+          <strong>
+            ${escapeHTML(
+              application
+                .applicationData
+                ?.location ||
+              "—"
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="timeline-title">
+        Application Timeline
+      </div>
+
+
+      <div class="timeline">
+
+        ${renderTimeline(
+          application
+        )}
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* TRACK */
+
+function trackApplications(){
+
+  const input =
+    document.getElementById(
+      "mobileInput"
+    );
+
+
+  const mobile =
+    normalizeMobile(
+      input.value
+    );
+
+
+  const error =
+    document.getElementById(
+      "error"
+    );
+
+
+  error.style.display =
+    "none";
+
+
+  if(!/^01\d{9}$/.test(mobile)){
+
+    error.textContent =
+      "সঠিক ১১ সংখ্যার mobile number দিন। যেমন: 017XXXXXXXX";
+
+    error.style.display =
+      "block";
 
     return;
 
   }
 
 
-  /*
-    NORMAL STATUS
-  */
-
-  normalTimeline.style.display =
-    "grid";
-
-
-  const currentIndex =
-    statusOrder.indexOf(status);
-
-
-  const safeIndex =
-    currentIndex >= 0
-      ? currentIndex
-      : 0;
-
-
-  const items =
-    normalTimeline.querySelectorAll(
-      ".timeline-item"
-    );
-
-
-  items.forEach(item=>{
-
-    const itemStatus =
-      item.dataset.status;
-
-
-    const itemIndex =
-      statusOrder.indexOf(
-        itemStatus
-      );
-
-
-    /*
-      Completed previous steps
-    */
-
-    if(itemIndex < safeIndex){
-
-      item.classList.add(
-        "completed"
-      );
-
-    }
-
-
-    /*
-      Current step
-    */
-
-    if(itemIndex === safeIndex){
-
-      item.classList.add(
-        "active",
-        "current"
-      );
-
-    }
-
-  });
-
-
-  /*
-    Selected color
-  */
-
-  if(status === "selected"){
-
-    statusCard.classList.add(
-      "is-selected"
-    );
-
-
-    statusDot.style.background =
-      "#159447";
-
-  }
-
-
-  /*
-    Interview color
-  */
-
-  else if(status === "interview"){
-
-    statusCard.classList.add(
-      "is-interview"
-    );
-
-
-    statusDot.style.background =
-      "#d98b00";
-
-  }
-
-
-  /*
-    Default color
-  */
-
-  else{
-
-    statusDot.style.background =
-      "#0087c4";
-
-  }
-
-}
-
-
-/* =========================================================
-   SHOW RESULT
-========================================================= */
-
-function showResult(user){
-
-  const personal =
-    user.personal || {};
-
-
-  const wanted =
-    user.wanted || {};
-
-
-  const trackingNumber =
-    user.trackingNumber ||
-    user.id ||
-    "—";
-
-
-  const status =
-    user.status ||
-    "new";
-
-
-  const applicantName =
-    personal.name ||
-    user.name ||
-    "Applicant";
-
-
-  const mobile =
-    personal.mobile ||
-    user.mobile ||
-    "—";
-
-
-  const role =
-    wanted.role ||
-    user.role ||
-    "—";
-
-
-  document.getElementById(
-    "resultName"
-  ).textContent =
-    applicantName;
-
-
-  document.getElementById(
-    "resultRole"
-  ).textContent =
-    role;
-
-
-  document.getElementById(
-    "resultTracking"
-  ).textContent =
-    trackingNumber;
-
-
-  document.getElementById(
-    "resultMobile"
-  ).textContent =
-    mobile;
-
-
-  document.getElementById(
-    "resultDate"
-  ).textContent =
-    formatDate(
-      user.created
-    );
-
-
-  resultStatus.textContent =
-    getStatusLabel(status);
-
-
-  statusDescription.textContent =
-    getStatusDescription(status);
-
-
-  updateStatusUI(status);
-
-
-  trackResult.classList.add(
-    "show"
-  );
-
-
-  /*
-    Scroll result into view
-  */
-
-  setTimeout(()=>{
-
-    trackResult.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },50);
-
-}
-
-
-/* =========================================================
-   FIND APPLICATION
-========================================================= */
-
-function findApplication(
-  mobile,
-  trackingNumber
-){
-
   const db =
-    getDB();
+    loadDB();
 
 
-  const normalizedMobile =
-    normalizeMobile(
+  const applications =
+    findApplications(
+      db,
       mobile
     );
 
 
-  const normalizedTracking =
-    normalizeTracking(
-      trackingNumber
+  const results =
+    document.getElementById(
+      "results"
     );
 
 
-  return db.users.find(
-    applicant=>{
-
-      const applicantTracking =
-        normalizeTracking(
-          applicant.trackingNumber ||
-          applicant.id ||
-          ""
-        );
+  const list =
+    document.getElementById(
+      "applicationList"
+    );
 
 
-      const applicantMobile =
-        normalizeMobile(
-          applicant.personal?.mobile ||
-          applicant.mobile ||
-          ""
-        );
+  const empty =
+    document.getElementById(
+      "empty"
+    );
 
 
-      return (
+  const count =
+    document.getElementById(
+      "resultsCount"
+    );
 
-        applicantTracking ===
-        normalizedTracking
 
+  results.style.display =
+    "block";
+
+
+  count.textContent =
+    applications.length +
+    "টি আবেদন";
+
+
+  if(!applications.length){
+
+    list.innerHTML =
+      "";
+
+    empty.style.display =
+      "block";
+
+    return;
+
+  }
+
+
+  empty.style.display =
+    "none";
+
+
+  list.innerHTML =
+    applications
+      .map(
+        application =>
+          renderApplication(
+            db,
+            application
+          )
       )
-      &&
-      (
+      .join("");
 
-        applicantMobile ===
-        normalizedMobile
 
-      );
-
-    }
-  );
+  results.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
 
 }
 
 
-/* =========================================================
-   TRACK FORM
-========================================================= */
+/* ENTER KEY */
 
-trackForm.addEventListener(
-  "submit",
-  function(event){
+document
+  .getElementById(
+    "mobileInput"
+  )
+  .addEventListener(
+    "keydown",
+    function(event){
 
-    event.preventDefault();
+      if(
+        event.key ===
+        "Enter"
+      ){
 
+        trackApplications();
 
-    /*
-      Reset message
-    */
-
-    trackMessage.className =
-      "track-message";
-
-
-    trackMessage.textContent =
-      "";
-
-
-    /*
-      Hide previous result
-    */
-
-    trackResult.classList.remove(
-      "show"
-    );
-
-
-    /*
-      Get input
-    */
-
-    const mobile =
-      normalizeMobile(
-        mobileInput.value
-      );
-
-
-    const trackingNumber =
-      normalizeTracking(
-        trackingInput.value
-      );
-
-
-    /*
-      Validate mobile
-    */
-
-    if(!mobile){
-
-      trackMessage.className =
-        "track-message error";
-
-
-      trackMessage.textContent =
-        "Please enter your Mobile Number.";
-
-
-      mobileInput.focus();
-
-
-      return;
+      }
 
     }
-
-
-    /*
-      Basic Bangladesh mobile validation
-    */
-
-    if(
-      mobile.length !== 11 ||
-      !mobile.startsWith("01")
-    ){
-
-      trackMessage.className =
-        "track-message error";
-
-
-      trackMessage.textContent =
-        "Please enter a valid Bangladesh Mobile Number.";
-
-
-      mobileInput.focus();
-
-
-      return;
-
-    }
-
-
-    /*
-      Validate tracking number
-    */
-
-    if(!trackingNumber){
-
-      trackMessage.className =
-        "track-message error";
-
-
-      trackMessage.textContent =
-        "Please enter your Tracking Number.";
-
-
-      trackingInput.focus();
-
-
-      return;
-
-    }
-
-
-    /*
-      Find application
-    */
-
-    const user =
-      findApplication(
-        mobile,
-        trackingNumber
-      );
-
-
-    /*
-      Not found
-    */
-
-    if(!user){
-
-      trackMessage.className =
-        "track-message error";
-
-
-      trackMessage.textContent =
-        "Application not found. Please check your Mobile Number and Tracking Number.";
-
-
-      return;
-
-    }
-
-
-    /*
-      Found
-    */
-
-    trackMessage.className =
-      "track-message success";
-
-
-    trackMessage.textContent =
-      "Application found successfully.";
-
-
-    showResult(user);
-
-  }
-);
-
-
-/* =========================================================
-   AUTO UPPERCASE TRACKING NUMBER
-========================================================= */
-
-trackingInput.addEventListener(
-  "input",
-  function(){
-
-    this.value =
-      normalizeTracking(
-        this.value
-      );
-
-  }
-);
-
-
-/* =========================================================
-   CLEAN MOBILE INPUT
-========================================================= */
-
-mobileInput.addEventListener(
-  "input",
-  function(){
-
-    this.value =
-      this.value.replace(
-        /[^\d+]/g,
-        ""
-      );
-
-  }
-);
+  );
 
 </script>
 
