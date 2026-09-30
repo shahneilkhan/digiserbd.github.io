@@ -8,42 +8,58 @@
 
   <meta
     name="description"
-    content="DigiSER BD — Job, Service and Growth platform for people and businesses in Moulvibazar."
+    content="DigiSER BD — A modern platform for jobs, digital services and growth in Moulvibazar."
   />
 
   <meta name="theme-color" content="#0087c4" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-  <link rel="icon" href="logo.png" />
+  <link rel="icon" type="image/png" href="logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
+    /* =========================================================
+       DIGISER BD — ULTRA UI PREMIUM
+       ========================================================= */
+
     :root {
       --blue: #0087c4;
-      --blue-dark: #006b9b;
-      --blue-deep: #005779;
-      --blue-soft: #eaf7fc;
-      --blue-pale: #f5fbfe;
+      --blue-2: #00a2df;
+      --blue-dark: #006d9f;
+      --blue-deep: #004d70;
 
-      --text: #102a43;
-      --text-soft: #5d7183;
+      --ink: #082638;
+      --ink-2: #173d52;
+      --muted: #688191;
+
       --white: #ffffff;
+      --snow: #f8fcfe;
+      --ice: #eef9fd;
+      --line: #dcecf3;
 
-      --border: #dcebf2;
-      --shadow: 0 20px 60px rgba(0, 76, 112, 0.09);
-      --shadow-hover: 0 30px 80px rgba(0, 76, 112, 0.14);
+      --green: #15a875;
 
-      --radius-lg: 28px;
+      --shadow-sm:
+        0 8px 30px rgba(0, 76, 112, 0.055);
+
+      --shadow:
+        0 25px 70px rgba(0, 76, 112, 0.10);
+
+      --shadow-xl:
+        0 40px 100px rgba(0, 76, 112, 0.15);
+
+      --radius-xl: 34px;
+      --radius-lg: 25px;
       --radius-md: 18px;
-      --radius-sm: 12px;
 
-      --max: 1180px;
+      --max: 1220px;
     }
 
     * {
@@ -57,167 +73,287 @@
     }
 
     body {
-      font-family: "Space Grotesk", "Hind Siliguri", sans-serif;
-      color: var(--text);
-      background: var(--white);
+      min-height: 100vh;
       overflow-x: hidden;
+
+      font-family:
+        "DM Sans",
+        "Hind Siliguri",
+        sans-serif;
+
+      color: var(--ink);
+      background: var(--white);
+
       line-height: 1.6;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    ::selection {
+      color: white;
+      background: var(--blue);
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    button {
+    button,
+    input {
       font: inherit;
     }
 
+    button {
+      border: 0;
+    }
+
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin: auto;
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================= */
+    /* =========================================================
+       BACKGROUND
+       ========================================================= */
 
-    .navbar {
+    .ambient {
       position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.42;
+    }
+
+    .orb-one {
+      width: 420px;
+      height: 420px;
+      top: -180px;
+      right: -100px;
+      background: rgba(0, 162, 223, 0.13);
+    }
+
+    .orb-two {
+      width: 360px;
+      height: 360px;
+      left: -180px;
+      top: 42%;
+      background: rgba(0, 135, 196, 0.08);
+    }
+
+    .orb-three {
+      width: 300px;
+      height: 300px;
+      right: 5%;
+      bottom: 8%;
+      background: rgba(0, 162, 223, 0.07);
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .header {
+      position: fixed;
+      z-index: 1000;
       top: 0;
       left: 0;
-      right: 0;
-      z-index: 1000;
+      width: 100%;
 
-      height: 78px;
+      padding: 16px 0;
 
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      transition:
+        padding 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .header.scrolled {
+      padding: 9px 0;
+
+      background: rgba(255, 255, 255, 0.84);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 8px 35px rgba(0, 70, 100, 0.07);
 
       border-bottom: 1px solid rgba(0, 135, 196, 0.08);
     }
 
-    .nav-inner {
-      height: 100%;
+    .nav {
+      height: 62px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      padding: 7px 8px 7px 14px;
+
+      background: rgba(255, 255, 255, 0.74);
+
+      border: 1px solid rgba(0, 135, 196, 0.10);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 10px 40px rgba(0, 70, 100, 0.055);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
-    .brand {
+    .header.scrolled .nav {
+      box-shadow: none;
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      gap: 11px;
+
+      padding-left: 3px;
     }
 
-    .brand-logo {
+    .logo-mark {
       width: 42px;
       height: 42px;
+
       object-fit: contain;
+
+      border-radius: 12px;
     }
 
-    .brand-name {
-      font-size: 18px;
-      color: var(--blue-deep);
+    .logo-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
     }
 
-    .brand-name span {
+    .logo-text span {
       color: var(--blue);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 5px;
     }
 
     .nav-links a {
-      font-size: 14px;
+      position: relative;
+
+      padding: 10px 13px;
+
+      color: #456273;
+
+      font-size: 13px;
       font-weight: 600;
-      color: #40566a;
-      transition: 0.25s ease;
+
+      border-radius: 11px;
+
+      transition:
+        color 0.2s ease,
+        background 0.2s ease;
     }
 
     .nav-links a:hover {
       color: var(--blue);
+      background: var(--ice);
     }
 
-    .nav-apply {
-      padding: 11px 19px;
-      border-radius: 12px;
+    .nav-links a.active {
+      color: var(--blue);
+      background: var(--ice);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      min-height: 43px;
+      padding: 0 17px;
+
       color: white !important;
-      background: var(--blue);
-      box-shadow: 0 10px 25px rgba(0, 135, 196, 0.22);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--blue-2)
+        );
+
+      border-radius: 12px !important;
+
+      box-shadow:
+        0 10px 25px rgba(0, 135, 196, 0.22);
     }
 
-    .nav-apply:hover {
-      background: var(--blue-dark);
+    .nav-cta:hover {
+      color: white !important;
       transform: translateY(-1px);
+      box-shadow:
+        0 14px 30px rgba(0, 135, 196, 0.28);
     }
 
-    .menu-btn {
+    .menu-toggle {
       display: none;
+
       width: 44px;
       height: 44px;
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 12px;
+
+      align-items: center;
+      justify-content: center;
+
       cursor: pointer;
+
       color: var(--blue-deep);
+      background: white;
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
     }
 
-    /* =========================
+    /* =========================================================
        HERO
-    ========================= */
+       ========================================================= */
 
     .hero {
       position: relative;
-      min-height: 760px;
-      padding: 155px 0 100px;
+
+      min-height: 850px;
+
+      padding:
+        165px
+        0
+        105px;
+
+      display: flex;
+      align-items: center;
+
       overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 85% 15%,
-          rgba(0, 135, 196, 0.12),
-          transparent 32%
-        ),
-        linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #f9fdff 100%
-        );
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: rgba(0, 135, 196, 0.055);
-      top: 80px;
-      right: -230px;
-      filter: blur(2px);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: rgba(0, 135, 196, 0.05);
-      bottom: -120px;
-      left: -120px;
     }
 
     .hero-grid {
@@ -225,9 +361,17 @@
       z-index: 2;
 
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(500px, 1.05fr);
+
       align-items: center;
-      gap: 80px;
+
+      gap: 70px;
+    }
+
+    .hero-copy {
+      position: relative;
     }
 
     .eyebrow {
@@ -235,72 +379,110 @@
       align-items: center;
       gap: 9px;
 
-      padding: 8px 13px;
-      border-radius: 100px;
+      padding: 8px 12px;
 
       color: var(--blue-deep);
-      background: var(--blue-soft);
-      border: 1px solid rgba(0, 135, 196, 0.12);
 
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 135, 196, 0.10),
+          rgba(0, 162, 223, 0.05)
+        );
+
+      border: 1px solid rgba(0, 135, 196, 0.13);
+
+      border-radius: 100px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 0.6px;
       text-transform: uppercase;
 
-      margin-bottom: 22px;
+      margin-bottom: 25px;
     }
 
     .eyebrow-dot {
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
+
       background: var(--blue);
-      box-shadow: 0 0 0 5px rgba(0, 135, 196, 0.09);
+
+      box-shadow:
+        0 0 0 5px rgba(0, 135, 196, 0.10);
     }
 
-    .hero h1 {
+    .hero-title {
       max-width: 700px;
 
-      font-size: clamp(48px, 6vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -4px;
+      font-family: "Space Grotesk", sans-serif;
 
-      color: #102a43;
-      margin-bottom: 25px;
+      font-size:
+        clamp(
+          54px,
+          6.2vw,
+          86px
+        );
+
+      line-height: 0.96;
+
+      letter-spacing: -5px;
+
+      font-weight: 700;
+
+      color: var(--ink);
+
+      margin-bottom: 28px;
     }
 
-    .hero h1 span {
-      color: var(--blue);
+    .hero-title .gradient {
+      background:
+        linear-gradient(
+          100deg,
+          var(--blue-deep),
+          var(--blue),
+          var(--blue-2)
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .hero-description {
       max-width: 610px;
 
-      color: var(--text-soft);
-      font-size: 17px;
-      line-height: 1.8;
+      color: var(--muted);
 
-      margin-bottom: 32px;
+      font-size: 16px;
+      line-height: 1.85;
+
+      margin-bottom: 31px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 11px;
     }
 
-    .btn {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 10px;
 
-      min-height: 50px;
+      min-height: 53px;
+
       padding: 0 21px;
 
-      border-radius: 13px;
+      border-radius: 14px;
 
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
 
       transition:
@@ -309,297 +491,761 @@
         background 0.25s ease;
     }
 
-    .btn-primary {
+    .button-primary {
       color: white;
-      background: var(--blue);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--blue-2)
+        );
 
       box-shadow:
-        0 14px 30px rgba(0, 135, 196, 0.24);
+        0 15px 35px rgba(0, 135, 196, 0.24);
     }
 
-    .btn-primary:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
+    .button-primary:hover {
+      transform: translateY(-3px);
       box-shadow:
-        0 18px 38px rgba(0, 135, 196, 0.3);
+        0 20px 42px rgba(0, 135, 196, 0.31);
     }
 
-    .btn-secondary {
+    .button-secondary {
       color: var(--blue-deep);
+
       background: white;
-      border: 1px solid var(--border);
+
+      border: 1px solid var(--line);
+
+      box-shadow:
+        0 7px 25px rgba(0, 70, 100, 0.04);
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(0, 135, 196, 0.3);
-      background: var(--blue-pale);
-      transform: translateY(-2px);
+    .button-secondary:hover {
+      transform: translateY(-3px);
+
+      background: var(--ice);
+
+      border-color:
+        rgba(0, 135, 196, 0.20);
     }
 
-    .hero-meta {
+    .hero-trust {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 36px;
+      gap: 21px;
+
+      margin-top: 32px;
     }
 
-    .meta-item {
+    .trust-item {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
 
-      color: #6a7d8e;
-      font-size: 13px;
+      color: #738896;
+
+      font-size: 11px;
       font-weight: 600;
     }
 
-    .meta-icon {
-      width: 30px;
-      height: 30px;
+    .trust-check {
+      width: 24px;
+      height: 24px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 9px;
-      background: var(--blue-soft);
       color: var(--blue);
+
+      background: var(--ice);
+
+      border: 1px solid var(--line);
+
+      border-radius: 8px;
+
+      font-size: 11px;
     }
 
-    /* HERO VISUAL */
+    /* =========================================================
+       HERO PRODUCT UI
+       ========================================================= */
 
-    .hero-visual {
+    .hero-product {
       position: relative;
+
+      min-height: 570px;
+
+      perspective: 1200px;
     }
 
-    .visual-card {
-      position: relative;
+    .product-glow {
+      position: absolute;
 
-      min-height: 475px;
-      padding: 28px;
+      width: 380px;
+      height: 380px;
 
-      border-radius: 32px;
+      right: 4%;
+      top: 10%;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 162, 223, 0.18),
+          transparent 70%
+        );
+
+      filter: blur(8px);
+    }
+
+    .dashboard {
+      position: absolute;
+
+      top: 30px;
+      left: 10px;
+      right: 0;
+
+      min-height: 500px;
+
+      padding: 18px;
 
       background:
         linear-gradient(
           145deg,
-          #ffffff,
-          #f4fbfe
+          rgba(255,255,255,0.97),
+          rgba(245,252,255,0.96)
         );
 
-      border: 1px solid rgba(0, 135, 196, 0.12);
+      border: 1px solid rgba(0, 135, 196, 0.14);
 
-      box-shadow: var(--shadow);
+      border-radius: 30px;
 
-      overflow: hidden;
+      box-shadow:
+        0 45px 100px rgba(0, 68, 100, 0.15),
+        inset 0 1px 0 white;
+
+      transform:
+        rotateY(-5deg)
+        rotateX(2deg);
+
+      transition: transform 0.6s ease;
     }
 
-    .visual-card::before {
-      content: "";
-      position: absolute;
-
-      width: 300px;
-      height: 300px;
-
-      border-radius: 50%;
-
-      background: rgba(0, 135, 196, 0.08);
-
-      top: -130px;
-      right: -80px;
+    .hero-product:hover .dashboard {
+      transform:
+        rotateY(-1deg)
+        rotateX(0deg)
+        translateY(-4px);
     }
 
-    .visual-top {
-      position: relative;
-      z-index: 2;
+    .dashboard-top {
+      height: 48px;
 
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
-      margin-bottom: 70px;
+      padding: 0 4px 0 6px;
+
+      border-bottom:
+        1px solid var(--line);
+
+      margin-bottom: 17px;
     }
 
-    .visual-logo {
-      width: 58px;
-      height: 58px;
-      object-fit: contain;
+    .dashboard-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
 
-      padding: 9px;
+    .dashboard-mini-logo {
+      width: 30px;
+      height: 30px;
+
+      object-fit: contain;
+    }
+
+    .dashboard-title strong {
+      font-size: 12px;
+    }
+
+    .dashboard-title span {
+      display: block;
+
+      color: #8a9ca8;
+
+      font-size: 9px;
+      margin-top: 1px;
+    }
+
+    .dashboard-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 6px 9px;
+
+      color: var(--green);
+
+      background: rgba(21, 168, 117, 0.08);
+
+      border-radius: 8px;
+
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .dashboard-body {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 14px;
+    }
+
+    .sidebar {
+      min-height: 410px;
+
+      padding: 11px;
+
+      background: #f7fbfd;
+
+      border:
+        1px solid
+        #e4f0f5;
+
+      border-radius: 17px;
+    }
+
+    .side-profile {
+      padding: 12px;
 
       background: white;
-      border-radius: 16px;
 
-      border: 1px solid var(--border);
-    }
+      border:
+        1px solid
+        var(--line);
 
-    .status-pill {
-      padding: 8px 12px;
-
-      border-radius: 100px;
-
-      color: var(--blue-deep);
-      background: var(--blue-soft);
-
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .visual-main {
-      position: relative;
-      z-index: 2;
-    }
-
-    .visual-main small {
-      display: block;
-
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 700;
-
-      margin-bottom: 12px;
-    }
-
-    .visual-main h3 {
-      max-width: 390px;
-
-      font-size: 34px;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-
-      margin-bottom: 16px;
-    }
-
-    .visual-main p {
-      max-width: 370px;
-
-      color: var(--text-soft);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .visual-bottom {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
-
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .mini-stat {
-      padding: 16px;
-
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-    }
-
-    .mini-stat strong {
-      display: block;
-
-      color: var(--blue-deep);
-      font-size: 21px;
-      line-height: 1;
-
-      margin-bottom: 6px;
-    }
-
-    .mini-stat span {
-      color: #7a8c9c;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       COMMON SECTION
-    ========================= */
-
-    section {
-      padding: 110px 0;
-    }
-
-    .section-head {
-      max-width: 650px;
-      margin-bottom: 48px;
-    }
-
-    .section-label {
-      display: block;
-
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-
-      margin-bottom: 12px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.08;
-      letter-spacing: -2px;
+      border-radius: 13px;
 
       margin-bottom: 15px;
     }
 
-    .section-head p {
-      color: var(--text-soft);
-      font-size: 16px;
-      line-height: 1.8;
+    .avatar {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-deep),
+          var(--blue)
+        );
+
+      border-radius: 10px;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      margin-bottom: 8px;
     }
 
-    /* =========================
-       SERVICES
-    ========================= */
-
-    .services {
-      background: #ffffff;
+    .side-profile strong {
+      display: block;
+      font-size: 10px;
     }
 
-    .service-grid {
+    .side-profile span {
+      display: block;
+
+      color: #90a1ad;
+
+      font-size: 8px;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 4px;
+    }
+
+    .side-nav-item {
+      padding: 9px;
+
+      border-radius: 9px;
+
+      color: #7a8f9d;
+
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .side-nav-item.active {
+      color: var(--blue);
+
+      background: var(--blue-soft);
+    }
+
+    .side-nav-item span {
+      margin-right: 7px;
+    }
+
+    .main-panel {
+      min-width: 0;
+    }
+
+    .welcome {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      padding: 6px 5px 15px;
+    }
+
+    .welcome small {
+      display: block;
+
+      color: var(--blue);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.7px;
+
+      margin-bottom: 5px;
+    }
+
+    .welcome h3 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 22px;
+      line-height: 1.1;
+
+      letter-spacing: -0.8px;
+    }
+
+    .welcome-date {
+      color: #90a1ad;
+      font-size: 8px;
+    }
+
+    .dashboard-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 9px;
+
+      margin-bottom: 10px;
     }
 
-    .service-card {
-      position: relative;
-
-      padding: 30px;
-
-      min-height: 275px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+    .metric {
+      padding: 12px;
 
       background: white;
 
-      box-shadow: 0 8px 30px rgba(0, 80, 110, 0.04);
+      border: 1px solid var(--line);
 
-      transition: 0.3s ease;
-      overflow: hidden;
+      border-radius: 13px;
     }
 
-    .service-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(0, 135, 196, 0.25);
-      box-shadow: var(--shadow-hover);
+    .metric-label {
+      color: #8b9da8;
+      font-size: 8px;
     }
 
-    .service-number {
-      position: absolute;
-      top: 25px;
-      right: 25px;
+    .metric-value {
+      display: block;
 
-      color: #dbeef5;
+      color: var(--ink);
 
-      font-size: 50px;
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 20px;
       font-weight: 700;
-      line-height: 1;
+
+      margin-top: 4px;
+    }
+
+    .metric-value.blue {
+      color: var(--blue);
+    }
+
+    .application-panel {
+      padding: 15px;
+
+      background: white;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 15px;
+    }
+
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 12px;
+    }
+
+    .panel-heading strong {
+      font-size: 10px;
+    }
+
+    .panel-heading span {
+      color: var(--blue);
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .application-row {
+      display: grid;
+      grid-template-columns: 1.5fr 0.7fr 0.7fr;
+      align-items: center;
+
+      gap: 10px;
+
+      padding: 11px 0;
+
+      border-top:
+        1px solid
+        #edf4f7;
+    }
+
+    .application-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      min-width: 0;
+    }
+
+    .job-icon {
+      width: 28px;
+      height: 28px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--blue);
+
+      background: var(--blue-soft);
+
+      border-radius: 8px;
+
+      font-size: 10px;
+    }
+
+    .application-name strong {
+      display: block;
+
+      overflow: hidden;
+
+      color: #24485b;
+
+      font-size: 9px;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .application-name span {
+      display: block;
+
+      color: #9aabb5;
+
+      font-size: 7px;
+    }
+
+    .application-type {
+      color: #778c99;
+      font-size: 8px;
+    }
+
+    .application-status {
+      justify-self: end;
+
+      padding: 5px 7px;
+
+      color: var(--green);
+
+      background: rgba(21, 168, 117, 0.08);
+
+      border-radius: 7px;
+
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    /* Floating card */
+
+    .floating-card {
+      position: absolute;
+
+      right: -32px;
+      bottom: 24px;
+
+      width: 205px;
+
+      padding: 16px;
+
+      background:
+        rgba(255,255,255,0.95);
+
+      border:
+        1px solid
+        rgba(0, 135, 196, 0.14);
+
+      border-radius: 19px;
+
+      box-shadow:
+        0 25px 60px rgba(0, 70, 100, 0.15);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      animation:
+        floatCard 5s ease-in-out infinite;
+    }
+
+    .floating-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 12px;
+    }
+
+    .floating-icon {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--blue);
+
+      background: var(--blue-soft);
+
+      border-radius: 9px;
+    }
+
+    .floating-top strong {
+      font-size: 9px;
+    }
+
+    .floating-top span {
+      display: block;
+
+      color: #8fa0aa;
+
+      font-size: 7px;
+    }
+
+    .progress {
+      height: 7px;
+
+      background: #edf5f8;
+
+      border-radius: 100px;
+
+      overflow: hidden;
+
+      margin-bottom: 8px;
+    }
+
+    .progress span {
+      display: block;
+
+      width: 74%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue-deep),
+          var(--blue-2)
+        );
+
+      border-radius: inherit;
+    }
+
+    .floating-footer {
+      display: flex;
+      justify-content: space-between;
+
+      color: #91a1aa;
+
+      font-size: 7px;
+    }
+
+    @keyframes floatCard {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
+
+    .section {
+      padding: 125px 0;
+    }
+
+    .section-soft {
+      background:
+        linear-gradient(
+          180deg,
+          #f8fcfe 0%,
+          #f3fafd 100%
+        );
+    }
+
+    .section-header {
+      max-width: 690px;
+      margin-bottom: 55px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+
+      color: var(--blue);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size:
+        clamp(
+          36px,
+          4.3vw,
+          58px
+        );
+
+      line-height: 1.03;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      max-width: 610px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    /* =========================================================
+       SERVICE CARDS
+       ========================================================= */
+
+    .services-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 17px;
+    }
+
+    .service {
+      position: relative;
+
+      min-height: 350px;
+
+      padding: 30px;
+
+      background: white;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: var(--radius-lg);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-sm);
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-9px);
+
+      border-color:
+        rgba(0, 135, 196, 0.22);
+
+      box-shadow: var(--shadow);
+    }
+
+    .service::after {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      right: -100px;
+      bottom: -100px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(0, 135, 196, 0.055);
+
+      transition: 0.35s ease;
+    }
+
+    .service:hover::after {
+      transform: scale(1.4);
+    }
+
+    .service-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 65px;
     }
 
     .service-icon {
@@ -609,243 +1255,486 @@
       display: grid;
       place-items: center;
 
+      color: var(--blue);
+
+      background:
+        linear-gradient(
+          145deg,
+          #effaff,
+          #e5f6fc
+        );
+
+      border:
+        1px solid
+        rgba(0, 135, 196, 0.10);
+
       border-radius: 16px;
 
-      background: var(--blue-soft);
-      color: var(--blue);
+      font-size: 22px;
+    }
+
+    .service-number {
+      color: #d8edf4;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .service h3 {
+      position: relative;
+      z-index: 2;
+
+      font-family: "Space Grotesk", sans-serif;
 
       font-size: 24px;
 
-      margin-bottom: 26px;
+      letter-spacing: -0.8px;
+
+      margin-bottom: 12px;
     }
 
-    .service-card h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
+    .service p {
+      position: relative;
+      z-index: 2;
+
+      max-width: 340px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.8;
     }
 
-    .service-card p {
-      color: var(--text-soft);
-      font-size: 14px;
-      line-height: 1.75;
+    .service-link {
+      position: absolute;
+
+      left: 30px;
+      bottom: 28px;
+
+      z-index: 3;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      color: var(--blue);
+
+      font-size: 11px;
+      font-weight: 800;
     }
 
-    /* =========================
+    /* =========================================================
        PROCESS
-    ========================= */
-
-    .process {
-      background: var(--blue-pale);
-    }
+       ========================================================= */
 
     .process-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
     }
 
-    .process-card {
-      padding: 25px;
+    .process-item {
+      position: relative;
+
+      padding: 28px 25px;
+
+      min-height: 250px;
 
       background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
 
-      position: relative;
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 21px;
     }
 
-    .process-number {
-      width: 42px;
-      height: 42px;
+    .process-item:not(:last-child)::after {
+      content: "→";
+
+      position: absolute;
+
+      right: -17px;
+      top: 35px;
+
+      z-index: 4;
+
+      width: 32px;
+      height: 32px;
 
       display: grid;
       place-items: center;
 
-      background: var(--blue);
+      color: var(--blue);
+
+      background: white;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 50%;
+
+      font-size: 12px;
+    }
+
+    .process-number {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
       color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-deep),
+          var(--blue)
+        );
 
       border-radius: 12px;
 
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 11px;
       font-weight: 700;
 
-      margin-bottom: 24px;
+      margin-bottom: 30px;
     }
 
-    .process-card h3 {
+    .process-item h3 {
+      font-family: "Space Grotesk", sans-serif;
+
       font-size: 18px;
+
       margin-bottom: 9px;
     }
 
-    .process-card p {
-      color: var(--text-soft);
-      font-size: 13px;
-      line-height: 1.7;
+    .process-item p {
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.75;
     }
 
-    /* =========================
+    /* =========================================================
        STATS
-    ========================= */
+       ========================================================= */
+
+    .stats-wrap {
+      padding: 0 0 125px;
+    }
 
     .stats {
-      padding: 50px 0;
-      background: var(--blue);
-      color: white;
-    }
-
-    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      padding: 0;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-deep),
+          var(--blue),
+          #00a2df
+        );
+
+      border-radius: 28px;
+
+      box-shadow:
+        0 30px 80px rgba(0, 105, 150, 0.19);
     }
 
     .stat {
-      padding: 15px 20px;
-      border-left: 1px solid rgba(255, 255, 255, 0.22);
+      min-height: 170px;
+
+      padding: 38px 30px;
+
+      border-right:
+        1px solid
+        rgba(255,255,255,0.16);
     }
 
-    .stat:first-child {
-      border-left: 0;
+    .stat:last-child {
+      border-right: 0;
     }
 
     .stat strong {
       display: block;
 
-      font-size: 35px;
+      color: white;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 39px;
       line-height: 1;
 
-      margin-bottom: 7px;
+      letter-spacing: -1.5px;
+
+      margin-bottom: 10px;
     }
 
     .stat span {
-      font-size: 12px;
-      opacity: 0.8;
+      color: rgba(255,255,255,0.70);
+
+      font-size: 11px;
+      font-weight: 600;
     }
 
-    /* =========================
+    /* =========================================================
        ABOUT
-    ========================= */
+       ========================================================= */
 
     .about-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 80px;
+
+      grid-template-columns:
+        0.85fr
+        1.15fr;
+
       align-items: center;
+
+      gap: 90px;
     }
 
-    .about-card {
+    .about-visual {
       position: relative;
 
-      min-height: 390px;
+      min-height: 500px;
 
       padding: 35px;
 
-      border-radius: 30px;
+      color: white;
 
       background:
         linear-gradient(
           145deg,
-          var(--blue-deep),
-          var(--blue)
+          #004d70,
+          #0087c4
         );
 
-      color: white;
+      border-radius: 35px;
 
       overflow: hidden;
 
-      box-shadow: 0 25px 60px rgba(0, 100, 145, 0.22);
+      box-shadow:
+        0 35px 90px rgba(0, 77, 112, 0.20);
     }
 
-    .about-card::after {
+    .about-visual::before {
       content: "";
 
       position: absolute;
 
-      width: 280px;
-      height: 280px;
+      width: 370px;
+      height: 370px;
+
+      right: -180px;
+      top: -160px;
 
       border-radius: 50%;
 
-      right: -120px;
-      bottom: -120px;
-
-      background: rgba(255, 255, 255, 0.1);
+      border:
+        1px solid
+        rgba(255,255,255,0.15);
     }
 
-    .about-card small {
+    .about-visual::after {
+      content: "";
+
+      position: absolute;
+
+      width: 230px;
+      height: 230px;
+
+      left: -100px;
+      bottom: -100px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.07);
+    }
+
+    .about-logo {
       position: relative;
       z-index: 2;
 
-      opacity: 0.75;
-      font-size: 11px;
-      font-weight: 700;
+      width: 65px;
+      height: 65px;
 
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      padding: 9px;
+
+      object-fit: contain;
+
+      background: white;
+
+      border-radius: 17px;
     }
 
-    .about-card h3 {
+    .about-label {
       position: relative;
       z-index: 2;
+
+      display: block;
 
       margin-top: 90px;
 
-      max-width: 330px;
+      color: rgba(255,255,255,0.60);
 
-      font-size: 34px;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: 1.4px;
+
+      text-transform: uppercase;
     }
 
-    .about-content h2 {
-      font-size: clamp(34px, 4vw, 50px);
-      line-height: 1.1;
-      letter-spacing: -2px;
+    .about-visual h3 {
+      position: relative;
+      z-index: 2;
 
-      margin-bottom: 20px;
+      max-width: 370px;
+
+      margin-top: 13px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 38px;
+      line-height: 1.05;
+
+      letter-spacing: -1.7px;
     }
 
-    .about-content p {
-      color: var(--text-soft);
-      font-size: 15px;
-      line-height: 1.85;
+    .about-location {
+      position: absolute;
+
+      z-index: 3;
+
+      left: 35px;
+      bottom: 35px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 12px;
+
+      color: white;
+
+      background:
+        rgba(255,255,255,0.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.16);
+
+      border-radius: 10px;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .about-copy .section-title {
+      max-width: 620px;
+    }
+
+    .about-copy p {
+      max-width: 620px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.9;
 
       margin-bottom: 17px;
     }
 
-    .location-box {
-      display: inline-flex;
-      align-items: center;
+    .about-points {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 10px;
 
-      margin-top: 15px;
+      margin-top: 27px;
+    }
 
-      padding: 12px 15px;
+    .about-point {
+      display: flex;
+      align-items: center;
+      gap: 9px;
 
-      background: var(--blue-soft);
-      border: 1px solid rgba(0, 135, 196, 0.1);
+      padding: 12px;
 
-      border-radius: 12px;
+      color: #466574;
 
-      color: var(--blue-deep);
-      font-size: 13px;
+      background: #f8fcfe;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 11px;
+
+      font-size: 11px;
       font-weight: 700;
     }
 
-    /* =========================
-       TRACK CTA
-    ========================= */
+    .point-check {
+      width: 23px;
+      height: 23px;
 
-    .cta {
-      padding-top: 30px;
-      padding-bottom: 110px;
+      display: grid;
+      place-items: center;
+
+      flex-shrink: 0;
+
+      color: var(--blue);
+
+      background: var(--blue-soft);
+
+      border-radius: 7px;
+
+      font-size: 9px;
     }
 
-    .cta-box {
+    /* =========================================================
+       TRACK CTA
+       ========================================================= */
+
+    .track-section {
+      padding-top: 0;
+    }
+
+    .track-box {
       position: relative;
 
       padding: 55px;
 
-      border-radius: 30px;
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        0.7fr;
+
+      align-items: center;
+
+      gap: 50px;
 
       background:
         linear-gradient(
@@ -854,333 +1743,570 @@
           #ffffff
         );
 
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--line);
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 30px;
+      border-radius: 30px;
 
       overflow: hidden;
     }
 
-    .cta-box::before {
+    .track-box::before {
       content: "";
 
       position: absolute;
 
-      width: 250px;
-      height: 250px;
+      width: 420px;
+      height: 420px;
+
+      right: -180px;
+      top: -210px;
 
       border-radius: 50%;
 
-      background: rgba(0, 135, 196, 0.08);
-
-      right: -100px;
-      top: -120px;
+      background:
+        rgba(0, 135, 196, 0.07);
     }
 
-    .cta-content {
+    .track-content {
       position: relative;
       z-index: 2;
     }
 
-    .cta-content span {
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .track-content .section-title {
+      max-width: 570px;
+
+      margin-bottom: 13px;
     }
 
-    .cta-content h2 {
-      margin-top: 9px;
+    .track-content p {
+      max-width: 560px;
 
-      font-size: clamp(30px, 4vw, 45px);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-    }
+      color: var(--muted);
 
-    .cta-content p {
-      color: var(--text-soft);
-      margin-top: 10px;
       font-size: 14px;
+      line-height: 1.8;
+
+      margin-bottom: 23px;
     }
 
-    .cta-action {
+    .track-card {
       position: relative;
       z-index: 2;
-      flex-shrink: 0;
+
+      padding: 22px;
+
+      background: white;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 20px 55px rgba(0, 70, 100, 0.07);
     }
 
-    /* =========================
+    .track-card-label {
+      display: block;
+
+      color: var(--blue);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 9px;
+    }
+
+    .track-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 22px;
+      line-height: 1.15;
+
+      margin-bottom: 13px;
+    }
+
+    .track-line {
+      height: 1px;
+
+      background: var(--line);
+
+      margin: 15px 0;
+    }
+
+    .track-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #718693;
+
+      font-size: 10px;
+    }
+
+    .track-step-dot {
+      width: 23px;
+      height: 23px;
+
+      display: grid;
+      place-items: center;
+
+      color: white;
+
+      background: var(--blue);
+
+      border-radius: 7px;
+
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    /* =========================================================
        FOOTER
-    ========================= */
+       ========================================================= */
 
     footer {
-      background: #062d3f;
+      padding: 70px 0 25px;
+
       color: white;
-      padding: 55px 0 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #052d40,
+          #063d55
+        );
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr 0.7fr;
-      gap: 60px;
 
-      padding-bottom: 45px;
+      grid-template-columns:
+        1.5fr
+        0.7fr
+        0.7fr;
+
+      gap: 80px;
+
+      padding-bottom: 55px;
     }
 
-    .footer-brand {
+    .footer-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 11px;
+
+      margin-bottom: 17px;
     }
 
-    .footer-brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      background: white;
-      border-radius: 10px;
+    .footer-logo img {
+      width: 43px;
+      height: 43px;
+
       padding: 5px;
+
+      background: white;
+
+      border-radius: 11px;
+
+      object-fit: contain;
     }
 
-    .footer-brand strong {
-      font-size: 18px;
+    .footer-logo strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
     }
 
-    .footer-about {
-      max-width: 380px;
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 13px;
+    .footer-description {
+      max-width: 390px;
+
+      color: rgba(255,255,255,0.57);
+
+      font-size: 12px;
       line-height: 1.8;
     }
 
-    .footer-col h4 {
-      font-size: 13px;
-      margin-bottom: 17px;
+    .footer-column h4 {
       color: white;
+
+      font-size: 11px;
+
+      margin-bottom: 18px;
     }
 
-    .footer-col a {
+    .footer-column a {
       display: block;
 
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255,255,255,0.53);
 
-      font-size: 12px;
+      font-size: 11px;
 
-      margin-bottom: 10px;
+      margin-bottom: 11px;
 
       transition: 0.2s ease;
     }
 
-    .footer-col a:hover {
+    .footer-column a:hover {
       color: white;
+      transform: translateX(2px);
     }
 
     .footer-bottom {
-      padding-top: 22px;
-
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-
       display: flex;
       justify-content: space-between;
       gap: 20px;
 
-      color: rgba(255, 255, 255, 0.45);
-      font-size: 11px;
+      padding-top: 22px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.10);
+
+      color: rgba(255,255,255,0.38);
+
+      font-size: 10px;
     }
 
-    /* =========================
+    /* =========================================================
        REVEAL
-    ========================= */
+       ========================================================= */
 
     .reveal {
       opacity: 0;
-      transform: translateY(25px);
+
+      transform:
+        translateY(28px);
+
       transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(.2,.8,.2,1);
     }
 
-    .reveal.show {
+    .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    .delay-1 {
+      transition-delay: 0.08s;
+    }
 
-    @media (max-width: 950px) {
+    .delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
+
       .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
+        grid-template-columns:
+          1fr
+          1fr;
+
+        gap: 40px;
       }
 
-      .hero {
-        min-height: auto;
+      .hero-title {
+        font-size: 67px;
       }
 
-      .hero-visual {
-        max-width: 650px;
+      .dashboard {
+        left: 0;
       }
 
-      .service-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .process-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .floating-card {
+        right: -12px;
       }
 
       .about-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stat:nth-child(3) {
-        border-left: 0;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        gap: 50px;
       }
     }
 
-    @media (max-width: 720px) {
-      .container {
-        width: min(var(--max), calc(100% - 28px));
-      }
-
-      .navbar {
-        height: 70px;
-      }
+    @media (max-width: 920px) {
 
       .nav-links {
-        position: absolute;
-
-        top: 78px;
-        left: 14px;
-        right: 14px;
-
         display: none;
+
+        position: fixed;
+
+        top: 87px;
+        left: 18px;
+        right: 18px;
+
+        padding: 12px;
+
         flex-direction: column;
         align-items: stretch;
 
-        padding: 15px;
+        background:
+          rgba(255,255,255,0.97);
 
-        background: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(20px);
+        border:
+          1px solid
+          var(--line);
 
-        border: 1px solid var(--border);
-        border-radius: 18px;
+        border-radius: 20px;
 
         box-shadow: var(--shadow);
+
+        backdrop-filter: blur(20px);
       }
 
-      .nav-links.active {
+      .nav-links.open {
         display: flex;
       }
 
       .nav-links a {
-        padding: 11px;
+        padding: 13px;
       }
 
-      .menu-btn {
-        display: block;
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: 750px;
+      }
+
+      .hero-product {
+        min-height: 540px;
+        max-width: 760px;
+      }
+
+      .services-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .process-item:not(:last-child)::after {
+        display: none;
+      }
+
+      .stats {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(3),
+      .stat:nth-child(4) {
+        border-top:
+          1px solid
+          rgba(255,255,255,0.16);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        max-width: 700px;
+      }
+
+      .track-box {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .container {
+        width:
+          min(
+            var(--max),
+            calc(100% - 28px)
+          );
+      }
+
+      .header {
+        padding: 10px 0;
+      }
+
+      .nav {
+        height: 57px;
+        border-radius: 16px;
+      }
+
+      .logo-mark {
+        width: 37px;
+        height: 37px;
+      }
+
+      .logo-text {
+        font-size: 15px;
       }
 
       .hero {
-        padding-top: 125px;
-        padding-bottom: 75px;
+        min-height: auto;
+
+        padding:
+          125px
+          0
+          75px;
       }
 
-      .hero h1 {
-        font-size: 48px;
-        letter-spacing: -2.5px;
+      .hero-title {
+        font-size: 51px;
+        letter-spacing: -3px;
       }
 
       .hero-description {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .hero-actions {
         flex-direction: column;
       }
 
-      .hero-actions .btn {
+      .button {
         width: 100%;
       }
 
-      .hero-meta {
-        gap: 13px;
+      .hero-trust {
         flex-direction: column;
+        gap: 9px;
       }
 
-      .visual-card {
-        min-height: 430px;
-        padding: 22px;
+      .hero-product {
+        min-height: 530px;
       }
 
-      .visual-main h3 {
-        font-size: 28px;
+      .dashboard {
+        min-height: 465px;
+
+        padding: 13px;
+
+        border-radius: 22px;
       }
 
-      .visual-bottom {
-        left: 22px;
-        right: 22px;
-        bottom: 22px;
+      .dashboard-body {
+        grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 80px 0;
+      .sidebar {
+        display: none;
       }
 
-      .service-grid,
+      .dashboard-cards {
+        gap: 5px;
+      }
+
+      .metric {
+        padding: 9px;
+      }
+
+      .metric-value {
+        font-size: 16px;
+      }
+
+      .floating-card {
+        width: 180px;
+
+        right: -5px;
+        bottom: 0;
+      }
+
+      .section {
+        padding: 85px 0;
+      }
+
+      .section-title {
+        font-size: 39px;
+        letter-spacing: -2px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        min-height: 315px;
+      }
+
       .process-grid {
         grid-template-columns: 1fr;
       }
 
       .stats {
-        padding: 35px 0;
-      }
-
-      .stats-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+
+        border-radius: 21px;
       }
 
       .stat {
-        border-left: 0 !important;
-        padding: 15px 10px;
+        min-height: 135px;
+        padding: 27px 18px;
       }
 
       .stat strong {
-        font-size: 28px;
+        font-size: 29px;
       }
 
-      .cta-box {
-        padding: 35px 25px;
-        flex-direction: column;
-        align-items: flex-start;
+      .stats-wrap {
+        padding-bottom: 85px;
       }
 
-      .cta-action,
-      .cta-action .btn {
-        width: 100%;
+      .about-visual {
+        min-height: 430px;
+        padding: 25px;
+        border-radius: 27px;
+      }
+
+      .about-visual h3 {
+        font-size: 32px;
+      }
+
+      .about-location {
+        left: 25px;
+        bottom: 25px;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .track-box {
+        padding: 31px 23px;
+        border-radius: 23px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 38px;
       }
 
       .footer-bottom {
@@ -1188,34 +2314,49 @@
       }
     }
 
-    @media (max-width: 430px) {
-      .brand-name {
-        font-size: 16px;
+    @media (max-width: 400px) {
+
+      .hero-title {
+        font-size: 45px;
       }
 
-      .brand-logo {
-        width: 38px;
-        height: 38px;
+      .hero-product {
+        min-height: 500px;
       }
 
-      .hero h1 {
-        font-size: 43px;
+      .dashboard {
+        top: 15px;
       }
 
-      .visual-bottom {
+      .dashboard-cards {
         grid-template-columns: 1fr;
       }
 
-      .visual-card {
-        min-height: 560px;
+      .application-row {
+        grid-template-columns: 1fr auto;
       }
 
-      .mini-stat {
-        padding: 11px;
+      .application-type {
+        display: none;
       }
 
-      .mini-stat strong {
-        font-size: 17px;
+      .floating-card {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -1223,76 +2364,144 @@
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
+  <!-- =======================================================
+       AMBIENT BACKGROUND
+       ======================================================= -->
 
-  <header class="navbar">
-    <div class="container nav-inner">
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-orb orb-one"></div>
+    <div class="ambient-orb orb-two"></div>
+    <div class="ambient-orb orb-three"></div>
+  </div>
 
-      <a href="index.html" class="brand">
-        <img src="logo.png" alt="DigiSER BD Logo" class="brand-logo" />
-        <div class="brand-name">
-          DigiSER <span>BD</span>
-        </div>
-      </a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#process">How It Works</a>
-        <a href="#about">About</a>
-        <a href="track-application.html">Track</a>
-        <a href="register/index.html" class="nav-apply">
-          Apply Now
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="header" id="header">
+
+    <div class="container">
+
+      <nav class="nav">
+
+        <a href="index.html" class="logo">
+
+          <img
+            src="logo.png"
+            alt="DigiSER BD"
+            class="logo-mark"
+          />
+
+          <div class="logo-text">
+            DigiSER <span>BD</span>
+          </div>
+
         </a>
+
+
+        <div class="nav-links" id="navLinks">
+
+          <a
+            href="#home"
+            class="active"
+          >
+            Home
+          </a>
+
+          <a href="#services">
+            Services
+          </a>
+
+          <a href="#process">
+            How It Works
+          </a>
+
+          <a href="#about">
+            About
+          </a>
+
+          <a href="track-application.html">
+            Track
+          </a>
+
+          <a
+            href="register/index.html"
+            class="nav-cta"
+          >
+            Apply Now
+            <span>↗</span>
+          </a>
+
+        </div>
+
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
       </nav>
 
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
-
     </div>
+
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================== -->
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
 
-  <main>
+  <main id="home">
 
-    <section class="hero" id="home">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
       <div class="container hero-grid">
 
-        <div class="hero-content reveal">
 
-          <div class="eyebrow">
+        <div class="hero-copy">
+
+          <div class="eyebrow reveal">
             <span class="eyebrow-dot"></span>
             Digital Opportunity Platform
           </div>
 
-          <h1>
+
+          <h1 class="hero-title reveal delay-1">
+
             Job.
-            <span>Service.</span>
+            <span class="gradient">
+              Service.
+            </span>
             Growth.
+
           </h1>
 
-          <p class="hero-description">
-            DigiSER BD connects people with job opportunities,
-            digital services and practical growth solutions —
-            creating a simpler path from opportunity to action.
+
+          <p class="hero-description reveal delay-2">
+
+            A modern platform designed to connect people
+            with opportunities, digital services and practical
+            growth solutions — all through a simple,
+            organized experience.
+
           </p>
 
-          <div class="hero-actions">
+
+          <div class="hero-actions reveal delay-2">
 
             <a
               href="register/index.html"
-              class="btn btn-primary"
+              class="button button-primary"
             >
               Start Application
               <span>→</span>
@@ -1300,28 +2509,46 @@
 
             <a
               href="track-application.html"
-              class="btn btn-secondary"
+              class="button button-secondary"
             >
               Track Application
             </a>
 
           </div>
 
-          <div class="hero-meta">
 
-            <div class="meta-item">
-              <span class="meta-icon">✓</span>
-              Simple Registration
+          <div class="hero-trust reveal delay-3">
+
+            <div class="trust-item">
+
+              <span class="trust-check">
+                ✓
+              </span>
+
+              Simple registration
+
             </div>
 
-            <div class="meta-item">
-              <span class="meta-icon">✓</span>
-              Application Tracking
+
+            <div class="trust-item">
+
+              <span class="trust-check">
+                ✓
+              </span>
+
+              Clear application tracking
+
             </div>
 
-            <div class="meta-item">
-              <span class="meta-icon">✓</span>
+
+            <div class="trust-item">
+
+              <span class="trust-check">
+                ✓
+              </span>
+
               Moulvibazar
+
             </div>
 
           </div>
@@ -1329,57 +2556,333 @@
         </div>
 
 
-        <div class="hero-visual reveal">
+        <!-- =================================================
+             PRODUCT UI
+             ================================================= -->
 
-          <div class="visual-card">
+        <div class="hero-product reveal delay-2">
 
-            <div class="visual-top">
+          <div class="product-glow"></div>
 
-              <img
-                src="logo.png"
-                alt="DigiSER BD"
-                class="visual-logo"
-              />
 
-              <span class="status-pill">
-                Platform Active
+          <div class="dashboard">
+
+
+            <div class="dashboard-top">
+
+              <div class="dashboard-title">
+
+                <img
+                  src="logo.png"
+                  alt=""
+                  class="dashboard-mini-logo"
+                />
+
+                <div>
+                  <strong>
+                    DigiSER BD
+                  </strong>
+
+                  <span>
+                    Applicant Dashboard
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="dashboard-status">
+
+                <span class="status-dot"></span>
+
+                System Active
+
+              </div>
+
+            </div>
+
+
+            <div class="dashboard-body">
+
+
+              <aside class="sidebar">
+
+                <div class="side-profile">
+
+                  <div class="avatar">
+                    SN
+                  </div>
+
+                  <strong>
+                    Applicant
+                  </strong>
+
+                  <span>
+                    Moulvibazar
+                  </span>
+
+                </div>
+
+
+                <div class="side-nav">
+
+                  <div class="side-nav-item active">
+                    <span>◉</span>
+                    Overview
+                  </div>
+
+                  <div class="side-nav-item">
+                    <span>▣</span>
+                    Applications
+                  </div>
+
+                  <div class="side-nav-item">
+                    <span>✓</span>
+                    Payments
+                  </div>
+
+                  <div class="side-nav-item">
+                    <span>◌</span>
+                    Profile
+                  </div>
+
+                  <div class="side-nav-item">
+                    <span>↗</span>
+                    Tracking
+                  </div>
+
+                </div>
+
+              </aside>
+
+
+              <div class="main-panel">
+
+
+                <div class="welcome">
+
+                  <div>
+
+                    <small>
+                      Overview
+                    </small>
+
+                    <h3>
+                      Your journey.
+                    </h3>
+
+                  </div>
+
+                  <span class="welcome-date">
+                    Live platform
+                  </span>
+
+                </div>
+
+
+                <div class="dashboard-cards">
+
+
+                  <div class="metric">
+
+                    <span class="metric-label">
+                      Applications
+                    </span>
+
+                    <strong class="metric-value">
+                      03
+                    </strong>
+
+                  </div>
+
+
+                  <div class="metric">
+
+                    <span class="metric-label">
+                      Active
+                    </span>
+
+                    <strong class="metric-value blue">
+                      02
+                    </strong>
+
+                  </div>
+
+
+                  <div class="metric">
+
+                    <span class="metric-label">
+                      Profile
+                    </span>
+
+                    <strong class="metric-value">
+                      86%
+                    </strong>
+
+                  </div>
+
+                </div>
+
+
+                <div class="application-panel">
+
+                  <div class="panel-heading">
+
+                    <strong>
+                      Recent Applications
+                    </strong>
+
+                    <span>
+                      View all →
+                    </span>
+
+                  </div>
+
+
+                  <div class="application-row">
+
+                    <div class="application-name">
+
+                      <div class="job-icon">
+                        J
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          Digital Executive
+                        </strong>
+
+                        <span>
+                          DGS-2026-10241
+                        </span>
+
+                      </div>
+
+                    </div>
+
+                    <span class="application-type">
+                      Full-time
+                    </span>
+
+                    <span class="application-status">
+                      Under Review
+                    </span>
+
+                  </div>
+
+
+                  <div class="application-row">
+
+                    <div class="application-name">
+
+                      <div class="job-icon">
+                        S
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          Service Associate
+                        </strong>
+
+                        <span>
+                          DGS-2026-10118
+                        </span>
+
+                      </div>
+
+                    </div>
+
+                    <span class="application-type">
+                      On-site
+                    </span>
+
+                    <span class="application-status">
+                      Confirmed
+                    </span>
+
+                  </div>
+
+
+                  <div class="application-row">
+
+                    <div class="application-name">
+
+                      <div class="job-icon">
+                        A
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          Admin Assistant
+                        </strong>
+
+                        <span>
+                          DGS-2026-09872
+                        </span>
+
+                      </div>
+
+                    </div>
+
+                    <span class="application-type">
+                      Full-time
+                    </span>
+
+                    <span class="application-status">
+                      Submitted
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="floating-card">
+
+            <div class="floating-top">
+
+              <div class="floating-icon">
+                ✓
+              </div>
+
+              <div>
+
+                <strong>
+                  Application Progress
+                </strong>
+
+                <span>
+                  Profile completion
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="progress">
+              <span></span>
+            </div>
+
+
+            <div class="floating-footer">
+
+              <span>
+                74% completed
               </span>
 
-            </div>
-
-            <div class="visual-main">
-
-              <small>DIGISER BD</small>
-
-              <h3>
-                Your next opportunity
-                starts here.
-              </h3>
-
-              <p>
-                Create your profile, apply for opportunities,
-                complete payment and track your application
-                from one simple platform.
-              </p>
-
-            </div>
-
-            <div class="visual-bottom">
-
-              <div class="mini-stat">
-                <strong>01</strong>
-                <span>Create Profile</span>
-              </div>
-
-              <div class="mini-stat">
-                <strong>02</strong>
-                <span>Apply</span>
-              </div>
-
-              <div class="mini-stat">
-                <strong>03</strong>
-                <span>Track</span>
-              </div>
+              <span>
+                Keep going
+              </span>
 
             </div>
 
@@ -1388,43 +2891,56 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          SERVICES
-    ========================== -->
+         ===================================================== -->
 
-    <section class="services" id="services">
+    <section
+      class="section"
+      id="services"
+    >
 
       <div class="container">
 
-        <div class="section-head reveal">
-          <span class="section-label">
+        <div class="section-header reveal">
+
+          <span class="section-kicker">
             What We Do
           </span>
 
-          <h2>
-            Built around real
-            opportunities.
+          <h2 class="section-title">
+            One platform.
+            Multiple possibilities.
           </h2>
 
-          <p>
-            DigiSER BD brings job opportunities,
-            digital services and growth-focused solutions
-            together in one platform.
+          <p class="section-description">
+            DigiSER BD brings opportunities and practical
+            digital solutions together in a focused,
+            easy-to-use experience.
           </p>
+
         </div>
 
 
-        <div class="service-grid">
+        <div class="services-grid">
 
-          <article class="service-card reveal">
 
-            <span class="service-number">01</span>
+          <article class="service reveal">
 
-            <div class="service-icon">
-              💼
+            <div class="service-top">
+
+              <div class="service-icon">
+                💼
+              </div>
+
+              <span class="service-number">
+                01
+              </span>
+
             </div>
 
             <h3>
@@ -1432,20 +2948,33 @@
             </h3>
 
             <p>
-              Discover available opportunities,
-              create your applicant profile and
-              submit applications through a simple process.
+              Discover available opportunities, create your
+              applicant profile and submit applications
+              through a structured digital workflow.
             </p>
+
+            <a
+              href="register/index.html"
+              class="service-link"
+            >
+              Explore opportunities →
+            </a>
 
           </article>
 
 
-          <article class="service-card reveal">
+          <article class="service reveal delay-1">
 
-            <span class="service-number">02</span>
+            <div class="service-top">
 
-            <div class="service-icon">
-              ⚡
+              <div class="service-icon">
+                ✦
+              </div>
+
+              <span class="service-number">
+                02
+              </span>
+
             </div>
 
             <h3>
@@ -1453,20 +2982,33 @@
             </h3>
 
             <p>
-              Practical digital solutions designed to
-              help individuals, professionals and businesses
-              move forward.
+              Practical digital services designed to help
+              individuals, professionals and businesses
+              solve real-world needs.
             </p>
+
+            <a
+              href="contact/"
+              class="service-link"
+            >
+              Explore services →
+            </a>
 
           </article>
 
 
-          <article class="service-card reveal">
+          <article class="service reveal delay-2">
 
-            <span class="service-number">03</span>
+            <div class="service-top">
 
-            <div class="service-icon">
-              📈
+              <div class="service-icon">
+                ↗
+              </div>
+
+              <span class="service-number">
+                03
+              </span>
+
             </div>
 
             <h3>
@@ -1474,10 +3016,17 @@
             </h3>
 
             <p>
-              We focus on connecting people and services
-              with meaningful opportunities for sustainable
-              progress.
+              Connect people, skills and services with
+              meaningful opportunities for progress
+              and long-term growth.
             </p>
+
+            <a
+              href="contact/"
+              class="service-link"
+            >
+              Start a conversation →
+            </a>
 
           </article>
 
@@ -1488,34 +3037,40 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          PROCESS
-    ========================== -->
+         ===================================================== -->
 
-    <section class="process" id="process">
+    <section
+      class="section section-soft"
+      id="process"
+    >
 
       <div class="container">
 
-        <div class="section-head reveal">
-          <span class="section-label">
+        <div class="section-header reveal">
+
+          <span class="section-kicker">
             Simple Process
           </span>
 
-          <h2>
-            From registration
-            to tracking.
+          <h2 class="section-title">
+            From profile
+            to progress.
           </h2>
 
-          <p>
-            A straightforward workflow designed to keep
-            the application experience clear and transparent.
+          <p class="section-description">
+            A clear workflow keeps every important step
+            organized and easy to follow.
           </p>
+
         </div>
 
 
         <div class="process-grid">
 
-          <article class="process-card reveal">
+
+          <article class="process-item reveal">
 
             <div class="process-number">
               01
@@ -1526,14 +3081,14 @@
             </h3>
 
             <p>
-              Add your basic information,
-              education, skills, experience and CV.
+              Add your personal information, education,
+              experience, skills and CV.
             </p>
 
           </article>
 
 
-          <article class="process-card reveal">
+          <article class="process-item reveal delay-1">
 
             <div class="process-number">
               02
@@ -1544,14 +3099,14 @@
             </h3>
 
             <p>
-              Select an opportunity and submit
-              your application with the required details.
+              Select an available opportunity and
+              submit your application.
             </p>
 
           </article>
 
 
-          <article class="process-card reveal">
+          <article class="process-item reveal delay-2">
 
             <div class="process-number">
               03
@@ -1563,13 +3118,13 @@
 
             <p>
               Complete the required application payment
-              and submit your transaction information.
+              and submit the transaction information.
             </p>
 
           </article>
 
 
-          <article class="process-card reveal">
+          <article class="process-item reveal delay-3">
 
             <div class="process-number">
               04
@@ -1581,7 +3136,7 @@
 
             <p>
               Use your registered mobile number to
-              check your application status and timeline.
+              follow your application status.
             </p>
 
           </article>
@@ -1593,93 +3148,186 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          STATS
-    ========================== -->
+         ===================================================== -->
 
-    <section class="stats">
+    <div class="stats-wrap">
 
-      <div class="container stats-grid">
+      <div class="container">
 
-        <div class="stat reveal">
-          <strong>01</strong>
-          <span>Unified Platform</span>
-        </div>
+        <div class="stats">
 
-        <div class="stat reveal">
-          <strong>24/7</strong>
-          <span>Online Access</span>
-        </div>
 
-        <div class="stat reveal">
-          <strong>100%</strong>
-          <span>Digital Process</span>
-        </div>
+          <div class="stat reveal">
 
-        <div class="stat reveal">
-          <strong>MV</strong>
-          <span>Moulvibazar</span>
+            <strong>
+              01
+            </strong>
+
+            <span>
+              Unified platform
+            </span>
+
+          </div>
+
+
+          <div class="stat reveal delay-1">
+
+            <strong>
+              24/7
+            </strong>
+
+            <span>
+              Online access
+            </span>
+
+          </div>
+
+
+          <div class="stat reveal delay-2">
+
+            <strong>
+              100%
+            </strong>
+
+            <span>
+              Digital workflow
+            </span>
+
+          </div>
+
+
+          <div class="stat reveal delay-3">
+
+            <strong>
+              MV
+            </strong>
+
+            <span>
+              Moulvibazar
+            </span>
+
+          </div>
+
         </div>
 
       </div>
 
-    </section>
+    </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          ABOUT
-    ========================== -->
+         ===================================================== -->
 
-    <section class="about" id="about">
+    <section
+      class="section"
+      id="about"
+    >
 
       <div class="container about-grid">
 
-        <div class="about-card reveal">
 
-          <small>
+        <div class="about-visual reveal">
+
+          <img
+            src="logo.png"
+            alt="DigiSER BD"
+            class="about-logo"
+          />
+
+          <span class="about-label">
             DigiSER BD
-          </small>
+          </span>
 
           <h3>
             Connecting people
             with possibilities.
           </h3>
 
+          <div class="about-location">
+            📍 Moulvibazar
+          </div>
+
         </div>
 
 
-        <div class="about-content reveal">
+        <div class="about-copy reveal">
 
-          <span class="section-label">
+          <span class="section-kicker">
             About DigiSER BD
           </span>
 
-          <h2>
-            A digital platform
-            built for progress.
+          <h2 class="section-title">
+            Built around
+            real progress.
           </h2>
 
           <p>
-            DigiSER BD is designed to make access to
-            opportunities and digital services easier,
-            clearer and more organized.
+            DigiSER BD is designed to make opportunities
+            and digital services easier to access through
+            a modern, organized platform.
           </p>
 
           <p>
-            From applicant registration and job applications
+            From applicant registration and applications
             to payment processing and application tracking,
-            the platform brings the essential steps together
-            in one place.
+            the essential journey is brought together
+            in one digital experience.
           </p>
 
           <p>
-            Our focus is simple:
-            <strong>Job • Service • Growth</strong>.
+            The idea is simple:
+            <strong>Job • Service • Growth.</strong>
           </p>
 
-          <div class="location-box">
-            <span>📍</span>
-            Moulvibazar
+
+          <div class="about-points">
+
+            <div class="about-point">
+
+              <span class="point-check">
+                ✓
+              </span>
+
+              Organized applications
+
+            </div>
+
+
+            <div class="about-point">
+
+              <span class="point-check">
+                ✓
+              </span>
+
+              Transparent tracking
+
+            </div>
+
+
+            <div class="about-point">
+
+              <span class="point-check">
+                ✓
+              </span>
+
+              Digital-first workflow
+
+            </div>
+
+
+            <div class="about-point">
+
+              <span class="point-check">
+                ✓
+              </span>
+
+              Moulvibazar focused
+
+            </div>
+
           </div>
 
         </div>
@@ -1689,57 +3337,108 @@
     </section>
 
 
-    <!-- =========================
-         CTA
-    ========================== -->
+    <!-- =====================================================
+         TRACK CTA
+         ===================================================== -->
 
-    <section class="cta">
+    <section class="section track-section">
 
       <div class="container">
 
-        <div class="cta-box reveal">
+        <div class="track-box reveal">
 
-          <div class="cta-content">
 
-            <span>
-              Ready to get started?
+          <div class="track-content">
+
+            <span class="section-kicker">
+              Application Tracking
             </span>
 
-            <h2>
-              Your next step
-              starts here.
+            <h2 class="section-title">
+              Know where
+              you stand.
             </h2>
 
             <p>
-              Create your profile or check an existing application.
+              Already submitted an application?
+              Enter your registered mobile number and
+              follow your application journey.
             </p>
 
-          </div>
-
-          <div class="cta-action">
-
             <a
-              href="register/index.html"
-              class="btn btn-primary"
+              href="track-application.html"
+              class="button button-primary"
             >
-              Start Application
+              Track Application
               <span>→</span>
             </a>
 
           </div>
 
+
+          <div class="track-card">
+
+            <span class="track-card-label">
+              Application Timeline
+            </span>
+
+            <h3>
+              Your journey,
+              clearly presented.
+            </h3>
+
+            <div class="track-line"></div>
+
+            <div class="track-step">
+
+              <span class="track-step-dot">
+                1
+              </span>
+
+              Application Submitted
+
+            </div>
+
+            <div class="track-line"></div>
+
+            <div class="track-step">
+
+              <span class="track-step-dot">
+                2
+              </span>
+
+              Payment Confirmed
+
+            </div>
+
+            <div class="track-line"></div>
+
+            <div class="track-step">
+
+              <span class="track-step-dot">
+                3
+              </span>
+
+              Application Review
+
+            </div>
+
+          </div>
+
+
         </div>
 
       </div>
 
     </section>
 
+
   </main>
 
 
-  <!-- =========================
+  <!-- =======================================================
        FOOTER
-  ========================== -->
+       ======================================================= -->
 
   <footer>
 
@@ -1747,9 +3446,10 @@
 
       <div class="footer-grid">
 
+
         <div>
 
-          <div class="footer-brand">
+          <div class="footer-logo">
 
             <img
               src="logo.png"
@@ -1762,16 +3462,16 @@
 
           </div>
 
-          <p class="footer-about">
-            Job, Service and Growth —
-            connecting people, opportunities and
-            digital solutions from Moulvibazar.
+          <p class="footer-description">
+            Job • Service • Growth — a modern digital
+            platform connecting people, opportunities
+            and practical services from Moulvibazar.
           </p>
 
         </div>
 
 
-        <div class="footer-col">
+        <div class="footer-column">
 
           <h4>
             Platform
@@ -1796,7 +3496,7 @@
         </div>
 
 
-        <div class="footer-col">
+        <div class="footer-column">
 
           <h4>
             Explore
@@ -1826,7 +3526,8 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="year"></span> DigiSER BD. All rights reserved.
+          © <span id="year"></span>
+          DigiSER BD. All rights reserved.
         </span>
 
         <span>
@@ -1840,60 +3541,238 @@
   </footer>
 
 
-  <!-- =========================
+  <!-- =======================================================
        JAVASCRIPT
-  ========================== -->
+       ======================================================= -->
 
   <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    /* =========================================================
+       HEADER SCROLL
+       ========================================================= */
 
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+    const header =
+      document.getElementById("header");
 
-      menuBtn.textContent =
-        navLinks.classList.contains("active")
-          ? "✕"
-          : "☰";
-    });
+    function handleHeader() {
+      if (window.scrollY > 25) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+
+    window.addEventListener(
+      "scroll",
+      handleHeader,
+      { passive: true }
+    );
+
+    handleHeader();
 
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuBtn.textContent = "☰";
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          navLinks.classList.toggle("open");
+
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.textContent =
+          isOpen ? "✕" : "☰";
+      }
+    );
+
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.textContent = "☰";
+
+          }
+        );
+
       });
-    });
 
 
-    const revealItems =
-      document.querySelectorAll(".reveal");
+    /* =========================================================
+       ACTIVE NAVIGATION
+       ========================================================= */
 
-    const observer =
+    const sections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    const navAnchors =
+      document.querySelectorAll(
+        '.nav-links a[href^="#"]'
+      );
+
+    const sectionObserver =
       new IntersectionObserver(
         entries => {
+
           entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target);
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            navAnchors.forEach(anchor => {
+              anchor.classList.remove("active");
+            });
+
+            const active =
+              document.querySelector(
+                `.nav-links a[href="#${entry.target.id}"]`
+              );
+
+            if (active) {
+              active.classList.add("active");
             }
 
           });
+
         },
         {
-          threshold: 0.12
+          rootMargin:
+            "-35% 0px -55% 0px"
         }
       );
 
 
-    revealItems.forEach(item => {
-      observer.observe(item);
+    sections.forEach(section => {
+      sectionObserver.observe(section);
     });
 
 
+    /* =========================================================
+       REVEAL ANIMATION
+       ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.10
+        }
+      );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* =========================================================
+       YEAR
+       ========================================================= */
+
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+
+    /* =========================================================
+       SMOOTH ANCHOR OFFSET
+       ========================================================= */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(anchor => {
+
+        anchor.addEventListener(
+          "click",
+          event => {
+
+            const id =
+              anchor.getAttribute("href");
+
+            if (!id || id === "#") {
+              return;
+            }
+
+            const target =
+              document.querySelector(id);
+
+            if (!target) {
+              return;
+            }
+
+            event.preventDefault();
+
+            const offset = 92;
+
+            const top =
+              target.getBoundingClientRect().top +
+              window.scrollY -
+              offset;
+
+            window.scrollTo({
+              top,
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+      });
   </script>
 
 </body>
