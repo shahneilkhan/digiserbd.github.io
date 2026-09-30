@@ -1,4328 +1,3341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0087c4">
-
-<title>Apply — DigiSER BD</title>
-<meta name="description" content="Create your DigiSER BD applicant profile and submit an application.">
-
-<link rel="icon" type="image/png" href="../favicon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-:root{
-  --bg:#061019;
-  --bg2:#091722;
-  --panel:#0d1b25;
-  --panel2:#102330;
-  --border:rgba(255,255,255,.09);
-  --border2:rgba(255,255,255,.14);
-  --text:#eef8fc;
-  --muted:#8da5b3;
-  --blue:#0087c4;
-  --blue2:#27b9ef;
-  --green:#20c997;
-  --yellow:#ffc857;
-  --red:#ff6678;
-  --radius:22px;
-  --shadow:0 25px 90px rgba(0,0,0,.35);
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  min-height:100vh;
-  color:var(--text);
-  font-family:"Space Grotesk","Hind Siliguri",sans-serif;
-  background:
-    radial-gradient(circle at 10% 5%,rgba(0,135,196,.14),transparent 30%),
-    radial-gradient(circle at 90% 90%,rgba(0,135,196,.08),transparent 30%),
-    var(--bg);
-}
-
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* ================================
-   HEADER
-================================ */
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:74px;
-  border-bottom:1px solid var(--border);
-  background:rgba(6,16,25,.82);
-  backdrop-filter:blur(20px);
-}
-
-.header-inner{
-  max-width:1180px;
-  height:100%;
-  margin:auto;
-  padding:0 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:white;
-}
-
-.brand-logo{
-  width:43px;
-  height:43px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  font-size:13px;
-  font-weight:800;
-  background:linear-gradient(135deg,var(--blue),#005d88);
-  box-shadow:0 12px 35px rgba(0,135,196,.22);
-}
-
-.brand-text strong{
-  display:block;
-  font-size:15px;
-}
-
-.brand-text span{
-  display:block;
-  font-size:10px;
-  color:var(--muted);
-  margin-top:2px;
-}
-
-.header-link{
-  color:#9eb2bd;
-  text-decoration:none;
-  font-size:12px;
-}
-
-.header-link:hover{
-  color:white;
-}
-
-/* ================================
-   PAGE
-================================ */
-
-.page{
-  max-width:1050px;
-  margin:auto;
-  padding:45px 20px 80px;
-}
-
-.hero{
-  text-align:center;
-  max-width:750px;
-  margin:0 auto 35px;
-}
-
-.hero-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  border:1px solid rgba(0,135,196,.25);
-  background:rgba(0,135,196,.08);
-  border-radius:99px;
-  color:#5bcaf4;
-  font-size:10px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.hero h1{
-  font-size:clamp(32px,6vw,58px);
-  line-height:1.05;
-  letter-spacing:-2px;
-  margin:18px 0 13px;
-}
-
-.hero p{
-  color:var(--muted);
-  line-height:1.7;
-  font-size:14px;
-}
-
-/* ================================
-   PROGRESS
-================================ */
-
-.progress-wrap{
-  max-width:850px;
-  margin:0 auto 25px;
-}
-
-.progress{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.progress-step{
-  position:relative;
-  padding:13px 12px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  background:rgba(13,27,37,.75);
-  text-align:center;
-  transition:.25s;
-}
-
-.progress-step.active{
-  border-color:rgba(39,185,239,.4);
-  background:rgba(0,135,196,.1);
-}
-
-.progress-step.done{
-  border-color:rgba(32,201,151,.3);
-  background:rgba(32,201,151,.07);
-}
-
-.progress-number{
-  width:25px;
-  height:25px;
-  margin:0 auto 7px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:10px;
-  font-weight:700;
-  background:#172a35;
-  color:#78929e;
-}
-
-.progress-step.active .progress-number{
-  background:var(--blue);
-  color:white;
-}
-
-.progress-step.done .progress-number{
-  background:var(--green);
-  color:white;
-}
-
-.progress-step strong{
-  display:block;
-  font-size:11px;
-}
-
-.progress-step span{
-  display:block;
-  color:#657d89;
-  font-size:9px;
-  margin-top:3px;
-}
-
-/* ================================
-   CARD
-================================ */
-
-.card{
-  background:rgba(13,27,37,.88);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-
-.card-head{
-  padding:22px 24px;
-  border-bottom:1px solid var(--border);
-}
-
-.card-head h2{
-  font-size:19px;
-}
-
-.card-head p{
-  margin-top:5px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-}
-
-.card-body{
-  padding:24px;
-}
-
-/* ================================
-   FORM
-================================ */
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:17px;
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-.form-group label{
-  display:block;
-  color:#b8c9d1;
-  font-size:11px;
-  margin-bottom:7px;
-}
-
-.required{
-  color:#ff8090;
-}
-
-.input,
-.select,
-.textarea{
-  width:100%;
-  border:1px solid var(--border);
-  outline:none;
-  background:#07131c;
-  color:var(--text);
-  border-radius:12px;
-  padding:13px 14px;
-  transition:.2s;
-}
-
-.input::placeholder,
-.textarea::placeholder{
-  color:#526b78;
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus{
-  border-color:rgba(39,185,239,.5);
-  box-shadow:0 0 0 3px rgba(39,185,239,.07);
-}
-
-.textarea{
-  min-height:110px;
-  resize:vertical;
-}
-
-.section-title{
-  grid-column:1/-1;
-  padding-top:8px;
-  margin-top:8px;
-  padding-bottom:4px;
-  border-bottom:1px solid var(--border);
-}
-
-.section-title strong{
-  font-size:13px;
-}
-
-.section-title span{
-  display:block;
-  color:#667f8c;
-  font-size:10px;
-  margin-top:3px;
-}
-
-/* ================================
-   UPLOAD
-================================ */
-
-.upload-box{
-  border:1px dashed rgba(255,255,255,.14);
-  background:#08141d;
-  border-radius:14px;
-  padding:17px;
-}
-
-.upload-box input{
-  width:100%;
-  color:#9eb2bd;
-  font-size:11px;
-}
-
-.file-info{
-  color:#657d89;
-  font-size:10px;
-  margin-top:8px;
-  line-height:1.5;
-}
-
-/* ================================
-   PAYMENT
-================================ */
-
-.payment-summary{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.summary-box{
-  padding:15px;
-  background:#08141d;
-  border:1px solid var(--border);
-  border-radius:13px;
-}
-
-.summary-box small{
-  display:block;
-  color:#637b88;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.6px;
-}
-
-.summary-box strong{
-  display:block;
-  font-size:17px;
-  margin-top:5px;
-}
-
-.method-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.method-card{
-  position:relative;
-  border:1px solid var(--border);
-  background:#08141d;
-  border-radius:14px;
-  padding:15px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.method-card:hover{
-  border-color:var(--border2);
-}
-
-.method-card.selected{
-  border-color:rgba(39,185,239,.55);
-  background:rgba(0,135,196,.09);
-}
-
-.method-card.disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-
-.method-card input{
-  position:absolute;
-  opacity:0;
-}
-
-.method-card strong{
-  display:block;
-  font-size:13px;
-}
-
-.method-card span{
-  display:block;
-  color:#637d89;
-  font-size:9px;
-  margin-top:4px;
-}
-
-.merchant-box{
-  margin-top:15px;
-  padding:15px;
-  background:rgba(0,135,196,.07);
-  border:1px solid rgba(0,135,196,.18);
-  border-radius:14px;
-}
-
-.merchant-label{
-  color:#5fc9ef;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.8px;
-}
-
-.merchant-number{
-  margin-top:5px;
-  font-size:19px;
-  font-weight:700;
-}
-
-.instructions{
-  margin-top:10px;
-  color:#93aab5;
-  font-size:11px;
-  line-height:1.7;
-  white-space:pre-line;
-}
-
-/* ================================
-   ACTION
-================================ */
-
-.form-actions{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-top:22px;
-}
-
-.btn{
-  border:1px solid var(--border);
-  background:#132632;
-  color:white;
-  border-radius:12px;
-  padding:12px 18px;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  border-color:var(--border2);
-}
-
-.btn-primary{
-  border-color:transparent;
-  background:linear-gradient(135deg,var(--blue),#006b9c);
-  box-shadow:0 12px 30px rgba(0,135,196,.18);
-}
-
-.btn-success{
-  background:rgba(32,201,151,.12);
-  color:#67eac4;
-  border-color:rgba(32,201,151,.25);
-}
-
-.btn-danger{
-  background:rgba(255,102,120,.1);
-  color:#ff8a99;
-  border-color:rgba(255,102,120,.2);
-}
-
-.btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.note{
-  color:#647d89;
-  font-size:10px;
-  line-height:1.5;
-}
-
-/* ================================
-   ALERT
-================================ */
-
-.alert{
-  padding:13px 15px;
-  border-radius:12px;
-  font-size:11px;
-  line-height:1.6;
-  margin-bottom:16px;
-}
-
-.alert-info{
-  color:#8fdcff;
-  background:rgba(0,135,196,.08);
-  border:1px solid rgba(0,135,196,.18);
-}
-
-.alert-warning{
-  color:#ffdc7b;
-  background:rgba(255,200,87,.08);
-  border:1px solid rgba(255,200,87,.17);
-}
-
-.alert-error{
-  color:#ff8999;
-  background:rgba(255,102,120,.08);
-  border:1px solid rgba(255,102,120,.17);
-}
-
-.alert-success{
-  color:#67eac4;
-  background:rgba(32,201,151,.08);
-  border:1px solid rgba(32,201,151,.17);
-}
-
-/* ================================
-   SUCCESS
-================================ */
-
-.success{
-  text-align:center;
-  padding:20px 0;
-}
-
-.success-icon{
-  width:76px;
-  height:76px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:32px;
-  background:rgba(32,201,151,.1);
-  border:1px solid rgba(32,201,151,.3);
-  color:#55e5bb;
-}
-
-.success h2{
-  font-size:28px;
-  margin-bottom:8px;
-}
-
-.success p{
-  color:var(--muted);
-  line-height:1.7;
-  font-size:13px;
-}
-
-.application-id{
-  margin:23px auto;
-  max-width:430px;
-  padding:18px;
-  border-radius:15px;
-  background:#07131c;
-  border:1px solid rgba(0,135,196,.25);
-}
-
-.application-id small{
-  display:block;
-  color:#647d89;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.application-id strong{
-  display:block;
-  color:#53c9f3;
-  font-size:24px;
-  margin-top:6px;
-  letter-spacing:1px;
-}
-
-.success-actions{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
-/* ================================
-   MODAL
-================================ */
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:1000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(8px);
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-card{
-  width:100%;
-  max-width:470px;
-  background:#0c1b25;
-  border:1px solid var(--border2);
-  border-radius:22px;
-  padding:25px;
-  box-shadow:0 35px 100px rgba(0,0,0,.55);
-}
-
-.modal-card h3{
-  font-size:19px;
-  margin-bottom:9px;
-}
-
-.modal-card p{
-  color:var(--muted);
-  line-height:1.65;
-  font-size:12px;
-}
-
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-  margin-top:20px;
-}
-
-/* ================================
-   LOADER
-================================ */
-
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:5000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(4,12,18,.82);
-  backdrop-filter:blur(7px);
-}
-
-.loader.show{
-  display:flex;
-}
-
-.loader-box{
-  text-align:center;
-}
-
-.spinner{
-  width:38px;
-  height:38px;
-  margin:auto;
-  border-radius:50%;
-  border:3px solid rgba(255,255,255,.1);
-  border-top-color:var(--blue2);
-  animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-.loader-box p{
-  color:#9bb0bb;
-  font-size:11px;
-  margin-top:12px;
-}
-
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media(max-width:720px){
-
-  .page{
-    padding:30px 14px 60px;
-  }
-
-  .hero h1{
-    letter-spacing:-1.2px;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .payment-summary{
-    grid-template-columns:1fr;
-  }
-
-  .method-grid{
-    grid-template-columns:1fr;
-  }
-
-  .progress{
-    gap:6px;
-  }
-
-  .progress-step{
-    padding:10px 5px;
-  }
-
-  .progress-step strong{
-    font-size:9px;
-  }
-
-  .progress-step span{
-    display:none;
-  }
-
-  .card-head,
-  .card-body{
-    padding:18px;
-  }
-
-  .form-actions{
-    flex-direction:column-reverse;
-    align-items:stretch;
-  }
-
-  .form-actions .btn{
-    width:100%;
-  }
-
-  .header-link{
-    display:none;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Register — DigiSER BD</title>
+  <meta
+    name="description"
+    content="Register your profile and submit an application with DigiSER BD."
+  >
+
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --primary: #0087c4;
+      --primary-dark: #006b9d;
+      --primary-soft: rgba(0, 135, 196, .12);
+
+      --bg: #071018;
+      --bg-2: #0b151e;
+      --panel: rgba(14, 27, 38, .82);
+      --panel-2: rgba(18, 34, 47, .72);
+
+      --text: #f4f8fb;
+      --muted: #8ea3b3;
+      --border: rgba(255,255,255,.09);
+
+      --success: #27c98a;
+      --warning: #ffb84d;
+      --danger: #ff6b7a;
+
+      --radius: 24px;
+      --shadow: 0 25px 80px rgba(0,0,0,.38);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Hind Siliguri", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0,135,196,.16), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(0,135,196,.10), transparent 26%),
+        linear-gradient(145deg, #050b11, #071018 45%, #08131c);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 30px));
+      margin: auto;
+      padding: 26px 0 70px;
+    }
+
+    /* HEADER */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      padding: 7px;
+    }
+
+    .brand-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: -2px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .top-btn {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 10px 15px;
+      border-radius: 12px;
+      transition: .2s ease;
+    }
+
+    .top-btn:hover {
+      border-color: rgba(0,135,196,.5);
+      background: var(--primary-soft);
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(0,135,196,.17), rgba(255,255,255,.025)),
+        var(--panel);
+      border-radius: 30px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -100px;
+      top: -110px;
+      border-radius: 50%;
+      background: rgba(0,135,196,.13);
+      filter: blur(10px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #8fdcff;
+      background: rgba(0,135,196,.10);
+      border: 1px solid rgba(0,135,196,.25);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 14px rgba(39,201,138,.8);
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.02;
+      max-width: 760px;
+      letter-spacing: -1.8px;
+    }
+
+    .hero h1 span {
+      color: #55cfff;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* PROGRESS */
+
+    .progress-card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .step {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      border-radius: 16px;
+      padding: 14px;
+      transition: .2s ease;
+    }
+
+    .step.active {
+      border-color: rgba(0,135,196,.55);
+      background: rgba(0,135,196,.08);
+    }
+
+    .step-number {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+
+    .step.active .step-number {
+      background: var(--primary);
+      color: white;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .step small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+      font-size: 11px;
+    }
+
+    /* MAIN */
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .form-card,
+    .side-card {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-card {
+      padding: 28px;
+    }
+
+    .side-card {
+      padding: 22px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .form-section {
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-section:first-child {
+      padding-top: 0;
+    }
+
+    .form-section:last-child {
+      border-bottom: 0;
+    }
+
+    .section-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 15px;
+      color: #dcecf5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 12px;
+      color: #b9cad6;
+      font-weight: 600;
+    }
+
+    label span {
+      color: var(--danger);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      outline: none;
+      color: var(--text);
+      background: rgba(4,11,17,.72);
+      border-radius: 13px;
+      padding: 12px 13px;
+      transition: .2s ease;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    select option {
+      background: #0b151e;
+      color: white;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(0,135,196,.65);
+      box-shadow: 0 0 0 3px rgba(0,135,196,.08);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #637989;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #708797;
+      line-height: 1.5;
+    }
+
+    /* PAYMENT */
+
+    .payment-box {
+      border: 1px solid rgba(0,135,196,.22);
+      background: rgba(0,135,196,.055);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .payment-summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 17px;
+    }
+
+    .payment-price {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .payment-price small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .merchant {
+      border: 1px dashed rgba(0,135,196,.4);
+      background: rgba(0,0,0,.15);
+      padding: 12px;
+      border-radius: 13px;
+      margin-bottom: 14px;
+    }
+
+    .merchant-label {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .merchant-number {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      margin-top: 3px;
+      color: #75d7ff;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+
+    .method {
+      position: relative;
+    }
+
+    .method input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .method label {
+      display: block;
+      text-align: center;
+      padding: 12px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: rgba(255,255,255,.025);
+      color: #a9bac6;
+      transition: .2s ease;
+    }
+
+    .method input:checked + label {
+      color: white;
+      border-color: rgba(0,135,196,.65);
+      background: rgba(0,135,196,.13);
+    }
+
+    .disabled-method {
+      opacity: .4;
+      pointer-events: none;
+    }
+
+    /* SIDE */
+
+    .side-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 11px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-item:last-child {
+      border-bottom: 0;
+    }
+
+    .info-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 34px;
+      border-radius: 10px;
+      background: rgba(0,135,196,.10);
+    }
+
+    .info-item strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .info-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+      margin-top: 2px;
+    }
+
+    .firebase-status {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .firebase-status strong {
+      color: var(--success);
+    }
+
+    /* SUBMIT */
+
+    .submit-area {
+      padding-top: 25px;
+    }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .consent input {
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+      accent-color: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 15px 20px;
+      background: linear-gradient(135deg, #009fe3, #0078ad);
+      color: white;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      box-shadow: 0 15px 35px rgba(0,135,196,.22);
+      transition: .2s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0,135,196,.30);
+    }
+
+    .submit-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* FILE */
+
+    .file-box {
+      border: 1px dashed rgba(255,255,255,.14);
+      padding: 15px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+    }
+
+    input[type="file"] {
+      padding: 9px;
+    }
+
+    /* ALERT */
+
+    .alert {
+      display: none;
+      padding: 14px 15px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .alert.show {
+      display: block;
+    }
+
+    .alert.error {
+      color: #ffd8dc;
+      background: rgba(255,107,122,.08);
+      border: 1px solid rgba(255,107,122,.22);
+    }
+
+    .alert.success {
+      color: #c9ffe9;
+      background: rgba(39,201,138,.08);
+      border: 1px solid rgba(39,201,138,.22);
+    }
+
+    /* SUCCESS */
+
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 45px 25px;
+    }
+
+    .success-screen.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: rgba(39,201,138,.12);
+      border: 1px solid rgba(39,201,138,.3);
+      font-size: 34px;
+    }
+
+    .success-screen h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+    }
+
+    .success-screen p {
+      color: var(--muted);
+      max-width: 560px;
+      margin: 10px auto 20px;
+      line-height: 1.6;
+    }
+
+    .application-id {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,135,196,.35);
+      background: rgba(0,135,196,.08);
+      color: #6bd5ff;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 20px;
+    }
+
+    .success-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .success-actions a {
+      padding: 12px 17px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+
+    .success-actions a.primary {
+      border-color: transparent;
+      background: var(--primary);
+    }
+
+    /* POPUP */
+
+    .popup-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .popup-backdrop.show {
+      display: flex;
+    }
+
+    .popup {
+      width: min(470px, 100%);
+      border-radius: 24px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: #0c1821;
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+    }
+
+    .popup-badge {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(0,135,196,.12);
+      color: #73d6ff;
+      margin-bottom: 12px;
+    }
+
+    .popup h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 23px;
+    }
+
+    .popup p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 9px 0 18px;
+      font-size: 13px;
+    }
+
+    .popup-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .popup-footer label {
+      color: var(--muted);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .popup-close {
+      border: 0;
+      background: var(--primary);
+      color: white;
+      border-radius: 11px;
+      padding: 10px 15px;
+      font-weight: 700;
+    }
+
+    /* LOADING */
+
+    .loading {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      place-items: center;
+      background: rgba(3,9,14,.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .loading.show {
+      display: grid;
+    }
+
+    .loader-box {
+      text-align: center;
+      padding: 25px;
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 12px;
+      border: 3px solid rgba(255,255,255,.12);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    .loader-box p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        width: min(100% - 18px, 1180px);
+        padding-top: 12px;
+      }
+
+      .hero {
+        padding: 25px 19px;
+        border-radius: 22px;
+      }
+
+      .form-card {
+        padding: 20px 16px;
+      }
+
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .progress-card {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .top-actions {
+        justify-content: flex-end;
+      }
+
+      .top-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-summary {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
-
-  <div class="header-inner">
-
-    <a href="../index.html" class="brand">
-
-      <div class="brand-logo">
-        DS
-      </div>
-
-      <div class="brand-text">
-        <strong>DigiSER BD</strong>
-        <span>Job • Service • Growth</span>
-      </div>
-
-    </a>
-
-    <a
-      href="../track-application.html"
-      class="header-link"
-    >
-      Track Application →
-    </a>
-
+  <div class="loading" id="loading">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <p id="loadingText">Submitting your application...</p>
+    </div>
   </div>
 
-</header>
+  <div class="popup-backdrop" id="updatePopup">
+    <div class="popup">
+      <div class="popup-badge" id="popupStatus">SYSTEM UPDATE</div>
+      <h3 id="popupTitle">System Update</h3>
+      <p id="popupDescription">
+        DigiSER BD system is being improved.
+      </p>
 
+      <div class="popup-footer">
+        <label>
+          <input type="checkbox" id="dontShowUpdate">
+          Don't show again
+        </label>
 
-<main class="page">
-
-  <!-- HERO -->
-  <section class="hero">
-
-    <div class="hero-badge">
-      ● DigiSER BD Application Portal
+        <button class="popup-close" id="closePopup">
+          Got it
+        </button>
+      </div>
     </div>
-
-    <h1>
-      Build your applicant profile.
-    </h1>
-
-    <p>
-      Create your profile once, submit applications,
-      and track your application progress using your
-      registered mobile number.
-    </p>
-
-  </section>
-
-
-  <!-- PROGRESS -->
-  <div class="progress-wrap">
-
-    <div class="progress">
-
-      <div
-        id="progress1"
-        class="progress-step active"
-      >
-        <div class="progress-number">1</div>
-        <strong>Profile</strong>
-        <span>Applicant information</span>
-      </div>
-
-      <div
-        id="progress2"
-        class="progress-step"
-      >
-        <div class="progress-number">2</div>
-        <strong>Application</strong>
-        <span>Job information</span>
-      </div>
-
-      <div
-        id="progress3"
-        class="progress-step"
-      >
-        <div class="progress-number">3</div>
-        <strong>Payment</strong>
-        <span>Application fee</span>
-      </div>
-
-    </div>
-
   </div>
 
+  <main class="page">
 
-  <!-- ================================
-       PROFILE STEP
-  ================================= -->
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <img
+          src="../logo.png"
+          alt="DigiSER BD"
+          class="brand-logo"
+          onerror="this.style.display='none'"
+        >
 
-  <section
-    id="stepProfile"
-    class="card"
-  >
+        <div>
+          <div class="brand-title">DigiSER BD</div>
+          <div class="brand-subtitle">Job • Service • Growth</div>
+        </div>
+      </a>
 
-    <div class="card-head">
+      <div class="top-actions">
+        <a class="top-btn" href="../track-application.html">
+          Track Application
+        </a>
 
-      <h2>Applicant Profile</h2>
+        <a class="top-btn" href="../index.html">
+          Home
+        </a>
+      </div>
+    </header>
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        DigiSER BD Registration
+      </div>
+
+      <h1>
+        Build your profile.
+        <span>Start your journey.</span>
+      </h1>
 
       <p>
-        Your profile is stored separately from applications.
-        If you apply again with the same mobile number,
-        your existing profile will be reused.
+        Create your DigiSER BD applicant profile and submit your application.
+        Your profile can be reused for future applications.
       </p>
 
-    </div>
+      <div class="progress-card">
 
-
-    <div class="card-body">
-
-      <div
-        id="profileNotice"
-        class="alert alert-info"
-      >
-        Enter your registered mobile number. Existing applicants
-        can reuse their profile and create another application.
-      </div>
-
-
-      <div class="form-grid">
-
-        <div class="section-title">
-
-          <strong>Personal Information</strong>
-
-          <span>
-            Basic applicant information
-          </span>
-
+        <div class="step active">
+          <div class="step-number">01</div>
+          <strong>Applicant Profile</strong>
+          <small>Your personal & professional information</small>
         </div>
 
-
-        <div class="form-group">
-
-          <label>
-            Full Name <span class="required">*</span>
-          </label>
-
-          <input
-            id="name"
-            class="input"
-            type="text"
-            placeholder="Your full name"
-            autocomplete="name"
-          >
-
+        <div class="step active">
+          <div class="step-number">02</div>
+          <strong>Application</strong>
+          <small>Choose the opportunity you want</small>
         </div>
 
-
-        <div class="form-group">
-
-          <label>
-            Mobile Number <span class="required">*</span>
-          </label>
-
-          <input
-            id="mobile"
-            class="input"
-            type="tel"
-            placeholder="01XXXXXXXXX"
-            maxlength="11"
-            autocomplete="tel"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Email</label>
-
-          <input
-            id="email"
-            class="input"
-            type="email"
-            placeholder="you@example.com"
-            autocomplete="email"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Emergency Contact</label>
-
-          <input
-            id="emergency"
-            class="input"
-            type="tel"
-            placeholder="Emergency mobile number"
-          >
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>Profile Photo</label>
-
-          <div class="upload-box">
-
-            <input
-              id="photo"
-              type="file"
-              accept="image/*"
-            >
-
-            <div
-              id="photoInfo"
-              class="file-info"
-            >
-              JPG, PNG or WEBP. The image will be compressed
-              before being stored.
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-title">
-
-          <strong>Address</strong>
-
-          <span>
-            Current and permanent address
-          </span>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Current Address</label>
-
-          <textarea
-            id="currentAddress"
-            class="textarea"
-            placeholder="Current address"
-          ></textarea>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Permanent Address</label>
-
-          <textarea
-            id="permanentAddress"
-            class="textarea"
-            placeholder="Permanent address"
-          ></textarea>
-
-        </div>
-
-
-        <div class="section-title">
-
-          <strong>Education</strong>
-
-          <span>
-            Academic information
-          </span>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>SSC / Equivalent</label>
-
-          <input
-            id="ssc"
-            class="input"
-            placeholder="Institution / group / result"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>HSC / Equivalent</label>
-
-          <input
-            id="hsc"
-            class="input"
-            placeholder="Institution / group / result"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Graduate / Degree</label>
-
-          <input
-            id="graduate"
-            class="input"
-            placeholder="Degree / institution / result"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Other Education</label>
-
-          <input
-            id="otherEducation"
-            class="input"
-            placeholder="Training, certification etc."
-          >
-
-        </div>
-
-
-        <div class="section-title">
-
-          <strong>Experience & Skills</strong>
-
-          <span>
-            Professional background
-          </span>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Experience</label>
-
-          <textarea
-            id="experience"
-            class="textarea"
-            placeholder="Company, role, duration..."
-          ></textarea>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Previous Duty / Responsibilities</label>
-
-          <textarea
-            id="duty"
-            class="textarea"
-            placeholder="Main responsibilities..."
-          ></textarea>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Previous Salary</label>
-
-          <input
-            id="previousSalary"
-            class="input"
-            placeholder="Example: 25000 BDT"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Language</label>
-
-          <input
-            id="language"
-            class="input"
-            placeholder="Bangla, English, Hindi..."
-          >
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>Skills</label>
-
-          <textarea
-            id="skills"
-            class="textarea"
-            placeholder="Example: Graphic Design, MS Office, Sales, Web Development..."
-          ></textarea>
-
-        </div>
-
-
-        <div class="section-title">
-
-          <strong>Reference</strong>
-
-          <span>
-            Optional reference information
-          </span>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Reference Name</label>
-
-          <input
-            id="referenceName"
-            class="input"
-            placeholder="Reference person"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Reference Contact</label>
-
-          <input
-            id="referenceContact"
-            class="input"
-            placeholder="Mobile / email"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Relation</label>
-
-          <input
-            id="referenceRelation"
-            class="input"
-            placeholder="Colleague, teacher, employer..."
-          >
-
-        </div>
-
-
-        <div class="section-title">
-
-          <strong>CV</strong>
-
-          <span>
-            Upload your CV. Applicants cannot download or print
-            uploaded CVs from this portal.
-          </span>
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>
-            CV File <span class="required">*</span>
-          </label>
-
-          <div class="upload-box">
-
-            <input
-              id="cv"
-              type="file"
-              accept=".pdf,.doc,.docx"
-            >
-
-            <div
-              id="cvInfo"
-              class="file-info"
-            >
-              PDF, DOC or DOCX.
-            </div>
-
-          </div>
-
+        <div class="step active">
+          <div class="step-number">03</div>
+          <strong>Payment</strong>
+          <small>Complete the application fee</small>
         </div>
 
       </div>
-
-
-      <div class="form-actions">
-
-        <div class="note">
-          Your mobile number is used to identify your applicant profile
-          and track your applications.
-        </div>
-
-        <button
-          id="toApplicationBtn"
-          class="btn btn-primary"
-          type="button"
-          onclick="goToApplication()"
-        >
-          Continue to Application →
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================
-       APPLICATION STEP
-  ================================= -->
-
-  <section
-    id="stepApplication"
-    class="card hidden"
-  >
-
-    <div class="card-head">
-
-      <h2>Application Details</h2>
-
-      <p>
-        Tell us which position you are applying for.
-      </p>
-
-    </div>
-
-
-    <div class="card-body">
-
-      <div
-        id="applicationNotice"
-        class="alert alert-info"
-      ></div>
-
-
-      <div class="form-grid">
-
-        <div class="form-group full">
-
-          <label>
-            Job / Position <span class="required">*</span>
-          </label>
-
-          <input
-            id="jobTitle"
-            class="input"
-            placeholder="Example: Graphic Designer"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Expected Salary</label>
-
-          <input
-            id="expectedSalary"
-            class="input"
-            placeholder="Example: 25000 BDT"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Employment Type</label>
-
-          <select
-            id="applicationType"
-            class="select"
-          >
-
-            <option value="Full Time">
-              Full Time
-            </option>
-
-            <option value="Part Time">
-              Part Time
-            </option>
-
-            <option value="Contract">
-              Contract
-            </option>
-
-            <option value="Internship">
-              Internship
-            </option>
-
-            <option value="Freelance">
-              Freelance
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>Preferred Location</label>
-
-          <input
-            id="applicationLocation"
-            class="input"
-            placeholder="Example: Moulvibazar / Dhaka / Remote"
-          >
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>
-            Additional Information
-          </label>
-
-          <textarea
-            id="extraInfo"
-            class="textarea"
-            placeholder="Anything else you want DigiSER BD to know..."
-          ></textarea>
-
-        </div>
-
-
-        <div class="form-group full">
-
-          <label>
-            Application Reference
-          </label>
-
-          <input
-            id="applicationReference"
-            class="input"
-            placeholder="How did you hear about this opportunity?"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="form-actions">
-
-        <button
-          class="btn"
-          type="button"
-          onclick="backToProfile()"
-        >
-          ← Back
-        </button>
-
-        <button
-          class="btn btn-primary"
-          type="button"
-          onclick="goToPayment()"
-        >
-          Continue to Payment →
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================
-       PAYMENT STEP
-  ================================= -->
-
-  <section
-    id="stepPayment"
-    class="card hidden"
-  >
-
-    <div class="card-head">
-
-      <h2>Application Payment</h2>
-
-      <p>
-        Complete the application fee payment before submitting.
-      </p>
-
-    </div>
-
-
-    <div class="card-body">
-
-      <div
-        id="paymentNotice"
-        class="alert alert-info"
-      >
-        Payment information will appear here.
-      </div>
-
-
-      <div
-        id="paymentDisabled"
-        class="alert alert-warning hidden"
-      >
-        The payment system is currently disabled.
-        Please contact DigiSER BD.
-      </div>
-
-
-      <div id="paymentArea">
-
-        <div class="payment-summary">
-
-          <div class="summary-box">
-
-            <small>Application Fee</small>
-
-            <strong id="feeDisplay">
-              50 BDT
-            </strong>
-
-          </div>
-
-
-          <div class="summary-box">
-
-            <small>Application</small>
-
-            <strong id="jobDisplay">
-              —
-            </strong>
-
-          </div>
-
-
-          <div class="summary-box">
-
-            <small>Applicant</small>
-
-            <strong id="applicantDisplay">
-              —
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>
-            Payment Method <span class="required">*</span>
-          </label>
-
-          <div
-            id="methodGrid"
-            class="method-grid"
-          ></div>
-
-        </div>
-
-
-        <div
-          id="merchantBox"
-          class="merchant-box hidden"
-        >
-
-          <div class="merchant-label">
-            Send payment to
-          </div>
-
-          <div
-            id="merchantNumber"
-            class="merchant-number"
-          >
-            —
-          </div>
-
-          <div
-            id="paymentInstructions"
-            class="instructions"
-          ></div>
-
-        </div>
-
-
-        <div
-          id="paymentFields"
-          class="form-grid"
-          style="margin-top:18px;"
-        >
-
-          <div class="form-group">
-
-            <label>
-              Sender Mobile <span class="required">*</span>
-            </label>
-
-            <input
-              id="senderNumber"
-              class="input"
-              type="tel"
-              maxlength="11"
-              placeholder="01XXXXXXXXX"
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              Transaction ID <span class="required">*</span>
-            </label>
-
-            <input
-              id="trxId"
-              class="input"
-              placeholder="Example: 8A7B6C5D"
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              Payment Date <span class="required">*</span>
-            </label>
-
-            <input
-              id="paymentDate"
-              class="input"
-              type="date"
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label>
-              Payment Screenshot
-              <span id="screenshotRequiredLabel" class="required">*</span>
-            </label>
-
-            <div class="upload-box">
-
-              <input
-                id="paymentScreenshot"
-                type="file"
-                accept="image/*"
-              >
-
-              <div
-                id="paymentScreenshotInfo"
-                class="file-info"
-              >
-                Upload the payment proof screenshot.
+    </section>
+
+    <div class="layout">
+
+      <section class="form-card">
+
+        <div id="alert" class="alert"></div>
+
+        <div id="formArea">
+
+          <!-- PROFILE -->
+
+          <div class="form-section">
+
+            <h2 class="section-title">Applicant Profile</h2>
+
+            <p class="section-desc">
+              Enter your information carefully. Your mobile number will be
+              used to identify your profile.
+            </p>
+
+            <div class="grid">
+
+              <div class="field">
+                <label>Full Name <span>*</span></label>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Your full name"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label>Mobile Number <span>*</span></label>
+                <input
+                  id="mobile"
+                  type="tel"
+                  placeholder="017XXXXXXXX"
+                  maxlength="14"
+                  required
+                >
+                <div class="hint">
+                  Use a valid Bangladesh mobile number.
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                >
+              </div>
+
+              <div class="field">
+                <label>Emergency Contact</label>
+                <input
+                  id="emergency"
+                  type="tel"
+                  placeholder="Emergency contact number"
+                >
+              </div>
+
+              <div class="field full">
+                <label>Current Address</label>
+                <textarea
+                  id="currentAddress"
+                  placeholder="Your current address"
+                ></textarea>
+              </div>
+
+              <div class="field full">
+                <label>Permanent Address</label>
+                <textarea
+                  id="permanentAddress"
+                  placeholder="Your permanent address"
+                ></textarea>
               </div>
 
             </div>
+          </div>
+
+          <!-- EDUCATION -->
+
+          <div class="form-section">
+
+            <div class="section-label">Education</div>
+
+            <div class="grid-3">
+
+              <div class="field">
+                <label>SSC</label>
+                <input
+                  id="ssc"
+                  type="text"
+                  placeholder="School / GPA / Year"
+                >
+              </div>
+
+              <div class="field">
+                <label>HSC</label>
+                <input
+                  id="hsc"
+                  type="text"
+                  placeholder="College / GPA / Year"
+                >
+              </div>
+
+              <div class="field">
+                <label>Graduate</label>
+                <input
+                  id="graduate"
+                  type="text"
+                  placeholder="Degree / Institution"
+                >
+              </div>
+
+              <div class="field full">
+                <label>Other Education</label>
+                <input
+                  id="otherEducation"
+                  type="text"
+                  placeholder="Diploma, course, certification etc."
+                >
+              </div>
+
+            </div>
+          </div>
+
+          <!-- EXPERIENCE -->
+
+          <div class="form-section">
+
+            <div class="section-label">Experience & Skills</div>
+
+            <div class="grid">
+
+              <div class="field">
+                <label>Experience</label>
+                <input
+                  id="experience"
+                  type="text"
+                  placeholder="e.g. 2 years"
+                >
+              </div>
+
+              <div class="field">
+                <label>Previous Duty / Position</label>
+                <input
+                  id="duty"
+                  type="text"
+                  placeholder="Previous position"
+                >
+              </div>
+
+              <div class="field">
+                <label>Previous Salary</label>
+                <input
+                  id="previousSalary"
+                  type="text"
+                  placeholder="e.g. 25000"
+                >
+              </div>
+
+              <div class="field">
+                <label>Language</label>
+                <input
+                  id="language"
+                  type="text"
+                  placeholder="Bangla, English..."
+                >
+              </div>
+
+              <div class="field full">
+                <label>Skills</label>
+                <textarea
+                  id="skills"
+                  placeholder="List your skills"
+                ></textarea>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- REFERENCE -->
+
+          <div class="form-section">
+
+            <div class="section-label">Reference</div>
+
+            <div class="grid-3">
+
+              <div class="field">
+                <label>Reference Name</label>
+                <input
+                  id="referenceName"
+                  type="text"
+                  placeholder="Name"
+                >
+              </div>
+
+              <div class="field">
+                <label>Reference Contact</label>
+                <input
+                  id="referenceContact"
+                  type="text"
+                  placeholder="Mobile / Email"
+                >
+              </div>
+
+              <div class="field">
+                <label>Relation</label>
+                <input
+                  id="referenceRelation"
+                  type="text"
+                  placeholder="Relation"
+                >
+              </div>
+
+            </div>
+          </div>
+
+          <!-- FILES -->
+
+          <div class="form-section">
+
+            <div class="section-label">Documents</div>
+
+            <div class="grid">
+
+              <div class="field">
+                <label>Applicant Photo</label>
+
+                <div class="file-box">
+                  <input
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                  >
+
+                  <div class="hint">
+                    Photo will be handled locally for now.
+                    Firebase Storage will be added later.
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>CV / Resume</label>
+
+                <div class="file-box">
+                  <input
+                    id="cv"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                  >
+
+                  <div class="hint">
+                    PDF, DOC or DOCX. Secure Storage upload will be added later.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- APPLICATION -->
+
+          <div class="form-section">
+
+            <h2 class="section-title">Application</h2>
+
+            <p class="section-desc">
+              Tell us which opportunity you are applying for.
+            </p>
+
+            <div class="grid">
+
+              <div class="field">
+                <label>Job Title <span>*</span></label>
+                <input
+                  id="jobTitle"
+                  type="text"
+                  placeholder="Job / position title"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label>Expected Salary</label>
+                <input
+                  id="expectedSalary"
+                  type="text"
+                  placeholder="e.g. 30000 BDT"
+                >
+              </div>
+
+              <div class="field">
+                <label>Application Type</label>
+                <select id="applicationType">
+                  <option value="Full Time">Full Time</option>
+                  <option value="Part Time">Part Time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Remote">Remote</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Preferred Location</label>
+                <input
+                  id="location"
+                  type="text"
+                  placeholder="e.g. Moulvibazar / Dhaka / Remote"
+                >
+              </div>
+
+              <div class="field full">
+                <label>Extra Information / Reference</label>
+                <textarea
+                  id="applicationReference"
+                  placeholder="Anything else you want to tell us"
+                ></textarea>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PAYMENT -->
+
+          <div class="form-section">
+
+            <h2 class="section-title">Application Payment</h2>
+
+            <p class="section-desc">
+              Complete the application fee payment using the available method.
+            </p>
+
+            <div class="payment-box">
+
+              <div class="payment-summary">
+                <div>
+                  <div class="hint">Application Fee</div>
+                  <div class="payment-price">
+                    <span id="feeAmount">50</span>
+                    <small id="feeCurrency">BDT</small>
+                  </div>
+                </div>
+
+                <div class="hint" id="paymentStatusText">
+                  Payment required
+                </div>
+              </div>
+
+              <div class="merchant" id="merchantBox">
+
+                <div class="merchant-label">
+                  bKash Merchant Number
+                </div>
+
+                <div class="merchant-number" id="merchantNumber">
+                  +8801580422117
+                </div>
+
+              </div>
+
+              <div
+                class="hint"
+                id="paymentInstructions"
+                style="margin-bottom:15px;"
+              >
+                Send the application fee to the merchant number and enter
+                your transaction information below.
+              </div>
+
+              <div class="method-grid" id="methodGrid">
+
+                <div class="method">
+                  <input
+                    id="methodBkash"
+                    name="paymentMethod"
+                    type="radio"
+                    value="bkash"
+                    checked
+                  >
+                  <label for="methodBkash">
+                    bKash
+                  </label>
+                </div>
+
+                <div class="method disabled-method" id="nagadMethod">
+                  <input
+                    id="methodNagad"
+                    name="paymentMethod"
+                    type="radio"
+                    value="nagad"
+                  >
+                  <label for="methodNagad">
+                    Nagad
+                  </label>
+                </div>
+
+                <div class="method disabled-method" id="rocketMethod">
+                  <input
+                    id="methodRocket"
+                    name="paymentMethod"
+                    type="radio"
+                    value="rocket"
+                  >
+                  <label for="methodRocket">
+                    Rocket
+                  </label>
+                </div>
+
+              </div>
+
+              <div class="grid">
+
+                <div class="field">
+                  <label>Sender Mobile Number <span>*</span></label>
+                  <input
+                    id="senderNumber"
+                    type="tel"
+                    placeholder="017XXXXXXXX"
+                  >
+                </div>
+
+                <div class="field">
+                  <label>Transaction ID <span>*</span></label>
+                  <input
+                    id="trxId"
+                    type="text"
+                    placeholder="Example: 9A7B6C5D"
+                  >
+                </div>
+
+                <div class="field">
+                  <label>Payment Date <span>*</span></label>
+                  <input
+                    id="paymentDate"
+                    type="date"
+                  >
+                </div>
+
+              </div>
+
+              <div
+                class="field"
+                id="paymentScreenshotField"
+                style="margin-top:14px;"
+              >
+                <label>Payment Screenshot</label>
+
+                <div class="file-box">
+                  <input
+                    id="paymentScreenshot"
+                    type="file"
+                    accept="image/*"
+                  >
+
+                  <div class="hint">
+                    Screenshot upload will be connected to Firebase Storage
+                    after Storage is enabled.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+
+          <div class="submit-area">
+
+            <label class="consent">
+              <input id="consent" type="checkbox">
+
+              <span>
+                I confirm that the information provided above is accurate and
+                I understand that DigiSER BD may review my application.
+              </span>
+            </label>
+
+            <button
+              class="submit-btn"
+              id="submitBtn"
+              type="button"
+            >
+              Submit Application
+            </button>
 
           </div>
 
         </div>
 
+        <!-- SUCCESS -->
 
-        <div
-          class="alert alert-warning"
-          style="margin-top:18px;"
-        >
-          Payment status will remain <strong>Pending</strong>
-          until DigiSER BD verifies the transaction.
-        </div>
+        <div class="success-screen" id="successScreen">
 
+          <div class="success-icon">
+            ✓
+          </div>
 
-        <div class="form-actions">
+          <h2>Application Submitted</h2>
 
-          <button
-            class="btn"
-            type="button"
-            onclick="backToApplication()"
+          <p>
+            Your application has been successfully submitted to DigiSER BD.
+            Please save your Application ID for future tracking.
+          </p>
+
+          <div
+            class="application-id"
+            id="successApplicationId"
           >
-            ← Back
-          </button>
-
-          <button
-            id="submitBtn"
-            class="btn btn-primary"
-            type="button"
-            onclick="submitApplication()"
-          >
-            Submit Application
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================================
-       SUCCESS
-  ================================= -->
-
-  <section
-    id="successCard"
-    class="card hidden"
-  >
-
-    <div class="card-body">
-
-      <div class="success">
-
-        <div class="success-icon">
-          ✓
-        </div>
-
-        <h2>
-          Application Submitted
-        </h2>
-
-        <p>
-          Your application has been submitted successfully.
-          Your payment is currently waiting for verification.
-        </p>
-
-
-        <div class="application-id">
-
-          <small>
-            Your Application ID
-          </small>
-
-          <strong id="successApplicationId">
             DGS-2026-00000
-          </strong>
+          </div>
 
-        </div>
+          <div class="success-actions">
 
-
-        <div
-          id="successSummary"
-          class="alert alert-success"
-          style="max-width:600px;margin:0 auto;"
-        ></div>
-
-
-        <div class="success-actions">
-
-          <a
-            href="../track-application.html"
-            class="btn btn-primary"
-          >
-            Track Application
-          </a>
-
-          <button
-            class="btn"
-            onclick="startNewApplication()"
-          >
-            Submit Another Application
-          </button>
-
-        </div>
-
-
-        <div
-          class="note"
-          style="margin-top:20px;"
-        >
-          Keep your Application ID for reference.
-          You can track all applications using your registered mobile number.
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- ================================
-     CONFIRM MODAL
-================================= -->
-
-<div
-  id="confirmModal"
-  class="modal"
->
-
-  <div class="modal-card">
-
-    <h3>
-      Confirm Application
-    </h3>
-
-    <p>
-      Please confirm that the information and payment details
-      you provided are correct. Once submitted, the application
-      will enter the payment verification process.
-    </p>
-
-    <div
-      id="confirmSummary"
-      style="
-        margin-top:15px;
-        padding:13px;
-        background:#07131c;
-        border:1px solid var(--border);
-        border-radius:12px;
-        color:#9db1bb;
-        font-size:11px;
-        line-height:1.7;
-      "
-    ></div>
-
-    <div class="modal-actions">
-
-      <button
-        class="btn"
-        onclick="closeConfirmModal()"
-      >
-        Cancel
-      </button>
-
-      <button
-        class="btn btn-primary"
-        onclick="confirmAndSubmit()"
-      >
-        Confirm & Submit
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- ================================
-     LOADER
-================================= -->
-
-<div
-  id="loader"
-  class="loader"
->
-
-  <div class="loader-box">
-
-    <div class="spinner"></div>
-
-    <p id="loaderText">
-      Processing...
-    </p>
-
-  </div>
-
-</div>
-
-
-<script>
-/* ============================================================
-   DIGISER BD REGISTRATION V2
-   ============================================================ */
-
-const DB_KEY = "digiserbd_admin_v2";
-const LEGACY_KEY = "digiserbd_admin_v1";
-
-let DB = null;
-
-let currentStep = 1;
-
-let existingProfile = null;
-
-let selectedPaymentMethod = "";
-
-let submitting = false;
-
-let photoData = null;
-
-let cvData = null;
-
-let paymentScreenshotData = null;
-
-
-/* ============================================================
-   DEFAULT DATABASE
-   ============================================================ */
-
-const DEFAULT_DB = {
-
-  applicantProfiles: [],
-
-  applications: [],
-
-  payments: [],
-
-  settings: {
-
-    payment: {
-
-      enabled: true,
-
-      fee: 50,
-
-      currency: "BDT",
-
-      methods: {
-
-        bkash: {
-          enabled: true,
-          number: "+8801580422117"
-        },
-
-        nagad: {
-          enabled: true,
-          number: ""
-        },
-
-        rocket: {
-          enabled: true,
-          number: ""
-        }
-
-      },
-
-      instructions:
-        "Send the application fee to the selected merchant number. Enter the sender number and transaction ID correctly.",
-
-      screenshotRequired: true
-
-    }
-
-  },
-
-  users: [],
-
-  jobs: [],
-
-  services: [],
-
-  employees: [],
-
-  businesses: [],
-
-  messages: [],
-
-  blog: []
-
-};
-
-
-/* ============================================================
-   DATABASE
-   ============================================================ */
-
-function clone(obj){
-
-  return JSON.parse(
-    JSON.stringify(obj)
-  );
-
-}
-
-
-function normalizeDB(db){
-
-  const output = {
-
-    ...clone(DEFAULT_DB),
-
-    ...db
-
-  };
-
-
-  output.applicantProfiles =
-    Array.isArray(db.applicantProfiles)
-      ? db.applicantProfiles
-      : [];
-
-
-  output.applications =
-    Array.isArray(db.applications)
-      ? db.applications
-      : [];
-
-
-  output.payments =
-    Array.isArray(db.payments)
-      ? db.payments
-      : [];
-
-
-  output.users =
-    Array.isArray(db.users)
-      ? db.users
-      : [];
-
-
-  output.jobs =
-    Array.isArray(db.jobs)
-      ? db.jobs
-      : [];
-
-
-  output.settings =
-    db.settings ||
-    clone(DEFAULT_DB.settings);
-
-
-  output.settings.payment =
-    output.settings.payment ||
-    clone(DEFAULT_DB.settings.payment);
-
-
-  output.settings.payment.methods =
-    output.settings.payment.methods ||
-    clone(DEFAULT_DB.settings.payment.methods);
-
-
-  return output;
-}
-
-
-function getDB(){
-
-  try{
-
-    const saved =
-      localStorage.getItem(DB_KEY);
-
-
-    if(saved){
-
-      return normalizeDB(
-        JSON.parse(saved)
-      );
-
-    }
-
-
-    const legacy =
-      localStorage.getItem(LEGACY_KEY);
-
-
-    if(legacy){
-
-      const migrated =
-        normalizeDB(
-          JSON.parse(legacy)
-        );
-
-
-      localStorage.setItem(
-        DB_KEY,
-        JSON.stringify(migrated)
-      );
-
-
-      return migrated;
-
-    }
-
-
-    const fresh =
-      clone(DEFAULT_DB);
-
-
-    localStorage.setItem(
-      DB_KEY,
-      JSON.stringify(fresh)
-    );
-
-
-    return fresh;
-
-  }catch(error){
-
-    console.error(error);
-
-    return clone(DEFAULT_DB);
-
-  }
-
-}
-
-
-function saveDB(db){
-
-  localStorage.setItem(
-    DB_KEY,
-    JSON.stringify(db)
-  );
-
-}
-
-
-/* ============================================================
-   HELPERS
-   ============================================================ */
-
-function $(id){
-
-  return document.getElementById(id);
-
-}
-
-
-function escapeHTML(value){
-
-  if(
-    value === null ||
-    value === undefined
-  ){
-
-    return "";
-
-  }
-
-
-  return String(value)
-
-    .replaceAll("&","&amp;")
-
-    .replaceAll("<","&lt;")
-
-    .replaceAll(">","&gt;")
-
-    .replaceAll('"',"&quot;")
-
-    .replaceAll("'","&#039;");
-
-}
-
-
-function showLoader(text){
-
-  $("loaderText").textContent =
-    text || "Processing...";
-
-  $("loader").classList.add("show");
-
-}
-
-
-function hideLoader(){
-
-  $("loader").classList.remove("show");
-
-}
-
-
-function normalizeMobile(value){
-
-  return String(value || "")
-    .replace(/\D/g,"")
-    .trim();
-
-}
-
-
-function validBangladeshMobile(value){
-
-  return /^01[3-9]\d{8}$/.test(
-    normalizeMobile(value)
-  );
-
-}
-
-
-function today(){
-
-  return new Date()
-    .toISOString()
-    .slice(0,10);
-
-}
-
-
-function nowISO(){
-
-  return new Date()
-    .toISOString();
-
-}
-
-
-function makeId(prefix){
-
-  return (
-    prefix +
-    "-" +
-    Date.now() +
-    "-" +
-    Math.random()
-      .toString(36)
-      .slice(2,8)
-      .toUpperCase()
-  );
-
-}
-
-
-/* ============================================================
-   APPLICATION ID
-   ============================================================ */
-
-function generateApplicationId(db){
-
-  const year =
-    new Date()
-      .getFullYear();
-
-
-  let id = "";
-
-
-  do{
-
-    const number =
-      Math.floor(
-        10000 +
-        Math.random() * 90000
-      );
-
-
-    id =
-      `DGS-${year}-${number}`;
-
-  }while(
-    db.applications.some(
-      a => a.id === id
-    )
-  );
-
-
-  return id;
-
-}
-
-
-/* ============================================================
-   IMAGE COMPRESSION
-   ============================================================ */
-
-function compressImage(file,maxWidth=900,quality=.78){
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload = function(){
-
-        const img =
-          new Image();
-
-
-        img.onload = function(){
-
-          const scale =
-            Math.min(
-              1,
-              maxWidth / img.width
-            );
-
-
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
-
-
-          canvas.width =
-            Math.round(
-              img.width * scale
-            );
-
-
-          canvas.height =
-            Math.round(
-              img.height * scale
-            );
-
-
-          const ctx =
-            canvas.getContext("2d");
-
-
-          ctx.drawImage(
-            img,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          resolve(
-            canvas.toDataURL(
-              "image/jpeg",
-              quality
-            )
-          );
-
-        };
-
-
-        img.onerror =
-          reject;
-
-
-        img.src =
-          reader.result;
-
-      };
-
-
-      reader.onerror =
-        reject;
-
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-
-}
-
-
-function readFileAsDataURL(file){
-
-  return new Promise(
-    (resolve,reject) => {
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload =
-        () => resolve(
-          reader.result
-        );
-
-
-      reader.onerror =
-        reject;
-
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-
-}
-
-
-/* ============================================================
-   PROFILE LOOKUP
-   ============================================================ */
-
-function findProfileByMobile(mobile){
-
-  const db =
-    getDB();
-
-
-  const normalized =
-    normalizeMobile(mobile);
-
-
-  return (
-    db.applicantProfiles.find(
-      p =>
-        normalizeMobile(p.mobile)
-        === normalized
-    ) || null
-  );
-
-}
-
-
-/* ============================================================
-   LOAD EXISTING PROFILE
-   ============================================================ */
-
-function loadExistingProfile(profile){
-
-  if(!profile){
-    return;
-  }
-
-
-  existingProfile =
-    profile;
-
-
-  $("name").value =
-    profile.name || "";
-
-  $("mobile").value =
-    profile.mobile || "";
-
-  $("email").value =
-    profile.email || "";
-
-  $("emergency").value =
-    profile.emergency || "";
-
-
-  $("currentAddress").value =
-    profile.address?.current || "";
-
-  $("permanentAddress").value =
-    profile.address?.permanent || "";
-
-
-  $("ssc").value =
-    profile.education?.ssc || "";
-
-  $("hsc").value =
-    profile.education?.hsc || "";
-
-  $("graduate").value =
-    profile.education?.graduate || "";
-
-  $("otherEducation").value =
-    profile.education?.other || "";
-
-
-  $("experience").value =
-    profile.experience?.experience || "";
-
-  $("duty").value =
-    profile.experience?.duty || "";
-
-  $("previousSalary").value =
-    profile.experience?.previousSalary || "";
-
-
-  $("skills").value =
-    profile.skills || "";
-
-  $("language").value =
-    profile.language || "";
-
-
-  $("referenceName").value =
-    profile.reference?.name || "";
-
-  $("referenceContact").value =
-    profile.reference?.contact || "";
-
-  $("referenceRelation").value =
-    profile.reference?.relation || "";
-
-
-  if(profile.photo?.dataUrl){
-
-    photoData =
-      profile.photo.dataUrl;
-
-    $("photoInfo").textContent =
-      `Existing photo: ${profile.photo.name || "saved photo"}`;
-
-  }
-
-
-  if(profile.cv?.dataUrl){
-
-    cvData =
-      profile.cv;
-
-    $("cvInfo").textContent =
-      `Existing CV: ${profile.cv.name || "saved CV"}`;
-
-  }
-
-
-  $("profileNotice").className =
-    "alert alert-success";
-
-
-  $("profileNotice").innerHTML =
-    `
-      <strong>Existing profile found.</strong>
-      Your profile will be reused and a new application
-      will be created for this submission.
-    `;
-
-}
-
-
-/* ============================================================
-   MOBILE CHANGE
-   ============================================================ */
-
-$("mobile").addEventListener(
-  "input",
-  function(){
-
-    const value =
-      normalizeMobile(
-        this.value
-      );
-
-
-    if(
-      value.length === 11 &&
-      validBangladeshMobile(value)
-    ){
-
-      const profile =
-        findProfileByMobile(
-          value
-        );
-
-
-      if(profile){
-
-        loadExistingProfile(
-          profile
-        );
-
-      }else{
-
-        existingProfile =
-          null;
-
-        $("profileNotice").className =
-          "alert alert-info";
-
-        $("profileNotice").textContent =
-          "No existing profile found. A new applicant profile will be created.";
-
-      }
-
-    }
-
-  }
-);
-
-
-/* ============================================================
-   PHOTO
-   ============================================================ */
-
-$("photo").addEventListener(
-  "change",
-  async function(){
-
-    const file =
-      this.files?.[0];
-
-
-    if(!file){
-      return;
-    }
-
-
-    if(
-      !file.type.startsWith("image/")
-    ){
-
-      this.value = "";
-
-      $("photoInfo").textContent =
-        "Please select a valid image.";
-
-      return;
-
-    }
-
-
-    try{
-
-      photoData =
-        await compressImage(
-          file
-        );
-
-
-      $("photoInfo").textContent =
-        `${file.name} selected and optimized.`;
-
-    }catch(error){
-
-      console.error(error);
-
-      $("photoInfo").textContent =
-        "Could not process the image.";
-
-    }
-
-  }
-);
-
-
-/* ============================================================
-   CV
-   ============================================================ */
-
-$("cv").addEventListener(
-  "change",
-  async function(){
-
-    const file =
-      this.files?.[0];
-
-
-    if(!file){
-      return;
-    }
-
-
-    const allowed = [
-      "application/pdf",
-      "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    ];
-
-
-    const extension =
-      file.name
-        .split(".")
-        .pop()
-        .toLowerCase();
-
-
-    if(
-      !allowed.includes(file.type) &&
-      !["pdf","doc","docx"].includes(extension)
-    ){
-
-      this.value = "";
-
-      $("cvInfo").textContent =
-        "Only PDF, DOC and DOCX files are allowed.";
-
-      return;
-
-    }
-
-
-    const maxSize =
-      5 * 1024 * 1024;
-
-
-    if(file.size > maxSize){
-
-      this.value = "";
-
-      $("cvInfo").textContent =
-        "CV must be smaller than 5 MB.";
-
-      return;
-
-    }
-
-
-    try{
-
-      const dataUrl =
-        await readFileAsDataURL(
-          file
-        );
-
-
-      cvData = {
-
-        name:file.name,
-
-        type:file.type,
-
-        size:file.size,
-
-        dataUrl:dataUrl
-
-      };
-
-
-      $("cvInfo").textContent =
-        `${file.name} · ${Math.round(file.size / 1024)} KB`;
-
-    }catch(error){
-
-      console.error(error);
-
-      $("cvInfo").textContent =
-        "Could not read the CV file.";
-
-    }
-
-  }
-);
-
-
-/* ============================================================
-   PAYMENT SCREENSHOT
-   ============================================================ */
-
-$("paymentScreenshot").addEventListener(
-  "change",
-  async function(){
-
-    const file =
-      this.files?.[0];
-
-
-    if(!file){
-      return;
-    }
-
-
-    if(
-      !file.type.startsWith("image/")
-    ){
-
-      this.value = "";
-
-      $("paymentScreenshotInfo").textContent =
-        "Please upload an image screenshot.";
-
-      return;
-
-    }
-
-
-    const maxSize =
-      5 * 1024 * 1024;
-
-
-    if(file.size > maxSize){
-
-      this.value = "";
-
-      $("paymentScreenshotInfo").textContent =
-        "Screenshot must be smaller than 5 MB.";
-
-      return;
-
-    }
-
-
-    try{
-
-      const dataUrl =
-        await compressImage(
-          file,
-          1400,
-          .78
-        );
-
-
-      paymentScreenshotData = {
-
-        name:file.name,
-
-        type:file.type,
-
-        size:file.size,
-
-        dataUrl:dataUrl
-
-      };
-
-
-      $("paymentScreenshotInfo").textContent =
-        `${file.name} selected.`;
-
-    }catch(error){
-
-      console.error(error);
-
-      $("paymentScreenshotInfo").textContent =
-        "Could not process screenshot.";
-
-    }
-
-  }
-);
-
-
-/* ============================================================
-   STEP 1 → 2
-   ============================================================ */
-
-function validateProfile(){
-
-  const name =
-    $("name").value.trim();
-
-  const mobile =
-    normalizeMobile(
-      $("mobile").value
-    );
-
-
-  if(!name){
-
-    alert(
-      "Please enter your full name."
-    );
-
-    $("name").focus();
-
-    return false;
-
-  }
-
-
-  if(
-    !validBangladeshMobile(
-      mobile
-    )
-  ){
-
-    alert(
-      "Please enter a valid Bangladesh mobile number, for example 017XXXXXXXX."
-    );
-
-    $("mobile").focus();
-
-    return false;
-
-  }
-
-
-  if(
-    $("email").value.trim()
-    &&
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-      $("email").value.trim()
-    )
-  ){
-
-    alert(
-      "Please enter a valid email address."
-    );
-
-    $("email").focus();
-
-    return false;
-
-  }
-
-
-  if(!cvData){
-
-    alert(
-      "Please upload your CV."
-    );
-
-    $("cv").focus();
-
-    return false;
-
-  }
-
-
-  return true;
-
-}
-
-
-function goToApplication(){
-
-  if(!validateProfile()){
-    return;
-  }
-
-
-  const mobile =
-    normalizeMobile(
-      $("mobile").value
-    );
-
-
-  const profile =
-    findProfileByMobile(
-      mobile
-    );
-
-
-  if(profile){
-
-    loadExistingProfile(
-      profile
-    );
-
-  }
-
-
-  $("applicationNotice").innerHTML =
-    `
-      Applying as
-      <strong>
-        ${escapeHTML($("name").value.trim())}
-      </strong>
-      using mobile
-      <strong>
-        ${escapeHTML(mobile)}
-      </strong>.
-      Your profile and application are stored separately.
-    `;
-
-
-  showStep(2);
-
-}
-
-
-/* ============================================================
-   STEP 2 → 3
-   ============================================================ */
-
-function goToPayment(){
-
-  const jobTitle =
-    $("jobTitle")
-      .value
-      .trim();
-
-
-  if(!jobTitle){
-
-    alert(
-      "Please enter the job or position you are applying for."
-    );
-
-    $("jobTitle").focus();
-
-    return;
-
-  }
-
-
-  const db =
-    getDB();
-
-
-  const payment =
-    db.settings.payment;
-
-
-  renderPaymentSettings(
-    payment
-  );
-
-
-  $("jobDisplay").textContent =
-    jobTitle;
-
-
-  $("applicantDisplay").textContent =
-    $("name").value.trim();
-
-
-  showStep(3);
-
-}
-
-
-/* ============================================================
-   PAYMENT SETTINGS
-   ============================================================ */
-
-function renderPaymentSettings(payment){
-
-  const enabled =
-    payment.enabled !== false;
-
-
-  $("paymentArea")
-    .classList.toggle(
-      "hidden",
-      !enabled
-    );
-
-
-  $("paymentDisabled")
-    .classList.toggle(
-      "hidden",
-      enabled
-    );
-
-
-  $("feeDisplay").textContent =
-    `${payment.fee ?? 0} ${payment.currency || "BDT"}`;
-
-
-  const methods =
-    payment.methods || {};
-
-
-  const methodGrid =
-    $("methodGrid");
-
-
-  const available = [
-
-    {
-      key:"bkash",
-      label:"bKash",
-      description:"Mobile financial service",
-      config:methods.bkash
-    },
-
-    {
-      key:"nagad",
-      label:"Nagad",
-      description:"Mobile financial service",
-      config:methods.nagad
-    },
-
-    {
-      key:"rocket",
-      label:"Rocket",
-      description:"Mobile financial service",
-      config:methods.rocket
-    }
-
-  ];
-
-
-  methodGrid.innerHTML =
-    available
-      .map(method => {
-
-        const config =
-          method.config || {};
-
-        const active =
-          config.enabled !== false &&
-          !!config.number;
-
-
-        return `
-          <label
-            class="method-card ${
-              active
-                ? ""
-                : "disabled"
-            } ${
-              selectedPaymentMethod === method.key
-                ? "selected"
-                : ""
-            }"
-          >
-
-            <input
-              type="radio"
-              name="paymentMethod"
-              value="${method.key}"
-              ${selectedPaymentMethod === method.key ? "checked" : ""}
-              ${active ? "" : "disabled"}
-              onchange="selectPaymentMethod('${method.key}')"
+            <a
+              class="primary"
+              id="trackingLink"
+              href="../track-application.html"
             >
+              Track Application
+            </a>
 
-            <strong>
-              ${escapeHTML(method.label)}
-            </strong>
+            <a href="../index.html">
+              Back to Website
+            </a>
 
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SIDE INFO -->
+
+      <aside class="side-card">
+
+        <div class="side-title">
+          Application Guide
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">01</div>
+
+          <div>
+            <strong>Create Profile</strong>
             <span>
-              ${
-                active
-                  ? escapeHTML(method.description)
-                  : "Currently unavailable"
-              }
+              Your profile is linked with your mobile number.
             </span>
-
-          </label>
-        `;
-
-      })
-      .join("");
-
-
-  const firstAvailable =
-    available.find(
-      method =>
-        method.config &&
-        method.config.enabled !== false &&
-        method.config.number
-    );
-
-
-  if(
-    !selectedPaymentMethod &&
-    firstAvailable
-  ){
-
-    selectPaymentMethod(
-      firstAvailable.key
-    );
-
-  }
-
-
-  $("paymentInstructions").textContent =
-    payment.instructions ||
-    "Send the application fee to the selected merchant number.";
-
-
-  const required =
-    payment.screenshotRequired !== false;
-
-
-  $("screenshotRequiredLabel")
-    .textContent =
-      required ? "*" : "(Optional)";
-
-
-  $("paymentScreenshot")
-    .required =
-      required;
-
-}
-
-
-function selectPaymentMethod(method){
-
-  const db =
-    getDB();
-
-
-  const config =
-    db.settings
-      ?.payment
-      ?.methods
-      ?.[method];
-
-
-  if(
-    !config ||
-    config.enabled === false ||
-    !config.number
-  ){
-
-    return;
-
-  }
-
-
-  selectedPaymentMethod =
-    method;
-
-
-  document
-    .querySelectorAll(".method-card")
-    .forEach(card => {
-
-      const input =
-        card.querySelector(
-          "input"
-        );
-
-      card.classList.toggle(
-        "selected",
-        input &&
-        input.value === method
-      );
-
-    });
-
-
-  $("merchantBox")
-    .classList.remove(
-      "hidden"
-    );
-
-
-  $("merchantNumber")
-    .textContent =
-      config.number;
-
-
-  $("paymentInstructions")
-    .textContent =
-      db.settings.payment.instructions
-      ||
-      "Send the application fee to the selected merchant number.";
-
-}
-
-
-/* ============================================================
-   PAYMENT VALIDATION
-   ============================================================ */
-
-function validatePayment(){
-
-  const db =
-    getDB();
-
-
-  const payment =
-    db.settings.payment;
-
-
-  if(payment.enabled === false){
-
-    return true;
-
-  }
-
-
-  if(!selectedPaymentMethod){
-
-    alert(
-      "Please select a payment method."
-    );
-
-    return false;
-
-  }
-
-
-  const sender =
-    normalizeMobile(
-      $("senderNumber").value
-    );
-
-
-  if(
-    !validBangladeshMobile(
-      sender
-    )
-  ){
-
-    alert(
-      "Please enter a valid sender mobile number."
-    );
-
-    $("senderNumber").focus();
-
-    return false;
-
-  }
-
-
-  const trxId =
-    $("trxId")
-      .value
-      .trim();
-
-
-  if(!trxId){
-
-    alert(
-      "Please enter the transaction ID."
-    );
-
-    $("trxId").focus();
-
-    return false;
-
-  }
-
-
-  if(
-    !$("paymentDate").value
-  ){
-
-    alert(
-      "Please select the payment date."
-    );
-
-    $("paymentDate").focus();
-
-    return false;
-
-  }
-
-
-  if(
-    payment.screenshotRequired !== false &&
-    !paymentScreenshotData
-  ){
-
-    alert(
-      "Please upload the payment screenshot."
-    );
-
-    $("paymentScreenshot").focus();
-
-    return false;
-
-  }
-
-
-  return true;
-
-}
-
-
-/* ============================================================
-   SUBMIT
-   ============================================================ */
-
-function submitApplication(){
-
-  if(submitting){
-    return;
-  }
-
-
-  if(!validateProfile()){
-    showStep(1);
-    return;
-  }
-
-
-  if(
-    !$("jobTitle")
-      .value
-      .trim()
-  ){
-
-    showStep(2);
-
-    alert(
-      "Please enter the job or position."
-    );
-
-    return;
-
-  }
-
-
-  if(!validatePayment()){
-    return;
-  }
-
-
-  const db =
-    getDB();
-
-
-  const mobile =
-    normalizeMobile(
-      $("mobile").value
-    );
-
-
-  const profile =
-    db.applicantProfiles.find(
-      p =>
-        normalizeMobile(p.mobile)
-        === mobile
-    );
-
-
-  const fee =
-    Number(
-      db.settings?.payment?.fee
-    ) || 0;
-
-
-  const currency =
-    db.settings?.payment?.currency
-    || "BDT";
-
-
-  $("confirmSummary").innerHTML =
-    `
-      <strong>
-        Applicant:
-      </strong>
-      ${escapeHTML($("name").value.trim())}
-      <br>
-
-      <strong>
-        Mobile:
-      </strong>
-      ${escapeHTML(mobile)}
-      <br>
-
-      <strong>
-        Position:
-      </strong>
-      ${escapeHTML($("jobTitle").value.trim())}
-      <br>
-
-      <strong>
-        Payment:
-      </strong>
-      ${fee} ${escapeHTML(currency)}
-      <br>
-
-      <strong>
-        Method:
-      </strong>
-      ${escapeHTML(selectedPaymentMethod.toUpperCase())}
-    `;
-
-
-  $("confirmModal")
-    .classList.add("show");
-
-}
-
-
-function closeConfirmModal(){
-
-  $("confirmModal")
-    .classList.remove("show");
-
-}
-
-
-async function confirmAndSubmit(){
-
-  if(submitting){
-    return;
-  }
-
-
-  submitting = true;
-
-
-  closeConfirmModal();
-
-
-  $("submitBtn").disabled =
-    true;
-
-
-  showLoader(
-    "Creating applicant profile..."
-  );
-
-
-  try{
-
-    const db =
-      getDB();
-
-
-    const now =
-      nowISO();
-
-
-    const mobile =
-      normalizeMobile(
-        $("mobile").value
-      );
-
-
-    /*
-      ==========================================
-      1. FIND OR CREATE PROFILE
-      ==========================================
-    */
-
-    let profile =
-      db.applicantProfiles.find(
-        p =>
-          normalizeMobile(p.mobile)
-          === mobile
-      );
-
-
-    const profilePayload = {
-
-      name:
-        $("name")
-          .value
-          .trim(),
-
-      mobile,
-
-      email:
-        $("email")
-          .value
-          .trim(),
-
-      emergency:
-        $("emergency")
-          .value
-          .trim(),
-
-      address:{
-
-        current:
-          $("currentAddress")
-            .value
-            .trim(),
-
-        permanent:
-          $("permanentAddress")
-            .value
-            .trim()
-
-      },
-
-      education:{
-
-        ssc:
-          $("ssc")
-            .value
-            .trim(),
-
-        hsc:
-          $("hsc")
-            .value
-            .trim(),
-
-        graduate:
-          $("graduate")
-            .value
-            .trim(),
-
-        other:
-          $("otherEducation")
-            .value
-            .trim()
-
-      },
-
-      experience:{
-
-        experience:
-          $("experience")
-            .value
-            .trim(),
-
-        duty:
-          $("duty")
-            .value
-            .trim(),
-
-        previousSalary:
-          $("previousSalary")
-            .value
-            .trim()
-
-      },
-
-      skills:
-        $("skills")
-          .value
-          .trim(),
-
-      language:
-        $("language")
-          .value
-          .trim(),
-
-      profile:
-        "",
-
-      reference:{
-
-        name:
-          $("referenceName")
-            .value
-            .trim(),
-
-        contact:
-          $("referenceContact")
-            .value
-            .trim(),
-
-        relation:
-          $("referenceRelation")
-            .value
-            .trim()
-
-      }
-
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">02</div>
+
+          <div>
+            <strong>Submit Application</strong>
+            <span>
+              You can submit multiple applications using one profile.
+            </span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">03</div>
+
+          <div>
+            <strong>Complete Payment</strong>
+            <span>
+              Payment is recorded separately from application status.
+            </span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">04</div>
+
+          <div>
+            <strong>Track Anytime</strong>
+            <span>
+              Use your registered mobile number to see application progress.
+            </span>
+          </div>
+        </div>
+
+        <div class="firebase-status">
+          <strong>● Firebase Connected</strong>
+          <br>
+          DigiSER BD application data is being prepared for Firestore.
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <script type="module">
+
+    /* =========================================================
+       FIREBASE
+    ========================================================= */
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+    import {
+      getFirestore,
+      collection,
+      doc,
+      getDoc,
+      getDocs,
+      query,
+      where,
+      setDoc,
+      addDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
+      authDomain: "digiserbds.firebaseapp.com",
+      projectId: "digiserbds",
+      storageBucket: "digiserbds.firebasestorage.app",
+      messagingSenderId: "543059824242",
+      appId: "1:543059824242:web:71cf0227ecddf2f840fceb",
+      measurementId: "G-NX8RD20E7S"
     };
 
 
-    if(
-      photoData
-    ){
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-      profilePayload.photo = {
 
-        name:
-          $("photo").files?.[0]?.name
-          ||
-          profile?.photo?.name
-          ||
-          "profile-photo.jpg",
+    /* =========================================================
+       CONSTANTS
+    ========================================================= */
 
-        type:"image/jpeg",
+    const DB_KEY = "digiserbd_admin_v2";
+    const LEGACY_KEY = "digiserbd_admin_v1";
 
-        size:
-          photoData.length,
+    const DEFAULT_SETTINGS = {
+      payment: {
+        enabled: true,
+        fee: 50,
+        currency: "BDT",
 
-        dataUrl:
-          photoData
+        methods: {
+          bkash: {
+            enabled: true,
+            number: "+8801580422117"
+          },
 
+          nagad: {
+            enabled: false,
+            number: ""
+          },
+
+          rocket: {
+            enabled: false,
+            number: ""
+          }
+        },
+
+        instructions:
+          "Send the application fee to the merchant number and enter your transaction information below.",
+
+        screenshotRequired: true
+      }
+    };
+
+
+    let settings = structuredClone(DEFAULT_SETTINGS);
+
+    let isSubmitting = false;
+
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================= */
+
+    const $ = id => document.getElementById(id);
+
+    const alertBox = $("alert");
+    const loading = $("loading");
+    const loadingText = $("loadingText");
+
+    const submitBtn = $("submitBtn");
+
+    const formArea = $("formArea");
+    const successScreen = $("successScreen");
+
+    const successApplicationId = $("successApplicationId");
+    const trackingLink = $("trackingLink");
+
+
+    /* =========================================================
+       HELPERS
+    ========================================================= */
+
+    function showLoading(message = "Please wait...") {
+
+      loadingText.textContent = message;
+      loading.classList.add("show");
+    }
+
+
+    function hideLoading() {
+
+      loading.classList.remove("show");
+    }
+
+
+    function showAlert(message, type = "error") {
+
+      alertBox.textContent = message;
+      alertBox.className = `alert show ${type}`;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function hideAlert() {
+
+      alertBox.className = "alert";
+      alertBox.textContent = "";
+    }
+
+
+    function normalizeMobile(value) {
+
+      let phone = String(value || "")
+        .trim()
+        .replace(/\s+/g, "")
+        .replace(/-/g, "");
+
+      if (phone.startsWith("+880")) {
+        phone = "0" + phone.slice(4);
+      }
+
+      if (phone.startsWith("880")) {
+        phone = "0" + phone.slice(3);
+      }
+
+      return phone;
+    }
+
+
+    function validBangladeshMobile(value) {
+
+      const phone = normalizeMobile(value);
+
+      return /^01[3-9]\d{8}$/.test(phone);
+    }
+
+
+    function uid() {
+
+      if (crypto && crypto.randomUUID) {
+        return crypto.randomUUID();
+      }
+
+      return "id-" +
+        Date.now().toString(36) +
+        "-" +
+        Math.random().toString(36).slice(2, 10);
+    }
+
+
+    function generateApplicationId() {
+
+      const year = new Date().getFullYear();
+
+      const number = Math.floor(
+        10000 + Math.random() * 90000
+      );
+
+      return `DGS-${year}-${number}`;
+    }
+
+
+    function safeText(value) {
+
+      return String(value ?? "").trim();
+    }
+
+
+    function getLocalDB() {
+
+      try {
+
+        const current =
+          JSON.parse(localStorage.getItem(DB_KEY) || "null");
+
+        if (current) {
+          return current;
+        }
+
+        const legacy =
+          JSON.parse(localStorage.getItem(LEGACY_KEY) || "null");
+
+        if (legacy) {
+          return legacy;
+        }
+
+      } catch (error) {
+
+        console.warn("Local database read failed", error);
+      }
+
+      return {
+        applicantProfiles: [],
+        applications: [],
+        payments: [],
+        settings: structuredClone(DEFAULT_SETTINGS),
+        users: [],
+        jobs: [],
+        services: [],
+        employees: [],
+        businesses: [],
+        messages: [],
+        blog: []
       };
-
-    }else if(profile?.photo){
-
-      profilePayload.photo =
-        profile.photo;
-
-    }else{
-
-      profilePayload.photo =
-        null;
-
     }
 
 
-    if(cvData){
+    function saveLocalDB(dbData) {
 
-      profilePayload.cv =
-        cvData;
-
-    }else if(profile?.cv){
-
-      profilePayload.cv =
-        profile.cv;
-
-    }else{
-
-      profilePayload.cv =
-        null;
-
+      localStorage.setItem(
+        DB_KEY,
+        JSON.stringify(dbData)
+      );
     }
 
 
-    if(profile){
+    function getFileMeta(file) {
 
-      /*
-        Existing profile:
-        update profile instead of duplicate
-      */
+      if (!file) {
+        return null;
+      }
 
-      Object.assign(
-        profile,
-        profilePayload
+      return {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        lastModified: file.lastModified
+      };
+    }
+
+
+    /* =========================================================
+       FIRESTORE SETTINGS
+    ========================================================= */
+
+    async function loadPaymentSettings() {
+
+      try {
+
+        const ref = doc(
+          db,
+          "settings",
+          "payment"
+        );
+
+        const snap = await getDoc(ref);
+
+        if (snap.exists()) {
+
+          const remote = snap.data();
+
+          settings = {
+            ...structuredClone(DEFAULT_SETTINGS),
+            payment: {
+              ...DEFAULT_SETTINGS.payment,
+              ...(remote || {}),
+              methods: {
+                ...DEFAULT_SETTINGS.payment.methods,
+                ...(remote.methods || {})
+              }
+            }
+          };
+
+          return;
+        }
+
+      } catch (error) {
+
+        console.warn(
+          "Firestore payment settings unavailable:",
+          error
+        );
+      }
+
+
+      const localDB = getLocalDB();
+
+      if (localDB.settings?.payment) {
+
+        settings = {
+          ...structuredClone(DEFAULT_SETTINGS),
+          payment: {
+            ...DEFAULT_SETTINGS.payment,
+            ...localDB.settings.payment,
+            methods: {
+              ...DEFAULT_SETTINGS.payment.methods,
+              ...(localDB.settings.payment.methods || {})
+            }
+          }
+        };
+      }
+    }
+
+
+    function renderPaymentSettings() {
+
+      const payment = settings.payment;
+
+      $("feeAmount").textContent =
+        payment.fee ?? 50;
+
+      $("feeCurrency").textContent =
+        payment.currency || "BDT";
+
+      $("paymentInstructions").textContent =
+        payment.instructions ||
+        DEFAULT_SETTINGS.payment.instructions;
+
+
+      const bkash =
+        payment.methods?.bkash;
+
+      const nagad =
+        payment.methods?.nagad;
+
+      const rocket =
+        payment.methods?.rocket;
+
+
+      const bkashEnabled =
+        payment.enabled &&
+        bkash?.enabled;
+
+      const nagadEnabled =
+        payment.enabled &&
+        nagad?.enabled;
+
+      const rocketEnabled =
+        payment.enabled &&
+        rocket?.enabled;
+
+
+      $("methodBkash").disabled =
+        !bkashEnabled;
+
+      $("methodNagad").disabled =
+        !nagadEnabled;
+
+      $("methodRocket").disabled =
+        !rocketEnabled;
+
+
+      $("nagadMethod").classList.toggle(
+        "disabled-method",
+        !nagadEnabled
+      );
+
+      $("rocketMethod").classList.toggle(
+        "disabled-method",
+        !rocketEnabled
       );
 
 
-      profile.updated =
-        now;
+      if (bkashEnabled) {
+
+        $("merchantNumber").textContent =
+          bkash.number || "Not configured";
+
+        $("merchantBox").querySelector(
+          ".merchant-label"
+        ).textContent =
+          "bKash Merchant Number";
+
+        $("methodBkash").checked = true;
+
+      } else if (nagadEnabled) {
+
+        $("merchantNumber").textContent =
+          nagad.number || "Not configured";
+
+        $("merchantBox").querySelector(
+          ".merchant-label"
+        ).textContent =
+          "Nagad Merchant Number";
+
+        $("methodNagad").checked = true;
+
+      } else if (rocketEnabled) {
+
+        $("merchantNumber").textContent =
+          rocket.number || "Not configured";
+
+        $("merchantBox").querySelector(
+          ".merchant-label"
+        ).textContent =
+          "Rocket Merchant Number";
+
+        $("methodRocket").checked = true;
+
+      } else {
+
+        $("merchantNumber").textContent =
+          "Payment method unavailable";
+
+        $("methodGrid").style.display = "none";
+      }
 
 
-    }else{
+      if (!payment.enabled) {
 
-      /*
-        New profile
-      */
+        $("paymentStatusText").textContent =
+          "Payment currently disabled";
 
-      profile = {
+        $("merchantBox").style.display =
+          "none";
 
-        id:
-          makeId("PROFILE"),
+        $("methodGrid").style.display =
+          "none";
 
-        ...profilePayload,
+        $("senderNumber").disabled = true;
+        $("trxId").disabled = true;
+        $("paymentDate").disabled = true;
+
+      } else {
+
+        $("paymentStatusText").textContent =
+          "Payment required";
+      }
+
+
+      if (payment.screenshotRequired) {
+
+        $("paymentScreenshotField")
+          .querySelector("label")
+          .innerHTML =
+          'Payment Screenshot <span>*</span>';
+
+      } else {
+
+        $("paymentScreenshotField")
+          .querySelector("label")
+          .textContent =
+          "Payment Screenshot";
+      }
+    }
+
+
+    /* =========================================================
+       PROFILE LOOKUP
+    ========================================================= */
+
+    async function findExistingProfile(mobile) {
+
+      const normalized =
+        normalizeMobile(mobile);
+
+
+      try {
+
+        const q = query(
+          collection(db, "applicantProfiles"),
+          where("mobile", "==", normalized)
+        );
+
+        const snapshot =
+          await getDocs(q);
+
+        if (!snapshot.empty) {
+
+          const first =
+            snapshot.docs[0];
+
+          return {
+            id: first.id,
+            data: first.data(),
+            source: "firebase"
+          };
+        }
+
+      } catch (error) {
+
+        console.warn(
+          "Firebase profile lookup failed:",
+          error
+        );
+      }
+
+
+      const localDB = getLocalDB();
+
+      const localProfile =
+        (localDB.applicantProfiles || [])
+          .find(
+            profile =>
+              normalizeMobile(profile.mobile) === normalized
+          );
+
+      if (localProfile) {
+
+        return {
+          id: localProfile.id,
+          data: localProfile,
+          source: "local"
+        };
+      }
+
+
+      return null;
+    }
+
+
+    /* =========================================================
+       FORM DATA
+    ========================================================= */
+
+    function collectFormData() {
+
+      return {
+
+        name: safeText($("name").value),
+
+        mobile:
+          normalizeMobile($("mobile").value),
+
+        email:
+          safeText($("email").value),
+
+        emergency:
+          normalizeMobile($("emergency").value),
+
+        address: {
+
+          current:
+            safeText($("currentAddress").value),
+
+          permanent:
+            safeText($("permanentAddress").value)
+        },
+
+        education: {
+
+          ssc:
+            safeText($("ssc").value),
+
+          hsc:
+            safeText($("hsc").value),
+
+          graduate:
+            safeText($("graduate").value),
+
+          other:
+            safeText($("otherEducation").value)
+        },
+
+        experience: {
+
+          experience:
+            safeText($("experience").value),
+
+          duty:
+            safeText($("duty").value),
+
+          previousSalary:
+            safeText($("previousSalary").value)
+        },
+
+        skills:
+          safeText($("skills").value),
+
+        language:
+          safeText($("language").value),
+
+        reference: {
+
+          name:
+            safeText($("referenceName").value),
+
+          contact:
+            safeText($("referenceContact").value),
+
+          relation:
+            safeText($("referenceRelation").value)
+        },
+
+        files: {
+
+          photo:
+            getFileMeta(
+              $("photo").files[0]
+            ),
+
+          cv:
+            getFileMeta(
+              $("cv").files[0]
+            )
+        }
+      };
+    }
+
+
+    function collectApplicationData() {
+
+      return {
+
+        jobTitle:
+          safeText($("jobTitle").value),
+
+        salary:
+          safeText($("expectedSalary").value),
+
+        type:
+          safeText($("applicationType").value),
+
+        location:
+          safeText($("location").value),
+
+        reference:
+          safeText($("applicationReference").value)
+      };
+    }
+
+
+    function collectPaymentData() {
+
+      const method =
+        document.querySelector(
+          'input[name="paymentMethod"]:checked'
+        )?.value || "bkash";
+
+      return {
+
+        method,
+
+        amount:
+          Number(settings.payment.fee || 50),
+
+        senderNumber:
+          normalizeMobile(
+            $("senderNumber").value
+          ),
+
+        trxId:
+          safeText($("trxId").value),
+
+        paymentDate:
+          $("paymentDate").value,
+
+        screenshot:
+          getFileMeta(
+            $("paymentScreenshot").files[0]
+          )
+      };
+    }
+
+
+    /* =========================================================
+       VALIDATION
+    ========================================================= */
+
+    function validateForm() {
+
+      const profile =
+        collectFormData();
+
+      const application =
+        collectApplicationData();
+
+      const payment =
+        collectPaymentData();
+
+
+      if (!profile.name) {
+
+        showAlert(
+          "Please enter your full name."
+        );
+
+        $("name").focus();
+
+        return false;
+      }
+
+
+      if (!validBangladeshMobile(profile.mobile)) {
+
+        showAlert(
+          "Please enter a valid Bangladesh mobile number."
+        );
+
+        $("mobile").focus();
+
+        return false;
+      }
+
+
+      if (!application.jobTitle) {
+
+        showAlert(
+          "Please enter the job title."
+        );
+
+        $("jobTitle").focus();
+
+        return false;
+      }
+
+
+      if (settings.payment.enabled) {
+
+        if (
+          !validBangladeshMobile(
+            payment.senderNumber
+          )
+        ) {
+
+          showAlert(
+            "Please enter a valid sender mobile number."
+          );
+
+          $("senderNumber").focus();
+
+          return false;
+        }
+
+
+        if (!payment.trxId) {
+
+          showAlert(
+            "Please enter your payment Transaction ID."
+          );
+
+          $("trxId").focus();
+
+          return false;
+        }
+
+
+        if (!payment.paymentDate) {
+
+          showAlert(
+            "Please select the payment date."
+          );
+
+          $("paymentDate").focus();
+
+          return false;
+        }
+
+
+        if (
+          settings.payment.screenshotRequired &&
+          !$("paymentScreenshot").files[0]
+        ) {
+
+          showAlert(
+            "Payment screenshot is required."
+          );
+
+          return false;
+        }
+      }
+
+
+      if (!$("consent").checked) {
+
+        showAlert(
+          "Please confirm the information before submitting."
+        );
+
+        return false;
+      }
+
+
+      return true;
+    }
+
+
+    /* =========================================================
+       FIRESTORE PROFILE
+    ========================================================= */
+
+    async function saveApplicantProfile(profile) {
+
+      const existing =
+        await findExistingProfile(
+          profile.mobile
+        );
+
+
+      const profileId =
+        existing?.id || uid();
+
+
+      const profileData = {
+
+        id: profileId,
+
+        ...profile,
+
+        updated:
+          new Date().toISOString(),
+
+        updatedAt:
+          serverTimestamp(),
+
+        source:
+          "website",
+
+        firebaseVersion:
+          1
+      };
+
+
+      if (existing?.source === "firebase") {
+
+        await setDoc(
+          doc(
+            db,
+            "applicantProfiles",
+            profileId
+          ),
+          profileData,
+          { merge: true }
+        );
+
+      } else {
+
+        await setDoc(
+          doc(
+            db,
+            "applicantProfiles",
+            profileId
+          ),
+          {
+            ...profileData,
+
+            created:
+              existing?.data?.created ||
+              new Date().toISOString(),
+
+            createdAt:
+              existing?.data?.createdAt ||
+              serverTimestamp()
+          },
+          { merge: true }
+        );
+      }
+
+
+      return {
+        id: profileId,
+        existing
+      };
+    }
+
+
+    /* =========================================================
+       FIRESTORE APPLICATION
+    ========================================================= */
+
+    async function saveApplication(
+      applicationId,
+      profileId,
+      applicationData
+    ) {
+
+      const now =
+        new Date().toISOString();
+
+
+      const statusHistory = [
+
+        {
+          status: "submitted",
+          at: now
+        },
+
+        {
+          status: "payment_pending",
+          at: now
+        }
+
+      ];
+
+
+      const application = {
+
+        applicationId,
+
+        profileId,
+
+        jobId: "",
+
+        jobTitle:
+          applicationData.jobTitle,
+
+        source:
+          "website",
 
         created:
           now,
 
         updated:
-          now
+          now,
 
+        createdAt:
+          serverTimestamp(),
+
+        updatedAt:
+          serverTimestamp(),
+
+        status:
+          settings.payment.enabled
+            ? "payment_pending"
+            : "submitted",
+
+        paymentStatus:
+          settings.payment.enabled
+            ? "pending"
+            : "not_required",
+
+        notes: "",
+
+        applicationData,
+
+        statusHistory,
+
+        firebaseVersion:
+          1
       };
 
 
-      db.applicantProfiles.push(
-        profile
-      );
+      const ref =
+        await addDoc(
+          collection(
+            db,
+            "applications"
+          ),
+          application
+        );
 
+
+      return {
+        firestoreId: ref.id,
+        application
+      };
     }
 
 
-    showLoader(
-      "Creating application..."
-    );
+    /* =========================================================
+       FIRESTORE PAYMENT
+    ========================================================= */
 
-
-    /*
-      ==========================================
-      2. CREATE APPLICATION
-      ==========================================
-    */
-
-    const applicationId =
-      generateApplicationId(
-        db
-      );
-
-
-    const application = {
-
-      id:
-        applicationId,
-
-      profileId:
-        profile.id,
-
-      jobId:
-        "",
-
-      jobTitle:
-        $("jobTitle")
-          .value
-          .trim(),
-
-      source:
-        "website",
-
-      created:
-        now,
-
-      updated:
-        now,
-
-      status:
-        "payment_pending",
-
-      paymentStatus:
-        "pending",
-
-      notes:
-        "",
-
-      applicationData:{
-
-        salary:
-          $("expectedSalary")
-            .value
-            .trim(),
-
-        type:
-          $("applicationType")
-            .value,
-
-        location:
-          $("applicationLocation")
-            .value
-            .trim(),
-
-        extraInfo:
-          $("extraInfo")
-            .value
-            .trim(),
-
-        reference:
-          $("applicationReference")
-            .value
-            .trim()
-
-      },
-
-      statusHistory:[
-
-        {
-          status:
-            "submitted",
-
-          at:
-            now
-
-        },
-
-        {
-          status:
-            "payment_pending",
-
-          at:
-            now
-
-        }
-
-      ]
-
-    };
-
-
-    db.applications.push(
-      application
-    );
-
-
-    showLoader(
-      "Saving payment record..."
-    );
-
-
-    /*
-      ==========================================
-      3. CREATE PAYMENT
-      ==========================================
-    */
-
-    const paymentEnabled =
-      db.settings?.payment?.enabled
-      !== false;
-
-
-    const payment = {
-
-      id:
-        makeId("PAY"),
-
-      applicationId:
-        applicationId,
-
-      method:
-        paymentEnabled
-          ? selectedPaymentMethod
-          : "none",
-
-      amount:
-        Number(
-          db.settings?.payment?.fee
-        ) || 0,
-
-      currency:
-        db.settings?.payment?.currency
-        || "BDT",
-
-      senderNumber:
-        paymentEnabled
-          ? normalizeMobile(
-              $("senderNumber").value
-            )
-          : "",
-
-      trxId:
-        paymentEnabled
-          ? $("trxId")
-              .value
-              .trim()
-          : "",
-
-      paymentDate:
-        paymentEnabled
-          ? $("paymentDate").value
-          : "",
-
-      screenshot:
-        paymentScreenshotData
-          ? paymentScreenshotData
-          : null,
-
-      status:
-        paymentEnabled
-          ? "pending"
-          : "not_required",
-
-      created:
-        now,
-
-      updated:
-        now
-
-    };
-
-
-    db.payments.push(
+    async function savePayment(
+      applicationId,
+      profileId,
       payment
-    );
+    ) {
+
+      const now =
+        new Date().toISOString();
 
 
-    /*
-      ==========================================
-      4. LEGACY USERS MIRROR
-      ==========================================
-    */
+      const paymentRecord = {
 
-    const existingUserIndex =
-      db.users.findIndex(
-        u =>
-          normalizeMobile(
-            u.mobile ||
-            u.phone
-          ) === mobile
-      );
-
-
-    const legacyUser = {
-
-      id:
-        profile.id,
-
-      profileId:
-        profile.id,
-
-      applicationId:
         applicationId,
 
-      trackingNumber:
-        applicationId,
+        profileId,
 
-      name:
-        profile.name,
+        method:
+          payment.method,
 
-      mobile:
-        mobile,
+        amount:
+          payment.amount,
 
-      email:
-        profile.email,
+        senderNumber:
+          payment.senderNumber,
 
-      job:
-        application.jobTitle,
+        trxId:
+          payment.trxId,
 
-      status:
-        application.status,
+        paymentDate:
+          payment.paymentDate,
 
-      paymentStatus:
-        application.paymentStatus,
+        screenshot:
+          payment.screenshot,
 
-      created:
-        profile.created,
+        status:
+          "pending",
 
-      updated:
-        now
+        created:
+          now,
 
-    };
+        updated:
+          now,
 
+        createdAt:
+          serverTimestamp(),
 
-    if(existingUserIndex >= 0){
+        updatedAt:
+          serverTimestamp(),
 
-      db.users[
-        existingUserIndex
-      ] = {
-
-        ...db.users[
-          existingUserIndex
-        ],
-
-        ...legacyUser
-
+        firebaseVersion:
+          1
       };
 
-    }else{
 
-      db.users.push(
-        legacyUser
-      );
+      const ref =
+        await addDoc(
+          collection(
+            db,
+            "payments"
+          ),
+          paymentRecord
+        );
 
+
+      return {
+        firestoreId: ref.id,
+        paymentRecord
+      };
     }
 
 
-    /*
-      ==========================================
-      5. SAVE EVERYTHING AT ONCE
-      ==========================================
-    */
+    /* =========================================================
+       LOCAL FALLBACK
+    ========================================================= */
 
-    saveDB(db);
-
-
-    /*
-      ==========================================
-      6. SUCCESS
-      ==========================================
-    */
-
-    showLoader(
-      "Application submitted successfully..."
-    );
-
-
-    await delay(450);
-
-
-    hideLoader();
-
-
-    showSuccess(
+    function saveLocalSubmission(
+      profile,
+      profileId,
       application,
-      payment,
-      profile
-    );
+      payment
+    ) {
 
+      const localDB =
+        getLocalDB();
 
-  }catch(error){
 
-    console.error(error);
+      localDB.applicantProfiles =
+        localDB.applicantProfiles || [];
 
-    hideLoader();
+      localDB.applications =
+        localDB.applications || [];
 
+      localDB.payments =
+        localDB.payments || [];
 
-    alert(
-      "Something went wrong while submitting the application. Please try again."
-    );
 
+      const existingIndex =
+        localDB.applicantProfiles.findIndex(
+          item =>
+            normalizeMobile(item.mobile) ===
+            normalizeMobile(profile.mobile)
+        );
 
-    $("submitBtn").disabled =
-      false;
 
+      const profileRecord = {
 
-  }finally{
+        id: profileId,
 
-    submitting =
-      false;
+        ...profile,
 
-  }
+        created:
+          existingIndex >= 0
+            ? localDB.applicantProfiles[
+                existingIndex
+              ].created
+            : new Date().toISOString(),
 
-}
+        updated:
+          new Date().toISOString()
+      };
 
 
-/* ============================================================
-   DELAY
-   ============================================================ */
+      if (existingIndex >= 0) {
 
-function delay(ms){
+        localDB.applicantProfiles[
+          existingIndex
+        ] = profileRecord;
 
-  return new Promise(
-    resolve =>
-      setTimeout(
-        resolve,
-        ms
-      )
-  );
+      } else {
 
-}
-
-
-/* ============================================================
-   SUCCESS
-   ============================================================ */
-
-function showSuccess(
-  application,
-  payment,
-  profile
-){
-
-  $("successApplicationId")
-    .textContent =
-      application.id;
-
-
-  $("successSummary").innerHTML =
-    `
-      <strong>
-        ${escapeHTML(profile.name)}
-      </strong>
-      — your application for
-      <strong>
-        ${escapeHTML(application.jobTitle)}
-      </strong>
-      has been received.
-      <br><br>
-
-      Payment status:
-      <strong>
-        ${
-          payment.status === "pending"
-            ? "Pending Verification"
-            : payment.status
-        }
-      </strong>
-    `;
-
-
-  $("stepProfile")
-    .classList.add("hidden");
-
-  $("stepApplication")
-    .classList.add("hidden");
-
-  $("stepPayment")
-    .classList.add("hidden");
-
-  $("successCard")
-    .classList.remove("hidden");
-
-
-  $("progress1")
-    .classList.add("done");
-
-  $("progress2")
-    .classList.add("done");
-
-  $("progress3")
-    .classList.add("done");
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ============================================================
-   NEW APPLICATION
-   ============================================================ */
-
-function startNewApplication(){
-
-  location.reload();
-
-}
-
-
-/* ============================================================
-   STEP NAVIGATION
-   ============================================================ */
-
-function showStep(step){
-
-  currentStep =
-    step;
-
-
-  $("stepProfile")
-    .classList.toggle(
-      "hidden",
-      step !== 1
-    );
-
-
-  $("stepApplication")
-    .classList.toggle(
-      "hidden",
-      step !== 2
-    );
-
-
-  $("stepPayment")
-    .classList.toggle(
-      "hidden",
-      step !== 3
-    );
-
-
-  $("successCard")
-    .classList.add(
-      "hidden"
-    );
-
-
-  for(let i=1;i<=3;i++){
-
-    const el =
-      $("progress" + i);
-
-
-    el.classList.remove(
-      "active",
-      "done"
-    );
-
-
-    if(i < step){
-
-      el.classList.add(
-        "done"
-      );
-
-    }else if(i === step){
-
-      el.classList.add(
-        "active"
-      );
-
-    }
-
-  }
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-function backToProfile(){
-
-  showStep(1);
-
-}
-
-
-function backToApplication(){
-
-  showStep(2);
-
-}
-
-
-/* ============================================================
-   PAYMENT DATE DEFAULT
-   ============================================================ */
-
-$("paymentDate").value =
-  today();
-
-
-/* ============================================================
-   CONFIRM MODAL OUTSIDE CLICK
-   ============================================================ */
-
-$("confirmModal")
-  .addEventListener(
-    "click",
-    function(e){
-
-      if(
-        e.target === this
-      ){
-
-        closeConfirmModal();
-
+        localDB.applicantProfiles.push(
+          profileRecord
+        );
       }
 
-    }
-  );
+
+      localDB.applications.push(
+        application
+      );
 
 
-/* ============================================================
-   INITIAL DATABASE INIT
-   ============================================================ */
+      if (payment) {
 
-DB =
-  getDB();
-
-
-/* ============================================================
-   INITIAL PAYMENT RENDER
-   ============================================================ */
-
-renderPaymentSettings(
-  DB.settings.payment
-);
+        localDB.payments.push(
+          payment
+        );
+      }
 
 
-/* ============================================================
-   INITIAL MOBILE RESTORE
-   ============================================================ */
-
-const params =
-  new URLSearchParams(
-    location.search
-  );
-
-
-const mobileFromUrl =
-  params.get("mobile");
-
-
-if(
-  mobileFromUrl &&
-  validBangladeshMobile(
-    normalizeMobile(
-      mobileFromUrl
-    )
-  )
-){
-
-  $("mobile").value =
-    normalizeMobile(
-      mobileFromUrl
-    );
-
-
-  const profile =
-    findProfileByMobile(
-      mobileFromUrl
-    );
-
-
-  if(profile){
-
-    loadExistingProfile(
-      profile
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   PREVENT ACCIDENTAL DOUBLE SUBMIT
-   ============================================================ */
-
-window.addEventListener(
-  "beforeunload",
-  function(e){
-
-    if(submitting){
-
-      e.preventDefault();
-
-      e.returnValue = "";
-
+      saveLocalDB(localDB);
     }
 
-  }
-);
 
-</script>
+    /* =========================================================
+       SUBMIT
+    ========================================================= */
+
+    async function submitApplication() {
+
+      if (isSubmitting) {
+        return;
+      }
+
+
+      hideAlert();
+
+
+      if (!validateForm()) {
+        return;
+      }
+
+
+      isSubmitting = true;
+
+      submitBtn.disabled = true;
+
+      submitBtn.textContent =
+        "Submitting...";
+
+
+      showLoading(
+        "Connecting to DigiSER BD..."
+      );
+
+
+      const profile =
+        collectFormData();
+
+      const applicationData =
+        collectApplicationData();
+
+      const payment =
+        collectPaymentData();
+
+
+      const applicationId =
+        generateApplicationId();
+
+
+      let profileId =
+        uid();
+
+
+      try {
+
+        /* ---------------------------------------------
+           PROFILE
+        --------------------------------------------- */
+
+        loadingText.textContent =
+          "Saving applicant profile...";
+
+
+        const savedProfile =
+          await saveApplicantProfile(
+            profile
+          );
+
+
+        profileId =
+          savedProfile.id;
+
+
+        /* ---------------------------------------------
+           APPLICATION
+        --------------------------------------------- */
+
+        loadingText.textContent =
+          "Creating application...";
+
+
+        const savedApplication =
+          await saveApplication(
+            applicationId,
+            profileId,
+            applicationData
+          );
+
+
+        /* ---------------------------------------------
+           PAYMENT
+        --------------------------------------------- */
+
+        let savedPayment = null;
+
+
+        if (settings.payment.enabled) {
+
+          loadingText.textContent =
+            "Recording payment information...";
+
+
+          savedPayment =
+            await savePayment(
+              applicationId,
+              profileId,
+              payment
+            );
+        }
+
+
+        /* ---------------------------------------------
+           LOCAL MIRROR
+        --------------------------------------------- */
+
+        const localApplication = {
+
+          id:
+            applicationId,
+
+          firestoreId:
+            savedApplication.firestoreId,
+
+          profileId,
+
+          jobId: "",
+
+          jobTitle:
+            applicationData.jobTitle,
+
+          source:
+            "website",
+
+          created:
+            new Date().toISOString(),
+
+          updated:
+            new Date().toISOString(),
+
+          status:
+            settings.payment.enabled
+              ? "payment_pending"
+              : "submitted",
+
+          paymentStatus:
+            settings.payment.enabled
+              ? "pending"
+              : "not_required",
+
+          notes: "",
+
+          applicationData,
+
+          statusHistory: [
+
+            {
+              status: "submitted",
+              at:
+                new Date().toISOString()
+            },
+
+            {
+              status: "payment_pending",
+              at:
+                new Date().toISOString()
+            }
+
+          ]
+        };
+
+
+        const localPayment =
+          savedPayment
+            ? {
+                id:
+                  savedPayment.firestoreId,
+
+                applicationId,
+
+                profileId,
+
+                ...payment,
+
+                status:
+                  "pending",
+
+                created:
+                  new Date().toISOString(),
+
+                updated:
+                  new Date().toISOString()
+              }
+            : null;
+
+
+        saveLocalSubmission(
+          profile,
+          profileId,
+          localApplication,
+          localPayment
+        );
+
+
+        /* ---------------------------------------------
+           SUCCESS
+        --------------------------------------------- */
+
+        hideLoading();
+
+        formArea.style.display =
+          "none";
+
+        successScreen.classList.add(
+          "show"
+        );
+
+
+        successApplicationId.textContent =
+          applicationId;
+
+
+        trackingLink.href =
+          "../track-application.html?mobile=" +
+          encodeURIComponent(
+            profile.mobile
+          );
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Firebase submission error:",
+          error
+        );
+
+
+        /*
+          Firebase rules may still be blocking writes.
+          Keep local fallback so the UI remains usable.
+        */
+
+        try {
+
+          const localApplication = {
+
+            id:
+              applicationId,
+
+            profileId,
+
+            jobId: "",
+
+            jobTitle:
+              applicationData.jobTitle,
+
+            source:
+              "website",
+
+            created:
+              new Date().toISOString(),
+
+            updated:
+              new Date().toISOString(),
+
+            status:
+              settings.payment.enabled
+                ? "payment_pending"
+                : "submitted",
+
+            paymentStatus:
+              settings.payment.enabled
+                ? "pending"
+                : "not_required",
+
+            notes: "",
+
+            applicationData,
+
+            statusHistory: [
+
+              {
+                status: "submitted",
+                at:
+                  new Date().toISOString()
+              },
+
+              {
+                status: "payment_pending",
+                at:
+                  new Date().toISOString()
+              }
+
+            ]
+          };
+
+
+          const localPayment =
+            settings.payment.enabled
+              ? {
+                  id: uid(),
+
+                  applicationId,
+
+                  profileId,
+
+                  ...payment,
+
+                  status: "pending",
+
+                  created:
+                    new Date().toISOString(),
+
+                  updated:
+                    new Date().toISOString()
+                }
+              : null;
+
+
+          saveLocalSubmission(
+            profile,
+            profileId,
+            localApplication,
+            localPayment
+          );
+
+
+          hideLoading();
+
+          formArea.style.display =
+            "none";
+
+          successScreen.classList.add(
+            "show"
+          );
+
+          successApplicationId.textContent =
+            applicationId;
+
+          trackingLink.href =
+            "../track-application.html?mobile=" +
+            encodeURIComponent(
+              profile.mobile
+            );
+
+
+          showAlert(
+            "Firebase write was unavailable, so a local copy was saved. Please configure Firebase Security Rules before production use.",
+            "success"
+          );
+
+
+        } catch (fallbackError) {
+
+          console.error(
+            fallbackError
+          );
+
+          hideLoading();
+
+          showAlert(
+            "Something went wrong. Please try again."
+          );
+        }
+
+      } finally {
+
+        isSubmitting = false;
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+          "Submit Application";
+      }
+    }
+
+
+    /* =========================================================
+       PAYMENT METHOD MERCHANT SWITCH
+    ========================================================= */
+
+    function updateMerchantNumber() {
+
+      const selected =
+        document.querySelector(
+          'input[name="paymentMethod"]:checked'
+        )?.value;
+
+
+      const method =
+        settings.payment.methods?.[
+          selected
+        ];
+
+
+      if (!method) {
+        return;
+      }
+
+
+      $("merchantNumber").textContent =
+        method.number ||
+        "Not configured";
+
+
+      const labels = {
+
+        bkash:
+          "bKash Merchant Number",
+
+        nagad:
+          "Nagad Merchant Number",
+
+        rocket:
+          "Rocket Merchant Number"
+      };
+
+
+      $("merchantBox")
+        .querySelector(
+          ".merchant-label"
+        )
+        .textContent =
+        labels[selected] ||
+        "Payment Number";
+    }
+
+
+    document
+      .querySelectorAll(
+        'input[name="paymentMethod"]'
+      )
+      .forEach(
+        radio => {
+
+          radio.addEventListener(
+            "change",
+            updateMerchantNumber
+          );
+
+        }
+      );
+
+
+    /* =========================================================
+       CLIENT UPDATE POPUP
+    ========================================================= */
+
+    async function loadClientUpdate() {
+
+      let updates = [];
+
+
+      try {
+
+        const snapshot =
+          await getDocs(
+            collection(
+              db,
+              "clientUpdates"
+            )
+          );
+
+
+        updates =
+          snapshot.docs.map(
+            docSnap => ({
+              id:
+                docSnap.id,
+              ...docSnap.data()
+            })
+          );
+
+      } catch (error) {
+
+        console.warn(
+          "Client updates unavailable:",
+          error
+        );
+
+
+        try {
+
+          updates =
+            JSON.parse(
+              localStorage.getItem(
+                "digiserbd_client_updates_v1"
+              ) || "[]"
+            );
+
+        } catch (_) {
+
+          updates = [];
+        }
+      }
+
+
+      const valid =
+        updates
+          .filter(
+            item =>
+              item.published !== false &&
+              item.popup !== false
+          )
+          .sort(
+            (a,b) => {
+
+              if (
+                Boolean(b.pin) !==
+                Boolean(a.pin)
+              ) {
+
+                return Number(b.pin) -
+                  Number(a.pin);
+              }
+
+              return String(
+                b.date || ""
+              ).localeCompare(
+                String(a.date || "")
+              );
+            }
+          );
+
+
+      if (!valid.length) {
+        return;
+      }
+
+
+      const update =
+        valid[0];
+
+
+      const dismissed =
+        localStorage.getItem(
+          "digiserbd_client_update_dismissed_v1"
+        );
+
+
+      if (
+        dismissed &&
+        dismissed === String(update.id)
+      ) {
+
+        return;
+      }
+
+
+      $("popupStatus").textContent =
+        update.status ||
+        "SYSTEM UPDATE";
+
+      $("popupTitle").textContent =
+        update.title ||
+        "System Update";
+
+      $("popupDescription").textContent =
+        update.description ||
+        "DigiSER BD system update.";
+
+
+      setTimeout(
+        () => {
+
+          $("updatePopup")
+            .classList.add("show");
+
+        },
+        900
+      );
+
+
+      $("closePopup")
+        .onclick = () => {
+
+          if (
+            $("dontShowUpdate").checked
+          ) {
+
+            localStorage.setItem(
+              "digiserbd_client_update_dismissed_v1",
+              String(update.id)
+            );
+          }
+
+
+          $("updatePopup")
+            .classList.remove("show");
+        };
+    }
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================= */
+
+    async function init() {
+
+      try {
+
+        $("paymentDate").value =
+          new Date()
+            .toISOString()
+            .slice(0,10);
+
+
+        await loadPaymentSettings();
+
+        renderPaymentSettings();
+
+        updateMerchantNumber();
+
+        await loadClientUpdate();
+
+      } catch (error) {
+
+        console.error(
+          "Initialization error:",
+          error
+        );
+      }
+    }
+
+
+    submitBtn.addEventListener(
+      "click",
+      submitApplication
+    );
+
+
+    init();
+
+  </script>
 
 </body>
 </html>
