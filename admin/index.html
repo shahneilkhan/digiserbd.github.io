@@ -2,1007 +2,1364 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>DigiSER BD · Admin Dashboard</title>
+<title>DigiSER BD — Admin Dashboard V2</title>
 
-<meta name="description" content="DigiSER BD Admin Dashboard">
-<meta name="theme-color" content="#0087c4">
+<link rel="icon" href="../assets/favicon.svg">
 
-<!-- FAVICON -->
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="shortcut icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/favicon.svg">
-
-<!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root{
-  --primary:#0087c4;
-  --primary-dark:#006b9d;
-
-  --dark:#10202b;
-  --dark-2:#162d3a;
-
-  --text:#17202a;
-  --muted:#687580;
-
-  --line:#e1e7eb;
-  --bg:#f4f7f9;
-  --white:#ffffff;
-
-  --success:#14834a;
-  --danger:#c0392b;
-
-  --soft:#eef8fc;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+:root{
+    --primary:#0087c4;
+    --primary-dark:#006b9c;
+    --primary-light:#e9f7fd;
 
-/* =========================================================
-   RESET
-========================================================= */
+    --bg:#f4f7fa;
+    --panel:#ffffff;
+    --panel-soft:#f8fafc;
 
-*{
-  box-sizing:border-box;
+    --text:#17202a;
+    --muted:#718096;
+
+    --border:#e5eaf0;
+
+    --success:#159957;
+    --success-bg:#eaf8f0;
+
+    --warning:#d98a00;
+    --warning-bg:#fff6df;
+
+    --danger:#d64545;
+    --danger-bg:#fff0f0;
+
+    --purple:#7257d9;
+    --purple-bg:#f1edff;
+
+    --shadow:0 10px 35px rgba(15,35,55,.07);
+    --radius:18px;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Hind Siliguri",sans-serif;
+    font-family:"Space Grotesk","Hind Siliguri",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
 }
 
 button,
 input,
 select,
 textarea{
-  font:inherit;
+    font:inherit;
 }
 
 button{
-  cursor:pointer;
+    cursor:pointer;
 }
 
 .hidden{
-  display:none!important;
+    display:none!important;
 }
-
 
 /* =========================================================
    LOGIN
 ========================================================= */
 
 .login-screen{
-  min-height:100vh;
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,135,196,.15),transparent 35%),
+        radial-gradient(circle at 80% 80%,rgba(0,135,196,.10),transparent 35%),
+        #f4f8fb;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:25px;
-
-  background:
-    radial-gradient(
-      circle at 85% 10%,
-      rgba(0,135,196,.16),
-      transparent 35%
-    ),
-    var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:9999;
 }
 
-.login-box{
-  width:100%;
-  max-width:420px;
+.login-card{
+    width:min(430px,100%);
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:38px;
+    box-shadow:0 30px 80px rgba(15,35,55,.14);
+}
 
-  padding:36px;
-
-  background:#fff;
-
-  border:1px solid var(--line);
-
-  border-radius:22px;
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.08);
+.login-brand{
+    text-align:center;
+    margin-bottom:30px;
 }
 
 .login-logo{
-  text-align:center;
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:15px;
 }
 
-.login-logo img{
-  width:64px;
-  height:64px;
-
-  object-fit:contain;
-
-  border-radius:12px;
+.login-brand h1{
+    font-size:25px;
+    margin-bottom:5px;
 }
 
-.login-box h1{
-  margin:15px 0 5px;
-
-  text-align:center;
-
-  font-family:"Space Grotesk",sans-serif;
+.login-brand p{
+    color:var(--muted);
+    font-size:13px;
 }
 
-.login-box p{
-  margin:0 0 25px;
-
-  text-align:center;
-
-  color:var(--muted);
-
-  font-size:13px;
+.form-group{
+    margin-bottom:17px;
 }
 
-.login-input{
-  width:100%;
-
-  padding:13px 14px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  outline:none;
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
 }
 
-.login-input:focus{
-  border-color:var(--primary);
+.form-control{
+    width:100%;
+    border:1px solid var(--border);
+    background:#fff;
+    padding:13px 14px;
+    border-radius:11px;
+    outline:none;
+    transition:.2s;
+}
 
-  box-shadow:
-    0 0 0 3px rgba(0,135,196,.1);
+.form-control:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(0,135,196,.10);
 }
 
 .login-btn{
-  width:100%;
-
-  margin-top:12px;
-
-  padding:13px;
-
-  border:0;
-
-  border-radius:10px;
-
-  background:var(--primary);
-
-  color:#fff;
-
-  font-weight:700;
+    width:100%;
+    border:0;
+    background:var(--primary);
+    color:#fff;
+    padding:14px;
+    border-radius:12px;
+    font-weight:700;
+    margin-top:5px;
 }
 
 .login-btn:hover{
-  background:var(--primary-dark);
+    background:var(--primary-dark);
 }
 
 .login-error{
-  min-height:18px;
-
-  margin-top:10px;
-
-  text-align:center;
-
-  color:var(--danger);
-
-  font-size:12px;
+    color:var(--danger);
+    font-size:13px;
+    margin-top:12px;
+    text-align:center;
 }
 
-
 /* =========================================================
-   APPLICATION
+   APP
 ========================================================= */
 
 .app{
-  display:none;
-
-  min-height:100vh;
+    display:none;
+    min-height:100vh;
 }
 
-.app.show{
-  display:flex;
+.app.active{
+    display:flex;
 }
-
 
 /* =========================================================
    SIDEBAR
 ========================================================= */
 
 .sidebar{
-  position:fixed;
-
-  top:0;
-  left:0;
-  bottom:0;
-
-  width:245px;
-
-  z-index:50;
-
-  padding:22px 15px;
-
-  background:var(--dark);
-
-  color:#fff;
+    width:265px;
+    background:#fff;
+    border-right:1px solid var(--border);
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    transition:.3s;
 }
 
-.admin-brand{
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:4px 8px 23px;
-
-  border-bottom:
-    1px solid rgba(255,255,255,.1);
+.sidebar-brand{
+    padding:24px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.admin-brand img{
-  width:40px;
-  height:40px;
-
-  object-fit:contain;
-
-  border-radius:10px;
+.sidebar-brand img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
 }
 
-.admin-brand strong{
-  display:block;
-
-  font-family:"Space Grotesk",sans-serif;
+.sidebar-brand strong{
+    display:block;
+    font-size:16px;
 }
 
-.admin-brand small{
-  display:block;
-
-  margin-top:2px;
-
-  color:#91aab7;
-
-  font-size:9px;
-
-  letter-spacing:.08em;
+.sidebar-brand span{
+    color:var(--muted);
+    font-size:11px;
 }
 
-.nav{
-  margin-top:20px;
+.sidebar-nav{
+    padding:17px 12px;
+    overflow:auto;
+    flex:1;
 }
 
-.nav-btn{
-  width:100%;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:11px 12px;
-
-  margin-bottom:3px;
-
-  border:0;
-
-  border-radius:9px;
-
-  background:transparent;
-
-  color:#b8c6cd;
-
-  text-align:left;
+.nav-section{
+    margin:16px 8px 8px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    font-weight:700;
+    color:#a0a9b5;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
-  background:
-    rgba(255,255,255,.09);
+.nav-item{
+    width:100%;
+    border:0;
+    background:transparent;
+    padding:11px 12px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    color:#52606d;
+    font-size:13px;
+    text-align:left;
+    margin-bottom:3px;
+    transition:.2s;
+}
 
-  color:#fff;
+.nav-item:hover{
+    background:#f3f8fb;
+    color:var(--primary);
+}
+
+.nav-item.active{
+    background:var(--primary-light);
+    color:var(--primary);
+    font-weight:700;
+}
+
+.nav-icon{
+    width:20px;
+    text-align:center;
+    font-size:15px;
+}
+
+.nav-badge{
+    margin-left:auto;
+    min-width:21px;
+    height:21px;
+    padding:0 6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--danger);
+    color:#fff;
+    border-radius:20px;
+    font-size:10px;
+}
+
+.sidebar-footer{
+    padding:15px;
+    border-top:1px solid var(--border);
 }
 
 .logout-btn{
-  position:absolute;
-
-  left:15px;
-  right:15px;
-  bottom:20px;
-
-  padding:10px;
-
-  border:
-    1px solid rgba(255,255,255,.15);
-
-  border-radius:9px;
-
-  background:transparent;
-
-  color:#fff;
+    width:100%;
+    border:1px solid var(--border);
+    background:#fff;
+    padding:10px;
+    border-radius:10px;
+    color:#5b6773;
 }
-
 
 /* =========================================================
    MAIN
 ========================================================= */
 
 .main{
-  width:calc(100% - 245px);
-
-  margin-left:245px;
-
-  min-height:100vh;
+    margin-left:265px;
+    width:calc(100% - 265px);
+    min-height:100vh;
 }
 
 .topbar{
-  min-height:72px;
-
-  padding:0 25px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  background:#fff;
-
-  border-bottom:1px solid var(--line);
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-.topbar h1{
-  margin:0;
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:21px;
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.topbar p{
-  margin:3px 0 0;
+.mobile-menu{
+    display:none;
+    border:0;
+    background:transparent;
+    font-size:22px;
+}
 
-  color:var(--muted);
+.page-title{
+    font-size:18px;
+    font-weight:700;
+}
 
-  font-size:12px;
+.page-subtitle{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:2px;
+}
+
+.topbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.website-btn{
+    border:1px solid var(--border);
+    background:#fff;
+    color:#4a5568;
+    padding:9px 13px;
+    border-radius:9px;
+    text-decoration:none;
+    font-size:12px;
+}
+
+.admin-avatar{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
 }
 
 .content{
-  padding:25px;
+    padding:28px;
+    max-width:1700px;
 }
 
-
 /* =========================================================
-   STATS
+   VIEWS
 ========================================================= */
 
-.stats{
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-
-  gap:15px;
+.view{
+    display:none;
 }
 
-.stat{
-  padding:19px;
-
-  background:#fff;
-
-  border:1px solid var(--line);
-
-  border-radius:15px;
+.view.active{
+    display:block;
 }
-
-.stat small{
-  color:var(--muted);
-}
-
-.stat strong{
-  display:block;
-
-  margin-top:5px;
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:29px;
-}
-
 
 /* =========================================================
-   PANEL
+   PAGE HEADER
+========================================================= */
+
+.page-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:24px;
+}
+
+.page-header h2{
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.header-actions{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:12px;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+}
+
+.btn-secondary{
+    background:#fff;
+    border:1px solid var(--border);
+    color:#52606d;
+}
+
+.btn-success{
+    background:var(--success);
+    color:#fff;
+}
+
+.btn-danger{
+    background:var(--danger);
+    color:#fff;
+}
+
+.btn-warning{
+    background:var(--warning);
+    color:#fff;
+}
+
+.btn-small{
+    padding:7px 10px;
+    font-size:11px;
+}
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:24px;
+}
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-card::after{
+    content:"";
+    position:absolute;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    right:-28px;
+    top:-28px;
+    background:rgba(0,135,196,.06);
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.stat-icon{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.stat-label{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.stat-value{
+    font-size:26px;
+    font-weight:700;
+}
+
+/* =========================================================
+   PANELS
 ========================================================= */
 
 .panel{
-  margin-top:20px;
-
-  overflow:hidden;
-
-  background:#fff;
-
-  border:1px solid var(--line);
-
-  border-radius:16px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
 }
 
-.panel-head{
-  padding:18px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:15px;
-
-  border-bottom:1px solid var(--line);
+.panel-header{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.panel-head h2{
-  margin:0;
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:17px;
+.panel-title{
+    font-size:14px;
+    font-weight:700;
 }
+
+.panel-subtitle{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.panel-body{
+    padding:20px;
+}
+
+/* =========================================================
+   DASHBOARD GRID
+========================================================= */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
 
 .table-wrap{
-  overflow:auto;
+    overflow:auto;
 }
 
 table{
-  width:100%;
-
-  border-collapse:collapse;
-}
-
-th,
-td{
-  padding:13px 15px;
-
-  border-bottom:1px solid var(--line);
-
-  text-align:left;
-
-  white-space:nowrap;
-
-  font-size:12px;
+    width:100%;
+    border-collapse:collapse;
+    min-width:850px;
 }
 
 th{
-  background:#f8fafb;
-
-  color:var(--muted);
+    text-align:left;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:#8a95a3;
+    padding:12px 14px;
+    background:#fafbfd;
+    border-bottom:1px solid var(--border);
+    white-space:nowrap;
 }
 
-.badge{
-  display:inline-block;
-
-  padding:5px 9px;
-
-  border-radius:20px;
-
-  background:var(--soft);
-
-  color:var(--primary-dark);
-
-  font-size:10px;
-
-  font-weight:700;
+td{
+    padding:14px;
+    border-bottom:1px solid #edf0f3;
+    font-size:12px;
+    vertical-align:middle;
 }
+
+tbody tr:hover{
+    background:#fbfdfe;
+}
+
+.applicant-cell{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:var(--primary-light);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
+    flex:none;
+    overflow:hidden;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.applicant-name{
+    font-weight:700;
+}
+
+.applicant-mobile{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:2px;
+}
+
+.id-code{
+    font-family:monospace;
+    color:var(--primary);
+    font-weight:700;
+}
+
+.role-text{
+    font-weight:600;
+}
+
+.muted{
+    color:var(--muted);
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:5px 8px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.status::before{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:currentColor;
+}
+
+.status-submitted{
+    color:#536b7b;
+    background:#edf2f5;
+}
+
+.status-payment{
+    color:#a86e00;
+    background:#fff5d8;
+}
+
+.status-paid{
+    color:#16804b;
+    background:#e8f8ef;
+}
+
+.status-review{
+    color:#006f9f;
+    background:#e5f6fd;
+}
+
+.status-approved{
+    color:#16804b;
+    background:#e8f8ef;
+}
+
+.status-rejected{
+    color:#c43d3d;
+    background:#ffeded;
+}
+
+.status-cancelled{
+    color:#737b85;
+    background:#eef0f2;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.search-box{
+    position:relative;
+    flex:1;
+    min-width:220px;
+}
+
+.search-box input{
+    width:100%;
+    padding:11px 13px 11px 36px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    outline:none;
+    background:#fff;
+}
+
+.search-icon{
+    position:absolute;
+    left:13px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#9aa5b1;
+}
+
+.filter-select{
+    min-width:150px;
+    padding:11px 12px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:#fff;
+    outline:none;
+}
+
+/* =========================================================
+   QUICK STATUS
+========================================================= */
+
+.quick-status{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.quick-status button{
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:20px;
+    padding:7px 11px;
+    font-size:10px;
+    color:#66727e;
+}
+
+.quick-status button.active{
+    background:var(--primary-light);
+    border-color:#bce5f5;
+    color:var(--primary);
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .actions{
-  display:flex;
-
-  gap:5px;
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
 }
 
-.btn{
-  padding:7px 10px;
-
-  border:1px solid var(--line);
-
-  border-radius:7px;
-
-  background:#fff;
-
-  font-size:11px;
-
-  font-weight:700;
+.icon-btn{
+    width:31px;
+    height:31px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#607080;
 }
 
-.btn.primary{
-  background:var(--primary);
-
-  border-color:var(--primary);
-
-  color:#fff;
+.icon-btn:hover{
+    color:var(--primary);
+    border-color:#b7ddec;
 }
 
-.btn.primary:hover{
-  background:var(--primary-dark);
+/* =========================================================
+   RECENT LIST
+========================================================= */
+
+.recent-list{
+    display:flex;
+    flex-direction:column;
 }
 
-.btn.danger{
-  color:var(--danger);
+.recent-item{
+    padding:13px 0;
+    border-bottom:1px solid #edf0f3;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
 }
+
+.recent-item:last-child{
+    border-bottom:0;
+}
+
+.recent-left{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.recent-info strong{
+    font-size:12px;
+    display:block;
+}
+
+.recent-info span{
+    color:var(--muted);
+    font-size:10px;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
 
 .empty{
-  padding:45px;
-
-  text-align:center;
-
-  color:var(--muted);
+    padding:45px 20px;
+    text-align:center;
+    color:var(--muted);
 }
 
+.empty-icon{
+    font-size:35px;
+    opacity:.5;
+    margin-bottom:10px;
+}
 
 /* =========================================================
    MODAL
 ========================================================= */
 
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(10,25,35,.55);
+    backdrop-filter:blur(5px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:5000;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
 .modal{
-  position:fixed;
-
-  inset:0;
-
-  z-index:100;
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:20px;
-
-  background:
-    rgba(8,18,23,.68);
+    width:min(900px,100%);
+    max-height:92vh;
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 30px 100px rgba(0,0,0,.25);
+    display:flex;
+    flex-direction:column;
 }
 
-.modal.show{
-  display:flex;
+.modal.large{
+    width:min(1100px,100%);
 }
 
-.modal-box{
-  width:100%;
-
-  max-width:980px;
-
-  max-height:92vh;
-
-  overflow:auto;
-
-  background:#fff;
-
-  border-radius:18px;
+.modal-header{
+    padding:18px 22px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
 }
 
-.modal-head{
-  position:sticky;
-
-  top:0;
-
-  z-index:10;
-
-  padding:17px 20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  background:#fff;
-
-  border-bottom:1px solid var(--line);
+.modal-header h3{
+    font-size:16px;
 }
 
-.modal-head h2{
-  margin:0;
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:17px;
-}
-
-.close{
-  width:32px;
-  height:32px;
-
-  border:0;
-
-  border-radius:50%;
-
-  background:#f0f3f5;
-
-  font-size:18px;
+.modal-close{
+    border:0;
+    background:#f3f5f7;
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    font-size:18px;
 }
 
 .modal-body{
-  padding:20px;
+    padding:22px;
+    overflow:auto;
 }
 
+.modal-footer{
+    padding:15px 22px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
 
 /* =========================================================
-   APPLICANT DETAILS
+   PROFILE
 ========================================================= */
+
+.profile-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#f1f9fc,#fff);
+    border:1px solid var(--border);
+    margin-bottom:18px;
+}
+
+.profile-photo{
+    width:75px;
+    height:75px;
+    border-radius:16px;
+    background:var(--primary-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    color:var(--primary);
+    font-size:24px;
+    font-weight:700;
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.profile-head-info h3{
+    font-size:20px;
+}
+
+.profile-head-info p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
 
 .detail-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:14px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
 }
 
-.detail{
-  padding:13px;
-
-  background:#f7f9fa;
-
-  border-radius:10px;
+.detail-card{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:15px;
 }
 
-.detail.full{
-  grid-column:1/-1;
+.detail-card.full{
+    grid-column:1/-1;
 }
 
-.detail small{
-  display:block;
-
-  margin-bottom:4px;
-
-  color:var(--muted);
-
-  font-size:11px;
+.detail-title{
+    font-size:11px;
+    color:var(--primary);
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:700;
+    margin-bottom:11px;
 }
 
-.detail p{
-  margin:0;
-
-  white-space:pre-line;
-
-  font-size:13px;
+.detail-row{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:10px;
+    padding:6px 0;
+    font-size:12px;
 }
 
-.detail select{
-  width:100%;
-
-  padding:9px;
-
-  border:1px solid var(--line);
-
-  border-radius:8px;
-
-  background:#fff;
+.detail-label{
+    color:var(--muted);
 }
 
+.detail-value{
+    font-weight:500;
+    word-break:break-word;
+}
 
 /* =========================================================
-   PREMIUM CV
+   TIMELINE
 ========================================================= */
 
-.cv-actions{
-  position:sticky;
-
-  top:0;
-
-  z-index:20;
-
-  padding:13px 16px;
-
-  display:flex;
-
-  justify-content:flex-end;
-
-  gap:8px;
-
-  background:#fff;
-
-  border-bottom:1px solid var(--line);
+.timeline{
+    position:relative;
+    padding-left:25px;
 }
 
-.cv-view{
-  padding:20px;
-
-  background:#e8edf0;
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:6px;
+    top:5px;
+    bottom:5px;
+    width:1px;
+    background:#dce5eb;
 }
 
-.cv-paper{
-  max-width:850px;
-
-  min-height:1100px;
-
-  margin:auto;
-
-  overflow:hidden;
-
-  background:#fff;
-
-  box-shadow:
-    0 12px 45px rgba(0,0,0,.12);
+.timeline-item{
+    position:relative;
+    margin-bottom:18px;
 }
 
+.timeline-dot{
+    position:absolute;
+    left:-24px;
+    top:2px;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:var(--primary);
+    border:3px solid #e5f5fb;
+}
 
-/* ---------- CV HEADER ---------- */
+.timeline-item strong{
+    font-size:12px;
+}
 
-.cv-top{
-  padding:38px;
+.timeline-item p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
 
-  display:flex;
+/* =========================================================
+   SETTINGS
+========================================================= */
 
-  align-items:center;
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
 
-  gap:26px;
+.settings-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+}
 
-  background:
-    linear-gradient(
-      135deg,
-      #10202b 0%,
-      #006f9f 100%
-    );
+.settings-card h3{
+    font-size:14px;
+    margin-bottom:4px;
+}
 
-  color:#fff;
+.settings-card > p{
+    color:var(--muted);
+    font-size:11px;
+    margin-bottom:18px;
+}
+
+.toggle-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:12px 0;
+    border-bottom:1px solid #edf0f3;
+}
+
+.toggle{
+    position:relative;
+    width:42px;
+    height:23px;
+}
+
+.toggle input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    background:#ccd4dc;
+    border-radius:30px;
+    transition:.2s;
+}
+
+.slider::before{
+    content:"";
+    position:absolute;
+    width:17px;
+    height:17px;
+    left:3px;
+    top:3px;
+    background:#fff;
+    border-radius:50%;
+    transition:.2s;
+}
+
+.toggle input:checked + .slider{
+    background:var(--primary);
+}
+
+.toggle input:checked + .slider::before{
+    transform:translateX(19px);
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#18232c;
+    color:#fff;
+    padding:12px 16px;
+    border-radius:11px;
+    font-size:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+    z-index:9000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* =========================================================
+   CV
+========================================================= */
+
+.cv-container{
+    max-width:800px;
+    margin:auto;
+    background:#fff;
+    border:1px solid #e4e8eb;
+    box-shadow:0 15px 50px rgba(0,0,0,.08);
+}
+
+.cv-header{
+    padding:30px;
+    background:linear-gradient(135deg,#0087c4,#005e89);
+    color:#fff;
+    display:flex;
+    gap:20px;
+    align-items:center;
 }
 
 .cv-photo{
-  width:125px;
-  height:125px;
-
-  flex:none;
-
-  overflow:hidden;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:
-    3px solid rgba(255,255,255,.45);
-
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,.12);
-
-  color:#dceaf0;
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:11px;
+    width:90px;
+    height:90px;
+    border-radius:14px;
+    background:rgba(255,255,255,.2);
+    overflow:hidden;
 }
 
 .cv-photo img{
-  width:100%;
-  height:100%;
-
-  display:block;
-
-  object-fit:cover;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.cv-name{
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:34px;
-
-  font-weight:700;
-
-  line-height:1.1;
+.cv-photo-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
 }
 
-.cv-role{
-  margin-top:7px;
-
-  color:#aee6fa;
-
-  font-size:14px;
-
-  font-weight:700;
+.cv-header h1{
+    font-size:28px;
 }
 
-.cv-contact{
-  margin-top:10px;
-
-  color:#dceaf0;
-
-  font-size:12px;
-
-  line-height:1.7;
+.cv-header p{
+    margin-top:5px;
+    opacity:.85;
+    font-size:12px;
 }
-
-
-/* ---------- CV BODY ---------- */
 
 .cv-body{
-  display:grid;
-
-  grid-template-columns:220px 1fr;
+    padding:30px;
 }
-
-.cv-side{
-  padding:30px 22px;
-
-  background:#f3f8fa;
-
-  border-right:1px solid var(--line);
-}
-
-.cv-main{
-  padding:30px;
-}
-
-
-/* ---------- CV SECTION ---------- */
 
 .cv-section{
-  margin-bottom:26px;
+    margin-bottom:23px;
 }
 
-.cv-section:last-child{
-  margin-bottom:0;
+.cv-section h4{
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--primary);
+    letter-spacing:1px;
+    padding-bottom:7px;
+    border-bottom:1px solid #e5eaee;
+    margin-bottom:10px;
 }
 
-.cv-section h3{
-  margin:0 0 9px;
-
-  color:var(--primary-dark);
-
-  font-family:"Space Grotesk",sans-serif;
-
-  font-size:11px;
-
-  font-weight:700;
-
-  letter-spacing:.09em;
-
-  text-transform:uppercase;
+.cv-section p,
+.cv-section li{
+    font-size:12px;
+    line-height:1.7;
 }
 
-.cv-section p{
-  margin:0;
-
-  color:#4c5961;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-  white-space:pre-line;
+.cv-footer{
+    padding:15px 30px;
+    border-top:1px solid #e5eaee;
+    display:flex;
+    justify-content:space-between;
+    color:#87929d;
+    font-size:9px;
 }
-
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1000px){
+@media(max-width:1200px){
 
-  .stats{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-  }
+    .stats-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 
-}
-
-@media(max-width:750px){
-
-  .sidebar{
-    width:66px;
-
-    padding:15px 8px;
-  }
-
-  .admin-brand{
-    justify-content:center;
-  }
-
-  .admin-brand div{
-    display:none;
-  }
-
-  .nav-btn{
-    justify-content:center;
-
-    font-size:0;
-  }
-
-  .nav-btn:first-letter{
-    font-size:16px;
-  }
-
-  .logout-btn{
-    font-size:0;
-  }
-
-  .logout-btn:first-letter{
-    font-size:16px;
-  }
-
-  .main{
-    width:calc(100% - 66px);
-
-    margin-left:66px;
-  }
-
-  .content{
-    padding:15px;
-  }
-
-  .topbar{
-    padding:0 15px;
-  }
-
-  .detail-grid{
-    grid-template-columns:1fr;
-  }
-
-  .detail.full{
-    grid-column:auto;
-  }
-
-  .cv-body{
-    grid-template-columns:1fr;
-  }
-
-  .cv-side{
-    border-right:0;
-
-    border-bottom:1px solid var(--line);
-  }
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
 
 }
 
-@media(max-width:520px){
+@media(max-width:900px){
 
-  .stats{
-    grid-template-columns:1fr;
-  }
+    .sidebar{
+        transform:translateX(-100%);
+    }
 
-  .cv-top{
-    padding:25px;
+    .sidebar.open{
+        transform:translateX(0);
+        box-shadow:20px 0 50px rgba(0,0,0,.15);
+    }
 
-    gap:17px;
-  }
+    .main{
+        margin-left:0;
+        width:100%;
+    }
 
-  .cv-photo{
-    width:90px;
-    height:90px;
-  }
+    .mobile-menu{
+        display:block;
+    }
 
-  .cv-name{
-    font-size:25px;
-  }
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .cv-main{
-    padding:23px;
-  }
-
-  .cv-side{
-    padding:23px;
-  }
+    .settings-grid{
+        grid-template-columns:1fr;
+    }
 
 }
 
+@media(max-width:600px){
+
+    .content{
+        padding:17px;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .website-btn{
+        display:none;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-header{
+        flex-direction:column;
+    }
+
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail-card.full{
+        grid-column:auto;
+    }
+
+    .profile-header{
+        align-items:flex-start;
+    }
+
+    .modal-overlay{
+        padding:8px;
+    }
+
+    .modal{
+        border-radius:16px;
+        max-height:96vh;
+    }
+
+}
 
 /* =========================================================
    PRINT
@@ -1010,2062 +1367,5173 @@ th{
 
 @media print{
 
-  body *{
-    visibility:hidden!important;
-  }
+    body{
+        background:#fff;
+    }
 
-  #cvModal,
-  #cvModal *{
-    visibility:visible!important;
-  }
+    body *{
+        visibility:hidden;
+    }
 
-  #cvModal{
-    position:absolute;
+    #cvModal,
+    #cvModal *{
+        visibility:visible;
+    }
 
-    inset:0;
+    #cvModal{
+        position:absolute;
+        inset:0;
+        background:#fff;
+    }
 
-    padding:0;
+    #cvModal .modal-header,
+    #cvModal .modal-footer{
+        display:none!important;
+    }
 
-    background:#fff;
-  }
-
-  .modal-box{
-    max-height:none;
-
-    border-radius:0;
-  }
-
-  .cv-actions,
-  .modal-head{
-    display:none!important;
-  }
-
-  .cv-view{
-    padding:0;
-
-    background:#fff;
-  }
-
-  .cv-paper{
-    max-width:none;
-
-    min-height:0;
-
-    box-shadow:none;
-  }
+    #cvModal .modal{
+        box-shadow:none;
+        width:100%;
+        max-height:none;
+        border:0;
+    }
 
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =======================================================
+<!-- =========================================================
      LOGIN
-======================================================== -->
+========================================================= -->
 
-<section
-  class="login-screen"
-  id="loginScreen"
->
+<div id="loginScreen" class="login-screen">
 
-  <div class="login-box">
+    <div class="login-card">
 
-    <div class="login-logo">
+        <div class="login-brand">
 
-      <img
-        src="../assets/favicon.svg"
-        alt="DigiSER BD"
-      >
+            <img
+                src="../assets/favicon.svg"
+                class="login-logo"
+                alt="DigiSER BD"
+            >
 
-    </div>
+            <h1>DigiSER BD</h1>
 
-    <h1>
-      Admin Dashboard
-    </h1>
+            <p>Administration Dashboard V2</p>
 
-    <p>
-      DigiSER BD Management System
-    </p>
+        </div>
 
-    <input
-      class="login-input"
-      id="password"
-      type="password"
-      placeholder="Admin password"
-    >
+        <form id="loginForm">
 
-    <button
-      class="login-btn"
-      id="loginBtn"
-    >
-      Login
-    </button>
+            <div class="form-group">
 
-    <div
-      class="login-error"
-      id="loginError"
-    ></div>
+                <label>Admin Password</label>
 
-  </div>
+                <input
+                    id="passwordInput"
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter admin password"
+                    autocomplete="current-password"
+                    required
+                >
 
-</section>
+            </div>
 
+            <button class="login-btn" type="submit">
+                Sign in to Dashboard
+            </button>
 
-<!-- =======================================================
-     APP
-======================================================== -->
+            <div id="loginError" class="login-error"></div>
 
-<div
-  class="app"
-  id="app"
->
-
-
-<!-- =======================================================
-     SIDEBAR
-======================================================== -->
-
-<aside class="sidebar">
-
-  <div class="admin-brand">
-
-    <img
-      src="../assets/favicon.svg"
-      alt="DigiSER BD"
-    >
-
-    <div>
-
-      <strong>
-        DigiSER BD
-      </strong>
-
-      <small>
-        ADMIN PANEL
-      </small>
+        </form>
 
     </div>
 
-  </div>
+</div>
 
 
-  <nav class="nav">
+<!-- =========================================================
+     APPLICATION
+========================================================= -->
 
-    <button class="nav-btn active">
-      📊 <span>Dashboard</span>
-    </button>
+<div id="app" class="app">
 
-    <button class="nav-btn">
-      💼 <span>Jobs</span>
-    </button>
+<!-- SIDEBAR -->
 
-    <button class="nav-btn">
-      🛠️ <span>Services</span>
-    </button>
+<aside id="sidebar" class="sidebar">
 
-    <button class="nav-btn">
-      👥 <span>Employees</span>
-    </button>
+    <div class="sidebar-brand">
 
-    <button class="nav-btn">
-      🏢 <span>Businesses</span>
-    </button>
+        <img
+            src="../assets/favicon.svg"
+            alt="DigiSER BD"
+        >
 
-    <button class="nav-btn">
-      💬 <span>Messages</span>
-    </button>
+        <div>
+            <strong>DigiSER BD</strong>
+            <span>Admin Control Center</span>
+        </div>
 
-    <button class="nav-btn">
-      📝 <span>Blog</span>
-    </button>
-
-    <button class="nav-btn">
-      📄 <span>Applicants</span>
-    </button>
-
-  </nav>
+    </div>
 
 
-  <button
-    class="logout-btn"
-    id="logoutBtn"
-  >
-    ↪ <span>Logout</span>
-  </button>
+    <nav class="sidebar-nav">
+
+        <div class="nav-section">Overview</div>
+
+        <button class="nav-item active" data-view="dashboard">
+            <span class="nav-icon">⌂</span>
+            Dashboard
+        </button>
+
+
+        <div class="nav-section">Recruitment</div>
+
+        <button class="nav-item" data-view="applicants">
+            <span class="nav-icon">♙</span>
+            Applicants
+        </button>
+
+        <button class="nav-item" data-view="applications">
+            <span class="nav-icon">▤</span>
+            Applications
+            <span id="applicationBadge" class="nav-badge">0</span>
+        </button>
+
+        <button class="nav-item" data-view="payments">
+            <span class="nav-icon">৳</span>
+            Payments
+            <span id="paymentBadge" class="nav-badge">0</span>
+        </button>
+
+
+        <div class="nav-section">Management</div>
+
+        <button class="nav-item" data-view="jobs">
+            <span class="nav-icon">▣</span>
+            Jobs
+        </button>
+
+        <button class="nav-item" data-view="services">
+            <span class="nav-icon">◇</span>
+            Services
+        </button>
+
+        <button class="nav-item" data-view="employees">
+            <span class="nav-icon">♟</span>
+            Employees
+        </button>
+
+        <button class="nav-item" data-view="businesses">
+            <span class="nav-icon">▦</span>
+            Businesses
+        </button>
+
+
+        <div class="nav-section">Communication</div>
+
+        <button class="nav-item" data-view="messages">
+            <span class="nav-icon">✉</span>
+            Messages
+        </button>
+
+        <button class="nav-item" data-view="blog">
+            <span class="nav-icon">✎</span>
+            Blog
+        </button>
+
+
+        <div class="nav-section">System</div>
+
+        <button class="nav-item" data-view="settings">
+            <span class="nav-icon">⚙</span>
+            Settings
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            ⇥ &nbsp; Sign out
+        </button>
+
+    </div>
 
 </aside>
 
 
-<!-- =======================================================
-     MAIN
-======================================================== -->
+<!-- MAIN -->
 
 <main class="main">
 
+    <header class="topbar">
 
-<header class="topbar">
+        <div class="topbar-left">
 
-  <div>
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
 
-    <h1>
-      Dashboard
-    </h1>
+            <div>
 
-    <p>
-      DigiSER BD Administration
-    </p>
+                <div id="pageTitle" class="page-title">
+                    Dashboard
+                </div>
 
-  </div>
+                <div class="page-subtitle">
+                    DigiSER BD Administration
+                </div>
 
-</header>
+            </div>
 
-
-<div class="content">
-
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<div class="stats">
-
-  <div class="stat">
-
-    <small>
-      Total Applicants
-    </small>
-
-    <strong id="totalApplicants">
-      0
-    </strong>
-
-  </div>
+        </div>
 
 
-  <div class="stat">
+        <div class="topbar-actions">
 
-    <small>
-      New Applicants
-    </small>
+            <a
+                href="https://digiserbd.com/"
+                target="_blank"
+                class="website-btn"
+            >
+                ↗ View Website
+            </a>
 
-    <strong id="newApplicants">
-      0
-    </strong>
+            <div class="admin-avatar">
+                SN
+            </div>
 
-  </div>
+        </div>
 
-
-  <div class="stat">
-
-    <small>
-      Businesses
-    </small>
-
-    <strong id="businessCount">
-      0
-    </strong>
-
-  </div>
+    </header>
 
 
-  <div class="stat">
-
-    <small>
-      Messages
-    </small>
-
-    <strong id="messageCount">
-      0
-    </strong>
-
-  </div>
-
-</div>
+    <div class="content">
 
 
-<!-- =====================================================
-     APPLICANTS
-===================================================== -->
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
 
-<section class="panel">
+<section id="view-dashboard" class="view active">
 
-  <div class="panel-head">
+    <div class="page-header">
 
-    <h2>
-      Applicants
-    </h2>
+        <div>
 
-    <button
-      class="btn primary"
-      id="refreshBtn"
-    >
-      Refresh
-    </button>
+            <h2>Dashboard</h2>
 
-  </div>
+            <p>
+                Recruitment, applications and payment overview.
+            </p>
 
+        </div>
 
-  <div class="table-wrap">
+        <div class="header-actions">
 
-    <table>
+            <button
+                class="btn btn-secondary"
+                onclick="refreshAll()"
+            >
+                ↻ Refresh
+            </button>
 
-      <thead>
+        </div>
 
-        <tr>
-
-          <th>
-            Applicant
-          </th>
-
-          <th>
-            Phone
-          </th>
-
-          <th>
-            Desired Role
-          </th>
-
-          <th>
-            Status
-          </th>
-
-          <th>
-            Date
-          </th>
-
-          <th>
-            Actions
-          </th>
-
-        </tr>
-
-      </thead>
+    </div>
 
 
-      <tbody
-        id="applicantTable"
-      ></tbody>
+    <div class="stats-grid">
 
-    </table>
+        <div class="stat-card">
 
-  </div>
+            <div class="stat-top">
+                <span class="stat-label">Total Applicants</span>
+                <div class="stat-icon">♙</div>
+            </div>
+
+            <div id="statApplicants" class="stat-value">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+                <span class="stat-label">Total Applications</span>
+                <div class="stat-icon">▤</div>
+            </div>
+
+            <div id="statApplications" class="stat-value">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+                <span class="stat-label">Payment Pending</span>
+                <div class="stat-icon">৳</div>
+            </div>
+
+            <div id="statPaymentPending" class="stat-value">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+                <span class="stat-label">Under Review</span>
+                <div class="stat-icon">◌</div>
+            </div>
+
+            <div id="statReview" class="stat-value">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+                <span class="stat-label">Approved</span>
+                <div class="stat-icon">✓</div>
+            </div>
+
+            <div id="statApproved" class="stat-value">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <div class="panel-title">
+                        Recent Applications
+                    </div>
+
+                    <div class="panel-subtitle">
+                        Latest applicant activity
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-secondary btn-small"
+                    onclick="showView('applications')"
+                >
+                    View All
+                </button>
+
+            </div>
+
+            <div id="recentApplications"></div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <div class="panel-title">
+                        Payment Overview
+                    </div>
+
+                    <div class="panel-subtitle">
+                        Current payment states
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-body">
+
+                <div class="recent-list" id="paymentOverview"></div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-</div>
+<!-- =========================================================
+     APPLICANTS
+========================================================= -->
+
+<section id="view-applicants" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Applicants</h2>
+
+            <p>
+                Manage applicant profiles and personal information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        id="applicantSearch"
+                        type="text"
+                        placeholder="Search name, mobile or email..."
+                        oninput="renderApplicants()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Applicant</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th>Applications</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="applicantsTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     APPLICATIONS
+========================================================= -->
+
+<section id="view-applications" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Applications</h2>
+
+            <p>
+                Manage job applications, status and applicant workflow.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        id="applicationSearch"
+                        type="text"
+                        placeholder="Search applicant, mobile, ID or job..."
+                        oninput="renderApplications()"
+                    >
+
+                </div>
+
+
+                <select
+                    id="applicationStatusFilter"
+                    class="filter-select"
+                    onchange="renderApplications()"
+                >
+
+                    <option value="">All Status</option>
+
+                    <option value="submitted">
+                        Submitted
+                    </option>
+
+                    <option value="payment_pending">
+                        Payment Pending
+                    </option>
+
+                    <option value="payment_confirmed">
+                        Payment Confirmed
+                    </option>
+
+                    <option value="under_review">
+                        Under Review
+                    </option>
+
+                    <option value="approved">
+                        Confirmed / Approved
+                    </option>
+
+                    <option value="rejected">
+                        Rejected
+                    </option>
+
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="applicationPaymentFilter"
+                    class="filter-select"
+                    onchange="renderApplications()"
+                >
+
+                    <option value="">All Payments</option>
+                    <option value="pending">Payment Pending</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                    <option value="cancelled">Cancelled</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="quick-status">
+
+                <button
+                    class="active"
+                    onclick="quickApplicationFilter('',this)"
+                >
+                    All
+                </button>
+
+                <button
+                    onclick="quickApplicationFilter('payment_pending',this)"
+                >
+                    Payment Pending
+                </button>
+
+                <button
+                    onclick="quickApplicationFilter('under_review',this)"
+                >
+                    Under Review
+                </button>
+
+                <button
+                    onclick="quickApplicationFilter('approved',this)"
+                >
+                    Approved
+                </button>
+
+                <button
+                    onclick="quickApplicationFilter('rejected',this)"
+                >
+                    Rejected
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Application</th>
+                        <th>Applicant</th>
+                        <th>Job</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Applied</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="applicationsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAYMENTS
+========================================================= -->
+
+<section id="view-payments" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Payments</h2>
+
+            <p>
+                Verify applicant payments before application approval.
+            </p>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="btn btn-secondary"
+                onclick="openPaymentSettings()"
+            >
+                ⚙ Payment Settings
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        id="paymentSearch"
+                        type="text"
+                        placeholder="Search transaction, mobile or application..."
+                        oninput="renderPayments()"
+                    >
+
+                </div>
+
+
+                <select
+                    id="paymentStatusFilter"
+                    class="filter-select"
+                    onchange="renderPayments()"
+                >
+
+                    <option value="">All Payments</option>
+                    <option value="pending">Pending</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                    <option value="cancelled">Cancelled</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Application</th>
+                        <th>Applicant</th>
+                        <th>Method</th>
+                        <th>Amount</th>
+                        <th>Transaction</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="paymentsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GENERIC MANAGEMENT VIEWS
+========================================================= -->
+
+<section id="view-jobs" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Jobs</h2>
+
+            <p>Manage available job opportunities.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">▣</div>
+
+                <p>
+                    Existing DigiSER BD job records will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="view-services" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Services</h2>
+
+            <p>Manage DigiSER BD services.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">◇</div>
+
+                <p>
+                    Existing service records will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="view-employees" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Employees</h2>
+
+            <p>Manage employee information.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">♟</div>
+
+                <p>
+                    Existing employee records will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="view-businesses" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Businesses</h2>
+
+            <p>Manage business directory records.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">▦</div>
+
+                <p>
+                    Existing business records will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="view-messages" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Messages</h2>
+
+            <p>Manage contact and customer messages.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">✉</div>
+
+                <p>
+                    Existing messages will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="view-blog" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Blog</h2>
+
+            <p>Manage DigiSER BD blog content.</p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-body">
+
+            <div class="empty">
+
+                <div class="empty-icon">✎</div>
+
+                <p>
+                    Existing blog posts will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SETTINGS
+========================================================= -->
+
+<section id="view-settings" class="view">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Settings</h2>
+
+            <p>
+                Configure recruitment and payment settings.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-grid">
+
+        <div class="settings-card">
+
+            <h3>Application Payment</h3>
+
+            <p>
+                Configure the manual payment system.
+            </p>
+
+
+            <div class="form-group">
+
+                <label>Application Fee</label>
+
+                <input
+                    id="settingFee"
+                    class="form-control"
+                    type="number"
+                    min="0"
+                    placeholder="500"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Payment Instructions</label>
+
+                <textarea
+                    id="settingInstructions"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Payment instructions for applicants..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div>
+                    <strong>Require Screenshot</strong>
+                    <div class="muted">
+                        Applicant must submit payment proof.
+                    </div>
+                </div>
+
+                <label class="toggle">
+
+                    <input
+                        id="settingScreenshot"
+                        type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <br>
+
+            <button
+                class="btn btn-primary"
+                onclick="saveSettings()"
+            >
+                Save Settings
+            </button>
+
+        </div>
+
+
+        <div class="settings-card">
+
+            <h3>Payment Methods</h3>
+
+            <p>
+                Merchant numbers displayed to applicants.
+            </p>
+
+
+            <div class="form-group">
+
+                <label>bKash Merchant Number</label>
+
+                <input
+                    id="settingBkash"
+                    class="form-control"
+                    placeholder="01XXXXXXXXX"
+                >
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div>
+                    <strong>Enable bKash</strong>
+                </div>
+
+                <label class="toggle">
+
+                    <input
+                        id="settingBkashEnabled"
+                        type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="form-group">
+
+                <label>Nagad Merchant Number</label>
+
+                <input
+                    id="settingNagad"
+                    class="form-control"
+                    placeholder="01XXXXXXXXX"
+                >
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div>
+                    <strong>Enable Nagad</strong>
+                </div>
+
+                <label class="toggle">
+
+                    <input
+                        id="settingNagadEnabled"
+                        type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="form-group">
+
+                <label>Rocket Merchant Number</label>
+
+                <input
+                    id="settingRocket"
+                    class="form-control"
+                    placeholder="01XXXXXXXXX"
+                >
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div>
+                    <strong>Enable Rocket</strong>
+                </div>
+
+                <label class="toggle">
+
+                    <input
+                        id="settingRocketEnabled"
+                        type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <br>
+
+            <button
+                class="btn btn-primary"
+                onclick="saveSettings()"
+            >
+                Save Payment Methods
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    </div>
 
 </main>
 
 </div>
 
 
-<!-- =======================================================
-     APPLICANT DETAIL MODAL
-======================================================== -->
+<!-- =========================================================
+     APPLICANT MODAL
+========================================================= -->
 
-<div
-  class="modal"
-  id="detailModal"
->
+<div id="applicantModal" class="modal-overlay">
 
-  <div class="modal-box">
+    <div class="modal large">
 
-    <div class="modal-head">
+        <div class="modal-header">
 
-      <h2>
-        Applicant Details
-      </h2>
+            <h3>Applicant Profile</h3>
 
-      <button
-        class="close"
-        data-close="detailModal"
-      >
-        ×
-      </button>
+            <button
+                class="modal-close"
+                onclick="closeModal('applicantModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="applicantModalBody"
+            class="modal-body"
+        ></div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeModal('applicantModal')"
+            >
+                Close
+            </button>
+
+        </div>
 
     </div>
-
-
-    <div
-      class="modal-body"
-      id="detailBody"
-    ></div>
-
-  </div>
 
 </div>
 
 
-<!-- =======================================================
-     PREMIUM CV MODAL
-======================================================== -->
+<!-- =========================================================
+     APPLICATION MODAL
+========================================================= -->
 
-<div
-  class="modal"
-  id="cvModal"
->
+<div id="applicationModal" class="modal-overlay">
 
-  <div class="modal-box">
+    <div class="modal large">
 
+        <div class="modal-header">
 
-    <div class="cv-actions">
+            <h3>Application Details</h3>
 
-      <button
-        class="btn primary"
-        id="printCV"
-      >
-        Print / Save PDF
-      </button>
+            <button
+                class="modal-close"
+                onclick="closeModal('applicationModal')"
+            >
+                ×
+            </button>
 
-      <button
-        class="btn"
-        data-close="cvModal"
-      >
-        Close
-      </button>
+        </div>
+
+        <div
+            id="applicationModalBody"
+            class="modal-body"
+        ></div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeModal('applicationModal')"
+            >
+                Close
+            </button>
+
+        </div>
 
     </div>
-
-
-    <div class="cv-view">
-
-      <div
-        class="cv-paper"
-        id="cvPaper"
-      ></div>
-
-    </div>
-
-  </div>
 
 </div>
+
+
+<!-- =========================================================
+     PAYMENT MODAL
+========================================================= -->
+
+<div id="paymentModal" class="modal-overlay">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>Payment Verification</h3>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('paymentModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="paymentModalBody"
+            class="modal-body"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CV MODAL
+========================================================= -->
+
+<div id="cvModal" class="modal-overlay">
+
+    <div class="modal large">
+
+        <div class="modal-header">
+
+            <h3>Branded CV</h3>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('cvModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="cvModalBody"
+            class="modal-body"
+        ></div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeModal('cvModal')"
+            >
+                Close
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="printCV()"
+            >
+                🖨 Print / Save PDF
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div id="toast" class="toast"></div>
 
 
 <script>
-
-"use strict";
-
 
 /* =========================================================
    CONFIG
 ========================================================= */
 
-const STORAGE_KEY =
-  "digiserbd_admin_v1";
+const ADMIN_PASSWORD = "digiser2026";
 
-const ADMIN_PASSWORD =
-  "digiser2026";
+const SESSION_KEY = "digiserbd_admin_session";
 
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const loginScreen =
-  document.getElementById(
-    "loginScreen"
-  );
-
-const app =
-  document.getElementById(
-    "app"
-  );
-
-const password =
-  document.getElementById(
-    "password"
-  );
-
-const loginBtn =
-  document.getElementById(
-    "loginBtn"
-  );
-
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
-
-const table =
-  document.getElementById(
-    "applicantTable"
-  );
-
-const detailModal =
-  document.getElementById(
-    "detailModal"
-  );
-
-const cvModal =
-  document.getElementById(
-    "cvModal"
-  );
-
-const detailBody =
-  document.getElementById(
-    "detailBody"
-  );
-
-const cvPaper =
-  document.getElementById(
-    "cvPaper"
-  );
+const DB_KEY = "digiserbd_admin_v2";
 
 
 /* =========================================================
-   DATABASE
+   STATE
 ========================================================= */
 
-function getDB(){
+let db = {
 
-  try{
+    users: [],
+    jobs: [],
+    services: [],
+    employees: [],
+    businesses: [],
+    messages: [],
+    blog: [],
 
-    const raw =
-      localStorage.getItem(
-        STORAGE_KEY
-      );
+    applicantProfiles: [],
+    applications: [],
+    payments: [],
 
-    if(!raw){
+    settings: {
 
-      return {
+        payment: {
 
-        users:[],
+            fee: 500,
 
-        jobs:[],
+            instructions:
+                "Please complete the payment using one of the available merchant numbers and submit your transaction information.",
 
-        services:[],
+            screenshotRequired: true,
 
-        employees:[],
+            methods: {
 
-        businesses:[],
+                bkash: {
+                    enabled: true,
+                    number: ""
+                },
 
-        messages:[],
+                nagad: {
+                    enabled: true,
+                    number: ""
+                },
 
-        blog:[]
+                rocket: {
+                    enabled: true,
+                    number: ""
+                }
 
-      };
+            }
+
+        }
+
+    }
+
+};
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHTML(value){
+
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function safe(value, fallback="—"){
+
+    return value !== undefined &&
+           value !== null &&
+           String(value).trim() !== ""
+        ? escapeHTML(value)
+        : fallback;
+}
+
+
+function now(){
+
+    return new Date().toISOString();
+}
+
+
+function formatDate(value){
+
+    if(!value){
+        return "—";
+    }
+
+    const d = new Date(value);
+
+    if(isNaN(d.getTime())){
+        return safe(value);
+    }
+
+    return d.toLocaleDateString("en-GB",{
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+    });
+
+}
+
+
+function formatDateTime(value){
+
+    if(!value){
+        return "—";
+    }
+
+    const d = new Date(value);
+
+    if(isNaN(d.getTime())){
+        return safe(value);
+    }
+
+    return d.toLocaleString("en-GB",{
+        day:"2-digit",
+        month:"short",
+        year:"numeric",
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+
+}
+
+
+function uid(prefix="id"){
+
+    return prefix + "_" +
+        Date.now().toString(36) +
+        "_" +
+        Math.random().toString(36).slice(2,8);
+
+}
+
+
+function applicationId(){
+
+    return "DGS-" +
+        Math.floor(10000 + Math.random() * 90000);
+
+}
+
+
+function initials(name){
+
+    if(!name){
+        return "DG";
+    }
+
+    return String(name)
+        .trim()
+        .split(/\s+/)
+        .slice(0,2)
+        .map(x => x[0])
+        .join("")
+        .toUpperCase();
+
+}
+
+
+function saveDB(){
+
+    localStorage.setItem(
+        DB_KEY,
+        JSON.stringify(db)
+    );
+
+}
+
+
+function showToast(message){
+
+    const el = document.getElementById("toast");
+
+    el.textContent = message;
+
+    el.classList.add("show");
+
+    setTimeout(()=>{
+        el.classList.remove("show");
+    },2600);
+
+}
+
+
+/* =========================================================
+   LOAD EXISTING DATA
+========================================================= */
+
+function loadDB(){
+
+    let saved = null;
+
+    try{
+
+        saved = JSON.parse(
+            localStorage.getItem(DB_KEY) || "null"
+        );
+
+    }catch(e){
+
+        saved = null;
 
     }
 
 
-    const db =
-      JSON.parse(raw);
+    if(saved){
+
+        db = {
+
+            ...db,
+            ...saved,
+
+            settings:{
+                ...db.settings,
+                ...(saved.settings || {}),
+
+                payment:{
+                    ...db.settings.payment,
+                    ...((saved.settings || {}).payment || {}),
+
+                    methods:{
+                        ...db.settings.payment.methods,
+                        ...(((saved.settings || {}).payment || {}).methods || {})
+                    }
+
+                }
+
+            }
+
+        };
+
+    }
 
 
-    db.users ||= [];
+    /*
+       Backward compatibility:
+       Read old DigiSER BD database if available.
+    */
 
-    db.jobs ||= [];
+    try{
 
-    db.services ||= [];
+        if(window.DigiSERBD){
 
-    db.employees ||= [];
+            const source = window.DigiSERBD;
 
-    db.businesses ||= [];
+            db.users =
+                db.users.length
+                ? db.users
+                : (source.users || []);
 
-    db.messages ||= [];
+            db.jobs =
+                db.jobs.length
+                ? db.jobs
+                : (source.jobs || []);
 
-    db.blog ||= [];
+            db.services =
+                db.services.length
+                ? db.services
+                : (source.services || []);
+
+            db.employees =
+                db.employees.length
+                ? db.employees
+                : (source.employees || []);
+
+            db.businesses =
+                db.businesses.length
+                ? db.businesses
+                : (source.businesses || []);
+
+            db.messages =
+                db.messages.length
+                ? db.messages
+                : (source.messages || []);
+
+            db.blog =
+                db.blog.length
+                ? db.blog
+                : (source.blog || []);
+
+        }
+
+    }catch(e){
+
+        console.warn(
+            "DigiSERBD data source unavailable",
+            e
+        );
+
+    }
 
 
-    return db;
+    migrateLegacyUsers();
+
+    saveDB();
+
+}
 
 
-  }catch(error){
+/* =========================================================
+   LEGACY MIGRATION
+========================================================= */
 
-    return {
+function migrateLegacyUsers(){
 
-      users:[],
+    if(!Array.isArray(db.users)){
+        db.users = [];
+    }
 
-      jobs:[],
+    if(!Array.isArray(db.applicantProfiles)){
+        db.applicantProfiles = [];
+    }
 
-      services:[],
+    if(!Array.isArray(db.applications)){
+        db.applications = [];
+    }
 
-      employees:[],
+    if(!Array.isArray(db.payments)){
+        db.payments = [];
+    }
 
-      businesses:[],
 
-      messages:[],
+    db.users.forEach(user => {
 
-      blog:[]
+        if(!user){
+            return;
+        }
+
+
+        const profileId =
+            "profile_" + String(user.id || uid("user"));
+
+
+        let profile =
+            db.applicantProfiles.find(
+                x => String(x.id) === String(profileId)
+            );
+
+
+        if(!profile){
+
+            const p = user.personal || {};
+
+            const wanted = user.wanted || {};
+
+            const education = user.education || {};
+
+            const experience = user.experience || {};
+
+            const skills = user.skills || {};
+
+            profile = {
+
+                id:profileId,
+
+                legacyUserId:user.id || null,
+
+                name:p.name || user.name || "",
+
+                mobile:p.mobile || user.mobile || "",
+
+                email:p.email || user.email || "",
+
+                photo:p.photo || user.photo || "",
+
+                currentAddress:
+                    p.currentAddress || "",
+
+                permanentAddress:
+                    p.permanentAddress || "",
+
+                emergency:
+                    p.emergency || "",
+
+                profile:
+                    p.profile || "",
+
+                education:{
+                    ssc:education.ssc || "",
+                    hsc:education.hsc || "",
+                    graduate:education.graduate || "",
+                    other:education.other || ""
+                },
+
+                experience:{
+                    experience:experience.experience || "",
+                    duty:experience.duty || "",
+                    previousSalary:
+                        experience.previousSalary || ""
+                },
+
+                skills:{
+                    skills:skills.skills || ""
+                },
+
+                language:{
+                    language:
+                        (user.language || {}).language || ""
+                },
+
+                createdAt:
+                    user.created || now(),
+
+                updatedAt:
+                    user.updated || now()
+
+            };
+
+
+            db.applicantProfiles.push(profile);
+
+        }
+
+
+        const existingApplication =
+            db.applications.find(
+                x =>
+                    String(x.legacyUserId) ===
+                    String(user.id)
+            );
+
+
+        if(!existingApplication){
+
+            const wanted = user.wanted || {};
+
+            const oldStatus =
+                String(user.status || "").toLowerCase();
+
+
+            let applicationStatus =
+                "submitted";
+
+
+            if(
+                oldStatus === "reviewing" ||
+                oldStatus === "under_review"
+            ){
+
+                applicationStatus =
+                    "under_review";
+
+            }
+            else if(
+                oldStatus === "selected"
+            ){
+
+                applicationStatus =
+                    "approved";
+
+            }
+            else if(
+                oldStatus === "rejected"
+            ){
+
+                applicationStatus =
+                    "rejected";
+
+            }
+            else if(
+                oldStatus === "shortlisted" ||
+                oldStatus === "interview"
+            ){
+
+                applicationStatus =
+                    "under_review";
+
+            }
+
+
+            const appId =
+                user.trackingNumber ||
+                applicationId();
+
+
+            db.applications.push({
+
+                id:uid("app"),
+
+                applicationId:appId,
+
+                legacyUserId:user.id || null,
+
+                profileId:profile.id,
+
+                jobId:
+                    wanted.jobId ||
+                    null,
+
+                jobTitle:
+                    wanted.role ||
+                    user.role ||
+                    "General Application",
+
+                appliedAt:
+                    user.created ||
+                    now(),
+
+                updatedAt:
+                    user.updated ||
+                    now(),
+
+                status:applicationStatus,
+
+                source:
+                    user.source ||
+                    "website",
+
+                notes:[],
+
+                statusHistory:[
+
+                    {
+
+                        status:applicationStatus,
+
+                        at:
+                            user.updated ||
+                            user.created ||
+                            now(),
+
+                        note:"Migrated from previous system."
+
+                    }
+
+                ]
+
+            });
+
+
+            db.payments.push({
+
+                id:uid("pay"),
+
+                applicationId:appId,
+
+                profileId:profile.id,
+
+                method:"",
+
+                amount:
+                    db.settings.payment.fee || 0,
+
+                senderMobile:"",
+
+                transactionId:"",
+
+                paymentDate:"",
+
+                screenshot:"",
+
+                status:"pending",
+
+                createdAt:now(),
+
+                updatedAt:now()
+
+            });
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+function checkSession(){
+
+    const loggedIn =
+        sessionStorage.getItem(SESSION_KEY) === "true";
+
+
+    if(loggedIn){
+
+        openApp();
+
+    }
+    else{
+
+        document
+            .getElementById("loginScreen")
+            .style.display = "flex";
+
+    }
+
+}
+
+
+document
+    .getElementById("loginForm")
+    .addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        const password =
+            document
+                .getElementById("passwordInput")
+                .value;
+
+
+        if(password === ADMIN_PASSWORD){
+
+            sessionStorage.setItem(
+                SESSION_KEY,
+                "true"
+            );
+
+            openApp();
+
+        }
+        else{
+
+            document
+                .getElementById("loginError")
+                .textContent =
+                "Incorrect admin password.";
+
+        }
+
+    });
+
+
+function openApp(){
+
+    document
+        .getElementById("loginScreen")
+        .style.display = "none";
+
+    document
+        .getElementById("app")
+        .classList.add("active");
+
+    loadDB();
+
+    renderAll();
+
+}
+
+
+function logout(){
+
+    sessionStorage.removeItem(
+        SESSION_KEY
+    );
+
+    location.reload();
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const titles = {
+
+    dashboard:"Dashboard",
+
+    applicants:"Applicants",
+
+    applications:"Applications",
+
+    payments:"Payments",
+
+    jobs:"Jobs",
+
+    services:"Services",
+
+    employees:"Employees",
+
+    businesses:"Businesses",
+
+    messages:"Messages",
+
+    blog:"Blog",
+
+    settings:"Settings"
+
+};
+
+
+document
+    .querySelectorAll(".nav-item")
+    .forEach(item => {
+
+        item.addEventListener("click",()=>{
+
+            const view =
+                item.dataset.view;
+
+            showView(view);
+
+        });
+
+    });
+
+
+function showView(view){
+
+    document
+        .querySelectorAll(".view")
+        .forEach(el => {
+
+            el.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(
+            "view-" + view
+        );
+
+
+    if(target){
+        target.classList.add("active");
+    }
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item => {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.view === view
+            );
+
+        });
+
+
+    document
+        .getElementById("pageTitle")
+        .textContent =
+        titles[view] || "Dashboard";
+
+
+    document
+        .getElementById("sidebar")
+        .classList.remove("open");
+
+
+    if(view === "dashboard"){
+        renderDashboard();
+    }
+
+    if(view === "applicants"){
+        renderApplicants();
+    }
+
+    if(view === "applications"){
+        renderApplications();
+    }
+
+    if(view === "payments"){
+        renderPayments();
+    }
+
+    if(view === "settings"){
+        loadSettings();
+    }
+
+}
+
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   RENDER ALL
+========================================================= */
+
+function renderAll(){
+
+    renderDashboard();
+
+    renderApplicants();
+
+    renderApplications();
+
+    renderPayments();
+
+    loadSettings();
+
+}
+
+
+function refreshAll(){
+
+    loadDB();
+
+    renderAll();
+
+    showToast("Dashboard refreshed.");
+
+}
+
+
+/* =========================================================
+   STATUS UI
+========================================================= */
+
+const statusLabels = {
+
+    submitted:"Submitted",
+
+    payment_pending:"Payment Pending",
+
+    payment_confirmed:"Payment Confirmed",
+
+    under_review:"Under Review",
+
+    approved:"Confirmed / Approved",
+
+    rejected:"Rejected",
+
+    cancelled:"Cancelled"
+
+};
+
+
+const paymentLabels = {
+
+    pending:"Pending",
+
+    paid:"Paid",
+
+    failed:"Failed",
+
+    cancelled:"Cancelled"
+
+};
+
+
+function statusHTML(status){
+
+    const label =
+        statusLabels[status] ||
+        status ||
+        "Unknown";
+
+
+    let cls = "status-submitted";
+
+
+    if(status === "payment_pending"){
+        cls = "status-payment";
+    }
+
+    if(status === "payment_confirmed"){
+        cls = "status-paid";
+    }
+
+    if(status === "under_review"){
+        cls = "status-review";
+    }
+
+    if(status === "approved"){
+        cls = "status-approved";
+    }
+
+    if(status === "rejected"){
+        cls = "status-rejected";
+    }
+
+    if(status === "cancelled"){
+        cls = "status-cancelled";
+    }
+
+
+    return `
+        <span class="status ${cls}">
+            ${escapeHTML(label)}
+        </span>
+    `;
+
+}
+
+
+function paymentStatusHTML(status){
+
+    const label =
+        paymentLabels[status] ||
+        status ||
+        "Pending";
+
+
+    let cls = "status-payment";
+
+
+    if(status === "paid"){
+        cls = "status-paid";
+    }
+
+    if(status === "failed"){
+        cls = "status-rejected";
+    }
+
+    if(status === "cancelled"){
+        cls = "status-cancelled";
+    }
+
+
+    return `
+        <span class="status ${cls}">
+            ${escapeHTML(label)}
+        </span>
+    `;
+
+}
+
+
+/* =========================================================
+   DATA FINDERS
+========================================================= */
+
+function getProfile(profileId){
+
+    return db.applicantProfiles.find(
+        p => String(p.id) === String(profileId)
+    );
+
+}
+
+
+function getApplication(applicationIdValue){
+
+    return db.applications.find(
+        a =>
+            String(a.applicationId) ===
+            String(applicationIdValue)
+        ||
+            String(a.id) ===
+            String(applicationIdValue)
+    );
+
+}
+
+
+function getPayment(applicationIdValue){
+
+    return db.payments.find(
+        p =>
+            String(p.applicationId) ===
+            String(applicationIdValue)
+    );
+
+}
+
+
+function applicationsForProfile(profileId){
+
+    return db.applications.filter(
+        a =>
+            String(a.profileId) ===
+            String(profileId)
+    );
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function renderDashboard(){
+
+    const applicants =
+        db.applicantProfiles.length;
+
+    const applications =
+        db.applications.length;
+
+    const paymentPending =
+        db.payments.filter(
+            p => p.status === "pending"
+        ).length;
+
+    const review =
+        db.applications.filter(
+            a => a.status === "under_review"
+        ).length;
+
+    const approved =
+        db.applications.filter(
+            a => a.status === "approved"
+        ).length;
+
+
+    document
+        .getElementById("statApplicants")
+        .textContent = applicants;
+
+    document
+        .getElementById("statApplications")
+        .textContent = applications;
+
+    document
+        .getElementById("statPaymentPending")
+        .textContent = paymentPending;
+
+    document
+        .getElementById("statReview")
+        .textContent = review;
+
+    document
+        .getElementById("statApproved")
+        .textContent = approved;
+
+
+    document
+        .getElementById("applicationBadge")
+        .textContent =
+        db.applications.filter(
+            a =>
+                a.status === "submitted" ||
+                a.status === "payment_pending"
+        ).length;
+
+
+    document
+        .getElementById("paymentBadge")
+        .textContent =
+        db.payments.filter(
+            p => p.status === "pending"
+        ).length;
+
+
+    renderRecentApplications();
+
+    renderPaymentOverview();
+
+}
+
+
+/* =========================================================
+   RECENT APPLICATIONS
+========================================================= */
+
+function renderRecentApplications(){
+
+    const container =
+        document.getElementById(
+            "recentApplications"
+        );
+
+
+    const apps =
+        [...db.applications]
+        .sort(
+            (a,b) =>
+                new Date(b.appliedAt) -
+                new Date(a.appliedAt)
+        )
+        .slice(0,7);
+
+
+    if(!apps.length){
+
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">▤</div>
+                <p>No applications yet.</p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+        <div class="panel-body">
+
+            <div class="recent-list">
+
+                ${apps.map(app => {
+
+                    const p =
+                        getProfile(app.profileId);
+
+                    return `
+
+                        <div class="recent-item">
+
+                            <div class="recent-left">
+
+                                <div class="avatar">
+
+                                    ${
+                                        p && p.photo
+                                        ?
+                                        `<img src="${escapeHTML(p.photo)}" alt="">`
+                                        :
+                                        initials(p?.name)
+                                    }
+
+                                </div>
+
+                                <div class="recent-info">
+
+                                    <strong>
+                                        ${safe(p?.name,"Applicant")}
+                                    </strong>
+
+                                    <span>
+                                        ${safe(app.jobTitle)}
+                                        ·
+                                        ${safe(app.applicationId)}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            ${statusHTML(app.status)}
+
+                        </div>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   PAYMENT OVERVIEW
+========================================================= */
+
+function renderPaymentOverview(){
+
+    const container =
+        document.getElementById(
+            "paymentOverview"
+        );
+
+
+    const counts = {
+
+        pending:
+            db.payments.filter(
+                p => p.status === "pending"
+            ).length,
+
+        paid:
+            db.payments.filter(
+                p => p.status === "paid"
+            ).length,
+
+        failed:
+            db.payments.filter(
+                p => p.status === "failed"
+            ).length,
+
+        cancelled:
+            db.payments.filter(
+                p => p.status === "cancelled"
+            ).length
 
     };
 
-  }
 
-}
+    container.innerHTML = `
 
+        <div class="recent-item">
 
-function saveDB(db){
+            <div>
+                <strong>Pending</strong>
+                <div class="muted">
+                    Awaiting verification
+                </div>
+            </div>
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(db)
-  );
+            ${paymentStatusHTML("pending")}
+            <strong>${counts.pending}</strong>
 
-}
+        </div>
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+        <div class="recent-item">
 
-function esc(value){
+            <div>
+                <strong>Paid</strong>
+                <div class="muted">
+                    Payment verified
+                </div>
+            </div>
 
-  return String(value || "")
+            ${paymentStatusHTML("paid")}
+            <strong>${counts.paid}</strong>
 
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
+        </div>
 
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
 
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
+        <div class="recent-item">
 
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
+            <div>
+                <strong>Failed</strong>
+                <div class="muted">
+                    Payment rejected
+                </div>
+            </div>
 
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+            ${paymentStatusHTML("failed")}
+            <strong>${counts.failed}</strong>
 
-}
+        </div>
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
+        <div class="recent-item">
 
-function login(){
+            <div>
+                <strong>Cancelled</strong>
+                <div class="muted">
+                    Cancelled payments
+                </div>
+            </div>
 
-  if(
-    password.value ===
-    ADMIN_PASSWORD
-  ){
+            ${paymentStatusHTML("cancelled")}
+            <strong>${counts.cancelled}</strong>
 
-    sessionStorage.setItem(
-      "digiserbd_admin_login",
-      "1"
-    );
-
-
-    loginScreen.style.display =
-      "none";
-
-
-    app.classList.add(
-      "show"
-    );
-
-
-    render();
-
-  }else{
-
-    loginError.textContent =
-      "Incorrect admin password.";
-
-  }
-
-}
-
-
-loginBtn.addEventListener(
-  "click",
-  login
-);
-
-
-password.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Enter"){
-
-      login();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-document
-  .getElementById(
-    "logoutBtn"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      sessionStorage.removeItem(
-        "digiserbd_admin_login"
-      );
-
-      location.reload();
-
-    }
-  );
-
-
-/* =========================================================
-   RENDER DASHBOARD
-========================================================= */
-
-function render(){
-
-  const db =
-    getDB();
-
-  const users =
-    db.users || [];
-
-
-  document.getElementById(
-    "totalApplicants"
-  ).textContent =
-    users.length;
-
-
-  document.getElementById(
-    "newApplicants"
-  ).textContent =
-    users.filter(
-      user =>
-        user.status === "new"
-    ).length;
-
-
-  document.getElementById(
-    "businessCount"
-  ).textContent =
-    (
-      db.businesses || []
-    ).length;
-
-
-  document.getElementById(
-    "messageCount"
-  ).textContent =
-    (
-      db.messages || []
-    ).length;
-
-
-  if(!users.length){
-
-    table.innerHTML = `
-
-      <tr>
-
-        <td colspan="6">
-
-          <div class="empty">
-
-            No applicants yet.
-
-          </div>
-
-        </td>
-
-      </tr>
+        </div>
 
     `;
 
-    return;
-
-  }
+}
 
 
-  table.innerHTML =
+/* =========================================================
+   APPLICANTS
+========================================================= */
 
-    users
+function renderApplicants(){
 
-      .slice()
-
-      .reverse()
-
-      .map(
-
-        user => {
-
-          const name =
-            user.personal?.name ||
-            user.name ||
-            "Unknown";
+    const tbody =
+        document.getElementById(
+            "applicantsTable"
+        );
 
 
-          const phone =
-            user.personal?.mobile ||
-            "—";
+    if(!tbody){
+        return;
+    }
 
 
-          const role =
-            user.wanted?.role ||
-            "—";
+    const query =
+        (
+            document.getElementById(
+                "applicantSearch"
+            )?.value || ""
+        )
+        .toLowerCase()
+        .trim();
 
 
-          const status =
-            user.status ||
-            "new";
+    let profiles =
+        [...db.applicantProfiles];
 
 
-          const date =
-            user.created
+    if(query){
 
-              ? new Date(
-                  user.created
-                ).toLocaleDateString()
+        profiles =
+            profiles.filter(p => {
 
-              : "—";
+                const text =
+                    [
+                        p.name,
+                        p.mobile,
+                        p.email
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+                return text.includes(query);
+
+            });
+
+    }
 
 
-          return `
+    profiles.sort(
+        (a,b) =>
+            new Date(b.updatedAt || b.createdAt) -
+            new Date(a.updatedAt || a.createdAt)
+    );
+
+
+    if(!profiles.length){
+
+        tbody.innerHTML = `
 
             <tr>
 
-              <td>
+                <td colspan="6">
 
-                <strong>
-                  ${esc(name)}
-                </strong>
+                    <div class="empty">
 
-              </td>
+                        <div class="empty-icon">
+                            ♙
+                        </div>
 
+                        No applicants found.
 
-              <td>
-                ${esc(phone)}
-              </td>
+                    </div>
 
-
-              <td>
-                ${esc(role)}
-              </td>
-
-
-              <td>
-
-                <span class="badge">
-                  ${esc(status)}
-                </span>
-
-              </td>
-
-
-              <td>
-                ${date}
-              </td>
-
-
-              <td>
-
-                <div class="actions">
-
-                  <button
-                    class="btn primary"
-                    onclick="viewApplicant('${esc(user.id)}')"
-                  >
-                    View
-                  </button>
-
-
-                  <button
-                    class="btn"
-                    onclick="viewCV('${esc(user.id)}')"
-                  >
-                    CV
-                  </button>
-
-
-                  <button
-                    class="btn danger"
-                    onclick="deleteApplicant('${esc(user.id)}')"
-                  >
-                    Delete
-                  </button>
-
-                </div>
-
-              </td>
+                </td>
 
             </tr>
 
-          `;
+        `;
 
-        }
-
-      )
-
-      .join("");
-
-}
-
-
-/* =========================================================
-   VIEW APPLICANT
-========================================================= */
-
-window.viewApplicant =
-function(id){
-
-  const db =
-    getDB();
-
-
-  const user =
-    db.users.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!user){
-    return;
-  }
-
-
-  detailBody.innerHTML = `
-
-    <div class="detail-grid">
-
-
-      <div class="detail">
-
-        <small>
-          Application ID
-        </small>
-
-        <p>
-          ${esc(user.id)}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Status
-        </small>
-
-        <select
-          id="statusSelect"
-        >
-
-          ${
-            [
-              "new",
-              "reviewing",
-              "shortlisted",
-              "interview",
-              "selected",
-              "rejected"
-            ]
-
-            .map(
-              status => `
-
-                <option
-                  value="${status}"
-                  ${
-                    user.status === status
-                      ? "selected"
-                      : ""
-                  }
-                >
-                  ${status}
-                </option>
-
-              `
-            )
-
-            .join("")
-          }
-
-        </select>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Name
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.name ||
-            user.name
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Mobile
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.mobile
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Email
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.email
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Emergency Contact
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.emergency
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Current Address
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.currentAddress
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Permanent Address
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.permanentAddress
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Professional Profile
-        </small>
-
-        <p>
-          ${esc(
-            user.personal?.profile
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Education
-        </small>
-
-        <p>
-          ${esc(
-
-            [
-
-              user.education?.ssc,
-
-              user.education?.hsc,
-
-              user.education?.graduate,
-
-              user.education?.other
-
-            ]
-
-            .filter(Boolean)
-
-            .join("\\n")
-
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Experience
-        </small>
-
-        <p>
-          ${esc(
-
-            [
-
-              user.experience?.experience,
-
-              user.experience?.duty,
-
-              user.experience?.previousSalary
-
-            ]
-
-            .filter(Boolean)
-
-            .join("\\n")
-
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Skills
-        </small>
-
-        <p>
-          ${esc(
-            user.skills?.skills
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Languages
-        </small>
-
-        <p>
-          ${esc(
-            user.language?.language
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Desired Role
-        </small>
-
-        <p>
-          ${esc(
-            user.wanted?.role
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Expected Salary
-        </small>
-
-        <p>
-          ${esc(
-            user.wanted?.salary
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Employment Type
-        </small>
-
-        <p>
-          ${esc(
-            user.wanted?.type
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail">
-
-        <small>
-          Preferred Location
-        </small>
-
-        <p>
-          ${esc(
-            user.wanted?.location
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <small>
-          Reference
-        </small>
-
-        <p>
-          ${esc(
-
-            [
-
-              user.reference?.name,
-
-              user.reference?.contact,
-
-              user.reference?.relation
-
-            ]
-
-            .filter(Boolean)
-
-            .join(" · ")
-
-          )}
-        </p>
-
-      </div>
-
-
-      <div class="detail full">
-
-        <button
-          class="btn primary"
-          onclick="viewCV('${esc(user.id)}')"
-        >
-          👁 View Premium CV
-        </button>
-
-
-        <button
-          class="btn"
-          onclick="saveStatus('${esc(user.id)}')"
-        >
-          Save Status
-        </button>
-
-      </div>
-
-
-    </div>
-
-  `;
-
-
-  detailModal.classList.add(
-    "show"
-  );
-
-};
-
-
-/* =========================================================
-   SAVE STATUS
-========================================================= */
-
-window.saveStatus =
-function(id){
-
-  const db =
-    getDB();
-
-
-  const user =
-    db.users.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!user){
-    return;
-  }
-
-
-  const select =
-    document.getElementById(
-      "statusSelect"
-    );
-
-
-  user.status =
-    select.value;
-
-
-  user.updated =
-    new Date().toISOString();
-
-
-  saveDB(db);
-
-
-  detailModal.classList.remove(
-    "show"
-  );
-
-
-  render();
-
-};
-
-
-/* =========================================================
-   DELETE APPLICANT
-========================================================= */
-
-window.deleteApplicant =
-function(id){
-
-  const confirmDelete =
-    confirm(
-      "Delete this applicant permanently?"
-    );
-
-
-  if(!confirmDelete){
-    return;
-  }
-
-
-  const db =
-    getDB();
-
-
-  db.users =
-    db.users.filter(
-      user =>
-        user.id !== id
-    );
-
-
-  saveDB(db);
-
-
-  render();
-
-};
-
-
-/* =========================================================
-   PREMIUM CV
-   SAME STRUCTURE AS REGISTER V2
-========================================================= */
-
-function buildPremiumCV(user){
-
-  const personal =
-    user.personal || {};
-
-
-  const education =
-    user.education || {};
-
-
-  const experience =
-    user.experience || {};
-
-
-  const skills =
-    user.skills || {};
-
-
-  const language =
-    user.language || {};
-
-
-  const wanted =
-    user.wanted || {};
-
-
-  const reference =
-    user.reference || {};
-
-
-  /*
-    PHOTO SUPPORT
-
-    New Register:
-      personal.photo
-
-    Older possible versions:
-      personal.profilePhoto
-      photo
-  */
-
-  const photo =
-    personal.photo ||
-    personal.profilePhoto ||
-    user.photo ||
-    "";
-
-
-  const educationText = [
-
-    education.ssc
-      ? "SSC: " +
-        education.ssc
-      : "",
-
-    education.hsc
-      ? "HSC: " +
-        education.hsc
-      : "",
-
-    education.graduate
-      ? education.graduate
-      : "",
-
-    education.other
-      ? education.other
-      : ""
-
-  ]
-
-  .filter(Boolean)
-
-  .join("\n");
-
-
-  const experienceText = [
-
-    experience.experience
-      ? experience.experience
-      : "",
-
-    experience.duty
-      ? "Duties: " +
-        experience.duty
-      : "",
-
-    experience.previousSalary
-      ? "Previous Salary: " +
-        experience.previousSalary
-      : ""
-
-  ]
-
-  .filter(Boolean)
-
-  .join("\n");
-
-
-  const preferenceText = [
-
-    wanted.type
-      ? "Type: " +
-        wanted.type
-      : "",
-
-    wanted.location
-      ? "Location: " +
-        wanted.location
-      : "",
-
-    wanted.salary
-      ? "Expected Salary: " +
-        wanted.salary
-      : ""
-
-  ]
-
-  .filter(Boolean)
-
-  .join("\n");
-
-
-  const referenceText = [
-
-    reference.name,
-
-    reference.contact,
-
-    reference.relation
-
-  ]
-
-  .filter(Boolean)
-
-  .join(" · ");
-
-
-  return `
-
-    <!-- CV HEADER -->
-
-    <div class="cv-top">
-
-
-      <div class="cv-photo">
-
-        ${
-          photo
-
-          ?
-
-          `
-          <img
-            src="${photo}"
-            alt="Profile Photo"
-          >
-          `
-
-          :
-
-          `
-          PHOTO
-          `
-        }
-
-      </div>
-
-
-      <div>
-
-        <div class="cv-name">
-
-          ${esc(
-            personal.name ||
-            user.name ||
-            "Applicant"
-          )}
-
-        </div>
-
-
-        <div class="cv-role">
-
-          ${esc(
-            wanted.role ||
-            "Professional"
-          )}
-
-        </div>
-
-
-        <div class="cv-contact">
-
-          ${esc(
-            personal.mobile || ""
-          )}
-
-          ${
-            personal.email
-
-            ?
-
-            " · " +
-            esc(
-              personal.email
-            )
-
-            :
-
-            ""
-          }
-
-
-          ${
-            personal.currentAddress
-
-            ?
-
-            "<br>" +
-            esc(
-              personal.currentAddress
-            )
-
-            :
-
-            ""
-          }
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- CV BODY -->
-
-    <div class="cv-body">
-
-
-      <!-- LEFT SIDE -->
-
-      <aside class="cv-side">
-
-
-        ${
-          skills.skills
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Skills
-            </h3>
-
-            <p>
-              ${esc(
-                skills.skills
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          language.language
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Languages
-            </h3>
-
-            <p>
-              ${esc(
-                language.language
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          preferenceText
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Preference
-            </h3>
-
-            <p>
-              ${esc(
-                preferenceText
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          referenceText
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Reference
-            </h3>
-
-            <p>
-              ${esc(
-                referenceText
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-      </aside>
-
-
-      <!-- RIGHT SIDE -->
-
-      <main class="cv-main">
-
-
-        ${
-          personal.profile
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Profile
-            </h3>
-
-            <p>
-              ${esc(
-                personal.profile
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          experienceText
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Experience
-            </h3>
-
-            <p>
-              ${esc(
-                experienceText
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          educationText
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Education
-            </h3>
-
-            <p>
-              ${esc(
-                educationText
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-        ${
-          personal.permanentAddress
-
-          ?
-
-          `
-
-          <div class="cv-section">
-
-            <h3>
-              Address
-            </h3>
-
-            <p>
-              ${esc(
-                personal.permanentAddress
-              )}
-            </p>
-
-          </div>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-      </main>
-
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   VIEW CV
-========================================================= */
-
-window.viewCV =
-function(id){
-
-  const db =
-    getDB();
-
-
-  const user =
-    db.users.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!user){
-    return;
-  }
-
-
-  cvPaper.innerHTML =
-    buildPremiumCV(
-      user
-    );
-
-
-  cvModal.classList.add(
-    "show"
-  );
-
-};
-
-
-/* =========================================================
-   PRINT / SAVE PDF
-========================================================= */
-
-document
-  .getElementById(
-    "printCV"
-  )
-  .addEventListener(
-    "click",
-    function(){
-
-      window.print();
+        return;
 
     }
-  );
+
+
+    tbody.innerHTML =
+        profiles.map(p => {
+
+            const apps =
+                applicationsForProfile(p.id);
+
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <div class="applicant-cell">
+
+                            <div class="avatar">
+
+                                ${
+                                    p.photo
+                                    ?
+                                    `<img src="${escapeHTML(p.photo)}" alt="">`
+                                    :
+                                    initials(p.name)
+                                }
+
+                            </div>
+
+                            <div>
+
+                                <div class="applicant-name">
+                                    ${safe(p.name,"Unnamed")}
+                                </div>
+
+                                <div class="applicant-mobile">
+                                    Profile ID:
+                                    ${safe(p.id)}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        ${safe(p.mobile)}
+                    </td>
+
+
+                    <td>
+                        ${safe(p.email)}
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            ${apps.length}
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+                        ${formatDate(p.createdAt)}
+                    </td>
+
+
+                    <td>
+
+                        <div class="actions">
+
+                            <button
+                                class="icon-btn"
+                                title="View Profile"
+                                onclick="openApplicant('${escapeJS(p.id)}')"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
+
+}
 
 
 /* =========================================================
-   CLOSE MODALS
+   APPLICATIONS
 ========================================================= */
 
-document
-  .querySelectorAll(
-    "[data-close]"
-  )
-  .forEach(
-    button => {
+function renderApplications(){
 
-      button.addEventListener(
-        "click",
-        function(){
-
-          const id =
-            button.dataset.close;
+    const tbody =
+        document.getElementById(
+            "applicationsTable"
+        );
 
 
-          document
-            .getElementById(id)
-            .classList.remove(
-              "show"
+    if(!tbody){
+        return;
+    }
+
+
+    const query =
+        (
+            document.getElementById(
+                "applicationSearch"
+            )?.value || ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const status =
+        document.getElementById(
+            "applicationStatusFilter"
+        )?.value || "";
+
+
+    const paymentStatus =
+        document.getElementById(
+            "applicationPaymentFilter"
+        )?.value || "";
+
+
+    let apps =
+        [...db.applications];
+
+
+    if(query){
+
+        apps =
+            apps.filter(app => {
+
+                const p =
+                    getProfile(app.profileId);
+
+
+                const text =
+                    [
+
+                        app.applicationId,
+
+                        app.jobTitle,
+
+                        p?.name,
+
+                        p?.mobile,
+
+                        p?.email
+
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+                return text.includes(query);
+
+            });
+
+    }
+
+
+    if(status){
+
+        apps =
+            apps.filter(
+                a => a.status === status
             );
 
-        }
-      );
+    }
+
+
+    if(paymentStatus){
+
+        apps =
+            apps.filter(a => {
+
+                const payment =
+                    getPayment(
+                        a.applicationId
+                    );
+
+                return payment?.status ===
+                    paymentStatus;
+
+            });
 
     }
-  );
+
+
+    apps.sort(
+        (a,b) =>
+            new Date(b.appliedAt) -
+            new Date(a.appliedAt)
+    );
+
+
+    if(!apps.length){
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            ▤
+                        </div>
+
+                        No applications found.
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+        apps.map(app => {
+
+            const p =
+                getProfile(app.profileId);
+
+
+            const payment =
+                getPayment(
+                    app.applicationId
+                );
+
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <span class="id-code">
+                            ${safe(app.applicationId)}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="applicant-cell">
+
+                            <div class="avatar">
+
+                                ${
+                                    p?.photo
+                                    ?
+                                    `<img src="${escapeHTML(p.photo)}" alt="">`
+                                    :
+                                    initials(p?.name)
+                                }
+
+                            </div>
+
+                            <div>
+
+                                <div class="applicant-name">
+                                    ${safe(p?.name,"Applicant")}
+                                </div>
+
+                                <div class="applicant-mobile">
+                                    ${safe(p?.mobile)}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="role-text">
+                            ${safe(app.jobTitle)}
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            payment
+                            ?
+                            paymentStatusHTML(payment.status)
+                            :
+                            paymentStatusHTML("pending")
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                        ${statusHTML(app.status)}
+
+                    </td>
+
+
+                    <td>
+                        ${formatDate(app.appliedAt)}
+                    </td>
+
+
+                    <td>
+
+                        <div class="actions">
+
+                            <button
+                                class="icon-btn"
+                                title="View Application"
+                                onclick="openApplication('${escapeJS(app.applicationId)}')"
+                            >
+                                👁
+                            </button>
+
+
+                            <button
+                                class="icon-btn"
+                                title="View CV"
+                                onclick="openCV('${escapeJS(app.profileId)}')"
+                            >
+                                CV
+                            </button>
+
+
+                            <button
+                                class="icon-btn"
+                                title="Payment"
+                                onclick="openPayment('${escapeJS(app.applicationId)}')"
+                            >
+                                ৳
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
+
+}
 
 
 /* =========================================================
-   OUTSIDE CLICK
+   QUICK FILTER
 ========================================================= */
 
-window.addEventListener(
-  "click",
-  function(event){
+function quickApplicationFilter(status,button){
 
-    if(
-      event.target ===
-      detailModal
-    ){
+    const select =
+        document.getElementById(
+            "applicationStatusFilter"
+        );
 
-      detailModal.classList.remove(
-        "show"
-      );
+
+    if(select){
+
+        select.value = status;
+
+    }
+
+
+    document
+        .querySelectorAll(".quick-status button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if(button){
+
+        button.classList.add("active");
 
     }
 
 
-    if(
-      event.target ===
-      cvModal
-    ){
+    renderApplications();
 
-      cvModal.classList.remove(
-        "show"
-      );
+}
+
+
+/* =========================================================
+   PAYMENTS
+========================================================= */
+
+function renderPayments(){
+
+    const tbody =
+        document.getElementById(
+            "paymentsTable"
+        );
+
+
+    if(!tbody){
+        return;
+    }
+
+
+    const query =
+        (
+            document.getElementById(
+                "paymentSearch"
+            )?.value || ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const filter =
+        document.getElementById(
+            "paymentStatusFilter"
+        )?.value || "";
+
+
+    let payments =
+        [...db.payments];
+
+
+    if(query){
+
+        payments =
+            payments.filter(payment => {
+
+                const app =
+                    getApplication(
+                        payment.applicationId
+                    );
+
+                const p =
+                    app
+                    ? getProfile(app.profileId)
+                    : null;
+
+
+                const text =
+                    [
+
+                        payment.transactionId,
+
+                        payment.senderMobile,
+
+                        payment.method,
+
+                        payment.applicationId,
+
+                        p?.name,
+
+                        p?.mobile
+
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+                return text.includes(query);
+
+            });
 
     }
 
-  }
+
+    if(filter){
+
+        payments =
+            payments.filter(
+                p => p.status === filter
+            );
+
+    }
+
+
+    payments.sort(
+        (a,b) =>
+            new Date(b.updatedAt || b.createdAt) -
+            new Date(a.updatedAt || a.createdAt)
+    );
+
+
+    if(!payments.length){
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            ৳
+                        </div>
+
+                        No payment records found.
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+        payments.map(payment => {
+
+            const app =
+                getApplication(
+                    payment.applicationId
+                );
+
+
+            const p =
+                app
+                ? getProfile(app.profileId)
+                : null;
+
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <span class="id-code">
+                            ${safe(payment.applicationId)}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${safe(p?.name)}
+                    </td>
+
+
+                    <td>
+                        ${safe(payment.method || "—")}
+                    </td>
+
+
+                    <td>
+                        ৳${Number(payment.amount || 0).toLocaleString()}
+                    </td>
+
+
+                    <td>
+                        ${safe(payment.transactionId)}
+                    </td>
+
+
+                    <td>
+                        ${paymentStatusHTML(payment.status)}
+                    </td>
+
+
+                    <td>
+
+                        <div class="actions">
+
+                            <button
+                                class="icon-btn"
+                                onclick="openPayment('${escapeJS(payment.applicationId)}')"
+                                title="Verify Payment"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================================================
+   APPLICANT MODAL
+========================================================= */
+
+function openApplicant(profileId){
+
+    const p =
+        getProfile(profileId);
+
+
+    if(!p){
+        showToast("Applicant not found.");
+        return;
+    }
+
+
+    const apps =
+        applicationsForProfile(p.id);
+
+
+    const body =
+        document.getElementById(
+            "applicantModalBody"
+        );
+
+
+    body.innerHTML = `
+
+        <div class="profile-header">
+
+            <div class="profile-photo">
+
+                ${
+                    p.photo
+                    ?
+                    `<img src="${escapeHTML(p.photo)}" alt="">`
+                    :
+                    initials(p.name)
+                }
+
+            </div>
+
+            <div class="profile-head-info">
+
+                <h3>
+                    ${safe(p.name,"Applicant")}
+                </h3>
+
+                <p>
+                    ${safe(p.mobile)}
+                    ·
+                    ${safe(p.email)}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Contact
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Mobile
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.mobile)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Email
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.email)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Emergency
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.emergency)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Address
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Current
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.currentAddress)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Permanent
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.permanentAddress)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Education
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        SSC
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.education?.ssc)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        HSC
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.education?.hsc)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Graduate
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.education?.graduate)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Other
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.education?.other)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Skills
+                </div>
+
+                <div class="detail-value">
+                    ${safe(p.skills?.skills)}
+                </div>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Experience
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Experience
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.experience?.experience)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Duties
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.experience?.duty)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Previous Salary
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(p.experience?.previousSalary)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Profile Summary
+                </div>
+
+                <div class="detail-value">
+                    ${safe(p.profile)}
+                </div>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Applications
+                </div>
+
+                ${
+                    apps.length
+                    ?
+                    `
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Job</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                ${
+                                    apps.map(app => {
+
+                                        const payment =
+                                            getPayment(
+                                                app.applicationId
+                                            );
+
+                                        return `
+
+                                            <tr>
+
+                                                <td>
+                                                    <span class="id-code">
+                                                        ${safe(app.applicationId)}
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    ${safe(app.jobTitle)}
+                                                </td>
+
+                                                <td>
+                                                    ${
+                                                        payment
+                                                        ?
+                                                        paymentStatusHTML(payment.status)
+                                                        :
+                                                        "—"
+                                                    }
+                                                </td>
+
+                                                <td>
+                                                    ${statusHTML(app.status)}
+                                                </td>
+
+                                                <td>
+
+                                                    <button
+                                                        class="btn btn-secondary btn-small"
+                                                        onclick="closeModal('applicantModal');openApplication('${escapeJS(app.applicationId)}')"
+                                                    >
+                                                        View
+                                                    </button>
+
+                                                </td>
+
+                                            </tr>
+
+                                        `;
+
+                                    }).join("")
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    `
+                    :
+                    `
+                    <div class="empty">
+                        No applications found.
+                    </div>
+                    `
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    openModal("applicantModal");
+
+}
+
+
+/* =========================================================
+   APPLICATION MODAL
+========================================================= */
+
+function openApplication(applicationIdValue){
+
+    const app =
+        getApplication(
+            applicationIdValue
+        );
+
+
+    if(!app){
+        showToast("Application not found.");
+        return;
+    }
+
+
+    const p =
+        getProfile(app.profileId);
+
+
+    const payment =
+        getPayment(app.applicationId);
+
+
+    const body =
+        document.getElementById(
+            "applicationModalBody"
+        );
+
+
+    const history =
+        Array.isArray(app.statusHistory)
+        ? app.statusHistory
+        : [];
+
+
+    body.innerHTML = `
+
+        <div class="profile-header">
+
+            <div class="profile-photo">
+
+                ${
+                    p?.photo
+                    ?
+                    `<img src="${escapeHTML(p.photo)}" alt="">`
+                    :
+                    initials(p?.name)
+                }
+
+            </div>
+
+            <div class="profile-head-info">
+
+                <h3>
+                    ${safe(p?.name,"Applicant")}
+                </h3>
+
+                <p>
+                    Application:
+                    ${safe(app.applicationId)}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Application
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Application ID
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(app.applicationId)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Job
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(app.jobTitle)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Applied
+                    </div>
+
+                    <div class="detail-value">
+                        ${formatDateTime(app.appliedAt)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Current Status
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Application Status
+                    </label>
+
+                    <select
+                        id="modalApplicationStatus"
+                        class="form-control"
+                    >
+
+                        ${Object.entries(statusLabels).map(
+                            ([key,label]) => `
+
+                                <option
+                                    value="${key}"
+                                    ${app.status === key ? "selected" : ""}
+                                >
+                                    ${escapeHTML(label)}
+                                </option>
+
+                            `
+                        ).join("")}
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    onclick="saveApplicationStatus('${escapeJS(app.applicationId)}')"
+                >
+                    Update Status
+                </button>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Payment
+                </div>
+
+                ${
+                    payment
+                    ?
+                    `
+
+                        <div class="detail-row">
+
+                            <div class="detail-label">
+                                Status
+                            </div>
+
+                            <div class="detail-value">
+                                ${paymentStatusHTML(payment.status)}
+                            </div>
+
+                        </div>
+
+                        <div class="detail-row">
+
+                            <div class="detail-label">
+                                Method
+                            </div>
+
+                            <div class="detail-value">
+                                ${safe(payment.method)}
+                            </div>
+
+                        </div>
+
+                        <div class="detail-row">
+
+                            <div class="detail-label">
+                                Amount
+                            </div>
+
+                            <div class="detail-value">
+                                ৳${Number(payment.amount || 0).toLocaleString()}
+                            </div>
+
+                        </div>
+
+                        <div class="detail-row">
+
+                            <div class="detail-label">
+                                Transaction
+                            </div>
+
+                            <div class="detail-value">
+                                ${safe(payment.transactionId)}
+                            </div>
+
+                        </div>
+
+                    `
+                    :
+                    `
+                        <p class="muted">
+                            No payment record.
+                        </p>
+                    `
+                }
+
+
+                ${
+                    payment
+                    ?
+                    `
+                    <br>
+
+                    <button
+                        class="btn btn-secondary btn-small"
+                        onclick="closeModal('applicationModal');openPayment('${escapeJS(app.applicationId)}')"
+                    >
+                        Open Payment
+                    </button>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    CV
+                </div>
+
+                <p class="muted">
+                    View the applicant's DigiSER BD branded CV.
+                </p>
+
+                <br>
+
+                <button
+                    class="btn btn-primary btn-small"
+                    onclick="closeModal('applicationModal');openCV('${escapeJS(app.profileId)}')"
+                >
+                    View / Print CV
+                </button>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Status History
+                </div>
+
+
+                <div class="timeline">
+
+                    ${
+                        history.length
+                        ?
+                        history.slice().reverse().map(item => `
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    ${safe(statusLabels[item.status] || item.status)}
+                                </strong>
+
+                                <p>
+                                    ${formatDateTime(item.at)}
+                                    ${
+                                        item.note
+                                        ?
+                                        " · " + safe(item.note)
+                                        :
+                                        ""
+                                    }
+                                </p>
+
+                            </div>
+
+                        `).join("")
+                        :
+                        `
+                            <p class="muted">
+                                No status history yet.
+                            </p>
+                        `
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Admin Notes
+                </div>
+
+                <textarea
+                    id="applicationNote"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Add an internal note about this application..."
+                ></textarea>
+
+                <br>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="addApplicationNote('${escapeJS(app.applicationId)}')"
+                >
+                    Add Note
+                </button>
+
+
+                ${
+                    Array.isArray(app.notes) &&
+                    app.notes.length
+                    ?
+                    `
+                    <br><br>
+
+                    <div class="timeline">
+
+                        ${
+                            app.notes.slice().reverse().map(note => `
+
+                                <div class="timeline-item">
+
+                                    <div class="timeline-dot"></div>
+
+                                    <strong>
+                                        Admin Note
+                                    </strong>
+
+                                    <p>
+                                        ${safe(note.text)}
+                                        ·
+                                        ${formatDateTime(note.at)}
+                                    </p>
+
+                                </div>
+
+                            `).join("")
+                        }
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    openModal("applicationModal");
+
+}
+
+
+/* =========================================================
+   UPDATE APPLICATION STATUS
+========================================================= */
+
+function saveApplicationStatus(applicationIdValue){
+
+    const app =
+        getApplication(
+            applicationIdValue
+        );
+
+
+    if(!app){
+        return;
+    }
+
+
+    const select =
+        document.getElementById(
+            "modalApplicationStatus"
+        );
+
+
+    const newStatus =
+        select.value;
+
+
+    const oldStatus =
+        app.status;
+
+
+    if(oldStatus === newStatus){
+
+        showToast("Status is already set.");
+
+        return;
+
+    }
+
+
+    /*
+       Business rule:
+       Application cannot be approved
+       unless payment is confirmed.
+    */
+
+    if(
+        newStatus === "approved"
+        &&
+        getPayment(app.applicationId)?.status !== "paid"
+    ){
+
+        showToast(
+            "Payment must be confirmed before approval."
+        );
+
+        return;
+
+    }
+
+
+    app.status =
+        newStatus;
+
+    app.updatedAt =
+        now();
+
+
+    if(!Array.isArray(app.statusHistory)){
+        app.statusHistory = [];
+    }
+
+
+    app.statusHistory.push({
+
+        status:newStatus,
+
+        at:now(),
+
+        note:"Status updated by admin."
+
+    });
+
+
+    saveDB();
+
+    renderAll();
+
+    openApplication(
+        app.applicationId
+    );
+
+
+    showToast(
+        "Application status updated."
+    );
+
+}
+
+
+/* =========================================================
+   ADD NOTE
+========================================================= */
+
+function addApplicationNote(applicationIdValue){
+
+    const app =
+        getApplication(
+            applicationIdValue
+        );
+
+
+    if(!app){
+        return;
+    }
+
+
+    const textarea =
+        document.getElementById(
+            "applicationNote"
+        );
+
+
+    const text =
+        textarea.value.trim();
+
+
+    if(!text){
+
+        showToast("Please write a note.");
+
+        return;
+
+    }
+
+
+    if(!Array.isArray(app.notes)){
+        app.notes = [];
+    }
+
+
+    app.notes.push({
+
+        text:text,
+
+        at:now()
+
+    });
+
+
+    app.updatedAt =
+        now();
+
+
+    saveDB();
+
+    openApplication(
+        app.applicationId
+    );
+
+    renderAll();
+
+    showToast("Admin note added.");
+
+}
+
+
+/* =========================================================
+   PAYMENT MODAL
+========================================================= */
+
+function openPayment(applicationIdValue){
+
+    const payment =
+        getPayment(
+            applicationIdValue
+        );
+
+
+    const app =
+        getApplication(
+            applicationIdValue
+        );
+
+
+    if(!payment){
+
+        showToast("Payment record not found.");
+
+        return;
+
+    }
+
+
+    const p =
+        app
+        ? getProfile(app.profileId)
+        : null;
+
+
+    const body =
+        document.getElementById(
+            "paymentModalBody"
+        );
+
+
+    body.innerHTML = `
+
+        <div class="profile-header">
+
+            <div class="profile-photo">
+                ${initials(p?.name)}
+            </div>
+
+            <div class="profile-head-info">
+
+                <h3>
+                    ${safe(p?.name,"Applicant")}
+                </h3>
+
+                <p>
+                    ${safe(payment.applicationId)}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Payment Information
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Method
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(payment.method)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Amount
+                    </div>
+
+                    <div class="detail-value">
+                        ৳${Number(payment.amount || 0).toLocaleString()}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Sender Mobile
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(payment.senderMobile)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Transaction ID
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(payment.transactionId)}
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-label">
+                        Payment Date
+                    </div>
+
+                    <div class="detail-value">
+                        ${safe(payment.paymentDate)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <div class="detail-title">
+                    Verification
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Payment Status
+                    </label>
+
+                    <select
+                        id="modalPaymentStatus"
+                        class="form-control"
+                    >
+
+                        <option
+                            value="pending"
+                            ${payment.status === "pending" ? "selected" : ""}
+                        >
+                            Pending
+                        </option>
+
+                        <option
+                            value="paid"
+                            ${payment.status === "paid" ? "selected" : ""}
+                        >
+                            Paid / Confirmed
+                        </option>
+
+                        <option
+                            value="failed"
+                            ${payment.status === "failed" ? "selected" : ""}
+                        >
+                            Failed
+                        </option>
+
+                        <option
+                            value="cancelled"
+                            ${payment.status === "cancelled" ? "selected" : ""}
+                        >
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    onclick="savePaymentStatus('${escapeJS(payment.applicationId)}')"
+                >
+                    Update Payment
+                </button>
+
+            </div>
+
+
+            <div class="detail-card full">
+
+                <div class="detail-title">
+                    Payment Screenshot
+                </div>
+
+                ${
+                    payment.screenshot
+                    ?
+                    `
+                        <img
+                            src="${escapeHTML(payment.screenshot)}"
+                            alt="Payment Screenshot"
+                            style="
+                                max-width:100%;
+                                max-height:450px;
+                                border-radius:12px;
+                                border:1px solid var(--border);
+                                display:block;
+                                margin:auto;
+                            "
+                        >
+                    `
+                    :
+                    `
+                        <div class="empty">
+                            No payment screenshot submitted.
+                        </div>
+                    `
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    openModal("paymentModal");
+
+}
+
+
+/* =========================================================
+   SAVE PAYMENT STATUS
+========================================================= */
+
+function savePaymentStatus(applicationIdValue){
+
+    const payment =
+        getPayment(
+            applicationIdValue
+        );
+
+
+    if(!payment){
+        return;
+    }
+
+
+    const select =
+        document.getElementById(
+            "modalPaymentStatus"
+        );
+
+
+    const newStatus =
+        select.value;
+
+
+    payment.status =
+        newStatus;
+
+    payment.updatedAt =
+        now();
+
+
+    const app =
+        getApplication(
+            applicationIdValue
+        );
+
+
+    if(app){
+
+        app.updatedAt =
+            now();
+
+
+        if(newStatus === "paid"){
+
+            /*
+               Payment and application
+               remain separate.
+            */
+
+            if(
+                app.status === "payment_pending" ||
+                app.status === "submitted"
+            ){
+
+                app.status =
+                    "payment_confirmed";
+
+
+                if(!Array.isArray(app.statusHistory)){
+                    app.statusHistory = [];
+                }
+
+
+                app.statusHistory.push({
+
+                    status:"payment_confirmed",
+
+                    at:now(),
+
+                    note:"Payment confirmed by admin."
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    saveDB();
+
+    renderAll();
+
+    closeModal("paymentModal");
+
+    showToast(
+        "Payment status updated."
+    );
+
+}
+
+
+/* =========================================================
+   CV
+========================================================= */
+
+function openCV(profileId){
+
+    const p =
+        getProfile(profileId);
+
+
+    if(!p){
+
+        showToast("Applicant profile not found.");
+
+        return;
+
+    }
+
+
+    const apps =
+        applicationsForProfile(
+            profileId
+        );
+
+
+    const latestApp =
+        apps.sort(
+            (a,b) =>
+                new Date(b.appliedAt) -
+                new Date(a.appliedAt)
+        )[0];
+
+
+    const body =
+        document.getElementById(
+            "cvModalBody"
+        );
+
+
+    body.innerHTML = `
+
+        <div id="printableCV" class="cv-container">
+
+            <div class="cv-header">
+
+                <div class="cv-photo">
+
+                    ${
+                        p.photo
+                        ?
+                        `<img src="${escapeHTML(p.photo)}" alt="">`
+                        :
+                        `
+                            <div class="cv-photo-placeholder">
+                                ${initials(p.name)}
+                            </div>
+                        `
+                    }
+
+                </div>
+
+
+                <div>
+
+                    <div style="
+                        font-size:10px;
+                        opacity:.75;
+                        margin-bottom:4px;
+                        letter-spacing:1px;
+                    ">
+                        DIGISER BD
+                    </div>
+
+                    <h1>
+                        ${safe(p.name,"Applicant")}
+                    </h1>
+
+                    <p>
+                        ${
+                            latestApp
+                            ?
+                            safe(latestApp.jobTitle)
+                            :
+                            "Job Applicant"
+                        }
+                    </p>
+
+                    <p>
+                        Application ID:
+                        ${
+                            latestApp
+                            ?
+                            safe(latestApp.applicationId)
+                            :
+                            "—"
+                        }
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cv-body">
+
+                <div class="cv-section">
+
+                    <h4>
+                        Contact Information
+                    </h4>
+
+                    <p>
+                        Mobile:
+                        ${safe(p.mobile)}
+                    </p>
+
+                    <p>
+                        Email:
+                        ${safe(p.email)}
+                    </p>
+
+                    <p>
+                        Address:
+                        ${safe(p.currentAddress)}
+                    </p>
+
+                </div>
+
+
+                ${
+                    p.profile
+                    ?
+                    `
+                    <div class="cv-section">
+
+                        <h4>
+                            Profile
+                        </h4>
+
+                        <p>
+                            ${safe(p.profile)}
+                        </p>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                ${
+                    p.skills?.skills
+                    ?
+                    `
+                    <div class="cv-section">
+
+                        <h4>
+                            Skills
+                        </h4>
+
+                        <p>
+                            ${safe(p.skills.skills)}
+                        </p>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="cv-section">
+
+                    <h4>
+                        Education
+                    </h4>
+
+                    ${
+                        p.education?.ssc
+                        ?
+                        `<p><strong>SSC:</strong> ${safe(p.education.ssc)}</p>`
+                        :
+                        ""
+                    }
+
+                    ${
+                        p.education?.hsc
+                        ?
+                        `<p><strong>HSC:</strong> ${safe(p.education.hsc)}</p>`
+                        :
+                        ""
+                    }
+
+                    ${
+                        p.education?.graduate
+                        ?
+                        `<p><strong>Graduate:</strong> ${safe(p.education.graduate)}</p>`
+                        :
+                        ""
+                    }
+
+                    ${
+                        p.education?.other
+                        ?
+                        `<p><strong>Other:</strong> ${safe(p.education.other)}</p>`
+                        :
+                        ""
+                    }
+
+                </div>
+
+
+                <div class="cv-section">
+
+                    <h4>
+                        Experience
+                    </h4>
+
+                    ${
+                        p.experience?.experience
+                        ?
+                        `<p>${safe(p.experience.experience)}</p>`
+                        :
+                        `<p>No experience information provided.</p>`
+                    }
+
+                    ${
+                        p.experience?.duty
+                        ?
+                        `<p><strong>Responsibilities:</strong> ${safe(p.experience.duty)}</p>`
+                        :
+                        ""
+                    }
+
+                </div>
+
+
+                ${
+                    p.language?.language
+                    ?
+                    `
+                    <div class="cv-section">
+
+                        <h4>
+                            Languages
+                        </h4>
+
+                        <p>
+                            ${safe(p.language.language)}
+                        </p>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="cv-footer">
+
+                <span>
+                    DigiSER BD · Job • Service • Growth
+                </span>
+
+                <span>
+                    ${formatDate(new Date())}
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    openModal("cvModal");
+
+}
+
+
+/* =========================================================
+   PRINT CV
+========================================================= */
+
+function printCV(){
+
+    window.print();
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function loadSettings(){
+
+    const payment =
+        db.settings.payment;
+
+
+    document.getElementById(
+        "settingFee"
+    ).value =
+        payment.fee || 0;
+
+
+    document.getElementById(
+        "settingInstructions"
+    ).value =
+        payment.instructions || "";
+
+
+    document.getElementById(
+        "settingScreenshot"
+    ).checked =
+        payment.screenshotRequired !== false;
+
+
+    document.getElementById(
+        "settingBkash"
+    ).value =
+        payment.methods.bkash.number || "";
+
+
+    document.getElementById(
+        "settingBkashEnabled"
+    ).checked =
+        payment.methods.bkash.enabled !== false;
+
+
+    document.getElementById(
+        "settingNagad"
+    ).value =
+        payment.methods.nagad.number || "";
+
+
+    document.getElementById(
+        "settingNagadEnabled"
+    ).checked =
+        payment.methods.nagad.enabled !== false;
+
+
+    document.getElementById(
+        "settingRocket"
+    ).value =
+        payment.methods.rocket.number || "";
+
+
+    document.getElementById(
+        "settingRocketEnabled"
+    ).checked =
+        payment.methods.rocket.enabled !== false;
+
+}
+
+
+function saveSettings(){
+
+    const payment =
+        db.settings.payment;
+
+
+    payment.fee =
+        Number(
+            document.getElementById(
+                "settingFee"
+            ).value || 0
+        );
+
+
+    payment.instructions =
+        document.getElementById(
+            "settingInstructions"
+        ).value.trim();
+
+
+    payment.screenshotRequired =
+        document.getElementById(
+            "settingScreenshot"
+        ).checked;
+
+
+    payment.methods.bkash.number =
+        document.getElementById(
+            "settingBkash"
+        ).value.trim();
+
+
+    payment.methods.bkash.enabled =
+        document.getElementById(
+            "settingBkashEnabled"
+        ).checked;
+
+
+    payment.methods.nagad.number =
+        document.getElementById(
+            "settingNagad"
+        ).value.trim();
+
+
+    payment.methods.nagad.enabled =
+        document.getElementById(
+            "settingNagadEnabled"
+        ).checked;
+
+
+    payment.methods.rocket.number =
+        document.getElementById(
+            "settingRocket"
+        ).value.trim();
+
+
+    payment.methods.rocket.enabled =
+        document.getElementById(
+            "settingRocketEnabled"
+        ).checked;
+
+
+    saveDB();
+
+    showToast(
+        "Payment settings saved."
+    );
+
+}
+
+
+function openPaymentSettings(){
+
+    showView("settings");
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("settingFee")
+            ?.focus();
+
+    },100);
+
+}
+
+
+/* =========================================================
+   MODAL HELPERS
+========================================================= */
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+}
+
+
+document
+    .querySelectorAll(".modal-overlay")
+    .forEach(overlay => {
+
+        overlay.addEventListener(
+            "click",
+            function(e){
+
+                if(e.target === overlay){
+
+                    overlay.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+
+            document
+                .querySelectorAll(".modal-overlay.active")
+                .forEach(modal => {
+
+                    modal.classList.remove(
+                        "active"
+                    );
+
+                });
+
+        }
+
+    }
 );
 
 
 /* =========================================================
-   REFRESH
+   ESCAPE JS
 ========================================================= */
 
-document
-  .getElementById(
-    "refreshBtn"
-  )
-  .addEventListener(
-    "click",
-    render
-  );
+function escapeJS(value){
 
-
-/* =========================================================
-   SESSION
-========================================================= */
-
-if(
-  sessionStorage.getItem(
-    "digiserbd_admin_login"
-  ) === "1"
-){
-
-  loginScreen.style.display =
-    "none";
-
-  app.classList.add(
-    "show"
-  );
-
-  render();
+    return String(value || "")
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/"/g,'\\"')
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"\\r");
 
 }
 
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+checkSession();
+
 </script>
+
+<!-- Optional existing DigiSER BD data sources.
+     Keep these if your current admin already uses them. -->
+
+<script src="../data.js"></script>
+<script src="../i18n.js"></script>
+<script src="../app.js"></script>
 
 </body>
 </html>
