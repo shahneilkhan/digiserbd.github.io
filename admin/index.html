@@ -1,26 +1,8 @@
 <!--
-  IMPORTANT
   Replace only your current admin/index.html with this file.
-
-  Firebase Login:
-  - unchanged
-  - same project
-  - same authentication
-
-  Management:
-  - Employers / Jobs
-  - Services
-  - Businesses
-  - Employees
-  - Blog
-
-  Each supports:
-  - Add
-  - Edit
-  - Save
-  - Delete
+  Firebase login/project/auth: unchanged.
+  Change in this version: Payments page now has Approve / Reject buttons.
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,541 +15,115 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
- --blue:#0087c4;
- --blue2:#006d9e;
- --nav:#071b25;
- --bg:#f4f8fa;
- --card:#fff;
- --text:#13252e;
- --muted:#72838b;
- --border:#dce7ec;
- --green:#18a56b;
- --red:#d64545;
- --orange:#e99a28;
+ --blue:#0087c4;--blue2:#006d9e;--nav:#071b25;--bg:#f4f8fa;--card:#fff;
+ --text:#13252e;--muted:#72838b;--border:#dce7ec;--green:#18a56b;--red:#d64545;--orange:#e99a28;
 }
 
-body{
- font-family:Inter,Arial,sans-serif;
- background:var(--bg);
- color:var(--text);
- min-height:100vh;
-}
-
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-
 .hidden{display:none!important}
 
 /* LOGIN */
-
 #login{
- min-height:100vh;
- display:flex;
- justify-content:center;
- align-items:center;
- padding:20px;
+ min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;
  background:
  radial-gradient(circle at 15% 15%,rgba(0,135,196,.12),transparent 35%),
  radial-gradient(circle at 85% 85%,rgba(24,165,107,.08),transparent 35%),
  #f4f9fb;
 }
-
-.login-card{
- width:100%;
- max-width:420px;
- background:#fff;
- padding:36px;
- border-radius:24px;
- box-shadow:0 30px 90px rgba(0,70,100,.14);
-}
-
-.login-card img{
- width:62px;
- height:62px;
- object-fit:contain;
- display:block;
- margin:0 auto 18px;
-}
-
-.login-card h1{
- text-align:center;
- font-size:27px;
-}
-
-.login-card p{
- text-align:center;
- color:var(--muted);
- font-size:12px;
- margin:7px 0 25px;
-}
-
-.field{
- margin-bottom:15px;
-}
-
-.field label{
- display:block;
- font-size:12px;
- font-weight:700;
- margin-bottom:7px;
-}
-
-.field input,
-.field textarea,
-.field select{
- width:100%;
- border:1px solid var(--border);
- border-radius:11px;
- padding:12px 13px;
- outline:none;
- background:#fbfdfe;
-}
-
-.field input{
- height:46px;
-}
-
-.field textarea{
- min-height:100px;
- resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
- border-color:var(--blue);
- box-shadow:0 0 0 4px rgba(0,135,196,.1);
-}
-
-.btn{
- border:0;
- min-height:44px;
- padding:0 17px;
- border-radius:11px;
- background:linear-gradient(135deg,var(--blue),var(--blue2));
- color:#fff;
- font-weight:700;
-}
-
-.btn:hover{
- filter:brightness(.96);
-}
-
-.btn.full{
- width:100%;
- height:50px;
-}
-
-.btn.light{
- background:#fff;
- color:#52656e;
- border:1px solid var(--border);
-}
-
-.error{
- display:none;
- margin-top:13px;
- padding:11px;
- border-radius:10px;
- color:#b22e2e;
- background:#fff0f0;
- border:1px solid #ffd4d4;
- font-size:12px;
-}
+.login-card{width:100%;max-width:420px;background:#fff;padding:36px;border-radius:24px;box-shadow:0 30px 90px rgba(0,70,100,.14)}
+.login-card img{width:62px;height:62px;object-fit:contain;display:block;margin:0 auto 18px}
+.login-card h1{text-align:center;font-size:27px}
+.login-card p{text-align:center;color:var(--muted);font-size:12px;margin:7px 0 25px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--border);border-radius:11px;padding:12px 13px;outline:none;background:#fbfdfe}
+.field input{height:46px}
+.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,135,196,.1)}
+.btn{border:0;min-height:44px;padding:0 17px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-weight:700}
+.btn:hover{filter:brightness(.96)}
+.btn.full{width:100%;height:50px}
+.btn.light{background:#fff;color:#52656e;border:1px solid var(--border)}
+.error{display:none;margin-top:13px;padding:11px;border-radius:10px;color:#b22e2e;background:#fff0f0;border:1px solid #ffd4d4;font-size:12px}
 
 /* APP */
-
-#app{
- min-height:100vh;
- display:grid;
- grid-template-columns:250px 1fr;
-}
-
-aside{
- position:fixed;
- left:0;
- top:0;
- bottom:0;
- width:250px;
- background:var(--nav);
- color:#fff;
- padding:18px 13px;
- overflow-y:auto;
- z-index:20;
-}
-
-.brand{
- display:flex;
- gap:10px;
- align-items:center;
- padding:5px 8px 23px;
-}
-
-.brand img{
- width:40px;
- height:40px;
- padding:5px;
- background:#fff;
- border-radius:10px;
- object-fit:contain;
-}
-
-.brand b{
- font-size:14px;
- display:block;
-}
-
-.brand small{
- color:#78909a;
- font-size:10px;
-}
-
-.nav-title{
- color:#536c77;
- font-size:9px;
- letter-spacing:1.4px;
- text-transform:uppercase;
- padding:13px 12px 5px;
-}
-
-nav{
- display:grid;
- gap:3px;
-}
-
-nav button{
- border:0;
- background:none;
- color:#9db1b9;
- text-align:left;
- border-radius:9px;
- padding:10px 12px;
- font-size:12px;
- font-weight:600;
-}
-
-nav button:hover,
-nav button.active{
- background:rgba(0,135,196,.2);
- color:#fff;
-}
-
-.account{
- position:absolute;
- left:13px;
- right:13px;
- bottom:14px;
- background:rgba(255,255,255,.05);
- border-radius:12px;
- padding:11px;
-}
-
-.account b{
- font-size:12px;
-}
-
-.account span{
- display:block;
- color:#78909a;
- font-size:10px;
- margin:3px 0 9px;
-}
-
-.account button{
- width:100%;
- border:1px solid rgba(255,255,255,.1);
- background:none;
- color:#a5b5bc;
- padding:8px;
- border-radius:8px;
-}
+#app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+aside{position:fixed;left:0;top:0;bottom:0;width:250px;background:var(--nav);color:#fff;padding:18px 13px;overflow-y:auto;z-index:20}
+.brand{display:flex;gap:10px;align-items:center;padding:5px 8px 23px}
+.brand img{width:40px;height:40px;padding:5px;background:#fff;border-radius:10px;object-fit:contain}
+.brand b{font-size:14px;display:block}
+.brand small{color:#78909a;font-size:10px}
+.nav-title{color:#536c77;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;padding:13px 12px 5px}
+nav{display:grid;gap:3px}
+nav button{border:0;background:none;color:#9db1b9;text-align:left;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:600}
+nav button:hover,nav button.active{background:rgba(0,135,196,.2);color:#fff}
+.account{position:absolute;left:13px;right:13px;bottom:14px;background:rgba(255,255,255,.05);border-radius:12px;padding:11px}
+.account b{font-size:12px}
+.account span{display:block;color:#78909a;font-size:10px;margin:3px 0 9px}
+.account button{width:100%;border:1px solid rgba(255,255,255,.1);background:none;color:#a5b5bc;padding:8px;border-radius:8px}
 
 /* MAIN */
-
-main{
- grid-column:2;
- padding:28px 30px;
- min-width:0;
-}
-
-.page-head{
- display:flex;
- justify-content:space-between;
- align-items:flex-start;
- gap:15px;
- margin-bottom:20px;
-}
-
-.page-head h2{
- font-size:26px;
- letter-spacing:-.8px;
-}
-
-.page-head p{
- color:var(--muted);
- font-size:12px;
- margin-top:4px;
-}
-
-.role{
- background:#eaf8ff;
- color:var(--blue);
- border-radius:999px;
- padding:7px 12px;
- font-size:10px;
- font-weight:800;
-}
+main{grid-column:2;padding:28px 30px;min-width:0}
+.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:20px}
+.page-head h2{font-size:26px;letter-spacing:-.8px}
+.page-head p{color:var(--muted);font-size:12px;margin-top:4px}
+.role{background:#eaf8ff;color:var(--blue);border-radius:999px;padding:7px 12px;font-size:10px;font-weight:800}
 
 /* DASHBOARD */
-
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px;
-}
-
-.stat{
- background:#fff;
- border:1px solid var(--border);
- border-radius:16px;
- padding:18px;
-}
-
-.stat small{
- color:var(--muted);
- font-size:11px;
-}
-
-.stat strong{
- display:block;
- margin-top:7px;
- font-size:28px;
-}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px}
+.stat small{color:var(--muted);font-size:11px}
+.stat strong{display:block;margin-top:7px;font-size:28px}
 
 /* TOOLBAR */
-
-.toolbar{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:12px;
- flex-wrap:wrap;
- margin-bottom:14px;
-}
-
-.search{
- width:280px;
- height:43px;
- border:1px solid var(--border);
- border-radius:10px;
- padding:0 12px;
- outline:none;
-}
-
-.search:focus{
- border-color:var(--blue);
-}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.search{width:280px;height:43px;border:1px solid var(--border);border-radius:10px;padding:0 12px;outline:none}
+.search:focus{border-color:var(--blue)}
 
 /* TABLE */
-
-.panel{
- background:#fff;
- border:1px solid var(--border);
- border-radius:16px;
- overflow:hidden;
-}
-
-.table-wrap{
- overflow:auto;
-}
-
-table{
- width:100%;
- border-collapse:collapse;
- min-width:780px;
-}
-
-th{
- background:#f7fafb;
- color:#819099;
- font-size:10px;
- text-align:left;
- padding:12px;
- border-bottom:1px solid var(--border);
-}
-
-td{
- padding:12px;
- border-bottom:1px solid #edf2f4;
- font-size:12px;
- vertical-align:top;
-}
-
-tr:last-child td{
- border-bottom:0;
-}
-
-.empty{
- padding:45px 20px;
- text-align:center;
- color:#8b9aa2;
- font-size:12px;
-}
+.panel{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th{background:#f7fafb;color:#819099;font-size:10px;text-align:left;padding:12px;border-bottom:1px solid var(--border)}
+td{padding:12px;border-bottom:1px solid #edf2f4;font-size:12px;vertical-align:top}
+tr:last-child td{border-bottom:0}
+.empty{padding:45px 20px;text-align:center;color:#8b9aa2;font-size:12px}
 
 /* ACTION */
-
-.action{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- border:1px solid var(--border);
- background:#fff;
- color:#536770;
- padding:6px 9px;
- border-radius:8px;
- font-size:10px;
- font-weight:700;
- margin:0 4px 3px 0;
-}
-
-.action.edit:hover{
- color:var(--blue);
- border-color:var(--blue);
-}
-
-.action.delete{
- color:var(--red);
-}
-
-.action.delete:hover{
- background:#fff3f3;
- border-color:#f2bcbc;
-}
-
-.badge{
- display:inline-block;
- padding:4px 8px;
- border-radius:999px;
- font-size:9px;
- font-weight:800;
-}
-
-.badge.green{
- background:#eafaf3;
- color:#16885b;
-}
-
-.badge.orange{
- background:#fff6e8;
- color:#b97917;
-}
-
-.badge.red{
- background:#fff0f0;
- color:#c33b3b;
-}
-
-.badge.blue{
- background:#eaf8ff;
- color:#0074a9;
-}
+.action{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);background:#fff;color:#536770;padding:6px 9px;border-radius:8px;font-size:10px;font-weight:700;margin:0 4px 3px 0;text-decoration:none}
+.action.edit:hover{color:var(--blue);border-color:var(--blue)}
+.action.approve{color:var(--green);border-color:#bfe8d6}
+.action.approve:hover{background:#eafaf3}
+.action.delete{color:var(--red)}
+.action.delete:hover{background:#fff3f3;border-color:#f2bcbc}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:9px;font-weight:800}
+.badge.green{background:#eafaf3;color:#16885b}
+.badge.orange{background:#fff6e8;color:#b97917}
+.badge.red{background:#fff0f0;color:#c33b3b}
+.badge.blue{background:#eaf8ff;color:#0074a9}
 
 /* MODAL */
-
-dialog{
- width:min(650px,92vw);
- border:0;
- border-radius:18px;
- padding:0;
- box-shadow:0 30px 100px rgba(0,0,0,.25);
-}
-
-dialog::backdrop{
- background:rgba(4,20,28,.55);
-}
-
-.modal{
- padding:23px;
-}
-
-.modal h3{
- margin-bottom:18px;
-}
-
-.modal-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
-}
-
-.modal-grid .full{
- grid-column:1/-1;
-}
-
-.modal-actions{
- display:flex;
- justify-content:flex-end;
- gap:8px;
- margin-top:18px;
-}
+dialog{width:min(650px,92vw);border:0;border-radius:18px;padding:0;box-shadow:0 30px 100px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(4,20,28,.55)}
+.modal{padding:23px}
+.modal h3{margin-bottom:18px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
 
 @media(max-width:1050px){
-
- #app{
-  grid-template-columns:1fr;
- }
-
- aside{
-  position:static;
-  width:auto;
-  min-height:auto;
- }
-
- main{
-  grid-column:1;
- }
-
- .account{
-  position:static;
-  margin-top:15px;
- }
-
- .stats{
-  grid-template-columns:1fr 1fr;
- }
-
+ #app{grid-template-columns:1fr}
+ aside{position:static;width:auto;min-height:auto}
+ main{grid-column:1}
+ .account{position:static;margin-top:15px}
+ .stats{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:650px){
-
- main{
-  padding:18px 13px;
- }
-
- .stats{
-  grid-template-columns:1fr;
- }
-
- .modal-grid{
-  grid-template-columns:1fr;
- }
-
- .modal-grid .full{
-  grid-column:auto;
- }
-
- .search{
-  width:100%;
- }
-
- .page-head{
-  flex-direction:column;
- }
-
- nav{
-  grid-template-columns:1fr 1fr;
- }
-
+ main{padding:18px 13px}
+ .stats{grid-template-columns:1fr}
+ .search{width:100%}
+ .page-head{flex-direction:column}
+ nav{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -575,130 +131,75 @@ dialog::backdrop{
 <body>
 
 <!-- ================= LOGIN ================= -->
-
 <section id="login">
+ <form class="login-card" id="loginForm">
+  <img src="../logo.png" alt="DigiSER">
+  <h1>DigiSER Admin</h1>
+  <p>Manage applicants, jobs, services, businesses, applications, payments and system updates.</p>
 
-<form class="login-card" id="loginForm">
+  <div class="field">
+   <label>Admin Email</label>
+   <input id="email" type="email" required>
+  </div>
 
-<img src="../logo.png" alt="DigiSER">
+  <div class="field">
+   <label>Password</label>
+   <input id="password" type="password" required>
+  </div>
 
-<h1>DigiSER Admin</h1>
-
-<p>
-Manage applicants, jobs, services, businesses,
-applications, payments and system updates.
-</p>
-
-<div class="field">
-<label>Admin Email</label>
-<input id="email" type="email" required>
-</div>
-
-<div class="field">
-<label>Password</label>
-<input id="password" type="password" required>
-</div>
-
-<button class="btn full">
-Sign in to Dashboard
-</button>
-
-<div class="error" id="loginError"></div>
-
-</form>
-
+  <button class="btn full">Sign in to Dashboard</button>
+  <div class="error" id="loginError"></div>
+ </form>
 </section>
 
 
 <!-- ================= APP ================= -->
-
 <div id="app" class="hidden">
 
-<aside>
+ <aside>
+  <div class="brand">
+   <img src="../logo.png" alt="DigiSER">
+   <div>
+    <b>DigiSER Admin</b>
+    <small>Control Center</small>
+   </div>
+  </div>
 
-<div class="brand">
+  <div class="nav-title">Management</div>
+  <nav id="nav"></nav>
 
-<img src="../logo.png" alt="DigiSER">
+  <div class="account">
+   <b id="adminName">Admin</b>
+   <span id="adminRole"></span>
+   <button id="logout">Sign out</button>
+  </div>
+ </aside>
 
-<div>
-<b>DigiSER Admin</b>
-<small>Control Center</small>
-</div>
+ <main>
+  <div class="page-head">
+   <div>
+    <h2 id="pageTitle">Dashboard</h2>
+    <p>DigiSER BD administration</p>
+   </div>
+   <div class="role" id="roleBadge">ADMIN</div>
+  </div>
 
-</div>
-
-<div class="nav-title">Management</div>
-
-<nav id="nav"></nav>
-
-<div class="account">
-
-<b id="adminName">Admin</b>
-
-<span id="adminRole"></span>
-
-<button id="logout">
-Sign out
-</button>
-
-</div>
-
-</aside>
-
-
-<main>
-
-<div class="page-head">
-
-<div>
-<h2 id="pageTitle">Dashboard</h2>
-<p>DigiSER BD administration</p>
-</div>
-
-<div class="role" id="roleBadge">
-ADMIN
-</div>
-
-</div>
-
-<div id="content"></div>
-
-</main>
+  <div id="content"></div>
+ </main>
 
 </div>
 
 
 <!-- ================= EDIT MODAL ================= -->
-
 <dialog id="editDialog">
-
-<form class="modal" id="editForm">
-
-<h3 id="modalTitle">
-Edit record
-</h3>
-
-<div id="modalFields"></div>
-
-<div class="modal-actions">
-
-<button
-type="button"
-class="btn light"
-id="closeModal">
-Cancel
-</button>
-
-<button
-type="submit"
-class="btn">
-Save changes
-</button>
-
-</div>
-
-</form>
-
+ <form class="modal" id="editForm">
+  <h3 id="modalTitle">Edit record</h3>
+  <div id="modalFields"></div>
+  <div class="modal-actions">
+   <button type="button" class="btn light" id="closeModal">Cancel</button>
+   <button type="submit" class="btn">Save changes</button>
+  </div>
+ </form>
 </dialog>
 
 
@@ -712,18 +213,14 @@ import {
  initializeApp,
  getApps,
  getApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
  getAuth,
  signInWithEmailAndPassword,
  onAuthStateChanged,
  signOut
-}
-from
-"https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 import {
  getFirestore,
@@ -735,42 +232,20 @@ import {
  deleteDoc,
  getDoc,
  serverTimestamp
-}
-from
-"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
 const firebaseConfig={
-
- apiKey:
- "AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
-
- authDomain:
- "digiserbds.firebaseapp.com",
-
- projectId:
- "digiserbds",
-
- storageBucket:
- "digiserbds.firebasestorage.app",
-
- messagingSenderId:
- "543059824242",
-
- appId:
- "1:543059824242:web:71cf0227ecddf2f840fceb",
-
- measurementId:
- "G-NX8RD20E7S"
-
+ apiKey:"AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
+ authDomain:"digiserbds.firebaseapp.com",
+ projectId:"digiserbds",
+ storageBucket:"digiserbds.firebasestorage.app",
+ messagingSenderId:"543059824242",
+ appId:"1:543059824242:web:71cf0227ecddf2f840fceb",
+ measurementId:"G-NX8RD20E7S"
 };
 
-
-const app=
- getApps().length
- ? getApp()
- : initializeApp(firebaseConfig);
-
+const app=getApps().length?getApp():initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getFirestore(app);
 
@@ -782,24 +257,14 @@ const db=getFirestore(app);
 let currentUser=null;
 let adminProfile=null;
 let currentPage="dashboard";
-
 let editingId=null;
 let editingCollection=null;
 
+const $=id=>document.getElementById(id);
 
-const $=id=>
- document.getElementById(id);
-
-
-const esc=value=>
- String(value??"")
- .replace(/[&<>"']/g,c=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
- }[c]));
+const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+}[c]));
 
 
 /* =========================================================
@@ -882,58 +347,30 @@ const modules={
 ========================================================= */
 
 const navItems=[
-
  ["dashboard","◈ Dashboard"],
-
  ["employers","◉ Employers / Jobs"],
-
  ["services","✦ Services"],
-
  ["businesses","▣ Businesses"],
-
  ["employees","◎ Employees"],
-
  ["applicants","◌ Applicants"],
-
  ["applications","✓ Applications"],
-
  ["payments","৳ Payments"],
-
  ["cvs","▤ CV Manager"],
-
  ["messages","✉ Messages"],
-
  ["blog","✎ Blog"],
-
  ["updates","⚡ System Updates"],
-
  ["admins","⚙ Admin Management"]
-
 ];
 
-
 function buildNav(){
-
  $("nav").innerHTML="";
-
- navItems.forEach(
- ([key,label])=>{
-
-  const button=
-  document.createElement("button");
-
+ navItems.forEach(([key,label])=>{
+  const button=document.createElement("button");
   button.textContent=label;
-
   button.dataset.page=key;
-
-  button.onclick=()=>{
-   openPage(key);
-  };
-
+  button.onclick=()=>openPage(key);
   $("nav").appendChild(button);
-
  });
-
 }
 
 
@@ -941,148 +378,71 @@ function buildNav(){
  LOGIN
 ========================================================= */
 
-$("loginForm").addEventListener(
- "submit",
- async event=>{
-
-  event.preventDefault();
-
-  $("loginError").style.display="none";
-
-  try{
-
-   await signInWithEmailAndPassword(
-    auth,
-    $("email").value.trim(),
-    $("password").value
-   );
-
-  }catch(error){
-
-   console.error(error);
-
-   $("loginError").textContent=
-   error.message;
-
-   $("loginError").style.display="block";
-
-  }
-
+$("loginForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ $("loginError").style.display="none";
+ try{
+  await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
+ }catch(error){
+  console.error(error);
+  $("loginError").textContent=error.message;
+  $("loginError").style.display="block";
  }
-);
+});
 
 
 /* =========================================================
  AUTH
 ========================================================= */
 
-onAuthStateChanged(
- auth,
- async user=>{
+onAuthStateChanged(auth,async user=>{
 
-  if(!user){
+ if(!user){
+  currentUser=null;
+  adminProfile=null;
+  $("login").classList.remove("hidden");
+  $("app").classList.add("hidden");
+  return;
+ }
 
-   currentUser=null;
-   adminProfile=null;
+ currentUser=user;
 
-   $("login")
-   .classList
-   .remove("hidden");
+ try{
 
-   $("app")
-   .classList
-   .add("hidden");
+  const snap=await getDoc(doc(db,"adminUsers",user.uid));
 
+  if(!snap.exists()){
+   await signOut(auth);
+   alert("This account is not registered as an admin.");
    return;
   }
 
-  currentUser=user;
+  adminProfile={uid:user.uid,...snap.data()};
 
-  try{
-
-   const snap=
-   await getDoc(
-    doc(
-     db,
-     "adminUsers",
-     user.uid
-    )
-   );
-
-   if(!snap.exists()){
-
-    await signOut(auth);
-
-    alert(
-     "This account is not registered as an admin."
-    );
-
-    return;
-
-   }
-
-   adminProfile={
-    uid:user.uid,
-    ...snap.data()
-   };
-
-   if(adminProfile.active===false){
-
-    await signOut(auth);
-
-    alert(
-     "This admin account is inactive."
-    );
-
-    return;
-   }
-
-
-   $("login")
-   .classList
-   .add("hidden");
-
-   $("app")
-   .classList
-   .remove("hidden");
-
-
-   $("adminName").textContent=
-   adminProfile.name ||
-   user.email;
-
-   $("adminRole").textContent=
-   adminProfile.role==="super_admin"
-   ? "SUPER ADMIN"
-   : "CLIENT ADMIN";
-
-   $("roleBadge").textContent=
-   adminProfile.role==="super_admin"
-   ? "SUPER ADMIN"
-   : "CLIENT ADMIN";
-
-
-   buildNav();
-
-   openPage("dashboard");
-
-
-  }catch(error){
-
-   console.error(error);
-
-   alert(
-    "Unable to load admin profile."
-   );
-
+  if(adminProfile.active===false){
+   await signOut(auth);
+   alert("This admin account is inactive.");
+   return;
   }
 
+  $("login").classList.add("hidden");
+  $("app").classList.remove("hidden");
+
+  $("adminName").textContent=adminProfile.name||user.email;
+  $("adminRole").textContent=adminProfile.role==="super_admin"?"SUPER ADMIN":"CLIENT ADMIN";
+  $("roleBadge").textContent=adminProfile.role==="super_admin"?"SUPER ADMIN":"CLIENT ADMIN";
+
+  buildNav();
+  openPage("dashboard");
+
+ }catch(error){
+  console.error(error);
+  alert("Unable to load admin profile.");
  }
-);
 
+});
 
-$("logout").onclick=
-()=>signOut(auth);
+$("logout").onclick=()=>signOut(auth);
 
 
 /* =========================================================
@@ -1090,17 +450,9 @@ $("logout").onclick=
 ========================================================= */
 
 function allowed(page){
-
  if(page==="dashboard") return true;
-
- if(
-  adminProfile?.role==="super_admin"
- ) return true;
-
- return(
-  adminProfile?.permissions||[]
- ).includes(page);
-
+ if(adminProfile?.role==="super_admin") return true;
+ return (adminProfile?.permissions||[]).includes(page);
 }
 
 
@@ -1111,100 +463,38 @@ function allowed(page){
 async function openPage(page){
 
  if(!allowed(page)){
-
-  alert(
-   "You don't have permission to access this section."
-  );
-
+  alert("You don't have permission to access this section.");
   return;
-
  }
 
  currentPage=page;
 
- document
- .querySelectorAll("#nav button")
- .forEach(
-  button=>{
-   button.classList.toggle(
-    "active",
-    button.dataset.page===page
-   );
-  }
- );
+ document.querySelectorAll("#nav button").forEach(button=>{
+  button.classList.toggle("active",button.dataset.page===page);
+ });
 
  $("pageTitle").textContent=
- page==="dashboard"
- ? "Dashboard"
- : (
-   modules[page]?.label ||
-   ({
-    applicants:"Applicants",
-    applications:"Applications",
-    payments:"Payments",
-    cvs:"CV Manager",
-    messages:"Messages",
-    updates:"System Updates",
-    admins:"Admin Management"
-   }[page]||page)
- );
+  page==="dashboard"
+  ? "Dashboard"
+  : (modules[page]?.label || ({
+     applicants:"Applicants",
+     applications:"Applications",
+     payments:"Payments",
+     cvs:"CV Manager",
+     messages:"Messages",
+     updates:"System Updates",
+     admins:"Admin Management"
+    }[page]||page));
 
-
- if(modules[page]){
-
-  await renderCollection(page);
-
-  return;
-
- }
-
-
- if(page==="dashboard"){
-  await renderDashboard();
-  return;
- }
-
-
- if(page==="applicants"){
-  await renderApplicants();
-  return;
- }
-
-
- if(page==="applications"){
-  await renderApplications();
-  return;
- }
-
-
- if(page==="payments"){
-  await renderPayments();
-  return;
- }
-
-
- if(page==="cvs"){
-  await renderCVs();
-  return;
- }
-
-
- if(page==="messages"){
-  await renderMessages();
-  return;
- }
-
-
- if(page==="updates"){
-  await renderUpdates();
-  return;
- }
-
-
- if(page==="admins"){
-  await renderAdmins();
-  return;
- }
+ if(modules[page]){ await renderCollection(page); return; }
+ if(page==="dashboard"){ await renderDashboard(); return; }
+ if(page==="applicants"){ await renderApplicants(); return; }
+ if(page==="applications"){ await renderApplications(); return; }
+ if(page==="payments"){ await renderPayments(); return; }
+ if(page==="cvs"){ await renderCVs(); return; }
+ if(page==="messages"){ await renderMessages(); return; }
+ if(page==="updates"){ await renderUpdates(); return; }
+ if(page==="admins"){ await renderAdmins(); return; }
 
 }
 
@@ -1214,19 +504,8 @@ async function openPage(page){
 ========================================================= */
 
 async function getCollection(name){
-
- const snapshot=
- await getDocs(
-  collection(db,name)
- );
-
- return snapshot.docs.map(
-  item=>({
-   _id:item.id,
-   ...item.data()
-  })
- );
-
+ const snapshot=await getDocs(collection(db,name));
+ return snapshot.docs.map(item=>({_id:item.id,...item.data()}));
 }
 
 
@@ -1236,341 +515,123 @@ async function getCollection(name){
 
 async function renderDashboard(){
 
- const names=[
-  "jobs",
-  "services",
-  "businesses",
-  "employees",
-  "applicantProfiles",
-  "applications",
-  "payments"
- ];
-
+ const names=["jobs","services","businesses","employees","applicantProfiles","applications","payments"];
  const counts={};
+ let pendingPayments=0;
 
- await Promise.all(
-  names.map(
-   async name=>{
-    try{
-     counts[name]=
-     (
-      await getCollection(name)
-     ).length;
-    }catch{
-     counts[name]=0;
-    }
+ await Promise.all(names.map(async name=>{
+  try{
+   const list=await getCollection(name);
+   counts[name]=list.length;
+   if(name==="payments"){
+    pendingPayments=list.filter(p=>(p.status||"pending")==="pending").length;
    }
-  )
- );
-
+  }catch{
+   counts[name]=0;
+  }
+ }));
 
  $("content").innerHTML=`
-
  <div class="stats">
-
-  <div class="stat">
-   <small>Employers / Jobs</small>
-   <strong style="color:var(--blue)">
-    ${counts.jobs}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Services</small>
-   <strong style="color:var(--green)">
-    ${counts.services}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Businesses</small>
-   <strong style="color:var(--orange)">
-    ${counts.businesses}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Employees</small>
-   <strong style="color:var(--red)">
-    ${counts.employees}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Applicants</small>
-   <strong>
-    ${counts.applicantProfiles}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Applications</small>
-   <strong>
-    ${counts.applications}
-   </strong>
-  </div>
-
-  <div class="stat">
-   <small>Payments</small>
-   <strong>
-    ${counts.payments}
-   </strong>
-  </div>
-
- </div>
-
- `;
+  <div class="stat"><small>Employers / Jobs</small><strong style="color:var(--blue)">${counts.jobs}</strong></div>
+  <div class="stat"><small>Services</small><strong style="color:var(--green)">${counts.services}</strong></div>
+  <div class="stat"><small>Businesses</small><strong style="color:var(--orange)">${counts.businesses}</strong></div>
+  <div class="stat"><small>Employees</small><strong style="color:var(--red)">${counts.employees}</strong></div>
+  <div class="stat"><small>Applicants</small><strong>${counts.applicantProfiles}</strong></div>
+  <div class="stat"><small>Applications</small><strong>${counts.applications}</strong></div>
+  <div class="stat"><small>Payments</small><strong>${counts.payments}</strong></div>
+  <div class="stat"><small>Pending Payments</small><strong style="color:var(--orange)">${pendingPayments}</strong></div>
+ </div>`;
 
 }
 
 
 /* =========================================================
- COLLECTION RENDER
+ COLLECTION RENDER (Add / Edit / Delete)
 ========================================================= */
 
 async function renderCollection(page){
 
  const config=modules[page];
-
  let records=[];
 
  try{
-
-  records=
-  await getCollection(
-   config.collection
-  );
-
+  records=await getCollection(config.collection);
  }catch(error){
-
   console.error(error);
-
  }
 
-
  $("content").innerHTML=`
-
  <div class="toolbar">
-
-  <button
-   class="btn"
-   id="addBtn">
-   + Add ${esc(config.label)}
-  </button>
-
-  <input
-   class="search"
-   id="search"
-   placeholder="Search ${esc(config.label)}...">
-
+  <button class="btn" id="addBtn">+ Add ${esc(config.label)}</button>
+  <input class="search" id="search" placeholder="Search ${esc(config.label)}...">
  </div>
-
- <div id="tableBox"></div>
-
- `;
-
+ <div id="tableBox"></div>`;
 
  function draw(list){
 
   if(!list.length){
-
-   $("tableBox").innerHTML=`
-
-   <div class="panel">
-    <div class="empty">
-     No records found.
-    </div>
-   </div>
-
-   `;
-
+   $("tableBox").innerHTML=`<div class="panel"><div class="empty">No records found.</div></div>`;
    return;
-
   }
 
-
   $("tableBox").innerHTML=`
-
   <div class="panel">
-
    <div class="table-wrap">
-
     <table>
-
      <thead>
       <tr>
-
-       ${config.fields
-       .slice(0,5)
-       .map(
-        field=>
-        `<th>
-         ${esc(field[1])}
-        </th>`
-       )
-       .join("")}
-
+       ${config.fields.slice(0,5).map(field=>`<th>${esc(field[1])}</th>`).join("")}
        <th>Actions</th>
-
       </tr>
      </thead>
-
      <tbody>
-
-      ${list.map(
-       record=>`
-
+      ${list.map(record=>`
        <tr>
-
-        ${config.fields
-        .slice(0,5)
-        .map(
-         field=>
-         `<td>
-          ${esc(
-           record[field[0]] || "-"
-          )}
-         </td>`
-        )
-        .join("")}
-
+        ${config.fields.slice(0,5).map(field=>`<td>${esc(record[field[0]]||"-")}</td>`).join("")}
         <td>
-
-         <button
-          class="action edit"
-          data-edit="${esc(record._id)}">
-          Edit
-         </button>
-
-         <button
-          class="action delete"
-          data-delete="${esc(record._id)}">
-          Delete
-         </button>
-
+         <button class="action edit" data-edit="${esc(record._id)}">Edit</button>
+         <button class="action delete" data-delete="${esc(record._id)}">Delete</button>
         </td>
-
-       </tr>
-
-       `
-      ).join("")}
-
+       </tr>`).join("")}
      </tbody>
-
     </table>
-
    </div>
-
-  </div>
-
-  `;
-
+  </div>`;
  }
-
 
  draw(records);
 
+ $("search").addEventListener("input",event=>{
+  const q=event.target.value.toLowerCase().trim();
+  draw(records.filter(record=>JSON.stringify(record).toLowerCase().includes(q)));
+ });
 
- $("search").addEventListener(
-  "input",
-  event=>{
+ $("addBtn").onclick=()=>openEditor(config,null);
 
-   const q=
-   event.target.value
-   .toLowerCase()
-   .trim();
+ $("tableBox").addEventListener("click",async event=>{
 
-   draw(
-    records.filter(
-     record=>
-     JSON.stringify(record)
-     .toLowerCase()
-     .includes(q)
-    )
-   );
+  const edit=event.target.closest("[data-edit]");
+  const del=event.target.closest("[data-delete]");
 
+  if(edit){
+   const record=records.find(item=>item._id===edit.dataset.edit);
+   openEditor(config,record);
   }
- );
 
-
- $("addBtn").onclick=
- ()=>openEditor(
-  config,
-  null
- );
-
-
- $("tableBox").addEventListener(
-  "click",
-  async event=>{
-
-   const edit=
-   event.target.closest(
-    "[data-edit]"
-   );
-
-   const del=
-   event.target.closest(
-    "[data-delete]"
-   );
-
-
-   if(edit){
-
-    const record=
-    records.find(
-     item=>
-     item._id===
-     edit.dataset.edit
-    );
-
-    openEditor(
-     config,
-     record
-    );
-
+  if(del){
+   const id=del.dataset.delete;
+   if(!confirm("Delete this record permanently?")) return;
+   try{
+    await deleteDoc(doc(db,config.collection,id));
+    await renderCollection(page);
+   }catch(error){
+    console.error(error);
+    alert("Delete failed: "+error.message);
    }
-
-
-   if(del){
-
-    const id=
-    del.dataset.delete;
-
-    if(
-     !confirm(
-      "Delete this record permanently?"
-     )
-    ) return;
-
-
-    try{
-
-     await deleteDoc(
-      doc(
-       db,
-       config.collection,
-       id
-      )
-     );
-
-     await renderCollection(page);
-
-    }catch(error){
-
-     console.error(error);
-
-     alert(
-      "Delete failed: "+
-      error.message
-     );
-
-    }
-
-   }
-
   }
- );
+
+ });
 
 }
 
@@ -1581,80 +642,33 @@ async function renderCollection(page){
 
 function openEditor(config,record){
 
- editingId=
- record?._id || null;
+ editingId=record?._id||null;
+ editingCollection=config.collection;
 
- editingCollection=
- config.collection;
+ $("modalTitle").textContent=record?"Edit "+config.label:"Add "+config.label;
 
+ $("modalFields").innerHTML=config.fields.map(field=>{
 
- $("modalTitle").textContent=
- record
- ? "Edit "+config.label
- : "Add "+config.label;
+  const [key,label,type]=field;
+  const value=record?.[key]||"";
 
-
- $("modalFields").innerHTML=
-
- config.fields
- .map(
-  field=>{
-
-   const [
-    key,
-    label,
-    type
-   ]=field;
-
-   const value=
-   record?.[key] || "";
-
-   if(type==="textarea"){
-
-    return`
-
-    <div class="field">
-
-     <label>
-      ${esc(label)}
-     </label>
-
-     <textarea
-      data-key="${esc(key)}"
-      placeholder="${esc(label)}"
-     >${esc(value)}</textarea>
-
-    </div>
-
-    `;
-
-   }
-
-
+  if(type==="textarea"){
    return`
-
    <div class="field">
-
-    <label>
-     ${esc(label)}
-    </label>
-
-    <input
-     data-key="${esc(key)}"
-     value="${esc(value)}"
-     placeholder="${esc(label)}">
-
-   </div>
-
-   `;
-
+    <label>${esc(label)}</label>
+    <textarea data-key="${esc(key)}" placeholder="${esc(label)}">${esc(value)}</textarea>
+   </div>`;
   }
- )
- .join("");
 
+  return`
+  <div class="field">
+   <label>${esc(label)}</label>
+   <input data-key="${esc(key)}" value="${esc(value)}" placeholder="${esc(label)}">
+  </div>`;
+
+ }).join("");
 
  $("editDialog").showModal();
-
 }
 
 
@@ -1662,100 +676,47 @@ function openEditor(config,record){
  SAVE EDIT
 ========================================================= */
 
-$("editForm").addEventListener(
- "submit",
- async event=>{
+$("editForm").addEventListener("submit",async event=>{
 
-  event.preventDefault();
+ event.preventDefault();
 
+ const data={};
+ document.querySelectorAll("#modalFields [data-key]").forEach(element=>{
+  data[element.dataset.key]=element.value.trim();
+ });
 
-  const data={};
+ try{
 
+  if(editingId){
 
-  document
-  .querySelectorAll(
-   "#modalFields [data-key]"
-  )
-  .forEach(
-   element=>{
+   await updateDoc(doc(db,editingCollection,editingId),{
+    ...data,
+    updatedAt:serverTimestamp(),
+    updatedBy:currentUser.uid
+   });
 
-    data[
-     element.dataset.key
-    ]=
-    element.value.trim();
+  }else{
 
-   }
-  );
-
-
-  try{
-
-   if(editingId){
-
-    await updateDoc(
-     doc(
-      db,
-      editingCollection,
-      editingId
-     ),
-     {
-      ...data,
-      updatedAt:
-       serverTimestamp(),
-      updatedBy:
-       currentUser.uid
-     }
-    );
-
-   }else{
-
-    const newRef=
-    doc(
-     collection(
-      db,
-      editingCollection
-     )
-    );
-
-    await setDoc(
-     newRef,
-     {
-      ...data,
-      createdAt:
-       serverTimestamp(),
-      createdBy:
-       currentUser.uid
-     }
-    );
-
-   }
-
-
-   $("editDialog").close();
-
-   await openPage(
-    currentPage
-   );
-
-
-  }catch(error){
-
-   console.error(error);
-
-   alert(
-    "Save failed: "+
-    error.message
-   );
+   const newRef=doc(collection(db,editingCollection));
+   await setDoc(newRef,{
+    ...data,
+    createdAt:serverTimestamp(),
+    createdBy:currentUser.uid
+   });
 
   }
 
- });
+  $("editDialog").close();
+  await openPage(currentPage);
 
+ }catch(error){
+  console.error(error);
+  alert("Save failed: "+error.message);
+ }
 
-$("closeModal").onclick=
-()=>{
- $("editDialog").close();
-};
+});
+
+$("closeModal").onclick=()=>$("editDialog").close();
 
 
 /* =========================================================
@@ -1764,37 +725,19 @@ $("closeModal").onclick=
 
 async function renderApplicants(){
 
- const data=
- await getCollection(
-  "applicantProfiles"
- );
+ const data=await getCollection("applicantProfiles");
 
-
- $("content").innerHTML=
- tableHTML(
-  [
-   "Name",
-   "Mobile",
-   "Email",
-   "Skills",
-   "CV"
-  ],
-  data.map(
-   item=>[
-    esc(item.name||"-"),
-    esc(item.mobile||"-"),
-    esc(item.email||"-"),
-    esc(item.skills||"-"),
-    item.cvUrl
-    ? `<a
-        class="action edit"
-        href="${esc(item.cvUrl)}"
-        target="_blank">
-        View CV
-       </a>`
-    : "-"
-   ]
-  )
+ $("content").innerHTML=tableHTML(
+  ["Name","Mobile","Email","Skills","CV"],
+  data.map(item=>[
+   esc(item.name||"-"),
+   esc(item.mobile||"-"),
+   esc(item.email||"-"),
+   esc(item.skills||"-"),
+   item.cvUrl
+    ?`<a class="action edit" href="${esc(item.cvUrl)}" target="_blank" rel="noopener">View CV</a>`
+    :"-"
+  ])
  );
 
 }
@@ -1802,105 +745,116 @@ async function renderApplicants(){
 
 async function renderApplications(){
 
- const data=
- await getCollection(
-  "applications"
- );
+ const data=await getCollection("applications");
 
-
- $("content").innerHTML=
- tableHTML(
-  [
-   "Application",
-   "Applicant",
-   "Job",
-   "Status"
-  ],
-  data.map(
-   item=>[
-    esc(item.id||item._id),
-    esc(
-     item.applicantName||
-     item.name||
-     "-"
-    ),
-    esc(
-     item.jobTitle||
-     "-"
-    ),
-    esc(
-     item.status||
-     "pending"
-    )
-   ]
-  )
+ $("content").innerHTML=tableHTML(
+  ["Application","Applicant","Job","Status"],
+  data.map(item=>[
+   esc(item.id||item._id),
+   esc(item.applicantName||item.name||"-"),
+   esc(item.jobTitle||"-"),
+   esc(item.status||"pending")
+  ])
  );
 
 }
 
 
+/* =========================================================
+ PAYMENTS  (manual bKash: Approve / Reject)
+========================================================= */
+
 async function renderPayments(){
 
- const data=
- await getCollection(
-  "payments"
+ const data=await getCollection("payments");
+
+ // newest first
+ data.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+
+ const rows=data.map(item=>{
+
+  const status=item.status||"pending";
+  const color=status==="success"?"green":status==="failed"?"red":"orange";
+
+  return[
+   esc(item.applicationId||"-"),
+   esc(item.method||"-"),
+   esc(item.amount||"-"),
+   esc(item.trxId||"-"),
+   esc(item.senderNumber||"-"),
+   `<span class="badge ${color}">${esc(status)}</span>`,
+   status==="pending"
+    ?`<button class="action approve" data-pay="${esc(item._id)}" data-act="success">Approve</button>
+      <button class="action delete" data-pay="${esc(item._id)}" data-act="failed">Reject</button>`
+    :"-"
+  ];
+
+ });
+
+ $("content").innerHTML=tableHTML(
+  ["Application","Method","Amount","Transaction","Sender No.","Status","Actions"],
+  rows
  );
 
+ const panel=$("content").querySelector(".panel");
+ if(!panel) return;
 
- $("content").innerHTML=
- tableHTML(
-  [
-   "Application",
-   "Method",
-   "Amount",
-   "Transaction",
-   "Status"
-  ],
-  data.map(
-   item=>[
-    esc(item.applicationId||"-"),
-    esc(item.method||"-"),
-    esc(item.amount||"-"),
-    esc(item.trxId||"-"),
-    esc(item.status||"pending")
-   ]
-  )
- );
+ panel.addEventListener("click",async e=>{
+
+  const btn=e.target.closest("[data-pay]");
+  if(!btn) return;
+
+  const id=btn.dataset.pay;
+  const status=btn.dataset.act;
+
+  const ok=confirm(
+   status==="success"
+   ?"bKash e TrxID mile geche? Approve korben?"
+   :"Ei payment reject korben?"
+  );
+  if(!ok) return;
+
+  try{
+
+   await updateDoc(doc(db,"payments",id),{
+    status,
+    reviewedAt:serverTimestamp(),
+    reviewedBy:currentUser.uid
+   });
+
+   // related application e payment status update (na thakle skip)
+   const p=data.find(x=>x._id===id);
+   if(p?.applicationId){
+    try{
+     await updateDoc(doc(db,"applications",p.applicationId),{
+      paymentStatus:status==="success"?"paid":"failed"
+     });
+    }catch(_){}
+   }
+
+   await renderPayments();
+
+  }catch(err){
+   console.error(err);
+   alert("Update failed: "+err.message);
+  }
+
+ });
 
 }
 
 
 async function renderCVs(){
 
- const data=
- (
-  await getCollection(
-   "applicantProfiles"
-  )
- ).filter(
-  item=>item.cvUrl
- );
+ const data=(await getCollection("applicantProfiles")).filter(item=>item.cvUrl);
 
-
- $("content").innerHTML=
- tableHTML(
-  [
-   "Applicant",
-   "Mobile",
-   "CV"
-  ],
-  data.map(
-   item=>[
-    esc(item.name||"-"),
-    esc(item.mobile||"-"),
-    `<a
-      class="action edit"
-      href="${esc(item.cvUrl)}"
-      target="_blank">
-      View CV
-     </a>`
-   ]
-  )
+ $("content").innerHTML=tableHTML(
+  ["Applicant","Mobile","CV"],
+  data.map(item=>[
+   esc(item.name||"-"),
+   esc(item.mobile||"-"),
+   `<a class="action edit" href="${esc(item.cvUrl)}" target="_blank" rel="noopener">View CV</a>`
+  ])
  );
 
 }
@@ -1908,30 +862,17 @@ async function renderCVs(){
 
 async function renderMessages(){
 
- const data=
- await getCollection(
-  "messages"
- );
+ const data=await getCollection("messages");
 
-
- $("content").innerHTML=
- tableHTML(
-  [
-   "Name",
-   "Email",
-   "Phone",
-   "Message",
-   "Status"
-  ],
-  data.map(
-   item=>[
-    esc(item.name||"-"),
-    esc(item.email||"-"),
-    esc(item.phone||"-"),
-    esc(item.message||"-"),
-    esc(item.status||"new")
-   ]
-  )
+ $("content").innerHTML=tableHTML(
+  ["Name","Email","Phone","Message","Status"],
+  data.map(item=>[
+   esc(item.name||"-"),
+   esc(item.email||"-"),
+   esc(item.phone||"-"),
+   esc(item.message||"-"),
+   esc(item.status||"new")
+  ])
  );
 
 }
@@ -1939,30 +880,16 @@ async function renderMessages(){
 
 async function renderUpdates(){
 
- const data=
- await getCollection(
-  "clientUpdates"
- );
+ const data=await getCollection("clientUpdates");
 
-
- $("content").innerHTML=
- tableHTML(
-  [
-   "Title",
-   "Category",
-   "Status",
-   "Published"
-  ],
-  data.map(
-   item=>[
-    esc(item.title||"-"),
-    esc(item.category||"-"),
-    esc(item.status||"-"),
-    item.published
-    ?"Yes"
-    :"No"
-   ]
-  )
+ $("content").innerHTML=tableHTML(
+  ["Title","Category","Status","Published"],
+  data.map(item=>[
+   esc(item.title||"-"),
+   esc(item.category||"-"),
+   esc(item.status||"-"),
+   item.published?"Yes":"No"
+  ])
  );
 
 }
@@ -1974,58 +901,26 @@ async function renderUpdates(){
 
 async function renderAdmins(){
 
- if(
-  adminProfile?.role!=="super_admin"
- ){
-
-  $("content").innerHTML=
-  `<div class="panel">
-   <div class="empty">
-    Only Super Admin can manage admins.
-   </div>
-  </div>`;
-
+ if(adminProfile?.role!=="super_admin"){
+  $("content").innerHTML=`<div class="panel"><div class="empty">Only Super Admin can manage admins.</div></div>`;
   return;
-
  }
 
-
- const data=
- await getCollection(
-  "adminUsers"
- );
-
+ const data=await getCollection("adminUsers");
 
  $("content").innerHTML=`
-
  <div class="toolbar">
-
-  <div class="role">
-   ${data.length} Admin account(s)
-  </div>
-
+  <div class="role">${data.length} Admin account(s)</div>
  </div>
-
  ${tableHTML(
-  [
-   "Name",
-   "Email",
-   "Role",
-   "Status"
-  ],
-  data.map(
-   item=>[
-    esc(item.name||"-"),
-    esc(item.email||"-"),
-    esc(item.role||"admin"),
-    item.active===false
-    ?"Inactive"
-    :"Active"
-   ]
-  )
- )}
-
- `;
+  ["Name","Email","Role","Status"],
+  data.map(item=>[
+   esc(item.name||"-"),
+   esc(item.email||"-"),
+   esc(item.role||"admin"),
+   item.active===false?"Inactive":"Active"
+  ])
+ )}`;
 
 }
 
@@ -2033,60 +928,22 @@ async function renderAdmins(){
 function tableHTML(headers,rows){
 
  if(!rows.length){
-
-  return`
-
-  <div class="panel">
-   <div class="empty">
-    No records found.
-   </div>
-  </div>
-
-  `;
-
+  return`<div class="panel"><div class="empty">No records found.</div></div>`;
  }
 
-
  return`
-
  <div class="panel">
-
   <div class="table-wrap">
-
    <table>
-
     <thead>
-     <tr>
-      ${headers
-      .map(
-       header=>
-       `<th>${esc(header)}</th>`
-      )
-      .join("")}
-     </tr>
+     <tr>${headers.map(header=>`<th>${esc(header)}</th>`).join("")}</tr>
     </thead>
-
     <tbody>
-
-     ${rows.map(
-      row=>
-      `<tr>
-       ${row.map(
-        cell=>
-        `<td>${cell}</td>`
-       ).join("")}
-      </tr>`
-     ).join("")}
-
+     ${rows.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join("")}</tr>`).join("")}
     </tbody>
-
    </table>
-
   </div>
-
- </div>
-
- `;
+ </div>`;
 
 }
 
