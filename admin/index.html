@@ -1,731 +1,703 @@
+<!--
+  IMPORTANT
+  Replace only your current admin/index.html with this file.
+
+  Firebase Login:
+  - unchanged
+  - same project
+  - same authentication
+
+  Management:
+  - Employers / Jobs
+  - Services
+  - Businesses
+  - Employees
+  - Blog
+
+  Each supports:
+  - Add
+  - Edit
+  - Save
+  - Delete
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DigiSER Admin — Control Center</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DigiSER Admin</title>
 <link rel="icon" href="../favicon.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --b:#0087c4;
-  --bd:#006b9d;
-  --bs:#eaf8ff;
-  --g:#18a56b;
-  --r:#d64545;
-  --o:#e99a28;
-  --bg:#f4f8fa;
-  --t:#12242d;
-  --m:#71818a;
-  --br:#dce7ec;
-  --nav:#071b25;
+ --blue:#0087c4;
+ --blue2:#006d9e;
+ --nav:#071b25;
+ --bg:#f4f8fa;
+ --card:#fff;
+ --text:#13252e;
+ --muted:#72838b;
+ --border:#dce7ec;
+ --green:#18a56b;
+ --red:#d64545;
+ --orange:#e99a28;
 }
 
 body{
-  min-height:100vh;
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--t);
+ font-family:Inter,Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ min-height:100vh;
 }
 
-button,input,select,textarea{font:inherit}
+button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+
 .hidden{display:none!important}
 
 /* LOGIN */
+
 #login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(0,135,196,.12),transparent 35%),
-    radial-gradient(circle at 85% 80%,rgba(24,165,107,.08),transparent 35%),
-    #f4f9fb;
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+ background:
+ radial-gradient(circle at 15% 15%,rgba(0,135,196,.12),transparent 35%),
+ radial-gradient(circle at 85% 85%,rgba(24,165,107,.08),transparent 35%),
+ #f4f9fb;
 }
 
-.card{
-  width:100%;
-  max-width:430px;
-  background:#fff;
-  border-radius:24px;
-  padding:36px;
-  box-shadow:0 30px 90px rgba(0,70,100,.13);
+.login-card{
+ width:100%;
+ max-width:420px;
+ background:#fff;
+ padding:36px;
+ border-radius:24px;
+ box-shadow:0 30px 90px rgba(0,70,100,.14);
 }
 
-.card img{
-  display:block;
-  width:58px;
-  height:58px;
-  object-fit:contain;
-  margin:0 auto 18px;
+.login-card img{
+ width:62px;
+ height:62px;
+ object-fit:contain;
+ display:block;
+ margin:0 auto 18px;
 }
 
-.card h2{
-  font-size:28px;
-  text-align:center;
-  letter-spacing:-1px;
+.login-card h1{
+ text-align:center;
+ font-size:27px;
 }
 
-.card .sub{
-  color:var(--m);
-  font-size:13px;
-  text-align:center;
-  margin:6px 0 26px;
+.login-card p{
+ text-align:center;
+ color:var(--muted);
+ font-size:12px;
+ margin:7px 0 25px;
 }
 
-.field{margin-bottom:16px}
+.field{
+ margin-bottom:15px;
+}
 
 .field label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:7px;
+ display:block;
+ font-size:12px;
+ font-weight:700;
+ margin-bottom:7px;
 }
 
 .field input,
-.field select,
-.field textarea{
-  width:100%;
-  border:1px solid var(--br);
-  border-radius:12px;
-  padding:12px 14px;
-  background:#fbfdfe;
-  outline:none;
-}
-
-.field input,
+.field textarea,
 .field select{
-  height:48px;
+ width:100%;
+ border:1px solid var(--border);
+ border-radius:11px;
+ padding:12px 13px;
+ outline:none;
+ background:#fbfdfe;
+}
+
+.field input{
+ height:46px;
 }
 
 .field textarea{
-  min-height:100px;
-  resize:vertical;
+ min-height:100px;
+ resize:vertical;
 }
 
 .field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--b);
-  box-shadow:0 0 0 4px rgba(0,135,196,.1);
+.field textarea:focus,
+.field select:focus{
+ border-color:var(--blue);
+ box-shadow:0 0 0 4px rgba(0,135,196,.1);
 }
 
 .btn{
-  border:0;
-  border-radius:12px;
-  padding:0 18px;
-  min-height:46px;
-  font-weight:700;
-  color:#fff;
-  background:linear-gradient(135deg,var(--b),var(--bd));
+ border:0;
+ min-height:44px;
+ padding:0 17px;
+ border-radius:11px;
+ background:linear-gradient(135deg,var(--blue),var(--blue2));
+ color:#fff;
+ font-weight:700;
+}
+
+.btn:hover{
+ filter:brightness(.96);
 }
 
 .btn.full{
-  width:100%;
-  height:50px;
+ width:100%;
+ height:50px;
 }
 
-.btn.ghost{
-  background:#fff;
-  color:#53656e;
-  border:1px solid var(--br);
+.btn.light{
+ background:#fff;
+ color:#52656e;
+ border:1px solid var(--border);
 }
 
-.err{
-  display:none;
-  margin-top:14px;
-  padding:12px;
-  border-radius:12px;
-  background:#fff1f1;
-  border:1px solid #ffd6d6;
-  color:#b42c2c;
-  font-size:12px;
-  line-height:1.5;
-  word-break:break-word;
-}
-
-.note{
-  margin-top:16px;
-  text-align:center;
-  font-size:11px;
-  color:#94a1a8;
+.error{
+ display:none;
+ margin-top:13px;
+ padding:11px;
+ border-radius:10px;
+ color:#b22e2e;
+ background:#fff0f0;
+ border:1px solid #ffd4d4;
+ font-size:12px;
 }
 
 /* APP */
+
 #app{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:250px 1fr;
+ min-height:100vh;
+ display:grid;
+ grid-template-columns:250px 1fr;
 }
 
 aside{
-  position:fixed;
-  inset:0 auto 0 0;
-  width:250px;
-  background:var(--nav);
-  color:#fff;
-  padding:20px 14px;
-  display:flex;
-  flex-direction:column;
-  z-index:20;
-  overflow-y:auto;
+ position:fixed;
+ left:0;
+ top:0;
+ bottom:0;
+ width:250px;
+ background:var(--nav);
+ color:#fff;
+ padding:18px 13px;
+ overflow-y:auto;
+ z-index:20;
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:4px 8px 24px;
+ display:flex;
+ gap:10px;
+ align-items:center;
+ padding:5px 8px 23px;
 }
 
 .brand img{
-  width:38px;
-  height:38px;
-  object-fit:contain;
-  background:#fff;
-  padding:5px;
-  border-radius:10px;
+ width:40px;
+ height:40px;
+ padding:5px;
+ background:#fff;
+ border-radius:10px;
+ object-fit:contain;
 }
 
 .brand b{
-  display:block;
-  font-size:14px;
+ font-size:14px;
+ display:block;
 }
 
 .brand small{
-  color:#78909a;
-  font-size:10px;
+ color:#78909a;
+ font-size:10px;
+}
+
+.nav-title{
+ color:#536c77;
+ font-size:9px;
+ letter-spacing:1.4px;
+ text-transform:uppercase;
+ padding:13px 12px 5px;
 }
 
 nav{
-  display:grid;
-  gap:4px;
+ display:grid;
+ gap:3px;
 }
 
 nav button{
-  border:0;
-  background:none;
-  color:#9db1b9;
-  text-align:left;
-  padding:11px 12px;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:600;
+ border:0;
+ background:none;
+ color:#9db1b9;
+ text-align:left;
+ border-radius:9px;
+ padding:10px 12px;
+ font-size:12px;
+ font-weight:600;
 }
 
 nav button:hover,
-nav button.on{
-  background:rgba(0,135,196,.2);
-  color:#fff;
+nav button.active{
+ background:rgba(0,135,196,.2);
+ color:#fff;
 }
 
-.nav-section{
-  color:#536c77;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:1.3px;
-  padding:15px 12px 5px;
+.account{
+ position:absolute;
+ left:13px;
+ right:13px;
+ bottom:14px;
+ background:rgba(255,255,255,.05);
+ border-radius:12px;
+ padding:11px;
 }
 
-.me{
-  margin-top:auto;
-  padding:12px;
-  border-radius:12px;
-  background:rgba(255,255,255,.05);
-  font-size:12px;
+.account b{
+ font-size:12px;
 }
 
-.me span{
-  display:block;
-  color:#6f8994;
-  font-size:10px;
-  margin:3px 0 10px;
+.account span{
+ display:block;
+ color:#78909a;
+ font-size:10px;
+ margin:3px 0 9px;
 }
 
-.me button{
-  width:100%;
-  padding:9px;
-  border-radius:9px;
-  border:1px solid rgba(255,255,255,.1);
-  background:none;
-  color:#9db1b9;
+.account button{
+ width:100%;
+ border:1px solid rgba(255,255,255,.1);
+ background:none;
+ color:#a5b5bc;
+ padding:8px;
+ border-radius:8px;
 }
 
 /* MAIN */
+
 main{
-  grid-column:2;
-  min-width:0;
-  padding:28px 30px;
+ grid-column:2;
+ padding:28px 30px;
+ min-width:0;
 }
 
-.head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:16px;
-  margin-bottom:22px;
+.page-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:flex-start;
+ gap:15px;
+ margin-bottom:20px;
 }
 
-.head h1{
-  font-size:26px;
-  letter-spacing:-1px;
+.page-head h2{
+ font-size:26px;
+ letter-spacing:-.8px;
 }
 
-.head p{
-  color:var(--m);
-  font-size:12px;
-  margin-top:4px;
+.page-head p{
+ color:var(--muted);
+ font-size:12px;
+ margin-top:4px;
 }
 
-.pill{
-  padding:7px 12px;
-  border-radius:999px;
-  background:var(--bs);
-  color:var(--b);
-  font-size:11px;
-  font-weight:700;
+.role{
+ background:#eaf8ff;
+ color:var(--blue);
+ border-radius:999px;
+ padding:7px 12px;
+ font-size:10px;
+ font-weight:800;
 }
 
-/* STATS */
+/* DASHBOARD */
+
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
 }
 
 .stat{
-  background:#fff;
-  border:1px solid var(--br);
-  border-radius:16px;
-  padding:18px;
+ background:#fff;
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:18px;
 }
 
 .stat small{
-  color:var(--m);
-  font-size:11px;
-  font-weight:600;
+ color:var(--muted);
+ font-size:11px;
 }
 
-.stat b{
-  display:block;
-  font-size:28px;
-  margin-top:8px;
-}
-
-/* PANELS */
-.panel{
-  background:#fff;
-  border:1px solid var(--br);
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.tw{overflow:auto}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:720px;
-}
-
-th{
-  text-align:left;
-  font-size:11px;
-  color:#82919a;
-  padding:12px;
-  background:#f8fbfc;
-  border-bottom:1px solid var(--br);
-}
-
-td{
-  padding:12px;
-  border-bottom:1px solid #edf2f4;
-  font-size:12px;
-  vertical-align:top;
-}
-
-tr:last-child td{
-  border-bottom:0;
-}
-
-.empty{
-  padding:40px 20px;
-  text-align:center;
-  color:#8b9aa2;
-  font-size:12px;
-}
-
-/* BADGES */
-.bd{
-  display:inline-block;
-  padding:4px 9px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:700;
-}
-
-.bd.g{background:#eafaf3;color:#16885b}
-.bd.r{background:#fff0f0;color:#c33b3b}
-.bd.b{background:#eaf8ff;color:#0074a9}
-.bd.o{background:#fff6e8;color:#b97917}
-
-/* BUTTONS */
-.mini{
-  display:inline-block;
-  border:1px solid var(--br);
-  background:#fff;
-  color:#536770;
-  border-radius:8px;
-  padding:6px 10px;
-  font-size:11px;
-  font-weight:600;
-  margin:0 4px 4px 0;
-  text-decoration:none;
-}
-
-.mini:hover{
-  border-color:var(--b);
-  color:var(--b);
-}
-
-.mini.d{
-  color:var(--r);
+.stat strong{
+ display:block;
+ margin-top:7px;
+ font-size:28px;
 }
 
 /* TOOLBAR */
+
 .toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:14px;
-  flex-wrap:wrap;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ flex-wrap:wrap;
+ margin-bottom:14px;
 }
 
 .search{
-  height:44px;
-  min-width:260px;
-  border:1px solid var(--br);
-  border-radius:11px;
-  padding:0 13px;
-  outline:none;
-  background:#fff;
+ width:280px;
+ height:43px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:0 12px;
+ outline:none;
 }
 
 .search:focus{
-  border-color:var(--b);
+ border-color:var(--blue);
 }
 
-.note2{
-  padding:14px 16px;
-  border-radius:12px;
-  background:#fff9eb;
-  border:1px solid #f5e1af;
-  color:#806221;
-  font-size:12px;
-  line-height:1.6;
-  margin-bottom:18px;
+/* TABLE */
+
+.panel{
+ background:#fff;
+ border:1px solid var(--border);
+ border-radius:16px;
+ overflow:hidden;
 }
 
-/* DIALOG */
+.table-wrap{
+ overflow:auto;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:780px;
+}
+
+th{
+ background:#f7fafb;
+ color:#819099;
+ font-size:10px;
+ text-align:left;
+ padding:12px;
+ border-bottom:1px solid var(--border);
+}
+
+td{
+ padding:12px;
+ border-bottom:1px solid #edf2f4;
+ font-size:12px;
+ vertical-align:top;
+}
+
+tr:last-child td{
+ border-bottom:0;
+}
+
+.empty{
+ padding:45px 20px;
+ text-align:center;
+ color:#8b9aa2;
+ font-size:12px;
+}
+
+/* ACTION */
+
+.action{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ border:1px solid var(--border);
+ background:#fff;
+ color:#536770;
+ padding:6px 9px;
+ border-radius:8px;
+ font-size:10px;
+ font-weight:700;
+ margin:0 4px 3px 0;
+}
+
+.action.edit:hover{
+ color:var(--blue);
+ border-color:var(--blue);
+}
+
+.action.delete{
+ color:var(--red);
+}
+
+.action.delete:hover{
+ background:#fff3f3;
+ border-color:#f2bcbc;
+}
+
+.badge{
+ display:inline-block;
+ padding:4px 8px;
+ border-radius:999px;
+ font-size:9px;
+ font-weight:800;
+}
+
+.badge.green{
+ background:#eafaf3;
+ color:#16885b;
+}
+
+.badge.orange{
+ background:#fff6e8;
+ color:#b97917;
+}
+
+.badge.red{
+ background:#fff0f0;
+ color:#c33b3b;
+}
+
+.badge.blue{
+ background:#eaf8ff;
+ color:#0074a9;
+}
+
+/* MODAL */
+
 dialog{
-  border:0;
-  border-radius:18px;
-  width:min(620px,92vw);
-  padding:0;
-  box-shadow:0 30px 100px rgba(0,0,0,.25);
+ width:min(650px,92vw);
+ border:0;
+ border-radius:18px;
+ padding:0;
+ box-shadow:0 30px 100px rgba(0,0,0,.25);
 }
 
 dialog::backdrop{
-  background:rgba(5,20,28,.55);
+ background:rgba(4,20,28,.55);
 }
 
-dialog form{
-  padding:22px;
+.modal{
+ padding:23px;
 }
 
-dialog h3{
-  margin-bottom:16px;
+.modal h3{
+ margin-bottom:18px;
 }
 
-.grid2{
-  display:grid;
+.modal-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+
+.modal-grid .full{
+ grid-column:1/-1;
+}
+
+.modal-actions{
+ display:flex;
+ justify-content:flex-end;
+ gap:8px;
+ margin-top:18px;
+}
+
+@media(max-width:1050px){
+
+ #app{
+  grid-template-columns:1fr;
+ }
+
+ aside{
+  position:static;
+  width:auto;
+  min-height:auto;
+ }
+
+ main{
+  grid-column:1;
+ }
+
+ .account{
+  position:static;
+  margin-top:15px;
+ }
+
+ .stats{
   grid-template-columns:1fr 1fr;
-  gap:12px;
+ }
+
 }
 
-.full{
-  grid-column:1/-1;
-}
+@media(max-width:650px){
 
-.perms{
-  display:grid;
+ main{
+  padding:18px 13px;
+ }
+
+ .stats{
+  grid-template-columns:1fr;
+ }
+
+ .modal-grid{
+  grid-template-columns:1fr;
+ }
+
+ .modal-grid .full{
+  grid-column:auto;
+ }
+
+ .search{
+  width:100%;
+ }
+
+ .page-head{
+  flex-direction:column;
+ }
+
+ nav{
   grid-template-columns:1fr 1fr;
-  gap:8px;
-}
+ }
 
-.perms label{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  border:1px solid var(--br);
-  border-radius:10px;
-  padding:9px;
-  font-size:12px;
-}
-
-.foot{
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-  margin-top:16px;
-}
-
-/* MOBILE */
-@media(max-width:1000px){
-  #app{
-    grid-template-columns:1fr;
-  }
-
-  aside{
-    position:static;
-    width:auto;
-    min-height:auto;
-  }
-
-  main{
-    grid-column:1;
-    padding:20px 14px;
-  }
-
-  nav{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .me{
-    margin-top:14px;
-  }
-}
-
-@media(max-width:600px){
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  nav{
-    grid-template-columns:1fr;
-  }
-
-  .grid2{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .search{
-    width:100%;
-    min-width:0;
-  }
-
-  .head{
-    flex-direction:column;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <section id="login">
-  <form class="card" id="loginForm">
-    <img src="../logo.png" alt="DigiSER">
 
-    <h2>Welcome back</h2>
+<form class="login-card" id="loginForm">
 
-    <p class="sub">
-      Sign in to your DigiSER administration account.
-    </p>
+<img src="../logo.png" alt="DigiSER">
 
-    <div class="field">
-      <label>Admin email</label>
-      <input
-        id="email"
-        type="email"
-        autocomplete="username"
-        required
-      >
-    </div>
+<h1>DigiSER Admin</h1>
 
-    <div class="field">
-      <label>Password</label>
-      <input
-        id="pass"
-        type="password"
-        autocomplete="current-password"
-        required
-      >
-    </div>
+<p>
+Manage applicants, jobs, services, businesses,
+applications, payments and system updates.
+</p>
 
-    <button class="btn full" type="submit">
-      Sign in to Dashboard
-    </button>
+<div class="field">
+<label>Admin Email</label>
+<input id="email" type="email" required>
+</div>
 
-    <div class="err" id="err"></div>
+<div class="field">
+<label>Password</label>
+<input id="password" type="password" required>
+</div>
 
-    <p class="note">
-      Access is controlled through Firebase Authentication and administrator roles.
-    </p>
-  </form>
+<button class="btn full">
+Sign in to Dashboard
+</button>
+
+<div class="error" id="loginError"></div>
+
+</form>
+
 </section>
 
 
-<!-- ADMIN APP -->
+<!-- ================= APP ================= -->
+
 <div id="app" class="hidden">
 
-  <aside>
+<aside>
 
-    <div class="brand">
-      <img src="../logo.png" alt="DigiSER">
-      <div>
-        <b>DigiSER Admin</b>
-        <small>Control Center</small>
-      </div>
-    </div>
+<div class="brand">
 
-    <nav id="nav"></nav>
+<img src="../logo.png" alt="DigiSER">
 
-    <div class="me">
-      <b id="meName">Admin</b>
-      <span id="meRole"></span>
-      <button id="out">Sign out</button>
-    </div>
+<div>
+<b>DigiSER Admin</b>
+<small>Control Center</small>
+</div>
 
-  </aside>
+</div>
+
+<div class="nav-title">Management</div>
+
+<nav id="nav"></nav>
+
+<div class="account">
+
+<b id="adminName">Admin</b>
+
+<span id="adminRole"></span>
+
+<button id="logout">
+Sign out
+</button>
+
+</div>
+
+</aside>
 
 
-  <main>
+<main>
 
-    <div class="head">
-      <div>
-        <h1 id="title">Dashboard</h1>
-        <p>DigiSER BD administration</p>
-      </div>
+<div class="page-head">
 
-      <div class="pill" id="role"></div>
-    </div>
+<div>
+<h2 id="pageTitle">Dashboard</h2>
+<p>DigiSER BD administration</p>
+</div>
 
-    <div id="view"></div>
+<div class="role" id="roleBadge">
+ADMIN
+</div>
 
-  </main>
+</div>
+
+<div id="content"></div>
+
+</main>
 
 </div>
 
 
-<!-- ADMIN CREATE DIALOG -->
-<dialog id="dlg">
+<!-- ================= EDIT MODAL ================= -->
 
-  <form id="adminForm">
+<dialog id="editDialog">
 
-    <h3>Create new admin</h3>
+<form class="modal" id="editForm">
 
-    <div class="grid2">
+<h3 id="modalTitle">
+Edit record
+</h3>
 
-      <div class="field">
-        <label>Name</label>
-        <input id="aName" required>
-      </div>
+<div id="modalFields"></div>
 
-      <div class="field">
-        <label>Admin ID</label>
-        <input id="aUser" required>
-      </div>
+<div class="modal-actions">
 
-      <div class="field full">
-        <label>Email</label>
-        <input id="aEmail" type="email" required>
-      </div>
+<button
+type="button"
+class="btn light"
+id="closeModal">
+Cancel
+</button>
 
-      <div class="field">
-        <label>Temporary password</label>
-        <input id="aPass" type="password" minlength="6" required>
-      </div>
+<button
+type="submit"
+class="btn">
+Save changes
+</button>
 
-      <div class="field">
-        <label>Role</label>
+</div>
 
-        <select id="aRole">
-          <option value="admin">Client Admin</option>
-          <option value="super_admin">Super Admin</option>
-        </select>
-
-      </div>
-
-      <div class="field full">
-
-        <label>Permissions</label>
-
-        <div class="perms" id="perms"></div>
-
-      </div>
-
-    </div>
-
-    <div class="foot">
-      <button type="button" class="btn ghost" id="cancel">
-        Cancel
-      </button>
-
-      <button class="btn" id="create" type="submit">
-        Create admin
-      </button>
-    </div>
-
-  </form>
-
-</dialog>
-
-
-<!-- DATA MODAL -->
-<dialog id="dataDlg">
-
-  <form id="dataForm">
-
-    <h3 id="dataTitle">Add record</h3>
-
-    <div id="dataFields"></div>
-
-    <div class="foot">
-
-      <button
-        type="button"
-        class="btn ghost"
-        id="dataCancel"
-      >
-        Cancel
-      </button>
-
-      <button
-        class="btn"
-        id="dataSave"
-        type="submit"
-      >
-        Save
-      </button>
-
-    </div>
-
-  </form>
+</form>
 
 </dialog>
 
@@ -733,2010 +705,1388 @@ dialog h3{
 <script type="module">
 
 /* =========================================================
-   FIREBASE
+ FIREBASE
 ========================================================= */
 
 import {
-  initializeApp,
-  getApps,
-  getApp
+ initializeApp,
+ getApps,
+ getApp
 }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+from
+"https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  sendPasswordResetEmail,
-  createUserWithEmailAndPassword
+ getAuth,
+ signInWithEmailAndPassword,
+ onAuthStateChanged,
+ signOut
 }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  serverTimestamp
+ getFirestore,
+ collection,
+ getDocs,
+ doc,
+ setDoc,
+ updateDoc,
+ deleteDoc,
+ getDoc,
+ serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
-const firebaseConfig = {
+const firebaseConfig={
 
-  apiKey:
-    "AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
+ apiKey:
+ "AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
 
-  authDomain:
-    "digiserbds.firebaseapp.com",
+ authDomain:
+ "digiserbds.firebaseapp.com",
 
-  projectId:
-    "digiserbds",
+ projectId:
+ "digiserbds",
 
-  storageBucket:
-    "digiserbds.firebasestorage.app",
+ storageBucket:
+ "digiserbds.firebasestorage.app",
 
-  messagingSenderId:
-    "543059824242",
+ messagingSenderId:
+ "543059824242",
 
-  appId:
-    "1:543059824242:web:71cf0227ecddf2f840fceb",
+ appId:
+ "1:543059824242:web:71cf0227ecddf2f840fceb",
 
-  measurementId:
-    "G-NX8RD20E7S"
+ measurementId:
+ "G-NX8RD20E7S"
 
 };
 
 
-const app =
-  getApps().length
-    ? getApp()
-    : initializeApp(firebaseConfig);
+const app=
+ getApps().length
+ ? getApp()
+ : initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-const ADMINS = "adminUsers";
-
-const $ = id =>
-  document.getElementById(id);
-
-const esc = value =>
-  String(value ?? "")
-    .replace(
-      /[&<>"']/g,
-      c =>
-        ({
-          "&":"&amp;",
-          "<":"&lt;",
-          ">":"&gt;",
-          '"':"&quot;",
-          "'":"&#039;"
-        }[c])
-    );
+const auth=getAuth(app);
+const db=getFirestore(app);
 
 
 /* =========================================================
-   LABELS / PERMISSIONS
+ GLOBAL
 ========================================================= */
 
-const LABELS = {
+let currentUser=null;
+let adminProfile=null;
+let currentPage="dashboard";
 
-  employers: "Employers / Jobs",
+let editingId=null;
+let editingCollection=null;
 
-  services: "Services",
 
-  businesses: "Businesses",
+const $=id=>
+ document.getElementById(id);
 
-  employees: "Employees",
 
-  applicants: "Applicants",
+const esc=value=>
+ String(value??"")
+ .replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#039;"
+ }[c]));
 
-  applications: "Applications",
 
-  payments: "Payments",
+/* =========================================================
+ COLLECTION CONFIG
+========================================================= */
 
-  cvs: "CV Manager",
+const modules={
 
-  messages: "Messages",
+ employers:{
+  label:"Employers / Jobs",
+  collection:"jobs",
+  fields:[
+   ["title","Job Title"],
+   ["company","Employer / Company"],
+   ["location","Location"],
+   ["salary","Salary"],
+   ["description","Description","textarea"],
+   ["status","Status"]
+  ]
+ },
 
-  blog: "Blog",
+ services:{
+  label:"Services",
+  collection:"services",
+  fields:[
+   ["title","Service Name"],
+   ["category","Category"],
+   ["description","Description","textarea"],
+   ["price","Price"],
+   ["status","Status"]
+  ]
+ },
 
-  updates: "System Updates",
+ businesses:{
+  label:"Businesses",
+  collection:"businesses",
+  fields:[
+   ["name","Business Name"],
+   ["category","Category"],
+   ["phone","Phone"],
+   ["email","Email"],
+   ["location","Location"],
+   ["description","Description","textarea"],
+   ["status","Status"]
+  ]
+ },
 
-  admins: "Admin Management"
+ employees:{
+  label:"Employees",
+  collection:"employees",
+  fields:[
+   ["name","Employee Name"],
+   ["role","Role"],
+   ["phone","Phone"],
+   ["email","Email"],
+   ["department","Department"],
+   ["location","Location"],
+   ["status","Status"]
+  ]
+ },
+
+ blog:{
+  label:"Blog",
+  collection:"blog",
+  fields:[
+   ["title","Post Title"],
+   ["category","Category"],
+   ["author","Author"],
+   ["excerpt","Excerpt","textarea"],
+   ["content","Content","textarea"],
+   ["status","Status"]
+  ]
+ }
 
 };
 
 
-let user = null;
-let me = null;
-let page = "dashboard";
-
-
-const isSuper =
-  () => me?.role === "super_admin";
-
-
-const can =
-  p =>
-    p === "dashboard" ||
-    isSuper() ||
-    (me?.permissions || []).includes(p);
-
-
 /* =========================================================
-   ERROR
+ NAV
 ========================================================= */
 
-function showErr(message){
+const navItems=[
 
-  const e = $("err");
+ ["dashboard","◈ Dashboard"],
 
-  e.textContent = message;
+ ["employers","◉ Employers / Jobs"],
 
-  e.style.display = "block";
+ ["services","✦ Services"],
 
-}
+ ["businesses","▣ Businesses"],
 
+ ["employees","◎ Employees"],
 
-function hideErr(){
+ ["applicants","◌ Applicants"],
 
-  $("err").style.display = "none";
+ ["applications","✓ Applications"],
 
-}
+ ["payments","৳ Payments"],
 
+ ["cvs","▤ CV Manager"],
 
-/* =========================================================
-   LOGIN
-========================================================= */
+ ["messages","✉ Messages"],
 
-$("loginForm").addEventListener(
-  "submit",
-  async event => {
+ ["blog","✎ Blog"],
 
-    event.preventDefault();
+ ["updates","⚡ System Updates"],
 
-    hideErr();
+ ["admins","⚙ Admin Management"]
 
-    try{
+];
 
-      await signInWithEmailAndPassword(
-        auth,
-        $("email").value.trim(),
-        $("pass").value
-      );
-
-    }catch(error){
-
-      console.error(error);
-
-      showErr(
-        "Login failed (" +
-        (error.code || "unknown") +
-        ")"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-onAuthStateChanged(
-  auth,
-  async currentUser => {
-
-    if(!currentUser){
-
-      user = null;
-      me = null;
-
-      $("login")
-        .classList
-        .remove("hidden");
-
-      $("app")
-        .classList
-        .add("hidden");
-
-      return;
-    }
-
-    user = currentUser;
-
-    try{
-
-      const snap =
-        await getDoc(
-          doc(
-            db,
-            ADMINS,
-            currentUser.uid
-          )
-        );
-
-      if(!snap.exists()){
-
-        await signOut(auth);
-
-        showErr(
-          "This account is signed in but is not registered as a DigiSER administrator."
-        );
-
-        return;
-      }
-
-      me = {
-        uid: currentUser.uid,
-        ...snap.data()
-      };
-
-      if(me.active === false){
-
-        await signOut(auth);
-
-        showErr(
-          "This administrator account is inactive."
-        );
-
-        return;
-      }
-
-      $("login")
-        .classList
-        .add("hidden");
-
-      $("app")
-        .classList
-        .remove("hidden");
-
-      const role =
-        isSuper()
-          ? "SUPER ADMIN"
-          : "CLIENT ADMIN";
-
-      $("meName").textContent =
-        me.name ||
-        me.username ||
-        currentUser.email;
-
-      $("meRole").textContent = role;
-
-      $("role").textContent = role;
-
-      buildNav();
-
-      go("dashboard");
-
-    }catch(error){
-
-      console.error(error);
-
-      showErr(
-        "Unable to load administrator profile (" +
-        (error.code || "unknown") +
-        ")"
-      );
-
-    }
-
-  }
-);
-
-
-$("out").addEventListener(
-  "click",
-  () => signOut(auth)
-);
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
 
 function buildNav(){
 
-  const items = [
+ $("nav").innerHTML="";
 
-    ["dashboard","◈ Dashboard"],
+ navItems.forEach(
+ ([key,label])=>{
 
-    ["employers","◉ Employers / Jobs"],
+  const button=
+  document.createElement("button");
 
-    ["services","✦ Services"],
+  button.textContent=label;
 
-    ["businesses","▣ Businesses"],
+  button.dataset.page=key;
 
-    ["employees","◎ Employees"],
-
-    ["applicants","◌ Applicants"],
-
-    ["applications","✓ Applications"],
-
-    ["payments","৳ Payments"],
-
-    ["cvs","▤ CV Manager"],
-
-    ["messages","✉ Messages"],
-
-    ["blog","✎ Blog"],
-
-    ["updates","⚡ System Updates"],
-
-    ["admins","⚙ Admin Management"]
-
-  ];
-
-  $("nav").innerHTML =
-
-    items
-
-      .filter(
-        ([key]) => can(key)
-      )
-
-      .map(
-        ([key,label]) =>
-          `<button data-p="${key}">
-             ${label}
-           </button>`
-      )
-
-      .join("");
-
-
-  $("nav").onclick = event => {
-
-    const button =
-      event.target.closest("button");
-
-    if(button){
-
-      go(button.dataset.p);
-
-    }
-
+  button.onclick=()=>{
+   openPage(key);
   };
+
+  $("nav").appendChild(button);
+
+ });
 
 }
 
 
 /* =========================================================
-   NAVIGATION / PAGE
+ LOGIN
 ========================================================= */
 
-async function go(p){
+$("loginForm").addEventListener(
+ "submit",
+ async event=>{
 
-  if(!can(p)) return;
+  event.preventDefault();
 
-  page = p;
-
-  document
-    .querySelectorAll("#nav button")
-    .forEach(
-      button =>
-        button.classList.toggle(
-          "on",
-          button.dataset.p === p
-        )
-    );
-
-  $("title").textContent =
-    p === "dashboard"
-      ? "Dashboard"
-      : LABELS[p];
-
-  $("view").innerHTML =
-    `<div class="panel">
-       <div class="empty">
-         Loading...
-       </div>
-     </div>`;
+  $("loginError").style.display="none";
 
   try{
 
-    await render[p]();
+   await signInWithEmailAndPassword(
+    auth,
+    $("email").value.trim(),
+    $("password").value
+   );
 
   }catch(error){
 
-    console.error(error);
+   console.error(error);
 
-    $("view").innerHTML =
+   $("loginError").textContent=
+   error.message;
 
-      `<div class="panel">
-        <div class="empty">
-          Unable to load data
-          (${esc(error.code || "error")}).
-          Check Firestore rules.
-        </div>
-      </div>`;
+   $("loginError").style.display="block";
 
   }
 
-}
+ }
+);
 
 
 /* =========================================================
-   HELPERS
+ AUTH
 ========================================================= */
 
-const list =
-  async collectionName =>
+onAuthStateChanged(
+ auth,
+ async user=>{
 
-    (
-      await getDocs(
-        collection(
-          db,
-          collectionName
-        )
-      )
+  if(!user){
+
+   currentUser=null;
+   adminProfile=null;
+
+   $("login")
+   .classList
+   .remove("hidden");
+
+   $("app")
+   .classList
+   .add("hidden");
+
+   return;
+  }
+
+  currentUser=user;
+
+  try{
+
+   const snap=
+   await getDoc(
+    doc(
+     db,
+     "adminUsers",
+     user.uid
     )
-    .docs
-    .map(
-      x => ({
-        _id:x.id,
-        ...x.data()
-      })
+   );
+
+   if(!snap.exists()){
+
+    await signOut(auth);
+
+    alert(
+     "This account is not registered as an admin."
     );
 
+    return;
 
-const badge =
-  (text, color) =>
-    `<span class="bd ${color}">
-       ${esc(text)}
-     </span>`;
+   }
+
+   adminProfile={
+    uid:user.uid,
+    ...snap.data()
+   };
+
+   if(adminProfile.active===false){
+
+    await signOut(auth);
+
+    alert(
+     "This admin account is inactive."
+    );
+
+    return;
+   }
 
 
-const table =
-  (headers, rows) =>
+   $("login")
+   .classList
+   .add("hidden");
 
-    !rows.length
+   $("app")
+   .classList
+   .remove("hidden");
 
-      ? `<div class="panel">
-           <div class="empty">
-             No records found.
-           </div>
-         </div>`
 
-      :
+   $("adminName").textContent=
+   adminProfile.name ||
+   user.email;
 
-        `<div class="panel">
-          <div class="tw">
+   $("adminRole").textContent=
+   adminProfile.role==="super_admin"
+   ? "SUPER ADMIN"
+   : "CLIENT ADMIN";
 
-            <table>
+   $("roleBadge").textContent=
+   adminProfile.role==="super_admin"
+   ? "SUPER ADMIN"
+   : "CLIENT ADMIN";
 
-              <thead>
-                <tr>
-                  ${headers
-                    .map(
-                      h =>
-                        `<th>${h}</th>`
-                    )
-                    .join("")}
-                </tr>
-              </thead>
 
-              <tbody>
+   buildNav();
 
-                ${rows
-                  .map(
-                    row =>
-                      `<tr>
-                        ${row
-                          .map(
-                            cell =>
-                              `<td>${cell}</td>`
-                          )
-                          .join("")}
-                      </tr>`
-                  )
-                  .join("")}
+   openPage("dashboard");
 
-              </tbody>
 
-            </table>
+  }catch(error){
 
-          </div>
-        </div>`;
+   console.error(error);
+
+   alert(
+    "Unable to load admin profile."
+   );
+
+  }
+
+ }
+);
+
+
+$("logout").onclick=
+()=>signOut(auth);
 
 
 /* =========================================================
-   DASHBOARD
+ PERMISSION
 ========================================================= */
 
-async function dashboardPage(){
+function allowed(page){
 
-  const [
-    jobs,
-    services,
-    businesses,
-    employees,
-    applicants,
-    applications,
-    payments
-  ] =
-    await Promise.all([
+ if(page==="dashboard") return true;
 
-      list("jobs"),
+ if(
+  adminProfile?.role==="super_admin"
+ ) return true;
 
-      list("services"),
-
-      list("businesses"),
-
-      list("employees"),
-
-      list("applicantProfiles"),
-
-      list("applications"),
-
-      list("payments")
-
-    ]);
-
-
-  const admins =
-    isSuper()
-      ? (await list(ADMINS)).length
-      : "-";
-
-
-  $("view").innerHTML =
-
-    `<div class="stats">
-
-      <div class="stat">
-        <small>Jobs / Employers</small>
-        <b style="color:var(--b)">
-          ${jobs.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Services</small>
-        <b style="color:var(--g)">
-          ${services.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Businesses</small>
-        <b style="color:var(--o)">
-          ${businesses.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Employees</small>
-        <b style="color:var(--r)">
-          ${employees.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Applicants</small>
-        <b style="color:var(--b)">
-          ${applicants.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Applications</small>
-        <b style="color:var(--g)">
-          ${applications.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Payments</small>
-        <b style="color:var(--o)">
-          ${payments.length}
-        </b>
-      </div>
-
-      <div class="stat">
-        <small>Admins</small>
-        <b style="color:var(--r)">
-          ${admins}
-        </b>
-      </div>
-
-    </div>`;
+ return(
+  adminProfile?.permissions||[]
+ ).includes(page);
 
 }
 
 
 /* =========================================================
-   GENERIC COLLECTION PAGE
+ PAGE
 ========================================================= */
 
-async function collectionPage(
-  collectionName,
-  columns,
-  addLabel
-){
+async function openPage(page){
 
-  const data =
-    await list(collectionName);
+ if(!allowed(page)){
+
+  alert(
+   "You don't have permission to access this section."
+  );
+
+  return;
+
+ }
+
+ currentPage=page;
+
+ document
+ .querySelectorAll("#nav button")
+ .forEach(
+  button=>{
+   button.classList.toggle(
+    "active",
+    button.dataset.page===page
+   );
+  }
+ );
+
+ $("pageTitle").textContent=
+ page==="dashboard"
+ ? "Dashboard"
+ : (
+   modules[page]?.label ||
+   ({
+    applicants:"Applicants",
+    applications:"Applications",
+    payments:"Payments",
+    cvs:"CV Manager",
+    messages:"Messages",
+    updates:"System Updates",
+    admins:"Admin Management"
+   }[page]||page)
+ );
 
 
-  const rows =
-    data.map(
-      item =>
+ if(modules[page]){
 
-        columns.map(
-          column => {
+  await renderCollection(page);
 
-            if(
-              typeof column.render ===
-              "function"
-            ){
+  return;
 
-              return column.render(item);
+ }
 
-            }
 
-            return esc(
-              item[column.key] ?? "-"
-            );
+ if(page==="dashboard"){
+  await renderDashboard();
+  return;
+ }
 
-          }
+
+ if(page==="applicants"){
+  await renderApplicants();
+  return;
+ }
+
+
+ if(page==="applications"){
+  await renderApplications();
+  return;
+ }
+
+
+ if(page==="payments"){
+  await renderPayments();
+  return;
+ }
+
+
+ if(page==="cvs"){
+  await renderCVs();
+  return;
+ }
+
+
+ if(page==="messages"){
+  await renderMessages();
+  return;
+ }
+
+
+ if(page==="updates"){
+  await renderUpdates();
+  return;
+ }
+
+
+ if(page==="admins"){
+  await renderAdmins();
+  return;
+ }
+
+}
+
+
+/* =========================================================
+ FIRESTORE LIST
+========================================================= */
+
+async function getCollection(name){
+
+ const snapshot=
+ await getDocs(
+  collection(db,name)
+ );
+
+ return snapshot.docs.map(
+  item=>({
+   _id:item.id,
+   ...item.data()
+  })
+ );
+
+}
+
+
+/* =========================================================
+ DASHBOARD
+========================================================= */
+
+async function renderDashboard(){
+
+ const names=[
+  "jobs",
+  "services",
+  "businesses",
+  "employees",
+  "applicantProfiles",
+  "applications",
+  "payments"
+ ];
+
+ const counts={};
+
+ await Promise.all(
+  names.map(
+   async name=>{
+    try{
+     counts[name]=
+     (
+      await getCollection(name)
+     ).length;
+    }catch{
+     counts[name]=0;
+    }
+   }
+  )
+ );
+
+
+ $("content").innerHTML=`
+
+ <div class="stats">
+
+  <div class="stat">
+   <small>Employers / Jobs</small>
+   <strong style="color:var(--blue)">
+    ${counts.jobs}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Services</small>
+   <strong style="color:var(--green)">
+    ${counts.services}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Businesses</small>
+   <strong style="color:var(--orange)">
+    ${counts.businesses}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Employees</small>
+   <strong style="color:var(--red)">
+    ${counts.employees}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Applicants</small>
+   <strong>
+    ${counts.applicantProfiles}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Applications</small>
+   <strong>
+    ${counts.applications}
+   </strong>
+  </div>
+
+  <div class="stat">
+   <small>Payments</small>
+   <strong>
+    ${counts.payments}
+   </strong>
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+ COLLECTION RENDER
+========================================================= */
+
+async function renderCollection(page){
+
+ const config=modules[page];
+
+ let records=[];
+
+ try{
+
+  records=
+  await getCollection(
+   config.collection
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+ }
+
+
+ $("content").innerHTML=`
+
+ <div class="toolbar">
+
+  <button
+   class="btn"
+   id="addBtn">
+   + Add ${esc(config.label)}
+  </button>
+
+  <input
+   class="search"
+   id="search"
+   placeholder="Search ${esc(config.label)}...">
+
+ </div>
+
+ <div id="tableBox"></div>
+
+ `;
+
+
+ function draw(list){
+
+  if(!list.length){
+
+   $("tableBox").innerHTML=`
+
+   <div class="panel">
+    <div class="empty">
+     No records found.
+    </div>
+   </div>
+
+   `;
+
+   return;
+
+  }
+
+
+  $("tableBox").innerHTML=`
+
+  <div class="panel">
+
+   <div class="table-wrap">
+
+    <table>
+
+     <thead>
+      <tr>
+
+       ${config.fields
+       .slice(0,5)
+       .map(
+        field=>
+        `<th>
+         ${esc(field[1])}
+        </th>`
+       )
+       .join("")}
+
+       <th>Actions</th>
+
+      </tr>
+     </thead>
+
+     <tbody>
+
+      ${list.map(
+       record=>`
+
+       <tr>
+
+        ${config.fields
+        .slice(0,5)
+        .map(
+         field=>
+         `<td>
+          ${esc(
+           record[field[0]] || "-"
+          )}
+         </td>`
         )
+        .join("")}
+
+        <td>
+
+         <button
+          class="action edit"
+          data-edit="${esc(record._id)}">
+          Edit
+         </button>
+
+         <button
+          class="action delete"
+          data-delete="${esc(record._id)}">
+          Delete
+         </button>
+
+        </td>
+
+       </tr>
+
+       `
+      ).join("")}
+
+     </tbody>
+
+    </table>
+
+   </div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ draw(records);
+
+
+ $("search").addEventListener(
+  "input",
+  event=>{
+
+   const q=
+   event.target.value
+   .toLowerCase()
+   .trim();
+
+   draw(
+    records.filter(
+     record=>
+     JSON.stringify(record)
+     .toLowerCase()
+     .includes(q)
+    )
+   );
+
+  }
+ );
+
+
+ $("addBtn").onclick=
+ ()=>openEditor(
+  config,
+  null
+ );
+
+
+ $("tableBox").addEventListener(
+  "click",
+  async event=>{
+
+   const edit=
+   event.target.closest(
+    "[data-edit]"
+   );
+
+   const del=
+   event.target.closest(
+    "[data-delete]"
+   );
+
+
+   if(edit){
+
+    const record=
+    records.find(
+     item=>
+     item._id===
+     edit.dataset.edit
     );
 
+    openEditor(
+     config,
+     record
+    );
 
-  $("view").innerHTML =
+   }
 
-    `<div class="toolbar">
 
-      <div>
+   if(del){
 
-        <button
-          class="btn"
-          id="addRecord"
-        >
-          + ${addLabel}
-        </button>
+    const id=
+    del.dataset.delete;
 
-      </div>
+    if(
+     !confirm(
+      "Delete this record permanently?"
+     )
+    ) return;
 
-      <input
-        class="search"
-        id="tableSearch"
-        placeholder="Search records..."
-      >
+
+    try{
+
+     await deleteDoc(
+      doc(
+       db,
+       config.collection,
+       id
+      )
+     );
+
+     await renderCollection(page);
+
+    }catch(error){
+
+     console.error(error);
+
+     alert(
+      "Delete failed: "+
+      error.message
+     );
+
+    }
+
+   }
+
+  }
+ );
+
+}
+
+
+/* =========================================================
+ EDITOR
+========================================================= */
+
+function openEditor(config,record){
+
+ editingId=
+ record?._id || null;
+
+ editingCollection=
+ config.collection;
+
+
+ $("modalTitle").textContent=
+ record
+ ? "Edit "+config.label
+ : "Add "+config.label;
+
+
+ $("modalFields").innerHTML=
+
+ config.fields
+ .map(
+  field=>{
+
+   const [
+    key,
+    label,
+    type
+   ]=field;
+
+   const value=
+   record?.[key] || "";
+
+   if(type==="textarea"){
+
+    return`
+
+    <div class="field">
+
+     <label>
+      ${esc(label)}
+     </label>
+
+     <textarea
+      data-key="${esc(key)}"
+      placeholder="${esc(label)}"
+     >${esc(value)}</textarea>
 
     </div>
 
-    <div id="collectionTable">
+    `;
 
-      ${table(
-        columns.map(
-          c => c.label
-        ),
-        rows
-      )}
-
-    </div>`;
+   }
 
 
-  $("addRecord").onclick =
-    () =>
-      openDataDialog(
-        collectionName,
-        addLabel,
-        columns
-      );
+   return`
+
+   <div class="field">
+
+    <label>
+     ${esc(label)}
+    </label>
+
+    <input
+     data-key="${esc(key)}"
+     value="${esc(value)}"
+     placeholder="${esc(label)}">
+
+   </div>
+
+   `;
+
+  }
+ )
+ .join("");
 
 
-  $("tableSearch").addEventListener(
-    "input",
-    event => {
-
-      const query =
-        event.target.value
-          .toLowerCase()
-          .trim();
-
-      const filtered =
-        data.filter(
-          item =>
-            JSON.stringify(item)
-              .toLowerCase()
-              .includes(query)
-        );
-
-
-      $("collectionTable").innerHTML =
-        table(
-          columns.map(
-            c => c.label
-          ),
-          filtered.map(
-            item =>
-              columns.map(
-                column => {
-
-                  if(
-                    typeof column.render ===
-                    "function"
-                  ){
-
-                    return column.render(item);
-
-                  }
-
-                  return esc(
-                    item[column.key] ?? "-"
-                  );
-
-                }
-              )
-          )
-        );
-
-    }
-  );
+ $("editDialog").showModal();
 
 }
 
 
 /* =========================================================
-   RENDER PAGES
+ SAVE EDIT
 ========================================================= */
 
-const render = {
+$("editForm").addEventListener(
+ "submit",
+ async event=>{
 
-  async dashboard(){
-
-    await dashboardPage();
-
-  },
+  event.preventDefault();
 
 
-  async admins(){
-
-    if(!isSuper()){
-
-      $("view").innerHTML =
-        `<div class="empty">
-          Access denied.
-        </div>`;
-
-      return;
-    }
+  const data={};
 
 
-    const data =
-      await list(ADMINS);
+  document
+  .querySelectorAll(
+   "#modalFields [data-key]"
+  )
+  .forEach(
+   element=>{
+
+    data[
+     element.dataset.key
+    ]=
+    element.value.trim();
+
+   }
+  );
 
 
-    const rows =
-      data.map(
-        admin => [
+  try{
 
-          `<b>
-             ${esc(admin.name)}
-           </b>`,
+   if(editingId){
 
-          esc(admin.username),
-
-          esc(admin.email),
-
-          admin.role === "super_admin"
-            ? badge("SUPER ADMIN","b")
-            : badge("ADMIN","o"),
-
-          admin.active === false
-            ? badge("INACTIVE","r")
-            : badge("ACTIVE","g"),
-
-          admin.role === "super_admin"
-            ? "Full access"
-            : esc(
-                (admin.permissions || [])
-                  .map(
-                    permission =>
-                      LABELS[permission] ||
-                      permission
-                  )
-                  .join(", ") ||
-                "None"
-              ),
-
-          admin._id === user.uid
-
-            ? badge("YOU","g")
-
-            :
-
-              `<button
-                class="mini"
-                data-act="toggle"
-                data-id="${esc(admin._id)}"
-                data-on="${admin.active !== false}">
-                ${
-                  admin.active === false
-                    ? "Activate"
-                    : "Deactivate"
-                }
-              </button>
-
-              <button
-                class="mini"
-                data-act="reset"
-                data-email="${esc(admin.email)}">
-                Reset password
-              </button>
-
-              <button
-                class="mini d"
-                data-act="remove"
-                data-id="${esc(admin._id)}">
-                Remove
-              </button>`
-
-        ]
-      );
-
-
-    $("view").innerHTML =
-
-      `<div class="head"
-            style="margin-bottom:14px">
-
-        <div
-          class="note2"
-          style="margin:0;flex:1">
-          Only Super Admins can create,
-          deactivate or remove administrators.
-        </div>
-
-        <button
-          class="btn"
-          id="addAdmin">
-          + Add admin
-        </button>
-
-      </div>
-
-      ${
-        table(
-          [
-            "Name",
-            "Admin ID",
-            "Email",
-            "Role",
-            "Status",
-            "Permissions",
-            "Actions"
-          ],
-          rows
-        )
-      }`;
-
-
-    $("addAdmin").onclick =
-      () =>
-        $("dlg").showModal();
-
-  },
-
-
-  async employers(){
-
-    await collectionPage(
-
-      "jobs",
-
-      [
-        {
-          key:"title",
-          label:"Job Title"
-        },
-
-        {
-          key:"company",
-          label:"Employer / Company"
-        },
-
-        {
-          key:"location",
-          label:"Location"
-        },
-
-        {
-          key:"status",
-          label:"Status",
-          render:item =>
-            badge(
-              item.status || "open",
-              item.status === "closed"
-                ? "r"
-                : "g"
-            )
-        },
-
-        {
-          key:"_id",
-          label:"ID"
-        }
-
-      ],
-
-      "Employer / Job"
-
+    await updateDoc(
+     doc(
+      db,
+      editingCollection,
+      editingId
+     ),
+     {
+      ...data,
+      updatedAt:
+       serverTimestamp(),
+      updatedBy:
+       currentUser.uid
+     }
     );
 
-  },
+   }else{
 
-
-  async services(){
-
-    await collectionPage(
-
-      "services",
-
-      [
-        {
-          key:"title",
-          label:"Service"
-        },
-
-        {
-          key:"description",
-          label:"Description"
-        },
-
-        {
-          key:"category",
-          label:"Category"
-        },
-
-        {
-          key:"status",
-          label:"Status",
-          render:item =>
-            badge(
-              item.status || "active",
-              item.status === "inactive"
-                ? "r"
-                : "g"
-            )
-        }
-
-      ],
-
-      "Service"
-
+    const newRef=
+    doc(
+     collection(
+      db,
+      editingCollection
+     )
     );
 
-  },
-
-
-  async businesses(){
-
-    await collectionPage(
-
-      "businesses",
-
-      [
-        {
-          key:"name",
-          label:"Business"
-        },
-
-        {
-          key:"category",
-          label:"Category"
-        },
-
-        {
-          key:"phone",
-          label:"Phone"
-        },
-
-        {
-          key:"location",
-          label:"Location"
-        },
-
-        {
-          key:"status",
-          label:"Status",
-          render:item =>
-            badge(
-              item.status || "active",
-              item.status === "inactive"
-                ? "r"
-                : "g"
-            )
-        }
-
-      ],
-
-      "Business"
-
+    await setDoc(
+     newRef,
+     {
+      ...data,
+      createdAt:
+       serverTimestamp(),
+      createdBy:
+       currentUser.uid
+     }
     );
 
-  },
+   }
 
 
-  async employees(){
+   $("editDialog").close();
 
-    await collectionPage(
+   await openPage(
+    currentPage
+   );
 
-      "employees",
 
-      [
-        {
-          key:"name",
-          label:"Employee"
-        },
+  }catch(error){
 
-        {
-          key:"role",
-          label:"Role"
-        },
+   console.error(error);
 
-        {
-          key:"phone",
-          label:"Phone"
-        },
-
-        {
-          key:"email",
-          label:"Email"
-        },
-
-        {
-          key:"status",
-          label:"Status",
-          render:item =>
-            badge(
-              item.status || "active",
-              item.status === "inactive"
-                ? "r"
-                : "g"
-            )
-        }
-
-      ],
-
-      "Employee"
-
-    );
-
-  },
-
-
-  async applicants(){
-
-    const d =
-      await list("applicantProfiles");
-
-
-    $("view").innerHTML =
-
-      table(
-
-        [
-          "Name",
-          "Mobile",
-          "Email",
-          "Skills",
-          "CV"
-        ],
-
-        d.map(
-          x => [
-
-            `<b>
-              ${esc(x.name)}
-             </b>`,
-
-            esc(x.mobile),
-
-            esc(x.email),
-
-            esc(x.skills),
-
-            x.cvUrl
-
-              ? `<a
-                   class="mini"
-                   href="${esc(x.cvUrl)}"
-                   target="_blank"
-                   rel="noopener">
-                   View CV
-                 </a>`
-
-              : badge(
-                  "No CV",
-                  "o"
-                )
-
-          ]
-        )
-
-      );
-
-  },
-
-
-  async applications(){
-
-    const d =
-      await list("applications");
-
-
-    $("view").innerHTML =
-
-      table(
-
-        [
-          "Application ID",
-          "Job",
-          "Applicant",
-          "Status",
-          "Payment"
-        ],
-
-        d.map(
-          x => [
-
-            `<b>
-              ${esc(x.id || x._id)}
-             </b>`,
-
-            esc(x.jobTitle),
-
-            esc(
-              x.applicantName ||
-              x.name ||
-              "-"
-            ),
-
-            badge(
-              x.status ?? "-",
-              "b"
-            ),
-
-            badge(
-              x.paymentStatus ?? "-",
-              x.paymentStatus === "paid"
-                ? "g"
-                : "o"
-            )
-
-          ]
-        )
-
-      );
-
-  },
-
-
-  async payments(){
-
-    const d =
-      await list("payments");
-
-
-    $("view").innerHTML =
-
-      table(
-
-        [
-          "Application",
-          "Method",
-          "Amount",
-          "Transaction",
-          "Status"
-        ],
-
-        d.map(
-          x => [
-
-            esc(x.applicationId),
-
-            esc(x.method),
-
-            esc(x.amount) +
-            " " +
-            esc(x.currency || "BDT"),
-
-            esc(x.trxId || "-"),
-
-            badge(
-              x.status ?? "-",
-              x.status === "paid"
-                ? "g"
-                : x.status === "failed"
-                  ? "r"
-                  : "o"
-            )
-
-          ]
-        )
-
-      );
-
-  },
-
-
-  async cvs(){
-
-    const d =
-      (
-        await list("applicantProfiles")
-      )
-      .filter(
-        x =>
-          x.cvUrl ||
-          x.cv?.dataUrl
-      );
-
-
-    $("view").innerHTML =
-
-      table(
-
-        [
-          "Applicant",
-          "Mobile",
-          "CV",
-          "Action"
-        ],
-
-        d.map(
-          x => [
-
-            esc(x.name),
-
-            esc(x.mobile),
-
-            esc(
-              x.cv?.name ||
-              "Uploaded CV"
-            ),
-
-            x.cvUrl
-
-              ? `<a
-                   class="mini"
-                   href="${esc(x.cvUrl)}"
-                   target="_blank"
-                   rel="noopener">
-                   View CV
-                 </a>`
-
-              : badge(
-                  "Local file",
-                  "o"
-                )
-
-          ]
-        )
-
-      );
-
-  },
-
-
-  async messages(){
-
-    const d =
-      await list("messages");
-
-
-    $("view").innerHTML =
-
-      table(
-
-        [
-          "Name",
-          "Email",
-          "Phone",
-          "Message",
-          "Status"
-        ],
-
-        d.map(
-          x => [
-
-            `<b>
-              ${esc(x.name || "-")}
-             </b>`,
-
-            esc(x.email || "-"),
-
-            esc(x.phone || "-"),
-
-            esc(x.message || "-"),
-
-            badge(
-              x.status || "new",
-              x.status === "read"
-                ? "g"
-                : "o"
-            )
-
-          ]
-        )
-
-      );
-
-  },
-
-
-  async blog(){
-
-    await collectionPage(
-
-      "blog",
-
-      [
-        {
-          key:"title",
-          label:"Title"
-        },
-
-        {
-          key:"category",
-          label:"Category"
-        },
-
-        {
-          key:"author",
-          label:"Author"
-        },
-
-        {
-          key:"status",
-          label:"Status",
-          render:item =>
-            badge(
-              item.status || "draft",
-              item.status === "published"
-                ? "g"
-                : "o"
-            )
-        }
-
-      ],
-
-      "Blog Post"
-
-    );
-
-  },
-
-
-  async updates(){
-
-    const d =
-      await list("clientUpdates");
-
-
-    $("view").innerHTML =
-
-      `<div
-        class="head"
-        style="margin-bottom:14px">
-
-        <span></span>
-
-        <button
-          class="btn"
-          id="addUpd">
-          + New update
-        </button>
-
-      </div>` +
-
-      table(
-
-        [
-          "Title",
-          "Category",
-          "Status",
-          "Published"
-        ],
-
-        d.map(
-          x => [
-
-            `<b>
-              ${esc(x.title)}
-             </b>
-             <br>
-             <small style="color:#8a999f">
-               ${esc(x.description)}
-             </small>`,
-
-            esc(x.category),
-
-            badge(
-              x.status ?? "-",
-              "b"
-            ),
-
-            x.published
-              ? badge("YES","g")
-              : badge("NO","r")
-
-          ]
-        )
-
-      );
-
-
-    $("addUpd").onclick =
-      addUpdate;
+   alert(
+    "Save failed: "+
+    error.message
+   );
 
   }
 
+ });
+
+
+$("closeModal").onclick=
+()=>{
+ $("editDialog").close();
 };
 
 
 /* =========================================================
-   DATA ADD DIALOG
+ SIMPLE READ-ONLY MODULES
 ========================================================= */
 
-let activeCollection = null;
-let activeColumns = [];
+async function renderApplicants(){
+
+ const data=
+ await getCollection(
+  "applicantProfiles"
+ );
 
 
-function openDataDialog(
-  collectionName,
-  title,
-  columns
-){
-
-  activeCollection =
-    collectionName;
-
-  activeColumns =
-    columns;
-
-
-  $("dataTitle").textContent =
-    "Add " + title;
-
-
-  const editable =
-    columns.filter(
-      column =>
-        column.key !== "_id" &&
-        !column.render
-    );
-
-
-  $("dataFields").innerHTML =
-
-    editable.map(
-      column =>
-
-        `<div class="field">
-
-          <label>
-            ${esc(column.label)}
-          </label>
-
-          <input
-            data-field="${esc(column.key)}"
-            placeholder="${esc(column.label)}"
-          >
-
-        </div>`
-    )
-    .join("");
-
-
-  $("dataDlg").showModal();
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Name",
+   "Mobile",
+   "Email",
+   "Skills",
+   "CV"
+  ],
+  data.map(
+   item=>[
+    esc(item.name||"-"),
+    esc(item.mobile||"-"),
+    esc(item.email||"-"),
+    esc(item.skills||"-"),
+    item.cvUrl
+    ? `<a
+        class="action edit"
+        href="${esc(item.cvUrl)}"
+        target="_blank">
+        View CV
+       </a>`
+    : "-"
+   ]
+  )
+ );
 
 }
 
 
-$("dataCancel").onclick =
-  () =>
-    $("dataDlg").close();
-
-
-$("dataForm").addEventListener(
-  "submit",
-  async event => {
-
-    event.preventDefault();
-
-    if(!activeCollection) return;
-
-    const id =
-      activeCollection
-      .toUpperCase()
-      .replace(/[^A-Z0-9]/g,"")
-      .slice(0,6) +
-      "-" +
-      Date.now();
-
-
-    const data = {
-
-      id,
-
-      createdAt:
-        serverTimestamp(),
-
-      createdBy:
-        user.uid
-
-    };
-
-
-    document
-      .querySelectorAll(
-        "#dataFields [data-field]"
-      )
-      .forEach(
-        input => {
-
-          data[input.dataset.field] =
-            input.value.trim();
-
-        }
-      );
-
-
-    try{
-
-      await setDoc(
-        doc(
-          db,
-          activeCollection,
-          id
-        ),
-        data
-      );
-
-
-      $("dataDlg").close();
-
-      $("dataForm").reset();
-
-      go(page);
-
-    }catch(error){
-
-      console.error(error);
-
-      alert(
-        "Unable to save (" +
-        (error.code || "error") +
-        ")"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   ADMIN ACTIONS
-========================================================= */
-
-$("view").addEventListener(
-  "click",
-  async event => {
-
-    const button =
-      event.target.closest("[data-act]");
-
-    if(
-      !button ||
-      !isSuper()
-    ){
-
-      return;
-
-    }
-
-
-    const {
-      act,
-      id,
-      email,
-      on
-    } =
-      button.dataset;
-
-
-    try{
-
-      if(act === "toggle"){
-
-        await updateDoc(
-          doc(
-            db,
-            ADMINS,
-            id
-          ),
-          {
-            active:
-              on !== "true",
-
-            updatedAt:
-              serverTimestamp(),
-
-            updatedBy:
-              user.uid
-          }
-        );
-
-      }
-
-
-      if(
-        act === "reset" &&
-        confirm(
-          "Send password reset email to " +
-          email +
-          "?"
-        )
-      ){
-
-        await sendPasswordResetEmail(
-          auth,
-          email
-        );
-
-        alert(
-          "Password reset email sent."
-        );
-
-        return;
-
-      }
-
-
-      if(act === "remove"){
-
-        if(
-          !confirm(
-            "Remove this administrator from DigiSER?"
-          )
-        ){
-
-          return;
-
-        }
-
-        await deleteDoc(
-          doc(
-            db,
-            ADMINS,
-            id
-          )
-        );
-
-      }
-
-
-      go("admins");
-
-    }catch(error){
-
-      console.error(error);
-
-      alert(
-        "Action failed (" +
-        (error.code || "error") +
-        ")"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   ADMIN PERMISSIONS
-========================================================= */
-
-$("perms").innerHTML =
-
-  Object.entries(LABELS)
-
-    .map(
-      ([key,label]) =>
-
-        `<label>
-
-          <input
-            type="checkbox"
-            value="${key}"
-            checked
-          >
-
-          ${label}
-
-        </label>`
+async function renderApplications(){
+
+ const data=
+ await getCollection(
+  "applications"
+ );
+
+
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Application",
+   "Applicant",
+   "Job",
+   "Status"
+  ],
+  data.map(
+   item=>[
+    esc(item.id||item._id),
+    esc(
+     item.applicantName||
+     item.name||
+     "-"
+    ),
+    esc(
+     item.jobTitle||
+     "-"
+    ),
+    esc(
+     item.status||
+     "pending"
     )
+   ]
+  )
+ );
 
-    .join("");
+}
 
 
-$("cancel").onclick =
-  () =>
-    $("dlg").close();
+async function renderPayments(){
+
+ const data=
+ await getCollection(
+  "payments"
+ );
+
+
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Application",
+   "Method",
+   "Amount",
+   "Transaction",
+   "Status"
+  ],
+  data.map(
+   item=>[
+    esc(item.applicationId||"-"),
+    esc(item.method||"-"),
+    esc(item.amount||"-"),
+    esc(item.trxId||"-"),
+    esc(item.status||"pending")
+   ]
+  )
+ );
+
+}
+
+
+async function renderCVs(){
+
+ const data=
+ (
+  await getCollection(
+   "applicantProfiles"
+  )
+ ).filter(
+  item=>item.cvUrl
+ );
+
+
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Applicant",
+   "Mobile",
+   "CV"
+  ],
+  data.map(
+   item=>[
+    esc(item.name||"-"),
+    esc(item.mobile||"-"),
+    `<a
+      class="action edit"
+      href="${esc(item.cvUrl)}"
+      target="_blank">
+      View CV
+     </a>`
+   ]
+  )
+ );
+
+}
+
+
+async function renderMessages(){
+
+ const data=
+ await getCollection(
+  "messages"
+ );
+
+
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Name",
+   "Email",
+   "Phone",
+   "Message",
+   "Status"
+  ],
+  data.map(
+   item=>[
+    esc(item.name||"-"),
+    esc(item.email||"-"),
+    esc(item.phone||"-"),
+    esc(item.message||"-"),
+    esc(item.status||"new")
+   ]
+  )
+ );
+
+}
+
+
+async function renderUpdates(){
+
+ const data=
+ await getCollection(
+  "clientUpdates"
+ );
+
+
+ $("content").innerHTML=
+ tableHTML(
+  [
+   "Title",
+   "Category",
+   "Status",
+   "Published"
+  ],
+  data.map(
+   item=>[
+    esc(item.title||"-"),
+    esc(item.category||"-"),
+    esc(item.status||"-"),
+    item.published
+    ?"Yes"
+    :"No"
+   ]
+  )
+ );
+
+}
 
 
 /* =========================================================
-   CREATE ADMIN
+ ADMIN MANAGEMENT
 ========================================================= */
 
-$("adminForm").addEventListener(
-  "submit",
-  async event => {
+async function renderAdmins(){
 
-    event.preventDefault();
+ if(
+  adminProfile?.role!=="super_admin"
+ ){
 
-    if(!isSuper()) return;
+  $("content").innerHTML=
+  `<div class="panel">
+   <div class="empty">
+    Only Super Admin can manage admins.
+   </div>
+  </div>`;
 
+  return;
 
-    const button =
-      $("create");
-
-    button.disabled = true;
-
-    button.textContent =
-      "Creating...";
-
-
-    const role =
-      $("aRole").value;
+ }
 
 
-    const permissions =
+ const data=
+ await getCollection(
+  "adminUsers"
+ );
 
-      [
-        ...document.querySelectorAll(
-          "#perms input:checked"
-        )
-      ]
+
+ $("content").innerHTML=`
+
+ <div class="toolbar">
+
+  <div class="role">
+   ${data.length} Admin account(s)
+  </div>
+
+ </div>
+
+ ${tableHTML(
+  [
+   "Name",
+   "Email",
+   "Role",
+   "Status"
+  ],
+  data.map(
+   item=>[
+    esc(item.name||"-"),
+    esc(item.email||"-"),
+    esc(item.role||"admin"),
+    item.active===false
+    ?"Inactive"
+    :"Active"
+   ]
+  )
+ )}
+
+ `;
+
+}
+
+
+function tableHTML(headers,rows){
+
+ if(!rows.length){
+
+  return`
+
+  <div class="panel">
+   <div class="empty">
+    No records found.
+   </div>
+  </div>
+
+  `;
+
+ }
+
+
+ return`
+
+ <div class="panel">
+
+  <div class="table-wrap">
+
+   <table>
+
+    <thead>
+     <tr>
+      ${headers
       .map(
-        input =>
-          input.value
-      );
+       header=>
+       `<th>${esc(header)}</th>`
+      )
+      .join("")}
+     </tr>
+    </thead>
 
+    <tbody>
 
-    try{
+     ${rows.map(
+      row=>
+      `<tr>
+       ${row.map(
+        cell=>
+        `<td>${cell}</td>`
+       ).join("")}
+      </tr>`
+     ).join("")}
 
-      /*
-        Secondary Firebase Auth app:
-        keeps the Super Admin logged in
-        while creating the client account.
-      */
+    </tbody>
 
-      const name =
-        "DigiSERSecondaryAuth";
+   </table>
 
+  </div>
 
-      const secondaryApp =
+ </div>
 
-        getApps().find(
-          appInstance =>
-            appInstance.name === name
-        )
-
-        ||
-
-        initializeApp(
-          firebaseConfig,
-          name
-        );
-
-
-      const secondaryAuth =
-        getAuth(
-          secondaryApp
-        );
-
-
-      const credential =
-
-        await createUserWithEmailAndPassword(
-          secondaryAuth,
-          $("aEmail")
-            .value
-            .trim()
-            .toLowerCase(),
-          $("aPass").value
-        );
-
-
-      await setDoc(
-        doc(
-          db,
-          ADMINS,
-          credential.user.uid
-        ),
-        {
-
-          uid:
-            credential.user.uid,
-
-          name:
-            $("aName")
-              .value
-              .trim(),
-
-          username:
-            $("aUser")
-              .value
-              .trim()
-              .toLowerCase(),
-
-          email:
-            $("aEmail")
-              .value
-              .trim()
-              .toLowerCase(),
-
-          role,
-
-          permissions:
-            role === "super_admin"
-              ? Object.keys(LABELS)
-              : permissions,
-
-          active:true,
-
-          createdAt:
-            serverTimestamp(),
-
-          createdBy:
-            user.uid
-
-        }
-      );
-
-
-      await signOut(
-        secondaryAuth
-      );
-
-
-      $("dlg").close();
-
-      $("adminForm").reset();
-
-      go("admins");
-
-
-    }catch(error){
-
-      console.error(error);
-
-      alert(
-
-        error.code ===
-        "auth/email-already-in-use"
-
-          ? "This email is already registered."
-
-          :
-
-            "Unable to create admin (" +
-            (error.code ||
-             error.message) +
-            ")"
-
-      );
-
-    }finally{
-
-      button.disabled = false;
-
-      button.textContent =
-        "Create admin";
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   SYSTEM UPDATE
-========================================================= */
-
-async function addUpdate(){
-
-  if(!can("updates")) return;
-
-
-  const title =
-    prompt("Update title");
-
-
-  if(!title) return;
-
-
-  const description =
-    prompt("Description") || "";
-
-
-  const id =
-    "UPD-" +
-    Date.now();
-
-
-  try{
-
-    await setDoc(
-
-      doc(
-        db,
-        "clientUpdates",
-        id
-      ),
-
-      {
-
-        id,
-
-        title:
-          title.trim(),
-
-        description:
-          description.trim(),
-
-        category:
-          "Other",
-
-        status:
-          "completed",
-
-        published:true,
-
-        popup:false,
-
-        createdAt:
-          serverTimestamp(),
-
-        createdBy:
-          user.uid
-
-      }
-
-    );
-
-
-    go("updates");
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Unable to save update (" +
-      (error.code || "error") +
-      ")"
-    );
-
-  }
+ `;
 
 }
 
