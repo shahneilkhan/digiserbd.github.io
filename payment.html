@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Submit bKash Payment | DigiSER</title>
+<link rel="icon" href="favicon.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#0087c4;--blue2:#006d9e;--bg:#f4f8fa;--text:#13252e;--muted:#72838b;--border:#dce7ec}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.card{width:100%;max-width:460px;background:#fff;padding:32px;border-radius:22px;box-shadow:0 30px 90px rgba(0,70,100,.14)}
+h1{font-size:23px;text-align:center}
+.sub{text-align:center;color:var(--muted);font-size:13px;margin:6px 0 20px}
+.how{background:#eaf8ff;border:1px solid #cfeaf7;border-radius:12px;padding:13px;font-size:13px;line-height:1.6;margin-bottom:20px}
+.how b{color:var(--blue2)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+.field input{width:100%;height:46px;border:1px solid var(--border);border-radius:11px;padding:0 13px;font:inherit;outline:none;background:#fbfdfe}
+.field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,135,196,.1)}
+button{width:100%;height:50px;border:0;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font:inherit;font-weight:700;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+#msg{margin-top:14px;padding:11px;border-radius:10px;font-size:13px;display:none}
+#msg.ok{display:block;background:#eafaf3;color:#16885b;border:1px solid #bfe8d6}
+#msg.err{display:block;background:#fff0f0;color:#b22e2e;border:1px solid #ffd4d4}
+</style>
+</head>
+
+<body>
+
+<form class="card" id="payForm" autocomplete="off">
+
+ <h1>Submit your bKash payment</h1>
+ <p class="sub">Taka pathanor por TrxID ekhane din</p>
+
+ <div class="how">
+  <b>Step 1:</b> bKash app e <b>Send Money</b> kore <b>01XXXXXXXXX</b> number e taka pathan.<br>
+  <b>Step 2:</b> Taka pathanor por je <b>TrxID</b> pan, niche din.<br>
+  <b>Step 3:</b> Amra verify korle apnake confirm kora hobe.
+ </div>
+
+ <div class="field">
+  <label>Apnar naam</label>
+  <input id="name" required>
+ </div>
+
+ <div class="field">
+  <label>Je bKash number theke pathiyechen</label>
+  <input id="senderNumber" inputmode="numeric" placeholder="01XXXXXXXXX" required>
+ </div>
+
+ <div class="field">
+  <label>Amount (৳)</label>
+  <input id="amount" type="number" min="1" required>
+ </div>
+
+ <div class="field">
+  <label>bKash TrxID</label>
+  <input id="trxId" placeholder="e.g. 9A1B2C3D4E" style="text-transform:uppercase" required>
+ </div>
+
+ <div class="field">
+  <label>Application ID</label>
+  <input id="applicationId" placeholder="Application ID (jodi thake)">
+ </div>
+
+ <button id="submitBtn" type="submit">Submit Payment</button>
+ <div id="msg"></div>
+
+</form>
+
+
+<script type="module">
+
+import { initializeApp, getApps, getApp }
+ from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+import { getFirestore, doc, setDoc, serverTimestamp }
+ from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const firebaseConfig={
+ apiKey:"AIzaSyCAc-am544-kM_qxSB6vn61Uk-8N_jpq2s",
+ authDomain:"digiserbds.firebaseapp.com",
+ projectId:"digiserbds",
+ storageBucket:"digiserbds.firebasestorage.app",
+ messagingSenderId:"543059824242",
+ appId:"1:543059824242:web:71cf0227ecddf2f840fceb",
+ measurementId:"G-NX8RD20E7S"
+};
+
+const app=getApps().length?getApp():initializeApp(firebaseConfig);
+const db=getFirestore(app);
+
+const $=id=>document.getElementById(id);
+
+// URL theke application ID auto-fill: payment.html?app=APP123
+const params=new URLSearchParams(location.search);
+if(params.get("app")) $("applicationId").value=params.get("app");
+
+function show(type,text){
+ $("msg").className=type;
+ $("msg").textContent=text;
+}
+
+$("payForm").addEventListener("submit",async e=>{
+
+ e.preventDefault();
+ $("msg").className="";
+
+ const name=$("name").value.trim();
+ const senderNumber=$("senderNumber").value.trim();
+ const amount=Number($("amount").value);
+ const trxId=$("trxId").value.trim().toUpperCase();
+ const applicationId=$("applicationId").value.trim();
+
+ if(!/^01[3-9]\d{8}$/.test(senderNumber)){
+  show("err","Shothik bKash number din (11 digit, 01 diye shuru).");
+  return;
+ }
+
+ if(!/^[A-Z0-9]{8,12}$/.test(trxId)){
+  show("err","TrxID shothik na. bKash SMS/app theke abar dekhe din.");
+  return;
+ }
+
+ if(!(amount>0)){
+  show("err","Shothik amount din.");
+  return;
+ }
+
+ $("submitBtn").disabled=true;
+
+ try{
+
+  // TrxID ke document ID rakha hoyeche: ekoi TrxID duibar submit kora jabe na
+  await setDoc(doc(db,"payments",trxId),{
+   name,
+   senderNumber,
+   amount,
+   trxId,
+   applicationId,
+   method:"bkash",
+   status:"pending",
+   createdAt:serverTimestamp()
+  });
+
+  show("ok","Payment submit hoyeche. Verify hole apnake confirm kora hobe.");
+  $("payForm").reset();
+
+ }catch(err){
+
+  console.error(err);
+
+  show(
+   "err",
+   err.code==="permission-denied"
+   ? "Ei TrxID age-i submit kora hoyeche, ba kichu vul ache."
+   : "Submit hoy ni. Abar chesta korun."
+  );
+
+ }finally{
+  $("submitBtn").disabled=false;
+ }
+
+});
+
+</script>
+
+</body>
+</html>
